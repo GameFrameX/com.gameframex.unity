@@ -6,7 +6,7 @@ namespace Base
     /// 游戏框架单例
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class GameFrameworkMonoSingleton<T> where T : MonoBehaviour
+    public abstract class GameFrameworkMonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T _instance;
 
