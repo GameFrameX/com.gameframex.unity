@@ -7,7 +7,7 @@ namespace GameFrameX
     {
         public static class IdGenerator
         {
-            private static readonly DateTime s_UtcTimeStart = new DateTime(2022, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            private static readonly DateTime s_UtcTimeStart = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
             // 共享计数器
             private static long _counter = (long)(DateTime.UtcNow - s_UtcTimeStart).TotalSeconds;
