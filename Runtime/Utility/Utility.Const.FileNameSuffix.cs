@@ -88,6 +88,11 @@ namespace GameFrameX
                 /// PDB 调试文件
                 /// </summary>
                 public const string PDB = ".pdb";
+
+                /// <summary>
+                /// Asset 文件
+                /// </summary>
+                public const string Asset = ".asset";
             }
         }
     }
