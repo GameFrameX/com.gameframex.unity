@@ -11,6 +11,7 @@ namespace GameFrameX
 
             // 共享计数器
             private static long _counter = (long)(DateTime.UtcNow - s_UtcTimeStart).TotalSeconds;
+            private static int _intCounter = (int)(DateTime.UtcNow - s_UtcTimeStart).TotalSeconds;
 
             /// <summary>
             /// 使用Interlocked.Increment生成唯一ID的方法
@@ -20,6 +21,15 @@ namespace GameFrameX
             {
                 // 原子性地递增值
                 return Interlocked.Increment(ref _counter);
+            }
+
+            /// <summary>
+            /// 使用Interlocked.Increment生成唯一ID的方法
+            /// </summary>
+            /// <returns></returns>
+            public static int GetNextUniqueIntId()
+            {
+                return Interlocked.Increment(ref _intCounter);
             }
         }
     }
