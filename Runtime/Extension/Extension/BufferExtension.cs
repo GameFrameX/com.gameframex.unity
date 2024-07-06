@@ -1,4 +1,5 @@
 using System;
+using System.Buffers.Binary;
 using System.Text;
 
 public static class BufferExtension
@@ -12,6 +13,11 @@ public static class BufferExtension
     /// 短整型的大小
     /// </summary>
     public const int ShortSize = sizeof(short);
+
+    /// <summary>
+    /// 无符号短整型的大小
+    /// </summary>
+    public const int UShortSize = sizeof(short);
 
     /// <summary>
     /// 长整型的大小
@@ -64,6 +70,26 @@ public static class BufferExtension
         {
             *(int*)(ptr + offset) = System.Net.IPAddress.HostToNetworkOrder(value);
             offset += IntSize;
+        }
+    }
+
+    /// <summary>将一个16位无符号整数写入指定的缓冲区，并更新偏移量。</summary>
+    /// <param name="buffer">要写入的缓冲区。</param>
+    /// <param name="value">要写入的值。</param>
+    /// <param name="offset">要写入值的缓冲区中的偏移量。</param>
+    public static void WriteUShort(this byte[] buffer, ushort value, ref int offset)
+    {
+        if (offset + 2 > buffer.Length)
+        {
+            offset += 2;
+        }
+        else
+        {
+            Span<byte> span = buffer.AsSpan<byte>();
+            ref Span<byte> local = ref span;
+            int start = offset;
+            BinaryPrimitives.WriteUInt16BigEndian(local.Slice(start, local.Length - start), value);
+            offset += 2;
         }
     }
 
@@ -320,6 +346,25 @@ public static class BufferExtension
             offset += ShortSize;
             return System.Net.IPAddress.NetworkToHostOrder(value);
         }
+    }
+
+    /// <summary>从字节数组中读取16位无符号整数，并将偏移量向前移动。</summary>
+    /// <param name="buffer">要读取的字节数组。</param>
+    /// <param name="offset">引用偏移量。</param>
+    /// <returns>返回读取的16位无符号整数。</returns>
+    public static ushort ReadUShort(this byte[] buffer, ref int offset)
+    {
+        if (offset > buffer.Length + 2)
+        {
+            throw new Exception("buffer read out of index");
+        }
+
+        Span<byte> span = buffer.AsSpan<byte>();
+        ref Span<byte> local = ref span;
+        int start = offset;
+        int num = (int)BinaryPrimitives.ReadUInt16BigEndian((ReadOnlySpan<byte>)local.Slice(start, local.Length - start));
+        offset += 2;
+        return (ushort)num;
     }
 
     /// <summary>
