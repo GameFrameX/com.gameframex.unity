@@ -14,6 +14,8 @@ namespace GameFrameX.Editor
     /// </summary>
     public static class BuildProductEditor
     {
+        private static string buildPath;
+        
         /// <summary>
         /// 发布 当前激活的平台
         /// </summary>
@@ -45,6 +47,7 @@ namespace GameFrameX.Editor
             Debug.LogError("发布目录:" + BuildOutputPath());
         }
 
+
         /// <summary>
         /// 发布 APK
         /// </summary>
@@ -52,7 +55,7 @@ namespace GameFrameX.Editor
         public static string BuildPlayerAndroid()
         {
             BuildPlayerToAndroid();
-            string apkPath = $"{BuildOutputPath()}.apk";
+            string apkPath = $"{buildPath}.apk";
             return apkPath;
         }
 
@@ -72,8 +75,8 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
             EditorUserBuildSettings.buildAppBundle = false;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
-
-            string apkPath = $"{BuildOutputPath()}.apk";
+            buildPath = BuildOutputPath();
+            string apkPath = $"{buildPath}.apk";
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, apkPath, BuildTarget.Android, BuildOptions.None);
             Debug.LogError("发布目录:" + apkPath);
         }
@@ -320,6 +323,7 @@ namespace GameFrameX.Editor
 
         static BuildProductEditor()
         {
+            buildPath = string.Empty;
             UpdateBuildTime();
         }
 
