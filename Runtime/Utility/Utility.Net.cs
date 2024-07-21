@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.Sockets;
 
 namespace GameFrameX
@@ -9,42 +10,27 @@ namespace GameFrameX
         /// </summary>
         public static class Net
         {
-#if UNITY_IPHONE && !UNITY_EDITOR
-        [DllImport("__Internal")]
-        private static extern string getIPv6(string mHost, string mPort);
-#endif
-
-            //"192.168.1.1&&ipv4"
-            static string GetIPv6(string mHost, string mPort)
+            public static (AddressFamily, string) GetIPv6Address(string host)
             {
-#if UNITY_IPHONE && !UNITY_EDITOR
-		    string mIPv6 = getIPv6(mHost, mPort);
-		    return mIPv6;
-#else
-                return mHost + "&&ipv4";
-#endif
-            }
+                var addresses = Dns.GetHostAddresses(host);
 
-            public static (AddressFamily, string) GetIPv6Address(string host, int port)
-            {
-                string ipv6 = GetIPv6(host, port.ToString());
-                string ip = host;
-                var ipType = AddressFamily.InterNetwork;
-                if (!string.IsNullOrEmpty(ipv6))
+                foreach (var ipAddress in addresses)
                 {
-                    string[] tmp = System.Text.RegularExpressions.Regex.Split(ipv6, "&&");
-                    if (tmp != null && tmp.Length >= 2)
+                    if (ipAddress.AddressFamily == AddressFamily.InterNetworkV6)
                     {
-                        string type = tmp[1];
-                        if (type == "ipv6")
-                        {
-                            ip = tmp[0];
-                            ipType = AddressFamily.InterNetworkV6;
-                        }
+                        return (AddressFamily.InterNetworkV6, ipAddress.ToString());
                     }
                 }
 
-                return (ipType, ip);
+                foreach (var ipAddress in addresses)
+                {
+                    if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        return (AddressFamily.InterNetwork, ipAddress.ToString());
+                    }
+                }
+
+                return (AddressFamily.InterNetwork, host);
             }
         }
     }
