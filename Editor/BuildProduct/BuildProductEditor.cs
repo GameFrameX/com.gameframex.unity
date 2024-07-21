@@ -48,6 +48,17 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 APK
         /// </summary>
+        /// <returns>构建结果地址</returns>
+        public static string BuildPlayerAndroid()
+        {
+            BuildPlayerToAndroid();
+            string apkPath = $"{BuildOutputPath()}.apk";
+            return apkPath;
+        }
+
+        /// <summary>
+        /// 发布 APK
+        /// </summary>
         [MenuItem("Tools/Build/Apk", false, 20)]
         private static void BuildPlayerToAndroid()
         {
