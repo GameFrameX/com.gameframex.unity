@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -10,11 +9,11 @@ using Debug = UnityEngine.Debug;
 namespace GameFrameX.Editor
 {
     /// <summary>
-    ///  导出和发布产品
+    ///  导出和发布产品帮助类
     /// </summary>
     public static class BuildProductHelper
     {
-        private static string buildPath;
+        private static string _buildPath;
 
         /// <summary>
         /// 发布 当前激活的平台
@@ -30,9 +29,20 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 发布 WebGL
+        /// 该接口主要用于外部调用
+        /// </summary>
+        /// <returns>构建结果地址</returns>
+        public static string BuildPlayerWebGL()
+        {
+            BuildPlayerToWebGL();
+            return BuildOutputPath();
+        }
+
+        /// <summary>
+        /// 发布 WebGL
         /// </summary>
         [MenuItem("Tools/Build/WebGL", false, 20)]
-        public static void BuildPlayerToWebGL()
+        private static void BuildPlayerToWebGL()
         {
             PlayerSettings.SplashScreen.show = false;
 
@@ -50,12 +60,13 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 发布 APK
+        /// 该接口主要用于外部调用
         /// </summary>
         /// <returns>构建结果地址</returns>
         public static string BuildPlayerAndroid()
         {
             BuildPlayerToAndroid();
-            string apkPath = $"{buildPath}.apk";
+            string apkPath = $"{_buildPath}.apk";
             return apkPath;
         }
 
@@ -75,8 +86,8 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
             EditorUserBuildSettings.buildAppBundle               = false;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
-            buildPath                                            = BuildOutputPath();
-            string apkPath = $"{buildPath}.apk";
+            _buildPath                                           = BuildOutputPath();
+            string apkPath = $"{_buildPath}.apk";
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, apkPath, BuildTarget.Android, BuildOptions.None);
             Debug.LogError("发布目录:" + apkPath);
         }
@@ -323,7 +334,7 @@ namespace GameFrameX.Editor
 
         static BuildProductHelper()
         {
-            buildPath = string.Empty;
+            _buildPath = string.Empty;
             UpdateBuildTime();
         }
 
