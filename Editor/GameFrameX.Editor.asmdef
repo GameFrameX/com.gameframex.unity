@@ -1,5 +1,6 @@
 {
     "name": "GameFrameX.Editor",
+    "rootNamespace": "GameFrameX.Editor",
     "references": [
         "GameFrameX.Runtime"
     ],
