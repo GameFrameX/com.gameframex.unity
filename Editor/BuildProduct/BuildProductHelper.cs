@@ -71,6 +71,17 @@ namespace GameFrameX.Editor
         }
 
         /// <summary>
+        /// 发布 Xcode
+        /// 该接口主要用于外部调用
+        /// </summary>
+        /// <returns>构建结果地址</returns>
+        public static string BuildPlayerXcode()
+        {
+            ExportToXcodeToRelease();
+            return _buildPath;
+        }
+
+        /// <summary>
         /// 发布 APK
         /// </summary>
         [MenuItem("Tools/Build/Apk", false, 20)]
@@ -222,18 +233,18 @@ namespace GameFrameX.Editor
         {
             PlayerSettings.SplashScreen.show = false;
             UpdateBuildTime();
-            string buildOutputPath = BuildOutputPath();
+            _buildPath = BuildOutputPath();
 
             EditorUserBuildSettings.androidBuildSystem           = AndroidBuildSystem.Gradle;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
             EditorUserBuildSettings.development                  = true;
 
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, buildOutputPath, BuildTarget.Android, BuildOptions.None);
-            Debug.Log(buildOutputPath);
+            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
+            Debug.Log(_buildPath);
 
-            GeneratorGradle(buildOutputPath);
-            CopyFileByBuildGradle(buildOutputPath);
-            Process.Start(buildOutputPath);
+            GeneratorGradle(_buildPath);
+            CopyFileByBuildGradle(_buildPath);
+            Process.Start(_buildPath);
         }
 
         /// <summary>
@@ -244,17 +255,17 @@ namespace GameFrameX.Editor
         {
             PlayerSettings.SplashScreen.show = false;
             UpdateBuildTime();
-            var buildOutputPath = BuildOutputPath();
+            _buildPath = BuildOutputPath();
 
             EditorUserBuildSettings.androidBuildSystem           = AndroidBuildSystem.Gradle;
             EditorUserBuildSettings.development                  = false;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
 
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, buildOutputPath, BuildTarget.Android, BuildOptions.None);
-            Debug.Log(buildOutputPath);
-            GeneratorGradle(buildOutputPath);
-            CopyFileByBuildGradle(buildOutputPath);
-            Debug.LogError("发布目录:" + buildOutputPath);
+            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
+            Debug.Log(_buildPath);
+            GeneratorGradle(_buildPath);
+            CopyFileByBuildGradle(_buildPath);
+            Debug.LogError("发布目录:" + _buildPath);
         }
 
 
@@ -266,14 +277,15 @@ namespace GameFrameX.Editor
         {
             PlayerSettings.SplashScreen.show = false;
             UpdateBuildTime();
-            string buildOutputPath = BuildOutputPath();
+            _buildPath = BuildOutputPath();
 
             EditorUserBuildSettings.development = true;
 
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, buildOutputPath, BuildTarget.iOS, BuildOptions.None);
-            Process.Start(buildOutputPath);
-            Debug.LogError("发布目录:" + buildOutputPath);
+            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
+            Process.Start(_buildPath);
+            Debug.LogError("发布目录:" + _buildPath);
         }
+
 
         /// <summary>
         /// 发布 Xcode Release 版本
@@ -283,13 +295,13 @@ namespace GameFrameX.Editor
         {
             PlayerSettings.SplashScreen.show = false;
             UpdateBuildTime();
-            string buildOutputPath = BuildOutputPath();
+            _buildPath = BuildOutputPath();
 
             EditorUserBuildSettings.development = false;
 
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, buildOutputPath, BuildTarget.iOS, BuildOptions.None);
-            Process.Start(buildOutputPath);
-            Debug.LogError("发布目录:" + buildOutputPath);
+            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
+            Process.Start(_buildPath);
+            Debug.LogError("发布目录:" + _buildPath);
         }
 
         /// <summary>
