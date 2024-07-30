@@ -12,15 +12,15 @@ namespace GameFrameX.Editor
     /// <summary>
     ///  导出和发布产品
     /// </summary>
-    public static class BuildProductEditor
+    public static class BuildProductHelper
     {
         private static string buildPath;
-        
+
         /// <summary>
         /// 发布 当前激活的平台
         /// </summary>
         [MenuItem("Tools/Build/Active Build Target", false, 20)]
-        private static void BuildPlayerToActiveBuildTarget()
+        public static void BuildPlayerToActiveBuildTarget()
         {
             PlayerSettings.SplashScreen.show = false;
             UpdateBuildTime();
@@ -32,7 +32,7 @@ namespace GameFrameX.Editor
         /// 发布 WebGL
         /// </summary>
         [MenuItem("Tools/Build/WebGL", false, 20)]
-        private static void BuildPlayerToWebGL()
+        public static void BuildPlayerToWebGL()
         {
             PlayerSettings.SplashScreen.show = false;
 
@@ -73,9 +73,9 @@ namespace GameFrameX.Editor
             }
 
             UpdateBuildTime();
-            EditorUserBuildSettings.buildAppBundle = false;
+            EditorUserBuildSettings.buildAppBundle               = false;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
-            buildPath = BuildOutputPath();
+            buildPath                                            = BuildOutputPath();
             string apkPath = $"{buildPath}.apk";
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, apkPath, BuildTarget.Android, BuildOptions.None);
             Debug.LogError("发布目录:" + apkPath);
@@ -96,7 +96,7 @@ namespace GameFrameX.Editor
             }
 
             string aabFileName = Application.version + "-" + PlayerSettings.Android.bundleVersionCode + ".aab";
-            var aabFilePath = aabSavePath + "/" + aabFileName;
+            var    aabFilePath = aabSavePath + "/" + aabFileName;
             if (string.IsNullOrEmpty(aabFilePath))
             {
                 Debug.LogError("输出路径异常,取消打包AAB");
@@ -213,9 +213,9 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
             string buildOutputPath = BuildOutputPath();
 
-            EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
+            EditorUserBuildSettings.androidBuildSystem           = AndroidBuildSystem.Gradle;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
-            EditorUserBuildSettings.development = true;
+            EditorUserBuildSettings.development                  = true;
 
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, buildOutputPath, BuildTarget.Android, BuildOptions.None);
             Debug.Log(buildOutputPath);
@@ -235,8 +235,8 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
             var buildOutputPath = BuildOutputPath();
 
-            EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
-            EditorUserBuildSettings.development = false;
+            EditorUserBuildSettings.androidBuildSystem           = AndroidBuildSystem.Gradle;
+            EditorUserBuildSettings.development                  = false;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
 
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, buildOutputPath, BuildTarget.Android, BuildOptions.None);
@@ -321,7 +321,7 @@ namespace GameFrameX.Editor
 
         private static string _buildTime;
 
-        static BuildProductEditor()
+        static BuildProductHelper()
         {
             buildPath = string.Empty;
             UpdateBuildTime();
@@ -342,7 +342,7 @@ namespace GameFrameX.Editor
         private static string BuildOutputPath()
         {
             string pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.Android.bundleVersionCode}";
-            string path = Path.Combine(GetBuildRootPath, EditorUserBuildSettings.activeBuildTarget.ToString(), Application.version, Application.identifier, pathName);
+            string path     = Path.Combine(GetBuildRootPath, EditorUserBuildSettings.activeBuildTarget.ToString(), Application.version, Application.identifier, pathName);
 
             if (!Directory.Exists(path))
             {
