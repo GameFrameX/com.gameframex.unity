@@ -58,12 +58,59 @@
                 /// <summary>
                 /// 获取UI文件路径
                 /// </summary>
-                /// <param name="uiPackageName"></param>
-                /// <param name="extension"></param>
+                /// <param name="uiPackageName">UI包名</param>
                 /// <returns></returns>
-                public static string GetUIPackagePath(string uiPackageName, string extension = ".bytes")
+                public static string GetUIPackagePath(string uiPackageName)
                 {
                     return $"{BundlesPath}/UI/{uiPackageName}/{uiPackageName}";
+                }
+
+                /// <summary>
+                /// 获取声音文件路径
+                /// </summary>
+                /// <param name="pathName">路径包含名称</param>
+                /// <param name="extension">扩展名称,默认为.mp3</param>
+                /// <returns></returns>
+                public static string GetSoundPath(string pathName, string extension = ".mp3")
+                {
+                    if (pathName.IndexOf('.') >= 0)
+                    {
+                        return $"{BundlesPath}/Sound/{pathName}";
+                    }
+
+                    return $"{BundlesPath}/Sound/{pathName}{extension}";
+                }
+
+                /// <summary>
+                /// 获取场景文件路径
+                /// </summary>
+                /// <param name="pathName">路径包含名称</param>
+                /// <param name="extension">扩展名,默认为.unity</param>
+                /// <returns></returns>
+                public static string GetScenePath(string pathName, string extension = ".unity")
+                {
+                    if (pathName.IndexOf('.') >= 0)
+                    {
+                        return $"{BundlesPath}/Scene/{pathName}";
+                    }
+
+                    return $"{BundlesPath}/Scene/{pathName}{extension}";
+                }
+
+                /// <summary>
+                /// 获取本地化文件路径
+                /// </summary>
+                /// <param name="pathName">路径包含名称</param>
+                /// <param name="extension"></param>
+                /// <returns></returns>
+                public static string GetLocalizationPath(string pathName, string extension = ".xml")
+                {
+                    if (pathName.IndexOf('.') >= 0)
+                    {
+                        return $"{BundlesPath}/Localization/{pathName}";
+                    }
+
+                    return $"{BundlesPath}/Localization/{pathName}{extension}";
                 }
             }
         }
