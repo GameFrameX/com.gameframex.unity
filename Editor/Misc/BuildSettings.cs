@@ -80,7 +80,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 将构建场景设置为默认。
         /// </summary>
-        [MenuItem("Game Framework/Scenes in Build Settings/Default Scenes", false, 20)]
+        [MenuItem("GameFrameX/Scenes in Build Settings/Default Scenes", false, 20)]
         public static void DefaultScenes()
         {
             HashSet<string> sceneNames = new HashSet<string>();
@@ -103,7 +103,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 将构建场景设置为所有。
         /// </summary>
-        [MenuItem("Game Framework/Scenes in Build Settings/All Scenes", false, 21)]
+        [MenuItem("GameFrameX/Scenes in Build Settings/All Scenes", false, 21)]
         public static void AllScenes()
         {
             HashSet<string> sceneNames = new HashSet<string>();

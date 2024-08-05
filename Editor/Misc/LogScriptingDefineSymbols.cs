@@ -47,7 +47,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 禁用所有日志脚本宏定义。
         /// </summary>
-        [MenuItem("Game Framework/Log Scripting Define Symbols/Disable All Logs", false, 30)]
+        [MenuItem("GameFrameX/Log Scripting Define Symbols/Disable All Logs", false, 30)]
         public static void DisableAllLogs()
         {
             ScriptingDefineSymbols.RemoveScriptingDefineSymbol(EnableLogScriptingDefineSymbol);
@@ -66,7 +66,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启所有日志脚本宏定义。
         /// </summary>
-        [MenuItem("Game Framework/Log Scripting Define Symbols/Enable All Logs", false, 31)]
+        [MenuItem("GameFrameX/Log Scripting Define Symbols/Enable All Logs", false, 31)]
         public static void EnableAllLogs()
         {
             DisableAllLogs();
@@ -76,7 +76,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启调试及以上级别的日志脚本宏定义。
         /// </summary>
-        [MenuItem("Game Framework/Log Scripting Define Symbols/Enable Debug And Above Logs", false, 32)]
+        [MenuItem("GameFrameX/Log Scripting Define Symbols/Enable Debug And Above Logs", false, 32)]
         public static void EnableDebugAndAboveLogs()
         {
             SetAboveLogScriptingDefineSymbol(EnableDebugAndAboveLogScriptingDefineSymbol);
@@ -85,7 +85,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启信息及以上级别的日志脚本宏定义。
         /// </summary>
-        [MenuItem("Game Framework/Log Scripting Define Symbols/Enable Info And Above Logs", false, 33)]
+        [MenuItem("GameFrameX/Log Scripting Define Symbols/Enable Info And Above Logs", false, 33)]
         public static void EnableInfoAndAboveLogs()
         {
             SetAboveLogScriptingDefineSymbol(EnableInfoAndAboveLogScriptingDefineSymbol);
@@ -94,7 +94,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启警告及以上级别的日志脚本宏定义。
         /// </summary>
-        [MenuItem("Game Framework/Log Scripting Define Symbols/Enable Warning And Above Logs", false, 34)]
+        [MenuItem("GameFrameX/Log Scripting Define Symbols/Enable Warning And Above Logs", false, 34)]
         public static void EnableWarningAndAboveLogs()
         {
             SetAboveLogScriptingDefineSymbol(EnableWarningAndAboveLogScriptingDefineSymbol);
@@ -103,7 +103,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启错误及以上级别的日志脚本宏定义。
         /// </summary>
-        [MenuItem("Game Framework/Log Scripting Define Symbols/Enable Error And Above Logs", false, 35)]
+        [MenuItem("GameFrameX/Log Scripting Define Symbols/Enable Error And Above Logs", false, 35)]
         public static void EnableErrorAndAboveLogs()
         {
             SetAboveLogScriptingDefineSymbol(EnableErrorAndAboveLogScriptingDefineSymbol);
@@ -112,7 +112,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启严重错误及以上级别的日志脚本宏定义。
         /// </summary>
-        [MenuItem("Game Framework/Log Scripting Define Symbols/Enable Fatal And Above Logs", false, 36)]
+        [MenuItem("GameFrameX/Log Scripting Define Symbols/Enable Fatal And Above Logs", false, 36)]
         public static void EnableFatalAndAboveLogs()
         {
             SetAboveLogScriptingDefineSymbol(EnableFatalAndAboveLogScriptingDefineSymbol);
