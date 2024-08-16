@@ -116,7 +116,7 @@ namespace GameFrameX
                 List<string> results = new List<string>();
                 foreach (var t in types)
                 {
-                    if (t.IsSubclassOf(type))
+                    if (t.IsSubclassOf(type) || t.IsImplWithInterface(type))
                     {
                         results.Add(t.FullName);
                     }
