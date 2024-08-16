@@ -104,6 +104,26 @@ namespace GameFrameX
 
                 return null;
             }
+
+            /// <summary>
+            /// 获取已加载的程序集中的指定类型的子类列表。
+            /// </summary>
+            /// <param name="type">指定类型</param>
+            /// <returns></returns>
+            public static List<string> GetRuntimeTypeNames(Type type)
+            {
+                var types = GetTypes();
+                List<string> results = new List<string>();
+                foreach (var t in types)
+                {
+                    if (t.IsSubclassOf(type))
+                    {
+                        results.Add(t.FullName);
+                    }
+                }
+
+                return results;
+            }
         }
     }
 }
