@@ -67,7 +67,7 @@ namespace GameFrameX.Editor
                 CustomOptionName
             };
 
-            helperTypeNameList.AddRange(Type.GetRuntimeTypeNames(typeof(T)));
+            helperTypeNameList.AddRange(Utility.Assembly.GetRuntimeTypeNames(typeof(T)));
             m_HelperTypeNames = helperTypeNameList.ToArray();
 
             m_HelperTypeNameIndex = 0;
