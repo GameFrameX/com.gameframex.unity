@@ -14,7 +14,7 @@ namespace GameFrameX.Editor
     public static class BuildHotfixHelper
     {
         //Unity代码生成dll位置
-        private const           string HotFixAssembliesDir = "Library/ScriptAssemblies";
+        private const string HotFixAssembliesDir = "Library/ScriptAssemblies";
         private static readonly string ScriptAssembliesDir = $"HybridCLRData/HotUpdateDlls/{EditorUserBuildSettings.activeBuildTarget}";
 
         private static readonly string[] HotfixDlls = new string[] { "Unity.Hotfix.dll", "Unity.Hotfix.pdb" };
@@ -37,7 +37,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 复制热更新代码
         /// </summary>
-        [MenuItem("Tools/Build/Copy Hotfix Code")]
+        [MenuItem("GameFrameX/Build/Copy Hotfix Code", false, 10)]
         public static void CopyHotfixCode()
         {
             if (!Directory.Exists(CodeDir))
@@ -61,7 +61,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 复制AOT代码
         /// </summary>
-        [MenuItem("Tools/Build/Copy AOT Code")]
+        [MenuItem("GameFrameX/Build/Copy AOT Code", false, 10)]
         public static void CopyAOTCode()
         {
             if (!Directory.Exists(AOTCodeDir))
@@ -70,11 +70,11 @@ namespace GameFrameX.Editor
             }
 
             DirectoryInfo directoryInfo = new DirectoryInfo(Application.dataPath);
-            string        path          = Path.Combine(directoryInfo.Parent.FullName, "HybridCLRData", "AssembliesPostIl2CppStrip", EditorUserBuildSettings.activeBuildTarget.ToString());
+            string path = Path.Combine(directoryInfo.Parent.FullName, "HybridCLRData", "AssembliesPostIl2CppStrip", EditorUserBuildSettings.activeBuildTarget.ToString());
 
-            DirectoryInfo aotCodeDir    = new DirectoryInfo(path);
-            var           files         = aotCodeDir.GetFiles("*.dll");
-            var           stringBuilder = new StringBuilder();
+            DirectoryInfo aotCodeDir = new DirectoryInfo(path);
+            var files = aotCodeDir.GetFiles("*.dll");
+            var stringBuilder = new StringBuilder();
             foreach (var fileInfo in files)
             {
                 stringBuilder.AppendLine(fileInfo.Name);

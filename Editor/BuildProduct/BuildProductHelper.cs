@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 当前激活的平台
         /// </summary>
-        [MenuItem("Tools/Build/Active Build Target", false, 20)]
+        [MenuItem("GameFrameX/Build/Active Build Target", false, 20)]
         public static void BuildPlayerToActiveBuildTarget()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -41,7 +41,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 WebGL
         /// </summary>
-        [MenuItem("Tools/Build/WebGL", false, 20)]
+        [MenuItem("GameFrameX/Build/WebGL", false, 20)]
         private static void BuildPlayerToWebGL()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -84,7 +84,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 APK
         /// </summary>
-        [MenuItem("Tools/Build/Apk", false, 20)]
+        [MenuItem("GameFrameX/Build/Apk", false, 20)]
         private static void BuildPlayerToAndroid()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -106,7 +106,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 AAB
         /// </summary>
-        [MenuItem("Tools/Build/AAB", false, 20)]
+        [MenuItem("GameFrameX/Build/AAB", false, 20)]
         private static void BuildAppBundleForAndroid()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -228,7 +228,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 AS Debug 版本
         /// </summary>
-        [MenuItem("Tools/Build/AS Project Debug", false, 20)]
+        [MenuItem("GameFrameX/Build/AS Project Debug", false, 20)]
         private static void ExportToAndroidStudioToDevelop()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -250,7 +250,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 AS Release 版本
         /// </summary>
-        [MenuItem("Tools/Build/AS Project Release", false, 20)]
+        [MenuItem("GameFrameX/Build/AS Project Release", false, 20)]
         private static void ExportToAndroidStudioToRelease()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -272,7 +272,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 Xcode Debug 版本
         /// </summary>
-        [MenuItem("Tools/Build/Xcode Project Debug", false, 30)]
+        [MenuItem("GameFrameX/Build/Xcode Project Debug", false, 30)]
         private static void ExportToXcodeToDevelop()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -290,7 +290,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 Xcode Release 版本
         /// </summary>
-        [MenuItem("Tools/Build/Xcode Project Release", false, 30)]
+        [MenuItem("GameFrameX/Build/Xcode Project Release", false, 30)]
         private static void ExportToXcodeToRelease()
         {
             PlayerSettings.SplashScreen.show = false;
