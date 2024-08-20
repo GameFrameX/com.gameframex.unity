@@ -5,6 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
 using UnityEngine;
 
 namespace GameFrameX.Runtime
@@ -21,26 +22,31 @@ namespace GameFrameX.Runtime
         /// <param name="message">日志内容。</param>
         public void Log(GameFrameworkLogLevel level, object message)
         {
+            var time = $"[Unity]:[{DateTime.Now:HH:mm:ss.fff}]:";
+
             switch (level)
             {
                 case GameFrameworkLogLevel.Debug:
-                    Debug.Log(message);
+                    Debug.Log($"{time}{message}");
                     break;
 
                 case GameFrameworkLogLevel.Info:
-                    Debug.Log(message.ToString());
+                    Debug.Log($"{time}{message}");
                     break;
 
                 case GameFrameworkLogLevel.Warning:
-                    Debug.LogWarning(message.ToString());
+                    Debug.LogWarning($"{time}{message}");
                     break;
 
                 case GameFrameworkLogLevel.Error:
-                    Debug.LogError(message.ToString());
+                    Debug.LogError($"{time}{message}");
                     break;
 
+                case GameFrameworkLogLevel.Fatal:
+                    Debug.LogError($"{time}{message}");
+                    break;
                 default:
-                    throw new GameFrameworkException(message.ToString());
+                    throw new GameFrameworkException($"{time}{message}");
             }
         }
     }
