@@ -27,6 +27,42 @@ namespace GameFrameX.Editor
             Debug.LogError("发布目录:" + BuildOutputPath());
         }
 
+        [MenuItem("GameFrameX/Build/Windows X64", false, 10)]
+        public static void BuildPlayerToWindows64BuildTarget()
+        {
+            PlayerSettings.SplashScreen.show = false;
+            Debug.Log(EditorUserBuildSettings.activeBuildTarget);
+            if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.StandaloneWindows64)
+            {
+                Debug.LogError("当前构建目标不是 Windows");
+                return;
+            }
+
+            EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows64;
+            UpdateBuildTime();
+            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            Debug.LogError("发布目录:" + BuildOutputPath());
+            Process.Start(BuildOutputPath());
+        }
+
+        [MenuItem("GameFrameX/Build/Windows X32", false, 10)]
+        public static void BuildPlayerToWindows32BuildTarget()
+        {
+            PlayerSettings.SplashScreen.show = false;
+            Debug.Log(EditorUserBuildSettings.activeBuildTarget);
+            if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.StandaloneWindows)
+            {
+                Debug.LogError("当前构建目标不是 Windows");
+                return;
+            }
+
+            EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows;
+            UpdateBuildTime();
+            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            Debug.LogError("发布目录:" + BuildOutputPath());
+            Process.Start(BuildOutputPath());
+        }
+
         /// <summary>
         /// 发布 WebGL
         /// 该接口主要用于外部调用
@@ -95,9 +131,9 @@ namespace GameFrameX.Editor
             }
 
             UpdateBuildTime();
-            EditorUserBuildSettings.buildAppBundle               = false;
+            EditorUserBuildSettings.buildAppBundle = false;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
-            _buildPath                                           = BuildOutputPath();
+            _buildPath = BuildOutputPath();
             string apkPath = $"{_buildPath}.apk";
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, apkPath, BuildTarget.Android, BuildOptions.None);
             Debug.LogError("发布目录:" + apkPath);
@@ -118,7 +154,7 @@ namespace GameFrameX.Editor
             }
 
             string aabFileName = Application.version + "-" + PlayerSettings.Android.bundleVersionCode + ".aab";
-            var    aabFilePath = aabSavePath + "/" + aabFileName;
+            var aabFilePath = aabSavePath + "/" + aabFileName;
             if (string.IsNullOrEmpty(aabFilePath))
             {
                 Debug.LogError("输出路径异常,取消打包AAB");
@@ -235,9 +271,9 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
             _buildPath = BuildOutputPath();
 
-            EditorUserBuildSettings.androidBuildSystem           = AndroidBuildSystem.Gradle;
+            EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
-            EditorUserBuildSettings.development                  = true;
+            EditorUserBuildSettings.development = true;
 
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
             Debug.Log(_buildPath);
@@ -257,8 +293,8 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
             _buildPath = BuildOutputPath();
 
-            EditorUserBuildSettings.androidBuildSystem           = AndroidBuildSystem.Gradle;
-            EditorUserBuildSettings.development                  = false;
+            EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
+            EditorUserBuildSettings.development = false;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
 
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
@@ -364,13 +400,47 @@ namespace GameFrameX.Editor
         /// <returns></returns>
         private static string BuildOutputPath()
         {
-            string pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.Android.bundleVersionCode}";
-            string path     = Path.Combine(GetBuildRootPath, EditorUserBuildSettings.activeBuildTarget.ToString(), Application.version, Application.identifier, pathName);
-
-            if (!Directory.Exists(path))
+            string pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}";
+            if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
             {
-                Directory.CreateDirectory(path);
+                pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.Android.bundleVersionCode}";
             }
+            else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS || EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneOSX)
+            {
+                pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.iOS.buildNumber}";
+            }
+            else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows || EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows64)
+            {
+                pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}";
+            }
+            else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.WebGL)
+            {
+                pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}";
+            }
+
+
+            string path = Path.Combine(GetBuildRootPath, EditorUserBuildSettings.activeBuildTarget.ToString(), Application.version, Application.identifier, pathName);
+
+            switch (EditorUserBuildSettings.activeBuildTarget)
+            {
+                case BuildTarget.StandaloneOSX:
+                case BuildTarget.StandaloneOSXIntel:
+                case BuildTarget.StandaloneWindows:
+                case BuildTarget.StandaloneLinux:
+                case BuildTarget.StandaloneWindows64:
+                case BuildTarget.WebGL:
+                case BuildTarget.StandaloneLinux64:
+                    break;
+                default:
+                {
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                }
+                    break;
+            }
+
 
             return path;
         }
