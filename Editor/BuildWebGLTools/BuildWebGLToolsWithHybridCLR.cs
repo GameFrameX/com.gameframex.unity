@@ -1,4 +1,4 @@
-#if UNITY_WEBGL && UNITY_EDITOR && !UNITY_2020_2_OR_NEWER
+#if UNITY_WEBGL && UNITY_EDITOR && !UNITY_2021_3_OR_NEWER
 
 using UnityEditor;
 using UnityEngine;
