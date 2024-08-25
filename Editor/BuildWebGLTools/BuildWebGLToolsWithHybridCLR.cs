@@ -19,7 +19,7 @@ namespace GameFrameX.Editor
             return Application.dataPath.Replace("Assets", string.Empty);
         }
 
-        [MenuItem("Tools/Print WEBGL Environment Command Line")]
+        [MenuItem("GameFrameX/Print WEBGL Environment Command Line")]
         private static void Print()
         {
 #if UNITY_EDITOR_OSX
