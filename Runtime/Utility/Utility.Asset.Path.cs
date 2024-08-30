@@ -65,6 +65,11 @@
                     return $"{BundlesPath}/UI/{uiPackageName}/{uiPackageName}";
                 }
 
+                public static string GetUIPath(string uiPath)
+                {
+                    return $"{BundlesPath}/UI/{uiPath}";
+                }
+
                 /// <summary>
                 /// 获取声音文件路径
                 /// </summary>
