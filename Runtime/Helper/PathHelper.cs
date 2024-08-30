@@ -1,11 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Text;
+using UnityEngine;
 
 namespace GameFrameX.Runtime
 {
     public static class PathHelper
     {
-
-
         /// <summary>
         ///应用程序外部资源路径存放路径(热更新资源路径)
         /// </summary>
@@ -73,6 +72,39 @@ namespace GameFrameX.Runtime
         public static string NormalizePath(string path)
         {
             return path.Replace('\\', '/').Replace("\\", "/");
+        }
+
+        static readonly StringBuilder CombineStringBuilder = new StringBuilder();
+
+        /// <summary>
+        /// 拼接路径
+        /// </summary>
+        /// <param name="paths"></param>
+        /// <returns></returns>
+        public static string Combine(params string[] paths)
+        {
+            CombineStringBuilder.Clear();
+            const string separatorA = "/";
+            const string separatorB = "\\";
+            for (var index = 0; index < paths.Length - 1; index++)
+            {
+                var path = paths[index];
+                CombineStringBuilder.Append(path);
+                if (path.EndsWithFast(separatorA) || path.EndsWithFast(separatorB))
+                {
+                    continue;
+                }
+
+                if (path.StartsWithFast(separatorA) || path.StartsWithFast(separatorB))
+                {
+                    continue;
+                }
+
+                CombineStringBuilder.Append(separatorA);
+            }
+
+            CombineStringBuilder.Append(paths[paths.Length - 1]);
+            return CombineStringBuilder.ToString();
         }
     }
 }
