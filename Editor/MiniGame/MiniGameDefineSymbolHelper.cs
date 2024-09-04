@@ -17,7 +17,7 @@ namespace GameFrameX.Editor
         /// 开启微信小游戏的适配
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/MiniGame/Open WeChat MiniGame")]
+        [MenuItem("GameFrameX/MiniGame/WeChat/Open", false, 10)]
 #endif
         public static void OpenWeChatMiniGame()
         {
@@ -35,7 +35,7 @@ namespace GameFrameX.Editor
         /// 关闭微信小游戏的适配
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/MiniGame/Close WeChat MiniGame")]
+        [MenuItem("GameFrameX/MiniGame/WeChat/Close", false, 11)]
 #endif
         public static void CloseWeChatMiniGame()
         {
@@ -48,7 +48,7 @@ namespace GameFrameX.Editor
         /// 开启抖音小游戏的适配
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/MiniGame/Open DouYin MiniGame")]
+        [MenuItem("GameFrameX/MiniGame/DouYin/Open", false, 20)]
 #endif
         public static void OpenDouYinMiniGame()
         {
@@ -66,7 +66,7 @@ namespace GameFrameX.Editor
         /// 关闭抖音小游戏的适配
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/MiniGame/Close DouYin MiniGame")]
+        [MenuItem("GameFrameX/MiniGame/DouYin/Close", false, 21)]
 #endif
         public static void CloseDouYinMiniGame()
         {
