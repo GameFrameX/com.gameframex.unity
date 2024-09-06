@@ -40,7 +40,7 @@ namespace System.Collections.Generic
         public static int RemoveIf<TKey, TValue>(this Dictionary<TKey, TValue> self, Func<TKey, TValue, bool> predict)
         {
             int count = 0;
-            var remove = new HashSet<TKey>(self.Count);
+            var remove = new HashSet<TKey>();
             foreach (var kv in self)
             {
                 if (predict(kv.Key, kv.Value))
