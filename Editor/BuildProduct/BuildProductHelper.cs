@@ -38,6 +38,9 @@ namespace GameFrameX.Editor
                 return;
             }
 
+            PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
+            PlayerSettings.defaultScreenHeight = 720;
+            PlayerSettings.defaultScreenWidth = 1280;
             EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows64;
             UpdateBuildTime();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
@@ -56,6 +59,9 @@ namespace GameFrameX.Editor
                 return;
             }
 
+            PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
+            PlayerSettings.defaultScreenHeight = 720;
+            PlayerSettings.defaultScreenWidth = 1280;
             EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows;
             UpdateBuildTime();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
