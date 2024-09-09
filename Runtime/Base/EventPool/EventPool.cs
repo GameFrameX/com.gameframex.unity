@@ -242,7 +242,7 @@ namespace GameFrameX
                     throw new GameFrameworkException("Event is invalid.");
                 }
 
-                EventNode eventNodeNode = EventNode.Create(sender, e);
+                var eventNodeNode = EventNode.Create(sender, e);
                 lock (_events)
                 {
                     _events.Enqueue(eventNodeNode);

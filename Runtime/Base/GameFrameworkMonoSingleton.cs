@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Base
+namespace GameFrameX
 {
     /// <summary>
     /// 游戏框架单例
@@ -10,6 +10,7 @@ namespace Base
     {
         private static T _instance;
 
+        [UnityEngine.Scripting.Preserve]
         protected GameFrameworkMonoSingleton()
         {
         }
@@ -17,6 +18,7 @@ namespace Base
         /// <summary>
         /// 单例对象
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static T Instance
         {
             get

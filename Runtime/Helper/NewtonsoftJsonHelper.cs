@@ -13,6 +13,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 默认 JSON 函数集辅助器。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public class NewtonsoftJsonHelper : Utility.Json.IJsonHelper
     {
         /// <summary>

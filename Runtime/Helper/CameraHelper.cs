@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 
 namespace GameFrameX.Runtime
 {
+    /// <summary>
+    /// 相机帮助类
+    /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class CameraHelper
     {
         /// <summary>
@@ -15,13 +19,13 @@ namespace GameFrameX.Runtime
         {
             Rect rect = new Rect(0, 0, Screen.width * scale, Screen.height * scale);
             string name = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-            RenderTexture renderTexture = RenderTexture.GetTemporary((int) rect.width, (int) rect.height, 0);
+            RenderTexture renderTexture = RenderTexture.GetTemporary((int)rect.width, (int)rect.height, 0);
             renderTexture.name = SceneManager.GetActiveScene().name + "_" + renderTexture.width + "_" + renderTexture.height + "_" + name;
             main.targetTexture = renderTexture;
             main.Render();
 
             RenderTexture.active = renderTexture;
-            Texture2D screenShot = new Texture2D((int) rect.width, (int) rect.height, TextureFormat.RGB24, false)
+            Texture2D screenShot = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false)
             {
                 name = renderTexture.name
             };

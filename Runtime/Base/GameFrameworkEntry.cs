@@ -13,6 +13,7 @@ namespace GameFrameX
     /// <summary>
     /// 游戏框架入口。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class GameFrameworkEntry
     {
         private static readonly GameFrameworkLinkedList<GameFrameworkModule> s_GameFrameworkModules = new GameFrameworkLinkedList<GameFrameworkModule>();

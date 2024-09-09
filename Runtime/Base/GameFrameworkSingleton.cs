@@ -8,6 +8,7 @@
     {
         private static T _instance;
 
+        [UnityEngine.Scripting.Preserve]
         protected GameFrameworkSingleton()
         {
         }

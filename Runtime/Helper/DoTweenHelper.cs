@@ -8,6 +8,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// Do Tween 帮助类
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class DoTweenHelper
     {
         /// <summary>
