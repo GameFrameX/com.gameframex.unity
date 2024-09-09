@@ -147,7 +147,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Variable<>);
             _ = typeof(GameFrameX.Version);
             _ = typeof(GameFrameX.Version.IVersionHelper);
-            _ = typeof(Server.Utility.ThreadLocalRandom);
+            _ = typeof(ThreadLocalRandom);
             _ = typeof(SpanExtension);
             _ = typeof(StringExtension);
             _ = typeof(System.Collections.Generic.BidirectionalDictionary<,>);

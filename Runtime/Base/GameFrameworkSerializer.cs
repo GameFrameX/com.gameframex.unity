@@ -24,6 +24,7 @@ namespace GameFrameX
         /// <summary>
         /// 初始化游戏框架序列化器基类的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public GameFrameworkSerializer()
         {
             _serializeCallbacks = new Dictionary<byte, SerializeCallback>();
@@ -135,8 +136,7 @@ namespace GameFrameX
             stream.WriteByte(header[1]);
             stream.WriteByte(header[2]);
             stream.WriteByte(version);
-            SerializeCallback callback = null;
-            if (!_serializeCallbacks.TryGetValue(version, out callback))
+            if (!_serializeCallbacks.TryGetValue(version, out var callback))
             {
                 throw new GameFrameworkException(Utility.Text.Format("Serialize callback '{0}' is not exist.", version));
             }
@@ -161,8 +161,7 @@ namespace GameFrameX
             }
 
             byte version = (byte)stream.ReadByte();
-            DeserializeCallback callback = null;
-            if (!_deserializeCallbacks.TryGetValue(version, out callback))
+            if (!_deserializeCallbacks.TryGetValue(version, out var callback))
             {
                 throw new GameFrameworkException(Utility.Text.Format("Deserialize callback '{0}' is not exist.", version));
             }

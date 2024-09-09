@@ -15,6 +15,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 默认压缩解压缩辅助器。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public class DefaultCompressionHelper : Utility.Compression.ICompressionHelper
     {
         private const int CachedBytesLength = 0x1000;

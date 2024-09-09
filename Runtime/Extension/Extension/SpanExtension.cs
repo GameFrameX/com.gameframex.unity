@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
+[UnityEngine.Scripting.Preserve]
 public static class SpanExtension
 {
     /// <summary>

@@ -13,6 +13,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 默认游戏框架日志辅助器。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public class DefaultLogHelper : GameFrameworkLog.ILogHelper
     {
         /// <summary>

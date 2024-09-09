@@ -5,11 +5,13 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 应用帮助类
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class ApplicationHelper
     {
         /// <summary>
         /// 是否是编辑器
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsEditor
         {
             get
@@ -25,6 +27,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 是否是安卓
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsAndroid
         {
             get
@@ -40,6 +43,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 是否是WebGL平台
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsWebGL
         {
             get { return Application.platform == RuntimePlatform.WebGLPlayer; }
@@ -48,6 +52,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 是否是Windows平台
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsWindows
         {
             get { return Application.platform == RuntimePlatform.WindowsPlayer; }
@@ -56,6 +61,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 是否是Linux平台
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsLinux
         {
             get { return Application.platform == RuntimePlatform.LinuxPlayer; }
@@ -65,6 +71,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 是否是Mac平台
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsMacOsx
         {
             get { return Application.platform == RuntimePlatform.OSXPlayer; }
@@ -73,6 +80,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 是否是iOS 移动平台
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsIOS
         {
             get

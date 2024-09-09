@@ -20,12 +20,18 @@ namespace GameFrameX
             /// <summary>
             /// 发送者
             /// </summary>
-            public object Sender => _sender;
+            public object Sender
+            {
+                get { return _sender; }
+            }
 
             /// <summary>
             /// 事件参数
             /// </summary>
-            public T EventArgs => _eventArgs;
+            public T EventArgs
+            {
+                get { return _eventArgs; }
+            }
 
             /// <summary>
             /// 创建事件节点

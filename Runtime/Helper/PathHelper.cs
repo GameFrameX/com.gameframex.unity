@@ -8,6 +8,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         ///应用程序外部资源路径存放路径(热更新资源路径)
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static string AppHotfixResPath
         {
             get
@@ -29,6 +30,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 应用程序内部资源路径存放路径(www/webrequest专用)
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static string AppResPath4Web
         {
             get

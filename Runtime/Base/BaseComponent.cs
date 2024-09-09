@@ -15,6 +15,7 @@ namespace GameFrameX.Runtime
     /// </summary>
     [DisallowMultipleComponent]
     [AddComponentMenu("Game Framework/Base")]
+    [UnityEngine.Scripting.Preserve]
     public sealed class BaseComponent : GameFrameworkComponent
     {
         private const int DefaultDpi = 96; // default windows dpi
@@ -257,7 +258,7 @@ namespace GameFrameX.Runtime
             if (versionHelperType == null)
             {
                 throw new GameFrameworkException(Utility.Text.Format("Can not find version helper type '{0}'.",
-                    m_VersionHelperTypeName));
+                                                                     m_VersionHelperTypeName));
             }
 
             GameFrameX.Version.IVersionHelper versionHelper =
@@ -265,7 +266,7 @@ namespace GameFrameX.Runtime
             if (versionHelper == null)
             {
                 throw new GameFrameworkException(Utility.Text.Format("Can not create version helper instance '{0}'.",
-                    m_VersionHelperTypeName));
+                                                                     m_VersionHelperTypeName));
             }
 
             GameFrameX.Version.SetVersionHelper(versionHelper);
@@ -282,7 +283,7 @@ namespace GameFrameX.Runtime
             if (logHelperType == null)
             {
                 throw new GameFrameworkException(Utility.Text.Format("Can not find log helper type '{0}'.",
-                    m_LogHelperTypeName));
+                                                                     m_LogHelperTypeName));
             }
 
             GameFrameworkLog.ILogHelper logHelper =
@@ -290,7 +291,7 @@ namespace GameFrameX.Runtime
             if (logHelper == null)
             {
                 throw new GameFrameworkException(Utility.Text.Format("Can not create log helper instance '{0}'.",
-                    m_LogHelperTypeName));
+                                                                     m_LogHelperTypeName));
             }
 
             GameFrameworkLog.SetLogHelper(logHelper);

@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
+[UnityEngine.Scripting.Preserve]
 public static class StringExtension
 {
     /// <summary>
@@ -130,7 +131,7 @@ public static class StringExtension
         if (hexString.Length % 2 != 0)
         {
             throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "The binary key cannot have an odd number of digits: {0}",
-                hexString));
+                                                      hexString));
         }
 
         var hexAsBytes = new byte[hexString.Length / 2];

@@ -9,6 +9,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 压缩帮助类
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class ZipHelper
     {
         private static readonly Crc32 CRC = new Crc32();
@@ -20,6 +21,7 @@ namespace GameFrameX.Runtime
         /// <param name="Stream">压缩前的Stream,方法执行后变为压缩完成后的文件</param> 
         /// <param name="password">密码</param> 
         /// <returns>是否成功</returns> 
+        [UnityEngine.Scripting.Preserve]
         public static bool CompressDirectoryToStream(string folderToZip, Stream Stream, string password = null)
         {
             return CompressDirectoryToZipStream(folderToZip, Stream, password) != null;
@@ -33,6 +35,7 @@ namespace GameFrameX.Runtime
         /// <param name="Stream">压缩前的Stream,方法执行后变为压缩完成后的文件</param> 
         /// <param name="password">密码</param> 
         /// <returns>是否压缩成功返回ZipOutputStream，否则返回null</returns> 
+        [UnityEngine.Scripting.Preserve]
         public static ZipOutputStream CompressDirectoryToZipStream(string folderToZip, Stream Stream, string password = null)
         {
             if (!Directory.Exists(folderToZip))
@@ -64,6 +67,7 @@ namespace GameFrameX.Runtime
         /// <param name="zipStream">压缩输出流</param> 
         /// <param name="parentFolderName">此文件夹的上级文件夹</param> 
         /// <returns>是否成功</returns> 
+        [UnityEngine.Scripting.Preserve]
         private static bool CompressDirectory(string folderToZip, ZipOutputStream zipStream, string parentFolderName)
         {
             //这段是创建空文件夹,注释掉可以去掉空文件夹(因为在写入文件的时候也会创建文件夹)
@@ -111,6 +115,7 @@ namespace GameFrameX.Runtime
         /// <param name="zipFile">压缩文件完整路径</param> 
         /// <param name="password">密码</param> 
         /// <returns>是否成功</returns> 
+        [UnityEngine.Scripting.Preserve]
         public static bool CompressDirectory(string folderToZip, string zipFile, string password = null)
         {
             var zipStream = CompressDirectoryToZipStream(folderToZip, new FileStream(zipFile, FileMode.Create, FileAccess.Write), password);
@@ -130,6 +135,7 @@ namespace GameFrameX.Runtime
         /// <param name="zipFile">压缩后的文件名</param> 
         /// <param name="password">密码</param> 
         /// <returns>是否成功</returns> 
+        [UnityEngine.Scripting.Preserve]
         public static bool CompressFile(string fileToZip, string zipFile, string password = null)
         {
             if (!File.Exists(fileToZip))
@@ -177,6 +183,7 @@ namespace GameFrameX.Runtime
         /// <param name="zipFolder">指定解压目标目录</param> 
         /// <param name="password">密码</param> 
         /// <returns>是否成功</returns> 
+        [UnityEngine.Scripting.Preserve]
         public static bool DecompressFile(string fileToUnZip, string zipFolder, string password = null)
         {
             if (!System.IO.File.Exists(fileToUnZip))
@@ -237,6 +244,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="content"></param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static byte[] Compress(byte[] content)
         {
             //return content;
@@ -264,6 +272,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="content"></param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static byte[] Decompress(byte[] content)
         {
             return Decompress(content, 0, content.Length);
@@ -276,6 +285,7 @@ namespace GameFrameX.Runtime
         /// <param name="offset"></param>
         /// <param name="count"></param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static byte[] Decompress(byte[] content, int offset, int count)
         {
             //return content;

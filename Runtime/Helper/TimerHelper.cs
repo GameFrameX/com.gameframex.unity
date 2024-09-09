@@ -30,6 +30,7 @@ namespace GameFrameX.Runtime
         /// 设置时间差
         /// </summary>
         /// <param name="timeSpan"></param>
+        [UnityEngine.Scripting.Preserve]
         public static void SetDifferenceTime(long timeSpan)
         {
             if (timeSpan > 1000000000000)
@@ -55,11 +56,13 @@ namespace GameFrameX.Runtime
         /// 毫秒级
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static long ClientNowMillisecond()
         {
             return (DateTime.UtcNow.Ticks - Epoch) / TicksMillisecondUnit;
         }
 
+        [UnityEngine.Scripting.Preserve]
         public static long ServerToday()
         {
             if (_isSecLevel)
@@ -70,6 +73,7 @@ namespace GameFrameX.Runtime
             return (_differenceTime + ClientTodayMillisecond()) / 1000;
         }
 
+        [UnityEngine.Scripting.Preserve]
         public static long ClientTodayMillisecond()
         {
             return (DateTime.Now.Date.ToUniversalTime().Ticks - Epoch) / 10000;
@@ -79,6 +83,7 @@ namespace GameFrameX.Runtime
         /// 服务器当前时间
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static long ServerNow() //秒级
         {
             if (_isSecLevel)
@@ -93,6 +98,7 @@ namespace GameFrameX.Runtime
         /// 今天的客户端时间
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static long ClientToday()
         {
             return (DateTime.Now.Date.ToUniversalTime().Ticks - Epoch) / TicksSecondUnit;
@@ -102,6 +108,7 @@ namespace GameFrameX.Runtime
         /// 客户端时间，毫秒
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static long ClientNow()
         {
             return (DateTime.UtcNow.Ticks - Epoch) / 10000;
@@ -111,6 +118,7 @@ namespace GameFrameX.Runtime
         /// 客户端时间。秒
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static long ClientNowSeconds()
         {
             return (DateTime.UtcNow.Ticks - Epoch) / 10000000;
@@ -120,6 +128,7 @@ namespace GameFrameX.Runtime
         /// 客户端时间
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static long Now()
         {
             return ClientNow();
@@ -129,6 +138,7 @@ namespace GameFrameX.Runtime
         /// UTC时间 秒
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static long UnixTimeSeconds()
         {
             return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
@@ -138,6 +148,7 @@ namespace GameFrameX.Runtime
         /// UTC时间 毫秒
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static long UnixTimeMilliseconds()
         {
             return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
@@ -150,6 +161,7 @@ namespace GameFrameX.Runtime
         /// <param name="timestamp1">时间戳1</param>
         /// <param name="timestamp2">时间戳2</param>
         /// <returns>是否是同一天</returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsUnixSameDay(long timestamp1, long timestamp2)
         {
             var time1 = UtcToUtcDateTime(timestamp1);
@@ -163,6 +175,7 @@ namespace GameFrameX.Runtime
         /// <param name="timestamp1">时间戳1</param>
         /// <param name="timestamp2">时间戳2</param>
         /// <returns>是否是同一天</returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsLocalSameDay(long timestamp1, long timestamp2)
         {
             var time1 = UtcToLocalDateTime(timestamp1);
@@ -175,6 +188,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="utcTimestamp">UTC时间戳,单位秒</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static DateTime UtcToUtcDateTime(long utcTimestamp)
         {
             return DateTimeOffset.FromUnixTimeSeconds(utcTimestamp).UtcDateTime;
@@ -185,6 +199,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="utcTimestamp">UTC时间戳,单位秒</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static DateTime UtcToLocalDateTime(long utcTimestamp)
         {
             return DateTimeOffset.FromUnixTimeSeconds(utcTimestamp).LocalDateTime;
@@ -196,6 +211,7 @@ namespace GameFrameX.Runtime
         /// <param name="time1">时间1</param>
         /// <param name="time2">时间2</param>
         /// <returns>是否是同一天</returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsSameDay(DateTime time1, DateTime time2)
         {
             return time1.Date.Year == time2.Date.Year && time1.Date.Month == time2.Date.Month && time1.Date.Day == time2.Date.Day;
@@ -206,6 +222,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="time">指定时间</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static long LocalTimeToUnixTimeSeconds(DateTime time)
         {
             var utcDateTime = time.ToUniversalTime();
@@ -217,6 +234,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="time">指定时间</param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static long LocalTimeToUnixTimeMilliseconds(DateTime time)
         {
             var utcDateTime = time.ToUniversalTime();
