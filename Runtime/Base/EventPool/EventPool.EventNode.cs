@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     public sealed partial class EventPool<T> where T : BaseEventArgs
     {

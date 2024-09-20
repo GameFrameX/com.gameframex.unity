@@ -8,7 +8,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 类型和名称的组合值。

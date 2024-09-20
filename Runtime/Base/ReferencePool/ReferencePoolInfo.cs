@@ -8,7 +8,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 引用池信息。

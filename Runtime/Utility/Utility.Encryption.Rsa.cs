@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     public static partial class Utility
     {

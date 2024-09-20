@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     public static partial class Utility
     {

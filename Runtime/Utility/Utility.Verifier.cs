@@ -8,7 +8,7 @@
 using System;
 using System.IO;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     public static partial class Utility
     {

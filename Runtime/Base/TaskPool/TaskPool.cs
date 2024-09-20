@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 任务池。

@@ -8,7 +8,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 游戏框架异常类。

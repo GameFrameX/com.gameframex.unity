@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 游戏框架入口。

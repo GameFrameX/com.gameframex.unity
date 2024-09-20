@@ -7,7 +7,7 @@
 
 using System;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 变量。

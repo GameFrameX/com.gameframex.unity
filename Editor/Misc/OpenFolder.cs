@@ -7,6 +7,7 @@
 
 using GameFrameX;
 using System.Diagnostics;
+using GameFrameX.Runtime;
 using UnityEditor;
 using UnityEngine;
 

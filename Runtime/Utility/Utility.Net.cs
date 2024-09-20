@@ -1,7 +1,7 @@
 using System.Net;
 using System.Net.Sockets;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     public static partial class Utility
     {
