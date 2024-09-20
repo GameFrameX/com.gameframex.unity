@@ -7,7 +7,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 任务信息。

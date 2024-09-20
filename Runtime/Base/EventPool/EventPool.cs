@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 事件池。

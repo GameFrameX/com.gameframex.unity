@@ -1,4 +1,4 @@
-﻿namespace Base
+﻿namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 游戏框架单例

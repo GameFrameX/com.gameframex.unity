@@ -7,12 +7,14 @@
 
 using System;
 using System.Collections.Generic;
+using GameFrameX.Runtime;
 
 namespace GameFrameX.ObjectPool
 {
     /// <summary>
     /// 对象池管理器。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed partial class ObjectPoolManager : GameFrameworkModule, IObjectPoolManager
     {
         private const int DefaultCapacity = int.MaxValue;

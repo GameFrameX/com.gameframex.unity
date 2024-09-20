@@ -13,7 +13,7 @@ using System.IO;
 using System.Threading;
 using UnityEngine;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     public static partial class Utility
     {

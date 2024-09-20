@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 引用接口。

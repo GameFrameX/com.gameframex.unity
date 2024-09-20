@@ -7,8 +7,9 @@
 
 using System;
 using System.Collections.Generic;
+using GameFrameX.Runtime;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 引用池。

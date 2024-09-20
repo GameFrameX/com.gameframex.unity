@@ -1,6 +1,6 @@
 using System;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 游戏框架异常静态方法

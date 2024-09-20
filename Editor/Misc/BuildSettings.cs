@@ -9,6 +9,7 @@ using GameFrameX;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using GameFrameX.Runtime;
 using UnityEditor;
 using UnityEngine;
 

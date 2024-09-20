@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameFrameX
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 游戏框架单例
