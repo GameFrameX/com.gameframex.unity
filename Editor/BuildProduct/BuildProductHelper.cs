@@ -23,6 +23,15 @@ namespace GameFrameX.Editor
         {
             PlayerSettings.SplashScreen.show = false;
             UpdateBuildTime();
+
+            if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneOSX)
+            {
+                PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
+                PlayerSettings.defaultScreenHeight = 720;
+                PlayerSettings.defaultScreenWidth = 1280;
+            }
+
+            AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
             Debug.LogError("发布目录:" + BuildOutputPath());
         }
@@ -43,9 +52,30 @@ namespace GameFrameX.Editor
             PlayerSettings.defaultScreenWidth = 1280;
             EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows64;
             UpdateBuildTime();
+            AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
             Debug.LogError("发布目录:" + BuildOutputPath());
             Process.Start(BuildOutputPath());
+        }
+
+        [MenuItem("GameFrameX/Build/Mac Os", false, 20)]
+        public static void BuildPlayerToMacBuildTarget()
+        {
+            if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.StandaloneOSX)
+            {
+                Debug.LogError("当前构建目标不是 Mac Os");
+                return;
+            }
+
+            PlayerSettings.SplashScreen.show = false;
+            PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
+            PlayerSettings.defaultScreenHeight = 720;
+            PlayerSettings.defaultScreenWidth = 1280;
+            UpdateBuildTime();
+
+            AssetDatabase.SaveAssets();
+            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            Debug.LogError("发布目录:" + BuildOutputPath());
         }
 
         [MenuItem("GameFrameX/Build/Windows X32", false, 10)]
@@ -64,6 +94,7 @@ namespace GameFrameX.Editor
             PlayerSettings.defaultScreenWidth = 1280;
             EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows;
             UpdateBuildTime();
+            AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
             Debug.LogError("发布目录:" + BuildOutputPath());
             Process.Start(BuildOutputPath());
@@ -95,6 +126,7 @@ namespace GameFrameX.Editor
             }
 
             UpdateBuildTime();
+            AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), BuildTarget.WebGL, BuildOptions.None);
             Debug.LogError("发布目录:" + BuildOutputPath());
         }
@@ -141,6 +173,7 @@ namespace GameFrameX.Editor
             EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
             _buildPath = BuildOutputPath();
             string apkPath = $"{_buildPath}.apk";
+            AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, apkPath, BuildTarget.Android, BuildOptions.None);
             Debug.LogError("发布目录:" + apkPath);
         }
@@ -182,7 +215,7 @@ namespace GameFrameX.Editor
             EditorUserBuildSettings.buildAppBundle = true;
             // 开启符号表的输出
             EditorUserBuildSettings.androidCreateSymbolsZip = true;
-
+            AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, aabFilePath, BuildTarget.Android, BuildOptions.None);
 
             Debug.Log("AAB存储路径=>" + aabFilePath);
@@ -280,7 +313,7 @@ namespace GameFrameX.Editor
             EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
             EditorUserBuildSettings.development = true;
-
+            AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
             Debug.Log(_buildPath);
 
@@ -302,7 +335,7 @@ namespace GameFrameX.Editor
             EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
             EditorUserBuildSettings.development = false;
             EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
-
+            AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
             Debug.Log(_buildPath);
             GeneratorGradle(_buildPath);
@@ -322,7 +355,7 @@ namespace GameFrameX.Editor
             _buildPath = BuildOutputPath();
 
             EditorUserBuildSettings.development = true;
-
+            AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
             Process.Start(_buildPath);
             Debug.LogError("发布目录:" + _buildPath);
@@ -340,7 +373,7 @@ namespace GameFrameX.Editor
             _buildPath = BuildOutputPath();
 
             EditorUserBuildSettings.development = false;
-
+            AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
             Process.Start(_buildPath);
             Debug.LogError("发布目录:" + _buildPath);
@@ -409,11 +442,11 @@ namespace GameFrameX.Editor
             string pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}";
             if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
             {
-                pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.Android.bundleVersionCode}";
+                pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.Android.bundleVersionCode}";
             }
             else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS || EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneOSX)
             {
-                pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.iOS.buildNumber}";
+                pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.iOS.buildNumber}";
             }
             else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows || EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows64)
             {
@@ -425,7 +458,7 @@ namespace GameFrameX.Editor
             }
 
 
-            string path = Path.Combine(GetBuildRootPath, EditorUserBuildSettings.activeBuildTarget.ToString(), Application.version, Application.identifier, pathName);
+            string path = Path.Combine(GetBuildRootPath, EditorUserBuildSettings.activeBuildTarget.ToString(), Application.identifier, Application.version, pathName);
 
             switch (EditorUserBuildSettings.activeBuildTarget)
             {
