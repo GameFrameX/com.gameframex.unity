@@ -58,7 +58,7 @@ namespace GameFrameX.Runtime
                 return $"iOS";
 #elif UNITY_WEBGL
                 return $"WebGL";
-#elif UNITY_STANDLONE_WIN
+#elif UNITY_STANDALONE_WIN
                 return $"Windows";
 #else
                 return string.Empty;
