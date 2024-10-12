@@ -56,7 +56,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameTimeHelper);
             _ = typeof(Helper);
             _ = typeof(Log);
-            _ = typeof(LuaComponent);
             _ = typeof(MathHelper);
             _ = typeof(NetworkHelper);
             _ = typeof(NewtonsoftJsonHelper);
