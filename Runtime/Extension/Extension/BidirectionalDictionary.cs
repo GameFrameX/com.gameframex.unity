@@ -5,8 +5,11 @@
         private readonly Dictionary<TKey, TValue> _forwardDictionary;
         private readonly Dictionary<TValue, TKey> _reverseDictionary;
 
+        private int _count;
+
         public BidirectionalDictionary(int capacity = 8)
         {
+            _count = 0;
             _forwardDictionary = new Dictionary<TKey, TValue>(capacity);
             _reverseDictionary = new Dictionary<TValue, TKey>(capacity);
         }
@@ -21,8 +24,14 @@
             return _forwardDictionary.TryGetValue(key, out value);
         }
 
+        public int Count
+        {
+            get { return _count; }
+        }
+
         public void Clear()
         {
+            _count = 0;
             _forwardDictionary.Clear();
             _reverseDictionary.Clear();
         }
@@ -33,6 +42,7 @@
             {
                 _forwardDictionary.Add(key, value);
                 _reverseDictionary.Add(value, key);
+                _count++;
                 return true;
             }
 
@@ -45,6 +55,7 @@
             {
                 _forwardDictionary.Remove(key);
                 _reverseDictionary.Remove(value);
+                _count--;
                 return true;
             }
 
@@ -57,6 +68,7 @@
             {
                 _reverseDictionary.Remove(value);
                 _forwardDictionary.Remove(key);
+                _count--;
                 return true;
             }
 
