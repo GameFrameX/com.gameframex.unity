@@ -35,7 +35,7 @@ namespace GameFrameX.Runtime
         {
             get
             {
-#if UNITY_IOS || UNITY_STANDALONE_OSX
+#if UNITY_IOS || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN || UNITY_EDITOR
                 return $"file://{Application.streamingAssetsPath}";
 #else
                 return NormalizePath(Application.streamingAssetsPath);
