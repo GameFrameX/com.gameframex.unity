@@ -2,18 +2,8 @@
   "name": "GameFrameX.Runtime",
   "references": [
     "BlankReadAssets.Runtime",
-    "LitJSON.Runtime",
-    "YooAsset.Runtime",
-    "FairyGUI.Runtime",
-    "XLua.Runtime",
     "BetterStreamingAssets",
-    "MessagePack.Runtime",
-    "MessagePack.Annotations",
-    "SimpleJSON.Runtime",
-    "UniTask.Runtime",
-    "ProtoBuffer.Runtime",
-    "UnityWebSocket.Runtime",
-    "LuBan.Runtime"
+    "UniTask.Runtime"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
