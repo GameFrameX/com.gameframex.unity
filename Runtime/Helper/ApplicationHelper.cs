@@ -92,5 +92,17 @@ namespace GameFrameX.Runtime
 #endif
             }
         }
+
+        /// <summary>
+        /// 退出
+        /// </summary>
+        public static void Quit()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            return;
+#endif
+            Application.Quit();
+        }
     }
 }
