@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 namespace GameFrameX.Runtime
 {
@@ -66,6 +67,41 @@ namespace GameFrameX.Runtime
 
                 Object.Destroy(component, 0.1f);
             }
+        }
+
+        /// <summary>
+        /// 在指定场景中查找特定名称的节点。
+        /// </summary>
+        /// <param name="sceneName">场景名称。</param>
+        /// <param name="nodeName">节点名称。</param>
+        /// <returns>找到的节点的GameObject实例，如果没有找到返回null。</returns>
+        public static GameObject FindChildGamObjectByName(string nodeName, string sceneName = null)
+        {
+            Scene scene;
+            if (sceneName.IsNullOrWhiteSpace())
+            {
+                scene = SceneManager.GetActiveScene();
+            }
+            else
+            {
+                scene = SceneManager.GetSceneByName(sceneName);
+                if (!scene.isLoaded)
+                {
+                    return null;
+                }
+            }
+
+            var rootObjects = scene.GetRootGameObjects();
+            foreach (var rootObject in rootObjects)
+            {
+                var result = FindChildGamObjectByName(rootObject, nodeName);
+                if (result.IsNotNull())
+                {
+                    return result;
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
