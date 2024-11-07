@@ -23,6 +23,27 @@
                 public const string BundlesDirectoryName = "Bundles";
 
                 /// <summary>
+                /// 获取文件路径
+                /// </summary>
+                /// <param name="filePath">相对于Bundles的路径，不要以/开头</param>
+                /// <returns>返回拼接好的路径</returns>
+                public static string GetFilePath(string filePath)
+                {
+                    return $"{BundlesPath}/{filePath}";
+                }
+
+                /// <summary>
+                /// 获取根据类别文件夹名称和文件路径获得完整文件路径
+                /// </summary>
+                /// <param name="category">相对于Bundles的类别名称</param>
+                /// <param name="filePath">相对于Bundles的路径，不要以/开头</param>
+                /// <returns>返回拼接好的路径</returns>
+                public static string GetCategoryFilePath(string category, string filePath)
+                {
+                    return $"{BundlesPath}/{category}/{filePath}";
+                }
+
+                /// <summary>
                 /// 获取配置文件路径
                 /// </summary>
                 /// <param name="fileName"></param>
