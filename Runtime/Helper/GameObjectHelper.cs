@@ -113,13 +113,10 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static GameObject FindChildGamObjectByName(GameObject gameObject, string name)
         {
-            var tfs = gameObject.GetComponentsInChildren<Transform>();
-            foreach (Transform t in tfs)
+            var transform = gameObject.transform.FindChildName(name);
+            if (transform.IsNotNull())
             {
-                if (t.name.EqualsFast(name))
-                {
-                    return t.gameObject;
-                }
+                return transform.gameObject;
             }
 
             return null;

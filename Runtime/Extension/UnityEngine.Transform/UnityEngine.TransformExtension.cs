@@ -6,6 +6,39 @@ namespace UnityEngine
     public static class UnityEngineTransformExtension
     {
         /// <summary>
+        /// 查找子节点的名称符合的 <see cref="Transform" />。
+        /// </summary>
+        /// <param name="transform"><see cref="Transform" /> 对象。</param>
+        /// <param name="name">子节点的名称</param>
+        public static Transform FindChildName(this Transform transform, string name)
+        {
+            var child = transform.Find(name);
+            if (child.IsNotNull())
+            {
+                return child;
+            }
+
+            var childCount = transform.childCount;
+            for (int i = 0; i < childCount; i++)
+            {
+                var t = transform.GetChild(i);
+                if (t.name.EqualsFast(name))
+                {
+                    return t;
+                }
+
+                t = t.FindChildName(name);
+
+                if (t.IsNotNull())
+                {
+                    return t;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// 设置绝对位置的 x 坐标。
         /// </summary>
         /// <param name="transform"><see cref="Transform" /> 对象。</param>
