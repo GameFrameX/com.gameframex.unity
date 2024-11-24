@@ -10,6 +10,11 @@ public static class BufferExtension
     public const int IntSize = sizeof(int);
 
     /// <summary>
+    /// 无符号整型的大小
+    /// </summary>
+    public const int UIntSize = sizeof(uint);
+
+    /// <summary>
     /// 短整型的大小
     /// </summary>
     public const int ShortSize = sizeof(short);
@@ -71,6 +76,27 @@ public static class BufferExtension
             *(int*)(ptr + offset) = System.Net.IPAddress.HostToNetworkOrder(value);
             offset += IntSize;
         }
+    }
+
+    /// <summary>
+    /// 将无符号整数写入字节数组中的指定偏移量处。
+    /// </summary>
+    /// <param name="buffer">要写入的字节数组。</param>
+    /// <param name="value">要写入的整数值。</param>
+    /// <param name="offset">写入操作的偏移量。</param>
+    public static unsafe void WriteUInt(this byte[] buffer, uint value, ref int offset)
+    {
+        if (offset + IntSize > buffer.Length)
+        {
+            offset += IntSize;
+            return;
+        }
+
+        var span = buffer.AsSpan<byte>();
+        ref var local = ref span;
+        int start = offset;
+        BinaryPrimitives.WriteUInt32BigEndian(local.Slice(start, local.Length - start), value);
+        offset += IntSize;
     }
 
     /// <summary>将一个16位无符号整数写入指定的缓冲区，并更新偏移量。</summary>
@@ -325,6 +351,28 @@ public static class BufferExtension
             offset += IntSize;
             return System.Net.IPAddress.NetworkToHostOrder(value);
         }
+    }
+
+    /// <summary>
+    /// 从字节数组中读取一个无符号整数值。
+    /// </summary>
+    /// <param name="buffer">包含整数值的字节数组。</param>
+    /// <param name="offset">从字节数组中读取整数值的偏移量。</param>
+    /// <returns>从字节数组中读取的无符号整数值。</returns>
+    /// <exception cref="Exception"></exception>
+    public static uint ReadUInt(this byte[] buffer, ref int offset)
+    {
+        if (offset > buffer.Length + UIntSize)
+        {
+            throw new Exception("buffer read out of index");
+        }
+
+        Span<byte> span = buffer.AsSpan<byte>();
+        ref Span<byte> local = ref span;
+        int start = offset;
+        int num = (int)BinaryPrimitives.ReadUInt32BigEndian((ReadOnlySpan<byte>)local.Slice(start, local.Length - start));
+        offset += UIntSize;
+        return (uint)num;
     }
 
     /// <summary>
