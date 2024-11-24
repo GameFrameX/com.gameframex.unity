@@ -227,6 +227,32 @@ public static class BufferExtension
     }
 
     /// <summary>
+    /// 在给定的偏移量位置，向缓冲区中写入字节序列，不包含长度信息。
+    /// </summary>
+    /// <param name="buffer">目标缓冲区。</param>
+    /// <param name="value">要写入的字节数组。</param>
+    /// <param name="offset">偏移量。</param>
+    public static unsafe void WriteBytesWithoutLength(this byte[] buffer, byte[] value, ref int offset)
+    {
+        if (value == null)
+        {
+            buffer.WriteInt(0, ref offset);
+            return;
+        }
+
+        if (offset + value.Length + IntSize > buffer.Length)
+        {
+            throw new ArgumentException($"buffer write out of index {offset + value.Length + IntSize}, {buffer.Length}");
+        }
+
+        fixed (byte* ptr = buffer, valPtr = value)
+        {
+            Buffer.MemoryCopy(valPtr, ptr + offset, value.Length, value.Length);
+            offset += value.Length;
+        }
+    }
+
+    /// <summary>
     /// 将字节数组写入到缓冲区中，同时更新偏移量。
     /// </summary>
     /// <param name="buffer">目标缓冲区。</param>
@@ -506,7 +532,7 @@ public static class BufferExtension
     /// </summary>
     /// <param name="buffer">字节数组。</param>
     /// <param name="offset">偏移量。</param>
-    /// <param name="len"></param>
+    /// <param name="len">数据长度。</param>
     /// <returns>读取的字节数组。</returns>
     public static unsafe byte[] ReadBytes(this byte[] buffer, int offset, int len)
     {
@@ -518,6 +544,27 @@ public static class BufferExtension
 
         var data = new byte[len];
         System.Array.Copy(buffer, offset, data, 0, len);
+        return data;
+    }
+
+    /// <summary>
+    /// 从字节数组中读取一定长度的字节。
+    /// </summary>
+    /// <param name="buffer">字节数组。</param>
+    /// <param name="offset">偏移量。</param>
+    /// <param name="len">数据长度。</param>
+    /// <returns>读取的字节数组。</returns>
+    public static unsafe byte[] ReadBytes(this byte[] buffer, ref int offset, int len)
+    {
+        //数据不可信
+        if (len <= 0 || offset > buffer.Length + len * ByteSize)
+        {
+            return Array.Empty<byte>();
+        }
+
+        var data = new byte[len];
+        System.Array.Copy(buffer, offset, data, 0, len);
+        offset += len;
         return data;
     }
 
