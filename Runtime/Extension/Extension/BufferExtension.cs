@@ -17,7 +17,7 @@ public static class BufferExtension
     /// <summary>
     /// 无符号短整型的大小
     /// </summary>
-    public const int UShortSize = sizeof(short);
+    public const int UShortSize = sizeof(ushort);
 
     /// <summary>
     /// 长整型的大小
@@ -354,7 +354,7 @@ public static class BufferExtension
     /// <returns>返回读取的16位无符号整数。</returns>
     public static ushort ReadUShort(this byte[] buffer, ref int offset)
     {
-        if (offset > buffer.Length + 2)
+        if (offset > buffer.Length + UShortSize)
         {
             throw new Exception("buffer read out of index");
         }
@@ -363,7 +363,7 @@ public static class BufferExtension
         ref Span<byte> local = ref span;
         int start = offset;
         int num = (int)BinaryPrimitives.ReadUInt16BigEndian((ReadOnlySpan<byte>)local.Slice(start, local.Length - start));
-        offset += 2;
+        offset += UShortSize;
         return (ushort)num;
     }
 
