@@ -3,6 +3,7 @@ using System.IO;
 using ICSharpCode.SharpZipLib.Checksums;
 using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.Zip.Compression;
+using UnityEngine;
 
 namespace GameFrameX.Runtime
 {
@@ -18,13 +19,13 @@ namespace GameFrameX.Runtime
         /// 压缩文件夹  
         /// </summary> 
         /// <param name="folderToZip">要压缩的文件夹路径</param> 
-        /// <param name="Stream">压缩前的Stream,方法执行后变为压缩完成后的文件</param> 
+        /// <param name="stream">压缩前的Stream,方法执行后变为压缩完成后的文件</param> 
         /// <param name="password">密码</param> 
         /// <returns>是否成功</returns> 
         [UnityEngine.Scripting.Preserve]
-        public static bool CompressDirectoryToStream(string folderToZip, Stream Stream, string password = null)
+        public static bool CompressDirectoryToStream(string folderToZip, Stream stream, string password = null)
         {
-            return CompressDirectoryToZipStream(folderToZip, Stream, password) != null;
+            return CompressDirectoryToZipStream(folderToZip, stream, password) != null;
         }
 
 
@@ -32,18 +33,18 @@ namespace GameFrameX.Runtime
         /// 压缩文件夹  
         /// </summary> 
         /// <param name="folderToZip">要压缩的文件夹路径</param> 
-        /// <param name="Stream">压缩前的Stream,方法执行后变为压缩完成后的文件</param> 
+        /// <param name="stream">压缩前的Stream,方法执行后变为压缩完成后的文件</param> 
         /// <param name="password">密码</param> 
         /// <returns>是否压缩成功返回ZipOutputStream，否则返回null</returns> 
         [UnityEngine.Scripting.Preserve]
-        public static ZipOutputStream CompressDirectoryToZipStream(string folderToZip, Stream Stream, string password = null)
+        public static ZipOutputStream CompressDirectoryToZipStream(string folderToZip, Stream stream, string password = null)
         {
             if (!Directory.Exists(folderToZip))
             {
                 return null;
             }
 
-            ZipOutputStream zipStream = new ZipOutputStream(Stream);
+            ZipOutputStream zipStream = new ZipOutputStream(stream);
             zipStream.SetLevel(6);
             if (!string.IsNullOrEmpty(password))
             {
@@ -291,7 +292,6 @@ namespace GameFrameX.Runtime
             //return content;
             Inflater decompressor = new Inflater();
             decompressor.SetInput(content, offset, count);
-
             using (MemoryStream bos = new MemoryStream(content.Length))
             {
                 var buf = new byte[4096];
