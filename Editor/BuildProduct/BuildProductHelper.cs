@@ -448,6 +448,15 @@ namespace GameFrameX.Editor
             {
                 pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.iOS.buildNumber}";
             }
+            else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows || EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows64)
+            {
+                pathName = $"{_buildTime}";
+            }
+            else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.WebGL)
+            {
+                pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}";
+            }
+
 
             var path = Path.Combine(GetBuildRootPath, EditorUserBuildSettings.activeBuildTarget.ToString(), Application.identifier, Application.version, pathName);
 
