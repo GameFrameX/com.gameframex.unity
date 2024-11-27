@@ -33,7 +33,7 @@ namespace GameFrameX.Editor
 
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
-            Debug.LogError("发布目录:" + BuildOutputPath());
+            Debug.LogError("Build Output Path:" + BuildOutputPath());
         }
 
         [MenuItem("GameFrameX/Build/Windows X64", false, 10)]
@@ -54,8 +54,8 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
-            Debug.LogError("发布目录:" + BuildOutputPath());
-            Process.Start(BuildOutputPath());
+            Debug.LogError("Build Output Path:" + BuildOutputPath());
+            // Process.Start(BuildOutputPath());
         }
 
         [MenuItem("GameFrameX/Build/Mac Os", false, 20)]
@@ -75,7 +75,7 @@ namespace GameFrameX.Editor
 
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
-            Debug.LogError("发布目录:" + BuildOutputPath());
+            Debug.LogError("Build Output Path:" + BuildOutputPath());
         }
 
         [MenuItem("GameFrameX/Build/Windows X32", false, 10)]
@@ -96,7 +96,7 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
-            Debug.LogError("发布目录:" + BuildOutputPath());
+            Debug.LogError("Build Output Path:" + BuildOutputPath());
             Process.Start(BuildOutputPath());
         }
 
@@ -128,7 +128,7 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), BuildTarget.WebGL, BuildOptions.None);
-            Debug.LogError("发布目录:" + BuildOutputPath());
+            Debug.LogError("Build Output Path:" + BuildOutputPath());
         }
 
 
@@ -175,7 +175,7 @@ namespace GameFrameX.Editor
             string apkPath = $"{_buildPath}.apk";
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, apkPath, BuildTarget.Android, BuildOptions.None);
-            Debug.LogError("发布目录:" + apkPath);
+            Debug.LogError("Build Output Path:" + apkPath);
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace GameFrameX.Editor
             Debug.Log(_buildPath);
             GeneratorGradle(_buildPath);
             CopyFileByBuildGradle(_buildPath);
-            Debug.LogError("发布目录:" + _buildPath);
+            Debug.LogError("Build Output Path:" + _buildPath);
         }
 
 
@@ -358,7 +358,7 @@ namespace GameFrameX.Editor
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
             Process.Start(_buildPath);
-            Debug.LogError("发布目录:" + _buildPath);
+            Debug.LogError("Build Output Path:" + _buildPath);
         }
 
 
@@ -376,7 +376,7 @@ namespace GameFrameX.Editor
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
             Process.Start(_buildPath);
-            Debug.LogError("发布目录:" + _buildPath);
+            Debug.LogError("Build Output Path:" + _buildPath);
         }
 
         /// <summary>
@@ -448,17 +448,8 @@ namespace GameFrameX.Editor
             {
                 pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.iOS.buildNumber}";
             }
-            else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows || EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows64)
-            {
-                pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}";
-            }
-            else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.WebGL)
-            {
-                pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}";
-            }
 
-
-            string path = Path.Combine(GetBuildRootPath, EditorUserBuildSettings.activeBuildTarget.ToString(), Application.identifier, Application.version, pathName);
+            var path = Path.Combine(GetBuildRootPath, EditorUserBuildSettings.activeBuildTarget.ToString(), Application.identifier, Application.version, pathName);
 
             switch (EditorUserBuildSettings.activeBuildTarget)
             {
