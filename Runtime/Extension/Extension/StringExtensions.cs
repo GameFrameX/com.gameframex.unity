@@ -264,7 +264,10 @@ public static class StringExtension
     public static void CreateAsDirectory(this string path, bool isFile = false)
     {
         if (isFile)
+        {
             path = Path.GetDirectoryName(path);
+        }
+
         if (!Directory.Exists(path))
         {
             CreateAsDirectory(path, true);
