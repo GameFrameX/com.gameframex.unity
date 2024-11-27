@@ -1,7 +1,9 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using GameFrameX.Runtime;
 using UnityEditor;
+using UnityEditor.Build.Reporting;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -32,8 +34,11 @@ namespace GameFrameX.Editor
             }
 
             AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
-            Debug.LogError("Build Output Path:" + BuildOutputPath());
+            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            if (buildReport.summary.result == BuildResult.Succeeded)
+            {
+                Debug.LogError("Build Output Path:" + BuildOutputPath());
+            }
         }
 
         [MenuItem("GameFrameX/Build/Windows X64", false, 10)]
@@ -53,9 +58,15 @@ namespace GameFrameX.Editor
             EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows64;
             UpdateBuildTime();
             AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            if (buildReport.summary.result != BuildResult.Succeeded)
+            {
+                return;
+            }
+
+            var pathName = Path.GetDirectoryName(BuildOutputPath());
             Debug.LogError("Build Output Path:" + BuildOutputPath());
-            // Process.Start(BuildOutputPath());
+            ZipHelper.CompressDirectory(BuildOutputPath(), pathName + ".zip");
         }
 
         [MenuItem("GameFrameX/Build/Mac Os", false, 20)]
@@ -74,8 +85,15 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
 
             AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            if (buildReport.summary.result != BuildResult.Succeeded)
+            {
+                return;
+            }
+
+            var pathName = Path.GetDirectoryName(BuildOutputPath());
             Debug.LogError("Build Output Path:" + BuildOutputPath());
+            ZipHelper.CompressDirectory(BuildOutputPath(), pathName + ".zip");
         }
 
         [MenuItem("GameFrameX/Build/Windows X32", false, 10)]
@@ -95,9 +113,15 @@ namespace GameFrameX.Editor
             EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows;
             UpdateBuildTime();
             AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            if (buildReport.summary.result != BuildResult.Succeeded)
+            {
+                return;
+            }
+
+            var pathName = Path.GetDirectoryName(BuildOutputPath());
             Debug.LogError("Build Output Path:" + BuildOutputPath());
-            Process.Start(BuildOutputPath());
+            ZipHelper.CompressDirectory(BuildOutputPath(), pathName + ".zip");
         }
 
         /// <summary>
