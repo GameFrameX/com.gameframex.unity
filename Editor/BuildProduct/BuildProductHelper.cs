@@ -58,15 +58,16 @@ namespace GameFrameX.Editor
             EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows64;
             UpdateBuildTime();
             AssetDatabase.SaveAssets();
-            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
+            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
             if (buildReport.summary.result != BuildResult.Succeeded)
             {
                 return;
             }
 
-            var pathName = Path.GetDirectoryName(BuildOutputPath());
-            Debug.LogError("Build Output Path:" + BuildOutputPath());
-            ZipHelper.CompressDirectory(BuildOutputPath(), pathName + ".zip");
+            var pathName = Path.GetDirectoryName(resultDirectory);
+            Debug.LogError("Build Output Path:" + resultDirectory);
+            ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
         }
 
         [MenuItem("GameFrameX/Build/Mac Os", false, 20)]
@@ -113,15 +114,16 @@ namespace GameFrameX.Editor
             EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows;
             UpdateBuildTime();
             AssetDatabase.SaveAssets();
-            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath() + "/" + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
+            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
             if (buildReport.summary.result != BuildResult.Succeeded)
             {
                 return;
             }
 
-            var pathName = Path.GetDirectoryName(BuildOutputPath());
-            Debug.LogError("Build Output Path:" + BuildOutputPath());
-            ZipHelper.CompressDirectory(BuildOutputPath(), pathName + ".zip");
+            var pathName = Path.GetDirectoryName(resultDirectory);
+            Debug.LogError("Build Output Path:" + resultDirectory);
+            ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
         }
 
         /// <summary>
