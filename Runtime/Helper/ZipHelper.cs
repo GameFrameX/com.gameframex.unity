@@ -72,21 +72,29 @@ namespace GameFrameX.Runtime
         private static bool CompressDirectory(string folderToZip, ZipOutputStream zipStream, string parentFolderName)
         {
             //这段是创建空文件夹,注释掉可以去掉空文件夹(因为在写入文件的时候也会创建文件夹)
-            //if (!string.IsNullOrEmpty(parentFolderName))
-            //{
-            //    ent = new ZipEntry(parentFolderName + "/");
-            //    zipStream.PutNextEntry(ent);
-            //    zipStream.Flush();
-            //}
+            if (parentFolderName.IsNotNullOrWhiteSpace())
+            {
+                var ent = new ZipEntry(parentFolderName + "/");
+                zipStream.PutNextEntry(ent);
+                zipStream.Flush();
+            }
 
             var files = Directory.GetFiles(folderToZip);
             foreach (string file in files)
             {
                 byte[] buffer = File.ReadAllBytes(file);
-                var ent = new ZipEntry(parentFolderName + "/" + Path.GetFileName(file));
-                //ent.DateTime = File.GetLastWriteTime(file);//设置文件最后修改时间
-                ent.DateTime = DateTime.Now;
-                ent.Size = buffer.Length;
+                var path = Path.GetFileName(file);
+                if (parentFolderName.IsNotNullOrWhiteSpace())
+                {
+                    path = parentFolderName + Path.DirectorySeparatorChar + Path.GetFileName(file);
+                }
+
+                var ent = new ZipEntry(path)
+                {
+                    //ent.DateTime = File.GetLastWriteTime(file);//设置文件最后修改时间
+                    DateTime = DateTime.Now,
+                    Size = buffer.Length,
+                };
 
                 CRC.Reset();
                 CRC.Update(buffer);
@@ -99,7 +107,13 @@ namespace GameFrameX.Runtime
             var folders = Directory.GetDirectories(folderToZip);
             foreach (var folder in folders)
             {
-                var folderName = parentFolderName + "\\" + folder.Substring(folder.LastIndexOf('\\') + 1);
+                var folderName = folder.Substring(folder.LastIndexOf('\\') + 1);
+
+                if (parentFolderName.IsNotNullOrWhiteSpace())
+                {
+                    folderName = parentFolderName + "\\" + folder.Substring(folder.LastIndexOf('\\') + 1);
+                }
+
                 if (!CompressDirectory(folder, zipStream, folderName))
                 {
                     return false;
@@ -119,7 +133,12 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static bool CompressDirectory(string folderToZip, string zipFile, string password = null)
         {
-            var zipStream = CompressDirectoryToZipStream(folderToZip, new FileStream(zipFile, FileMode.Create, FileAccess.Write), password);
+            if (folderToZip.EndsWithFast(Path.DirectorySeparatorChar.ToString()) || folderToZip.EndsWithFast("/"))
+            {
+                folderToZip = folderToZip.Substring(0, folderToZip.Length - 1);
+            }
+
+            var zipStream = CompressDirectoryToZipStream(folderToZip, new FileStream(zipFile, FileMode.Create, FileAccess.Write, FileShare.Write), password);
             if (zipStream == null)
             {
                 return false;
