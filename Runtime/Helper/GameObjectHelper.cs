@@ -37,7 +37,7 @@ namespace GameFrameX.Runtime
                     return;
                 }
 
-                Object.Destroy(gameObject, 0.1f);
+                Object.Destroy(gameObject);
             }
         }
 
@@ -65,7 +65,7 @@ namespace GameFrameX.Runtime
                     return;
                 }
 
-                Object.Destroy(component, 0.1f);
+                Object.Destroy(component);
             }
         }
 
