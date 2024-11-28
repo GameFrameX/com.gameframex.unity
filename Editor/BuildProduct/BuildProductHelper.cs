@@ -65,6 +65,16 @@ namespace GameFrameX.Editor
                 return;
             }
 
+            var buildDirectory = new DirectoryInfo(resultDirectory);
+            foreach (var directoryInfo in buildDirectory.GetDirectories())
+            {
+                if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
+                {
+                    directoryInfo.Delete(true);
+                    break;
+                }
+            }
+
             var pathName = Path.GetDirectoryName(resultDirectory);
             Debug.LogError("Build Output Path:" + resultDirectory);
             ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
@@ -86,15 +96,26 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
 
             AssetDatabase.SaveAssets();
-            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
+            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory, EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
             if (buildReport.summary.result != BuildResult.Succeeded)
             {
                 return;
             }
 
-            var pathName = Path.GetDirectoryName(BuildOutputPath());
-            Debug.LogError("Build Output Path:" + BuildOutputPath());
-            ZipHelper.CompressDirectory(BuildOutputPath(), pathName + ".zip");
+            var buildDirectory = new DirectoryInfo(resultDirectory);
+            foreach (var directoryInfo in buildDirectory.GetDirectories())
+            {
+                if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
+                {
+                    directoryInfo.Delete(true);
+                    break;
+                }
+            }
+
+            var pathName = Path.GetDirectoryName(resultDirectory);
+            Debug.LogError("Build Output Path:" + resultDirectory);
+            ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
         }
 
         [MenuItem("GameFrameX/Build/Windows X32", false, 10)]
@@ -119,6 +140,16 @@ namespace GameFrameX.Editor
             if (buildReport.summary.result != BuildResult.Succeeded)
             {
                 return;
+            }
+
+            var buildDirectory = new DirectoryInfo(resultDirectory);
+            foreach (var directoryInfo in buildDirectory.GetDirectories())
+            {
+                if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
+                {
+                    directoryInfo.Delete(true);
+                    break;
+                }
             }
 
             var pathName = Path.GetDirectoryName(resultDirectory);
