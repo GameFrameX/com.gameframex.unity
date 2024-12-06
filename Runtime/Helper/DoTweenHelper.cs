@@ -35,6 +35,58 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 从整形值到另一个值
+        /// </summary>
+        /// <param name="startValue">开始值</param>
+        /// <param name="endValue">结束值</param>
+        /// <param name="time">持续时长</param>
+        /// <param name="update">更新回调</param>
+        /// <returns></returns>
+        public static Tweener To(int startValue, int endValue, float time, Action<int> update)
+        {
+            return DOTween.To(() => startValue, (m) => { update?.Invoke(m); }, endValue, time);
+        }
+
+        /// <summary>
+        /// 从无符号整形值到另一个值
+        /// </summary>
+        /// <param name="startValue">开始值</param>
+        /// <param name="endValue">结束值</param>
+        /// <param name="time">持续时长</param>
+        /// <param name="update">更新回调</param>
+        /// <returns></returns>
+        public static Tweener To(uint startValue, uint endValue, float time, Action<uint> update)
+        {
+            return DOTween.To(() => startValue, (m) => { update?.Invoke(m); }, endValue, time);
+        }
+
+        /// <summary>
+        /// 从长整形值到另一个值
+        /// </summary>
+        /// <param name="startValue">开始值</param>
+        /// <param name="endValue">结束值</param>
+        /// <param name="time">持续时长</param>
+        /// <param name="update">更新回调</param>
+        /// <returns></returns>
+        public static Tweener To(long startValue, long endValue, float time, Action<long> update)
+        {
+            return DOTween.To(() => startValue, (m) => { update?.Invoke(m); }, endValue, time);
+        }
+
+        /// <summary>
+        /// 从无符号长整形值到另一个值
+        /// </summary>
+        /// <param name="startValue">开始值</param>
+        /// <param name="endValue">结束值</param>
+        /// <param name="time">持续时长</param>
+        /// <param name="update">更新回调</param>
+        /// <returns></returns>
+        public static Tweener To(ulong startValue, ulong endValue, float time, Action<ulong> update)
+        {
+            return DOTween.To(() => startValue, (m) => { update?.Invoke(m); }, endValue, time);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="startValue">开始值</param>
