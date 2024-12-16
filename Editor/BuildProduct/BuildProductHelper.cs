@@ -51,34 +51,42 @@ namespace GameFrameX.Editor
                 return;
             }
 
-            PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-            PlayerSettings.defaultScreenHeight = 720;
-            PlayerSettings.defaultScreenWidth = 1280;
-            EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows64;
-            UpdateBuildTime();
-            AssetDatabase.SaveAssets();
-            var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
-            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
-            if (buildReport.summary.result != BuildResult.Succeeded)
+            try
             {
-                return;
-            }
-
-            var buildDirectory = new DirectoryInfo(resultDirectory);
-            foreach (var directoryInfo in buildDirectory.GetDirectories())
-            {
-                if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
+                HotFixEditorCompilerHelper.AddEditor();
+                PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
+                PlayerSettings.defaultScreenHeight = 720;
+                PlayerSettings.defaultScreenWidth = 1280;
+                EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows64;
+                UpdateBuildTime();
+                AssetDatabase.SaveAssets();
+                var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
+                var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+                if (buildReport.summary.result != BuildResult.Succeeded)
                 {
-                    directoryInfo.Delete(true);
-                    break;
+                    return;
                 }
+
+                var buildDirectory = new DirectoryInfo(resultDirectory);
+                foreach (var directoryInfo in buildDirectory.GetDirectories())
+                {
+                    if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
+                    {
+                        directoryInfo.Delete(true);
+                        break;
+                    }
+                }
+
+                CopySteamWorksConfig(buildDirectory);
+
+                var pathName = Path.GetDirectoryName(resultDirectory);
+                Debug.Log("Build Output Path:" + resultDirectory);
+                // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
             }
-
-            CopySteamWorksConfig(buildDirectory);
-
-            var pathName = Path.GetDirectoryName(resultDirectory);
-            Debug.Log("Build Output Path:" + resultDirectory);
-            // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
         }
 
         [MenuItem("GameFrameX/Build/Windows X32", false, 100)]
@@ -92,36 +100,44 @@ namespace GameFrameX.Editor
                 return;
             }
 
-            PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-            PlayerSettings.defaultScreenHeight = 720;
-            PlayerSettings.defaultScreenWidth = 1280;
-            EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows;
-            UpdateBuildTime();
-            AssetDatabase.SaveAssets();
-            var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
-            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
-            if (buildReport.summary.result != BuildResult.Succeeded)
+            try
             {
-                return;
-            }
-
-            var buildDirectory = new DirectoryInfo(resultDirectory);
-            foreach (var directoryInfo in buildDirectory.GetDirectories())
-            {
-                if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
+                HotFixEditorCompilerHelper.AddEditor();
+                PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
+                PlayerSettings.defaultScreenHeight = 720;
+                PlayerSettings.defaultScreenWidth = 1280;
+                EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows;
+                UpdateBuildTime();
+                AssetDatabase.SaveAssets();
+                var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
+                var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+                if (buildReport.summary.result != BuildResult.Succeeded)
                 {
-                    directoryInfo.Delete(true);
-                    break;
+                    return;
                 }
+
+                var buildDirectory = new DirectoryInfo(resultDirectory);
+                foreach (var directoryInfo in buildDirectory.GetDirectories())
+                {
+                    if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
+                    {
+                        directoryInfo.Delete(true);
+                        break;
+                    }
+                }
+
+
+                CopySteamWorksConfig(buildDirectory);
+
+
+                var pathName = Path.GetDirectoryName(resultDirectory);
+                Debug.Log("Build Output Path:" + resultDirectory);
+                // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
             }
-
-
-            CopySteamWorksConfig(buildDirectory);
-
-
-            var pathName = Path.GetDirectoryName(resultDirectory);
-            Debug.Log("Build Output Path:" + resultDirectory);
-            // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
         }
 
         [MenuItem("GameFrameX/Build/Mac Os", false, 200)]
@@ -133,35 +149,43 @@ namespace GameFrameX.Editor
                 return;
             }
 
-            PlayerSettings.SplashScreen.show = false;
-            PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-            PlayerSettings.defaultScreenHeight = 720;
-            PlayerSettings.defaultScreenWidth = 1280;
-            UpdateBuildTime();
-
-            AssetDatabase.SaveAssets();
-            var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
-            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory, EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
-            if (buildReport.summary.result != BuildResult.Succeeded)
+            try
             {
-                return;
-            }
+                HotFixEditorCompilerHelper.AddEditor();
+                PlayerSettings.SplashScreen.show = false;
+                PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
+                PlayerSettings.defaultScreenHeight = 720;
+                PlayerSettings.defaultScreenWidth = 1280;
+                UpdateBuildTime();
 
-            var buildDirectory = new DirectoryInfo(resultDirectory);
-            foreach (var directoryInfo in buildDirectory.GetDirectories())
-            {
-                if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
+                AssetDatabase.SaveAssets();
+                var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
+                var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory, EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+                if (buildReport.summary.result != BuildResult.Succeeded)
                 {
-                    directoryInfo.Delete(true);
-                    break;
+                    return;
                 }
+
+                var buildDirectory = new DirectoryInfo(resultDirectory);
+                foreach (var directoryInfo in buildDirectory.GetDirectories())
+                {
+                    if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
+                    {
+                        directoryInfo.Delete(true);
+                        break;
+                    }
+                }
+
+                CopySteamWorksConfig(buildDirectory);
+
+                var pathName = Path.GetDirectoryName(resultDirectory);
+                Debug.Log("Build Output Path:" + resultDirectory);
+                // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
             }
-
-            CopySteamWorksConfig(buildDirectory);
-
-            var pathName = Path.GetDirectoryName(resultDirectory);
-            Debug.Log("Build Output Path:" + resultDirectory);
-            // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
         }
 
 
@@ -206,10 +230,18 @@ namespace GameFrameX.Editor
                 return;
             }
 
-            UpdateBuildTime();
-            AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), BuildTarget.WebGL, BuildOptions.None);
-            Debug.Log("Build Output Path:" + BuildOutputPath());
+            try
+            {
+                HotFixEditorCompilerHelper.AddEditor();
+                UpdateBuildTime();
+                AssetDatabase.SaveAssets();
+                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), BuildTarget.WebGL, BuildOptions.None);
+                Debug.Log("Build Output Path:" + BuildOutputPath());
+            }
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
         }
 
 
@@ -249,14 +281,22 @@ namespace GameFrameX.Editor
                 return;
             }
 
-            UpdateBuildTime();
-            EditorUserBuildSettings.buildAppBundle = false;
-            EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
-            _buildPath = BuildOutputPath();
-            string apkPath = $"{_buildPath}.apk";
-            AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, apkPath, BuildTarget.Android, BuildOptions.None);
-            Debug.Log("Build Output Path:" + apkPath);
+            try
+            {
+                HotFixEditorCompilerHelper.AddEditor();
+                UpdateBuildTime();
+                EditorUserBuildSettings.buildAppBundle = false;
+                EditorUserBuildSettings.exportAsGoogleAndroidProject = false;
+                _buildPath = BuildOutputPath();
+                string apkPath = $"{_buildPath}.apk";
+                AssetDatabase.SaveAssets();
+                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, apkPath, BuildTarget.Android, BuildOptions.None);
+                Debug.Log("Build Output Path:" + apkPath);
+            }
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
         }
 
         /// <summary>
@@ -291,15 +331,23 @@ namespace GameFrameX.Editor
                 return;
             }
 
-            EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
+            try
+            {
+                HotFixEditorCompilerHelper.AddEditor();
+                EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
 
-            EditorUserBuildSettings.buildAppBundle = true;
-            // 开启符号表的输出
-            EditorUserBuildSettings.androidCreateSymbolsZip = true;
-            AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, aabFilePath, BuildTarget.Android, BuildOptions.None);
+                EditorUserBuildSettings.buildAppBundle = true;
+                // 开启符号表的输出
+                EditorUserBuildSettings.androidCreateSymbolsZip = true;
+                AssetDatabase.SaveAssets();
+                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, aabFilePath, BuildTarget.Android, BuildOptions.None);
 
-            Debug.Log("AAB存储路径=>" + aabFilePath);
+                Debug.Log("AAB存储路径=>" + aabFilePath);
+            }
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
         }
 
         /// <summary>
@@ -387,20 +435,28 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Build/AndroidStudio Project Debug", false, 500)]
         private static void ExportToAndroidStudioToDevelop()
         {
-            PlayerSettings.SplashScreen.show = false;
-            UpdateBuildTime();
-            _buildPath = BuildOutputPath();
+            try
+            {
+                HotFixEditorCompilerHelper.AddEditor();
+                PlayerSettings.SplashScreen.show = false;
+                UpdateBuildTime();
+                _buildPath = BuildOutputPath();
 
-            EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
-            EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
-            EditorUserBuildSettings.development = true;
-            AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
-            Debug.Log(_buildPath);
+                EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
+                EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
+                EditorUserBuildSettings.development = true;
+                AssetDatabase.SaveAssets();
+                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
+                Debug.Log(_buildPath);
 
-            GeneratorGradle(_buildPath);
-            CopyFileByBuildGradle(_buildPath);
-            Process.Start(_buildPath);
+                GeneratorGradle(_buildPath);
+                CopyFileByBuildGradle(_buildPath);
+                Process.Start(_buildPath);
+            }
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
         }
 
         /// <summary>
@@ -409,19 +465,27 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Build/AndroidStudio Project Release", false, 500)]
         private static void ExportToAndroidStudioToRelease()
         {
-            PlayerSettings.SplashScreen.show = false;
-            UpdateBuildTime();
-            _buildPath = BuildOutputPath();
+            try
+            {
+                HotFixEditorCompilerHelper.AddEditor();
+                PlayerSettings.SplashScreen.show = false;
+                UpdateBuildTime();
+                _buildPath = BuildOutputPath();
 
-            EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
-            EditorUserBuildSettings.development = false;
-            EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
-            AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
-            Debug.Log(_buildPath);
-            GeneratorGradle(_buildPath);
-            CopyFileByBuildGradle(_buildPath);
-            Debug.Log("Build Output Path:" + _buildPath);
+                EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
+                EditorUserBuildSettings.development = false;
+                EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
+                AssetDatabase.SaveAssets();
+                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
+                Debug.Log(_buildPath);
+                GeneratorGradle(_buildPath);
+                CopyFileByBuildGradle(_buildPath);
+                Debug.Log("Build Output Path:" + _buildPath);
+            }
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
         }
 
 
@@ -431,15 +495,23 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Build/Xcode Project Debug", false, 250)]
         private static void ExportToXcodeToDevelop()
         {
-            PlayerSettings.SplashScreen.show = false;
-            UpdateBuildTime();
-            _buildPath = BuildOutputPath();
+            try
+            {
+                HotFixEditorCompilerHelper.AddEditor();
+                PlayerSettings.SplashScreen.show = false;
+                UpdateBuildTime();
+                _buildPath = BuildOutputPath();
 
-            EditorUserBuildSettings.development = true;
-            AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
-            Process.Start(_buildPath);
-            Debug.Log("Build Output Path:" + _buildPath);
+                EditorUserBuildSettings.development = true;
+                AssetDatabase.SaveAssets();
+                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
+                Process.Start(_buildPath);
+                Debug.Log("Build Output Path:" + _buildPath);
+            }
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
         }
 
 
@@ -449,15 +521,23 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Build/Xcode Project Release", false, 250)]
         private static void ExportToXcodeToRelease()
         {
-            PlayerSettings.SplashScreen.show = false;
-            UpdateBuildTime();
-            _buildPath = BuildOutputPath();
+            try
+            {
+                HotFixEditorCompilerHelper.AddEditor();
+                PlayerSettings.SplashScreen.show = false;
+                UpdateBuildTime();
+                _buildPath = BuildOutputPath();
 
-            EditorUserBuildSettings.development = false;
-            AssetDatabase.SaveAssets();
-            BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
-            Process.Start(_buildPath);
-            Debug.Log("Build Output Path:" + _buildPath);
+                EditorUserBuildSettings.development = false;
+                AssetDatabase.SaveAssets();
+                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
+                Process.Start(_buildPath);
+                Debug.Log("Build Output Path:" + _buildPath);
+            }
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
         }
 
         /// <summary>
