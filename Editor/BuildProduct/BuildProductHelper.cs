@@ -20,7 +20,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 当前激活的平台
         /// </summary>
-        [MenuItem("GameFrameX/Build/Active Build Target", false, 20)]
+        /*[MenuItem("GameFrameX/Build/Active Build Target", false, 20)]
         public static void BuildPlayerToActiveBuildTarget()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -39,9 +39,8 @@ namespace GameFrameX.Editor
             {
                 Debug.LogError("Build Output Path:" + BuildOutputPath());
             }
-        }
-
-        [MenuItem("GameFrameX/Build/Windows X64", false, 10)]
+        }*/
+        [MenuItem("GameFrameX/Build/Windows X64", false, 100)]
         public static void BuildPlayerToWindows64BuildTarget()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -75,50 +74,14 @@ namespace GameFrameX.Editor
                 }
             }
 
-            var pathName = Path.GetDirectoryName(resultDirectory);
-            Debug.LogError("Build Output Path:" + resultDirectory);
-            ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
-        }
-
-        [MenuItem("GameFrameX/Build/Mac Os", false, 20)]
-        public static void BuildPlayerToMacBuildTarget()
-        {
-            if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.StandaloneOSX)
-            {
-                Debug.LogError("当前构建目标不是 Mac Os");
-                return;
-            }
-
-            PlayerSettings.SplashScreen.show = false;
-            PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-            PlayerSettings.defaultScreenHeight = 720;
-            PlayerSettings.defaultScreenWidth = 1280;
-            UpdateBuildTime();
-
-            AssetDatabase.SaveAssets();
-            var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
-            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory, EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
-            if (buildReport.summary.result != BuildResult.Succeeded)
-            {
-                return;
-            }
-
-            var buildDirectory = new DirectoryInfo(resultDirectory);
-            foreach (var directoryInfo in buildDirectory.GetDirectories())
-            {
-                if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
-                {
-                    directoryInfo.Delete(true);
-                    break;
-                }
-            }
+            CopySteamWorksConfig(buildDirectory);
 
             var pathName = Path.GetDirectoryName(resultDirectory);
-            Debug.LogError("Build Output Path:" + resultDirectory);
-            ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
+            Debug.Log("Build Output Path:" + resultDirectory);
+            // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
         }
 
-        [MenuItem("GameFrameX/Build/Windows X32", false, 10)]
+        [MenuItem("GameFrameX/Build/Windows X32", false, 100)]
         public static void BuildPlayerToWindows32BuildTarget()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -152,9 +115,70 @@ namespace GameFrameX.Editor
                 }
             }
 
+
+            CopySteamWorksConfig(buildDirectory);
+
+
             var pathName = Path.GetDirectoryName(resultDirectory);
-            Debug.LogError("Build Output Path:" + resultDirectory);
-            ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
+            Debug.Log("Build Output Path:" + resultDirectory);
+            // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
+        }
+
+        [MenuItem("GameFrameX/Build/Mac Os", false, 200)]
+        public static void BuildPlayerToMacBuildTarget()
+        {
+            if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.StandaloneOSX)
+            {
+                Debug.LogError("当前构建目标不是 Mac Os");
+                return;
+            }
+
+            PlayerSettings.SplashScreen.show = false;
+            PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
+            PlayerSettings.defaultScreenHeight = 720;
+            PlayerSettings.defaultScreenWidth = 1280;
+            UpdateBuildTime();
+
+            AssetDatabase.SaveAssets();
+            var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
+            var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory, EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
+            if (buildReport.summary.result != BuildResult.Succeeded)
+            {
+                return;
+            }
+
+            var buildDirectory = new DirectoryInfo(resultDirectory);
+            foreach (var directoryInfo in buildDirectory.GetDirectories())
+            {
+                if (directoryInfo.Name.Contains("BackUpThisFolder_ButDontShipItWithYourGame"))
+                {
+                    directoryInfo.Delete(true);
+                    break;
+                }
+            }
+
+            CopySteamWorksConfig(buildDirectory);
+
+            var pathName = Path.GetDirectoryName(resultDirectory);
+            Debug.Log("Build Output Path:" + resultDirectory);
+            // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
+        }
+
+
+        /// <summary>
+        /// 复制 SteamWorks 配置
+        /// </summary>
+        /// <param name="buildDirectory">目标目录</param>
+        private static void CopySteamWorksConfig(DirectoryInfo buildDirectory)
+        {
+#if STEAMWORKS_NET
+            DirectoryInfo projectDirectoryInfo = new DirectoryInfo(Application.dataPath);
+            var steamAppidPath = PathHelper.Combine(projectDirectoryInfo.Parent.FullName, "steam_appid.txt");
+            if (File.Exists(steamAppidPath))
+            {
+                File.Copy(steamAppidPath, PathHelper.Combine(buildDirectory.FullName, "steam_appid.txt"), true);
+            }
+#endif
         }
 
         /// <summary>
@@ -171,7 +195,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 WebGL
         /// </summary>
-        [MenuItem("GameFrameX/Build/WebGL", false, 20)]
+        [MenuItem("GameFrameX/Build/WebGL", false, 300)]
         private static void BuildPlayerToWebGL()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -185,7 +209,7 @@ namespace GameFrameX.Editor
             UpdateBuildTime();
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), BuildTarget.WebGL, BuildOptions.None);
-            Debug.LogError("Build Output Path:" + BuildOutputPath());
+            Debug.Log("Build Output Path:" + BuildOutputPath());
         }
 
 
@@ -215,7 +239,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 APK
         /// </summary>
-        [MenuItem("GameFrameX/Build/Apk", false, 20)]
+        [MenuItem("GameFrameX/Build/Apk", false, 400)]
         private static void BuildPlayerToAndroid()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -232,13 +256,13 @@ namespace GameFrameX.Editor
             string apkPath = $"{_buildPath}.apk";
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, apkPath, BuildTarget.Android, BuildOptions.None);
-            Debug.LogError("Build Output Path:" + apkPath);
+            Debug.Log("Build Output Path:" + apkPath);
         }
 
         /// <summary>
         /// 发布 AAB
         /// </summary>
-        [MenuItem("GameFrameX/Build/AAB", false, 20)]
+        [MenuItem("GameFrameX/Build/AAB", false, 400)]
         private static void BuildAppBundleForAndroid()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -360,7 +384,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 AS Debug 版本
         /// </summary>
-        [MenuItem("GameFrameX/Build/AS Project Debug", false, 20)]
+        [MenuItem("GameFrameX/Build/AndroidStudio Project Debug", false, 500)]
         private static void ExportToAndroidStudioToDevelop()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -382,7 +406,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 AS Release 版本
         /// </summary>
-        [MenuItem("GameFrameX/Build/AS Project Release", false, 20)]
+        [MenuItem("GameFrameX/Build/AndroidStudio Project Release", false, 500)]
         private static void ExportToAndroidStudioToRelease()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -397,14 +421,14 @@ namespace GameFrameX.Editor
             Debug.Log(_buildPath);
             GeneratorGradle(_buildPath);
             CopyFileByBuildGradle(_buildPath);
-            Debug.LogError("Build Output Path:" + _buildPath);
+            Debug.Log("Build Output Path:" + _buildPath);
         }
 
 
         /// <summary>
         /// 发布 Xcode Debug 版本
         /// </summary>
-        [MenuItem("GameFrameX/Build/Xcode Project Debug", false, 30)]
+        [MenuItem("GameFrameX/Build/Xcode Project Debug", false, 250)]
         private static void ExportToXcodeToDevelop()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -415,14 +439,14 @@ namespace GameFrameX.Editor
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
             Process.Start(_buildPath);
-            Debug.LogError("Build Output Path:" + _buildPath);
+            Debug.Log("Build Output Path:" + _buildPath);
         }
 
 
         /// <summary>
         /// 发布 Xcode Release 版本
         /// </summary>
-        [MenuItem("GameFrameX/Build/Xcode Project Release", false, 30)]
+        [MenuItem("GameFrameX/Build/Xcode Project Release", false, 250)]
         private static void ExportToXcodeToRelease()
         {
             PlayerSettings.SplashScreen.show = false;
@@ -433,7 +457,7 @@ namespace GameFrameX.Editor
             AssetDatabase.SaveAssets();
             BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
             Process.Start(_buildPath);
-            Debug.LogError("Build Output Path:" + _buildPath);
+            Debug.Log("Build Output Path:" + _buildPath);
         }
 
         /// <summary>
