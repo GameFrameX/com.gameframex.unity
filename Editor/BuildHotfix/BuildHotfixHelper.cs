@@ -62,7 +62,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 复制AOT代码
         /// </summary>
-        [MenuItem("GameFrameX/Build/Copy AOT Code", false, 10)]
+        [MenuItem("GameFrameX/Build/Copy AOT Code", false, 11)]
         public static void CopyAOTCode()
         {
             if (!Directory.Exists(AOTCodeDir))
