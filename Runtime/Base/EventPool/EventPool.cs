@@ -284,7 +284,15 @@ namespace GameFrameX.Runtime
                     while (current != null && current != range.Terminal)
                     {
                         _cachedNodes[e] = current.Next != range.Terminal ? current.Next : null;
-                        current.Value?.Invoke(sender, e);
+                        try
+                        {
+                            current.Value?.Invoke(sender, e);
+                        }
+                        catch (Exception exception)
+                        {
+                            Log.Fatal(exception);
+                        }
+
                         current = _cachedNodes[e];
                     }
 
@@ -292,7 +300,14 @@ namespace GameFrameX.Runtime
                 }
                 else if (_defaultHandler != null)
                 {
-                    _defaultHandler(sender, e);
+                    try
+                    {
+                        _defaultHandler(sender, e);
+                    }
+                    catch (Exception exception)
+                    {
+                        Log.Fatal(exception);
+                    }
                 }
                 else if ((_eventPoolMode & EventPoolMode.AllowNoHandler) == 0)
                 {
