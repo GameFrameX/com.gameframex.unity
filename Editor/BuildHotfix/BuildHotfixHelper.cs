@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         private const string HotFixAssembliesDir = "Library/ScriptAssemblies";
         private static readonly string ScriptAssembliesDir = $"HybridCLRData/HotUpdateDlls/{EditorUserBuildSettings.activeBuildTarget}";
 
-        private static readonly string[] HotfixDlls = new string[] { "Unity.Hotfix.dll", "Unity.Hotfix.pdb" };
+        private static readonly string[] HotfixDlls = new string[] { "Unity.Hotfix.dll" };
 
         //热更代码存放位置
         private const string CodeDir = "Assets/Bundles/Code/";
@@ -53,7 +53,7 @@ namespace GameFrameX.Editor
                 File.Copy(srcPath, Path.Combine(CodeDir, hotfix + Utility.Const.FileNameSuffix.Binary), true);
             }
 
-            Debug.Log($"复制Hotfix DLL, Hotfix pdb到{CodeDir}完成");
+            Debug.Log($"复制Hotfix DLL到{CodeDir}完成");
             AssetDatabase.Refresh();
         }
 
