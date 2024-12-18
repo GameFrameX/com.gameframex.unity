@@ -83,7 +83,7 @@ namespace GameFrameX.Editor
             }
 
             Debug.Log(stringBuilder);
-            Debug.Log($"复制AOT DLL, Hotfix pdb到{CodeDir}完成");
+            Debug.Log($"复制AOT DLL到{CodeDir}完成");
             AssetDatabase.Refresh();
         }
     }
