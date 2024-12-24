@@ -24,8 +24,12 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Update All Packages", false, 2000)]
         public static void UpdatePackages()
         {
-            string manifestPath = Path.Combine(Application.dataPath, "..", "Packages", "manifest.json");
-            UpdatePackagesFromManifest(manifestPath);
+            var result = EditorUtility.DisplayDialog("更新包提示", "是否更新所有包?\n 更新完成之后需要重启Unity", "是", "否");
+            if (result)
+            {
+                var manifestPath = Path.Combine(Application.dataPath, "..", "Packages", "manifest.json");
+                UpdatePackagesFromManifest(manifestPath);
+            }
         }
 
         private static void UpdatePackagesFromManifest(string manifestPath)
