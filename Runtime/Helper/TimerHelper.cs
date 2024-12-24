@@ -5,7 +5,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏时间帮助类
     /// </summary>
-    public static class GameTimeHelper
+    public static class TimerHelper
     {
         private static readonly DateTime EpochTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         private static readonly long Epoch = EpochTime.Ticks;
@@ -22,8 +22,19 @@ namespace GameFrameX.Runtime
         /// </summary>
         public const long TicksPerMicrosecond = 1; //100微秒
 
+        /// <summary>
+        /// 10微秒
+        /// </summary>
         public const long TicksPer = 10 * TicksPerMicrosecond;
+
+        /// <summary>
+        /// 1毫秒
+        /// </summary>
         public const long TicksMillisecondUnit = TicksPer * 1000; //毫秒
+
+        /// <summary>
+        /// 1秒
+        /// </summary>
         public const long TicksSecondUnit = TicksMillisecondUnit * 1000; // 秒  //10000000
 
         /// <summary>
@@ -92,6 +103,17 @@ namespace GameFrameX.Runtime
             }
 
             return (_differenceTime + ClientNowMillisecond()) / 1000;
+        }
+
+        /// <summary>
+        /// 将秒数转换成TimeSpan
+        /// </summary>
+        /// <param name="seconds">秒</param>
+        /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
+        public static TimeSpan FromSeconds(int seconds)
+        {
+            return TimeSpan.FromSeconds(seconds);
         }
 
         /// <summary>
