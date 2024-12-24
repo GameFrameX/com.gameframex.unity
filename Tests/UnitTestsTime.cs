@@ -24,7 +24,7 @@ namespace GameFrameX.Tests
             long timestamp2 = 1617896400; // April 7, 2021 12:00:00 PM UTC
 
             // Act
-            bool result = GameTimeHelper.IsUnixSameDay(timestamp1, timestamp2);
+            bool result = TimerHelper.IsUnixSameDay(timestamp1, timestamp2);
 
             // Assert
             Assert.IsTrue(result);

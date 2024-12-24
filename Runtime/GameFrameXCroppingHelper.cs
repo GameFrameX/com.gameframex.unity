@@ -53,7 +53,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameworkComponent);
             _ = typeof(GameFrameXCroppingHelper);
             _ = typeof(GameObjectHelper);
-            _ = typeof(GameTimeHelper);
+            _ = typeof(TimerHelper);
             _ = typeof(Helper);
             _ = typeof(Log);
             _ = typeof(MathHelper);
