@@ -104,5 +104,20 @@ namespace GameFrameX.Runtime
 #endif
             Application.Quit();
         }
+#if UNITY_IOS
+        [System.Runtime.InteropServices.DllImport("__Internal")]
+        private static extern string open_url(string channelKey);
+
+#endif
+        public static void OpenURL(string url)
+        {
+#if UNITY_EDITOR
+            Application.OpenURL(url);
+            return;
+#endif
+#if UNITY_IOS
+            open_url(url);
+#endif
+        }
     }
 }
