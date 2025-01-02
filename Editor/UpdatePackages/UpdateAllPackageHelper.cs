@@ -32,6 +32,16 @@ namespace GameFrameX.Editor
             }
         }
 
+        /// <summary>
+        /// 更新指定包
+        /// </summary>
+        /// <param name="packageName">包名</param>
+        /// <param name="packageUrl">包地址</param>
+        public static void UpdatePackages(string packageName, string packageUrl)
+        {
+            PackagesToUpdate.Enqueue((packageName, packageUrl));
+        }
+
         private static void UpdatePackagesFromManifest(string manifestPath)
         {
             string jsonContent = File.ReadAllText(manifestPath);
@@ -46,11 +56,19 @@ namespace GameFrameX.Editor
                     string packageUrl = package.Value.ToString();
                     if (packageUrl.EndsWith(".git"))
                     {
-                        PackagesToUpdate.Enqueue((packageName, packageUrl));
+                        UpdatePackages(packageName, packageUrl);
                     }
                 }
             }
 
+            StartUpdate();
+        }
+
+        /// <summary>
+        /// 开始更新
+        /// </summary>
+        public static void StartUpdate()
+        {
             _allPackagesCount = PackagesToUpdate.Count;
             _updatingPackagesIndex = 0;
             if (PackagesToUpdate.Count > 0)
@@ -69,10 +87,9 @@ namespace GameFrameX.Editor
             {
                 _updatingPackagesIndex++;
                 var (packageName, packageUrl) = PackagesToUpdate.Dequeue();
-                UnityEngine.Debug.Log($"Updating package: {packageName} from {packageUrl}");
                 _addRequest = Client.Add(packageUrl);
-                var isCancelableProgressBar = EditorUtility.DisplayCancelableProgressBar("正在更新包", $"{_updatingPackagesIndex}/{_allPackagesCount} ({packageName})", (float)_updatingPackagesIndex / _allPackagesCount);
                 EditorApplication.update += UpdatingProgressHandler;
+                var isCancelableProgressBar = EditorUtility.DisplayCancelableProgressBar("正在更新包", $"{_updatingPackagesIndex}/{_allPackagesCount} ({packageName})", (float)_updatingPackagesIndex / _allPackagesCount);
                 if (isCancelableProgressBar)
                 {
                     EditorUtility.DisplayProgressBar("正在取消更新", "请等待...", 0.5f);
