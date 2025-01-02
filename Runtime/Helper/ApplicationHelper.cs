@@ -106,9 +106,12 @@ namespace GameFrameX.Runtime
         }
 #if UNITY_IOS
         [System.Runtime.InteropServices.DllImport("__Internal")]
-        private static extern string open_url(string channelKey);
-
+        private static extern string open_url(string url);
 #endif
+        /// <summary>
+        /// 打开URL
+        /// </summary>
+        /// <param name="url">url地址</param>
         public static void OpenURL(string url)
         {
 #if UNITY_EDITOR
@@ -117,6 +120,8 @@ namespace GameFrameX.Runtime
 #endif
 #if UNITY_IOS
             open_url(url);
+#else
+            Application.OpenURL(url);
 #endif
         }
     }
