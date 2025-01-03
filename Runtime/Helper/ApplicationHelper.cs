@@ -106,7 +106,7 @@ namespace GameFrameX.Runtime
         }
 #if UNITY_IOS
         [System.Runtime.InteropServices.DllImport("__Internal")]
-        private static extern string open_url(string url);
+        private static extern void open_url(string url);
 #endif
         /// <summary>
         /// 打开URL
