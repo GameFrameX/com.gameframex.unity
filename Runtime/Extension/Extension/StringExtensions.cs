@@ -209,6 +209,21 @@ public static class StringExtension
         return self;
     }
 
+    /// <summary>
+    /// 将驼峰命名的字符串转换为下划线分隔的小写形式（蛇形命名）。
+    /// </summary>
+    /// <param name="input">要转换的字符串。</param>
+    /// <returns>转换后的蛇形命名字符串。如果输入为null或空，则返回原字符串。</returns>
+    public static string ConvertToSnakeCase(this string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return input;
+        }
+
+        var startUnderscores = Regex.Match(input, @"^_+");
+        return startUnderscores + Regex.Replace(input, @"([a-z0-9])([A-Z])", "$1_$2").ToLower();
+    }
 
     /// <summary>
     /// 匹配中文正则表达式
