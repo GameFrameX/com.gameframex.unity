@@ -67,7 +67,6 @@ namespace GameFrameX.Runtime
             get { return Application.platform == RuntimePlatform.LinuxPlayer; }
         }
 
-
         /// <summary>
         /// 是否是Mac平台
         /// </summary>
@@ -96,6 +95,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 退出
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static void Quit()
         {
 #if UNITY_EDITOR
@@ -112,6 +112,7 @@ namespace GameFrameX.Runtime
         /// 打开URL
         /// </summary>
         /// <param name="url">url地址</param>
+        [UnityEngine.Scripting.Preserve]
         public static void OpenURL(string url)
         {
 #if UNITY_EDITOR

@@ -29,6 +29,7 @@ namespace GameFrameX.Runtime
         /// <param name="length">要压缩的数据的二进制流的长度。</param>
         /// <param name="compressedStream">压缩后的数据的二进制流。</param>
         /// <returns>是否压缩数据成功。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool Compress(byte[] bytes, int offset, int length, Stream compressedStream)
         {
             if (bytes == null)
@@ -66,6 +67,7 @@ namespace GameFrameX.Runtime
         /// <param name="stream">要压缩的数据的二进制流。</param>
         /// <param name="compressedStream">压缩后的数据的二进制流。</param>
         /// <returns>是否压缩数据成功。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool Compress(Stream stream, Stream compressedStream)
         {
             if (stream == null)
@@ -109,6 +111,7 @@ namespace GameFrameX.Runtime
         /// <param name="length">要解压缩的数据的二进制流的长度。</param>
         /// <param name="decompressedStream">解压缩后的数据的二进制流。</param>
         /// <returns>是否解压缩数据成功。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool Decompress(byte[] bytes, int offset, int length, Stream decompressedStream)
         {
             if (bytes == null)
@@ -163,6 +166,7 @@ namespace GameFrameX.Runtime
         /// <param name="stream">要解压缩的数据的二进制流。</param>
         /// <param name="decompressedStream">解压缩后的数据的二进制流。</param>
         /// <returns>是否解压缩数据成功。</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool Decompress(Stream stream, Stream decompressedStream)
         {
             if (stream == null)

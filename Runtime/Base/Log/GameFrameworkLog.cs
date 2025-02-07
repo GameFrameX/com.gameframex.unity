@@ -5,6 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using UnityEngine.Scripting; // 确保引入命名空间
+
 namespace GameFrameX.Runtime
 {
     /// <summary>
@@ -18,6 +20,7 @@ namespace GameFrameX.Runtime
         /// 设置游戏框架日志辅助器。
         /// </summary>
         /// <param name="logHelper">要设置的游戏框架日志辅助器。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void SetLogHelper(ILogHelper logHelper)
         {
             _logHelper = logHelper;
@@ -27,6 +30,7 @@ namespace GameFrameX.Runtime
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
         /// <param name="message">日志内容。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug(object message)
         {
             if (_logHelper == null)
@@ -41,6 +45,7 @@ namespace GameFrameX.Runtime
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
         /// <param name="message">日志内容。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug(string message)
         {
             if (_logHelper == null)
@@ -57,6 +62,7 @@ namespace GameFrameX.Runtime
         /// <typeparam name="T">日志参数的类型。</typeparam>
         /// <param name="format">日志格式。</param>
         /// <param name="arg">日志参数。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug<T>(string format, T arg)
         {
             if (_logHelper == null)
@@ -75,6 +81,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式。</param>
         /// <param name="arg1">日志参数 1。</param>
         /// <param name="arg2">日志参数 2。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2>(string format, T1 arg1, T2 arg2)
         {
             if (_logHelper == null)
@@ -95,6 +102,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1。</param>
         /// <param name="arg2">日志参数 2。</param>
         /// <param name="arg3">日志参数 3。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3>(string format, T1 arg1, T2 arg2, T3 arg3)
         {
             if (_logHelper == null)
@@ -117,6 +125,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2。</param>
         /// <param name="arg3">日志参数 3。</param>
         /// <param name="arg4">日志参数 4。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3, T4>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             if (_logHelper == null)
@@ -141,6 +150,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3。</param>
         /// <param name="arg4">日志参数 4。</param>
         /// <param name="arg5">日志参数 5。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3, T4, T5>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             if (_logHelper == null)
@@ -167,6 +177,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4。</param>
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
         {
             if (_logHelper == null)
@@ -195,6 +206,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
         {
             if (_logHelper == null)
@@ -225,6 +237,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (_logHelper == null)
@@ -257,6 +270,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
+        [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (_logHelper == null)

@@ -5,18 +5,18 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFrameX;
-
 namespace GameFrameX.Runtime
 {
     /// <summary>
     /// System.UInt32 变量类。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarUInt32 : Variable<uint>
     {
         /// <summary>
         /// 初始化 System.UInt32 变量类的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public VarUInt32()
         {
         }
@@ -25,6 +25,7 @@ namespace GameFrameX.Runtime
         /// 从 System.UInt32 到 System.UInt32 变量类的隐式转换。
         /// </summary>
         /// <param name="value">值。</param>
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarUInt32(uint value)
         {
             VarUInt32 varValue = ReferencePool.Acquire<VarUInt32>();
@@ -36,6 +37,7 @@ namespace GameFrameX.Runtime
         /// 从 System.UInt32 变量类到 System.UInt32 的隐式转换。
         /// </summary>
         /// <param name="value">值。</param>
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator uint(VarUInt32 value)
         {
             return value.Value;

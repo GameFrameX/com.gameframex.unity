@@ -10,11 +10,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 哈希计算相关的实用函数。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static partial class Hash
         {
             /// <summary>
             /// HMACSha256
             /// </summary>
+            [UnityEngine.Scripting.Preserve]
             public static class HMACSha256
             {
                 /// <summary>
@@ -23,6 +25,7 @@ namespace GameFrameX.Runtime
                 /// <param name="message">要进行哈希计算的消息。</param>
                 /// <param name="key">用于哈希计算的密钥。</param>
                 /// <returns>Base64编码的哈希值。</returns>
+                [UnityEngine.Scripting.Preserve]
                 public static string Hash(string message, string key)
                 {
                     byte[] keyBytes = Encoding.UTF8.GetBytes(key);

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace GameFrameX.Runtime
 {
+    [UnityEngine.Scripting.Preserve]
     public static class PathHelper
     {
         /// <summary>
@@ -22,6 +23,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 应用程序内部资源路径存放路径
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static string AppResPath
         {
             get { return NormalizePath(Application.streamingAssetsPath); }
@@ -46,6 +48,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取平台名称
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static string GetPlatformName
         {
             get
@@ -71,6 +74,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static string NormalizePath(string path)
         {
             return path.Replace('\\', '/').Replace("\\", "/");
@@ -83,6 +87,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="paths"></param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static string Combine(params string[] paths)
         {
             CombineStringBuilder.Clear();

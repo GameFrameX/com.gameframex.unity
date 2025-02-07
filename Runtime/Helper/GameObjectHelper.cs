@@ -7,6 +7,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏对象帮助类
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class GameObjectHelper
     {
         /// <summary>
@@ -45,6 +46,7 @@ namespace GameFrameX.Runtime
         /// 销毁游戏物体
         /// </summary>
         /// <param name="gameObject"></param>
+        [UnityEngine.Scripting.Preserve]
         public static void Destroy(GameObject gameObject)
         {
             gameObject.DestroyObject();
@@ -75,6 +77,7 @@ namespace GameFrameX.Runtime
         /// <param name="sceneName">场景名称。</param>
         /// <param name="nodeName">节点名称。</param>
         /// <returns>找到的节点的GameObject实例，如果没有找到返回null。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static GameObject FindChildGamObjectByName(string nodeName, string sceneName = null)
         {
             Scene scene;

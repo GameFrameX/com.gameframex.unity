@@ -5,6 +5,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// Unity 渲染帮助类
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class UnityRendererHelper
     {
         /// <summary>
@@ -12,7 +13,8 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="renderer">渲染组件</param>
         /// <param name="camera">相机对象</param>
-        /// <returns></returns>
+        /// <returns>如果渲染组件在相机范围内返回true，否则返回false</returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsVisibleFrom(Renderer renderer, Camera camera)
         {
             Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
@@ -24,7 +26,8 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="renderer">渲染对象</param>
         /// <param name="camera">相机对象</param>
-        /// <returns></returns>
+        /// <returns>如果渲染组件在相机范围内返回true，否则返回false</returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsVisibleFrom(MeshRenderer renderer, Camera camera)
         {
             Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);

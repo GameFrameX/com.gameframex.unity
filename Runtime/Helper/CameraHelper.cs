@@ -15,6 +15,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="main">相机</param>
         /// <param name="scale">缩放比</param>
+        [UnityEngine.Scripting.Preserve]
         public static Texture2D GetCaptureScreenshot(Camera main, float scale = 0.5f)
         {
             Rect rect = new Rect(0, 0, Screen.width * scale, Screen.height * scale);

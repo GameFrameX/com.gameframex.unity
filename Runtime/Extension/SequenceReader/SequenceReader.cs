@@ -9,9 +9,11 @@ using System;
 using System.Buffers;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using UnityEngine.Scripting; // Added for Preserve attribute
 
 namespace GameFrameX.Runtime
 {
+    [Preserve] // Added Preserve attribute
     public ref partial struct SequenceReader<T> where T : unmanaged, IEquatable<T>
     {
         /// <summary>
@@ -54,6 +56,7 @@ namespace GameFrameX.Runtime
         /// over the given <see cref="ReadOnlySequence{T}"/>.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Preserve] // Added Preserve attribute
         public SequenceReader(in ReadOnlySequence<T> sequence)
         {
             this.usingSequence = true;
@@ -81,6 +84,7 @@ namespace GameFrameX.Runtime
         /// over the given <see cref="ReadOnlyMemory{T}"/>.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Preserve] // Added Preserve attribute
         public SequenceReader(ReadOnlyMemory<T> memory)
         {
             this.usingSequence = false;
@@ -104,6 +108,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// Gets the underlying <see cref="ReadOnlySequence{T}"/> for the reader.
         /// </summary>
+        [Preserve] // Added Preserve attribute
         public ReadOnlySequence<T> Sequence
         {
             get
@@ -124,22 +129,26 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// Gets the current position in the <see cref="Sequence"/>.
         /// </summary>
+        [Preserve] // Added Preserve attribute
         public SequencePosition Position
             => this.Sequence.GetPosition(this.CurrentSpanIndex, this.currentPosition);
 
         /// <summary>
         /// Gets the current segment in the <see cref="Sequence"/> as a span.
         /// </summary>
+        [Preserve] // Added Preserve attribute
         public ReadOnlySpan<T> CurrentSpan { get; private set; }
 
         /// <summary>
         /// Gets the index in the <see cref="CurrentSpan"/>.
         /// </summary>
+        [Preserve] // Added Preserve attribute
         public int CurrentSpanIndex { get; private set; }
 
         /// <summary>
         /// Gets the unread portion of the <see cref="CurrentSpan"/>.
         /// </summary>
+        [Preserve] // Added Preserve attribute
         public ReadOnlySpan<T> UnreadSpan
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -149,16 +158,19 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// Gets the total number of <typeparamref name="T"/>'s processed by the reader.
         /// </summary>
+        [Preserve] // Added Preserve attribute
         public long Consumed { get; private set; }
 
         /// <summary>
         /// Gets remaining <typeparamref name="T"/>'s in the reader's <see cref="Sequence"/>.
         /// </summary>
+        [Preserve] // Added Preserve attribute
         public long Remaining => this.Length - this.Consumed;
 
         /// <summary>
         /// Gets count of <typeparamref name="T"/> in the reader's <see cref="Sequence"/>.
         /// </summary>
+        [Preserve] // Added Preserve attribute
         public long Length
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -180,6 +192,7 @@ namespace GameFrameX.Runtime
         /// <param name="value">The next value or default if at the end.</param>
         /// <returns>False if at the end of the reader.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Preserve] // Added Preserve attribute
         public bool TryPeek(out T value)
         {
             if (this.moreData)
@@ -200,6 +213,7 @@ namespace GameFrameX.Runtime
         /// <param name="value">The next value or default if at the end.</param>
         /// <returns>False if at the end of the reader.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Preserve] // Added Preserve attribute
         public bool TryRead(out T value)
         {
             if (this.End)
@@ -231,6 +245,7 @@ namespace GameFrameX.Runtime
         /// Move the reader back the specified number of items.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Preserve] // Added Preserve attribute
         public void Rewind(long count)
         {
             if (count < 0)
@@ -330,6 +345,7 @@ namespace GameFrameX.Runtime
         /// Move the reader ahead the specified number of items.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Preserve] // Added Preserve attribute
         public void Advance(long count)
         {
             const long TooBigOrNegative = unchecked((long)0xFFFFFFFF80000000);
@@ -450,6 +466,7 @@ namespace GameFrameX.Runtime
         /// <param name="destination">Destination to copy to.</param>
         /// <returns>True if there is enough data to copy to the <paramref name="destination"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Preserve] // Added Preserve attribute
         public bool TryCopyTo(Span<T> destination)
         {
             ReadOnlySpan<T> firstSpan = this.UnreadSpan;

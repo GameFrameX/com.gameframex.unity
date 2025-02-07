@@ -5,6 +5,7 @@ namespace GameFrameX.Runtime
 {
     public static partial class Utility
     {
+        [UnityEngine.Scripting.Preserve]
         public static class IdGenerator
         {
             private static readonly DateTime s_UtcTimeStart = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -16,7 +17,8 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 使用Interlocked.Increment生成唯一ID的方法
             /// </summary>
-            /// <returns></returns>
+            /// <returns>返回一个唯一的长整型ID</returns>
+            [UnityEngine.Scripting.Preserve]
             public static long GetNextUniqueId()
             {
                 // 原子性地递增值
@@ -26,7 +28,8 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 使用Interlocked.Increment生成唯一ID的方法
             /// </summary>
-            /// <returns></returns>
+            /// <returns>返回一个唯一的整型ID</returns>
+            [UnityEngine.Scripting.Preserve]
             public static int GetNextUniqueIntId()
             {
                 return Interlocked.Increment(ref _intCounter);

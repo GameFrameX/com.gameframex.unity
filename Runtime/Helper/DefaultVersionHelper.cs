@@ -18,6 +18,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取游戏版本号。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public string GameVersion
         {
             get { return Application.version; }

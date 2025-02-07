@@ -8,15 +8,17 @@
 using System;
 using System.Collections.Generic;
 using GameFrameX.Runtime;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.ObjectPool
 {
-    public sealed partial class ObjectPoolManager : GameFrameworkModule, IObjectPoolManager
+    public sealed partial class ObjectPoolManager
     {
         /// <summary>
         /// 对象池。
         /// </summary>
         /// <typeparam name="T">对象类型。</typeparam>
+        [Preserve]
         private sealed class ObjectPool<T> : ObjectPoolBase, IObjectPool<T> where T : ObjectBase
         {
             private readonly GameFrameworkMultiDictionary<string, Object<T>> m_Objects;
@@ -40,6 +42,7 @@ namespace GameFrameX.ObjectPool
             /// <param name="capacity">对象池的容量。</param>
             /// <param name="expireTime">对象池对象过期秒数。</param>
             /// <param name="priority">对象池的优先级。</param>
+            [Preserve]
             public ObjectPool(string name, bool allowMultiSpawn, float autoReleaseInterval, int capacity, float expireTime, int priority)
                 : base(name)
             {
@@ -59,6 +62,7 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取对象池对象类型。
             /// </summary>
+            [Preserve]
             public override Type ObjectType
             {
                 get
@@ -70,6 +74,7 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取对象池中对象的数量。
             /// </summary>
+            [Preserve]
             public override int Count
             {
                 get
@@ -81,6 +86,7 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取对象池中能被释放的对象的数量。
             /// </summary>
+            [Preserve]
             public override int CanReleaseCount
             {
                 get
@@ -93,6 +99,7 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取是否允许对象被多次获取。
             /// </summary>
+            [Preserve]
             public override bool AllowMultiSpawn
             {
                 get
@@ -104,6 +111,7 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取或设置对象池自动释放可释放对象的间隔秒数。
             /// </summary>
+            [Preserve]
             public override float AutoReleaseInterval
             {
                 get
@@ -119,6 +127,7 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取或设置对象池的容量。
             /// </summary>
+            [Preserve]
             public override int Capacity
             {
                 get
@@ -145,6 +154,7 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取或设置对象池对象过期秒数。
             /// </summary>
+            [Preserve]
             public override float ExpireTime
             {
                 get
@@ -172,6 +182,7 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取或设置对象池的优先级。
             /// </summary>
+            [Preserve]
             public override int Priority
             {
                 get
@@ -189,6 +200,7 @@ namespace GameFrameX.ObjectPool
             /// </summary>
             /// <param name="obj">对象。</param>
             /// <param name="spawned">对象是否已被获取。</param>
+            [Preserve]
             public void Register(T obj, bool spawned)
             {
                 if (obj == null)
@@ -210,6 +222,7 @@ namespace GameFrameX.ObjectPool
             /// 检查对象。
             /// </summary>
             /// <returns>要检查的对象是否存在。</returns>
+            [Preserve]
             public bool CanSpawn()
             {
                 return CanSpawn(string.Empty);
@@ -220,6 +233,7 @@ namespace GameFrameX.ObjectPool
             /// </summary>
             /// <param name="name">对象名称。</param>
             /// <returns>要检查的对象是否存在。</returns>
+            [Preserve]
             public bool CanSpawn(string name)
             {
                 if (name == null)
@@ -246,6 +260,7 @@ namespace GameFrameX.ObjectPool
             /// 获取对象。
             /// </summary>
             /// <returns>要获取的对象。</returns>
+            [Preserve]
             public T Spawn()
             {
                 return Spawn(string.Empty);
@@ -256,6 +271,7 @@ namespace GameFrameX.ObjectPool
             /// </summary>
             /// <param name="name">对象名称。</param>
             /// <returns>要获取的对象。</returns>
+            [Preserve]
             public T Spawn(string name)
             {
                 if (name == null)
@@ -282,6 +298,7 @@ namespace GameFrameX.ObjectPool
             /// 回收对象。
             /// </summary>
             /// <param name="obj">要回收的对象。</param>
+            [Preserve]
             public void Unspawn(T obj)
             {
                 if (obj == null)
@@ -296,6 +313,7 @@ namespace GameFrameX.ObjectPool
             /// 回收对象。
             /// </summary>
             /// <param name="target">要回收的对象。</param>
+            [Preserve]
             public void Unspawn(object target)
             {
                 if (target == null)
@@ -323,6 +341,7 @@ namespace GameFrameX.ObjectPool
             /// </summary>
             /// <param name="obj">要设置被加锁的对象。</param>
             /// <param name="locked">是否被加锁。</param>
+            [Preserve]
             public void SetLocked(T obj, bool locked)
             {
                 if (obj == null)
@@ -338,6 +357,7 @@ namespace GameFrameX.ObjectPool
             /// </summary>
             /// <param name="target">要设置被加锁的对象。</param>
             /// <param name="locked">是否被加锁。</param>
+            [Preserve]
             public void SetLocked(object target, bool locked)
             {
                 if (target == null)
@@ -361,6 +381,7 @@ namespace GameFrameX.ObjectPool
             /// </summary>
             /// <param name="obj">要设置优先级的对象。</param>
             /// <param name="priority">优先级。</param>
+            [Preserve]
             public void SetPriority(T obj, int priority)
             {
                 if (obj == null)
@@ -376,6 +397,7 @@ namespace GameFrameX.ObjectPool
             /// </summary>
             /// <param name="target">要设置优先级的对象。</param>
             /// <param name="priority">优先级。</param>
+            [Preserve]
             public void SetPriority(object target, int priority)
             {
                 if (target == null)
@@ -399,6 +421,7 @@ namespace GameFrameX.ObjectPool
             /// </summary>
             /// <param name="obj">要释放的对象。</param>
             /// <returns>释放对象是否成功。</returns>
+            [Preserve]
             public bool ReleaseObject(T obj)
             {
                 if (obj == null)
@@ -414,6 +437,7 @@ namespace GameFrameX.ObjectPool
             /// </summary>
             /// <param name="target">要释放的对象。</param>
             /// <returns>释放对象是否成功。</returns>
+            [Preserve]
             public bool ReleaseObject(object target)
             {
                 if (target == null)
@@ -443,6 +467,7 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 释放对象池中的可释放对象。
             /// </summary>
+            [Preserve]
             public override void Release()
             {
                 Release(Count - m_Capacity, m_DefaultReleaseObjectFilterCallback);
@@ -452,6 +477,7 @@ namespace GameFrameX.ObjectPool
             /// 释放对象池中的可释放对象。
             /// </summary>
             /// <param name="toReleaseCount">尝试释放对象数量。</param>
+            [Preserve]
             public override void Release(int toReleaseCount)
             {
                 Release(toReleaseCount, m_DefaultReleaseObjectFilterCallback);
@@ -461,6 +487,7 @@ namespace GameFrameX.ObjectPool
             /// 释放对象池中的可释放对象。
             /// </summary>
             /// <param name="releaseObjectFilterCallback">释放对象筛选函数。</param>
+            [Preserve]
             public void Release(ReleaseObjectFilterCallback<T> releaseObjectFilterCallback)
             {
                 Release(Count - m_Capacity, releaseObjectFilterCallback);
@@ -471,6 +498,7 @@ namespace GameFrameX.ObjectPool
             /// </summary>
             /// <param name="toReleaseCount">尝试释放对象数量。</param>
             /// <param name="releaseObjectFilterCallback">释放对象筛选函数。</param>
+            [Preserve]
             public void Release(int toReleaseCount, ReleaseObjectFilterCallback<T> releaseObjectFilterCallback)
             {
                 if (releaseObjectFilterCallback == null)
@@ -506,6 +534,7 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 释放对象池中的所有未使用对象。
             /// </summary>
+            [Preserve]
             public override void ReleaseAllUnused()
             {
                 m_AutoReleaseTime = 0f;
@@ -520,6 +549,7 @@ namespace GameFrameX.ObjectPool
             /// 获取所有对象信息。
             /// </summary>
             /// <returns>所有对象信息。</returns>
+            [Preserve]
             public override ObjectInfo[] GetAllObjectInfos()
             {
                 List<ObjectInfo> results = new List<ObjectInfo>();

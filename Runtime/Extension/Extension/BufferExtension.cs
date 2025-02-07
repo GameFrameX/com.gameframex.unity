@@ -1,7 +1,9 @@
 using System;
 using System.Buffers.Binary;
 using System.Text;
+using UnityEngine.Scripting;
 
+[Preserve]
 public static class BufferExtension
 {
     /// <summary>
@@ -63,6 +65,7 @@ public static class BufferExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的整数值。</param>
     /// <param name="offset">写入操作的偏移量。</param>
+    [Preserve]
     public static unsafe void WriteInt(this byte[] buffer, int value, ref int offset)
     {
         if (offset + IntSize > buffer.Length)
@@ -84,6 +87,7 @@ public static class BufferExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的整数值。</param>
     /// <param name="offset">写入操作的偏移量。</param>
+    [Preserve]
     public static unsafe void WriteUInt(this byte[] buffer, uint value, ref int offset)
     {
         if (offset + IntSize > buffer.Length)
@@ -103,6 +107,7 @@ public static class BufferExtension
     /// <param name="buffer">要写入的缓冲区。</param>
     /// <param name="value">要写入的值。</param>
     /// <param name="offset">要写入值的缓冲区中的偏移量。</param>
+    [Preserve]
     public static void WriteUShort(this byte[] buffer, ushort value, ref int offset)
     {
         if (offset + 2 > buffer.Length)
@@ -125,6 +130,7 @@ public static class BufferExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的短整数值。</param>
     /// <param name="offset">写入操作的偏移量。</param>
+    [Preserve]
     public static unsafe void WriteShort(this byte[] buffer, short value, ref int offset)
     {
         if (offset + ShortSize > buffer.Length)
@@ -146,6 +152,7 @@ public static class BufferExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的长整数值。</param>
     /// <param name="offset">写入操作的偏移量。</param>
+    [Preserve]
     public static unsafe void WriteLong(this byte[] buffer, long value, ref int offset)
     {
         if (offset + LongSize > buffer.Length)
@@ -167,6 +174,7 @@ public static class BufferExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的单精度浮点数值。</param>
     /// <param name="offset">字节数组中的偏移量，传递引用以便更新偏移量。</param>
+    [Preserve]
     public static unsafe void WriteFloat(this byte[] buffer, float value, ref int offset)
     {
         if (offset + FloatSize > buffer.Length)
@@ -189,6 +197,7 @@ public static class BufferExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的双精度浮点数值。</param>
     /// <param name="offset">字节数组中的偏移量，传递引用以便更新偏移量。</param>
+    [Preserve]
     public static unsafe void WriteDouble(this byte[] buffer, double value, ref int offset)
     {
         if (offset + DoubleSize > buffer.Length)
@@ -211,6 +220,7 @@ public static class BufferExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的字节值。</param>
     /// <param name="offset">字节数组中的偏移量，传递引用以便更新偏移量。</param>
+    [Preserve]
     public static unsafe void WriteByte(this byte[] buffer, byte value, ref int offset)
     {
         if (offset + ByteSize > buffer.Length)
@@ -232,6 +242,7 @@ public static class BufferExtension
     /// <param name="buffer">目标缓冲区。</param>
     /// <param name="value">要写入的字节数组。</param>
     /// <param name="offset">偏移量。</param>
+    [Preserve]
     public static unsafe void WriteBytesWithoutLength(this byte[] buffer, byte[] value, ref int offset)
     {
         if (value == null)
@@ -258,6 +269,7 @@ public static class BufferExtension
     /// <param name="buffer">目标缓冲区。</param>
     /// <param name="value">要写入的字节数组。</param>
     /// <param name="offset">偏移量。</param>
+    [Preserve]
     public static unsafe void WriteBytes(this byte[] buffer, byte[] value, ref int offset)
     {
         if (value == null)
@@ -283,6 +295,7 @@ public static class BufferExtension
     /// <param name="buffer">目标缓冲区。</param>
     /// <param name="value">要写入的有符号字节。</param>
     /// <param name="offset">偏移量。</param>
+    [Preserve]
     public static unsafe void WriteSByte(this byte[] buffer, sbyte value, ref int offset)
     {
         if (offset + SbyteSize > buffer.Length)
@@ -304,6 +317,7 @@ public static class BufferExtension
     /// <param name="buffer">目标缓冲区。</param>
     /// <param name="value">要写入的字符串。</param>
     /// <param name="offset">偏移量。</param>
+    [Preserve]
     public static unsafe void WriteString(this byte[] buffer, string value, ref int offset)
     {
         if (value == null)
@@ -339,6 +353,7 @@ public static class BufferExtension
     /// <param name="buffer">目标缓冲区。</param>
     /// <param name="value">要写入的布尔值。</param>
     /// <param name="offset">偏移量。</param>
+    [Preserve]
     public static unsafe void WriteBool(this byte[] buffer, bool value, ref int offset)
     {
         if (offset + BoolSize > buffer.Length)
@@ -364,6 +379,7 @@ public static class BufferExtension
     /// <param name="buffer">包含整数值的字节数组。</param>
     /// <param name="offset">从字节数组中读取整数值的偏移量。</param>
     /// <returns>从字节数组中读取的整数值。</returns>
+    [Preserve]
     public static unsafe int ReadInt(this byte[] buffer, ref int offset)
     {
         if (offset > buffer.Length + IntSize)
@@ -386,6 +402,7 @@ public static class BufferExtension
     /// <param name="offset">从字节数组中读取整数值的偏移量。</param>
     /// <returns>从字节数组中读取的无符号整数值。</returns>
     /// <exception cref="Exception"></exception>
+    [Preserve]
     public static uint ReadUInt(this byte[] buffer, ref int offset)
     {
         if (offset > buffer.Length + UIntSize)
@@ -407,6 +424,7 @@ public static class BufferExtension
     /// <param name="buffer">包含短整数值的字节数组。</param>
     /// <param name="offset">从字节数组中读取短整数值的偏移量。</param>
     /// <returns>从字节数组中读取的短整数值。</returns>
+    [Preserve]
     public static unsafe short ReadShort(this byte[] buffer, ref int offset)
     {
         if (offset > buffer.Length + ShortSize)
@@ -426,6 +444,7 @@ public static class BufferExtension
     /// <param name="buffer">要读取的字节数组。</param>
     /// <param name="offset">引用偏移量。</param>
     /// <returns>返回读取的16位无符号整数。</returns>
+    [Preserve]
     public static ushort ReadUShort(this byte[] buffer, ref int offset)
     {
         if (offset > buffer.Length + UShortSize)
@@ -447,6 +466,7 @@ public static class BufferExtension
     /// <param name="buffer">字节数组。</param>
     /// <param name="offset">偏移量。</param>
     /// <returns>长整型数值。</returns>
+    [Preserve]
     public static unsafe long ReadLong(this byte[] buffer, ref int offset)
     {
         if (offset > buffer.Length + LongSize)
@@ -468,6 +488,7 @@ public static class BufferExtension
     /// <param name="buffer">字节数组。</param>
     /// <param name="offset">偏移量。</param>
     /// <returns>单精度浮点数值。</returns>
+    [Preserve]
     public static unsafe float ReadFloat(this byte[] buffer, ref int offset)
     {
         if (offset > buffer.Length + FloatSize)
@@ -490,6 +511,7 @@ public static class BufferExtension
     /// <param name="buffer">字节数组。</param>
     /// <param name="offset">偏移量。</param>
     /// <returns>双精度浮点数值。</returns>
+    [Preserve]
     public static unsafe double ReadDouble(this byte[] buffer, ref int offset)
     {
         if (offset > buffer.Length + DoubleSize)
@@ -512,6 +534,7 @@ public static class BufferExtension
     /// <param name="buffer">字节数组。</param>
     /// <param name="offset">偏移量。</param>
     /// <returns>字节值。</returns>
+    [Preserve]
     public static unsafe byte ReadByte(this byte[] buffer, ref int offset)
     {
         if (offset > buffer.Length + ByteSize)
@@ -534,6 +557,7 @@ public static class BufferExtension
     /// <param name="offset">偏移量。</param>
     /// <param name="len">数据长度。</param>
     /// <returns>读取的字节数组。</returns>
+    [Preserve]
     public static unsafe byte[] ReadBytes(this byte[] buffer, int offset, int len)
     {
         //数据不可信
@@ -554,6 +578,7 @@ public static class BufferExtension
     /// <param name="offset">偏移量。</param>
     /// <param name="len">数据长度。</param>
     /// <returns>读取的字节数组。</returns>
+    [Preserve]
     public static unsafe byte[] ReadBytes(this byte[] buffer, ref int offset, int len)
     {
         //数据不可信
@@ -574,6 +599,7 @@ public static class BufferExtension
     /// <param name="buffer">字节数组。</param>
     /// <param name="offset">偏移量。</param>
     /// <returns>读取的字节数组。</returns>
+    [Preserve]
     public static unsafe byte[] ReadBytes(this byte[] buffer, ref int offset)
     {
         var len = ReadInt(buffer, ref offset);
@@ -595,6 +621,7 @@ public static class BufferExtension
     /// <param name="buffer">字节数组。</param>
     /// <param name="offset">偏移量。</param>
     /// <returns>读取的有符号字节。</returns>
+    [Preserve]
     public static unsafe sbyte ReadSByte(this byte[] buffer, ref int offset)
     {
         if (offset > buffer.Length + ByteSize)
@@ -616,6 +643,7 @@ public static class BufferExtension
     /// <param name="buffer">字节数组。</param>
     /// <param name="offset">偏移量。</param>
     /// <returns>读取的字符串。</returns>
+    [Preserve]
     public static unsafe string ReadString(this byte[] buffer, ref int offset)
     {
         fixed (byte* ptr = buffer)
@@ -637,6 +665,7 @@ public static class BufferExtension
     /// <param name="buffer">字节数组。</param>
     /// <param name="offset">偏移量。</param>
     /// <returns>读取的布尔值。</returns>
+    [Preserve]
     public static unsafe bool ReadBool(this byte[] buffer, ref int offset)
     {
         if (offset > buffer.Length + BoolSize)
@@ -659,6 +688,7 @@ public static class BufferExtension
     /// </summary>
     /// <param name="bytes"></param>
     /// <returns></returns>
+    [Preserve]
     public static string ToArrayString(this byte[] bytes)
     {
         StringBuilder.Clear();
@@ -677,6 +707,7 @@ public static class BufferExtension
     /// </summary>
     /// <param name="b">要转换的字节。</param>
     /// <returns>表示字节的十六进制字符串。</returns>
+    [Preserve]
     public static string ToHex(this byte b)
     {
         return b.ToString("X2");
@@ -687,6 +718,7 @@ public static class BufferExtension
     /// </summary>
     /// <param name="bytes">要转换的字节数组。</param>
     /// <returns>表示字节数组的十六进制字符串。</returns>
+    [Preserve]
     public static string ToHex(this byte[] bytes)
     {
         StringBuilder.Clear();
@@ -704,6 +736,7 @@ public static class BufferExtension
     /// <param name="bytes">要转换的字节数组。</param>
     /// <param name="format">十六进制格式。</param>
     /// <returns>表示字节数组的十六进制字符串。</returns>
+    [Preserve]
     public static string ToHex(this byte[] bytes, string format)
     {
         StringBuilder.Clear();
@@ -722,6 +755,7 @@ public static class BufferExtension
     /// <param name="offset">起始偏移量。</param>
     /// <param name="count">要转换的字节数。</param>
     /// <returns>表示指定范围内字节的十六进制字符串。</returns>
+    [Preserve]
     public static string ToHex(this byte[] bytes, int offset, int count)
     {
         StringBuilder.Clear();
@@ -738,6 +772,7 @@ public static class BufferExtension
     /// </summary>
     /// <param name="bytes">要转换的字节数组。</param>
     /// <returns>转换后的字符串。</returns>
+    [Preserve]
     public static string ToDefaultString(this byte[] bytes)
     {
         return Encoding.Default.GetString(bytes);
@@ -750,6 +785,7 @@ public static class BufferExtension
     /// <param name="index">起始位置。</param>
     /// <param name="count">要转换的字节数。</param>
     /// <returns>转换后的字符串。</returns>
+    [Preserve]
     public static string ToDefaultString(this byte[] bytes, int index, int count)
     {
         return Encoding.Default.GetString(bytes, index, count);
@@ -760,6 +796,7 @@ public static class BufferExtension
     /// </summary>
     /// <param name="bytes">要转换的字节数组。</param>
     /// <returns>转换后的字符串。</returns>
+    [Preserve]
     public static string ToUtf8String(this byte[] bytes)
     {
         return Encoding.UTF8.GetString(bytes);
@@ -772,6 +809,7 @@ public static class BufferExtension
     /// <param name="index">起始位置。</param>
     /// <param name="count">要转换的字节数。</param>
     /// <returns>转换后的字符串。</returns>
+    [Preserve]
     public static string ToUtf8String(this byte[] bytes, int index, int count)
     {
         return Encoding.UTF8.GetString(bytes, index, count);

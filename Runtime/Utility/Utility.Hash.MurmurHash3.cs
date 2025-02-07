@@ -12,8 +12,19 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// MurmurHash3
             /// </summary>
+            [UnityEngine.Scripting.Preserve]
+            /// <summary>
+            /// MurmurHash3 哈希算法的实现。
+            /// </summary>
             public static class MurmurHash3
             {
+                [UnityEngine.Scripting.Preserve]
+                /// <summary>
+                /// 计算给定字符串的 MurmurHash3 哈希值。
+                /// </summary>
+                /// <param name="str">要哈希的字符串。</param>
+                /// <param name="seed">哈希种子，默认为 27。</param>
+                /// <returns>计算得到的哈希值。</returns>
                 public static uint Hash(string str, uint seed = 27)
                 {
                     var data = System.Text.Encoding.UTF8.GetBytes(str);

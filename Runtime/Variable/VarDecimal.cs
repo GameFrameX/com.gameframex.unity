@@ -5,18 +5,18 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFrameX;
-
 namespace GameFrameX.Runtime
 {
     /// <summary>
     /// System.Decimal 变量类。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarDecimal : Variable<decimal>
     {
         /// <summary>
         /// 初始化 System.Decimal 变量类的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public VarDecimal()
         {
         }
@@ -25,6 +25,7 @@ namespace GameFrameX.Runtime
         /// 从 System.Decimal 到 System.Decimal 变量类的隐式转换。
         /// </summary>
         /// <param name="value">值。</param>
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarDecimal(decimal value)
         {
             VarDecimal varValue = ReferencePool.Acquire<VarDecimal>();
@@ -36,6 +37,7 @@ namespace GameFrameX.Runtime
         /// 从 System.Decimal 变量类到 System.Decimal 的隐式转换。
         /// </summary>
         /// <param name="value">值。</param>
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator decimal(VarDecimal value)
         {
             return value.Value;

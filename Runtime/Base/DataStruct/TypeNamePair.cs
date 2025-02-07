@@ -7,6 +7,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -23,6 +24,7 @@ namespace GameFrameX.Runtime
         /// 初始化类型和名称的组合值的新实例。
         /// </summary>
         /// <param name="type">类型。</param>
+        [Preserve]
         public TypeNamePair(Type type) : this(type, string.Empty)
         {
         }
@@ -32,6 +34,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="type">类型。</param>
         /// <param name="name">名称。</param>
+        [Preserve]
         public TypeNamePair(Type type, string name)
         {
             if (type == null)
@@ -46,6 +49,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取类型。
         /// </summary>
+        [Preserve]
         public Type Type
         {
             get { return m_Type; }
@@ -54,6 +58,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取名称。
         /// </summary>
+        [Preserve]
         public string Name
         {
             get { return m_Name; }

@@ -14,6 +14,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 路径相关的实用函数。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static class Path
         {
             /// <summary>
@@ -21,6 +22,7 @@ namespace GameFrameX.Runtime
             /// </summary>
             /// <param name="path">要规范的路径。</param>
             /// <returns>规范的路径。</returns>
+            [UnityEngine.Scripting.Preserve]
             public static string GetRegularPath(string path)
             {
                 if (path == null)
@@ -36,6 +38,7 @@ namespace GameFrameX.Runtime
             /// </summary>
             /// <param name="path">原始路径。</param>
             /// <returns>远程格式路径。</returns>
+            [UnityEngine.Scripting.Preserve]
             public static string GetRemotePath(string path)
             {
                 string regularPath = GetRegularPath(path);
@@ -52,6 +55,7 @@ namespace GameFrameX.Runtime
             /// </summary>
             /// <param name="directoryName">要处理的文件夹名称。</param>
             /// <returns>是否移除空文件夹成功。</returns>
+            [UnityEngine.Scripting.Preserve]
             public static bool RemoveEmptyDirectory(string directoryName)
             {
                 if (string.IsNullOrEmpty(directoryName))
