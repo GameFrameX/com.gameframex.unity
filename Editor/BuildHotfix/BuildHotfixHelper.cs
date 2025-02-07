@@ -38,7 +38,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 复制热更新代码
         /// </summary>
-        [MenuItem("GameFrameX/Build/Copy Hotfix Code", false, 10)]
+        [MenuItem("GameFrameX/Build/Copy Hotfix Code(复制热更新代码到Assets>Bundles>Code)", false, 10)]
         public static void CopyHotfixCode()
         {
             if (!Directory.Exists(CodeDir))
@@ -62,7 +62,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 复制AOT代码
         /// </summary>
-        [MenuItem("GameFrameX/Build/Copy AOT Code", false, 11)]
+        [MenuItem("GameFrameX/Build/Copy AOT Code(复制AOT代码到Assets>Bundles>AOTCode)", false, 11)]
         public static void CopyAOTCode()
         {
             if (!Directory.Exists(AOTCodeDir))
