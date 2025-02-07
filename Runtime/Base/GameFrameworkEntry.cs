@@ -36,6 +36,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 关闭并清理所有游戏框架模块。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public static void Shutdown()
         {
             for (var current = s_GameFrameworkModules.Last; current != null; current = current.Previous)
@@ -55,6 +56,7 @@ namespace GameFrameX.Runtime
         /// <typeparam name="T">要获取的游戏框架模块类型。</typeparam>
         /// <returns>要获取的游戏框架模块。</returns>
         /// <remarks>如果要获取的游戏框架模块不存在，则自动创建该游戏框架模块。</remarks>
+        [UnityEngine.Scripting.Preserve]
         public static T GetModule<T>() where T : class
         {
             var interfaceType = typeof(T);
@@ -88,6 +90,7 @@ namespace GameFrameX.Runtime
         /// <param name="moduleType">要获取的游戏框架模块类型。</param>
         /// <returns>要获取的游戏框架模块。</returns>
         /// <remarks>如果要获取的游戏框架模块不存在，则自动创建该游戏框架模块。</remarks>
+        [UnityEngine.Scripting.Preserve]
         public static GameFrameworkModule GetModule(Type moduleType)
         {
             foreach (var module in s_GameFrameworkModules)
@@ -107,6 +110,7 @@ namespace GameFrameX.Runtime
         /// <param name="interfaceType"> 要注册的游戏框架模块接口类型。</param>
         /// <param name="implType"> 要注册的游戏框架模块类型。</param>
         /// <returns>要创建的游戏框架模块。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static void RegisterModule(Type interfaceType, Type implType)
         {
             if (!interfaceType.IsInterface)

@@ -53,6 +53,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的整数值。</param>
     /// <param name="offset">写入操作的偏移量。</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteInt(this Span<byte> buffer, int value, ref int offset)
     {
         if (offset + IntSize > buffer.Length)
@@ -73,6 +74,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的短整数值。</param>
     /// <param name="offset">写入操作的偏移量。</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteShort(this Span<byte> buffer, short value, ref int offset)
     {
         if (offset + ShortSize > buffer.Length)
@@ -93,6 +95,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的长整数值。</param>
     /// <param name="offset">写入操作的偏移量。</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteLong(this Span<byte> buffer, long value, ref int offset)
     {
         if (offset + LongSize > buffer.Length)
@@ -113,6 +116,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的字节数组。</param>
     /// <param name="value">要写入的浮点数值。</param>
     /// <param name="offset">写入操作的偏移量。</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteFloat(this Span<byte> buffer, float value, ref int offset)
     {
         if (offset + FloatSize > buffer.Length)
@@ -134,6 +138,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的字节范围。</param>
     /// <param name="value">要写入的双精度浮点数值。</param>
     /// <param name="offset">偏移量，指示从何处开始写入。</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteDouble(this Span<byte> buffer, double value, ref int offset)
     {
         if (offset + DoubleSize > buffer.Length)
@@ -155,6 +160,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的字节范围。</param>
     /// <param name="value">要写入的字节值。</param>
     /// <param name="offset">偏移量，指示从何处开始写入。</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteByte(this Span<byte> buffer, byte value, ref int offset)
     {
         if (offset + ByteSize > buffer.Length)
@@ -175,6 +181,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的字节范围。</param>
     /// <param name="value">要写入的字节数组。</param>
     /// <param name="offset">偏移量，指示从何处开始写入。</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteBytes(this Span<byte> buffer, byte[] value, ref int offset)
     {
         if (value == null)
@@ -204,6 +211,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的字节范围。</param>
     /// <param name="value">要写入的字节数组。</param>
     /// <param name="offset">偏移量，指示从缓冲区的哪个位置开始写入。</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteBytesWithoutLength(this Span<byte> buffer, byte[] value, ref int offset)
     {
         if (value == null)
@@ -230,6 +238,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的字节范围。</param>
     /// <param name="value">要写入的有符号字节值。</param>
     /// <param name="offset">偏移量，指示从缓冲区的哪个位置开始写入。</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteSByte(this Span<byte> buffer, sbyte value, ref int offset)
     {
         if (offset + SbyteSize > buffer.Length)
@@ -250,6 +259,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的缓冲区</param>
     /// <param name="value">要写入的字符串</param>
     /// <param name="offset">偏移量</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteString(this Span<byte> buffer, string value, ref int offset)
     {
         if (value == null)
@@ -287,6 +297,7 @@ public static class SpanExtension
     /// <param name="buffer">要写入的缓冲区</param>
     /// <param name="value">要写入的布尔值</param>
     /// <param name="offset">偏移量</param>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe void WriteBool(this Span<byte> buffer, bool value, ref int offset)
     {
         if (offset + BoolSize > buffer.Length)
@@ -312,6 +323,7 @@ public static class SpanExtension
     /// <param name="buffer">包含整数的字节数组。</param>
     /// <param name="offset">偏移量，指示从何处开始读取整数。</param>
     /// <returns>从字节数组中读取的整数。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe int ReadInt(this Span<byte> buffer, ref int offset)
     {
         if (offset > buffer.Length + IntSize)
@@ -333,6 +345,7 @@ public static class SpanExtension
     /// <param name="buffer">包含要读取的数据的字节数组。</param>
     /// <param name="offset">要开始读取的位置。读取完成后，此参数将包含新的偏移量值。</param>
     /// <returns>一个 16 位有符号整数。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe short ReadShort(this Span<byte> buffer, ref int offset)
     {
         if (offset > buffer.Length + ShortSize)
@@ -354,6 +367,7 @@ public static class SpanExtension
     /// <param name="buffer">包含数据的字节数组。</param>
     /// <param name="offset">偏移量，指示从何处开始读取。</param>
     /// <returns>读取的64位整数。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe long ReadLong(this Span<byte> buffer, ref int offset)
     {
         if (offset > buffer.Length + LongSize)
@@ -375,6 +389,7 @@ public static class SpanExtension
     /// <param name="buffer">包含数据的字节数组。</param>
     /// <param name="offset">偏移量，指示从何处开始读取。</param>
     /// <returns>读取的单精度浮点数。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe float ReadFloat(this Span<byte> buffer, ref int offset)
     {
         if (offset > buffer.Length + FloatSize)
@@ -397,6 +412,7 @@ public static class SpanExtension
     /// <param name="buffer">包含数据的 Span<byte> 对象。</param>
     /// <param name="offset">从字节数组开始读取的偏移量。</param>
     /// <returns>从字节数组中读取的双精度浮点数。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe double ReadDouble(this Span<byte> buffer, ref int offset)
     {
         if (offset > buffer.Length + DoubleSize)
@@ -419,6 +435,7 @@ public static class SpanExtension
     /// <param name="buffer">包含数据的 Span<byte> 对象。</param>
     /// <param name="offset">从字节数组开始读取的偏移量。</param>
     /// <returns>从字节数组中读取的字节。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe byte ReadByte(this Span<byte> buffer, ref int offset)
     {
         if (offset > buffer.Length + ByteSize)
@@ -440,6 +457,7 @@ public static class SpanExtension
     /// <param name="buffer">包含数据的 Span。</param>
     /// <param name="offset">从缓冲区中读取数据的偏移量。</param>
     /// <returns>从缓冲区中读取的字节数组。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe byte[] ReadBytes(this Span<byte> buffer, ref int offset)
     {
         var len = ReadInt(buffer, ref offset);
@@ -460,6 +478,7 @@ public static class SpanExtension
     /// <param name="buffer">包含数据的 Span。</param>
     /// <param name="offset">从缓冲区中读取数据的偏移量。</param>
     /// <returns>从缓冲区中读取的有符号字节。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe sbyte ReadSByte(this Span<byte> buffer, ref int offset)
     {
         if (offset > buffer.Length + ByteSize)
@@ -481,6 +500,7 @@ public static class SpanExtension
     /// <param name="buffer">包含字符串的字节范围。</param>
     /// <param name="offset">偏移量。</param>
     /// <returns>从字节范围中读取的字符串。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe string ReadString(this Span<byte> buffer, ref int offset)
     {
         var len = ReadShort(buffer, ref offset);
@@ -504,6 +524,7 @@ public static class SpanExtension
     /// <param name="buffer">包含布尔值的字节范围。</param>
     /// <param name="offset">偏移量。</param>
     /// <returns>从字节范围中读取的布尔值。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static unsafe bool ReadBool(this Span<byte> buffer, ref int offset)
     {
         if (offset > buffer.Length + BoolSize)
@@ -526,6 +547,7 @@ public static class SpanExtension
     /// </summary>
     /// <param name="memory">只读内存。</param>
     /// <returns>数组段。</returns>
+    [UnityEngine.Scripting.Preserve]
     public static ArraySegment<byte> GetArray(this ReadOnlyMemory<byte> memory)
     {
         if (!MemoryMarshal.TryGetArray(memory, out var result))

@@ -7,12 +7,14 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 网络帮助类
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class NetworkHelper
     {
         /// <summary>
         /// 获取本地的IP列表
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static string[] GetAddressIPs()
         {
             //获取本地的IP地址
@@ -31,6 +33,7 @@ namespace GameFrameX.Runtime
         /// 是否有网络
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsReachable()
         {
             return Application.internetReachability != NetworkReachability.NotReachable;
@@ -40,6 +43,7 @@ namespace GameFrameX.Runtime
         /// 是否是WIFI
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsWifi()
         {
             return Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork;
@@ -49,6 +53,7 @@ namespace GameFrameX.Runtime
         /// 是否是移动网络
         /// </summary>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsViaCarrierData()
         {
             //当用户使用移动网络时

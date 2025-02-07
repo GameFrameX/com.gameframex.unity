@@ -34,6 +34,7 @@ namespace GameFrameX.Runtime
         /// <param name="releaseReferenceCount">归还引用数量。</param>
         /// <param name="addReferenceCount">增加引用数量。</param>
         /// <param name="removeReferenceCount">移除引用数量。</param>
+        [UnityEngine.Scripting.Preserve]
         public ReferencePoolInfo(Type type, int unusedReferenceCount, int usingReferenceCount, int acquireReferenceCount, int releaseReferenceCount, int addReferenceCount, int removeReferenceCount)
         {
             m_Type = type;
@@ -48,6 +49,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取引用池类型。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public Type Type
         {
             get { return m_Type; }
@@ -56,6 +58,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取未使用引用数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int UnusedReferenceCount
         {
             get { return m_UnusedReferenceCount; }
@@ -64,6 +67,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取正在使用引用数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int UsingReferenceCount
         {
             get { return m_UsingReferenceCount; }
@@ -72,6 +76,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取获取引用数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int AcquireReferenceCount
         {
             get { return m_AcquireReferenceCount; }
@@ -80,6 +85,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取归还引用数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int ReleaseReferenceCount
         {
             get { return m_ReleaseReferenceCount; }
@@ -88,6 +94,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取增加引用数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int AddReferenceCount
         {
             get { return m_AddReferenceCount; }
@@ -96,6 +103,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取移除引用数量。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public int RemoveReferenceCount
         {
             get { return m_RemoveReferenceCount; }

@@ -20,23 +20,24 @@ namespace GameFrameX.Runtime
         public static partial class Verifier
         {
             /// <summary>
-            ///   Provides an implementation of the CRC-64 algorithm as described in ECMA-182, Annex B.
+            ///   提供了根据 ECMA-182 附录 B 描述的 CRC-64 算法的实现。
             /// </summary>
             /// <remarks>
             ///   <para>
-            ///     For methods that return byte arrays or that write into spans of bytes,
-            ///     this implementation emits the answer in the Big Endian byte order so that
-            ///     the CRC residue relationship (CRC(message concat CRC(message))) is a fixed value) holds.
-            ///     For CRC-64 this stable output is the byte sequence
-            ///     <c>{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }</c>.
+            ///     对于返回字节数组或写入字节跨度的方法，
+            ///     此实现以大端字节顺序发出答案，以便
+            ///     CRC 残差关系（CRC（消息连接 CRC（消息）））是固定值。
+            ///     对于 CRC-64，此稳定输出是字节序列
+            ///     <c>{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }</c>。
             ///   </para>
             ///   <para>
-            ///     There are multiple, incompatible, definitions of a 64-bit cyclic redundancy
-            ///     check (CRC) algorithm. When interoperating with another system, ensure that you
-            ///     are using the same definition. The definition used by this implementation is not
-            ///     compatible with the cyclic redundancy check described in ISO 3309.
+            ///     有多个不兼容的 64 位循环冗余
+            ///     检查（CRC）算法的定义。在与另一个系统互操作时，请确保您
+            ///     使用相同的定义。此实现使用的定义与
+            ///     ISO 3309 中描述的循环冗余检查不兼容。
             ///   </para>
             /// </remarks>
+            [UnityEngine.Scripting.Preserve]
             public sealed partial class Crc64 : NonCryptographicHashAlgorithm
             {
                 private const ulong InitialState = 0UL;
@@ -45,45 +46,49 @@ namespace GameFrameX.Runtime
                 private ulong _crc = InitialState;
 
                 /// <summary>
-                ///   Initializes a new instance of the <see cref="Crc64"/> class.
+                ///   初始化 <see cref="Crc64"/> 类的新实例。
                 /// </summary>
+                [UnityEngine.Scripting.Preserve]
                 public Crc64()
                     : base(Size)
                 {
                 }
 
                 /// <summary>
-                ///   Appends the contents of <paramref name="source"/> to the data already
-                ///   processed for the current hash computation.
+                ///   将 <paramref name="source"/> 的内容附加到当前哈希计算中已处理的数据。
                 /// </summary>
-                /// <param name="source">The data to process.</param>
+                /// <param name="source">要处理的数据。</param>
+                [UnityEngine.Scripting.Preserve]
                 public override void Append(ReadOnlySpan<byte> source)
                 {
                     _crc = Update(_crc, source);
                 }
 
                 /// <summary>
-                ///   Resets the hash computation to the initial state.
+                ///   将哈希计算重置为初始状态。
                 /// </summary>
+                [UnityEngine.Scripting.Preserve]
                 public override void Reset()
                 {
                     _crc = InitialState;
                 }
 
                 /// <summary>
-                ///   Writes the computed hash value to <paramref name="destination"/>
-                ///   without modifying accumulated state.
+                ///   将计算出的哈希值写入 <paramref name="destination"/>
+                ///   而不修改累积状态。
                 /// </summary>
-                /// <param name="destination">The buffer that receives the computed hash value.</param>
+                /// <param name="destination">接收计算哈希值的缓冲区。</param>
+                [UnityEngine.Scripting.Preserve]
                 protected override void GetCurrentHashCore(Span<byte> destination)
                 {
                     BinaryPrimitives.WriteUInt64BigEndian(destination, _crc);
                 }
 
                 /// <summary>
-                ///   Writes the computed hash value to <paramref name="destination"/>
-                ///   then clears the accumulated state.
+                ///   将计算出的哈希值写入 <paramref name="destination"/>
+                ///   然后清除累积状态。
                 /// </summary>
+                [UnityEngine.Scripting.Preserve]
                 protected override void GetHashAndResetCore(Span<byte> destination)
                 {
                     BinaryPrimitives.WriteUInt64BigEndian(destination, _crc);
@@ -91,19 +96,21 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                /// Gets the current computed hash value without modifying accumulated state.
+                /// 获取当前计算的哈希值而不修改累积状态。
                 /// </summary>
-                /// <returns>The hash value for the data already provided.</returns>
+                /// <returns>已提供数据的哈希值。</returns>
+                [UnityEngine.Scripting.Preserve]
                 public ulong GetCurrentHashAsUInt64() => _crc;
 
                 /// <summary>
-                ///   Computes the CRC-64 hash of the provided data.
+                ///   计算提供数据的 CRC-64 哈希值。
                 /// </summary>
-                /// <param name="source">The data to hash.</param>
-                /// <returns>The CRC-64 hash of the provided data.</returns>
+                /// <param name="source">要哈希的数据。</param>
+                /// <returns>提供数据的 CRC-64 哈希值。</returns>
                 /// <exception cref="ArgumentNullException">
-                ///   <paramref name="source"/> is <see langword="null"/>.
+                ///   <paramref name="source"/> 为 <see langword="null"/>。
                 /// </exception>
+                [UnityEngine.Scripting.Preserve]
                 public static byte[] Hash(byte[] source)
                 {
                     if (source is null)
@@ -115,10 +122,11 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   Computes the CRC-64 hash of the provided data.
+                ///   计算提供数据的 CRC-64 哈希值。
                 /// </summary>
-                /// <param name="source">The data to hash.</param>
-                /// <returns>The CRC-64 hash of the provided data.</returns>
+                /// <param name="source">要哈希的数据。</param>
+                /// <returns>提供数据的 CRC-64 哈希值。</returns>
+                [UnityEngine.Scripting.Preserve]
                 public static byte[] Hash(ReadOnlySpan<byte> source)
                 {
                     byte[] ret = new byte[Size];
@@ -128,17 +136,18 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   Attempts to compute the CRC-64 hash of the provided data into the provided destination.
+                ///   尝试将提供数据的 CRC-64 哈希值计算到提供的目标中。
                 /// </summary>
-                /// <param name="source">The data to hash.</param>
-                /// <param name="destination">The buffer that receives the computed hash value.</param>
+                /// <param name="source">要哈希的数据。</param>
+                /// <param name="destination">接收计算哈希值的缓冲区。</param>
                 /// <param name="bytesWritten">
-                ///   On success, receives the number of bytes written to <paramref name="destination"/>.
+                ///   成功时，接收写入 <paramref name="destination"/> 的字节数。
                 /// </param>
                 /// <returns>
-                ///   <see langword="true"/> if <paramref name="destination"/> is long enough to receive
-                ///   the computed hash value (8 bytes); otherwise, <see langword="false"/>.
+                ///   <see langword="true"/> 如果 <paramref name="destination"/> 足够长以接收
+                ///   计算的哈希值（8 字节）；否则 <see langword="false"/>。
                 /// </returns>
+                [UnityEngine.Scripting.Preserve]
                 public static bool TryHash(ReadOnlySpan<byte> source, Span<byte> destination, out int bytesWritten)
                 {
                     if (destination.Length < Size)
@@ -154,13 +163,14 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   Computes the CRC-64 hash of the provided data into the provided destination.
+                ///   计算提供数据的 CRC-64 哈希值到提供的目标中。
                 /// </summary>
-                /// <param name="source">The data to hash.</param>
-                /// <param name="destination">The buffer that receives the computed hash value.</param>
+                /// <param name="source">要哈希的数据。</param>
+                /// <param name="destination">接收计算哈希值的缓冲区。</param>
                 /// <returns>
-                ///   The number of bytes written to <paramref name="destination"/>.
+                ///   写入 <paramref name="destination"/> 的字节数。
                 /// </returns>
+                [UnityEngine.Scripting.Preserve]
                 public static int Hash(ReadOnlySpan<byte> source, Span<byte> destination)
                 {
                     if (destination.Length < Size)
@@ -173,9 +183,10 @@ namespace GameFrameX.Runtime
                     return Size;
                 }
 
-                /// <summary>Computes the CRC-64 hash of the provided data.</summary>
-                /// <param name="source">The data to hash.</param>
-                /// <returns>The computed CRC-64 hash.</returns>
+                /// <summary>计算提供数据的 CRC-64 哈希值。</summary>
+                /// <param name="source">要哈希的数据。</param>
+                /// <returns>计算的 CRC-64 哈希值。</returns>
+                [UnityEngine.Scripting.Preserve]
                 public static ulong HashToUInt64(ReadOnlySpan<byte> source) =>
                     Update(InitialState, source);
 
@@ -192,7 +203,7 @@ namespace GameFrameX.Runtime
                     return crc;
                 }
 
-                /// <summary>CRC-64 transition table.</summary>
+                /// <summary>CRC-64 过渡表。</summary>
                 private static ReadOnlySpan<ulong> CrcLookup => new ulong[256]
                 {
                     // Generated by GenerateTable(0x42F0E1EBA9EA3693):
@@ -255,26 +266,29 @@ namespace GameFrameX.Runtime
             }
 
             /// <summary>
-            ///   Represents a non-cryptographic hash algorithm.
+            ///   表示一种非加密哈希算法。
             /// </summary>
+            [UnityEngine.Scripting.Preserve]
             public abstract class NonCryptographicHashAlgorithm
             {
                 /// <summary>
-                ///   Gets the number of bytes produced from this hash algorithm.
+                ///   获取此哈希算法生成的字节数。
                 /// </summary>
-                /// <value>The number of bytes produced from this hash algorithm.</value>
+                /// <value>此哈希算法生成的字节数。</value>
+                [UnityEngine.Scripting.Preserve]
                 public int HashLengthInBytes { get; }
 
                 /// <summary>
-                ///   Called from constructors in derived classes to initialize the
-                ///   <see cref="NonCryptographicHashAlgorithm"/> class.
+                ///   从派生类的构造函数调用以初始化
+                ///   <see cref="NonCryptographicHashAlgorithm"/> 类。
                 /// </summary>
                 /// <param name="hashLengthInBytes">
-                ///   The number of bytes produced from this hash algorithm.
+                ///   此哈希算法生成的字节数。
                 /// </param>
                 /// <exception cref="ArgumentOutOfRangeException">
-                ///   <paramref name="hashLengthInBytes"/> is less than 1.
+                ///   <paramref name="hashLengthInBytes"/> 小于 1。
                 /// </exception>
+                [UnityEngine.Scripting.Preserve]
                 protected NonCryptographicHashAlgorithm(int hashLengthInBytes)
                 {
                     if (hashLengthInBytes < 1)
@@ -284,47 +298,49 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   When overridden in a derived class,
-                ///   appends the contents of <paramref name="source"/> to the data already
-                ///   processed for the current hash computation.
+                ///   当在派生类中重写时，
+                ///   将 <paramref name="source"/> 的内容附加到当前哈希计算中已处理的数据。
                 /// </summary>
-                /// <param name="source">The data to process.</param>
+                /// <param name="source">要处理的数据。</param>
+                [UnityEngine.Scripting.Preserve]
                 public abstract void Append(ReadOnlySpan<byte> source);
 
                 /// <summary>
-                ///   When overridden in a derived class,
-                ///   resets the hash computation to the initial state.
+                ///   当在派生类中重写时，
+                ///   将哈希计算重置为初始状态。
                 /// </summary>
+                [UnityEngine.Scripting.Preserve]
                 public abstract void Reset();
 
                 /// <summary>
-                ///   When overridden in a derived class,
-                ///   writes the computed hash value to <paramref name="destination"/>
-                ///   without modifying accumulated state.
+                ///   当在派生类中重写时，
+                ///   将计算出的哈希值写入 <paramref name="destination"/>
+                ///   而不修改累积状态。
                 /// </summary>
-                /// <param name="destination">The buffer that receives the computed hash value.</param>
+                /// <param name="destination">接收计算哈希值的缓冲区。</param>
                 /// <remarks>
                 ///   <para>
-                ///     Implementations of this method must write exactly
-                ///     <see cref="HashLengthInBytes"/> bytes to <paramref name="destination"/>.
-                ///     Do not assume that the buffer was zero-initialized.
+                ///     此方法的实现必须写入
+                ///     <see cref="HashLengthInBytes"/> 字节到 <paramref name="destination"/>。
+                ///     不要假设缓冲区已被零初始化。
                 ///   </para>
                 ///   <para>
-                ///     The <see cref="NonCryptographicHashAlgorithm"/> class validates the
-                ///     size of the buffer before calling this method, and slices the span
-                ///     down to be exactly <see cref="HashLengthInBytes"/> in length.
+                ///     <see cref="NonCryptographicHashAlgorithm"/> 类在调用此方法之前验证
+                ///     缓冲区的大小，并将切片的跨度
+                ///     降至正好 <see cref="HashLengthInBytes"/> 的长度。
                 ///   </para>
                 /// </remarks>
+                [UnityEngine.Scripting.Preserve]
                 protected abstract void GetCurrentHashCore(Span<byte> destination);
 
                 /// <summary>
-                ///   Appends the contents of <paramref name="source"/> to the data already
-                ///   processed for the current hash computation.
+                ///   将 <paramref name="source"/> 的内容附加到当前哈希计算中已处理的数据。
                 /// </summary>
-                /// <param name="source">The data to process.</param>
+                /// <param name="source">要处理的数据。</param>
                 /// <exception cref="ArgumentNullException">
-                ///   <paramref name="source"/> is <see langword="null"/>.
+                ///   <paramref name="source"/> 为 <see langword="null"/>。
                 /// </exception>
+                [UnityEngine.Scripting.Preserve]
                 public void Append(byte[] source)
                 {
                     if (source is null)
@@ -336,14 +352,14 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   Appends the contents of <paramref name="stream"/> to the data already
-                ///   processed for the current hash computation.
+                ///   将 <paramref name="stream"/> 的内容附加到当前哈希计算中已处理的数据。
                 /// </summary>
-                /// <param name="stream">The data to process.</param>
+                /// <param name="stream">要处理的数据。</param>
                 /// <exception cref="ArgumentNullException">
-                ///   <paramref name="stream"/> is <see langword="null"/>.
+                ///   <paramref name="stream"/> 为 <see langword="null"/>。
                 /// </exception>
                 /// <seealso cref="AppendAsync(Stream, CancellationToken)"/>
+                [UnityEngine.Scripting.Preserve]
                 public void Append(Stream stream)
                 {
                     if (stream is null)
@@ -369,21 +385,21 @@ namespace GameFrameX.Runtime
                 }
 
                 /*/// <summary>
-                ///   Asychronously reads the contents of <paramref name="stream"/>
-                ///   and appends them to the data already
-                ///   processed for the current hash computation.
+                ///   异步读取 <paramref name="stream"/> 的内容
+                ///   并将其附加到当前哈希计算中已处理的数据。
                 /// </summary>
-                /// <param name="stream">The data to process.</param>
+                /// <param name="stream">要处理的数据。</param>
                 /// <param name="cancellationToken">
-                ///   The token to monitor for cancellation requests.
-                ///   The default value is <see cref="CancellationToken.None"/>.
+                ///   用于监视取消请求的令牌。
+                ///   默认值为 <see cref="CancellationToken.None"/>。
                 /// </param>
                 /// <returns>
-                ///   A task that represents the asynchronous append operation.
+                ///   表示异步附加操作的任务。
                 /// </returns>
                 /// <exception cref="ArgumentNullException">
-                ///   <paramref name="stream"/> is <see langword="null"/>.
+                ///   <paramref name="stream"/> 为 <see langword="null"/>。
                 /// </exception>
+                [UnityEngine.Scripting.Preserve]
                 public Task AppendAsync(Stream stream, CancellationToken cancellationToken = default)
                 {
                     if (stream is null)
@@ -418,11 +434,12 @@ namespace GameFrameX.Runtime
                 }*/
 
                 /// <summary>
-                ///   Gets the current computed hash value without modifying accumulated state.
+                ///   获取当前计算的哈希值而不修改累积状态。
                 /// </summary>
                 /// <returns>
-                ///   The hash value for the data already provided.
+                ///   已提供数据的哈希值。
                 /// </returns>
+                [UnityEngine.Scripting.Preserve]
                 public byte[] GetCurrentHash()
                 {
                     byte[] ret = new byte[HashLengthInBytes];
@@ -431,17 +448,18 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   Attempts to write the computed hash value to <paramref name="destination"/>
-                ///   without modifying accumulated state.
+                ///   尝试将计算出的哈希值写入 <paramref name="destination"/>
+                ///   而不修改累积状态。
                 /// </summary>
-                /// <param name="destination">The buffer that receives the computed hash value.</param>
+                /// <param name="destination">接收计算哈希值的缓冲区。</param>
                 /// <param name="bytesWritten">
-                ///   On success, receives the number of bytes written to <paramref name="destination"/>.
+                ///   成功时，接收写入 <paramref name="destination"/> 的字节数。
                 /// </param>
                 /// <returns>
-                ///   <see langword="true"/> if <paramref name="destination"/> is long enough to receive
-                ///   the computed hash value; otherwise, <see langword="false"/>.
+                ///   <see langword="true"/> 如果 <paramref name="destination"/> 足够长以接收
+                ///   计算的哈希值；否则 <see langword="false"/>。
                 /// </returns>
+                [UnityEngine.Scripting.Preserve]
                 public bool TryGetCurrentHash(Span<byte> destination, out int bytesWritten)
                 {
                     if (destination.Length < HashLengthInBytes)
@@ -456,17 +474,18 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   Writes the computed hash value to <paramref name="destination"/>
-                ///   without modifying accumulated state.
+                ///   将计算出的哈希值写入 <paramref name="destination"/>
+                ///   而不修改累积状态。
                 /// </summary>
-                /// <param name="destination">The buffer that receives the computed hash value.</param>
+                /// <param name="destination">接收计算哈希值的缓冲区。</param>
                 /// <returns>
-                ///   The number of bytes written to <paramref name="destination"/>,
-                ///   which is always <see cref="HashLengthInBytes"/>.
+                ///   写入 <paramref name="destination"/> 的字节数，
+                ///   始终为 <see cref="HashLengthInBytes"/>。
                 /// </returns>
                 /// <exception cref="ArgumentException">
-                ///   <paramref name="destination"/> is shorter than <see cref="HashLengthInBytes"/>.
+                ///   <paramref name="destination"/> 短于 <see cref="HashLengthInBytes"/>。
                 /// </exception>
+                [UnityEngine.Scripting.Preserve]
                 public int GetCurrentHash(Span<byte> destination)
                 {
                     if (destination.Length < HashLengthInBytes)
@@ -479,11 +498,12 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   Gets the current computed hash value and clears the accumulated state.
+                ///   获取当前计算的哈希值并清除累积状态。
                 /// </summary>
                 /// <returns>
-                ///   The hash value for the data already provided.
+                ///   已提供数据的哈希值。
                 /// </returns>
+                [UnityEngine.Scripting.Preserve]
                 public byte[] GetHashAndReset()
                 {
                     byte[] ret = new byte[HashLengthInBytes];
@@ -492,18 +512,19 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   Attempts to write the computed hash value to <paramref name="destination"/>.
-                ///   If successful, clears the accumulated state.
+                ///   尝试将计算出的哈希值写入 <paramref name="destination"/>。
+                ///   如果成功，清除累积状态。
                 /// </summary>
-                /// <param name="destination">The buffer that receives the computed hash value.</param>
+                /// <param name="destination">接收计算哈希值的缓冲区。</param>
                 /// <param name="bytesWritten">
-                ///   On success, receives the number of bytes written to <paramref name="destination"/>.
+                ///   成功时，接收写入 <paramref name="destination"/> 的字节数。
                 /// </param>
                 /// <returns>
-                ///   <see langword="true"/> and clears the accumulated state
-                ///   if <paramref name="destination"/> is long enough to receive
-                ///   the computed hash value; otherwise, <see langword="false"/>.
+                ///   <see langword="true"/> 并清除累积状态
+                ///   如果 <paramref name="destination"/> 足够长以接收
+                ///   计算的哈希值；否则 <see langword="false"/>。
                 /// </returns>
+                [UnityEngine.Scripting.Preserve]
                 public bool TryGetHashAndReset(Span<byte> destination, out int bytesWritten)
                 {
                     if (destination.Length < HashLengthInBytes)
@@ -518,17 +539,18 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   Writes the computed hash value to <paramref name="destination"/>
-                ///   then clears the accumulated state.
+                ///   将计算出的哈希值写入 <paramref name="destination"/>
+                ///   然后清除累积状态。
                 /// </summary>
-                /// <param name="destination">The buffer that receives the computed hash value.</param>
+                /// <param name="destination">接收计算哈希值的缓冲区。</param>
                 /// <returns>
-                ///   The number of bytes written to <paramref name="destination"/>,
-                ///   which is always <see cref="HashLengthInBytes"/>.
+                ///   写入 <paramref name="destination"/> 的字节数，
+                ///   始终为 <see cref="HashLengthInBytes"/>。
                 /// </returns>
                 /// <exception cref="ArgumentException">
-                ///   <paramref name="destination"/> is shorter than <see cref="HashLengthInBytes"/>.
+                ///   <paramref name="destination"/> 短于 <see cref="HashLengthInBytes"/>。
                 /// </exception>
+                [UnityEngine.Scripting.Preserve]
                 public int GetHashAndReset(Span<byte> destination)
                 {
                     if (destination.Length < HashLengthInBytes)
@@ -541,28 +563,29 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   Writes the computed hash value to <paramref name="destination"/>
-                ///   then clears the accumulated state.
+                ///   将计算出的哈希值写入 <paramref name="destination"/>
+                ///   然后清除累积状态。
                 /// </summary>
-                /// <param name="destination">The buffer that receives the computed hash value.</param>
+                /// <param name="destination">接收计算哈希值的缓冲区。</param>
                 /// <remarks>
                 ///   <para>
-                ///     Implementations of this method must write exactly
-                ///     <see cref="HashLengthInBytes"/> bytes to <paramref name="destination"/>.
-                ///     Do not assume that the buffer was zero-initialized.
+                ///     此方法的实现必须写入
+                ///     <see cref="HashLengthInBytes"/> 字节到 <paramref name="destination"/>。
+                ///     不要假设缓冲区已被零初始化。
                 ///   </para>
                 ///   <para>
-                ///     The <see cref="NonCryptographicHashAlgorithm"/> class validates the
-                ///     size of the buffer before calling this method, and slices the span
-                ///     down to be exactly <see cref="HashLengthInBytes"/> in length.
+                ///     <see cref="NonCryptographicHashAlgorithm"/> 类在调用此方法之前验证
+                ///     缓冲区的大小，并将切片的跨度
+                ///     降至正好 <see cref="HashLengthInBytes"/> 的长度。
                 ///   </para>
                 ///   <para>
-                ///     The default implementation of this method calls
-                ///     <see cref="GetCurrentHashCore"/> followed by <see cref="Reset"/>.
-                ///     Overrides of this method do not need to call either of those methods,
-                ///     but must ensure that the caller cannot observe a difference in behavior.
+                ///     此方法的默认实现调用
+                ///     <see cref="GetCurrentHashCore"/> 然后 <see cref="Reset"/>。
+                ///     此方法的重写不需要调用这两个方法，
+                ///     但必须确保调用者无法观察到行为的差异。
                 ///   </para>
                 /// </remarks>
+                [UnityEngine.Scripting.Preserve]
                 protected virtual void GetHashAndResetCore(Span<byte> destination)
                 {
                     Debug.Assert(destination.Length == HashLengthInBytes);
@@ -572,14 +595,15 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                ///   This method is not supported and should not be called.
-                ///   Call <see cref="GetCurrentHash()"/> or <see cref="GetHashAndReset()"/>
-                ///   instead.
+                ///   此方法不受支持且不应被调用。
+                ///   请改用 <see cref="GetCurrentHash()"/> 或 <see cref="GetHashAndReset()"/>
+                ///   。
                 /// </summary>
-                /// <returns>This method will always throw a <see cref="NotSupportedException"/>.</returns>
-                /// <exception cref="NotSupportedException">In all cases.</exception>
+                /// <returns>此方法将始终引发 <see cref="NotSupportedException"/>。</returns>
+                /// <exception cref="NotSupportedException">在所有情况下。</exception>
                 [EditorBrowsable(EditorBrowsableState.Never)]
                 [Obsolete("Use GetCurrentHash() to retrieve the computed hash code.", true)]
+                [UnityEngine.Scripting.Preserve]
 #pragma warning disable CS0809 // Obsolete member overrides non-obsolete member
                 public override int GetHashCode()
 #pragma warning restore CS0809 // Obsolete member overrides non-obsolete member

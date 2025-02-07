@@ -5,7 +5,6 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFrameX;
 using UnityEngine;
 
 namespace GameFrameX.Runtime
@@ -13,11 +12,13 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// UnityEngine.Vector2 变量类。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarVector2 : Variable<Vector2>
     {
         /// <summary>
         /// 初始化 UnityEngine.Vector2 变量类的新实例。
         /// </summary>
+        [UnityEngine.Scripting.Preserve]
         public VarVector2()
         {
         }
@@ -26,6 +27,7 @@ namespace GameFrameX.Runtime
         /// 从 UnityEngine.Vector2 到 UnityEngine.Vector2 变量类的隐式转换。
         /// </summary>
         /// <param name="value">值。</param>
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarVector2(Vector2 value)
         {
             VarVector2 varValue = ReferencePool.Acquire<VarVector2>();
@@ -37,6 +39,7 @@ namespace GameFrameX.Runtime
         /// 从 UnityEngine.Vector2 变量类到 UnityEngine.Vector2 的隐式转换。
         /// </summary>
         /// <param name="value">值。</param>
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator Vector2(VarVector2 value)
         {
             return value.Value;

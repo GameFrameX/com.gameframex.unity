@@ -5,6 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using UnityEngine.Scripting; // 确保引入命名空间
+
 namespace GameFrameX.Runtime
 {
     /// <summary>
@@ -15,6 +17,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取事件ID。
         /// </summary>
+        [Preserve] // 添加 Preserve 标签
         public abstract string Id
         {
             get;

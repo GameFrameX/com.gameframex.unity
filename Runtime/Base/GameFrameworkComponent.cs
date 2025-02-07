@@ -13,6 +13,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏框架组件抽象类。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public abstract class GameFrameworkComponent : MonoBehaviour
     {
         /// <summary>

@@ -10,6 +10,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 开始处理任务的状态。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public enum StartTaskStatus : byte
     {
         /// <summary>

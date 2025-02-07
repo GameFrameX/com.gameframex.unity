@@ -13,6 +13,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 辅助器创建器相关的实用函数。
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class Helper
     {
         /// <summary>
@@ -22,6 +23,7 @@ namespace GameFrameX.Runtime
         /// <param name="helperTypeName">要创建的辅助器类型名称。</param>
         /// <param name="customHelper">若要创建的辅助器类型为空时，使用的自定义辅助器类型。</param>
         /// <returns>创建的辅助器。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static T CreateHelper<T>(string helperTypeName, T customHelper) where T : MonoBehaviour
         {
             return CreateHelper(helperTypeName, customHelper, 0);
@@ -35,6 +37,7 @@ namespace GameFrameX.Runtime
         /// <param name="customHelper">若要创建的辅助器类型为空时，使用的自定义辅助器类型。</param>
         /// <param name="index">要创建的辅助器索引。</param>
         /// <returns>创建的辅助器。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static T CreateHelper<T>(string helperTypeName, T customHelper, int index) where T : MonoBehaviour
         {
             T helper = null;
@@ -81,6 +84,7 @@ namespace GameFrameX.Runtime
         /// <param name="customHelper">若要创建的辅助器类型为空时，使用的自定义辅助器类型。</param>
         /// <param name="index">要创建的辅助器索引。</param>
         /// <returns>创建的辅助器。</returns>
+        [UnityEngine.Scripting.Preserve]
         public static T CreateHelper<T>(GameObject target, string helperTypeName, T customHelper, int index) where T : MonoBehaviour
         {
             GameFrameworkGuard.NotNull(target, nameof(target));

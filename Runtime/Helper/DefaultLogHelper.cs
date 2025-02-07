@@ -21,6 +21,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="level">日志等级。</param>
         /// <param name="message">日志内容。</param>
+        [UnityEngine.Scripting.Preserve] // Added Preserve attribute
         public void Log(GameFrameworkLogLevel level, object message)
         {
             var time = $"[Unity]:[{DateTime.Now:HH:mm:ss.fff}]:";

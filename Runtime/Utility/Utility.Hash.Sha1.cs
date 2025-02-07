@@ -14,24 +14,31 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// Sha1
             /// </summary>
+            /// <summary>
+            /// Sha1 哈希算法的实现。
+            /// </summary>
+            [UnityEngine.Scripting.Preserve]
             public static class Sha1
             {
+
                 /// <summary>
-                /// 使用UTF-8 编码计算Sha1
+                /// 计算给定内容的Sha1哈希值，使用UTF-8编码。
                 /// </summary>
-                /// <param name="content"></param>
-                /// <returns></returns>
+                /// <param name="content">要计算哈希值的内容。</param>
+                /// <returns>返回计算得到的Sha1哈希值。</returns>
+                [UnityEngine.Scripting.Preserve]
                 public static string Hash(string content)
                 {
                     return Hash(content, Encoding.UTF8);
                 }
 
                 /// <summary>
-                /// 使用指定编码 计算Sha1
+                /// 使用指定编码计算Sha1哈希值。
                 /// </summary>
-                /// <param name="content"></param>
-                /// <param name="encode"></param>
-                /// <returns></returns>
+                /// <param name="content">要计算哈希值的内容。</param>
+                /// <param name="encode">用于编码的Encoding对象。</param>
+                /// <returns>返回计算得到的Sha1哈希值。</returns>
+                [UnityEngine.Scripting.Preserve]
                 public static string Hash(string content, Encoding encode)
                 {
                     //创建SHA1对象
@@ -41,7 +48,7 @@ namespace GameFrameX.Runtime
                         var bytesIn = encode.GetBytes(content);
                         var bytesOut = sha1.ComputeHash(bytesIn);
                         var result = BitConverter.ToString(bytesOut); //将运算结果转为string类型
-                        result = result.Replace("-", "").ToLower();
+                        result = result.Replace("-", string.Empty).ToLower();
                         return result;
                     }
                 }

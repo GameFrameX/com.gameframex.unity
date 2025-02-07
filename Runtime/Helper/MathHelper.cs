@@ -6,6 +6,7 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 数学帮助类
     /// </summary>
+    [UnityEngine.Scripting.Preserve]
     public static class MathHelper
     {
         /// <summary>
@@ -14,6 +15,7 @@ namespace GameFrameX.Runtime
         /// <param name="src"></param>
         /// <param name="target"></param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool CheckIntersect(RectInt src, RectInt target)
         {
             int minX = Math.Max(src.x, target.x);
@@ -40,6 +42,7 @@ namespace GameFrameX.Runtime
         /// <param name="w2"></param>
         /// <param name="h2"></param>
         /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool CheckIntersect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
         {
             int minX = Math.Max(x1, x2);
@@ -99,6 +102,7 @@ namespace GameFrameX.Runtime
         /// <param name="h2">B 高度</param>
         /// <param name="intersectPoints">交叉点列表</param>
         /// <returns>返回是否相交</returns>
+        [UnityEngine.Scripting.Preserve]
         public static bool CheckIntersectPoints(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2, int[] intersectPoints)
         {
             Vector2Int dPt = new Vector2Int();

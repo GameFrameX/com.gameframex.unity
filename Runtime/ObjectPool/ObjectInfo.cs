@@ -7,6 +7,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.ObjectPool
 {
@@ -14,6 +15,7 @@ namespace GameFrameX.ObjectPool
     /// 对象信息。
     /// </summary>
     [StructLayout(LayoutKind.Auto)]
+    [Preserve] // Preserve the ObjectInfo struct for Unity's serialization
     public struct ObjectInfo
     {
         private readonly string m_Name;
@@ -32,6 +34,7 @@ namespace GameFrameX.ObjectPool
         /// <param name="priority">对象的优先级。</param>
         /// <param name="lastUseTime">对象上次使用时间。</param>
         /// <param name="spawnCount">对象的获取计数。</param>
+        [Preserve] // Preserve the constructor for Unity's serialization
         public ObjectInfo(string name, bool locked, bool customCanReleaseFlag, int priority, DateTime lastUseTime, int spawnCount)
         {
             m_Name = name;
@@ -45,6 +48,7 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象名称。
         /// </summary>
+        [Preserve] // Preserve the Name property for Unity's serialization
         public string Name
         {
             get
@@ -56,6 +60,7 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象是否被加锁。
         /// </summary>
+        [Preserve] // Preserve the Locked property for Unity's serialization
         public bool Locked
         {
             get
@@ -67,6 +72,7 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象自定义释放检查标记。
         /// </summary>
+        [Preserve] // Preserve the CustomCanReleaseFlag property for Unity's serialization
         public bool CustomCanReleaseFlag
         {
             get
@@ -78,6 +84,7 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象的优先级。
         /// </summary>
+        [Preserve] // Preserve the Priority property for Unity's serialization
         public int Priority
         {
             get
@@ -89,6 +96,7 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象上次使用时间。
         /// </summary>
+        [Preserve] // Preserve the LastUseTime property for Unity's serialization
         public DateTime LastUseTime
         {
             get
@@ -100,6 +108,7 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象是否正在使用。
         /// </summary>
+        [Preserve] // Preserve the IsInUse property for Unity's serialization
         public bool IsInUse
         {
             get
@@ -111,6 +120,7 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象的获取计数。
         /// </summary>
+        [Preserve] // Preserve the SpawnCount property for Unity's serialization
         public int SpawnCount
         {
             get
