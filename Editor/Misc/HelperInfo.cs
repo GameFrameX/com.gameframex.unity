@@ -5,7 +5,6 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFrameX;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using GameFrameX.Runtime;
