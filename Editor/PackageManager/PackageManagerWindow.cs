@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using GameFrameX.Runtime;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using UnityEditor;
-using UnityEditor.PackageManager;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
-using PackageInfo = UnityEditor.PackageManager.PackageInfo;
-using Version = System.Version;
 
 namespace GameFrameX.Editor
 {
     public partial class PackageManagerWindow : EditorWindow
     {
-        [MenuItem("GameFrameX/Package Manager", false, 2000)]
+        [MenuItem("GameFrameX/Package Manager(GameFrameX的包管理器)", false, 2000)]
         public static void ShowWindow()
         {
             var window = GetWindow<PackageManagerWindow>("GameFrameX");

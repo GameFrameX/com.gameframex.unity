@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using GameFrameX.Runtime;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Debug = UnityEngine.Debug;
 using PackageInfo = UnityEditor.PackageManager.PackageInfo;
-using Version = System.Version;
 
 namespace GameFrameX.Editor
 {
-    public partial class PackageManagerWindow : EditorWindow
+    public partial class PackageManagerWindow
     {
         /// <summary>
         /// 包信息
