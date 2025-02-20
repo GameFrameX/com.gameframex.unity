@@ -46,7 +46,14 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static bool IsWebGL
         {
-            get { return Application.platform == RuntimePlatform.WebGLPlayer; }
+            get
+            {
+#if UNITY_WEBGL
+                return true;
+#else
+                return Application.platform == RuntimePlatform.WebGLPlayer;
+#endif
+            }
         }
 
         /// <summary>
@@ -55,7 +62,13 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static bool IsWindows
         {
-            get { return Application.platform == RuntimePlatform.WindowsPlayer; }
+            get
+            {
+#if UNITY_STANDALONE_WIN
+                return true;
+#endif
+                return Application.platform == RuntimePlatform.WindowsPlayer;
+            }
         }
 
         /// <summary>
@@ -73,7 +86,13 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static bool IsMacOsx
         {
-            get { return Application.platform == RuntimePlatform.OSXPlayer; }
+            get
+            {
+#if UNITY_STANDALONE_OSX
+                return true;
+#endif
+                return Application.platform == RuntimePlatform.OSXPlayer;
+            }
         }
 
         /// <summary>
