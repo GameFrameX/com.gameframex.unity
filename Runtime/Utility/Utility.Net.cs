@@ -95,6 +95,46 @@ namespace GameFrameX.Runtime
             }
 
             /// <summary>
+            /// 获取域名的IpV4 地址
+            /// </summary>
+            /// <param name="domainName">域名</param>
+            /// <returns>返回域名的IPv4地址，如果没有则返回空字符串</returns>
+            [Preserve]
+            public static string GetHostIPv4(string domainName)
+            {
+                var iPHostEntry = Dns.GetHostEntry(domainName);
+                foreach (var address in iPHostEntry.AddressList)
+                {
+                    if (address.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        return address.ToString();
+                    }
+                }
+
+                return string.Empty;
+            }
+
+            /// <summary>
+            /// 获取域名的IpV6 地址
+            /// </summary>
+            /// <param name="domainName">域名</param>
+            /// <returns>返回域名的IPv4地址，如果没有则返回空字符串</returns>
+            [Preserve]
+            public static string GetHostIPv6(string domainName)
+            {
+                var iPHostEntry = Dns.GetHostEntry(domainName);
+                foreach (var address in iPHostEntry.AddressList)
+                {
+                    if (address.AddressFamily == AddressFamily.InterNetworkV6)
+                    {
+                        return address.ToString();
+                    }
+                }
+
+                return string.Empty;
+            }
+
+            /// <summary>
             /// 获取本机ip地址
             /// </summary>
             /// <returns>返回本机的IPv4地址，如果没有则返回空字符串</returns>
