@@ -242,8 +242,36 @@ namespace GameFrameX.Editor
                 HotFixEditorCompilerHelper.RemoveEditor();
             }
         }
+#if ENABLE_WX_MINI_GAME
+        /// <summary>
+        /// 发布 微信小游戏 WebGL
+        /// </summary>
+        [MenuItem("GameFrameX/Build/WeChat MiniGame WebGL", false, 300)]
+        private static void BuildPlayerToWeChatMiniGameWebGL()
+        {
+            PlayerSettings.SplashScreen.show = false;
 
+            if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.WebGL)
+            {
+                Debug.LogError("当前构建目标不是 WebGL");
+                return;
+            }
 
+            try
+            {
+                HotFixEditorCompilerHelper.AddEditor();
+                UpdateBuildTime();
+                WeChatWASM.WXConvertCore.config.ProjectConf.DST = BuildOutputPath();
+                AssetDatabase.SaveAssets();
+                WeChatWASM.WXConvertCore.DoExport();
+                Debug.Log("Build Output Path:" + BuildOutputPath());
+            }
+            finally
+            {
+                HotFixEditorCompilerHelper.RemoveEditor();
+            }
+        }
+#endif
         /// <summary>
         /// 发布 APK
         /// 该接口主要用于外部调用

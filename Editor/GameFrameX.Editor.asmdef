@@ -2,7 +2,8 @@
     "name": "GameFrameX.Editor",
     "rootNamespace": "GameFrameX.Editor",
     "references": [
-        "GameFrameX.Runtime"
+        "GameFrameX.Runtime",
+        "WxEditor"
     ],
     "includePlatforms": [
         "Editor"
@@ -13,6 +14,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.qq.weixin.minigame",
+            "expression": "",
+            "define": "ENABLE_WX_MINI_GAME"
+        }
+    ],
     "noEngineReferences": false
 }
