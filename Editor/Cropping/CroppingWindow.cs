@@ -30,7 +30,7 @@ namespace GameFrameX.Editor
         }
 
         private string[] _dropdownOptions = new string[] { "Empty" };
-        private readonly string[] _ignoredTypes = new string[] { "UnityEngine", "UnityEditor", "Mono", "System", "dnlib", "Unity.Hotfix", "Unity.Baselib", ".Editor", "JetBrains", "NUnit" };
+        private readonly string[] _ignoredTypes = new string[] { "UnityEngine".ToLower(), "UnityEditor".ToLower(), "Mono".ToLower(), "System".ToLower(), "dnlib".ToLower(), "Unity.Hotfix".ToLower(), "Unity.Baselib".ToLower(), ".Editor".ToLower(), "JetBrains".ToLower(), "NUnit".ToLower() };
         private int _selectedDropdownIndex = 0;
         private string _searchText = string.Empty;
 
@@ -53,11 +53,11 @@ namespace GameFrameX.Editor
                         var result = new List<string>();
                         foreach (var type in types)
                         {
-                            var fullName = type.FullName;
+                            var fullName = type.FullName.ToLower();
                             var isFind = false;
                             foreach (var ignoredType in _ignoredTypes)
                             {
-                                if (fullName.Contains(ignoredType, StringComparison.OrdinalIgnoreCase))
+                                if (fullName.Contains(ignoredType))
                                 {
                                     isFind = true;
                                     break;
