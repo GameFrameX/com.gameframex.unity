@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using UnityEngine.Scripting;
 
@@ -19,7 +20,7 @@ namespace GameFrameX.Runtime
     {
         private readonly object _lock = new object();
         private readonly GameFrameworkMultiDictionary<string, EventHandler<T>> _eventHandlers;
-        private readonly Queue<EventNode> _events;
+        private readonly ConcurrentQueue<EventNode> _events;
         private readonly Dictionary<object, LinkedListNode<EventHandler<T>>> _cachedNodes;
         private readonly Dictionary<object, LinkedListNode<EventHandler<T>>> _tempNodes;
         private readonly EventPoolMode _eventPoolMode;
@@ -33,7 +34,7 @@ namespace GameFrameX.Runtime
         public EventPool(EventPoolMode mode)
         {
             _eventHandlers = new GameFrameworkMultiDictionary<string, EventHandler<T>>();
-            _events = new Queue<EventNode>();
+            _events = new ConcurrentQueue<EventNode>();
             _cachedNodes = new Dictionary<object, LinkedListNode<EventHandler<T>>>();
             _tempNodes = new Dictionary<object, LinkedListNode<EventHandler<T>>>();
             _eventPoolMode = mode;
@@ -61,13 +62,7 @@ namespace GameFrameX.Runtime
         [Preserve]
         public int EventCount
         {
-            get
-            {
-                lock (_lock)
-                {
-                    return _events.Count;
-                }
-            }
+            get { return _events.Count; }
         }
 
         /// <summary>
@@ -78,14 +73,10 @@ namespace GameFrameX.Runtime
         [Preserve]
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            lock (_lock)
+            while (_events.TryDequeue(out var eventNodeNode))
             {
-                while (_events.Count > 0)
-                {
-                    EventNode eventNodeNode = _events.Dequeue();
-                    HandleEvent(eventNodeNode.Sender, eventNodeNode.EventArgs);
-                    ReferencePool.Release(eventNodeNode);
-                }
+                HandleEvent(eventNodeNode.Sender, eventNodeNode.EventArgs);
+                ReferencePool.Release(eventNodeNode);
             }
         }
 
@@ -95,7 +86,11 @@ namespace GameFrameX.Runtime
         public void Shutdown()
         {
             Clear();
-            _eventHandlers.Clear();
+            lock (_lock)
+            {
+                _eventHandlers.Clear();
+            }
+
             _cachedNodes.Clear();
             _tempNodes.Clear();
             _defaultHandler = null;
@@ -106,9 +101,9 @@ namespace GameFrameX.Runtime
         /// </summary>
         public void Clear()
         {
-            lock (_lock)
+            while (_events.TryDequeue(out var node))
             {
-                _events.Clear();
+                ReferencePool.Release(node);
             }
         }
 
@@ -138,13 +133,13 @@ namespace GameFrameX.Runtime
         /// <returns>是否存在事件处理函数。</returns>
         public bool Check(string id, EventHandler<T> handler)
         {
+            if (handler == null)
+            {
+                throw new GameFrameworkException("Event handler is invalid.");
+            }
+
             lock (_lock)
             {
-                if (handler == null)
-                {
-                    throw new GameFrameworkException("Event handler is invalid.");
-                }
-
                 return _eventHandlers.Contains(id, handler);
             }
         }
@@ -156,13 +151,13 @@ namespace GameFrameX.Runtime
         /// <param name="handler">要订阅的事件处理函数。</param>
         public void Subscribe(string id, EventHandler<T> handler)
         {
+            if (handler == null)
+            {
+                throw new GameFrameworkException("Event handler is invalid.");
+            }
+
             lock (_lock)
             {
-                if (handler == null)
-                {
-                    throw new GameFrameworkException("Event handler is invalid.");
-                }
-
                 if (!_eventHandlers.Contains(id))
                 {
                     _eventHandlers.Add(id, handler);
@@ -189,16 +184,16 @@ namespace GameFrameX.Runtime
         /// <param name="handler">要取消订阅的事件处理函数。</param>
         public void Unsubscribe(string id, EventHandler<T> handler)
         {
+            if (handler == null)
+            {
+                throw new GameFrameworkException("Event handler is invalid.");
+            }
+
             lock (_lock)
             {
-                if (handler == null)
-                {
-                    throw new GameFrameworkException("Event handler is invalid.");
-                }
-
                 if (_cachedNodes.Count > 0)
                 {
-                    foreach (KeyValuePair<object, LinkedListNode<EventHandler<T>>> cachedNode in _cachedNodes)
+                    foreach (var cachedNode in _cachedNodes)
                     {
                         if (cachedNode.Value != null && cachedNode.Value.Value == handler)
                         {
@@ -241,19 +236,13 @@ namespace GameFrameX.Runtime
         [Preserve]
         public void Fire(object sender, T e)
         {
-            lock (_lock)
+            if (e == null)
             {
-                if (e == null)
-                {
-                    throw new GameFrameworkException("Event is invalid.");
-                }
-
-                var eventNodeNode = EventNode.Create(sender, e);
-                lock (_events)
-                {
-                    _events.Enqueue(eventNodeNode);
-                }
+                throw new GameFrameworkException("Event is invalid.");
             }
+
+            var eventNodeNode = EventNode.Create(sender, e);
+            _events.Enqueue(eventNodeNode);
         }
 
         /// <summary>
@@ -263,13 +252,13 @@ namespace GameFrameX.Runtime
         /// <param name="e">事件参数。</param>
         public void FireNow(object sender, T e)
         {
+            if (e == null)
+            {
+                throw new GameFrameworkException("Event is invalid.");
+            }
+
             lock (_lock)
             {
-                if (e == null)
-                {
-                    throw new GameFrameworkException("Event is invalid.");
-                }
-
                 HandleEvent(sender, e);
             }
         }
