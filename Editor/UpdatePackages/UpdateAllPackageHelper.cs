@@ -24,7 +24,7 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Update All Packages(更新所有git包)", false, 2000)]
         public static void UpdatePackages()
         {
-            var result = EditorUtility.DisplayDialog("更新包提示", "是否更新所有包?\n 更新完成之后需要重启Unity", "是", "否");
+            var result = EditorUtility.DisplayDialog("更新包提示", "是否更新所有包?\n 更新完成之后需要[重启、重启、重启]Unity", "是", "否");
             if (result)
             {
                 var manifestPath = Path.Combine(Application.dataPath, "..", "Packages", "manifest.json");
