@@ -64,7 +64,7 @@ namespace GameFrameX.Runtime
 
             if (_isSecLevel)
             {
-                _differenceTime = timeSpan - ClientNow();
+                _differenceTime = timeSpan - ClientNowSeconds();
             }
             else
             {
@@ -108,7 +108,7 @@ namespace GameFrameX.Runtime
         {
             if (_isSecLevel)
             {
-                return _differenceTime + ClientNow();
+                return _differenceTime + ClientNowMillisecond();
             }
 
             return (_differenceTime + ClientNowMillisecond()) / 1000;
