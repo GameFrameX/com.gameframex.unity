@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Buffers;
 using System.IO;
-using ICSharpCode.SharpZipLib.Checksums;
+using ICSharpCode.SharpZipLib.Checksum;
 using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.Zip.Compression;
-using UnityEngine;
 
 namespace GameFrameX.Runtime
 {
@@ -260,68 +260,95 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 压缩
+        /// 用于压缩和解压缩操作的缓冲区大小（以字节为单位）
         /// </summary>
-        /// <param name="content"></param>
-        /// <returns></returns>
+        private const int BufferSize = 8192;
+
+        /// <summary>
+        /// 压缩数据。使用Deflate算法将原始字节数组压缩成更小的字节数组。
+        /// </summary>
+        /// <param name="content">要压缩的原始字节数组。不能为null。</param>
+        /// <returns>压缩后的字节数组。如果输入为空数组，则直接返回该空数组。如果压缩过程中发生异常，则返回原始数组。</returns>
+        /// <exception cref="ArgumentNullException">当输入参数content为null时抛出。</exception>
         [UnityEngine.Scripting.Preserve]
         public static byte[] Compress(byte[] content)
         {
-            //return content;
-            Deflater compressor = new Deflater();
+            content.CheckNull(nameof(content));
+            if (content.Length == 0)
+            {
+                return content;
+            }
+
+            var compressor = new Deflater();
             compressor.SetLevel(Deflater.BEST_COMPRESSION);
 
             compressor.SetInput(content);
             compressor.Finish();
 
-            using (MemoryStream bos = new MemoryStream(content.Length))
+            using var compressorMemoryStream = new MemoryStream(content.Length);
+            var buffer = ArrayPool<byte>.Shared.Rent(BufferSize);
+            try
             {
-                var buf = new byte[4096];
                 while (!compressor.IsFinished)
                 {
-                    int n = compressor.Deflate(buf);
-                    bos.Write(buf, 0, n);
+                    var count = compressor.Deflate(buffer);
+                    compressorMemoryStream.Write(buffer, 0, count);
                 }
 
-                return bos.ToArray();
+                return compressorMemoryStream.ToArray();
             }
+            catch (Exception e)
+            {
+                Log.Fatal(e);
+            }
+            finally
+            {
+                ArrayPool<byte>.Shared.Return(buffer);
+            }
+
+            return content;
         }
 
         /// <summary>
-        /// 解压缩
+        /// 解压数据。使用Inflate算法将压缩的字节数组还原成原始字节数组。
         /// </summary>
-        /// <param name="content"></param>
-        /// <returns></returns>
+        /// <param name="content">要解压的压缩字节数组。不能为null。</param>
+        /// <returns>解压后的原始字节数组。如果输入为空数组，则直接返回该空数组。如果解压过程中发生异常，则返回原始数组。</returns>
+        /// <exception cref="ArgumentNullException">当输入参数content为null时抛出。</exception>
+        /// <exception cref="InvalidDataException">当压缩数据格式无效或已损坏时抛出。</exception>
         [UnityEngine.Scripting.Preserve]
         public static byte[] Decompress(byte[] content)
         {
-            return Decompress(content, 0, content.Length);
-        }
-
-        /// <summary>
-        /// 解压缩
-        /// </summary>
-        /// <param name="content"></param>
-        /// <param name="offset"></param>
-        /// <param name="count"></param>
-        /// <returns></returns>
-        [UnityEngine.Scripting.Preserve]
-        public static byte[] Decompress(byte[] content, int offset, int count)
-        {
-            //return content;
-            Inflater decompressor = new Inflater();
-            decompressor.SetInput(content, offset, count);
-            using (MemoryStream bos = new MemoryStream(content.Length))
+            content.CheckNull(nameof(content));
+            if (content.Length == 0)
             {
-                var buf = new byte[4096];
+                return content;
+            }
+
+            var decompressor = new Inflater();
+            decompressor.SetInput(content, 0, content.Length);
+            using var decompressMemoryStream = new MemoryStream(content.Length);
+            var buffer = ArrayPool<byte>.Shared.Rent(BufferSize);
+            try
+            {
                 while (!decompressor.IsFinished)
                 {
-                    int n = decompressor.Inflate(buf);
-                    bos.Write(buf, 0, n);
+                    var countLength = decompressor.Inflate(buffer);
+                    decompressMemoryStream.Write(buffer, 0, countLength);
                 }
 
-                return bos.ToArray();
+                return decompressMemoryStream.ToArray();
             }
+            catch (Exception e)
+            {
+                Log.Fatal(e);
+            }
+            finally
+            {
+                ArrayPool<byte>.Shared.Return(buffer, true);
+            }
+
+            return content;
         }
     }
 }
