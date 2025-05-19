@@ -285,28 +285,30 @@ namespace GameFrameX.Runtime
             compressor.SetInput(content);
             compressor.Finish();
 
-            using var compressorMemoryStream = new MemoryStream(content.Length);
-            var buffer = ArrayPool<byte>.Shared.Rent(BufferSize);
-            try
+            using (var compressorMemoryStream = new MemoryStream(content.Length))
             {
-                while (!compressor.IsFinished)
+                var buffer = ArrayPool<byte>.Shared.Rent(BufferSize);
+                try
                 {
-                    var count = compressor.Deflate(buffer);
-                    compressorMemoryStream.Write(buffer, 0, count);
+                    while (!compressor.IsFinished)
+                    {
+                        var count = compressor.Deflate(buffer);
+                        compressorMemoryStream.Write(buffer, 0, count);
+                    }
+
+                    return compressorMemoryStream.ToArray();
+                }
+                catch (Exception e)
+                {
+                    Log.Fatal(e);
+                }
+                finally
+                {
+                    ArrayPool<byte>.Shared.Return(buffer);
                 }
 
-                return compressorMemoryStream.ToArray();
+                return content;
             }
-            catch (Exception e)
-            {
-                Log.Fatal(e);
-            }
-            finally
-            {
-                ArrayPool<byte>.Shared.Return(buffer);
-            }
-
-            return content;
         }
 
         /// <summary>
@@ -327,28 +329,30 @@ namespace GameFrameX.Runtime
 
             var decompressor = new Inflater();
             decompressor.SetInput(content, 0, content.Length);
-            using var decompressMemoryStream = new MemoryStream(content.Length);
-            var buffer = ArrayPool<byte>.Shared.Rent(BufferSize);
-            try
+            using (var decompressMemoryStream = new MemoryStream(content.Length))
             {
-                while (!decompressor.IsFinished)
+                var buffer = ArrayPool<byte>.Shared.Rent(BufferSize);
+                try
                 {
-                    var countLength = decompressor.Inflate(buffer);
-                    decompressMemoryStream.Write(buffer, 0, countLength);
+                    while (!decompressor.IsFinished)
+                    {
+                        var countLength = decompressor.Inflate(buffer);
+                        decompressMemoryStream.Write(buffer, 0, countLength);
+                    }
+
+                    return decompressMemoryStream.ToArray();
+                }
+                catch (Exception e)
+                {
+                    Log.Fatal(e);
+                }
+                finally
+                {
+                    ArrayPool<byte>.Shared.Return(buffer, true);
                 }
 
-                return decompressMemoryStream.ToArray();
+                return content;
             }
-            catch (Exception e)
-            {
-                Log.Fatal(e);
-            }
-            finally
-            {
-                ArrayPool<byte>.Shared.Return(buffer, true);
-            }
-
-            return content;
         }
     }
 }
