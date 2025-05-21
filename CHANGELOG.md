@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.4](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.4) (2025-05-21)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.3...1.3.4)
+
+**Closed issues:**
+
+- 文件GUID重复的问题 [\#1](https://github.com/GameFrameX/com.gameframex.unity/issues/1)
+
 ## [1.3.3](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.3) (2025-05-19)
 
 [Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.2...1.3.3)
