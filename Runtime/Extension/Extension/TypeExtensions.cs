@@ -1,4 +1,6 @@
-﻿namespace System
+﻿using System.Linq;
+
+namespace System
 {
     /// <summary>
     /// 扩展方法，用于检查当前类型是否实现了指定的接口。
