@@ -1,12 +1,17 @@
 name: Sync Github To Image
 
 on:
+  workflow_run:
+    workflows: ["Publish Release"]  # 监听的工作流名称
+    types:
+      - completed  # 监听完成事件
   push:
-    branches: [ main ]
-    #schedule:
+    branches: [main]
+  #schedule:
     # 定时任务，每天 UTC 时间 0 点运行
     #- cron: "0 0 * * *"
-  #workflow_dispatch:
+  workflow_dispatch:
+
 
 jobs:
   sync-gitlink:
@@ -42,20 +47,21 @@ jobs:
 
       # 添加远端
       - name: add remote url
-        run: git remote add gitlink "git@code.gitlink.org.cn:${{ github.Repository }}.git"
+        run: git remote add mirror "git@code.gitlink.org.cn:${{ github.Repository }}.git"
 
       # 获取
       - name: fetch
-        run: git fetch --prune gitlink --tags --verbose
+        run: git fetch --prune mirror --tags --verbose
 
-      # 强制推送分支和标签
-      - name: force push
-        run: |
+      # 拉取和推送
+      - name: pull and push
+        run: | 
           if [ "${{ github.ref_name }}" ]; then
           git checkout ${{ github.ref_name }}
-          git push -f gitlink ${{ github.ref_name }}
-          git push -f gitlink --tags
+          git push -f mirror ${{ github.ref_name }}
+          git push -f mirror --tags --verbose
           fi
+
 
   sync-gitlab:
     runs-on: ubuntu-latest
@@ -64,7 +70,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          fetch-depth: 0 # 为了 git pull --unshallow，我们需要获取所有的提交历史
 
       - name: Set up Git user
         run: |
@@ -77,27 +83,32 @@ jobs:
           echo "${{ secrets.GITLAB_ID_RSA }}" >> ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           eval $(ssh-agent -s) && ssh-add ~/.ssh/id_rsa
+          # 信任域名
           ssh-keyscan -H gitlab.com >> ~/.ssh/known_hosts
-
+      # 查看当前分支
       - name: Check current branch
         run: echo 当前分支：${{ github.ref_name }} ${{ github.Repository }}
-
+      # 查看远端 地址
       - name: echo git url
         run: echo git@gitlab.com:${{ github.Repository }}.git
 
+      # 添加远端
       - name: add remote url
-        run: git remote add gitlab "git@gitlab.com:${{ github.Repository }}.git"
+        run: git remote add mirror "git@gitlab.com:${{ github.Repository }}.git"
 
+      # 获取
       - name: fetch
-        run: git fetch --prune gitlab --tags --verbose
+        run: git fetch --prune mirror --tags --verbose
 
-      - name: force push
-        run: |
+      # 拉取和推送
+      - name: pull and push
+        run: | 
           if [ "${{ github.ref_name }}" ]; then
           git checkout ${{ github.ref_name }}
-          git push -f gitlab ${{ github.ref_name }}
-          git push -f gitlab --tags
+          git push -f mirror ${{ github.ref_name }}
+          git push -f mirror --tags --verbose
           fi
+
 
   sync-gitee:
     runs-on: ubuntu-latest
@@ -106,7 +117,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # 为了 git pull --unshallow，我们需要获取所有的提交历史
 
       - name: Set up Git user
         run: |
@@ -119,27 +130,32 @@ jobs:
           echo "${{ secrets.GITEE_ID_RSA }}" >> ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           eval $(ssh-agent -s) && ssh-add ~/.ssh/id_rsa
+          # 信任域名
           ssh-keyscan -H gitee.com >> ~/.ssh/known_hosts
-
+      # 查看当前分支
       - name: Check current branch
         run: echo 当前分支：${{ github.ref_name }} ${{ github.Repository }}
-
+      # 查看远端 地址
       - name: echo git url
         run: echo git@gitee.com:${{ github.Repository }}.git
 
+      # 添加远端
       - name: add remote url
-        run: git remote add gitee "git@gitee.com:${{ github.Repository }}.git"
+        run: git remote add mirror "git@gitee.com:${{ github.Repository }}.git"
 
+      # 获取
       - name: fetch
-        run: git fetch --prune gitee --tags --verbose
+        run: git fetch --prune mirror --tags --verbose
 
-      - name: force push
-        run: |
+      # 拉取和推送
+      - name: pull and push
+        run: | 
           if [ "${{ github.ref_name }}" ]; then
           git checkout ${{ github.ref_name }}
-          git push -f gitee ${{ github.ref_name }}
-          git push -f gitee --tags
+          git push -f mirror ${{ github.ref_name }}
+          git push -f mirror --tags --verbose
           fi
+
 
   sync-atomgit:
     runs-on: ubuntu-latest
@@ -148,7 +164,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # 为了 git pull --unshallow，我们需要获取所有的提交历史
 
       - name: Set up Git user
         run: |
@@ -161,27 +177,32 @@ jobs:
           echo "${{ secrets.ATOMGIT_ID_RSA }}" >> ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           eval $(ssh-agent -s) && ssh-add ~/.ssh/id_rsa
+          # 信任域名
           ssh-keyscan -H atomgit.com >> ~/.ssh/known_hosts
-
+      # 查看当前分支
       - name: Check current branch
         run: echo 当前分支：${{ github.ref_name }} ${{ github.Repository }}
-
+      # 查看远端 地址
       - name: echo git url
         run: echo git@atomgit.com:${{ github.Repository }}.git
 
+      # 添加远端
       - name: add remote url
-        run: git remote add atomgit "git@atomgit.com:${{ github.Repository }}.git"
+        run: git remote add mirror "git@atomgit.com:${{ github.Repository }}.git"
 
+      # 获取
       - name: fetch
-        run: git fetch --prune atomgit --tags --verbose
+        run: git fetch --prune mirror --tags --verbose
 
-      - name: force push
-        run: |
+      # 拉取和推送
+      - name: pull and push
+        run: | 
           if [ "${{ github.ref_name }}" ]; then
           git checkout ${{ github.ref_name }}
-          git push -f atomgit ${{ github.ref_name }}
-          git push -f atomgit --tags
+          git push -f mirror ${{ github.ref_name }}
+          git push -f mirror --tags --verbose
           fi
+
 
   sync-gitcode:
     runs-on: ubuntu-latest
@@ -190,7 +211,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # 为了 git pull --unshallow，我们需要获取所有的提交历史
 
       - name: Set up Git user
         run: |
@@ -203,70 +224,33 @@ jobs:
           echo "${{ secrets.GITCODE_ID_RSA }}" >> ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           eval $(ssh-agent -s) && ssh-add ~/.ssh/id_rsa
+          # 信任域名
           ssh-keyscan -H gitcode.net >> ~/.ssh/known_hosts
-
+      # 查看当前分支
       - name: Check current branch
         run: echo 当前分支：${{ github.ref_name }} ${{ github.Repository }}
-
+      # 查看远端 地址
       - name: echo git url
         run: echo git@gitcode.net:${{ github.Repository }}.git
 
+      # 添加远端
       - name: add remote url
-        run: git remote add gitcode "git@gitcode.net:${{ github.Repository }}.git"
+        run: git remote add mirror "git@gitcode.net:${{ github.Repository }}.git"
 
+      # 获取
       - name: fetch
-        run: git fetch --prune gitcode --tags --verbose
+        run: git fetch --prune mirror --tags --verbose
 
-      - name: force push
-        run: |
+      # 拉取和推送
+      - name: pull and push
+        run: | 
           if [ "${{ github.ref_name }}" ]; then
           git checkout ${{ github.ref_name }}
-          git push -f gitcode ${{ github.ref_name }}
-          git push -f gitcode --tags
+          git push -f mirror ${{ github.ref_name }}
+          git push -f mirror --tags --verbose
           fi
 
-  sync-gitcode-com:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up Git user
-        run: |
-          git config --global user.email "wangfj11@foxmail.com"
-          git config --global user.name "AlianBlank"
-
-      - name: Set SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.GITCODE_COM_ID_RSA }}" >> ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          eval $(ssh-agent -s) && ssh-add ~/.ssh/id_rsa
-          ssh-keyscan -H gitcode.com >> ~/.ssh/known_hosts
-
-      - name: Check current branch
-        run: echo 当前分支：${{ github.ref_name }} ${{ github.Repository }}
-
-      - name: echo git url
-        run: echo git@gitcode.com:${{ github.Repository }}.git
-
-      - name: add remote url
-        run: git remote add gitcode "git@gitcode.com:${{ github.Repository }}.git"
-
-      - name: fetch
-        run: git fetch --prune gitcode --tags --verbose
-
-      - name: force push
-        run: |
-          if [ "${{ github.ref_name }}" ]; then
-          git checkout ${{ github.ref_name }}
-          git push -f gitcode ${{ github.ref_name }}
-          git push -f gitcode --tags
-          fi
-
+  
   sync-framagit:
     runs-on: ubuntu-latest
 
@@ -274,7 +258,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # 为了 git pull --unshallow，我们需要获取所有的提交历史
 
       - name: Set up Git user
         run: |
@@ -287,24 +271,28 @@ jobs:
           echo "${{ secrets.FRAMAGIT_ID_RSA }}" >> ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           eval $(ssh-agent -s) && ssh-add ~/.ssh/id_rsa
+          # 信任域名
           ssh-keyscan -H framagit.org >> ~/.ssh/known_hosts
-
+      # 查看当前分支
       - name: Check current branch
         run: echo 当前分支：${{ github.ref_name }} ${{ github.Repository }}
-
+      # 查看远端 地址
       - name: echo git url
         run: echo git@framagit.org:${{ github.Repository }}.git
 
+      # 添加远端
       - name: add remote url
-        run: git remote add framagit "git@framagit.org:${{ github.Repository }}.git"
+        run: git remote add mirror "git@framagit.org:${{ github.Repository }}.git"
 
+      # 获取
       - name: fetch
-        run: git fetch --prune framagit --tags --verbose
+        run: git fetch --prune mirror --tags --verbose
 
-      - name: force push
-        run: |
+      # 拉取和推送
+      - name: pull and push
+        run: | 
           if [ "${{ github.ref_name }}" ]; then
           git checkout ${{ github.ref_name }}
-          git push -f framagit ${{ github.ref_name }}
-          git push -f framagit --tags
+          git push -f mirror ${{ github.ref_name }}
+          git push -f mirror --tags --verbose
           fi
