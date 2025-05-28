@@ -8,6 +8,7 @@ on:
     #schedule:
     # 定时任务，每天 UTC 时间 0 点运行
     #- cron: "0 0 * * *"
+
   #workflow_dispatch:
 permissions: # Global permissions configuration starts here
   contents: read                # 'read' access to repository contents
@@ -41,11 +42,12 @@ jobs:
           git commit -m "[修改]1.修改更新日志"
 
       - name: change-version-by-tag
-        uses: AlianBlank/github-action-tag-version@1.0.0
+        uses: AlianBlank/github-action-tag-version@1.0.9
         with:
           version: ${{ github.ref_name }}
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          branch: ${{ github.head_ref }}
+          force: true
+          tags: true
