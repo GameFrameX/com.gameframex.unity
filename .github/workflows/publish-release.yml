@@ -42,7 +42,7 @@ jobs:
           git commit -m "[修改]1.修改更新日志"
 
       - name: change-version-by-tag
-        uses: AlianBlank/github-action-tag-version@1.0.9
+        uses: AlianBlank/github-action-tag-version@1.1.0
         with:
           version: ${{ github.ref_name }}
 
