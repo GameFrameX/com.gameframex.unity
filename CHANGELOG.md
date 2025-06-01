@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.7](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.7) (2025-05-31)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.6...1.3.7)
+
+**Merged pull requests:**
+
+- \[修改\]  单例优化 [\#2](https://github.com/GameFrameX/com.gameframex.unity/pull/2) ([BrokenMyth](https://github.com/BrokenMyth))
+
 ## [1.3.6](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.6) (2025-05-28)
 
 [Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.2.2...1.3.6)
