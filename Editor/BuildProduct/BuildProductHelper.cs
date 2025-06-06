@@ -42,7 +42,7 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Build/Windows X64", false, 100)]
         public static void BuildPlayerToWindows64BuildTarget()
         {
-            PlayerSettings.SplashScreen.show = false;
+            // PlayerSettings.SplashScreen.show = false;
             Debug.Log(EditorUserBuildSettings.activeBuildTarget);
             if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.StandaloneWindows64)
             {
@@ -91,7 +91,7 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Build/Windows X32", false, 100)]
         public static void BuildPlayerToWindows32BuildTarget()
         {
-            PlayerSettings.SplashScreen.show = false;
+            // PlayerSettings.SplashScreen.show = false;
             Debug.Log(EditorUserBuildSettings.activeBuildTarget);
             if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.StandaloneWindows)
             {
@@ -151,7 +151,7 @@ namespace GameFrameX.Editor
             try
             {
                 HotFixEditorCompilerHelper.AddEditor();
-                PlayerSettings.SplashScreen.show = false;
+                // PlayerSettings.SplashScreen.show = false;
                 PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
                 PlayerSettings.defaultScreenHeight = 720;
                 PlayerSettings.defaultScreenWidth = 1280;
@@ -221,7 +221,7 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Build/WebGL", false, 300)]
         private static void BuildPlayerToWebGL()
         {
-            PlayerSettings.SplashScreen.show = false;
+            // PlayerSettings.SplashScreen.show = false;
 
             if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.WebGL)
             {
@@ -249,7 +249,7 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Build/WeChat MiniGame WebGL", false, 300)]
         private static void BuildPlayerToWeChatMiniGameWebGL()
         {
-            PlayerSettings.SplashScreen.show = false;
+            // PlayerSettings.SplashScreen.show = false;
 
             if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.WebGL)
             {
@@ -301,7 +301,7 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Build/Apk", false, 400)]
         private static void BuildPlayerToAndroid()
         {
-            PlayerSettings.SplashScreen.show = false;
+            // PlayerSettings.SplashScreen.show = false;
             if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.Android)
             {
                 Debug.LogError("当前构建目标不是 Android");
@@ -332,7 +332,7 @@ namespace GameFrameX.Editor
         [MenuItem("GameFrameX/Build/AAB", false, 400)]
         private static void BuildAppBundleForAndroid()
         {
-            PlayerSettings.SplashScreen.show = false;
+            // PlayerSettings.SplashScreen.show = false;
 
             string aabSavePath = Application.dataPath.Replace("Assets", "AAB");
             if (!Directory.Exists(aabSavePath))
@@ -465,7 +465,7 @@ namespace GameFrameX.Editor
             try
             {
                 HotFixEditorCompilerHelper.AddEditor();
-                PlayerSettings.SplashScreen.show = false;
+                // PlayerSettings.SplashScreen.show = false;
                 UpdateBuildTime();
                 _buildPath = BuildOutputPath();
 
@@ -495,7 +495,7 @@ namespace GameFrameX.Editor
             try
             {
                 HotFixEditorCompilerHelper.AddEditor();
-                PlayerSettings.SplashScreen.show = false;
+                // PlayerSettings.SplashScreen.show = false;
                 UpdateBuildTime();
                 _buildPath = BuildOutputPath();
 
@@ -525,7 +525,7 @@ namespace GameFrameX.Editor
             try
             {
                 HotFixEditorCompilerHelper.AddEditor();
-                PlayerSettings.SplashScreen.show = false;
+                // PlayerSettings.SplashScreen.show = false;
                 UpdateBuildTime();
                 _buildPath = BuildOutputPath();
 
@@ -551,7 +551,7 @@ namespace GameFrameX.Editor
             try
             {
                 HotFixEditorCompilerHelper.AddEditor();
-                PlayerSettings.SplashScreen.show = false;
+                // PlayerSettings.SplashScreen.show = false;
                 UpdateBuildTime();
                 _buildPath = BuildOutputPath();
 
