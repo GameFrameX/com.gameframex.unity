@@ -504,6 +504,9 @@ namespace GameFrameX.Editor
 
                 EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
                 EditorUserBuildSettings.development = false;
+                EditorUserBuildSettings.allowDebugging = false;
+                EditorUserBuildSettings.connectProfiler = false;
+                EditorUserBuildSettings.buildWithDeepProfilingSupport = false;
                 EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
                 AssetDatabase.SaveAssets();
                 BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
