@@ -472,6 +472,9 @@ namespace GameFrameX.Editor
                 EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
                 EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
                 EditorUserBuildSettings.development = true;
+                EditorUserBuildSettings.allowDebugging = true;
+                EditorUserBuildSettings.connectProfiler = true;
+                EditorUserBuildSettings.buildWithDeepProfilingSupport = true;
                 AssetDatabase.SaveAssets();
                 BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
                 Debug.Log(_buildPath);
@@ -530,6 +533,9 @@ namespace GameFrameX.Editor
                 _buildPath = BuildOutputPath();
 
                 EditorUserBuildSettings.development = true;
+                EditorUserBuildSettings.allowDebugging = true;
+                EditorUserBuildSettings.connectProfiler = true;
+                EditorUserBuildSettings.buildWithDeepProfilingSupport = true;
                 AssetDatabase.SaveAssets();
                 BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
                 Process.Start(_buildPath);
