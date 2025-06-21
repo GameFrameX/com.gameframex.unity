@@ -476,7 +476,7 @@ namespace GameFrameX.Editor
                 EditorUserBuildSettings.connectProfiler = true;
                 EditorUserBuildSettings.buildWithDeepProfilingSupport = true;
                 AssetDatabase.SaveAssets();
-                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
+                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.AllowDebugging | BuildOptions.Development | BuildOptions.ConnectWithProfiler);
                 Debug.Log(_buildPath);
 
                 GeneratorGradle(_buildPath);
