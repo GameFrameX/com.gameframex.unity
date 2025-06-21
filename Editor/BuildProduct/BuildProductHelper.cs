@@ -608,7 +608,7 @@ namespace GameFrameX.Editor
         /// </summary>
         private static string GetBuildRootPath
         {
-            get { return $"{GetProjectPath()}/Builds"; }
+            get { return $"{GetProjectPath()}Builds"; }
         }
 
         private static string _buildTime;
@@ -675,7 +675,7 @@ namespace GameFrameX.Editor
             }
 
 
-            return path;
+            return path.Replace('\\', '/');
         }
     }
 }
