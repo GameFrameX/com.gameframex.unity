@@ -8,6 +8,13 @@ namespace GameFrameX.Editor
 {
     public static class HotFixAssemblyDefinitionHelper
     {
+        sealed class AssemblyDefinitionInfoVersionDefines
+        {
+            public string name { get; set; }
+            public string expression { get; set; }
+            public string define { get; set; }
+        }
+
         sealed class AssemblyDefinitionInfo
         {
             /// <summary>
@@ -63,7 +70,7 @@ namespace GameFrameX.Editor
             /// <summary>
             /// 
             /// </summary>
-            public List<string> versionDefines { get; set; }
+            public List<AssemblyDefinitionInfoVersionDefines> versionDefines { get; set; }
 
             /// <summary>
             /// 
@@ -75,8 +82,8 @@ namespace GameFrameX.Editor
         internal static void AddEditor(string path)
         {
             AssemblyDefinitionAsset assemblyDefinitionAsset = AssetDatabase.LoadAssetAtPath<AssemblyDefinitionAsset>(path);
-            AssemblyDefinitionInfo  info                    = JsonConvert.DeserializeObject<AssemblyDefinitionInfo>(assemblyDefinitionAsset.text);
-            bool                    isEditor                = info.excludePlatforms.Any(m => m == "Editor");
+            AssemblyDefinitionInfo info = JsonConvert.DeserializeObject<AssemblyDefinitionInfo>(assemblyDefinitionAsset.text);
+            bool isEditor = info.excludePlatforms.Any(m => m == "Editor");
             if (!isEditor)
             {
                 info.excludePlatforms.Add("Editor");
@@ -89,8 +96,8 @@ namespace GameFrameX.Editor
         internal static void RemoveEditor(string path)
         {
             AssemblyDefinitionAsset assemblyDefinitionAsset = AssetDatabase.LoadAssetAtPath<AssemblyDefinitionAsset>(path);
-            AssemblyDefinitionInfo  info                    = JsonConvert.DeserializeObject<AssemblyDefinitionInfo>(assemblyDefinitionAsset.text);
-            bool                    isEditor                = info.excludePlatforms.Any(m => m == "Editor");
+            AssemblyDefinitionInfo info = JsonConvert.DeserializeObject<AssemblyDefinitionInfo>(assemblyDefinitionAsset.text);
+            bool isEditor = info.excludePlatforms.Any(m => m == "Editor");
             if (isEditor)
             {
                 info.excludePlatforms.Remove("Editor");
