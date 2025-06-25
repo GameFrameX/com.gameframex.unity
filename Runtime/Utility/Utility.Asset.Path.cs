@@ -69,6 +69,11 @@
                 public const string BundlesDirectoryImageName = "Image";
 
                 /// <summary>
+                /// 打包资源文件夹Fonts名称
+                /// </summary>
+                public const string BundlesDirectoryFontsName = "Fonts";
+
+                /// <summary>
                 /// 打包资源文件夹UI名称
                 /// </summary>
                 public const string BundlesDirectoryUIName = "UI";
@@ -92,6 +97,28 @@
                 public static string GetFilePath(string filePath)
                 {
                     return $"{BundlesPath}/{filePath}";
+                }
+
+                /// <summary>
+                /// 获取着色器文件路径
+                /// </summary>
+                /// <param name="filePath">相对于Bundles/Shader的路径，不要以/开头,需要携带扩展名</param>
+                /// <returns>返回拼接好的路径</returns>
+                [UnityEngine.Scripting.Preserve]
+                public static string GetShaderPath(string filePath)
+                {
+                    return GetCategoryFilePath(BundlesDirectoryShaderName, filePath);
+                }
+
+                /// <summary>
+                /// 获取字体文件路径
+                /// </summary>
+                /// <param name="filePath">相对于Bundles/Fonts的路径，不要以/开头,需要携带扩展名</param>
+                /// <returns>返回拼接好的路径</returns>
+                [UnityEngine.Scripting.Preserve]
+                public static string GetFontPath(string filePath)
+                {
+                    return GetCategoryFilePath(BundlesDirectoryFontsName, filePath);
                 }
 
                 /// <summary>
