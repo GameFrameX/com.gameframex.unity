@@ -49,6 +49,7 @@ namespace GameFrameX.Editor
                     }
                     else
                     {
+                        string searchText = _searchText.ToLower();
                         var types = Utility.Assembly.GetTypes();
                         var result = new List<string>();
                         foreach (var type in types)
@@ -69,7 +70,7 @@ namespace GameFrameX.Editor
                                 continue;
                             }
 
-                            if (fullName.Contains(_searchText))
+                            if (fullName.Contains(searchText))
                             {
                                 result.Add(type.FullName);
                             }
