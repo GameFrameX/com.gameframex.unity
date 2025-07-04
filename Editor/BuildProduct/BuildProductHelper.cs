@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using GameFrameX.Runtime;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEditor.Callbacks;
@@ -15,6 +17,63 @@ namespace GameFrameX.Editor
     public static class BuildProductHelper
     {
         private static string _buildPath;
+
+        private static List<System.Type> RunHook(System.Type hookType)
+        {
+            List<System.Type> result = new List<System.Type>();
+            var types = Utility.Assembly.GetTypes();
+            foreach (var type in types)
+            {
+                if (type.IsAbstract)
+                {
+                    continue;
+                }
+
+                var isBuilderPreHookHandler = type.IsImplWithInterface(hookType);
+                if (!isBuilderPreHookHandler)
+                {
+                    continue;
+                }
+
+                result.Add(type);
+            }
+
+            return result;
+        }
+
+        private static void RunPreHookBuild()
+        {
+            var types = RunHook(typeof(IBuilderPreHookHandler));
+            List<IBuilderPreHookHandler> result = new List<IBuilderPreHookHandler>();
+            foreach (var type in types)
+            {
+                var instance = (IBuilderPreHookHandler)Activator.CreateInstance(type);
+                result.Add(instance);
+            }
+
+            result.Sort((a, b) => a.Priority.CompareTo(b.Priority));
+            foreach (var handler in result)
+            {
+                handler.Run(EditorUserBuildSettings.activeBuildTarget, _buildPath);
+            }
+        }
+
+        private static void RunPostHookBuild()
+        {
+            var types = RunHook(typeof(IBuilderPostHookHandler));
+            var result = new List<IBuilderPostHookHandler>();
+            foreach (var type in types)
+            {
+                var instance = (IBuilderPostHookHandler)Activator.CreateInstance(type);
+                result.Add(instance);
+            }
+
+            result.Sort((a, b) => a.Priority.CompareTo(b.Priority));
+            foreach (var handler in result)
+            {
+                handler.Run(EditorUserBuildSettings.activeBuildTarget, _buildPath);
+            }
+        }
 
         /// <summary>
         /// 发布 当前激活的平台
@@ -59,12 +118,15 @@ namespace GameFrameX.Editor
                 EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows64;
                 UpdateBuildTime();
                 AssetDatabase.SaveAssets();
-                var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
+                _buildPath = BuildOutputPath();
+                var resultDirectory = _buildPath + Path.DirectorySeparatorChar;
+                RunPreHookBuild();
                 var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
                 if (buildReport.summary.result != BuildResult.Succeeded)
                 {
                     return;
                 }
+
 
                 var buildDirectory = new DirectoryInfo(resultDirectory);
                 foreach (var directoryInfo in buildDirectory.GetDirectories())
@@ -85,6 +147,7 @@ namespace GameFrameX.Editor
             finally
             {
                 HotFixEditorCompilerHelper.RemoveEditor();
+                RunPostHookBuild();
             }
         }
 
@@ -108,7 +171,9 @@ namespace GameFrameX.Editor
                 EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows;
                 UpdateBuildTime();
                 AssetDatabase.SaveAssets();
-                var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
+                _buildPath = BuildOutputPath();
+                var resultDirectory = _buildPath + Path.DirectorySeparatorChar;
+                RunPreHookBuild();
                 var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory + PlayerSettings.productName + ".exe", EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
                 if (buildReport.summary.result != BuildResult.Succeeded)
                 {
@@ -136,6 +201,7 @@ namespace GameFrameX.Editor
             finally
             {
                 HotFixEditorCompilerHelper.RemoveEditor();
+                RunPostHookBuild();
             }
         }
 
@@ -158,7 +224,9 @@ namespace GameFrameX.Editor
                 UpdateBuildTime();
 
                 AssetDatabase.SaveAssets();
-                var resultDirectory = BuildOutputPath() + Path.DirectorySeparatorChar;
+                _buildPath = BuildOutputPath();
+                var resultDirectory = _buildPath + Path.DirectorySeparatorChar;
+                RunPreHookBuild();
                 var buildReport = BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, resultDirectory, EditorUserBuildSettings.activeBuildTarget, BuildOptions.None);
                 if (buildReport.summary.result != BuildResult.Succeeded)
                 {
@@ -184,6 +252,7 @@ namespace GameFrameX.Editor
             finally
             {
                 HotFixEditorCompilerHelper.RemoveEditor();
+                RunPostHookBuild();
             }
         }
 
@@ -234,12 +303,15 @@ namespace GameFrameX.Editor
                 HotFixEditorCompilerHelper.AddEditor();
                 UpdateBuildTime();
                 AssetDatabase.SaveAssets();
-                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, BuildOutputPath(), BuildTarget.WebGL, BuildOptions.None);
+                _buildPath = BuildOutputPath();
+                RunPreHookBuild();
+                BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.WebGL, BuildOptions.None);
                 Debug.Log("Build Output Path:" + BuildOutputPath());
             }
             finally
             {
                 HotFixEditorCompilerHelper.RemoveEditor();
+                RunPostHookBuild();
             }
         }
 #if ENABLE_WX_MINI_GAME
@@ -317,12 +389,14 @@ namespace GameFrameX.Editor
                 _buildPath = BuildOutputPath();
                 string apkPath = $"{_buildPath}.apk";
                 AssetDatabase.SaveAssets();
+                RunPreHookBuild();
                 BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, apkPath, BuildTarget.Android, BuildOptions.None);
                 Debug.Log("Build Output Path:" + apkPath);
             }
             finally
             {
                 HotFixEditorCompilerHelper.RemoveEditor();
+                RunPostHookBuild();
             }
         }
 
@@ -367,6 +441,8 @@ namespace GameFrameX.Editor
                 // 开启符号表的输出
                 EditorUserBuildSettings.androidCreateSymbolsZip = true;
                 AssetDatabase.SaveAssets();
+                _buildPath = aabFilePath;
+                RunPreHookBuild();
                 BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, aabFilePath, BuildTarget.Android, BuildOptions.None);
 
                 Debug.Log("AAB存储路径=>" + aabFilePath);
@@ -374,6 +450,7 @@ namespace GameFrameX.Editor
             finally
             {
                 HotFixEditorCompilerHelper.RemoveEditor();
+                RunPostHookBuild();
             }
         }
 
@@ -476,6 +553,7 @@ namespace GameFrameX.Editor
                 EditorUserBuildSettings.connectProfiler = true;
                 EditorUserBuildSettings.buildWithDeepProfilingSupport = true;
                 AssetDatabase.SaveAssets();
+                RunPreHookBuild();
                 BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.AllowDebugging | BuildOptions.Development | BuildOptions.ConnectWithProfiler);
                 Debug.Log(_buildPath);
 
@@ -486,6 +564,7 @@ namespace GameFrameX.Editor
             finally
             {
                 HotFixEditorCompilerHelper.RemoveEditor();
+                RunPostHookBuild();
             }
         }
 
@@ -509,6 +588,7 @@ namespace GameFrameX.Editor
                 EditorUserBuildSettings.buildWithDeepProfilingSupport = false;
                 EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
                 AssetDatabase.SaveAssets();
+                RunPreHookBuild();
                 BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.Android, BuildOptions.None);
                 Debug.Log(_buildPath);
                 GeneratorGradle(_buildPath);
@@ -518,6 +598,7 @@ namespace GameFrameX.Editor
             finally
             {
                 HotFixEditorCompilerHelper.RemoveEditor();
+                RunPostHookBuild();
             }
         }
 
@@ -540,6 +621,7 @@ namespace GameFrameX.Editor
                 EditorUserBuildSettings.connectProfiler = true;
                 EditorUserBuildSettings.buildWithDeepProfilingSupport = true;
                 AssetDatabase.SaveAssets();
+                RunPreHookBuild();
                 BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
                 Process.Start(_buildPath);
                 Debug.Log("Build Output Path:" + _buildPath);
@@ -547,6 +629,7 @@ namespace GameFrameX.Editor
             finally
             {
                 HotFixEditorCompilerHelper.RemoveEditor();
+                RunPostHookBuild();
             }
         }
 
@@ -566,6 +649,7 @@ namespace GameFrameX.Editor
 
                 EditorUserBuildSettings.development = false;
                 AssetDatabase.SaveAssets();
+                RunPreHookBuild();
                 BuildPipeline.BuildPlayer(EditorBuildSettings.scenes, _buildPath, BuildTarget.iOS, BuildOptions.None);
                 Process.Start(_buildPath);
                 Debug.Log("Build Output Path:" + _buildPath);
@@ -573,6 +657,7 @@ namespace GameFrameX.Editor
             finally
             {
                 HotFixEditorCompilerHelper.RemoveEditor();
+                RunPostHookBuild();
             }
         }
 
