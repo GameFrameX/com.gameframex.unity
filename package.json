@@ -3,7 +3,7 @@
   "displayName": "Game Frame X",
   "category": "Game Framework",
   "description": "独立游戏前后端一体化解决方案,独立游戏开发者的圆梦大使。文档地址: https://gameframex.doc.alianblank.com",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "unity": "2019.4",
   "keywords": [
     "Game Framework"
