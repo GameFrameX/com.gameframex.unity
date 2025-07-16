@@ -712,7 +712,7 @@ namespace GameFrameX.Editor
         /// </summary>
         private static void UpdateBuildTime()
         {
-            _buildTime = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+            _buildTime = DateTime.Now.ToString("yyyyMMddHHmmss");
         }
 
         /// <summary>
@@ -721,14 +721,14 @@ namespace GameFrameX.Editor
         /// <returns></returns>
         private static string BuildOutputPath()
         {
-            string pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}";
+            var pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}";
             if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android)
             {
-                pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.Android.bundleVersionCode}";
+                pathName = $"{_buildTime}_code_{PlayerSettings.Android.bundleVersionCode}";
             }
             else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS || EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneOSX)
             {
-                pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}_code_{PlayerSettings.iOS.buildNumber}";
+                pathName = $"{_buildTime}_code_{PlayerSettings.iOS.buildNumber}";
             }
             else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows || EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneWindows64)
             {
@@ -736,9 +736,8 @@ namespace GameFrameX.Editor
             }
             else if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.WebGL)
             {
-                pathName = $"{_buildTime}_v_{PlayerSettings.bundleVersion}";
+                pathName = $"{_buildTime}";
             }
-
 
             var path = Path.Combine(GetBuildRootPath, EditorUserBuildSettings.activeBuildTarget.ToString(), Application.identifier, Application.version, pathName);
 
