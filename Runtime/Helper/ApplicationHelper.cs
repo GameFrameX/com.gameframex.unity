@@ -159,6 +159,20 @@ namespace GameFrameX.Runtime
             open_setting();
 #endif
         }
+
+
+#if UNITY_IOS
+        [System.Runtime.InteropServices.DllImport("__Internal")]
+        private static extern void open_request_tracking_authorization();
+#endif
+        /// <summary>
+        /// 打开请求跟踪授权
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
+        public static void OpenRequestTrackingAuthorization()
+        {
+#if UNITY_IOS
+            open_request_tracking_authorization();
 #endif
         }
     }
