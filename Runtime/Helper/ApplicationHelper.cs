@@ -144,5 +144,22 @@ namespace GameFrameX.Runtime
             Application.OpenURL(url);
 #endif
         }
+
+#if UNITY_IOS
+        [System.Runtime.InteropServices.DllImport("__Internal")]
+        private static extern void open_setting();
+#endif
+        /// <summary>
+        /// 打开设置界面
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
+        public static void OpenSetting()
+        {
+#if UNITY_IOS
+            open_setting();
+#endif
+        }
+#endif
+        }
     }
 }
