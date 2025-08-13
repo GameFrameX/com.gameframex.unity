@@ -155,6 +155,9 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static void OpenSetting()
         {
+#if UNITY_EDITOR
+            return;
+#endif
 #if UNITY_IOS
             open_setting();
 #endif
@@ -171,6 +174,9 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static void OpenRequestTrackingAuthorization()
         {
+#if UNITY_EDITOR
+            return;
+#endif
 #if UNITY_IOS
             open_request_tracking_authorization();
 #endif
