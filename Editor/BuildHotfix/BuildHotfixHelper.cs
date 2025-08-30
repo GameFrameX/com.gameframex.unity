@@ -14,10 +14,12 @@ namespace GameFrameX.Editor
     [InitializeOnLoad]
     public static class BuildHotfixHelper
     {
+#if ENABLE_GAME_FRAME_X_HYBRID_CLR
+        private static readonly string ScriptAssembliesDir = $"HybridCLRData/HotUpdateDlls/{EditorUserBuildSettings.activeBuildTarget}";
+#endif
+#if ENABLE_GAME_FRAME_X_HYBRID_CLR && !DISABLE_HYBRIDCLR
         //Unity代码生成dll位置
         private const string HotFixAssembliesDir = "Library/ScriptAssemblies";
-        private static readonly string ScriptAssembliesDir = $"HybridCLRData/HotUpdateDlls/{EditorUserBuildSettings.activeBuildTarget}";
-
         private static readonly string[] HotfixDlls = new string[] { "Unity.Hotfix.dll" };
 
         //热更代码存放位置
@@ -56,7 +58,8 @@ namespace GameFrameX.Editor
             Debug.Log($"复制Hotfix DLL到{CodeDir}完成");
             AssetDatabase.Refresh();
         }
-
+#endif
+#if ENABLE_GAME_FRAME_X_HYBRID_CLR
         public const string AOTCodeDir = "Assets/Bundles/AOTCode/";
 
         /// <summary>
@@ -83,8 +86,29 @@ namespace GameFrameX.Editor
             }
 
             Debug.Log(stringBuilder);
-            Debug.Log($"复制AOT DLL到{CodeDir}完成");
+            Debug.Log($"复制AOT DLL到{AOTCodeDir}完成");
             AssetDatabase.Refresh();
+        }
+#endif
+
+        public const string HybridCLRScriptingDefineSymbol = "DISABLE_HYBRIDCLR";
+
+        /// <summary>
+        /// 开启 HybridCLR 的支持。
+        /// </summary>
+        [MenuItem("GameFrameX/Scripting Define Symbols/Disable HybridCLR(关闭HybridCLR适配)", false, 5000)]
+        public static void DisableHybridCLR()
+        {
+            ScriptingDefineSymbols.AddScriptingDefineSymbol(HybridCLRScriptingDefineSymbol);
+        }
+
+        /// <summary>
+        /// 关闭 HybridCLR 的支持。
+        /// </summary>
+        [MenuItem("GameFrameX/Scripting Define Symbols/Enable HybridCLR(开启HybridCLR适配)", false, 5001)]
+        public static void EnableHybridCLR()
+        {
+            ScriptingDefineSymbols.RemoveScriptingDefineSymbol(HybridCLRScriptingDefineSymbol);
         }
     }
 }
