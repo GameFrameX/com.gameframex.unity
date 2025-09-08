@@ -52,6 +52,11 @@ namespace GameFrameX.Editor
             {
                 var srcPath = Path.Combine(HotFixAssembliesDir, hotfix);
 
+                if (!File.Exists(srcPath))
+                {
+                    continue;
+                }
+
                 File.Copy(srcPath, Path.Combine(CodeDir, hotfix + Utility.Const.FileNameSuffix.Binary), true);
             }
 
