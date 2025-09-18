@@ -39,7 +39,7 @@ jobs:
       - name: Commit CHANGELOG.md
         run: |
           git add CHANGELOG.md
-          git commit -m "[修改]1.修改更新日志"
+          git commit -m "chore: 修改更新日志"
 
       - name: change-version-by-tag
         uses: AlianBlank/github-action-tag-version@1.1.0
@@ -50,4 +50,3 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           force: true
-          tags: true
