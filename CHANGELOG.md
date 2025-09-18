@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.4.0](https://github.com/GameFrameX/com.gameframex.unity/tree/1.4.0) (2025-09-18)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.9...1.4.0)
+
 ## [1.3.9](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.9) (2025-08-12)
 
 [Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.8...1.3.9)
@@ -12,21 +16,49 @@
 
 [Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.6...1.3.7)
 
-**Merged pull requests:**
-
-- \[修改\]  单例优化 [\#2](https://github.com/GameFrameX/com.gameframex.unity/pull/2) ([BrokenMyth](https://github.com/BrokenMyth))
-
 ## [1.3.6](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.6) (2025-05-28)
 
-[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.2.2...1.3.6)
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.5...1.3.6)
+
+## [1.3.5](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.5) (2025-05-21)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.4...1.3.5)
+
+## [1.3.4](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.4) (2025-05-21)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.3...1.3.4)
 
 **Closed issues:**
 
 - 文件GUID重复的问题 [\#1](https://github.com/GameFrameX/com.gameframex.unity/issues/1)
 
-## [1.2.2](https://github.com/GameFrameX/com.gameframex.unity/tree/1.2.2) (2025-02-07)
+## [1.3.3](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.3) (2025-05-19)
 
-[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.0.11...1.2.2)
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.2...1.3.3)
+
+## [1.3.2](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.2) (2025-04-09)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.3.0...1.3.2)
+
+## [1.3.0](https://github.com/GameFrameX/com.gameframex.unity/tree/1.3.0) (2025-02-07)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.2.1...1.3.0)
+
+## [1.2.1](https://github.com/GameFrameX/com.gameframex.unity/tree/1.2.1) (2025-02-07)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.2.0...1.2.1)
+
+## [1.2.0](https://github.com/GameFrameX/com.gameframex.unity/tree/1.2.0) (2025-02-05)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.1.1...1.2.0)
+
+## [1.1.1](https://github.com/GameFrameX/com.gameframex.unity/tree/1.1.1) (2025-01-02)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.1.0...1.1.1)
+
+## [1.1.0](https://github.com/GameFrameX/com.gameframex.unity/tree/1.1.0) (2024-12-25)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1.0.11...1.1.0)
 
 ## [1.0.11](https://github.com/GameFrameX/com.gameframex.unity/tree/1.0.11) (2024-11-27)
 
@@ -62,7 +94,7 @@
 
 ## [1.0.3](https://github.com/GameFrameX/com.gameframex.unity/tree/1.0.3) (2024-07-30)
 
-[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/1e5afae55ba735efb50ab071611baebe6949842f...1.0.3)
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity/compare/793f226b9bb27ea14d01bd33505638231c45d3d8...1.0.3)
 
 
 
