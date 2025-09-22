@@ -1,9 +1,8 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
+﻿// GameFrameX 组织下的以及组织衍生的项目的版权、商标、专利和其他相关权利均受相应法律法规的保护。使用本项目应遵守相关法律法规和许可证的要求。
+// 
+// 本项目主要遵循 MIT 许可证和 Apache 许可证（版本 2.0）进行分发和使用。许可证位于源代码树根目录中的 LICENSE 文件。
+// 
+// 不得利用本项目从事危害国家安全、扰乱社会秩序、侵犯他人合法权益等法律法规禁止的活动！任何基于本项目二次开发而产生的一切法律纠纷和责任，我们不承担任何责任！
 
 using GameFrameX;
 using System.Collections.Generic;
@@ -16,8 +15,8 @@ namespace GameFrameX.Editor
     [CustomEditor(typeof(BaseComponent))]
     internal sealed class BaseComponentInspector : GameFrameworkInspector
     {
-        private static readonly float[] GameSpeed = new float[] {0f, 0.01f, 0.1f, 0.25f, 0.5f, 1f, 1.5f, 2f, 4f, 8f};
-        private static readonly string[] GameSpeedForDisplay = new string[] {"0x", "0.01x", "0.1x", "0.25x", "0.5x", "1x", "1.5x", "2x", "4x", "8x"};
+        private static readonly float[] GameSpeed = new float[] { 0f, 0.01f, 0.1f, 0.25f, 0.5f, 1f, 1.5f, 2f, 4f, 8f };
+        private static readonly string[] GameSpeedForDisplay = new string[] { "0x", "0.01x", "0.1x", "0.25x", "0.5x", "1x", "1.5x", "2x", "4x", "8x" };
 
         private SerializedProperty m_EditorResourceMode = null;
         private SerializedProperty m_TextHelperTypeName = null;
@@ -47,7 +46,7 @@ namespace GameFrameX.Editor
 
             serializedObject.Update();
 
-            BaseComponent t = (BaseComponent) target;
+            BaseComponent t = (BaseComponent)target;
 
             EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
             {

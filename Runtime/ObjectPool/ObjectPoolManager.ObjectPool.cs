@@ -1,9 +1,8 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
+﻿// GameFrameX 组织下的以及组织衍生的项目的版权、商标、专利和其他相关权利均受相应法律法规的保护。使用本项目应遵守相关法律法规和许可证的要求。
+// 
+// 本项目主要遵循 MIT 许可证和 Apache 许可证（版本 2.0）进行分发和使用。许可证位于源代码树根目录中的 LICENSE 文件。
+// 
+// 不得利用本项目从事危害国家安全、扰乱社会秩序、侵犯他人合法权益等法律法规禁止的活动！任何基于本项目二次开发而产生的一切法律纠纷和责任，我们不承担任何责任！
 
 using System;
 using System.Collections.Generic;
@@ -65,10 +64,7 @@ namespace GameFrameX.ObjectPool
             [Preserve]
             public override Type ObjectType
             {
-                get
-                {
-                    return typeof(T);
-                }
+                get { return typeof(T); }
             }
 
             /// <summary>
@@ -77,10 +73,7 @@ namespace GameFrameX.ObjectPool
             [Preserve]
             public override int Count
             {
-                get
-                {
-                    return m_ObjectMap.Count;
-                }
+                get { return m_ObjectMap.Count; }
             }
 
             /// <summary>
@@ -102,10 +95,7 @@ namespace GameFrameX.ObjectPool
             [Preserve]
             public override bool AllowMultiSpawn
             {
-                get
-                {
-                    return m_AllowMultiSpawn;
-                }
+                get { return m_AllowMultiSpawn; }
             }
 
             /// <summary>
@@ -114,14 +104,8 @@ namespace GameFrameX.ObjectPool
             [Preserve]
             public override float AutoReleaseInterval
             {
-                get
-                {
-                    return m_AutoReleaseInterval;
-                }
-                set
-                {
-                    m_AutoReleaseInterval = value;
-                }
+                get { return m_AutoReleaseInterval; }
+                set { m_AutoReleaseInterval = value; }
             }
 
             /// <summary>
@@ -130,10 +114,7 @@ namespace GameFrameX.ObjectPool
             [Preserve]
             public override int Capacity
             {
-                get
-                {
-                    return m_Capacity;
-                }
+                get { return m_Capacity; }
                 set
                 {
                     if (value < 0)
@@ -157,10 +138,7 @@ namespace GameFrameX.ObjectPool
             [Preserve]
             public override float ExpireTime
             {
-                get
-                {
-                    return m_ExpireTime;
-                }
+                get { return m_ExpireTime; }
 
                 set
                 {
@@ -185,14 +163,8 @@ namespace GameFrameX.ObjectPool
             [Preserve]
             public override int Priority
             {
-                get
-                {
-                    return m_Priority;
-                }
-                set
-                {
-                    m_Priority = value;
-                }
+                get { return m_Priority; }
+                set { m_Priority = value; }
             }
 
             /// <summary>

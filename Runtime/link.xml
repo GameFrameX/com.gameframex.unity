@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <linker>
-    <assembly fullname="UnityGameFramework.Runtime" preserve="all"/>
+    <assembly fullname="GameFrameX.Runtime" preserve="all"/>
 </linker>

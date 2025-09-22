@@ -1,9 +1,8 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
+﻿// GameFrameX 组织下的以及组织衍生的项目的版权、商标、专利和其他相关权利均受相应法律法规的保护。使用本项目应遵守相关法律法规和许可证的要求。
+// 
+// 本项目主要遵循 MIT 许可证和 Apache 许可证（版本 2.0）进行分发和使用。许可证位于源代码树根目录中的 LICENSE 文件。
+// 
+// 不得利用本项目从事危害国家安全、扰乱社会秩序、侵犯他人合法权益等法律法规禁止的活动！任何基于本项目二次开发而产生的一切法律纠纷和责任，我们不承担任何责任！
 
 using System;
 using GameFrameX.Runtime;
@@ -44,10 +43,7 @@ namespace GameFrameX.ObjectPool
         [Preserve]
         public string Name
         {
-            get
-            {
-                return m_Name;
-            }
+            get { return m_Name; }
         }
 
         /// <summary>
@@ -56,87 +52,56 @@ namespace GameFrameX.ObjectPool
         [Preserve]
         public string FullName
         {
-            get
-            {
-                return new TypeNamePair(ObjectType, m_Name).ToString();
-            }
+            get { return new TypeNamePair(ObjectType, m_Name).ToString(); }
         }
 
         /// <summary>
         /// 获取对象池对象类型。
         /// </summary>
         [Preserve]
-        public abstract Type ObjectType
-        {
-            get;
-        }
+        public abstract Type ObjectType { get; }
 
         /// <summary>
         /// 获取对象池中对象的数量。
         /// </summary>
         [Preserve]
-        public abstract int Count
-        {
-            get;
-        }
+        public abstract int Count { get; }
 
         /// <summary>
         /// 获取对象池中能被释放的对象的数量。
         /// </summary>
         [Preserve]
-        public abstract int CanReleaseCount
-        {
-            get;
-        }
+        public abstract int CanReleaseCount { get; }
 
         /// <summary>
         /// 获取是否允许对象被多次获取。
         /// </summary>
         [Preserve]
-        public abstract bool AllowMultiSpawn
-        {
-            get;
-        }
+        public abstract bool AllowMultiSpawn { get; }
 
         /// <summary>
         /// 获取或设置对象池自动释放可释放对象的间隔秒数。
         /// </summary>
         [Preserve]
-        public abstract float AutoReleaseInterval
-        {
-            get;
-            set;
-        }
+        public abstract float AutoReleaseInterval { get; set; }
 
         /// <summary>
         /// 获取或设置对象池的容量。
         /// </summary>
         [Preserve]
-        public abstract int Capacity
-        {
-            get;
-            set;
-        }
+        public abstract int Capacity { get; set; }
 
         /// <summary>
         /// 获取或设置对象池对象过期秒数。
         /// </summary>
         [Preserve]
-        public abstract float ExpireTime
-        {
-            get;
-            set;
-        }
+        public abstract float ExpireTime { get; set; }
 
         /// <summary>
         /// 获取或设置对象池的优先级。
         /// </summary>
         [Preserve]
-        public abstract int Priority
-        {
-            get;
-            set;
-        }
+        public abstract int Priority { get; set; }
 
         /// <summary>
         /// 释放对象池中的可释放对象。

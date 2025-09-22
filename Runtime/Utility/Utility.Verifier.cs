@@ -1,9 +1,8 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
+﻿// GameFrameX 组织下的以及组织衍生的项目的版权、商标、专利和其他相关权利均受相应法律法规的保护。使用本项目应遵守相关法律法规和许可证的要求。
+// 
+// 本项目主要遵循 MIT 许可证和 Apache 许可证（版本 2.0）进行分发和使用。许可证位于源代码树根目录中的 LICENSE 文件。
+// 
+// 不得利用本项目从事危害国家安全、扰乱社会秩序、侵犯他人合法权益等法律法规禁止的活动！任何基于本项目二次开发而产生的一切法律纠纷和责任，我们不承担任何责任！
 
 using System;
 using System.IO;
@@ -87,7 +86,7 @@ namespace GameFrameX.Runtime
                 }
 
                 SAlgorithm.HashCore(bytes, offset, length);
-                int result = (int) SAlgorithm.HashFinal();
+                int result = (int)SAlgorithm.HashFinal();
                 SAlgorithm.Initialize();
                 return result;
             }
@@ -118,7 +117,7 @@ namespace GameFrameX.Runtime
                     }
                 }
 
-                int result = (int) SAlgorithm.HashFinal();
+                int result = (int)SAlgorithm.HashFinal();
                 SAlgorithm.Initialize();
                 Array.Clear(SCachedBytes, 0, CachedBytesLength);
                 return result;
@@ -132,7 +131,7 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static byte[] GetCrc32Bytes(int crc32)
             {
-                return new byte[] {(byte) ((crc32 >> 24) & 0xff), (byte) ((crc32 >> 16) & 0xff), (byte) ((crc32 >> 8) & 0xff), (byte) (crc32 & 0xff)};
+                return new byte[] { (byte)((crc32 >> 24) & 0xff), (byte)((crc32 >> 16) & 0xff), (byte)((crc32 >> 8) & 0xff), (byte)(crc32 & 0xff) };
             }
 
             /// <summary>
@@ -165,10 +164,10 @@ namespace GameFrameX.Runtime
                     throw new GameFrameworkException("Offset or length is invalid.");
                 }
 
-                bytes[offset] = (byte) ((crc32 >> 24) & 0xff);
-                bytes[offset + 1] = (byte) ((crc32 >> 16) & 0xff);
-                bytes[offset + 2] = (byte) ((crc32 >> 8) & 0xff);
-                bytes[offset + 3] = (byte) (crc32 & 0xff);
+                bytes[offset] = (byte)((crc32 >> 24) & 0xff);
+                bytes[offset + 1] = (byte)((crc32 >> 16) & 0xff);
+                bytes[offset + 2] = (byte)((crc32 >> 8) & 0xff);
+                bytes[offset + 3] = (byte)(crc32 & 0xff);
             }
 
             internal static int GetCrc32(Stream stream, byte[] code, int length)
@@ -189,7 +188,7 @@ namespace GameFrameX.Runtime
                     throw new GameFrameworkException("Code length is invalid.");
                 }
 
-                int bytesLength = (int) stream.Length;
+                int bytesLength = (int)stream.Length;
                 if (length < 0 || length > bytesLength)
                 {
                     length = bytesLength;
@@ -220,7 +219,7 @@ namespace GameFrameX.Runtime
                     }
                 }
 
-                int result = (int) SAlgorithm.HashFinal();
+                int result = (int)SAlgorithm.HashFinal();
                 SAlgorithm.Initialize();
                 Array.Clear(SCachedBytes, 0, CachedBytesLength);
                 return result;
