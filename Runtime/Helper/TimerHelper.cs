@@ -15,7 +15,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 1970-01-01 00:00:00 UTC 时间
         /// </summary>
-        public static readonly DateTime EpochUtc = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Utc);
+        public static readonly DateTime EpochUtc = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         private static readonly long Epoch = EpochUtc.Ticks;
 
