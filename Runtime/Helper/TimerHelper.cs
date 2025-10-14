@@ -73,6 +73,24 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 设置时间差
+        /// </summary>
+        /// <param name="serverTime">服务器时间</param>
+        /// <param name="isUtc">是否使用UTC时间</param>
+        [UnityEngine.Scripting.Preserve]
+        public static void SetDifferenceTime(DateTime serverTime, bool isUtc = false)
+        {
+            if (isUtc)
+            {
+                _differenceTime = (long)(serverTime - DateTime.UtcNow).TotalSeconds;
+            }
+            else
+            {
+                _differenceTime = (long)(serverTime - DateTime.Now).TotalSeconds;
+            }
+        }
+
+        /// <summary>
         /// 毫秒级
         /// </summary>
         /// <returns></returns>
