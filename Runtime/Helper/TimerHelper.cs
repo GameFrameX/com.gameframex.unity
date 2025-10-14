@@ -13,7 +13,7 @@ namespace GameFrameX.Runtime
         public static readonly DateTime EpochLocal = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
 
         /// <summary>
-        /// 1970-01-01 00:00:00 UTC 时间
+        /// 1970-01-01 00:00:00 UTC 时间  
         /// </summary>
         public static readonly DateTime EpochUtc = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
@@ -132,6 +132,7 @@ namespace GameFrameX.Runtime
             return (_differenceTime + ClientNowMillisecond()) / 1000;
         }
 
+
         /// <summary>
         /// 将秒数转换成TimeSpan
         /// </summary>
@@ -174,13 +175,35 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 客户端时间
+        /// 当前时间
         /// </summary>
+        /// <param name="server">是否使用服务器时间</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public static long Now()
+        public static DateTime DateTimeNow(bool server = true)
         {
-            return ClientNow();
+            if (server)
+            {
+                return DateTimeOffset.FromUnixTimeSeconds(ServerNow()).DateTime;
+            }
+
+            return DateTimeOffset.FromUnixTimeSeconds(ClientNowSeconds()).DateTime;
+        }
+
+        /// <summary>
+        /// 当前时间
+        /// </summary>
+        /// <param name="server">是否使用服务器时间</param>
+        /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
+        public static DateTime Now(bool server = true)
+        {
+            if (server)
+            {
+                return DateTimeOffset.FromUnixTimeSeconds(ServerNow()).DateTime;
+            }
+
+            return DateTimeOffset.FromUnixTimeSeconds(ClientNowSeconds()).DateTime;
         }
 
         /// <summary>
