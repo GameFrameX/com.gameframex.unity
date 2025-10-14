@@ -118,15 +118,15 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 服务器当前时间
+        /// 服务器当前时间 单位 秒
         /// </summary>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
-        public static long ServerNow() //秒级
+        public static long ServerNow()
         {
             if (_isSecLevel)
             {
-                return _differenceTime + ClientNowMillisecond();
+                return _differenceTime + ClientNowSeconds();
             }
 
             return (_differenceTime + ClientNowMillisecond()) / 1000;
