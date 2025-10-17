@@ -290,5 +290,36 @@ namespace UnityEngine
                 transform.rotation = Quaternion.LookRotation(vector.normalized, Vector3.up);
             }
         }
+
+        /// <summary>
+        /// 将 <see cref="Transform" /> 重置为初始状态：本地坐标归零、旋转归零、缩放归一。
+        /// </summary>
+        /// <param name="transform"><see cref="Transform" /> 对象。</param>
+        /// <param name="parent">要设置的新父级 Transform。</param>
+        /// <remarks>
+        /// 等价于同时设置 localPosition = Vector3.zero、localRotation = Quaternion.identity、localScale = Vector3.one。
+        /// 注意：此方法会先设置父级，再执行重置，因此重置后的本地坐标、旋转、缩放均相对于新父级。
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        public static void SetParentAndReset(this Transform transform, Transform parent)
+        {
+            transform.SetParent(parent);
+            transform.Reset();
+        }
+
+        /// <summary>
+        /// 将 <see cref="Transform" /> 重置为初始状态：本地坐标归零、旋转归零、缩放归一。
+        /// </summary>
+        /// <param name="transform"><see cref="Transform" /> 对象。</param>
+        /// <remarks>
+        /// 等价于同时设置 localPosition = Vector3.zero、localRotation = Quaternion.identity、localScale = Vector3.one。
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        public static void Reset(this Transform transform)
+        {
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            transform.localScale = Vector3.one;
+        }
     }
 }
