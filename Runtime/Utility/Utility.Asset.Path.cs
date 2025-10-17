@@ -84,6 +84,11 @@
                 public const string BundlesDirectorySpriteName = "Sprite";
 
                 /// <summary>
+                /// 打包资源文件夹Spine名称
+                /// </summary>
+                public const string BundlesDirectorySpineName = "Spine";
+
+                /// <summary>
                 /// 打包资源文件夹Shader名称
                 /// </summary>
                 public const string BundlesDirectoryShaderName = "Shader";
@@ -97,6 +102,17 @@
                 public static string GetFilePath(string filePath)
                 {
                     return $"{BundlesPath}/{filePath}";
+                }
+
+                /// <summary>
+                /// 获取Spine文件路径
+                /// </summary>
+                /// <param name="filePath">相对于Bundles/Spine的路径，不要以/开头,需要携带扩展名</param>
+                /// <returns>返回拼接好的路径</returns>
+                [UnityEngine.Scripting.Preserve]
+                public static string GetSpinePath(string filePath)
+                {
+                    return GetCategoryFilePath(BundlesDirectorySpineName, filePath);
                 }
 
                 /// <summary>
