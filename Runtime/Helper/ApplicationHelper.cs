@@ -96,6 +96,39 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 获取当前运行平台的名称
+        /// </summary>
+        /// <returns>
+        /// 返回平台名称字符串：
+        /// - "Android": Android平台
+        /// - "MacOs": macOS平台
+        /// - "iOS": iOS平台
+        /// - "WebGL": WebGL平台
+        /// - "Windows": Windows平台
+        /// - 空字符串: 其他未定义的平台
+        /// </returns>
+        [UnityEngine.Scripting.Preserve]
+        public static string PlatformName
+        {
+            get
+            {
+#if UNITY_ANDROID
+                return "Android";
+#elif UNITY_STANDALONE_OSX
+                return "MacOs";
+#elif UNITY_IOS || UNITY_IPHONE
+                return "iOS";
+#elif UNITY_WEBGL
+                return "WebGL";
+#elif UNITY_STANDALONE_WIN
+                return "Windows";
+#else
+                return string.Empty;
+#endif
+            }
+        }
+
+        /// <summary>
         /// 是否是iOS 移动平台
         /// </summary>
         [UnityEngine.Scripting.Preserve]
