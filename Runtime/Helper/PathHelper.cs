@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using UnityEngine;
 
 namespace GameFrameX.Runtime
@@ -48,7 +49,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取平台名称
         /// </summary>
+        /// <remarks>
+        /// 此属性已废弃，请使用 ApplicationHelper.PlatformName 替代
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
+        [Obsolete("此方法已废弃，请使用 ApplicationHelper.PlatformName 替代")]
         public static string GetPlatformName
         {
             get
