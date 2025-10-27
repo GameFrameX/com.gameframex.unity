@@ -77,7 +77,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static bool IsLinux
         {
-            get { return Application.platform == RuntimePlatform.LinuxPlayer || Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.LinuxServer; }
+            get { return Application.platform == RuntimePlatform.LinuxPlayer || Application.platform == RuntimePlatform.LinuxEditor; }
         }
 
         /// <summary>
