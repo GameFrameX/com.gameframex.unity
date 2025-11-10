@@ -13,10 +13,10 @@ namespace GameFrameX.Runtime
     /// 基础组件。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("Game Framework/Base")]
+    [AddComponentMenu("GameFrameX/Base")]
     [UnityEngine.Scripting.Preserve]
     [DefaultExecutionOrder(-500)]
-    public sealed class BaseComponent : GameFrameworkComponent
+    public class BaseComponent : GameFrameworkComponent
     {
         private const int DefaultDpi = 96; // default windows dpi
 
