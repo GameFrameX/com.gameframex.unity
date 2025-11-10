@@ -16,7 +16,7 @@ namespace GameFrameX.Runtime
     [AddComponentMenu("GameFrameX/Base")]
     [UnityEngine.Scripting.Preserve]
     [DefaultExecutionOrder(-500)]
-    public class BaseComponent : GameFrameworkComponent
+    public sealed class BaseComponent : GameFrameworkComponent
     {
         private const int DefaultDpi = 96; // default windows dpi
 
