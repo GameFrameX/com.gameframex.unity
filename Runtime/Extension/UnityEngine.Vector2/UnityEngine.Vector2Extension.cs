@@ -25,5 +25,25 @@ namespace UnityEngine
         {
             return new Vector3(vector2.x, y, vector2.y);
         }
+
+        /// <summary>
+        /// 将 Vector2 转换为 Vector4，在 z 和 w 分量上设置为 0
+        /// </summary>
+        /// <param name="self">源 Vector2 对象</param>
+        /// <returns>包含源 Vector2 的 x、y 分量且 z、w 分量为 0 的新 Vector4 对象</returns>
+        public static Vector4 ToVector4(this Vector2 self)
+        {
+            return new Vector4(self.x, self.y, 0, 0);
+        }
+
+        /// <summary>
+        /// 将 Vector2 转换为 Vector3，在 z 分量上设置为 0
+        /// </summary>
+        /// <param name="self">源 Vector2 对象</param>
+        /// <returns>包含源 Vector2 的 x、y 分量且 z 分量为 0 的新 Vector3 对象</returns>
+        public static Vector3 AsVector3(this Vector2 self)
+        {
+            return new Vector3(self.x, self.y, 0);
+        }
     }
 }
