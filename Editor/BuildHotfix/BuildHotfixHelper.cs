@@ -20,7 +20,7 @@ namespace GameFrameX.Editor
 #if ENABLE_GAME_FRAME_X_HYBRID_CLR && !DISABLE_HYBRIDCLR
         //Unity代码生成dll位置
         private const string HotFixAssembliesDir = "Library/ScriptAssemblies";
-        private static readonly string[] HotfixDlls = new string[] { "Unity.Hotfix.dll" };
+        private static readonly string[] HotfixDlls = new string[] { "Unity.HotFix.dll" };
 
         //热更代码存放位置
         private const string CodeDir = "Assets/Bundles/Code/";
@@ -40,7 +40,7 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 复制热更新代码
         /// </summary>
-        [MenuItem("GameFrameX/Build/Copy Hotfix Code(复制热更新代码到Assets>Bundles>Code)", false, 10)]
+        [MenuItem("GameFrameX/Build/Copy HotFix Code(复制热更新代码到Assets>Bundles>Code)", false, 10)]
         public static void CopyHotfixCode()
         {
             if (!Directory.Exists(CodeDir))
