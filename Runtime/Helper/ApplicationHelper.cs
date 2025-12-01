@@ -57,6 +57,38 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 是否是WebGL微信小游戏平台
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
+        public static bool IsWebGLWeChatMiniGame
+        {
+            get
+            {
+#if UNITY_WEBGL && ENABLE_WECHAT_MINI_GAME
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        /// <summary>
+        /// 是否是WebGL抖音小游戏平台
+        /// </summary>
+        [UnityEngine.Scripting.Preserve]
+        public static bool IsWebGLDouYinMiniGame
+        {
+            get
+            {
+#if UNITY_WEBGL && ENABLE_DOUYIN_MINI_GAME
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        /// <summary>
         /// 是否是Windows平台
         /// </summary>
         [UnityEngine.Scripting.Preserve]

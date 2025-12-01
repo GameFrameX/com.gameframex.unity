@@ -22,6 +22,16 @@
       "name": "com.gameframex.unity.readassets",
       "expression": "",
       "define": "ENABLE_GAME_FRAME_X_READ_ASSETS"
+    },
+    {
+      "name": "com.qq.weixin.minigame",
+      "expression": "",
+      "define": "ENABLE_WECHAT_MINI_GAME"
+    },
+    {
+      "name": "com.bytedance.starksdk",
+      "expression": "",
+      "define": "ENABLE_DOUYIN_MINI_GAME"
     }
   ],
   "noEngineReferences": false
