@@ -10,11 +10,24 @@ namespace UnityEngine
         private static readonly List<Transform> s_CachedTransforms = new List<Transform>();
 
         /// <summary>
-        /// 获取或增加组件。
+        /// 销毁组件。
         /// </summary>
-        /// <typeparam name="T">要获取或增加的组件。</typeparam>
-        /// <param name="gameObject">目标对象。</param>
-        /// <returns>获取或增加的组件。</returns>
+        /// <param name="self">目标组件。</param>
+        [Preserve]
+        public static void DestroyComponent(this Component self)
+        {
+            var component = self.GetComponent(self.GetType());
+            if (component != null)
+            {
+                Object.Destroy(component);
+            }
+        }
+
+        /// <summary>
+        /// 销毁指定类型的组件。
+        /// </summary>
+        /// <typeparam name="T">要销毁的组件类型。</typeparam>
+        /// <param name="gameObject">目标游戏对象。</param>
         [Preserve]
         public static void DestroyComponent<T>(this GameObject gameObject) where T : Component
         {
