@@ -1,3 +1,18 @@
+# [1.6.0](https://github.com/gameframex/com.gameframex.unity/compare/1.5.1...1.6.0) (2025-12-23)
+
+
+### Bug Fixes
+
+* 修正热更新DLL文件名大小写不一致问题 ([54593b9](https://github.com/gameframex/com.gameframex.unity/commit/54593b9166a5223e6b418d11a4a2df64002a0f34))
+
+
+### Features
+
+* **editor:** 添加欢迎窗口及资源文件 ([e51a267](https://github.com/gameframex/com.gameframex.unity/commit/e51a26790817143d55dd83540073a6c37d99cc5d))
+* **GameObject:** 添加销毁组件的方法 ([23c9e36](https://github.com/gameframex/com.gameframex.unity/commit/23c9e361fc080bae484c3c0b13d26e7a17f8115b))
+* **Vector扩展:** 添加Vector2/3/4之间的相互转换方法 ([c4024df](https://github.com/gameframex/com.gameframex.unity/commit/c4024dff50b2ab3d56aea8e49a9aaa2883760418))
+* **平台支持:** 添加微信和抖音小游戏平台支持 ([2619bd9](https://github.com/gameframex/com.gameframex.unity/commit/2619bd9076e3583c7243f8630e4374361200699e))
+
 # Changelog
 
 ## [1.5.1](https://github.com/GameFrameX/com.gameframex.unity/tree/1.5.1) (2025-10-27)
