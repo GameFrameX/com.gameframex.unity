@@ -276,6 +276,7 @@ namespace GameFrameX.Runtime
             return (long)(utcDateTime - EpochUtc).TotalMilliseconds;
         }
 
+        /// <summary>
         /// 获取当前 UTC 时间的 Unix 时间戳（秒级精度）。
         /// </summary>
         /// <returns>
