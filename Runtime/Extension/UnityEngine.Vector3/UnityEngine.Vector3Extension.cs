@@ -29,7 +29,9 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-namespace UnityEngine
+using UnityEngine;
+
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 对 Unity 的扩展方法。

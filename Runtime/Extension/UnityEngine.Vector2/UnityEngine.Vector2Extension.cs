@@ -1,4 +1,6 @@
-namespace UnityEngine
+using UnityEngine;
+
+namespace GameFrameX.Runtime
 {
     [UnityEngine.Scripting.Preserve]
     public static class UnityEngineVector2Extension

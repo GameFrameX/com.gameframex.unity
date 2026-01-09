@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnityEngine
+namespace GameFrameX.Runtime
 {
     [UnityEngine.Scripting.Preserve]
     public static class UnityEngineTransformExtension

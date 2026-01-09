@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Scripting;
 
-namespace UnityEngine
+namespace GameFrameX.Runtime
 {
     [Preserve]
     public static class UnityEngageGameObjectExtension
@@ -19,7 +20,7 @@ namespace UnityEngine
             var component = self.GetComponent(self.GetType());
             if (component != null)
             {
-                Object.Destroy(component);
+                UnityEngine.Object.Destroy(component);
             }
         }
 
@@ -34,7 +35,7 @@ namespace UnityEngine
             T component = gameObject.GetComponent<T>();
             if (component != null)
             {
-                Object.Destroy(component);
+                UnityEngine.Object.Destroy(component);
             }
 
             // return component;
