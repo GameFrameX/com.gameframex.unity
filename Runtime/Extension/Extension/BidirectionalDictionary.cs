@@ -1,4 +1,6 @@
-﻿namespace System.Collections.Generic
+﻿using System.Collections.Generic;
+
+namespace GameFrameX.Runtime
 {
     [UnityEngine.Scripting.Preserve]
     public class BidirectionalDictionary<TKey, TValue>

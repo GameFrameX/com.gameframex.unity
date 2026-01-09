@@ -1,6 +1,7 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 
-namespace System
+namespace GameFrameX.Runtime
 {
     /// <summary>
     /// 线程私有random对象

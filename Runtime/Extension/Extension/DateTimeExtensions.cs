@@ -1,4 +1,6 @@
-﻿namespace System
+﻿using System;
+
+namespace GameFrameX.Runtime
 {
     public static class DateTimeExtensions
     {

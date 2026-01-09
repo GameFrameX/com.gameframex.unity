@@ -1,6 +1,8 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace System.Collections.Generic
+namespace GameFrameX.Runtime
 {
     [UnityEngine.Scripting.Preserve]
     public static class CollectionExtensions
