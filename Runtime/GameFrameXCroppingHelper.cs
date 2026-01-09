@@ -154,15 +154,15 @@ namespace GameFrameX.Runtime
             _ = typeof(ObjectExtension);
             _ = typeof(SpanExtension);
             _ = typeof(StringExtension);
-            _ = typeof(System.Collections.Generic.BidirectionalDictionary<,>);
-            _ = typeof(System.Collections.Generic.CollectionExtensions);
-            _ = typeof(System.DateTimeExtensions);
-            _ = typeof(System.ThreadLocalRandom);
-            _ = typeof(System.TypeExtensions);
-            _ = typeof(UnityEngine.UnityEngageGameObjectExtension);
-            _ = typeof(UnityEngine.UnityEngineTransformExtension);
-            _ = typeof(UnityEngine.UnityEngineVector2Extension);
-            _ = typeof(UnityEngine.UnityEngineVector3Extension);
+            _ = typeof(GameFrameX.Runtime.BidirectionalDictionary<,>);
+            _ = typeof(GameFrameX.Runtime.CollectionExtensions);
+            _ = typeof(GameFrameX.Runtime.DateTimeExtensions);
+            _ = typeof(GameFrameX.Runtime.ThreadLocalRandom);
+            _ = typeof(GameFrameX.Runtime.TypeExtensions);
+            _ = typeof(GameFrameX.Runtime.UnityEngageGameObjectExtension);
+            _ = typeof(GameFrameX.Runtime.UnityEngineTransformExtension);
+            _ = typeof(GameFrameX.Runtime.UnityEngineVector2Extension);
+            _ = typeof(GameFrameX.Runtime.UnityEngineVector3Extension);
         }
     }
 }
