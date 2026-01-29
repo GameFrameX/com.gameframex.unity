@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/gameframex/com.gameframex.unity/compare/1.6.0...1.6.1) (2026-01-29)
+
+
+### Bug Fixes
+
+* 修复 GetBytesSize 方法中大数值单位转换错误 ([098e376](https://github.com/gameframex/com.gameframex.unity/commit/098e37639cc5428d970b4e81f82edf6a1d238232))
+
 # [1.6.0](https://github.com/gameframex/com.gameframex.unity/compare/1.5.1...1.6.0) (2025-12-23)
 
 
