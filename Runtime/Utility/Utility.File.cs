@@ -8,7 +8,7 @@
         [UnityEngine.Scripting.Preserve]
         public static class File
         {
-            private static readonly string[] UnitList = new[] {"B", "KB", "MB", "GB", "TB", "PB"};
+            private static readonly string[] UnitList = new[] { "B", "KB", "MB", "GB", "TB", "PB" };
 
             /// <summary>
             /// 获取字节大小
@@ -18,17 +18,23 @@
             [UnityEngine.Scripting.Preserve]
             public static string GetBytesSize(long size)
             {
-                foreach (var unit in UnitList)
-                {
-                    if (size <= 1024)
-                    {
-                        return size + unit;
-                    }
+                double dSize = size;
+                int unitIndex = 0;
 
-                    size /= 1024;
+                while (dSize >= 1024 && unitIndex < UnitList.Length - 1)
+                {
+                    dSize /= 1024;
+                    unitIndex++;
                 }
 
-                return size + UnitList[0];
+                if (unitIndex == 0)
+                {
+                    return dSize + UnitList[unitIndex];
+                }
+
+                // 格式化为保留两位小数，但去除尾部不必要的零
+                string formattedSize = dSize.ToString("F2").TrimEnd('0').TrimEnd('.');
+                return formattedSize + UnitList[unitIndex];
             }
         }
     }
