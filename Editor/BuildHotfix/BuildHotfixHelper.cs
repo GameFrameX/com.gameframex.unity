@@ -78,6 +78,12 @@ namespace GameFrameX.Editor
                 Directory.CreateDirectory(AOTCodeDir);
             }
 
+            var exitsFiles = Directory.GetFiles(AOTCodeDir);
+            foreach (var file in exitsFiles)
+            {
+                File.Delete(file);
+            }
+
             DirectoryInfo directoryInfo = new DirectoryInfo(Application.dataPath);
             string path = Path.Combine(directoryInfo.Parent.FullName, "HybridCLRData", "AssembliesPostIl2CppStrip", EditorUserBuildSettings.activeBuildTarget.ToString());
 
