@@ -107,7 +107,7 @@ namespace GameFrameX.Editor
         public const string HybridCLRScriptingDefineSymbol = "DISABLE_HYBRIDCLR";
 
         /// <summary>
-        /// 开启 HybridCLR 的支持。
+        /// 禁用 HybridCLR：添加 DISABLE_HYBRIDCLR 宏，关闭热更新功能。
         /// </summary>
         [MenuItem("GameFrameX/Scripting Define Symbols/Disable HybridCLR(关闭HybridCLR适配)", false, 5000)]
         public static void DisableHybridCLR()
@@ -116,7 +116,7 @@ namespace GameFrameX.Editor
         }
 
         /// <summary>
-        /// 关闭 HybridCLR 的支持。
+        /// 启用 HybridCLR：移除 DISABLE_HYBRIDCLR 宏，开启热更新功能。
         /// </summary>
         [MenuItem("GameFrameX/Scripting Define Symbols/Enable HybridCLR(开启HybridCLR适配)", false, 5001)]
         public static void EnableHybridCLR()
