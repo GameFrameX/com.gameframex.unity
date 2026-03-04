@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/gameframex/com.gameframex.unity/compare/1.6.1...1.6.2) (2026-03-04)
+
+
+### Bug Fixes
+
+* 在生成AOT代码前先清理旧文件 ([8e923a0](https://github.com/gameframex/com.gameframex.unity/commit/8e923a08253e3f61ea18587d47d8825147420002))
+
 ## [1.6.1](https://github.com/gameframex/com.gameframex.unity/compare/1.6.0...1.6.1) (2026-01-29)
 
 
