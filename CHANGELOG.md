@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/gameframex/com.gameframex.unity/compare/1.6.2...1.6.3) (2026-03-04)
+
+
+### Bug Fixes
+
+* **构建热更新:** 修复未找到HybridCLR数据目录时的错误 ([a44c0c5](https://github.com/gameframex/com.gameframex.unity/commit/a44c0c548c95f2e2dff2b2d8521c98f62fe93b2c))
+
 ## [1.6.2](https://github.com/gameframex/com.gameframex.unity/compare/1.6.1...1.6.2) (2026-03-04)
 
 
