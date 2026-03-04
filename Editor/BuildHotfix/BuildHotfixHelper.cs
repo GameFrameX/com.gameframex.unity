@@ -78,16 +78,18 @@ namespace GameFrameX.Editor
                 Directory.CreateDirectory(AOTCodeDir);
             }
 
-            var exitsFiles = Directory.GetFiles(AOTCodeDir);
-            foreach (var file in exitsFiles)
-            {
-                File.Delete(file);
-            }
+            FileHelper.CleanDirectory(AOTCodeDir);
 
             DirectoryInfo directoryInfo = new DirectoryInfo(Application.dataPath);
             string path = Path.Combine(directoryInfo.Parent.FullName, "HybridCLRData", "AssembliesPostIl2CppStrip", EditorUserBuildSettings.activeBuildTarget.ToString());
 
             DirectoryInfo aotCodeDir = new DirectoryInfo(path);
+            if (!aotCodeDir.Exists)
+            {
+                Debug.LogError($"未找到HybridCLR数据目录:{path}");
+                return;
+            }
+
             var files = aotCodeDir.GetFiles("*.dll");
             var stringBuilder = new StringBuilder();
             foreach (var fileInfo in files)
