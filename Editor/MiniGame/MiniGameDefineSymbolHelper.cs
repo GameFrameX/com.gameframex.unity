@@ -10,24 +10,34 @@ namespace GameFrameX.Editor
     /// </summary>
     public static class MiniGameDefineSymbolHelper
     {
-        public const string EnableWeChatMiniGameScriptingDefineSymbol = "ENABLE_WECHAT_MINI_GAME";
-        public const string EnableDouYinMiniGameScriptingDefineSymbol = "ENABLE_DOUYIN_MINI_GAME";
+        /// <summary>
+        /// 微信小游戏的适配宏定义
+        /// </summary>
+        public readonly static string[] EnableWeChatMiniGameScriptingDefineSymbol = new string[] { "ENABLE_WECHAT_MINI_GAME", "WEIXINMINIGAME", };
+
+        /// <summary>
+        /// 抖音小游戏的适配宏定义
+        /// </summary>
+        public readonly static string[] EnableDouYinMiniGameScriptingDefineSymbol = new string[] { "ENABLE_DOUYIN_MINI_GAME", "DOUYINMINIGAME", "TTSDK_MIX_ENGINE", };
 
         /// <summary>
         /// 开启微信小游戏的适配
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/MiniGame/WeChat/Open", false, 10)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Enable WeChat Mini Game(开启[微信小游戏]适配)", false, 100)]
 #endif
-        public static void OpenWeChatMiniGame()
+        public static void EnableWeChatMiniGame()
         {
 #if UNITY_WEBGL
-            if (!ScriptingDefineSymbols.HasScriptingDefineSymbol(BuildTargetGroup.WebGL, EnableWeChatMiniGameScriptingDefineSymbol))
+            foreach (var define in EnableWeChatMiniGameScriptingDefineSymbol)
             {
-                ScriptingDefineSymbols.AddScriptingDefineSymbol(EnableWeChatMiniGameScriptingDefineSymbol);
-            }
+                if (!ScriptingDefineSymbols.HasScriptingDefineSymbol(BuildTargetGroup.WebGL, define))
+                {
+                    ScriptingDefineSymbols.AddScriptingDefineSymbol(define);
+                }
 
-            Debug.Log($"微信小游戏宏定义 [{EnableDouYinMiniGameScriptingDefineSymbol}] 已经打开");
+                Debug.Log($"微信小游戏宏定义 [{define}] 已经打开");
+            }
 #endif
         }
 
@@ -35,12 +45,20 @@ namespace GameFrameX.Editor
         /// 关闭微信小游戏的适配
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/MiniGame/WeChat/Close", false, 11)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Disable WeChat Mini Game(关闭[微信小游戏]适配)", false, 101)]
 #endif
-        public static void CloseWeChatMiniGame()
+        public static void DisableWeChatMiniGame()
         {
 #if UNITY_WEBGL
-            ScriptingDefineSymbols.RemoveScriptingDefineSymbol(EnableWeChatMiniGameScriptingDefineSymbol);
+            foreach (var define in EnableWeChatMiniGameScriptingDefineSymbol)
+            {
+                if (ScriptingDefineSymbols.HasScriptingDefineSymbol(BuildTargetGroup.WebGL, define))
+                {
+                    ScriptingDefineSymbols.RemoveScriptingDefineSymbol(define);
+                }
+
+                Debug.Log($"微信小游戏宏定义 [{define}] 已经关闭");
+            }
 #endif
         }
 
@@ -48,17 +66,20 @@ namespace GameFrameX.Editor
         /// 开启抖音小游戏的适配
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/MiniGame/DouYin/Open", false, 20)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Enable DouYin Mini Game(开启[抖音小游戏]适适配)", false, 200)]
 #endif
-        public static void OpenDouYinMiniGame()
+        public static void EnableDouYinMiniGame()
         {
 #if UNITY_WEBGL
-            if (!ScriptingDefineSymbols.HasScriptingDefineSymbol(BuildTargetGroup.WebGL, EnableDouYinMiniGameScriptingDefineSymbol))
+            foreach (var define in EnableDouYinMiniGameScriptingDefineSymbol)
             {
-                ScriptingDefineSymbols.AddScriptingDefineSymbol(EnableDouYinMiniGameScriptingDefineSymbol);
-            }
+                if (!ScriptingDefineSymbols.HasScriptingDefineSymbol(BuildTargetGroup.WebGL, define))
+                {
+                    ScriptingDefineSymbols.AddScriptingDefineSymbol(define);
+                }
 
-            Debug.Log($"抖音小游戏宏定义 [{EnableDouYinMiniGameScriptingDefineSymbol}] 已经打开");
+                Debug.Log($"抖音小游戏宏定义 [{define}] 已经打开");
+            }
 #endif
         }
 
@@ -66,12 +87,20 @@ namespace GameFrameX.Editor
         /// 关闭抖音小游戏的适配
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/MiniGame/DouYin/Close", false, 21)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Disable DouYin Mini Game(关闭[抖音小游戏]适配)", false, 201)]
 #endif
-        public static void CloseDouYinMiniGame()
+        public static void DisableDouYinMiniGame()
         {
 #if UNITY_WEBGL
-            ScriptingDefineSymbols.RemoveScriptingDefineSymbol(EnableDouYinMiniGameScriptingDefineSymbol);
+            foreach (var define in EnableDouYinMiniGameScriptingDefineSymbol)
+            {
+                if (ScriptingDefineSymbols.HasScriptingDefineSymbol(BuildTargetGroup.WebGL, define))
+                {
+                    ScriptingDefineSymbols.RemoveScriptingDefineSymbol(define);
+                }
+
+                Debug.Log($"抖音小游戏宏定义 [{define}] 已经关闭");
+            }
 #endif
         }
     }
