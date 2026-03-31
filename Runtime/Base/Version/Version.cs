@@ -34,6 +34,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 版本号类。
     /// </summary>
+    /// <remarks>
+    /// Provides version management functionality for the game framework and game itself.
+    /// </remarks>
     public static partial class Version
     {
         private const string GameFrameworkVersionString = "0.1.0";
@@ -43,6 +46,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取游戏框架版本号。
         /// </summary>
+        /// <remarks>
+        /// Returns the current version of the GameFrameX framework.
+        /// </remarks>
         public static string GameFrameworkVersion
         {
             get { return GameFrameworkVersionString; }
@@ -51,6 +57,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取游戏版本号。
         /// </summary>
+        /// <remarks>
+        /// Returns the game version from the configured version helper.
+        /// </remarks>
         public static string GameVersion
         {
             get
@@ -67,7 +76,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置版本号辅助器。
         /// </summary>
-        /// <param name="versionHelper">要设置的版本号辅助器。</param>
+        /// <remarks>
+        /// Sets the version helper instance that provides the game version information.
+        /// </remarks>
+        /// <param name="versionHelper">要设置的版本号辅助器。 / The version helper instance to set.</param>
         public static void SetVersionHelper(IVersionHelper versionHelper)
         {
             GameFrameworkGuard.NotNull(versionHelper, nameof(versionHelper));

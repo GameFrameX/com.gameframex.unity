@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 namespace GameFrameX.Runtime
 {
     [UnityEngine.Scripting.Preserve]
-    public static class StringExtension
+    public static class StringExtensions
     {
         /// <summary>
         /// 快速比较两个字符串内容是否一致

@@ -292,6 +292,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 清除链表结点缓存。
         /// </summary>
+        /// <remarks>
+        /// Clears the linked list node cache.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void ClearCachedNodes()
         {
@@ -301,8 +304,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 确定某值是否在链表中。
         /// </summary>
-        /// <param name="value">指定值。</param>
-        /// <returns>某值是否在链表中。</returns>
+        /// <remarks>
+        /// Determines whether a value is in the linked list.
+        /// </remarks>
+        /// <param name="value">指定值 / The specified value</param>
+        /// <returns>某值是否在链表中 / Whether the value is in the linked list</returns>
         [UnityEngine.Scripting.Preserve]
         public bool Contains(T value)
         {
@@ -312,8 +318,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从目标数组的指定索引处开始将整个链表复制到兼容的一维数组。
         /// </summary>
-        /// <param name="array">一维数组，它是从链表复制的元素的目标。数组必须具有从零开始的索引。</param>
-        /// <param name="index">array 中从零开始的索引，从此处开始复制。</param>
+        /// <remarks>
+        /// Copies the entire linked list to a compatible one-dimensional array, starting at the specified index of the target array.
+        /// </remarks>
+        /// <param name="array">一维数组，它是从链表复制的元素的目标。数组必须具有从零开始的索引。 / The one-dimensional array that is the destination of the elements copied from the linked list. The array must have zero-based indexing</param>
+        /// <param name="index">array 中从零开始的索引，从此处开始复制。 / The zero-based index in array at which copying begins</param>
         [UnityEngine.Scripting.Preserve]
         public void CopyTo(T[] array, int index)
         {
@@ -323,8 +332,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从特定的 ICollection 索引开始，将数组的元素复制到一个数组中。
         /// </summary>
-        /// <param name="array">一维数组，它是从 ICollection 复制的元素的目标。数组必须具有从零开始的索引。</param>
-        /// <param name="index">array 中从零开始的索引，从此处开始复制。</param>
+        /// <remarks>
+        /// Copies the elements of the ICollection to an array, starting at a particular ICollection index.
+        /// </remarks>
+        /// <param name="array">一维数组，它是从 ICollection 复制的元素的目标。数组必须具有从零开始的索引。 / The one-dimensional array that is the destination of the elements copied from the ICollection. The array must have zero-based indexing</param>
+        /// <param name="index">array 中从零开始的索引，从此处开始复制。 / The zero-based index in array at which copying begins</param>
         [UnityEngine.Scripting.Preserve]
         public void CopyTo(Array array, int index)
         {
@@ -334,8 +346,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 查找包含指定值的第一个结点。
         /// </summary>
-        /// <param name="value">要查找的指定值。</param>
-        /// <returns>包含指定值的第一个结点。</returns>
+        /// <remarks>
+        /// Finds the first node that contains the specified value.
+        /// </remarks>
+        /// <param name="value">要查找的指定值 / The specified value to find</param>
+        /// <returns>包含指定值的第一个结点 / The first node containing the specified value</returns>
         [UnityEngine.Scripting.Preserve]
         public LinkedListNode<T> Find(T value)
         {
@@ -345,8 +360,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 查找包含指定值的最后一个结点。
         /// </summary>
-        /// <param name="value">要查找的指定值。</param>
-        /// <returns>包含指定值的最后一个结点。</returns>
+        /// <remarks>
+        /// Finds the last node that contains the specified value.
+        /// </remarks>
+        /// <param name="value">要查找的指定值 / The specified value to find</param>
+        /// <returns>包含指定值的最后一个结点 / The last node containing the specified value</returns>
         [UnityEngine.Scripting.Preserve]
         public LinkedListNode<T> FindLast(T value)
         {
@@ -356,8 +374,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从链表中移除指定值的第一个匹配项。
         /// </summary>
-        /// <param name="value">指定值。</param>
-        /// <returns>是否移除成功。</returns>
+        /// <remarks>
+        /// Removes the first occurrence of the specified value from the linked list.
+        /// </remarks>
+        /// <param name="value">指定值 / The specified value</param>
+        /// <returns>是否移除成功 / Whether the removal was successful</returns>
         [UnityEngine.Scripting.Preserve]
         public bool Remove(T value)
         {
@@ -375,7 +396,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从链表中移除指定的结点。
         /// </summary>
-        /// <param name="node">指定的结点。</param>
+        /// <remarks>
+        /// Removes the specified node from the linked list.
+        /// </remarks>
+        /// <param name="node">指定的结点 / The specified node</param>
         [UnityEngine.Scripting.Preserve]
         public void Remove(LinkedListNode<T> node)
         {
@@ -386,6 +410,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 移除位于链表开头处的结点。
         /// </summary>
+        /// <remarks>
+        /// Removes the node at the start of the linked list.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void RemoveFirst()
         {
@@ -402,6 +429,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 移除位于链表结尾处的结点。
         /// </summary>
+        /// <remarks>
+        /// Removes the node at the end of the linked list.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void RemoveLast()
         {
@@ -418,7 +448,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 返回循环访问集合的枚举数。
         /// </summary>
-        /// <returns>循环访问集合的枚举数。</returns>
+        /// <remarks>
+        /// Returns an enumerator that iterates through the collection.
+        /// </remarks>
+        /// <returns>循环访问集合的枚举数 / An enumerator that iterates through the collection</returns>
         [UnityEngine.Scripting.Preserve]
         public Enumerator GetEnumerator()
         {
@@ -450,7 +483,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 将值添加到 ICollection`1 的结尾处。
         /// </summary>
-        /// <param name="value">要添加的值。</param>
+        /// <remarks>
+        /// Adds a value to the end of the ICollection`1.
+        /// </remarks>
+        /// <param name="value">要添加的值 / The value to add</param>
         void ICollection<T>.Add(T value)
         {
             AddLast(value);
@@ -459,7 +495,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 返回循环访问集合的枚举数。
         /// </summary>
-        /// <returns>循环访问集合的枚举数。</returns>
+        /// <remarks>
+        /// Returns an enumerator that iterates through the collection.
+        /// </remarks>
+        /// <returns>循环访问集合的枚举数 / An enumerator that iterates through the collection</returns>
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             return GetEnumerator();
@@ -468,7 +507,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 返回循环访问集合的枚举数。
         /// </summary>
-        /// <returns>循环访问集合的枚举数。</returns>
+        /// <remarks>
+        /// Returns an enumerator that iterates through the collection.
+        /// </remarks>
+        /// <returns>循环访问集合的枚举数 / An enumerator that iterates through the collection</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
@@ -477,6 +519,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 循环访问集合的枚举数。
         /// </summary>
+        /// <remarks>
+        /// An enumerator that iterates through the collection.
+        /// </remarks>
         [StructLayout(LayoutKind.Auto)]
         [UnityEngine.Scripting.Preserve]
         public struct Enumerator : IEnumerator<T>, IEnumerator
@@ -496,6 +541,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取当前结点。
             /// </summary>
+            /// <remarks>
+            /// Gets the current node.
+            /// </remarks>
             public T Current
             {
                 get { return m_Enumerator.Current; }
@@ -504,6 +552,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取当前的枚举数。
             /// </summary>
+            /// <remarks>
+            /// Gets the current enumerator.
+            /// </remarks>
             object IEnumerator.Current
             {
                 get { return m_Enumerator.Current; }
@@ -512,6 +563,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 清理枚举数。
             /// </summary>
+            /// <remarks>
+            /// Disposes the enumerator.
+            /// </remarks>
             public void Dispose()
             {
                 m_Enumerator.Dispose();
@@ -520,7 +574,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取下一个结点。
             /// </summary>
-            /// <returns>返回下一个结点。</returns>
+            /// <remarks>
+            /// Gets the next node.
+            /// </remarks>
+            /// <returns>返回下一个结点 / Returns the next node</returns>
             public bool MoveNext()
             {
                 return m_Enumerator.MoveNext();
@@ -529,6 +586,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 重置枚举数。
             /// </summary>
+            /// <remarks>
+            /// Resets the enumerator.
+            /// </remarks>
             void IEnumerator.Reset()
             {
                 ((IEnumerator<T>)m_Enumerator).Reset();

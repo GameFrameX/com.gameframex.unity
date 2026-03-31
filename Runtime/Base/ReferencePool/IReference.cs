@@ -34,11 +34,17 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 引用接口。
     /// </summary>
+    /// <remarks>
+    /// Interface for reference objects that can be pooled and reused. Implementations must provide a Clear method to reset state.
+    /// </remarks>
     public interface IReference
     {
         /// <summary>
         /// 清理引用。
         /// </summary>
+        /// <remarks>
+        /// Resets the reference object to its initial state. Called automatically when the reference is released back to the pool.
+        /// </remarks>
         void Clear();
     }
 }

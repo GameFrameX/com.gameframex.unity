@@ -36,11 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 变量。
     /// </summary>
+    /// <remarks>
+    /// Abstract base class for variables that supports reference counting.
+    /// Provides a type-agnostic interface for getting and setting variable values.
+    /// </remarks>
     public abstract class Variable : IReference
     {
         /// <summary>
         /// 初始化变量的新实例。
         /// </summary>
+        /// <remarks>
+        /// Default constructor for the Variable class.
+        /// </remarks>
         public Variable()
         {
         }
@@ -48,23 +55,29 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取变量类型。
         /// </summary>
+        /// <remarks>
+        /// Gets the runtime type of the variable's value.
+        /// </remarks>
         public abstract Type Type { get; }
 
         /// <summary>
         /// 获取变量值。
         /// </summary>
-        /// <returns>变量值。</returns>
+        /// <returns>变量值。 / The variable value.</returns>
         public abstract object GetValue();
 
         /// <summary>
         /// 设置变量值。
         /// </summary>
-        /// <param name="value">变量值。</param>
+        /// <param name="value">变量值。 / The variable value to set.</param>
         public abstract void SetValue(object value);
 
         /// <summary>
         /// 清理变量值。
         /// </summary>
+        /// <remarks>
+        /// Resets the variable to its default state, typically used when returning the object to a pool.
+        /// </remarks>
         public abstract void Clear();
     }
 }

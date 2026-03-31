@@ -36,7 +36,10 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 任务池。
     /// </summary>
-    /// <typeparam name="T">任务类型。</typeparam>
+    /// <typeparam name="T">任务类型。 / The type of the task.</typeparam>
+    /// <remarks>
+    /// Task pool manages task agents and tasks, providing functionality for adding, removing, and processing tasks.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class TaskPool<T> where T : TaskBase
     {
@@ -48,6 +51,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化任务池的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the TaskPool class with empty collections for agents and tasks.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public TaskPool()
         {
@@ -60,6 +66,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取或设置任务池是否被暂停。
         /// </summary>
+        /// <remarks>
+        /// When paused, the task pool will not process any running or waiting tasks during Update.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool Paused
         {
@@ -70,6 +79,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务代理总数量。
         /// </summary>
+        /// <remarks>
+        /// Total count includes both free agents and working agents.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int TotalAgentCount
         {
@@ -79,6 +91,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取可用任务代理数量。
         /// </summary>
+        /// <remarks>
+        /// Free agents are available to handle new tasks.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int FreeAgentCount
         {
@@ -88,6 +103,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取工作中任务代理数量。
         /// </summary>
+        /// <remarks>
+        /// Working agents are currently processing tasks.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int WorkingAgentCount
         {
@@ -97,6 +115,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取等待任务数量。
         /// </summary>
+        /// <remarks>
+        /// Waiting tasks are queued and waiting for an available agent to process them.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int WaitingTaskCount
         {
@@ -106,8 +127,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 任务池轮询。
         /// </summary>
-        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
-        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。 / The logical elapsed time in seconds.</param>
+        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。 / The real elapsed time in seconds.</param>
+        /// <remarks>
+        /// Updates the task pool by processing running tasks and waiting tasks if not paused.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
@@ -123,6 +147,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 关闭并清理任务池。
         /// </summary>
+        /// <remarks>
+        /// Removes all tasks and shuts down all agents. Should be called when the task pool is no longer needed.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void Shutdown()
         {
@@ -137,7 +164,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加任务代理。
         /// </summary>
-        /// <param name="agent">要增加的任务代理。</param>
+        /// <param name="agent">要增加的任务代理。 / The task agent to add.</param>
+        /// <remarks>
+        /// Adds a new task agent to the pool and initializes it. The agent will be available for processing tasks.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void AddAgent(ITaskAgent<T> agent)
         {
@@ -153,8 +183,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 根据任务的序列编号获取任务的信息。
         /// </summary>
-        /// <param name="serialId">要获取信息的任务的序列编号。</param>
-        /// <returns>任务的信息。</returns>
+        /// <param name="serialId">要获取信息的任务的序列编号。 / The serial ID of the task to get information for.</param>
+        /// <returns>任务的信息。 / The task information.</returns>
+        /// <remarks>
+        /// Searches for the task in both working agents and waiting tasks. Returns default TaskInfo if not found.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public TaskInfo GetTaskInfo(int serialId)
         {
@@ -181,8 +214,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 根据任务的标签获取任务的信息。
         /// </summary>
-        /// <param name="tag">要获取信息的任务的标签。</param>
-        /// <returns>任务的信息。</returns>
+        /// <param name="tag">要获取信息的任务的标签。 / The tag of the tasks to get information for.</param>
+        /// <returns>任务的信息。 / The array of task information.</returns>
+        /// <remarks>
+        /// Returns all tasks with the specified tag from both working agents and waiting tasks.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public TaskInfo[] GetTaskInfos(string tag)
         {
@@ -194,8 +230,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 根据任务的标签获取任务的信息。
         /// </summary>
-        /// <param name="tag">要获取信息的任务的标签。</param>
-        /// <param name="results">任务的信息。</param>
+        /// <param name="tag">要获取信息的任务的标签。 / The tag of the tasks to get information for.</param>
+        /// <param name="results">任务的信息。 / The list to store task information results.</param>
+        /// <remarks>
+        /// Populates the results list with all tasks matching the specified tag from both working agents and waiting tasks.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void GetTaskInfos(string tag, List<TaskInfo> results)
         {
@@ -226,7 +265,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取所有任务的信息。
         /// </summary>
-        /// <returns>所有任务的信息。</returns>
+        /// <returns>所有任务的信息。 / An array containing all task information.</returns>
+        /// <remarks>
+        /// Returns information for all tasks including both working tasks and waiting tasks.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public TaskInfo[] GetAllTaskInfos()
         {
@@ -249,7 +291,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取所有任务的信息。
         /// </summary>
-        /// <param name="results">所有任务的信息。</param>
+        /// <param name="results">所有任务的信息。 / The list to store all task information.</param>
+        /// <remarks>
+        /// Populates the results list with information for all tasks including both working tasks and waiting tasks.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void GetAllTaskInfos(List<TaskInfo> results)
         {
@@ -274,7 +319,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加任务。
         /// </summary>
-        /// <param name="task">要增加的任务。</param>
+        /// <param name="task">要增加的任务。 / The task to add.</param>
+        /// <remarks>
+        /// Adds a task to the waiting queue, inserting it based on priority. Higher priority tasks are processed first.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void AddTask(T task)
         {

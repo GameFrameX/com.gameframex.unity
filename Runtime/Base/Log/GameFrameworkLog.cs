@@ -36,6 +36,11 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏框架日志类。
     /// </summary>
+    /// <remarks>
+    /// Game framework log class.
+    /// Provides static methods for logging messages at different severity levels (Debug, Info, Warning, Error, Fatal).
+    /// Requires an ILogHelper implementation to be set via SetLogHelper before logging can occur.
+    /// </remarks>
     public static partial class GameFrameworkLog
     {
         private static ILogHelper _logHelper = null;
@@ -43,7 +48,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置游戏框架日志辅助器。
         /// </summary>
-        /// <param name="logHelper">要设置的游戏框架日志辅助器。</param>
+        /// <remarks>
+        /// Sets the game framework log helper.
+        /// The log helper is responsible for the actual log output implementation.
+        /// </remarks>
+        /// <param name="logHelper">要设置的游戏框架日志辅助器 / The log helper to set.</param>
         [Preserve] // 添加 Preserve 标签
         public static void SetLogHelper(ILogHelper logHelper)
         {
@@ -53,7 +62,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <remarks>
+        /// Logs a debug level message, used for recording debugging information.
+        /// </remarks>
+        /// <param name="message">日志内容 / Log message content.</param>
         [Preserve] // 添加 Preserve 标签
         public static void Debug(object message)
         {
@@ -68,7 +80,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <remarks>
+        /// Logs a debug level message, used for recording debugging information.
+        /// </remarks>
+        /// <param name="message">日志内容 / Log message content.</param>
         [Preserve] // 添加 Preserve 标签
         public static void Debug(string message)
         {
@@ -83,9 +98,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T">日志参数的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg">日志参数。</param>
+        /// <remarks>
+        /// Logs a debug level message, used for recording debugging information.
+        /// </remarks>
+        /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg">日志参数 / Log argument.</param>
         [Preserve] // 添加 Preserve 标签
         public static void Debug<T>(string format, T arg)
         {
@@ -100,11 +118,14 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
+        /// <remarks>
+        /// Logs a debug level message, used for recording debugging information.
+        /// </remarks>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
         [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2>(string format, T1 arg1, T2 arg2)
         {
@@ -119,13 +140,16 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
+        /// <remarks>
+        /// Logs a debug level message, used for recording debugging information.
+        /// </remarks>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        /// <param name="arg3">日志参数 3 / The third log argument.</param>
         [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3>(string format, T1 arg1, T2 arg2, T3 arg3)
         {
@@ -140,15 +164,18 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
+        /// <remarks>
+        /// Logs a debug level message, used for recording debugging information.
+        /// </remarks>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of the fourth log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3, T4>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
@@ -163,17 +190,20 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
+        /// <remarks>
+        /// Logs a debug level message, used for recording debugging information.
+        /// </remarks>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of the fourth log argument.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of the fifth log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3, T4, T5>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
@@ -188,19 +218,22 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
+        /// <remarks>
+        /// Logs a debug level message, used for recording debugging information.
+        /// </remarks>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of the fourth log argument.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of the fifth log argument.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of the sixth log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
+        /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
         {
@@ -215,21 +248,24 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
+        /// <remarks>
+        /// Logs a debug level message, used for recording debugging information.
+        /// </remarks>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of the fourth log argument.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of the fifth log argument.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of the sixth log argument.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of the seventh log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
+        /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
+        /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         [Preserve] // 添加 Preserve 标签
         public static void Debug<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
         {
@@ -588,7 +624,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <remarks>
+        /// Logs an info level message, used for recording normal program execution information.
+        /// </remarks>
+        /// <param name="message">日志内容 / Log message content.</param>
         public static void Info(object message)
         {
             if (_logHelper == null)
@@ -602,7 +641,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <remarks>
+        /// Logs an info level message, used for recording normal program execution information.
+        /// </remarks>
+        /// <param name="message">日志内容 / Log message content.</param>
         public static void Info(string message)
         {
             if (_logHelper == null)
@@ -616,9 +658,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T">日志参数的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg">日志参数。</param>
+        /// <remarks>
+        /// Logs an info level message, used for recording normal program execution information.
+        /// </remarks>
+        /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg">日志参数 / Log argument.</param>
         public static void Info<T>(string format, T arg)
         {
             if (_logHelper == null)
@@ -632,11 +677,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
         public static void Info<T1, T2>(string format, T1 arg1, T2 arg2)
         {
             if (_logHelper == null)
@@ -650,13 +695,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        /// <param name="arg3">日志参数 3 / The third log argument.</param>
         public static void Info<T1, T2, T3>(string format, T1 arg1, T2 arg2, T3 arg3)
         {
             if (_logHelper == null)
@@ -670,16 +715,18 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        public static void Info<T1, T2, T3, T4>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of the fourth log argument.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of the fifth log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
+        public static void Info<T1, T2, T3, T4, T5>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             if (_logHelper == null)
             {
@@ -716,20 +763,22 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of the fourth log argument.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of the fifth log argument.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of the sixth log argument.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of the seventh log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
+        /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
+        /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
+        public static void Info<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
         {
             if (_logHelper == null)
             {

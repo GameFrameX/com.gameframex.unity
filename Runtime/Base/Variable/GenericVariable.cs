@@ -36,7 +36,11 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 变量。
     /// </summary>
-    /// <typeparam name="T">变量类型。</typeparam>
+    /// <typeparam name="T">变量类型。 / The type of the variable.</typeparam>
+    /// <remarks>
+    /// Generic implementation of Variable that provides type-safe access to variable values.
+    /// This abstract class serves as a base for creating strongly-typed variables.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public abstract class Variable<T> : Variable
     {
@@ -45,6 +49,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化变量的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes the variable with the default value of type T.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public Variable()
         {
@@ -54,6 +61,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取变量类型。
         /// </summary>
+        /// <remarks>
+        /// Returns the runtime type of the generic type parameter T.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public override Type Type
         {
@@ -63,6 +73,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取或设置变量值。
         /// </summary>
+        /// <remarks>
+        /// Provides type-safe access to the variable's value.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public T Value
         {
@@ -73,7 +86,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取变量值。
         /// </summary>
-        /// <returns>变量值。</returns>
+        /// <returns>变量值。 / The variable value.</returns>
         [UnityEngine.Scripting.Preserve]
         public override object GetValue()
         {
@@ -83,7 +96,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置变量值。
         /// </summary>
-        /// <param name="value">变量值。</param>
+        /// <param name="value">变量值。 / The variable value to set.</param>
         [UnityEngine.Scripting.Preserve]
         public override void SetValue(object value)
         {
@@ -93,6 +106,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 清理变量值。
         /// </summary>
+        /// <remarks>
+        /// Resets the variable to its default value, typically used when returning the object to a pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public override void Clear()
         {
@@ -102,7 +118,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取变量字符串。
         /// </summary>
-        /// <returns>变量字符串。</returns>
+        /// <returns>变量字符串。 / The string representation of the variable value.</returns>
         [UnityEngine.Scripting.Preserve]
         public override string ToString()
         {

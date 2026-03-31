@@ -38,6 +38,10 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 类型和名称的组合值。
     /// </summary>
+    /// <remarks>
+    /// A readonly struct that combines a Type and a Name into a single value.
+    /// Used for identifying objects by their type and optional name.
+    /// </remarks>
     [StructLayout(LayoutKind.Auto)]
     public readonly struct TypeNamePair : IEquatable<TypeNamePair>
     {
@@ -45,19 +49,19 @@ namespace GameFrameX.Runtime
         private readonly string m_Name;
 
         /// <summary>
-        /// 初始化类型和名称的组合值的新实例。
+        /// 初始化类型和名称的组合值的新实例。 / Initializes a new instance of the TypeNamePair struct.
         /// </summary>
-        /// <param name="type">类型。</param>
+        /// <param name="type">类型。 / The type.</param>
         [Preserve]
         public TypeNamePair(Type type) : this(type, string.Empty)
         {
         }
 
         /// <summary>
-        /// 初始化类型和名称的组合值的新实例。
+        /// 初始化类型和名称的组合值的新实例。 / Initializes a new instance of the TypeNamePair struct.
         /// </summary>
-        /// <param name="type">类型。</param>
-        /// <param name="name">名称。</param>
+        /// <param name="type">类型。 / The type.</param>
+        /// <param name="name">名称。 / The name.</param>
         [Preserve]
         public TypeNamePair(Type type, string name)
         {
@@ -71,7 +75,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取类型。
+        /// 获取类型。 / Gets the type.
         /// </summary>
         [Preserve]
         public Type Type
@@ -80,7 +84,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取名称。
+        /// 获取名称。 / Gets the name.
         /// </summary>
         [Preserve]
         public string Name
@@ -89,9 +93,9 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取类型和名称的组合值字符串。
+        /// 获取类型和名称的组合值字符串。 / Gets the combined string representation of type and name.
         /// </summary>
-        /// <returns>类型和名称的组合值字符串。</returns>
+        /// <returns>类型和名称的组合值字符串。 / The combined string representation of type and name.</returns>
         public override string ToString()
         {
             if (m_Type == null)
@@ -104,29 +108,29 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取对象的哈希值。
+        /// 获取对象的哈希值。 / Gets the hash code of the object.
         /// </summary>
-        /// <returns>对象的哈希值。</returns>
+        /// <returns>对象的哈希值。 / The hash code of the object.</returns>
         public override int GetHashCode()
         {
             return m_Type.GetHashCode() ^ m_Name.GetHashCode();
         }
 
         /// <summary>
-        /// 比较对象是否与自身相等。
+        /// 比较对象是否与自身相等。 / Determines whether the specified object is equal to the current instance.
         /// </summary>
-        /// <param name="obj">要比较的对象。</param>
-        /// <returns>被比较的对象是否与自身相等。</returns>
+        /// <param name="obj">要比较的对象。 / The object to compare with.</param>
+        /// <returns>被比较的对象是否与自身相等。 / True if the specified object is equal to the current instance; otherwise, false.</returns>
         public override bool Equals(object obj)
         {
             return obj is TypeNamePair pair && Equals(pair);
         }
 
         /// <summary>
-        /// 比较对象是否与自身相等。
+        /// 比较对象是否与自身相等。 / Determines whether the specified TypeNamePair is equal to the current instance.
         /// </summary>
-        /// <param name="value">要比较的对象。</param>
-        /// <returns>被比较的对象是否与自身相等。</returns>
+        /// <param name="value">要比较的对象。 / The TypeNamePair to compare with.</param>
+        /// <returns>被比较的对象是否与自身相等。 / True if the specified TypeNamePair is equal to the current instance; otherwise, false.</returns>
         public bool Equals(TypeNamePair value)
         {
             return m_Type == value.m_Type && m_Name == value.m_Name;

@@ -36,11 +36,18 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 版本号辅助器接口。
         /// </summary>
+        /// <remarks>
+        /// Interface for version helper implementations that provide game version information.
+        /// </remarks>
         public interface IVersionHelper
         {
             /// <summary>
             /// 获取游戏版本号。
             /// </summary>
+            /// <remarks>
+            /// Gets the current version string of the game.
+            /// </remarks>
+            /// <value>游戏版本号字符串 / The game version string.</value>
             string GameVersion { get; }
         }
     }

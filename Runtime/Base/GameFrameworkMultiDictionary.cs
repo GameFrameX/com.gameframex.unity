@@ -340,6 +340,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 清理枚举数。
             /// </summary>
+            /// <remarks>
+            /// Disposes the enumerator.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public void Dispose()
             {
@@ -349,7 +352,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取下一个结点。
             /// </summary>
-            /// <returns>返回下一个结点。</returns>
+            /// <remarks>
+            /// Gets the next node.
+            /// </remarks>
+            /// <returns>返回下一个结点 / Returns the next node</returns>
             [UnityEngine.Scripting.Preserve]
             public bool MoveNext()
             {
@@ -359,6 +365,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 重置枚举数。
             /// </summary>
+            /// <remarks>
+            /// Resets the enumerator.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             void IEnumerator.Reset()
             {

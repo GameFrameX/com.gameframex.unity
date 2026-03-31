@@ -37,6 +37,10 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 基础组件。
     /// </summary>
+    /// <remarks>
+    /// Base component that provides core game framework functionality including frame rate control,
+    /// game speed management, background running settings, and helper initializations.
+    /// </remarks>
     [DisallowMultipleComponent]
     [AddComponentMenu("GameFrameX/Base")]
     [UnityEngine.Scripting.Preserve]
@@ -82,7 +86,7 @@ namespace GameFrameX.Runtime
         public IResourceManager EditorResourceHelper { get; set; }*/
 
         /// <summary>
-        /// 获取或设置游戏帧率。
+        /// 获取或设置游戏帧率。 / Gets or sets the game frame rate.
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public int FrameRate
@@ -92,7 +96,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取或设置游戏速度。
+        /// 获取或设置游戏速度。 / Gets or sets the game speed.
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public float GameSpeed
@@ -102,7 +106,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取游戏是否暂停。
+        /// 获取游戏是否暂停。 / Gets whether the game is paused.
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public bool IsGamePaused
@@ -111,7 +115,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取是否正常游戏速度。
+        /// 获取是否正常游戏速度。 / Gets whether the game is running at normal speed.
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public bool IsNormalGameSpeed
@@ -120,7 +124,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取或设置是否允许后台运行。
+        /// 获取或设置是否允许后台运行。 / Gets or sets whether the game can run in background.
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public bool RunInBackground
@@ -130,7 +134,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取或设置是否禁止休眠。
+        /// 获取或设置是否禁止休眠。 / Gets or sets whether sleep is disabled.
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public bool NeverSleep
@@ -144,7 +148,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 游戏框架组件初始化。
+        /// 游戏框架组件初始化。 / Initializes the game framework component.
         /// </summary>
         protected override void Awake()
         {
@@ -210,7 +214,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 暂停游戏。
+        /// 暂停游戏。 / Pauses the game.
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public void PauseGame()
@@ -225,7 +229,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 恢复游戏。
+        /// 恢复游戏。 / Resumes the game.
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public void ResumeGame()
@@ -239,7 +243,7 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 重置为正常游戏速度。
+        /// 重置为正常游戏速度。 / Resets to normal game speed.
         /// </summary>
         [UnityEngine.Scripting.Preserve]
         public void ResetNormalGameSpeed()

@@ -39,7 +39,11 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 事件池。
     /// </summary>
-    /// <typeparam name="T">事件类型。</typeparam>
+    /// <typeparam name="T">事件类型。 / The type of event.</typeparam>
+    /// <remarks>
+    /// Event pool that manages event subscription, unsubscription, and dispatching.
+    /// Supports thread-safe event firing and immediate event processing modes.
+    /// </remarks>
     public sealed partial class EventPool<T> where T : BaseEventArgs
     {
         private readonly object _lock = new object();
@@ -53,7 +57,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化事件池的新实例。
         /// </summary>
-        /// <param name="mode">事件池模式。</param>
+        /// <param name="mode">事件池模式。 / The event pool mode.</param>
+        /// <remarks>
+        /// Initializes a new instance of the EventPool class with the specified mode.
+        /// </remarks>
         [Preserve]
         public EventPool(EventPoolMode mode)
         {
@@ -68,6 +75,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取事件处理函数的数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the total count of registered event handlers.
+        /// </remarks>
         [Preserve]
         public int EventHandlerCount
         {
@@ -83,6 +93,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取事件数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the count of queued events waiting to be processed.
+        /// </remarks>
         [Preserve]
         public int EventCount
         {
@@ -92,8 +105,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 事件池轮询。
         /// </summary>
-        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
-        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。 / The logical elapsed time in seconds.</param>
+        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。 / The real elapsed time in seconds.</param>
+        /// <remarks>
+        /// Polls and processes all queued events. This method should be called every frame.
+        /// </remarks>
         [Preserve]
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
@@ -107,6 +123,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 关闭并清理事件池。
         /// </summary>
+        /// <remarks>
+        /// Shuts down the event pool and releases all resources including event handlers and queued events.
+        /// </remarks>
         public void Shutdown()
         {
             Clear();
@@ -123,6 +142,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 清理事件。
         /// </summary>
+        /// <remarks>
+        /// Clears all queued events without removing event handlers.
+        /// </remarks>
         public void Clear()
         {
             while (_events.TryDequeue(out var node))
@@ -134,8 +156,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取事件处理函数的数量。
         /// </summary>
-        /// <param name="id">事件类型编号。</param>
-        /// <returns>事件处理函数的数量。</returns>
+        /// <param name="id">事件类型编号。 / The event type identifier.</param>
+        /// <returns>事件处理函数的数量。 / The count of event handlers for the specified event.</returns>
+        /// <remarks>
+        /// Gets the number of handlers registered for a specific event type.
+        /// </remarks>
         public int Count(string id)
         {
             lock (_lock)
@@ -152,9 +177,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 检查是否存在事件处理函数。
         /// </summary>
-        /// <param name="id">事件类型编号。</param>
-        /// <param name="handler">要检查的事件处理函数。</param>
-        /// <returns>是否存在事件处理函数。</returns>
+        /// <param name="id">事件类型编号。 / The event type identifier.</param>
+        /// <param name="handler">要检查的事件处理函数。 / The event handler to check.</param>
+        /// <returns>是否存在事件处理函数。 / Whether the event handler exists.</returns>
+        /// <remarks>
+        /// Checks if a specific handler is registered for the given event type.
+        /// </remarks>
         public bool Check(string id, EventHandler<T> handler)
         {
             if (handler == null)
@@ -171,8 +199,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 订阅事件处理函数。
         /// </summary>
-        /// <param name="id">事件类型编号。</param>
-        /// <param name="handler">要订阅的事件处理函数。</param>
+        /// <param name="id">事件类型编号。 / The event type identifier.</param>
+        /// <param name="handler">要订阅的事件处理函数。 / The event handler to subscribe.</param>
+        /// <remarks>
+        /// Subscribes an event handler to the specified event type.
+        /// Behavior depends on the EventPoolMode settings for allowing multiple or duplicate handlers.
+        /// </remarks>
         public void Subscribe(string id, EventHandler<T> handler)
         {
             if (handler == null)
@@ -204,8 +236,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 取消订阅事件处理函数。
         /// </summary>
-        /// <param name="id">事件类型编号。</param>
-        /// <param name="handler">要取消订阅的事件处理函数。</param>
+        /// <param name="id">事件类型编号。 / The event type identifier.</param>
+        /// <param name="handler">要取消订阅的事件处理函数。 / The event handler to unsubscribe.</param>
+        /// <remarks>
+        /// Unsubscribes an event handler from the specified event type.
+        /// Handles cache node updates to ensure proper iteration during event processing.
+        /// </remarks>
         public void Unsubscribe(string id, EventHandler<T> handler)
         {
             if (handler == null)
@@ -246,7 +282,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置默认事件处理函数。
         /// </summary>
-        /// <param name="handler">要设置的默认事件处理函数。</param>
+        /// <param name="handler">要设置的默认事件处理函数。 / The default event handler to set.</param>
+        /// <remarks>
+        /// Sets a default handler that will be called when an event has no registered handlers.
+        /// </remarks>
         public void SetDefaultHandler(EventHandler<T> handler)
         {
             _defaultHandler = handler;
@@ -255,8 +294,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 抛出事件，这个操作是线程安全的，即使不在主线程中抛出，也可保证在主线程中回调事件处理函数，但事件会在抛出后的下一帧分发。
         /// </summary>
-        /// <param name="sender">事件源。</param>
-        /// <param name="e">事件参数。</param>
+        /// <param name="sender">事件源。 / The event source.</param>
+        /// <param name="e">事件参数。 / The event arguments.</param>
+        /// <remarks>
+        /// Fires an event in a thread-safe manner. The event will be queued and processed in the next frame's Update call.
+        /// This ensures that event handlers are always invoked on the main thread.
+        /// </remarks>
         [Preserve]
         public void Fire(object sender, T e)
         {
@@ -272,8 +315,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 抛出事件立即模式，这个操作不是线程安全的，事件会立刻分发。
         /// </summary>
-        /// <param name="sender">事件源。</param>
-        /// <param name="e">事件参数。</param>
+        /// <param name="sender">事件源。 / The event source.</param>
+        /// <param name="e">事件参数。 / The event arguments.</param>
+        /// <remarks>
+        /// Fires an event immediately in synchronous mode. This is not thread-safe and events are dispatched immediately.
+        /// Use with caution when not on the main thread.
+        /// </remarks>
         public void FireNow(object sender, T e)
         {
             if (e == null)
@@ -290,8 +337,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 处理事件结点。
         /// </summary>
-        /// <param name="sender">事件源。</param>
-        /// <param name="e">事件参数。</param>
+        /// <param name="sender">事件源。 / The event source.</param>
+        /// <param name="e">事件参数。 / The event arguments.</param>
+        /// <remarks>
+        /// Internal method that processes and dispatches an event to all registered handlers.
+        /// Handles cache nodes to support handler unsubscription during event processing.
+        /// </remarks>
         private void HandleEvent(object sender, T e)
         {
             lock (_lock)

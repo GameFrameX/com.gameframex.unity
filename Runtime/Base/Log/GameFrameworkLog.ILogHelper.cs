@@ -38,13 +38,20 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 游戏框架日志辅助器接口。
         /// </summary>
+        /// <remarks>
+        /// Game framework log helper interface.
+        /// Defines the contract for logging implementations that handle actual log output.
+        /// </remarks>
         public interface ILogHelper
         {
             /// <summary>
             /// 记录日志。
             /// </summary>
-            /// <param name="level">游戏框架日志等级。</param>
-            /// <param name="message">日志内容。</param>
+            /// <remarks>
+            /// Logs a message with the specified log level.
+            /// </remarks>
+            /// <param name="level">游戏框架日志等级 / Game framework log level.</param>
+            /// <param name="message">日志内容 / Log message content.</param>
             [Preserve]
             void Log(GameFrameworkLogLevel level, object message);
         }

@@ -37,6 +37,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 引用池信息。
     /// </summary>
+    /// <remarks>
+    /// Contains statistics and information about a reference pool including usage counts and type.
+    /// </remarks>
     [StructLayout(LayoutKind.Auto)]
     public readonly struct ReferencePoolInfo
     {
@@ -51,13 +54,16 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化引用池信息的新实例。
         /// </summary>
-        /// <param name="type">引用池类型。</param>
-        /// <param name="unusedReferenceCount">未使用引用数量。</param>
-        /// <param name="usingReferenceCount">正在使用引用数量。</param>
-        /// <param name="acquireReferenceCount">获取引用数量。</param>
-        /// <param name="releaseReferenceCount">归还引用数量。</param>
-        /// <param name="addReferenceCount">增加引用数量。</param>
-        /// <param name="removeReferenceCount">移除引用数量。</param>
+        /// <remarks>
+        /// Creates a new instance of ReferencePoolInfo with the specified statistics.
+        /// </remarks>
+        /// <param name="type">引用池类型。/ The type of the reference pool.</param>
+        /// <param name="unusedReferenceCount">未使用引用数量。/ The count of unused references in the pool.</param>
+        /// <param name="usingReferenceCount">正在使用引用数量。/ The count of references currently in use.</param>
+        /// <param name="acquireReferenceCount">获取引用数量。/ The total count of references acquired from the pool.</param>
+        /// <param name="releaseReferenceCount">归还引用数量。/ The total count of references released back to the pool.</param>
+        /// <param name="addReferenceCount">增加引用数量。/ The total count of references added to the pool.</param>
+        /// <param name="removeReferenceCount">移除引用数量。/ The total count of references removed from the pool.</param>
         [UnityEngine.Scripting.Preserve]
         public ReferencePoolInfo(Type type, int unusedReferenceCount, int usingReferenceCount, int acquireReferenceCount, int releaseReferenceCount, int addReferenceCount, int removeReferenceCount)
         {
@@ -73,6 +79,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取引用池类型。
         /// </summary>
+        /// <remarks>
+        /// Gets the Type of references managed by this pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public Type Type
         {
@@ -82,6 +91,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取未使用引用数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the count of references currently available in the pool waiting to be reused.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int UnusedReferenceCount
         {
@@ -91,6 +103,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取正在使用引用数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the count of references currently in use outside the pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int UsingReferenceCount
         {
@@ -100,6 +115,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取获取引用数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the total number of times references have been acquired from this pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int AcquireReferenceCount
         {
@@ -109,6 +127,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取归还引用数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the total number of times references have been released back to this pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int ReleaseReferenceCount
         {
@@ -118,6 +139,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取增加引用数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the total number of references that have been added to this pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int AddReferenceCount
         {
@@ -127,6 +151,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取移除引用数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the total number of references that have been removed from this pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int RemoveReferenceCount
         {

@@ -38,13 +38,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 事件结点。
         /// </summary>
+        /// <remarks>
+        /// Internal class that wraps an event with its sender for queue processing.
+        /// Implements IReference for object pooling support.
+        /// </remarks>
         private sealed class EventNode : IReference
         {
             private object _sender = null;
             private T _eventArgs = null;
 
             /// <summary>
-            /// 发送者
+            /// 发送者 / The event sender.
             /// </summary>
             [Preserve] // 添加 Preserve 标签
             public object Sender
@@ -53,7 +57,7 @@ namespace GameFrameX.Runtime
             }
 
             /// <summary>
-            /// 事件参数
+            /// 事件参数 / The event arguments.
             /// </summary>
             [Preserve] // 添加 Preserve 标签
             public T EventArgs
@@ -62,11 +66,14 @@ namespace GameFrameX.Runtime
             }
 
             /// <summary>
-            /// 创建事件节点
+            /// 创建事件节点 / Creates an event node.
             /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="eventArgs"></param>
-            /// <returns></returns>
+            /// <param name="sender">事件源。 / The event source.</param>
+            /// <param name="eventArgs">事件参数。 / The event arguments.</param>
+            /// <returns>创建的事件节点实例。 / The created event node instance.</returns>
+            /// <remarks>
+            /// Creates or acquires an EventNode from the reference pool and initializes it with the given sender and event arguments.
+            /// </remarks>
             [Preserve] // 添加 Preserve 标签
             public static EventNode Create(object sender, T eventArgs)
             {
@@ -76,6 +83,12 @@ namespace GameFrameX.Runtime
                 return eventNodeNode;
             }
 
+            /// <summary>
+            /// 清理引用。
+            /// </summary>
+            /// <remarks>
+            /// Clears the sender and event arguments, resetting the node for reuse in the reference pool.
+            /// </remarks>
             public void Clear()
             {
                 _sender = null;

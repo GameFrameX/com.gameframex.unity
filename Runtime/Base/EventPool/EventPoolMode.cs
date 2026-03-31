@@ -37,27 +37,42 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 事件池模式。
     /// </summary>
+    /// <remarks>
+    /// Defines the behavior modes for the event pool. Multiple flags can be combined to customize event handling behavior.
+    /// </remarks>
     [Flags]
     public enum EventPoolMode : byte
     {
         /// <summary>
         /// 默认事件池模式，即必须存在有且只有一个事件处理函数。
         /// </summary>
+        /// <remarks>
+        /// Default mode requiring exactly one event handler. Throws exceptions if no handler or multiple handlers exist.
+        /// </remarks>
         Default = 0,
 
         /// <summary>
         /// 允许不存在事件处理函数。
         /// </summary>
+        /// <remarks>
+        /// Allows events to be fired without any registered handlers. No exception will be thrown.
+        /// </remarks>
         AllowNoHandler = 1,
 
         /// <summary>
         /// 允许存在多个事件处理函数。
         /// </summary>
+        /// <remarks>
+        /// Allows multiple handlers to be registered for the same event type. All handlers will be invoked in order.
+        /// </remarks>
         AllowMultiHandler = 2,
 
         /// <summary>
         /// 允许存在重复的事件处理函数。
         /// </summary>
+        /// <remarks>
+        /// Allows the same handler to be registered multiple times for the same event. Requires AllowMultiHandler to be set.
+        /// </remarks>
         AllowDuplicateHandler = 4
     }
 }

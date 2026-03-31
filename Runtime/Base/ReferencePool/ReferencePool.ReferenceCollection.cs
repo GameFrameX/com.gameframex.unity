@@ -39,6 +39,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 引用集合
         /// </summary>
+        /// <remarks>
+        /// Internal collection that manages references of a specific type.
+        /// </remarks>
         private sealed class ReferenceCollection
         {
             private readonly Queue<IReference> _references;
@@ -63,6 +66,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 引用类型
             /// </summary>
+            /// <remarks>
+            /// Gets the type of references managed by this collection.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public Type ReferenceType
             {
@@ -72,6 +78,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 未使用的引用计数。
             /// </summary>
+            /// <remarks>
+            /// Gets the count of references currently available in the pool.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public int UnusedReferenceCount
             {
@@ -81,6 +90,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 正在使用的引用计数。
             /// </summary>
+            /// <remarks>
+            /// Gets the count of references currently in use outside the pool.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public int UsingReferenceCount
             {
@@ -90,6 +102,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取引用的次数。
             /// </summary>
+            /// <remarks>
+            /// Gets the total number of times references have been acquired from this pool.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public int AcquireReferenceCount
             {
@@ -99,6 +114,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 归还引用的次数。
             /// </summary>
+            /// <remarks>
+            /// Gets the total number of times references have been released back to this pool.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public int ReleaseReferenceCount
             {
@@ -108,6 +126,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 添加引用的次数。
             /// </summary>
+            /// <remarks>
+            /// Gets the total number of references that have been added to this pool.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public int AddReferenceCount
             {
@@ -117,6 +138,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 移除引用的次数。
             /// </summary>
+            /// <remarks>
+            /// Gets the total number of references that have been removed from this pool.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public int RemoveReferenceCount
             {
@@ -126,8 +150,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 从引用池获取引用。
             /// </summary>
-            /// <typeparam name="T">引用类型。</typeparam>
-            /// <returns>引用。</returns>
+            /// <remarks>
+            /// Acquires a reference from the pool. If the pool is empty, a new instance is created.
+            /// </remarks>
+            /// <typeparam name="T">引用类型。/ The type of reference to acquire.</typeparam>
+            /// <returns>引用。/ The acquired reference instance.</returns>
             [UnityEngine.Scripting.Preserve]
             public T Acquire<T>() where T : class, IReference, new()
             {
@@ -153,7 +180,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 从引用池获取引用。
             /// </summary>
-            /// <returns>引用。</returns>
+            /// <remarks>
+            /// Acquires a reference from the pool. If the pool is empty, a new instance is created via reflection.
+            /// </remarks>
+            /// <returns>引用。/ The acquired reference instance.</returns>
             [UnityEngine.Scripting.Preserve]
             public IReference Acquire()
             {
@@ -174,7 +204,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 释放一个引用对象。
             /// </summary>
-            /// <param name="reference">要释放的引用对象。</param>
+            /// <remarks>
+            /// Releases a reference back to the pool. The reference's Clear method is called before returning to the pool.
+            /// </remarks>
+            /// <param name="reference">要释放的引用对象。/ The reference object to release.</param>
             [UnityEngine.Scripting.Preserve]
             public void Release(IReference reference)
             {
@@ -197,9 +230,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 添加指定类型的引用对象到引用池中。
             /// </summary>
-            /// <typeparam name="T">要添加的引用对象类型。</typeparam>
-            /// <param name="count">要添加的引用对象数量。</param>
-            /// <exception cref="GameFrameworkException">类型无效。</exception>
+            /// <remarks>
+            /// Pre-allocates and adds a specified number of references to the pool for later use.
+            /// </remarks>
+            /// <typeparam name="T">要添加的引用对象类型。/ The type of reference objects to add.</typeparam>
+            /// <param name="count">要添加的引用对象数量。/ The number of reference objects to add.</param>
+            /// <exception cref="GameFrameworkException">类型无效。/ Thrown when the type is invalid.</exception>
             [UnityEngine.Scripting.Preserve]
             public void Add<T>(int count) where T : class, IReference, new()
             {
@@ -221,7 +257,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 向引用池中添加指定数量的引用。
             /// </summary>
-            /// <param name="count">要添加的引用数量。</param>
+            /// <remarks>
+            /// Pre-allocates and adds a specified number of references to the pool using reflection.
+            /// </remarks>
+            /// <param name="count">要添加的引用数量。/ The number of references to add.</param>
             [UnityEngine.Scripting.Preserve]
             public void Add(int count)
             {
@@ -238,7 +277,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 从引用池中移除指定数量的引用。
             /// </summary>
-            /// <param name="count">要移除的引用数量。</param>
+            /// <remarks>
+            /// Removes a specified number of unused references from the pool. If count exceeds available references, all are removed.
+            /// </remarks>
+            /// <param name="count">要移除的引用数量。/ The number of references to remove.</param>
             [UnityEngine.Scripting.Preserve]
             public void Remove(int count)
             {
@@ -260,6 +302,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 从引用池中移除所有的引用。
             /// </summary>
+            /// <remarks>
+            /// Removes all unused references from the pool.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public void RemoveAll()
             {

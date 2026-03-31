@@ -34,32 +34,51 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏框架日志等级。
     /// </summary>
+    /// <remarks>
+    /// Game framework log level.
+    /// Defines the severity levels for log messages in the game framework.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public enum GameFrameworkLogLevel : byte
     {
         /// <summary>
         /// 调试。
         /// </summary>
+        /// <remarks>
+        /// Debug level - Used for detailed debugging information during development.
+        /// </remarks>
         Debug = 0,
 
         /// <summary>
         /// 信息。
         /// </summary>
+        /// <remarks>
+        /// Info level - Used for general informational messages about program execution.
+        /// </remarks>
         Info,
 
         /// <summary>
         /// 警告。
         /// </summary>
+        /// <remarks>
+        /// Warning level - Used for non-critical issues that might need attention.
+        /// </remarks>
         Warning,
 
         /// <summary>
         /// 错误。
         /// </summary>
+        /// <remarks>
+        /// Error level - Used for errors that affect functionality but don't crash the application.
+        /// </remarks>
         Error,
 
         /// <summary>
         /// 严重错误。
         /// </summary>
+        /// <remarks>
+        /// Fatal level - Used for critical errors that may cause the application to terminate.
+        /// </remarks>
         Fatal
     }
 }
