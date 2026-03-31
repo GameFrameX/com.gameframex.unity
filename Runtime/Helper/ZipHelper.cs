@@ -8,20 +8,26 @@ using ICSharpCode.SharpZipLib.Zip.Compression;
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 压缩帮助类
+    /// 压缩帮助类。
     /// </summary>
+    /// <remarks>
+    /// Zip compression helper class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class ZipHelper
     {
         private static readonly Crc32 CRC = new Crc32();
 
-        /// <summary> 
-        /// 压缩文件夹  
-        /// </summary> 
-        /// <param name="folderToZip">要压缩的文件夹路径</param> 
-        /// <param name="stream">压缩前的Stream,方法执行后变为压缩完成后的文件</param> 
-        /// <param name="password">密码</param> 
-        /// <returns>是否成功</returns> 
+        /// <summary>
+        /// 压缩文件夹到流。
+        /// </summary>
+        /// <remarks>
+        /// Compresses a folder to a stream.
+        /// </remarks>
+        /// <param name="folderToZip">要压缩的文件夹路径 / Folder path to compress</param>
+        /// <param name="stream">压缩输出流 / Compressed output stream</param>
+        /// <param name="password">压缩密码（可选）/ Compression password (optional)</param>
+        /// <returns>如果成功返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if successful; otherwise <c>false</c></returns> 
         [UnityEngine.Scripting.Preserve]
         public static bool CompressDirectoryToStream(string folderToZip, Stream stream, string password = null)
         {

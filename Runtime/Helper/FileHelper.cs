@@ -7,16 +7,22 @@ using UnityEngine;
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 文件帮助类
+    /// 文件帮助类。
     /// </summary>
+    /// <remarks>
+    /// File helper class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class FileHelper
     {
         /// <summary>
-        /// 获取目录下的所有文件
+        /// 获取目录下的所有文件。
         /// </summary>
-        /// <param name="files">文件存放路径列表对象</param>
-        /// <param name="dir">目标目录</param>
+        /// <remarks>
+        /// Recursively gets all files in the specified directory.
+        /// </remarks>
+        /// <param name="files">用于存储文件路径的列表 / List to store file paths</param>
+        /// <param name="dir">目标目录 / Target directory</param>
         [UnityEngine.Scripting.Preserve]
         public static void GetAllFiles(List<string> files, string dir)
         {

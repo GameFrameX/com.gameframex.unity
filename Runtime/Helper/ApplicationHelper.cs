@@ -3,14 +3,21 @@
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 应用帮助类
+    /// 应用帮助类。
     /// </summary>
+    /// <remarks>
+    /// Application helper class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class ApplicationHelper
     {
         /// <summary>
-        /// 是否是编辑器
+        /// 获取当前是否在Unity编辑器中运行。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running in the Unity editor.
+        /// </remarks>
+        /// <value>如果在编辑器中则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if in editor; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsEditor
         {

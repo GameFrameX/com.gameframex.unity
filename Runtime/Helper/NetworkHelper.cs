@@ -5,15 +5,21 @@ using UnityEngine;
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 网络帮助类
+    /// 网络帮助类。
     /// </summary>
+    /// <remarks>
+    /// Network helper class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class NetworkHelper
     {
         /// <summary>
-        /// 获取本地的IP列表
+        /// 获取本地的IP列表。
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets the local IP address list.
+        /// </remarks>
+        /// <returns>本地IP地址数组 / Array of local IP addresses</returns>
         [UnityEngine.Scripting.Preserve]
         public static string[] GetAddressIPs()
         {

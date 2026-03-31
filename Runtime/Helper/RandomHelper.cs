@@ -3,15 +3,21 @@
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 随机数帮助类
+    /// 随机数帮助类。
     /// </summary>
+    /// <remarks>
+    /// Random number helper class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class RandomHelper
     {
         /// <summary>
-        /// 设置随机种子
+        /// 设置随机种子。
         /// </summary>
-        /// <param name="seed">随机种子值</param>
+        /// <remarks>
+        /// Sets the random seed for the random number generator.
+        /// </remarks>
+        /// <param name="seed">随机种子值 / Random seed value</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetSeed(int seed)
         {

@@ -4,17 +4,23 @@ using UnityEngine;
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 数学帮助类
+    /// 数学帮助类。
     /// </summary>
+    /// <remarks>
+    /// Math helper class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class MathHelper
     {
         /// <summary>
-        /// 检查两个矩形是否相交
+        /// 检查两个矩形是否相交。
         /// </summary>
-        /// <param name="src"></param>
-        /// <param name="target"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Checks if two rectangles intersect.
+        /// </remarks>
+        /// <param name="src">源矩形 / Source rectangle</param>
+        /// <param name="target">目标矩形 / Target rectangle</param>
+        /// <returns>如果相交则返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if they intersect; otherwise <c>false</c></returns>
         [UnityEngine.Scripting.Preserve]
         public static bool CheckIntersect(RectInt src, RectInt target)
         {

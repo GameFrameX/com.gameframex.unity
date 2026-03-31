@@ -3,16 +3,22 @@ using UnityEngine;
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 坐标帮助类
+    /// 坐标帮助类。
     /// </summary>
+    /// <remarks>
+    /// Position helper class for coordinate transformations.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class PositionHelper
     {
         /// <summary>
         /// 将二维坐标转换为三维坐标，Y轴设为0。
         /// </summary>
-        /// <param name="pos">二维坐标</param>
-        /// <returns>三维坐标</returns>
+        /// <remarks>
+        /// Converts a 2D coordinate to a 3D coordinate with Y set to 0.
+        /// </remarks>
+        /// <param name="pos">二维坐标 / 2D coordinate</param>
+        /// <returns>三维坐标 / 3D coordinate</returns>
         [UnityEngine.Scripting.Preserve]
         public static Vector3 RayCastV2ToV3(Vector2 pos)
         {

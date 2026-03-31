@@ -4,12 +4,21 @@ using UnityEngine;
 
 namespace GameFrameX.Runtime
 {
+    /// <summary>
+    /// 路径帮助类。
+    /// </summary>
+    /// <remarks>
+    /// Path helper class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class PathHelper
     {
         /// <summary>
-        ///应用程序外部资源路径存放路径(热更新资源路径)
+        /// 应用程序外部资源路径存放路径（热更新资源路径）。
         /// </summary>
+        /// <remarks>
+        /// Application external resource path (hot update resource path).
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static string AppHotfixResPath
         {

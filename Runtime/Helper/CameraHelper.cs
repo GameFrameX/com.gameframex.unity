@@ -5,16 +5,23 @@ using UnityEngine.SceneManagement;
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 相机帮助类
+    /// 相机帮助类。
     /// </summary>
+    /// <remarks>
+    /// Camera helper class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class CameraHelper
     {
         /// <summary>
-        /// 获取相机快照
+        /// 获取相机快照。
         /// </summary>
-        /// <param name="main">相机</param>
-        /// <param name="scale">缩放比</param>
+        /// <remarks>
+        /// Captures a screenshot from the specified camera.
+        /// </remarks>
+        /// <param name="main">相机对象 / Camera object</param>
+        /// <param name="scale">缩放比例，默认为0.5 / Scale factor, default is 0.5</param>
+        /// <returns>捕获的纹理 / Captured texture</returns>
         [UnityEngine.Scripting.Preserve]
         public static Texture2D GetCaptureScreenshot(Camera main, float scale = 0.5f)
         {
