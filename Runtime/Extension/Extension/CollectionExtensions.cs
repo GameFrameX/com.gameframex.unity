@@ -89,10 +89,12 @@ namespace GameFrameX.Runtime
         #region List<T>
 
         /// <summary>
-        /// 打乱
+        /// 打乱列表顺序（Fisher-Yates 洗牌算法）
         /// </summary>
+        /// <param name="list">要打乱的列表</param>
+        /// <typeparam name="T">列表元素类型</typeparam>
         [UnityEngine.Scripting.Preserve]
-        public static void Shuffer<T>(this List<T> list)
+        public static void Shuffle<T>(this List<T> list)
         {
             int n = list.Count;
             var r = ThreadLocalRandom.Current;
@@ -114,7 +116,8 @@ namespace GameFrameX.Runtime
             }
         }
 
-        private static readonly StringBuilder ListToStringBuilder = new StringBuilder();
+        [ThreadStatic]
+        private static StringBuilder _listToStringBuilder;
 
         /// <summary>
         /// 将列表转换为以指定字符串分割的字符串
@@ -126,14 +129,20 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static string ListToString<T>(this List<T> list, string separator = ",")
         {
-            ListToStringBuilder.Clear();
-            foreach (T t in list)
+            if (list == null)
             {
-                ListToStringBuilder.Append(t);
-                ListToStringBuilder.Append(separator);
+                return string.Empty;
             }
 
-            return ListToStringBuilder.ToString();
+            _listToStringBuilder ??= new StringBuilder();
+            _listToStringBuilder.Clear();
+            foreach (T t in list)
+            {
+                _listToStringBuilder.Append(t);
+                _listToStringBuilder.Append(separator);
+            }
+
+            return _listToStringBuilder.ToString();
         }
 
         #endregion
