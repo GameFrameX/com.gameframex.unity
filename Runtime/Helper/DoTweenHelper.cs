@@ -6,16 +6,22 @@ using UnityEngine;
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// Do Tween 帮助类
+    /// DoTween帮助类。
     /// </summary>
+    /// <remarks>
+    /// DOTween animation helper class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class DoTweenHelper
     {
         /// <summary>
-        /// 关闭对象上的全部动画
+        /// 关闭对象上的全部动画。
         /// </summary>
-        /// <param name="gameObject">物体对象</param>
-        /// <param name="complete">是否直接完成动画</param>
+        /// <remarks>
+        /// Kills all tweens on the specified game object.
+        /// </remarks>
+        /// <param name="gameObject">物体对象 / Game object</param>
+        /// <param name="complete">是否直接完成动画 / Whether to complete the tween before killing</param>
         [UnityEngine.Scripting.Preserve]
         public static void Kill(GameObject gameObject, bool complete = false)
         {

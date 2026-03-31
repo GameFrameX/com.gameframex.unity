@@ -36,9 +36,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否有网络
+        /// 获取当前是否有网络连接。
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets whether the device has network connectivity.
+        /// </remarks>
+        /// <value>如果有网络连接则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if network is reachable; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsReachable()
         {
@@ -46,9 +49,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否是WIFI
+        /// 获取当前是否通过WiFi连接网络。
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets whether the device is connected via WiFi (local area network).
+        /// </remarks>
+        /// <value>如果是WiFi连接则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on WiFi; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsWifi()
         {
@@ -56,9 +62,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否是移动网络
+        /// 获取当前是否通过移动数据网络连接。
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets whether the device is connected via cellular data network.
+        /// </remarks>
+        /// <value>如果是移动网络则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on cellular data; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsViaCarrierData()
         {

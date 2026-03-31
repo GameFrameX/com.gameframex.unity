@@ -45,9 +45,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 清理目录
+        /// 清理目录。
         /// </summary>
-        /// <param name="dir">目标路径</param>
+        /// <remarks>
+        /// Cleans the specified directory by deleting all files and subdirectories.
+        /// </remarks>
+        /// <param name="dir">目标目录路径 / Target directory path</param>
         [UnityEngine.Scripting.Preserve]
         public static void CleanDirectory(string dir)
         {
@@ -68,11 +71,14 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 目录复制
+        /// 目录复制。
         /// </summary>
-        /// <param name="srcDir">源路径</param>
-        /// <param name="targetDir">目标路径</param>
-        /// <exception cref="Exception"></exception>
+        /// <remarks>
+        /// Copies a directory and all its contents to the target location.
+        /// </remarks>
+        /// <param name="srcDir">源目录路径 / Source directory path</param>
+        /// <param name="targetDir">目标目录路径 / Target directory path</param>
+        /// <exception cref="Exception">当父目录拷贝到子目录时抛出 / Thrown when trying to copy parent directory to child directory</exception>
         [UnityEngine.Scripting.Preserve]
         public static void CopyDirectory(string srcDir, string targetDir)
         {
@@ -110,11 +116,14 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 复制文件到目标目录
+        /// 复制文件到目标目录。
         /// </summary>
-        /// <param name="sourceFileName">源路径</param>
-        /// <param name="destFileName">目标路径</param>
-        /// <param name="overwrite">是否覆盖</param>
+        /// <remarks>
+        /// Copies a file to the target location.
+        /// </remarks>
+        /// <param name="sourceFileName">源文件路径 / Source file path</param>
+        /// <param name="destFileName">目标文件路径 / Destination file path</param>
+        /// <param name="overwrite">是否覆盖已存在的文件 / Whether to overwrite existing file</param>
         [UnityEngine.Scripting.Preserve]
         public static void Copy(string sourceFileName, string destFileName, bool overwrite = false)
         {
@@ -127,9 +136,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 删除文件
+        /// 删除文件。
         /// </summary>
-        /// <param name="path">文件路径</param>
+        /// <remarks>
+        /// Deletes the specified file.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path to delete</param>
         [UnityEngine.Scripting.Preserve]
         public static void Delete(string path)
         {
@@ -137,10 +149,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 判断文件是否存在
+        /// 判断文件是否存在。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Determines whether the specified file exists.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path to check</param>
+        /// <returns>如果文件存在则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if file exists; otherwise <c>false</c></returns>
         [UnityEngine.Scripting.Preserve]
         public static bool IsExists(string path)
         {
@@ -170,10 +185,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 移动文件到目标目录
+        /// 移动文件到目标目录。
         /// </summary>
-        /// <param name="sourceFileName">文件源路径</param>
-        /// <param name="destFileName">目标路径</param>
+        /// <remarks>
+        /// Moves a file from source to destination.
+        /// </remarks>
+        /// <param name="sourceFileName">文件源路径 / Source file path</param>
+        /// <param name="destFileName">目标文件路径 / Destination file path</param>
         [UnityEngine.Scripting.Preserve]
         public static void Move(string sourceFileName, string destFileName)
         {
@@ -187,10 +205,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 读取指定路径的文件内容
+        /// 读取指定路径的文件内容（字节数组）。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Reads all bytes from the specified file.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path</param>
+        /// <returns>文件内容字节数组 / File content as byte array</returns>
         [UnityEngine.Scripting.Preserve]
         public static byte[] ReadAllBytes(string path)
         {
@@ -205,11 +226,14 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 读取指定路径的文件内容
+        /// 读取指定路径的文件内容（指定编码）。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <param name="encoding">编码</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Reads all text from the specified file with the given encoding.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path</param>
+        /// <param name="encoding">文本编码 / Text encoding</param>
+        /// <returns>文件内容字符串 / File content as string</returns>
         [UnityEngine.Scripting.Preserve]
         public static string ReadAllText(string path, Encoding encoding)
         {
@@ -217,10 +241,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 读取指定路径的文件内容
+        /// 读取指定路径的文件内容（UTF-8编码）。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Reads all text from the specified file using UTF-8 encoding.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path</param>
+        /// <returns>文件内容字符串 / File content as string</returns>
         [UnityEngine.Scripting.Preserve]
         public static string ReadAllText(string path)
         {
@@ -228,11 +255,14 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 读取指定路径的文件内容
+        /// 读取指定路径的文件所有行（指定编码）。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <param name="encoding">编码</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Reads all lines from the specified file with the given encoding.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path</param>
+        /// <param name="encoding">文本编码 / Text encoding</param>
+        /// <returns>文件所有行的数组 / Array of all lines in the file</returns>
         [UnityEngine.Scripting.Preserve]
         public static string[] ReadAllLines(string path, Encoding encoding)
         {
@@ -240,10 +270,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 读取指定路径的文件内容
+        /// 读取指定路径的文件所有行（UTF-8编码）。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Reads all lines from the specified file using UTF-8 encoding.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path</param>
+        /// <returns>文件所有行的数组 / Array of all lines in the file</returns>
         [UnityEngine.Scripting.Preserve]
         public static string[] ReadAllLines(string path)
         {
@@ -251,12 +284,14 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 写入指定路径的文件内容
+        /// 写入所有行到指定路径的文件（指定编码）。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <param name="lines">写入的内容</param>
-        /// <param name="encoding">编码</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Writes all lines to the specified file with the given encoding.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path</param>
+        /// <param name="lines">要写入的所有行 / Lines to write</param>
+        /// <param name="encoding">文本编码 / Text encoding</param>
         [UnityEngine.Scripting.Preserve]
         public static void WriteAllLines(string path, string[] lines, Encoding encoding)
         {
@@ -264,11 +299,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 写入指定路径的文件内容
+        /// 写入所有行到指定路径的文件（UTF-8编码）。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <param name="lines">写入的内容</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Writes all lines to the specified file using UTF-8 encoding.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path</param>
+        /// <param name="lines">要写入的所有行 / Lines to write</param>
         [UnityEngine.Scripting.Preserve]
         public static void WriteAllLines(string path, string[] lines)
         {
@@ -276,12 +313,14 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 写入指定路径的文件内容
+        /// 写入文本内容到指定路径的文件（指定编码）。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <param name="content">写入的内容</param>
-        /// <param name="encoding">编码</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Writes text content to the specified file with the given encoding.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path</param>
+        /// <param name="content">要写入的文本内容 / Text content to write</param>
+        /// <param name="encoding">文本编码 / Text encoding</param>
         [UnityEngine.Scripting.Preserve]
         public static void WriteAllText(string path, string content, Encoding encoding)
         {
@@ -289,11 +328,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 写入指定路径的文件内容，UTF-8
+        /// 写入文本内容到指定路径的文件（UTF-8编码）。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <param name="content">写入的内容</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Writes text content to the specified file using UTF-8 encoding.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path</param>
+        /// <param name="content">要写入的文本内容 / Text content to write</param>
         [UnityEngine.Scripting.Preserve]
         public static void WriteAllText(string path, string content)
         {
@@ -301,11 +342,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 写入指定路径的文件内容
+        /// 写入字节数组到指定路径的文件。
         /// </summary>
-        /// <param name="path">文件路径</param>
-        /// <param name="buffer">写入的内容</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Writes byte array to the specified file.
+        /// </remarks>
+        /// <param name="path">文件路径 / File path</param>
+        /// <param name="buffer">要写入的字节数组 / Byte array to write</param>
         [UnityEngine.Scripting.Preserve]
         public static void WriteAllBytes(string path, byte[] buffer)
         {

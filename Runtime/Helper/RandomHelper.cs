@@ -25,9 +25,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取UInt64范围内的随机数
+        /// 获取UInt64范围内的随机数。
         /// </summary>
-        /// <returns>返回一个随机的UInt64值</returns>
+        /// <remarks>
+        /// Gets a random number within the UInt64 range.
+        /// </remarks>
+        /// <returns>返回一个随机的UInt64值 / A random UInt64 value</returns>
         [UnityEngine.Scripting.Preserve]
         public static ulong NextUInt64()
         {
@@ -35,9 +38,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取Int64范围内的随机数
+        /// 获取Int64范围内的随机数。
         /// </summary>
-        /// <returns>返回一个随机的Int64值</returns>
+        /// <remarks>
+        /// Gets a random number within the Int64 range.
+        /// </remarks>
+        /// <returns>返回一个随机的Int64值 / A random Int64 value</returns>
         [UnityEngine.Scripting.Preserve]
         public static long NextInt64()
         {
@@ -45,11 +51,14 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取lower与Upper之间的随机数
+        /// 获取指定范围内的随机整数。
         /// </summary>
-        /// <param name="lower">下限</param>
-        /// <param name="upper">上限</param>
-        /// <returns>返回一个在指定范围内的随机整数</returns>
+        /// <remarks>
+        /// Gets a random integer within the specified range.
+        /// </remarks>
+        /// <param name="lower">下限（包含）/ Lower bound (inclusive)</param>
+        /// <param name="upper">上限（不包含）/ Upper bound (exclusive)</param>
+        /// <returns>返回一个在指定范围内的随机整数 / A random integer within the specified range</returns>
         [UnityEngine.Scripting.Preserve]
         public static int Next(int lower, int upper)
         {
@@ -57,9 +66,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取0与1之间的随机数
+        /// 获取0与1之间的随机浮点数。
         /// </summary>
-        /// <returns>返回一个在0到1之间的随机浮点数</returns>
+        /// <remarks>
+        /// Gets a random float between 0 and 1.
+        /// </remarks>
+        /// <returns>返回一个在0到1之间的随机浮点数 / A random float between 0 and 1</returns>
         [UnityEngine.Scripting.Preserve]
         public static float Next()
         {

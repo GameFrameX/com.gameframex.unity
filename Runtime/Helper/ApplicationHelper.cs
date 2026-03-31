@@ -32,8 +32,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否是安卓
+        /// 获取当前是否在Android平台运行。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the Android platform.
+        /// </remarks>
+        /// <value>如果在Android平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on Android; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsAndroid
         {
@@ -48,8 +52,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否是WebGL平台
+        /// 获取当前是否在WebGL平台运行。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the WebGL platform.
+        /// </remarks>
+        /// <value>如果在WebGL平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on WebGL; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsWebGL
         {
@@ -64,8 +72,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否是WebGL微信小游戏平台
+        /// 获取当前是否在WebGL微信小游戏平台运行。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the WebGL WeChat Mini Game platform.
+        /// </remarks>
+        /// <value>如果在微信小游戏平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on WeChat Mini Game; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsWebGLWeChatMiniGame
         {
@@ -80,8 +92,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否是WebGL抖音小游戏平台
+        /// 获取当前是否在WebGL抖音小游戏平台运行。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the WebGL Douyin Mini Game platform.
+        /// </remarks>
+        /// <value>如果在抖音小游戏平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on Douyin Mini Game; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsWebGLDouYinMiniGame
         {
@@ -96,8 +112,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否是Windows平台
+        /// 获取当前是否在Windows平台运行。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the Windows platform.
+        /// </remarks>
+        /// <value>如果在Windows平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on Windows; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsWindows
         {
@@ -111,8 +131,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否是Linux平台
+        /// 获取当前是否在Linux平台运行。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the Linux platform.
+        /// </remarks>
+        /// <value>如果在Linux平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on Linux; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsLinux
         {
@@ -120,8 +144,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否是Mac平台
+        /// 获取当前是否在macOS平台运行。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the macOS platform.
+        /// </remarks>
+        /// <value>如果在macOS平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on macOS; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsMacOsx
         {
@@ -135,17 +163,22 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取当前运行平台的名称
+        /// 获取当前运行平台的名称。
         /// </summary>
-        /// <returns>
-        /// 返回平台名称字符串：
-        /// - "Android": Android平台
-        /// - "MacOs": macOS平台
-        /// - "iOS": iOS平台
-        /// - "WebGL": WebGL平台
-        /// - "Windows": Windows平台
-        /// - 空字符串: 其他未定义的平台
-        /// </returns>
+        /// <remarks>
+        /// Gets the name of the current running platform.
+        /// </remarks>
+        /// <value>
+        /// 平台名称字符串 / Platform name string：
+        /// <list type="bullet">
+        /// <item><description>"Android": Android平台 / Android platform</description></item>
+        /// <item><description>"MacOs": macOS平台 / macOS platform</description></item>
+        /// <item><description>"iOS": iOS平台 / iOS platform</description></item>
+        /// <item><description>"WebGL": WebGL平台 / WebGL platform</description></item>
+        /// <item><description>"Windows": Windows平台 / Windows platform</description></item>
+        /// <item><description>空字符串: 其他未定义的平台 / Empty string: other undefined platforms</description></item>
+        /// </list>
+        /// </value>
         [UnityEngine.Scripting.Preserve]
         public static string PlatformName
         {
@@ -168,8 +201,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 是否是iOS 移动平台
+        /// 获取当前是否在iOS移动平台运行。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the iOS mobile platform.
+        /// </remarks>
+        /// <value>如果在iOS平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on iOS; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
         public static bool IsIOS
         {
@@ -184,8 +221,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 退出
+        /// 退出应用程序。
         /// </summary>
+        /// <remarks>
+        /// Quits the application.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static void Quit()
         {
@@ -200,9 +240,12 @@ namespace GameFrameX.Runtime
         private static extern void open_url(string url);
 #endif
         /// <summary>
-        /// 打开URL
+        /// 打开指定的URL。
         /// </summary>
-        /// <param name="url">url地址</param>
+        /// <remarks>
+        /// Opens the specified URL.
+        /// </remarks>
+        /// <param name="url">要打开的URL地址 / URL to open</param>
         [UnityEngine.Scripting.Preserve]
         public static void OpenURL(string url)
         {
@@ -222,8 +265,11 @@ namespace GameFrameX.Runtime
         private static extern void open_setting();
 #endif
         /// <summary>
-        /// 打开设置界面
+        /// 打开系统设置界面。
         /// </summary>
+        /// <remarks>
+        /// Opens the system settings interface.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static void OpenSetting()
         {
@@ -241,8 +287,11 @@ namespace GameFrameX.Runtime
         private static extern void open_request_tracking_authorization();
 #endif
         /// <summary>
-        /// 打开请求跟踪授权
+        /// 打开请求跟踪授权（iOS）。
         /// </summary>
+        /// <remarks>
+        /// Opens the request tracking authorization (iOS).
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static void OpenRequestTrackingAuthorization()
         {

@@ -40,8 +40,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 将三维坐标的Y轴设为0。
         /// </summary>
-        /// <param name="pos">三维坐标</param>
-        /// <returns>修改后的三维坐标</returns>
+        /// <remarks>
+        /// Sets the Y component of a 3D coordinate to 0.
+        /// </remarks>
+        /// <param name="pos">三维坐标 / 3D coordinate</param>
+        /// <returns>修改后的三维坐标 / Modified 3D coordinate with Y=0</returns>
         [UnityEngine.Scripting.Preserve]
         public static Vector3 RayCastV3ToV3(Vector3 pos)
         {
@@ -51,8 +54,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 将角度转换为四元数。
         /// </summary>
-        /// <param name="angle">角度</param>
-        /// <returns>对应的四元数</returns>
+        /// <remarks>
+        /// Converts an angle (in degrees) to a quaternion rotation.
+        /// </remarks>
+        /// <param name="angle">角度值 / Angle value in degrees</param>
+        /// <returns>对应的四元数 / Corresponding quaternion</returns>
         [UnityEngine.Scripting.Preserve]
         public static Quaternion AngleToQuaternion(int angle)
         {
@@ -62,9 +68,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 根据源向量和目标向量计算四元数。
         /// </summary>
-        /// <param name="source">源向量</param>
-        /// <param name="dire">目标向量</param>
-        /// <returns>对应的四元数</returns>
+        /// <remarks>
+        /// Calculates a quaternion that rotates from the source vector to the target direction.
+        /// </remarks>
+        /// <param name="source">源向量位置 / Source position</param>
+        /// <param name="dire">目标向量位置 / Target position</param>
+        /// <returns>对应的四元数 / Quaternion representing the rotation</returns>
         [UnityEngine.Scripting.Preserve]
         public static Quaternion GetVector3ToQuaternion(Vector3 source, Vector3 dire)
         {
@@ -79,11 +88,14 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 计算二维距离。
+        /// 计算二维距离（忽略Y轴）。
         /// </summary>
-        /// <param name="v1">第一个三维坐标</param>
-        /// <param name="v2">第二个三维坐标</param>
-        /// <returns>两点之间的二维距离</returns>
+        /// <remarks>
+        /// Calculates the 2D distance between two 3D points, ignoring the Y axis.
+        /// </remarks>
+        /// <param name="v1">第一个三维坐标 / First 3D coordinate</param>
+        /// <param name="v2">第二个三维坐标 / Second 3D coordinate</param>
+        /// <returns>两点之间的二维距离 / 2D distance between the two points</returns>
         [UnityEngine.Scripting.Preserve]
         public static float Distance2D(Vector3 v1, Vector3 v2)
         {
@@ -95,8 +107,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 根据角度获取四元数。
         /// </summary>
-        /// <param name="angle">角度</param>
-        /// <returns>对应的四元数</returns>
+        /// <remarks>
+        /// Converts an angle (in degrees) to a quaternion rotation.
+        /// </remarks>
+        /// <param name="angle">角度值 / Angle value in degrees</param>
+        /// <returns>对应的四元数 / Corresponding quaternion</returns>
         [UnityEngine.Scripting.Preserve]
         public static Quaternion GetAngleToQuaternion(float angle)
         {
@@ -106,9 +121,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 计算从一个向量到另一个向量的360度角度。
         /// </summary>
-        /// <param name="from">起始向量</param>
-        /// <param name="to">目标向量</param>
-        /// <returns>360度角度</returns>
+        /// <remarks>
+        /// Calculates the 360-degree angle from one vector to another.
+        /// </remarks>
+        /// <param name="from">起始向量 / Starting vector</param>
+        /// <param name="to">目标向量 / Target vector</param>
+        /// <returns>360度角度值 / 360-degree angle value</returns>
         [UnityEngine.Scripting.Preserve]
         public static float Vector3ToAngle360(Vector3 from, Vector3 to)
         {
@@ -118,12 +136,15 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 求点到直线的距离，采用数学公式Ax+By+C = 0; d = A*p.x + B * p.y + C / sqrt(A^2 + B ^ 2)
+        /// 求点到直线的距离。
         /// </summary>
-        /// <param name="startPoint">线的起点</param>
-        /// <param name="endPoint">线的终点</param>
-        /// <param name="point">点</param>
-        /// <returns>点到直线的距离</returns>
+        /// <remarks>
+        /// Calculates the distance from a point to a line using the formula: Ax+By+C = 0; d = A*p.x + B*p.y + C / sqrt(A^2 + B^2)
+        /// </remarks>
+        /// <param name="startPoint">线的起点 / Line start point</param>
+        /// <param name="endPoint">线的终点 / Line end point</param>
+        /// <param name="point">要计算的点 / Point to calculate distance for</param>
+        /// <returns>点到直线的距离 / Distance from point to line</returns>
         [UnityEngine.Scripting.Preserve]
         public static float DistanceOfPointToVector(Vector3 startPoint, Vector3 endPoint, Vector3 point)
         {
@@ -138,13 +159,16 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 判断射线是否碰撞到球体，如果碰撞到，返回射线起点到碰撞点之间的距离
+        /// 判断射线是否碰撞到球体。
         /// </summary>
-        /// <param name="ray">射线</param>
-        /// <param name="center">中心点</param>
-        /// <param name="redis">半径</param>
-        /// <param name="dist">距离</param>
-        /// <returns>是否碰撞</returns>
+        /// <remarks>
+        /// Determines if a ray intersects with a sphere and returns the distance to the intersection point.
+        /// </remarks>
+        /// <param name="ray">射线 / Ray to test</param>
+        /// <param name="center">球体中心点 / Sphere center point</param>
+        /// <param name="redis">球体半径 / Sphere radius</param>
+        /// <param name="dist">输出：射线起点到碰撞点的距离 / Output: distance from ray origin to intersection point</param>
+        /// <returns>如果碰撞到返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if intersects; otherwise <c>false</c></returns>
         [UnityEngine.Scripting.Preserve]
         public static bool RayCastSphere(Ray ray, Vector3 center, float redis, out float dist)
         {
@@ -163,11 +187,14 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 勾股定理
+        /// 勾股定理计算。
         /// </summary>
-        /// <param name="x">边长x</param>
-        /// <param name="y">边长y</param>
-        /// <returns>勾股定理结果</returns>
+        /// <remarks>
+        /// Applies the Pythagorean theorem to calculate the hypotenuse: sqrt(x^2 + y^2).
+        /// </remarks>
+        /// <param name="x">边长x / Side length x</param>
+        /// <param name="y">边长y / Side length y</param>
+        /// <returns>斜边长度 / Hypotenuse length</returns>
         [UnityEngine.Scripting.Preserve]
         public static float PythagoreanTheorem(float x, float y)
         {
@@ -175,10 +202,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 去掉三维向量的Y轴，把向量投射到xz平面。
+        /// 去掉三维向量的Y轴，把向量投射到XZ平面。
         /// </summary>
-        /// <param name="vector3">三维向量</param>
-        /// <returns>投影后的二维向量</returns>
+        /// <remarks>
+        /// Removes the Y component from a 3D vector, projecting it onto the XZ plane.
+        /// </remarks>
+        /// <param name="vector3">三维向量 / 3D vector</param>
+        /// <returns>投影后的二维向量 / Projected 2D vector</returns>
         [UnityEngine.Scripting.Preserve]
         public static Vector2 IgnoreYAxis(this Vector3 vector3)
         {
@@ -186,11 +216,15 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 判断目标点是否位于向量的左边
+        /// 判断目标点是否位于向量的左边。
         /// </summary>
-        /// <param name="originPoint">原点</param>
-        /// <param name="point">目标点</param>
-        /// <returns>True if on left, false if on right</returns>
+        /// <remarks>
+        /// Determines if the target point is on the left side of the vector.
+        /// </remarks>
+        /// <param name="vector3">方向向量 / Direction vector</param>
+        /// <param name="originPoint">原点 / Origin point</param>
+        /// <param name="point">目标点 / Target point</param>
+        /// <returns>如果在左边返回 <c>true</c>；如果在右边返回 <c>false</c> / <c>true</c> if on left; <c>false</c> if on right</returns>
         [UnityEngine.Scripting.Preserve]
         public static bool PointOnLeftSideOfVector(this Vector3 vector3, Vector3 originPoint, Vector3 point)
         {

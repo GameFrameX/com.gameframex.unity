@@ -35,13 +35,16 @@ namespace GameFrameX.Runtime
         }
 
 
-        /// <summary> 
-        /// 压缩文件夹  
-        /// </summary> 
-        /// <param name="folderToZip">要压缩的文件夹路径</param> 
-        /// <param name="stream">压缩前的Stream,方法执行后变为压缩完成后的文件</param> 
-        /// <param name="password">密码</param> 
-        /// <returns>是否压缩成功返回ZipOutputStream，否则返回null</returns> 
+        /// <summary>
+        /// 压缩文件夹并返回ZipOutputStream。
+        /// </summary>
+        /// <remarks>
+        /// Compresses a folder to a stream and returns the ZipOutputStream.
+        /// </remarks>
+        /// <param name="folderToZip">要压缩的文件夹路径 / Folder path to compress</param>
+        /// <param name="stream">压缩输出流 / Compressed output stream</param>
+        /// <param name="password">压缩密码（可选）/ Compression password (optional)</param>
+        /// <returns>如果成功返回ZipOutputStream；否则返回null / ZipOutputStream if successful; otherwise null</returns> 
         [UnityEngine.Scripting.Preserve]
         public static ZipOutputStream CompressDirectoryToZipStream(string folderToZip, Stream stream, string password = null)
         {
@@ -67,13 +70,16 @@ namespace GameFrameX.Runtime
             return null;
         }
 
-        /// <summary> 
-        /// 递归压缩文件夹的内部方法 
-        /// </summary> 
-        /// <param name="folderToZip">要压缩的文件夹路径</param> 
-        /// <param name="zipStream">压缩输出流</param> 
-        /// <param name="parentFolderName">此文件夹的上级文件夹</param> 
-        /// <returns>是否成功</returns> 
+        /// <summary>
+        /// 递归压缩文件夹的内部方法。
+        /// </summary>
+        /// <remarks>
+        /// Internal method for recursively compressing a folder.
+        /// </remarks>
+        /// <param name="folderToZip">要压缩的文件夹路径 / Folder path to compress</param>
+        /// <param name="zipStream">压缩输出流 / Zip output stream</param>
+        /// <param name="parentFolderName">此文件夹的上级文件夹名称 / Parent folder name</param>
+        /// <returns>如果成功返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if successful; otherwise <c>false</c></returns> 
         [UnityEngine.Scripting.Preserve]
         private static bool CompressDirectory(string folderToZip, ZipOutputStream zipStream, string parentFolderName)
         {
@@ -129,13 +135,16 @@ namespace GameFrameX.Runtime
             return true;
         }
 
-        /// <summary> 
-        /// 压缩文件夹  
-        /// </summary> 
-        /// <param name="folderToZip">要压缩的文件夹路径</param> 
-        /// <param name="zipFile">压缩文件完整路径</param> 
-        /// <param name="password">密码</param> 
-        /// <returns>是否成功</returns> 
+        /// <summary>
+        /// 压缩文件夹到指定文件。
+        /// </summary>
+        /// <remarks>
+        /// Compresses a folder to a specified zip file.
+        /// </remarks>
+        /// <param name="folderToZip">要压缩的文件夹路径 / Folder path to compress</param>
+        /// <param name="zipFile">压缩文件完整路径 / Full path of the zip file to create</param>
+        /// <param name="password">压缩密码（可选）/ Compression password (optional)</param>
+        /// <returns>如果成功返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if successful; otherwise <c>false</c></returns> 
         [UnityEngine.Scripting.Preserve]
         public static bool CompressDirectory(string folderToZip, string zipFile, string password = null)
         {
@@ -154,13 +163,16 @@ namespace GameFrameX.Runtime
             return true;
         }
 
-        /// <summary> 
-        /// 压缩文件 
-        /// </summary> 
-        /// <param name="fileToZip">要压缩的文件全名</param> 
-        /// <param name="zipFile">压缩后的文件名</param> 
-        /// <param name="password">密码</param> 
-        /// <returns>是否成功</returns> 
+        /// <summary>
+        /// 压缩单个文件。
+        /// </summary>
+        /// <remarks>
+        /// Compresses a single file to a zip file.
+        /// </remarks>
+        /// <param name="fileToZip">要压缩的文件完整路径 / Full path of the file to compress</param>
+        /// <param name="zipFile">压缩后的文件完整路径 / Full path of the zip file to create</param>
+        /// <param name="password">压缩密码（可选）/ Compression password (optional)</param>
+        /// <returns>如果成功返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if successful; otherwise <c>false</c></returns> 
         [UnityEngine.Scripting.Preserve]
         public static bool CompressFile(string fileToZip, string zipFile, string password = null)
         {
@@ -202,13 +214,16 @@ namespace GameFrameX.Runtime
             return true;
         }
 
-        /// <summary> 
-        /// 解压功能(解压压缩文件到指定目录) 
-        /// </summary> 
-        /// <param name="fileToUnZip">待解压的文件</param> 
-        /// <param name="zipFolder">指定解压目标目录</param> 
-        /// <param name="password">密码</param> 
-        /// <returns>是否成功</returns> 
+        /// <summary>
+        /// 解压压缩文件到指定目录。
+        /// </summary>
+        /// <remarks>
+        /// Extracts a zip file to the specified directory.
+        /// </remarks>
+        /// <param name="fileToUnZip">待解压的文件完整路径 / Full path of the zip file to extract</param>
+        /// <param name="zipFolder">解压目标目录 / Target directory for extraction</param>
+        /// <param name="password">解压密码（可选）/ Extraction password (optional)</param>
+        /// <returns>如果成功返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if successful; otherwise <c>false</c></returns> 
         [UnityEngine.Scripting.Preserve]
         public static bool DecompressFile(string fileToUnZip, string zipFolder, string password = null)
         {

@@ -36,12 +36,19 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 默认版本号辅助器。
     /// </summary>
+    /// <remarks>
+    /// Default version helper.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public class DefaultVersionHelper : Version.IVersionHelper
     {
         /// <summary>
         /// 获取游戏版本号。
         /// </summary>
+        /// <remarks>
+        /// Gets the game version number.
+        /// </remarks>
+        /// <value>游戏版本号字符串 / Game version string</value>
         [UnityEngine.Scripting.Preserve]
         public string GameVersion
         {

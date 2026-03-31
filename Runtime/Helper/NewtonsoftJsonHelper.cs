@@ -37,14 +37,20 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 默认 JSON 函数集辅助器。
     /// </summary>
+    /// <remarks>
+    /// Default JSON helper using Newtonsoft.Json.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public class NewtonsoftJsonHelper : Utility.Json.IJsonHelper
     {
         /// <summary>
         /// 将对象序列化为 JSON 字符串。
         /// </summary>
-        /// <param name="obj">要序列化的对象。</param>
-        /// <returns>序列化后的 JSON 字符串。</returns>
+        /// <remarks>
+        /// Serializes an object to a JSON string.
+        /// </remarks>
+        /// <param name="obj">要序列化的对象 / Object to serialize</param>
+        /// <returns>序列化后的 JSON 字符串 / Serialized JSON string</returns>
         [UnityEngine.Scripting.Preserve]
         public string ToJson(object obj)
         {

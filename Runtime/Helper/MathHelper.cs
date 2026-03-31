@@ -37,17 +37,20 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 检查两个矩形是否相交
+        /// 检查两个矩形是否相交。
         /// </summary>
-        /// <param name="x1"></param>
-        /// <param name="y1"></param>
-        /// <param name="w1"></param>
-        /// <param name="h1"></param>
-        /// <param name="x2"></param>
-        /// <param name="y2"></param>
-        /// <param name="w2"></param>
-        /// <param name="h2"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Checks if two rectangles intersect based on their coordinates and dimensions.
+        /// </remarks>
+        /// <param name="x1">第一个矩形的X坐标 / X coordinate of first rectangle</param>
+        /// <param name="y1">第一个矩形的Y坐标 / Y coordinate of first rectangle</param>
+        /// <param name="w1">第一个矩形的宽度 / Width of first rectangle</param>
+        /// <param name="h1">第一个矩形的高度 / Height of first rectangle</param>
+        /// <param name="x2">第二个矩形的X坐标 / X coordinate of second rectangle</param>
+        /// <param name="y2">第二个矩形的Y坐标 / Y coordinate of second rectangle</param>
+        /// <param name="w2">第二个矩形的宽度 / Width of second rectangle</param>
+        /// <param name="h2">第二个矩形的高度 / Height of second rectangle</param>
+        /// <returns>如果相交则返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if they intersect; otherwise <c>false</c></returns>
         [UnityEngine.Scripting.Preserve]
         public static bool CheckIntersect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
         {
@@ -64,18 +67,21 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 检查两个矩形是否相交，并返回相交的区域
+        /// 检查两个矩形是否相交，并返回相交的区域。
         /// </summary>
-        /// <param name="x1"></param>
-        /// <param name="y1"></param>
-        /// <param name="w1"></param>
-        /// <param name="h1"></param>
-        /// <param name="x2"></param>
-        /// <param name="y2"></param>
-        /// <param name="w2"></param>
-        /// <param name="h2"></param>
-        /// <param name="rect"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Checks if two rectangles intersect and returns the intersection area.
+        /// </remarks>
+        /// <param name="x1">第一个矩形的X坐标 / X coordinate of first rectangle</param>
+        /// <param name="y1">第一个矩形的Y坐标 / Y coordinate of first rectangle</param>
+        /// <param name="w1">第一个矩形的宽度 / Width of first rectangle</param>
+        /// <param name="h1">第一个矩形的高度 / Height of first rectangle</param>
+        /// <param name="x2">第二个矩形的X坐标 / X coordinate of second rectangle</param>
+        /// <param name="y2">第二个矩形的Y坐标 / Y coordinate of second rectangle</param>
+        /// <param name="w2">第二个矩形的宽度 / Width of second rectangle</param>
+        /// <param name="h2">第二个矩形的高度 / Height of second rectangle</param>
+        /// <param name="rect">输出的相交区域 / Output intersection rectangle</param>
+        /// <returns>如果相交则返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if they intersect; otherwise <c>false</c></returns>
         private static bool CheckIntersect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2, out RectInt rect)
         {
             rect = default;
@@ -96,18 +102,21 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 检查两个矩形相交的点
+        /// 检查两个矩形相交的点。
         /// </summary>
-        /// <param name="x1">A 坐标X</param>
-        /// <param name="y1">A 坐标Y</param>
-        /// <param name="w1">A 宽度</param>
-        /// <param name="h1">A 高度</param>
-        /// <param name="x2">B 坐标X</param>
-        /// <param name="y2">B 坐标Y</param>
-        /// <param name="w2">B 宽度</param>
-        /// <param name="h2">B 高度</param>
-        /// <param name="intersectPoints">交叉点列表</param>
-        /// <returns>返回是否相交</returns>
+        /// <remarks>
+        /// Checks intersection points between two rectangles and marks intersected points.
+        /// </remarks>
+        /// <param name="x1">矩形A的X坐标 / X coordinate of rectangle A</param>
+        /// <param name="y1">矩形A的Y坐标 / Y coordinate of rectangle A</param>
+        /// <param name="w1">矩形A的宽度 / Width of rectangle A</param>
+        /// <param name="h1">矩形A的高度 / Height of rectangle A</param>
+        /// <param name="x2">矩形B的X坐标 / X coordinate of rectangle B</param>
+        /// <param name="y2">矩形B的Y坐标 / Y coordinate of rectangle B</param>
+        /// <param name="w2">矩形B的宽度 / Width of rectangle B</param>
+        /// <param name="h2">矩形B的高度 / Height of rectangle B</param>
+        /// <param name="intersectPoints">交叉点列表（会被修改）/ Intersection point list (will be modified)</param>
+        /// <returns>返回是否相交 / Returns whether the rectangles intersect</returns>
         [UnityEngine.Scripting.Preserve]
         public static bool CheckIntersectPoints(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2, int[] intersectPoints)
         {

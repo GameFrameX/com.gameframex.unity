@@ -37,16 +37,22 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 辅助器创建器相关的实用函数。
     /// </summary>
+    /// <remarks>
+    /// Utility functions for helper creators.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class Helper
     {
         /// <summary>
         /// 创建辅助器。
         /// </summary>
-        /// <typeparam name="T">要创建的辅助器类型。</typeparam>
-        /// <param name="helperTypeName">要创建的辅助器类型名称。</param>
-        /// <param name="customHelper">若要创建的辅助器类型为空时，使用的自定义辅助器类型。</param>
-        /// <returns>创建的辅助器。</returns>
+        /// <remarks>
+        /// Creates a helper instance.
+        /// </remarks>
+        /// <typeparam name="T">要创建的辅助器类型 / Helper type to create</typeparam>
+        /// <param name="helperTypeName">要创建的辅助器类型名称 / Helper type name to create</param>
+        /// <param name="customHelper">若要创建的辅助器类型为空时，使用的自定义辅助器类型 / Custom helper type to use if helper type name is empty</param>
+        /// <returns>创建的辅助器 / Created helper instance</returns>
         [UnityEngine.Scripting.Preserve]
         public static T CreateHelper<T>(string helperTypeName, T customHelper) where T : MonoBehaviour
         {

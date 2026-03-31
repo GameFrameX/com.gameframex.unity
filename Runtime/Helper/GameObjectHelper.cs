@@ -5,15 +5,21 @@ using UnityEngine.SceneManagement;
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 游戏对象帮助类
+    /// 游戏对象帮助类。
     /// </summary>
+    /// <remarks>
+    /// Game object helper class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class GameObjectHelper
     {
         /// <summary>
-        /// 销毁子物体
+        /// 销毁子物体。
         /// </summary>
-        /// <param name="go"></param>
+        /// <remarks>
+        /// Destroys all child objects of the specified game object.
+        /// </remarks>
+        /// <param name="go">父物体 / Parent game object</param>
         [UnityEngine.Scripting.Preserve]
         public static void RemoveChildren(GameObject go)
         {
