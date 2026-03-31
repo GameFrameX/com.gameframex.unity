@@ -248,18 +248,6 @@ namespace GameFrameX.Runtime
         /// 写入指定路径的文件内容
         /// </summary>
         /// <param name="path">文件路径</param>
-        /// <param name="buffer">写入内容</param>
-        /// <returns></returns>
-        [UnityEngine.Scripting.Preserve]
-        public static void ReadAllLines(string path, byte[] buffer)
-        {
-            File.WriteAllBytes(path, buffer);
-        }
-
-        /// <summary>
-        /// 写入指定路径的文件内容
-        /// </summary>
-        /// <param name="path">文件路径</param>
         /// <param name="lines">写入的内容</param>
         /// <param name="encoding">编码</param>
         /// <returns></returns>
