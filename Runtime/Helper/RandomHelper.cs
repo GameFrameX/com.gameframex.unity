@@ -8,8 +8,6 @@ namespace GameFrameX.Runtime
     [UnityEngine.Scripting.Preserve]
     public static class RandomHelper
     {
-        private static Random _random = new Random((int) DateTime.UtcNow.Ticks);
-
         /// <summary>
         /// 设置随机种子
         /// </summary>
@@ -17,7 +15,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static void SetSeed(int seed)
         {
-            _random = new Random(seed);
+            ThreadLocalRandom.SetSeed(seed);
         }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static ulong NextUInt64()
         {
-            var bytes = new byte[8];
-            _random.NextBytes(bytes);
-            return BitConverter.ToUInt64(bytes, 0);
+            return ThreadLocalRandom.NextUInt64();
         }
 
         /// <summary>
@@ -39,9 +35,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static long NextInt64()
         {
-            var bytes = new byte[8];
-            _random.NextBytes(bytes);
-            return BitConverter.ToInt64(bytes, 0);
+            return ThreadLocalRandom.NextInt64();
         }
 
         /// <summary>
@@ -53,7 +47,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static int Next(int lower, int upper)
         {
-            return _random.Next(lower, upper);
+            return ThreadLocalRandom.Current.Next(lower, upper);
         }
 
         /// <summary>
@@ -63,7 +57,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static float Next()
         {
-            return _random.Next(0, 100_000) / 100_000f;
+            return ThreadLocalRandom.Current.Next(0, 100_000) / 100_000f;
         }
     }
 }
