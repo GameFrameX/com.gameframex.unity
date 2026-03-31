@@ -40,6 +40,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 对 BinaryReader 和 BinaryWriter 的扩展方法。
     /// </summary>
+    /// <remarks>
+    /// Extension methods for BinaryReader and BinaryWriter.
+    /// </remarks>
     [Preserve]
     public static class BinaryExtension
     {
@@ -48,8 +51,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从二进制流读取编码后的 32 位有符号整数。
         /// </summary>
-        /// <param name="binaryReader">要读取的二进制流。</param>
-        /// <returns>读取的 32 位有符号整数。</returns>
+        /// <remarks>
+        /// Reads a 7-bit encoded 32-bit signed integer from the binary stream.
+        /// </remarks>
+        /// <param name="binaryReader">要读取的二进制流 / The binary stream to read from.</param>
+        /// <returns>读取的 32 位有符号整数 / The 32-bit signed integer read.</returns>
         [Preserve]
         public static int Read7BitEncodedInt32(this BinaryReader binaryReader)
         {
@@ -74,8 +80,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 向二进制流写入编码后的 32 位有符号整数。
         /// </summary>
-        /// <param name="binaryWriter">要写入的二进制流。</param>
-        /// <param name="value">要写入的 32 位有符号整数。</param>
+        /// <remarks>
+        /// Writes a 7-bit encoded 32-bit signed integer to the binary stream.
+        /// </remarks>
+        /// <param name="binaryWriter">要写入的二进制流 / The binary stream to write to.</param>
+        /// <param name="value">要写入的 32 位有符号整数 / The 32-bit signed integer to write.</param>
         [Preserve]
         public static void Write7BitEncodedInt32(this BinaryWriter binaryWriter, int value)
         {
@@ -92,8 +101,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从二进制流读取编码后的 32 位无符号整数。
         /// </summary>
-        /// <param name="binaryReader">要读取的二进制流。</param>
-        /// <returns>读取的 32 位无符号整数。</returns>
+        /// <remarks>
+        /// Reads a 7-bit encoded 32-bit unsigned integer from the binary stream.
+        /// </remarks>
+        /// <param name="binaryReader">要读取的二进制流 / The binary stream to read from.</param>
+        /// <returns>读取的 32 位无符号整数 / The 32-bit unsigned integer read.</returns>
         [Preserve]
         public static uint Read7BitEncodedUInt32(this BinaryReader binaryReader)
         {
@@ -103,8 +115,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 向二进制流写入编码后的 32 位无符号整数。
         /// </summary>
-        /// <param name="binaryWriter">要写入的二进制流。</param>
-        /// <param name="value">要写入的 32 位无符号整数。</param>
+        /// <remarks>
+        /// Writes a 7-bit encoded 32-bit unsigned integer to the binary stream.
+        /// </remarks>
+        /// <param name="binaryWriter">要写入的二进制流 / The binary stream to write to.</param>
+        /// <param name="value">要写入的 32 位无符号整数 / The 32-bit unsigned integer to write.</param>
         [Preserve]
         public static void Write7BitEncodedUInt32(this BinaryWriter binaryWriter, uint value)
         {
@@ -114,8 +129,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从二进制流读取编码后的 64 位有符号整数。
         /// </summary>
-        /// <param name="binaryReader">要读取的二进制流。</param>
-        /// <returns>读取的 64 位有符号整数。</returns>
+        /// <remarks>
+        /// Reads a 7-bit encoded 64-bit signed integer from the binary stream.
+        /// </remarks>
+        /// <param name="binaryReader">要读取的二进制流 / The binary stream to read from.</param>
+        /// <returns>读取的 64 位有符号整数 / The 64-bit signed integer read.</returns>
         [Preserve]
         public static long Read7BitEncodedInt64(this BinaryReader binaryReader)
         {
@@ -140,8 +158,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 向二进制流写入编码后的 64 位有符号整数。
         /// </summary>
-        /// <param name="binaryWriter">要写入的二进制流。</param>
-        /// <param name="value">要写入的 64 位有符号整数。</param>
+        /// <remarks>
+        /// Writes a 7-bit encoded 64-bit signed integer to the binary stream.
+        /// </remarks>
+        /// <param name="binaryWriter">要写入的二进制流 / The binary stream to write to.</param>
+        /// <param name="value">要写入的 64 位有符号整数 / The 64-bit signed integer to write.</param>
         [Preserve]
         public static void Write7BitEncodedInt64(this BinaryWriter binaryWriter, long value)
         {
@@ -158,8 +179,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从二进制流读取编码后的 64 位无符号整数。
         /// </summary>
-        /// <param name="binaryReader">要读取的二进制流。</param>
-        /// <returns>读取的 64 位无符号整数。</returns>
+        /// <remarks>
+        /// Reads a 7-bit encoded 64-bit unsigned integer from the binary stream.
+        /// </remarks>
+        /// <param name="binaryReader">要读取的二进制流 / The binary stream to read from.</param>
+        /// <returns>读取的 64 位无符号整数 / The 64-bit unsigned integer read.</returns>
         [Preserve]
         public static ulong Read7BitEncodedUInt64(this BinaryReader binaryReader)
         {
@@ -169,8 +193,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 向二进制流写入编码后的 64 位无符号整数。
         /// </summary>
-        /// <param name="binaryWriter">要写入的二进制流。</param>
-        /// <param name="value">要写入的 64 位无符号整数。</param>
+        /// <remarks>
+        /// Writes a 7-bit encoded 64-bit unsigned integer to the binary stream.
+        /// </remarks>
+        /// <param name="binaryWriter">要写入的二进制流 / The binary stream to write to.</param>
+        /// <param name="value">要写入的 64 位无符号整数 / The 64-bit unsigned integer to write.</param>
         [Preserve]
         public static void Write7BitEncodedUInt64(this BinaryWriter binaryWriter, ulong value)
         {
@@ -180,9 +207,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从二进制流读取加密字符串。
         /// </summary>
-        /// <param name="binaryReader">要读取的二进制流。</param>
-        /// <param name="encryptBytes">密钥数组。</param>
-        /// <returns>读取的字符串。</returns>
+        /// <remarks>
+        /// Reads an encrypted string from the binary stream.
+        /// </remarks>
+        /// <param name="binaryReader">要读取的二进制流 / The binary stream to read from.</param>
+        /// <param name="encryptBytes">密钥数组 / The encryption key array.</param>
+        /// <returns>读取的字符串 / The decrypted string read.</returns>
         [Preserve]
         public static string ReadEncryptedString(this BinaryReader binaryReader, byte[] encryptBytes)
         {
@@ -211,9 +241,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 向二进制流写入加密字符串。
         /// </summary>
-        /// <param name="binaryWriter">要写入的二进制流。</param>
-        /// <param name="value">要写入的字符串。</param>
-        /// <param name="encryptBytes">密钥数组。</param>
+        /// <remarks>
+        /// Writes an encrypted string to the binary stream.
+        /// </remarks>
+        /// <param name="binaryWriter">要写入的二进制流 / The binary stream to write to.</param>
+        /// <param name="value">要写入的字符串 / The string to write.</param>
+        /// <param name="encryptBytes">密钥数组 / The encryption key array.</param>
         [Preserve]
         public static void WriteEncryptedString(this BinaryWriter binaryWriter, string value, byte[] encryptBytes)
         {

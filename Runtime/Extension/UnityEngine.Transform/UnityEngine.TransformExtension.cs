@@ -8,8 +8,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 查找子节点的名称符合的 <see cref="Transform" />。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="name">子节点的名称</param>
+        /// <remarks>
+        /// Finds a child Transform by name using depth-first search.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="name">子节点的名称 / The name of the child node to find.</param>
+        /// <returns>找到的子节点 Transform，如果未找到则返回 null。 / The found child Transform, or null if not found.</returns>
         [UnityEngine.Scripting.Preserve]
         public static Transform FindChildName(this Transform transform, string name)
         {
@@ -42,8 +46,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置绝对位置的 x 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="newValue">x 坐标值。</param>
+        /// <remarks>
+        /// Sets the x component of the world position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="newValue">x 坐标值。 / The new x coordinate value.</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetPositionX(this Transform transform, float newValue)
         {
@@ -55,8 +62,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置绝对位置的 y 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="newValue">y 坐标值。</param>
+        /// <remarks>
+        /// Sets the y component of the world position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="newValue">y 坐标值。 / The new y coordinate value.</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetPositionY(this Transform transform, float newValue)
         {
@@ -68,8 +78,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置绝对位置的 z 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="newValue">z 坐标值。</param>
+        /// <remarks>
+        /// Sets the z component of the world position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="newValue">z 坐标值。 / The new z coordinate value.</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetPositionZ(this Transform transform, float newValue)
         {
@@ -81,8 +94,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加绝对位置的 x 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="deltaValue">x 坐标值增量。</param>
+        /// <remarks>
+        /// Adds a delta value to the x component of the world position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="deltaValue">x 坐标值增量。 / The delta value to add to the x coordinate.</param>
         [UnityEngine.Scripting.Preserve]
         public static void AddPositionX(this Transform transform, float deltaValue)
         {
@@ -94,8 +110,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加绝对位置的 y 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="deltaValue">y 坐标值增量。</param>
+        /// <remarks>
+        /// Adds a delta value to the y component of the world position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="deltaValue">y 坐标值增量。 / The delta value to add to the y coordinate.</param>
         [UnityEngine.Scripting.Preserve]
         public static void AddPositionY(this Transform transform, float deltaValue)
         {
@@ -107,8 +126,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加绝对位置的 z 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="deltaValue">z 坐标值增量。</param>
+        /// <remarks>
+        /// Adds a delta value to the z component of the world position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="deltaValue">z 坐标值增量。 / The delta value to add to the z coordinate.</param>
         [UnityEngine.Scripting.Preserve]
         public static void AddPositionZ(this Transform transform, float deltaValue)
         {
@@ -120,8 +142,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置相对位置的 x 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="newValue">x 坐标值。</param>
+        /// <remarks>
+        /// Sets the x component of the local position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="newValue">x 坐标值。 / The new x coordinate value.</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetLocalPositionX(this Transform transform, float newValue)
         {
@@ -133,8 +158,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置相对位置的 y 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="newValue">y 坐标值。</param>
+        /// <remarks>
+        /// Sets the y component of the local position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="newValue">y 坐标值。 / The new y coordinate value.</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetLocalPositionY(this Transform transform, float newValue)
         {
@@ -146,8 +174,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置相对位置的 z 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="newValue">z 坐标值。</param>
+        /// <remarks>
+        /// Sets the z component of the local position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="newValue">z 坐标值。 / The new z coordinate value.</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetLocalPositionZ(this Transform transform, float newValue)
         {
@@ -159,8 +190,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加相对位置的 x 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="deltaValue">x 坐标值。</param>
+        /// <remarks>
+        /// Adds a delta value to the x component of the local position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="deltaValue">x 坐标值。 / The delta value to add to the x coordinate.</param>
         [UnityEngine.Scripting.Preserve]
         public static void AddLocalPositionX(this Transform transform, float deltaValue)
         {
@@ -172,8 +206,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加相对位置的 y 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="deltaValue">y 坐标值。</param>
+        /// <remarks>
+        /// Adds a delta value to the y component of the local position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="deltaValue">y 坐标值。 / The delta value to add to the y coordinate.</param>
         [UnityEngine.Scripting.Preserve]
         public static void AddLocalPositionY(this Transform transform, float deltaValue)
         {
@@ -185,8 +222,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加相对位置的 z 坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="deltaValue">z 坐标值。</param>
+        /// <remarks>
+        /// Adds a delta value to the z component of the local position.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="deltaValue">z 坐标值。 / The delta value to add to the z coordinate.</param>
         [UnityEngine.Scripting.Preserve]
         public static void AddLocalPositionZ(this Transform transform, float deltaValue)
         {
@@ -198,8 +238,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置相对尺寸的 x 分量。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="newValue">x 分量值。</param>
+        /// <remarks>
+        /// Sets the x component of the local scale.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="newValue">x 分量值。 / The new x scale value.</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetLocalScaleX(this Transform transform, float newValue)
         {
@@ -211,8 +254,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置相对尺寸的 y 分量。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="newValue">y 分量值。</param>
+        /// <remarks>
+        /// Sets the y component of the local scale.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="newValue">y 分量值。 / The new y scale value.</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetLocalScaleY(this Transform transform, float newValue)
         {
@@ -224,8 +270,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置相对尺寸的 z 分量。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="newValue">z 分量值。</param>
+        /// <remarks>
+        /// Sets the z component of the local scale.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="newValue">z 分量值。 / The new z scale value.</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetLocalScaleZ(this Transform transform, float newValue)
         {
@@ -237,8 +286,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加相对尺寸的 x 分量。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="deltaValue">x 分量增量。</param>
+        /// <remarks>
+        /// Adds a delta value to the x component of the local scale.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="deltaValue">x 分量增量。 / The delta value to add to the x scale.</param>
         [UnityEngine.Scripting.Preserve]
         public static void AddLocalScaleX(this Transform transform, float deltaValue)
         {
@@ -250,8 +302,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加相对尺寸的 y 分量。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="deltaValue">y 分量增量。</param>
+        /// <remarks>
+        /// Adds a delta value to the y component of the local scale.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="deltaValue">y 分量增量。 / The delta value to add to the y scale.</param>
         [UnityEngine.Scripting.Preserve]
         public static void AddLocalScaleY(this Transform transform, float deltaValue)
         {
@@ -263,8 +318,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 增加相对尺寸的 z 分量。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="deltaValue">z 分量增量。</param>
+        /// <remarks>
+        /// Adds a delta value to the z component of the local scale.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="deltaValue">z 分量增量。 / The delta value to add to the z scale.</param>
         [UnityEngine.Scripting.Preserve]
         public static void AddLocalScaleZ(this Transform transform, float deltaValue)
         {
@@ -276,9 +334,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 二维空间下使 <see cref="Transform" /> 指向指向目标点的算法，使用世界坐标。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="lookAtPoint2D">要朝向的二维坐标点。</param>
-        /// <remarks>假定其 forward 向量为 <see cref="Vector3.up" />。</remarks>
+        /// <remarks>
+        /// Makes the Transform face a target point in 2D space using world coordinates.
+        /// Assumes the forward vector is <see cref="Vector3.up" />.
+        /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="lookAtPoint2D">要朝向的二维坐标点。 / The 2D point to look at.</param>
         [UnityEngine.Scripting.Preserve]
         public static void LookAt2D(this Transform transform, Vector2 lookAtPoint2D)
         {
@@ -294,12 +355,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 将 <see cref="Transform" /> 重置为初始状态：本地坐标归零、旋转归零、缩放归一。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
-        /// <param name="parent">要设置的新父级 Transform。</param>
         /// <remarks>
-        /// 等价于同时设置 localPosition = Vector3.zero、localRotation = Quaternion.identity、localScale = Vector3.one。
-        /// 注意：此方法会先设置父级，再执行重置，因此重置后的本地坐标、旋转、缩放均相对于新父级。
+        /// Resets the Transform to its initial state: local position to zero, rotation to identity, and scale to one.
+        /// This method first sets the parent, then resets, so the resulting local position, rotation, and scale are relative to the new parent.
         /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
+        /// <param name="parent">要设置的新父级 Transform。 / The new parent Transform to set.</param>
         [UnityEngine.Scripting.Preserve]
         public static void SetParentAndReset(this Transform transform, Transform parent)
         {
@@ -310,10 +371,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 将 <see cref="Transform" /> 重置为初始状态：本地坐标归零、旋转归零、缩放归一。
         /// </summary>
-        /// <param name="transform"><see cref="Transform" /> 对象。</param>
         /// <remarks>
-        /// 等价于同时设置 localPosition = Vector3.zero、localRotation = Quaternion.identity、localScale = Vector3.one。
+        /// Resets the Transform to its initial state.
+        /// Equivalent to setting localPosition = Vector3.zero, localRotation = Quaternion.identity, and localScale = Vector3.one.
         /// </remarks>
+        /// <param name="transform"><see cref="Transform" /> 对象。 / The Transform instance.</param>
         [UnityEngine.Scripting.Preserve]
         public static void Reset(this Transform transform)
         {
