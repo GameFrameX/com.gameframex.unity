@@ -38,7 +38,7 @@ namespace GameFrameX.Runtime
     /// </summary>
     /// <remarks>
     /// Abstract base class for all event arguments. Provides a common interface for event identification.
-    /// All custom event arguments should inherit from this class.
+    /// All custom event arguments should inherit from this class and implement the Id property.
     /// </remarks>
     public abstract class BaseEventArgs : GameFrameworkEventArgs
     {
@@ -47,6 +47,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <remarks>
         /// Abstract property that must be implemented by derived classes to provide a unique identifier for the event type.
+        /// Each event type should have a unique ID for proper event handling and routing.
         /// </remarks>
         [Preserve] // 添加 Preserve 标签
         public abstract string Id { get; }

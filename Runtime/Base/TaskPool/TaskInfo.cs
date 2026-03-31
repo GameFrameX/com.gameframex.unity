@@ -36,6 +36,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 任务信息。
     /// </summary>
+    /// <remarks>
+    /// A structure that contains information about a task, including its serial ID, tag, priority, user data, status, and description.
+    /// </remarks>
     [StructLayout(LayoutKind.Auto)]
     [UnityEngine.Scripting.Preserve]
     public struct TaskInfo
@@ -51,12 +54,15 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化任务信息的新实例。
         /// </summary>
-        /// <param name="serialId">任务的序列编号。</param>
-        /// <param name="tag">任务的标签。</param>
-        /// <param name="priority">任务的优先级。</param>
-        /// <param name="userData">任务的用户自定义数据。</param>
-        /// <param name="status">任务状态。</param>
-        /// <param name="description">任务描述。</param>
+        /// <param name="serialId">任务的序列编号。 / The serial ID of the task.</param>
+        /// <param name="tag">任务的标签。 / The tag of the task.</param>
+        /// <param name="priority">任务的优先级。 / The priority of the task.</param>
+        /// <param name="userData">任务的用户自定义数据。 / The user data associated with the task.</param>
+        /// <param name="status">任务状态。 / The status of the task.</param>
+        /// <param name="description">任务描述。 / The description of the task.</param>
+        /// <remarks>
+        /// Creates a new TaskInfo instance with the specified parameters.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public TaskInfo(int serialId, string tag, int priority, object userData, TaskStatus status, string description)
         {
@@ -72,6 +78,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务信息是否有效。
         /// </summary>
+        /// <remarks>
+        /// Indicates whether the TaskInfo contains valid data. Returns false if the task was not found.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool IsValid
         {
@@ -81,6 +90,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务的序列编号。
         /// </summary>
+        /// <remarks>
+        /// The unique serial ID of the task. Throws an exception if the data is invalid.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int SerialId
         {
@@ -98,6 +110,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务的标签。
         /// </summary>
+        /// <remarks>
+        /// The tag of the task used for grouping and filtering. Throws an exception if the data is invalid.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public string Tag
         {
@@ -115,6 +130,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务的优先级。
         /// </summary>
+        /// <remarks>
+        /// The priority of the task. Higher values indicate higher priority. Throws an exception if the data is invalid.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int Priority
         {
@@ -132,6 +150,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务的用户自定义数据。
         /// </summary>
+        /// <remarks>
+        /// Custom user data associated with the task. Throws an exception if the data is invalid.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public object UserData
         {
@@ -149,6 +170,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务状态。
         /// </summary>
+        /// <remarks>
+        /// The current status of the task (Todo, Doing, or Done). Throws an exception if the data is invalid.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public TaskStatus Status
         {
@@ -166,6 +190,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务描述。
         /// </summary>
+        /// <remarks>
+        /// The description of the task. Throws an exception if the data is invalid.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public string Description
         {

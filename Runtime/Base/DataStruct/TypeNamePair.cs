@@ -137,22 +137,22 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 判断两个对象是否相等。
+        /// 判断两个对象是否相等。 / Determines whether two TypeNamePair instances are equal.
         /// </summary>
-        /// <param name="a">值 a。</param>
-        /// <param name="b">值 b。</param>
-        /// <returns>两个对象是否相等。</returns>
+        /// <param name="a">值 a。 / The first TypeNamePair to compare.</param>
+        /// <param name="b">值 b。 / The second TypeNamePair to compare.</param>
+        /// <returns>两个对象是否相等。 / True if the two TypeNamePair instances are equal; otherwise, false.</returns>
         public static bool operator ==(TypeNamePair a, TypeNamePair b)
         {
             return a.Equals(b);
         }
 
         /// <summary>
-        /// 判断两个对象是否不相等。
+        /// 判断两个对象是否不相等。 / Determines whether two TypeNamePair instances are not equal.
         /// </summary>
-        /// <param name="a">值 a。</param>
-        /// <param name="b">值 b。</param>
-        /// <returns>两个对象是否不相等。</returns>
+        /// <param name="a">值 a。 / The first TypeNamePair to compare.</param>
+        /// <param name="b">值 b。 / The second TypeNamePair to compare.</param>
+        /// <returns>两个对象是否不相等。 / True if the two TypeNamePair instances are not equal; otherwise, false.</returns>
         public static bool operator !=(TypeNamePair a, TypeNamePair b)
         {
             return !(a == b);

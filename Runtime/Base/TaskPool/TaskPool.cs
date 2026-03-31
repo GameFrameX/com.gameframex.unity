@@ -350,8 +350,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 根据任务的序列编号移除任务。
         /// </summary>
-        /// <param name="serialId">要移除任务的序列编号。</param>
-        /// <returns>是否移除任务成功。</returns>
+        /// <param name="serialId">要移除任务的序列编号。 / The serial ID of the task to remove.</param>
+        /// <returns>是否移除任务成功。 / Whether the task was successfully removed.</returns>
+        /// <remarks>
+        /// Searches for the task in both waiting tasks and working agents, removes it if found, and releases it to the reference pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool RemoveTask(int serialId)
         {
@@ -389,8 +392,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 根据任务的标签移除任务。
         /// </summary>
-        /// <param name="tag">要移除任务的标签。</param>
-        /// <returns>移除任务的数量。</returns>
+        /// <param name="tag">要移除任务的标签。 / The tag of the tasks to remove.</param>
+        /// <returns>移除任务的数量。 / The number of tasks removed.</returns>
+        /// <remarks>
+        /// Removes all tasks with the specified tag from both waiting tasks and working agents, and releases them to the reference pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int RemoveTasks(string tag)
         {
@@ -435,7 +441,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 移除所有任务。
         /// </summary>
-        /// <returns>移除任务的数量。</returns>
+        /// <returns>移除任务的数量。 / The number of tasks removed.</returns>
+        /// <remarks>
+        /// Clears all waiting tasks and working agents, releasing all tasks to the reference pool and returning agents to the free pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int RemoveAllTasks()
         {

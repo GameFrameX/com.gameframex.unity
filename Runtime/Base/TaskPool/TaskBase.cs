@@ -34,12 +34,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 任务基类。
     /// </summary>
+    /// <remarks>
+    /// Base class for all tasks in the task pool system. Provides common properties and methods for task management.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public abstract class TaskBase : IReference
     {
         /// <summary>
         /// 任务默认优先级。
         /// </summary>
+        /// <remarks>
+        /// The default priority value for tasks when no priority is specified.
+        /// </remarks>
         public const int DefaultPriority = 0;
 
         private int m_SerialId;
@@ -52,6 +58,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化任务基类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Creates a new instance of TaskBase with default values.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public TaskBase()
         {
@@ -65,6 +74,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务的序列编号。
         /// </summary>
+        /// <remarks>
+        /// The unique serial ID of the task, used for identification and lookup.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int SerialId
         {
@@ -74,6 +86,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务的标签。
         /// </summary>
+        /// <remarks>
+        /// The tag of the task, used for grouping and filtering tasks.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public string Tag
         {
@@ -83,6 +98,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务的优先级。
         /// </summary>
+        /// <remarks>
+        /// The priority of the task. Higher priority tasks are processed first.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int Priority
         {
@@ -92,6 +110,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务的用户自定义数据。
         /// </summary>
+        /// <remarks>
+        /// Custom user data associated with the task.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public object UserData
         {
@@ -101,6 +122,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取或设置任务是否完成。
         /// </summary>
+        /// <remarks>
+        /// Indicates whether the task has been completed. When set to true, the task agent will be released.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool Done
         {
@@ -111,6 +135,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取任务描述。
         /// </summary>
+        /// <remarks>
+        /// The description of the task. Can be overridden in derived classes to provide meaningful task information.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual string Description
         {
@@ -120,10 +147,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化任务基类。
         /// </summary>
-        /// <param name="serialId">任务的序列编号。</param>
-        /// <param name="tag">任务的标签。</param>
-        /// <param name="priority">任务的优先级。</param>
-        /// <param name="userData">任务的用户自定义数据。</param>
+        /// <param name="serialId">任务的序列编号。 / The serial ID of the task.</param>
+        /// <param name="tag">任务的标签。 / The tag of the task.</param>
+        /// <param name="priority">任务的优先级。 / The priority of the task.</param>
+        /// <param name="userData">任务的用户自定义数据。 / The user data associated with the task.</param>
+        /// <remarks>
+        /// Initializes the task with the specified parameters. Should be called before adding the task to the pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void Initialize(int serialId, string tag, int priority, object userData)
         {
@@ -137,6 +167,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 清理任务基类。
         /// </summary>
+        /// <remarks>
+        /// Resets all properties to their default values. Called when the task is released back to the reference pool.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public virtual void Clear()
         {
