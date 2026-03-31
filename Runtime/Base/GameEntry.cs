@@ -39,6 +39,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏入口。
     /// </summary>
+    /// <remarks>
+    /// Game entry point.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class GameEntry
     {
@@ -47,13 +50,19 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 游戏框架所在的场景编号。
         /// </summary>
+        /// <remarks>
+        /// The scene ID where the game framework is located.
+        /// </remarks>
         public const int GameFrameworkSceneId = 0;
 
         /// <summary>
         /// 获取游戏框架组件。
         /// </summary>
-        /// <typeparam name="T">要获取的游戏框架组件类型。</typeparam>
-        /// <returns>要获取的游戏框架组件。</returns>
+        /// <remarks>
+        /// Gets a game framework component.
+        /// </remarks>
+        /// <typeparam name="T">要获取的游戏框架组件类型 / Type of the game framework component to get</typeparam>
+        /// <returns>要获取的游戏框架组件 / The game framework component to get</returns>
         [UnityEngine.Scripting.Preserve]
         public static T GetComponent<T>() where T : GameFrameworkComponent
         {
@@ -63,8 +72,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取游戏框架组件。
         /// </summary>
-        /// <param name="type">要获取的游戏框架组件类型。</param>
-        /// <returns>要获取的游戏框架组件。</returns>
+        /// <remarks>
+        /// Gets a game framework component.
+        /// </remarks>
+        /// <param name="type">要获取的游戏框架组件类型 / Type of the game framework component to get</param>
+        /// <returns>要获取的游戏框架组件 / The game framework component to get</returns>
         [UnityEngine.Scripting.Preserve]
         public static GameFrameworkComponent GetComponent(Type type)
         {
@@ -85,8 +97,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取游戏框架组件。
         /// </summary>
-        /// <param name="typeName">要获取的游戏框架组件类型名称。</param>
-        /// <returns>要获取的游戏框架组件。</returns>
+        /// <remarks>
+        /// Gets a game framework component.
+        /// </remarks>
+        /// <param name="typeName">要获取的游戏框架组件类型名称 / Type name of the game framework component to get</param>
+        /// <returns>要获取的游戏框架组件 / The game framework component to get</returns>
         [UnityEngine.Scripting.Preserve]
         public static GameFrameworkComponent GetComponent(string typeName)
         {
@@ -108,7 +123,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 关闭游戏框架。
         /// </summary>
-        /// <param name="shutdownType">关闭游戏框架类型。</param>
+        /// <remarks>
+        /// Shuts down the game framework.
+        /// </remarks>
+        /// <param name="shutdownType">关闭游戏框架类型 / The shutdown type</param>
         [UnityEngine.Scripting.Preserve]
         public static void Shutdown(ShutdownType shutdownType)
         {
@@ -146,7 +164,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 注册游戏框架组件。
         /// </summary>
-        /// <param name="gameFrameworkComponent">要注册的游戏框架组件。</param>
+        /// <remarks>
+        /// Registers a game framework component.
+        /// </remarks>
+        /// <param name="gameFrameworkComponent">要注册的游戏框架组件 / The game framework component to register</param>
         [UnityEngine.Scripting.Preserve]
         internal static void RegisterComponent(GameFrameworkComponent gameFrameworkComponent)
         {

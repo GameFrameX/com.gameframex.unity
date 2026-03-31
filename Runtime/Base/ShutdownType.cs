@@ -34,22 +34,34 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 关闭游戏框架类型。
     /// </summary>
+    /// <remarks>
+    /// Shutdown type for the game framework.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public enum ShutdownType : byte
     {
         /// <summary>
         /// 仅关闭游戏框架。
         /// </summary>
+        /// <remarks>
+        /// Only shuts down the game framework.
+        /// </remarks>
         None = 0,
 
         /// <summary>
         /// 关闭游戏框架并重启游戏。
         /// </summary>
+        /// <remarks>
+        /// Shuts down the game framework and restarts the game.
+        /// </remarks>
         Restart,
 
         /// <summary>
         /// 关闭游戏框架并退出游戏。
         /// </summary>
+        /// <remarks>
+        /// Shuts down the game framework and quits the game.
+        /// </remarks>
         Quit,
     }
 }

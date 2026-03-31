@@ -37,7 +37,10 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏框架序列化器基类。
     /// </summary>
-    /// <typeparam name="T">要序列化的数据类型。</typeparam>
+    /// <remarks>
+    /// Game framework serializer base class.
+    /// </remarks>
+    /// <typeparam name="T">要序列化的数据类型 / The data type to serialize</typeparam>
     [UnityEngine.Scripting.Preserve]
     public abstract class GameFrameworkSerializer<T>
     {
@@ -49,6 +52,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化游戏框架序列化器基类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the game framework serializer base class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public GameFrameworkSerializer()
         {
@@ -61,35 +67,47 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 序列化回调函数。
         /// </summary>
-        /// <param name="stream">目标流。</param>
-        /// <param name="data">要序列化的数据。</param>
-        /// <returns>是否序列化数据成功。</returns>
+        /// <remarks>
+        /// Serialize callback function.
+        /// </remarks>
+        /// <param name="stream">目标流 / The target stream</param>
+        /// <param name="data">要序列化的数据 / The data to serialize</param>
+        /// <returns>是否序列化数据成功 / Whether the data was serialized successfully</returns>
         [UnityEngine.Scripting.Preserve]
         public delegate bool SerializeCallback(Stream stream, T data);
 
         /// <summary>
         /// 反序列化回调函数。
         /// </summary>
-        /// <param name="stream">指定流。</param>
-        /// <returns>反序列化的数据。</returns>
+        /// <remarks>
+        /// Deserialize callback function.
+        /// </remarks>
+        /// <param name="stream">指定流 / The specified stream</param>
+        /// <returns>反序列化的数据 / The deserialized data</returns>
         [UnityEngine.Scripting.Preserve]
         public delegate T DeserializeCallback(Stream stream);
 
         /// <summary>
         /// 尝试从指定流获取指定键的值回调函数。
         /// </summary>
-        /// <param name="stream">指定流。</param>
-        /// <param name="key">指定键。</param>
-        /// <param name="value">指定键的值。</param>
-        /// <returns>是否从指定流获取指定键的值成功。</returns>
+        /// <remarks>
+        /// Try to get the value of a specified key from the specified stream callback function.
+        /// </remarks>
+        /// <param name="stream">指定流 / The specified stream</param>
+        /// <param name="key">指定键 / The specified key</param>
+        /// <param name="value">指定键的值 / The value of the specified key</param>
+        /// <returns>是否从指定流获取指定键的值成功 / Whether the value of the specified key was successfully retrieved from the stream</returns>
         [UnityEngine.Scripting.Preserve]
         public delegate bool TryGetValueCallback(Stream stream, string key, out object value);
 
         /// <summary>
         /// 注册序列化回调函数。
         /// </summary>
-        /// <param name="version">序列化回调函数的版本。</param>
-        /// <param name="callback">序列化回调函数。</param>
+        /// <remarks>
+        /// Register a serialize callback function.
+        /// </remarks>
+        /// <param name="version">序列化回调函数的版本 / The version of the serialize callback function</param>
+        /// <param name="callback">序列化回调函数 / The serialize callback function</param>
         [UnityEngine.Scripting.Preserve]
         public void RegisterSerializeCallback(byte version, SerializeCallback callback)
         {
@@ -108,8 +126,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 注册反序列化回调函数。
         /// </summary>
-        /// <param name="version">反序列化回调函数的版本。</param>
-        /// <param name="callback">反序列化回调函数。</param>
+        /// <remarks>
+        /// Register a deserialize callback function.
+        /// </remarks>
+        /// <param name="version">反序列化回调函数的版本 / The version of the deserialize callback function</param>
+        /// <param name="callback">反序列化回调函数 / The deserialize callback function</param>
         [UnityEngine.Scripting.Preserve]
         public void RegisterDeserializeCallback(byte version, DeserializeCallback callback)
         {
@@ -124,8 +145,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 注册尝试从指定流获取指定键的值回调函数。
         /// </summary>
-        /// <param name="version">尝试从指定流获取指定键的值回调函数的版本。</param>
-        /// <param name="callback">尝试从指定流获取指定键的值回调函数。</param>
+        /// <remarks>
+        /// Register a callback function to try to get the value of a specified key from a specified stream.
+        /// </remarks>
+        /// <param name="version">尝试从指定流获取指定键的值回调函数的版本 / The version of the try get value callback function</param>
+        /// <param name="callback">尝试从指定流获取指定键的值回调函数 / The try get value callback function</param>
         [UnityEngine.Scripting.Preserve]
         public void RegisterTryGetValueCallback(byte version, TryGetValueCallback callback)
         {
@@ -140,9 +164,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 序列化数据到目标流中。
         /// </summary>
-        /// <param name="stream">目标流。</param>
-        /// <param name="data">要序列化的数据。</param>
-        /// <returns>是否序列化数据成功。</returns>
+        /// <remarks>
+        /// Serialize data to the target stream.
+        /// </remarks>
+        /// <param name="stream">目标流 / The target stream</param>
+        /// <param name="data">要序列化的数据 / The data to serialize</param>
+        /// <returns>是否序列化数据成功 / Whether the data was serialized successfully</returns>
         [UnityEngine.Scripting.Preserve]
         public bool Serialize(Stream stream, T data)
         {
@@ -157,10 +184,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 序列化数据到目标流中。
         /// </summary>
-        /// <param name="stream">目标流。</param>
-        /// <param name="data">要序列化的数据。</param>
-        /// <param name="version">序列化回调函数的版本。</param>
-        /// <returns>是否序列化数据成功。</returns>
+        /// <remarks>
+        /// Serialize data to the target stream.
+        /// </remarks>
+        /// <param name="stream">目标流 / The target stream</param>
+        /// <param name="data">要序列化的数据 / The data to serialize</param>
+        /// <param name="version">序列化回调函数的版本 / The version of the serialize callback function</param>
+        /// <returns>是否序列化数据成功 / Whether the data was serialized successfully</returns>
         [UnityEngine.Scripting.Preserve]
         public bool Serialize(Stream stream, T data, byte version)
         {
@@ -180,8 +210,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从指定流反序列化数据。
         /// </summary>
-        /// <param name="stream">指定流。</param>
-        /// <returns>反序列化的数据。</returns>
+        /// <remarks>
+        /// Deserialize data from the specified stream.
+        /// </remarks>
+        /// <param name="stream">指定流 / The specified stream</param>
+        /// <returns>反序列化的数据 / The deserialized data</returns>
         [UnityEngine.Scripting.Preserve]
         public T Deserialize(Stream stream)
         {
@@ -206,10 +239,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 尝试从指定流获取指定键的值。
         /// </summary>
-        /// <param name="stream">指定流。</param>
-        /// <param name="key">指定键。</param>
-        /// <param name="value">指定键的值。</param>
-        /// <returns>是否从指定流获取指定键的值成功。</returns>
+        /// <remarks>
+        /// Try to get the value of a specified key from the specified stream.
+        /// </remarks>
+        /// <param name="stream">指定流 / The specified stream</param>
+        /// <param name="key">指定键 / The specified key</param>
+        /// <param name="value">指定键的值 / The value of the specified key</param>
+        /// <returns>是否从指定流获取指定键的值成功 / Whether the value of the specified key was successfully retrieved from the stream</returns>
         [UnityEngine.Scripting.Preserve]
         public bool TryGetValue(Stream stream, string key, out object value)
         {
@@ -235,7 +271,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取数据头标识。
         /// </summary>
-        /// <returns>数据头标识。</returns>
+        /// <remarks>
+        /// Get the data header identifier.
+        /// </remarks>
+        /// <returns>数据头标识 / The data header identifier</returns>
         protected abstract byte[] GetHeader();
     }
 }

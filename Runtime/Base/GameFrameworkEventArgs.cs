@@ -36,12 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏框架中包含事件数据的类的基类。
     /// </summary>
+    /// <remarks>
+    /// Base class for classes containing event data in the game framework.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public abstract class GameFrameworkEventArgs : EventArgs, IReference
     {
         /// <summary>
         /// 初始化游戏框架中包含事件数据的类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the class containing event data in the game framework.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         protected GameFrameworkEventArgs()
         {
@@ -50,6 +56,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 清理引用。
         /// </summary>
+        /// <remarks>
+        /// Clears the reference.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public abstract void Clear();
     }

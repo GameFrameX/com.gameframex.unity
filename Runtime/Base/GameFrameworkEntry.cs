@@ -37,6 +37,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏框架入口。
     /// </summary>
+    /// <remarks>
+    /// Game framework entry point.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class GameFrameworkEntry
     {
@@ -47,8 +50,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 所有游戏框架模块轮询。
         /// </summary>
-        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
-        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        /// <remarks>
+        /// Polls all game framework modules.
+        /// </remarks>
+        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位 / Logical elapsed time in seconds</param>
+        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位 / Real elapsed time in seconds</param>
         public static void Update(float elapseSeconds, float realElapseSeconds)
         {
             foreach (var module in s_GameFrameworkModules)
@@ -60,6 +66,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 关闭并清理所有游戏框架模块。
         /// </summary>
+        /// <remarks>
+        /// Shuts down and cleans up all game framework modules.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static void Shutdown()
         {
@@ -77,9 +86,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取游戏框架模块。
         /// </summary>
-        /// <typeparam name="T">要获取的游戏框架模块类型。</typeparam>
-        /// <returns>要获取的游戏框架模块。</returns>
-        /// <remarks>如果要获取的游戏框架模块不存在，则自动创建该游戏框架模块。</remarks>
+        /// <remarks>
+        /// Gets a game framework module. If the module does not exist, it will be created automatically.
+        /// </remarks>
+        /// <typeparam name="T">要获取的游戏框架模块类型 / Type of the game framework module to get</typeparam>
+        /// <returns>要获取的游戏框架模块 / The game framework module to get</returns>
         [UnityEngine.Scripting.Preserve]
         public static T GetModule<T>() where T : class
         {
@@ -111,9 +122,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取游戏框架模块。
         /// </summary>
-        /// <param name="moduleType">要获取的游戏框架模块类型。</param>
-        /// <returns>要获取的游戏框架模块。</returns>
-        /// <remarks>如果要获取的游戏框架模块不存在，则自动创建该游戏框架模块。</remarks>
+        /// <remarks>
+        /// Gets a game framework module. If the module does not exist, it will be created automatically.
+        /// </remarks>
+        /// <param name="moduleType">要获取的游戏框架模块类型 / Type of the game framework module to get</param>
+        /// <returns>要获取的游戏框架模块 / The game framework module to get</returns>
         [UnityEngine.Scripting.Preserve]
         public static GameFrameworkModule GetModule(Type moduleType)
         {
@@ -131,9 +144,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 注册框架模块。
         /// </summary>
-        /// <param name="interfaceType"> 要注册的游戏框架模块接口类型。</param>
-        /// <param name="implType"> 要注册的游戏框架模块类型。</param>
-        /// <returns>要创建的游戏框架模块。</returns>
+        /// <remarks>
+        /// Registers a framework module.
+        /// </remarks>
+        /// <param name="interfaceType">要注册的游戏框架模块接口类型 / Interface type of the game framework module to register</param>
+        /// <param name="implType">要注册的游戏框架模块类型 / Implementation type of the game framework module to register</param>
         [UnityEngine.Scripting.Preserve]
         public static void RegisterModule(Type interfaceType, Type implType)
         {
@@ -156,8 +171,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 创建游戏框架模块。
         /// </summary>
-        /// <param name="moduleType">要创建的游戏框架模块类型。</param>
-        /// <returns>要创建的游戏框架模块。</returns>
+        /// <remarks>
+        /// Creates a game framework module.
+        /// </remarks>
+        /// <param name="moduleType">要创建的游戏框架模块类型 / Type of the game framework module to create</param>
+        /// <returns>要创建的游戏框架模块 / The created game framework module</returns>
         private static GameFrameworkModule CreateModule(Type moduleType)
         {
             var module = (GameFrameworkModule)Activator.CreateInstance(moduleType);

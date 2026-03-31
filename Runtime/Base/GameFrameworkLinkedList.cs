@@ -39,7 +39,10 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏框架链表类。
     /// </summary>
-    /// <typeparam name="T">指定链表的元素类型。</typeparam>
+    /// <remarks>
+    /// Game framework linked list class.
+    /// </remarks>
+    /// <typeparam name="T">指定链表的元素类型 / Specifies the element type of the linked list</typeparam>
     [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameworkLinkedList<T> : ICollection<T>, IEnumerable<T>, ICollection, IEnumerable
     {
@@ -49,6 +52,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化游戏框架链表类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the game framework linked list class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public GameFrameworkLinkedList()
         {
@@ -60,6 +66,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取链表中实际包含的结点数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the number of nodes actually contained in the linked list.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int Count
         {
@@ -70,6 +79,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取链表结点缓存数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the number of cached linked list nodes.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int CachedNodeCount
         {
@@ -80,6 +92,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取链表的第一个结点。
         /// </summary>
+        /// <remarks>
+        /// Gets the first node of the linked list.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public LinkedListNode<T> First
         {
@@ -89,6 +104,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取链表的最后一个结点。
         /// </summary>
+        /// <remarks>
+        /// Gets the last node of the linked list.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public LinkedListNode<T> Last
         {
@@ -98,6 +116,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取一个值，该值指示 ICollection`1 是否为只读。
         /// </summary>
+        /// <remarks>
+        /// Gets a value indicating whether the ICollection`1 is read-only.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool IsReadOnly
         {
@@ -107,6 +128,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取可用于同步对 ICollection 的访问的对象。
         /// </summary>
+        /// <remarks>
+        /// Gets an object that can be used to synchronize access to the ICollection.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public object SyncRoot
         {
@@ -117,6 +141,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取一个值，该值指示是否同步对 ICollection 的访问（线程安全）。
         /// </summary>
+        /// <remarks>
+        /// Gets a value indicating whether access to the ICollection is synchronized (thread-safe).
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public bool IsSynchronized
         {
@@ -126,9 +153,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 在链表中指定的现有结点后添加包含指定值的新结点。
         /// </summary>
-        /// <param name="node">指定的现有结点。</param>
-        /// <param name="value">指定值。</param>
-        /// <returns>包含指定值的新结点。</returns>
+        /// <remarks>
+        /// Adds a new node containing the specified value after the specified existing node in the linked list.
+        /// </remarks>
+        /// <param name="node">指定的现有结点 / The specified existing node</param>
+        /// <param name="value">指定值 / The specified value</param>
+        /// <returns>包含指定值的新结点 / The new node containing the specified value</returns>
         [UnityEngine.Scripting.Preserve]
         public LinkedListNode<T> AddAfter(LinkedListNode<T> node, T value)
         {
@@ -140,8 +170,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 在链表中指定的现有结点后添加指定的新结点。
         /// </summary>
-        /// <param name="node">指定的现有结点。</param>
-        /// <param name="newNode">指定的新结点。</param>
+        /// <remarks>
+        /// Adds the specified new node after the specified existing node in the linked list.
+        /// </remarks>
+        /// <param name="node">指定的现有结点 / The specified existing node</param>
+        /// <param name="newNode">指定的新结点 / The specified new node</param>
         [UnityEngine.Scripting.Preserve]
         public void AddAfter(LinkedListNode<T> node, LinkedListNode<T> newNode)
         {
@@ -151,9 +184,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 在链表中指定的现有结点前添加包含指定值的新结点。
         /// </summary>
-        /// <param name="node">指定的现有结点。</param>
-        /// <param name="value">指定值。</param>
-        /// <returns>包含指定值的新结点。</returns>
+        /// <remarks>
+        /// Adds a new node containing the specified value before the specified existing node in the linked list.
+        /// </remarks>
+        /// <param name="node">指定的现有结点 / The specified existing node</param>
+        /// <param name="value">指定值 / The specified value</param>
+        /// <returns>包含指定值的新结点 / The new node containing the specified value</returns>
         [UnityEngine.Scripting.Preserve]
         public LinkedListNode<T> AddBefore(LinkedListNode<T> node, T value)
         {
@@ -165,8 +201,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 在链表中指定的现有结点前添加指定的新结点。
         /// </summary>
-        /// <param name="node">指定的现有结点。</param>
-        /// <param name="newNode">指定的新结点。</param>
+        /// <remarks>
+        /// Adds the specified new node before the specified existing node in the linked list.
+        /// </remarks>
+        /// <param name="node">指定的现有结点 / The specified existing node</param>
+        /// <param name="newNode">指定的新结点 / The specified new node</param>
         [UnityEngine.Scripting.Preserve]
         public void AddBefore(LinkedListNode<T> node, LinkedListNode<T> newNode)
         {
@@ -176,8 +215,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 在链表的开头处添加包含指定值的新结点。
         /// </summary>
-        /// <param name="value">指定值。</param>
-        /// <returns>包含指定值的新结点。</returns>
+        /// <remarks>
+        /// Adds a new node containing the specified value at the start of the linked list.
+        /// </remarks>
+        /// <param name="value">指定值 / The specified value</param>
+        /// <returns>包含指定值的新结点 / The new node containing the specified value</returns>
         [UnityEngine.Scripting.Preserve]
         public LinkedListNode<T> AddFirst(T value)
         {
@@ -189,7 +231,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 在链表的开头处添加指定的新结点。
         /// </summary>
-        /// <param name="node">指定的新结点。</param>
+        /// <remarks>
+        /// Adds the specified new node at the start of the linked list.
+        /// </remarks>
+        /// <param name="node">指定的新结点 / The specified new node</param>
         [UnityEngine.Scripting.Preserve]
         public void AddFirst(LinkedListNode<T> node)
         {
@@ -199,8 +244,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 在链表的结尾处添加包含指定值的新结点。
         /// </summary>
-        /// <param name="value">指定值。</param>
-        /// <returns>包含指定值的新结点。</returns>
+        /// <remarks>
+        /// Adds a new node containing the specified value at the end of the linked list.
+        /// </remarks>
+        /// <param name="value">指定值 / The specified value</param>
+        /// <returns>包含指定值的新结点 / The new node containing the specified value</returns>
         [UnityEngine.Scripting.Preserve]
         public LinkedListNode<T> AddLast(T value)
         {
@@ -212,7 +260,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 在链表的结尾处添加指定的新结点。
         /// </summary>
-        /// <param name="node">指定的新结点。</param>
+        /// <remarks>
+        /// Adds the specified new node at the end of the linked list.
+        /// </remarks>
+        /// <param name="node">指定的新结点 / The specified new node</param>
         [UnityEngine.Scripting.Preserve]
         public void AddLast(LinkedListNode<T> node)
         {
@@ -222,6 +273,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从链表中移除所有结点。
         /// </summary>
+        /// <remarks>
+        /// Removes all nodes from the linked list.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public void Clear()
         {

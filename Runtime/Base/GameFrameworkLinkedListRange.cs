@@ -38,7 +38,10 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏框架链表范围。
     /// </summary>
-    /// <typeparam name="T">指定链表范围的元素类型。</typeparam>
+    /// <remarks>
+    /// Game framework linked list range.
+    /// </remarks>
+    /// <typeparam name="T">指定链表范围的元素类型 / Specifies the element type of the linked list range</typeparam>
     [UnityEngine.Scripting.Preserve]
     [StructLayout(LayoutKind.Auto)]
     public readonly struct GameFrameworkLinkedListRange<T> : IEnumerable<T>, IEnumerable
@@ -49,8 +52,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化游戏框架链表范围的新实例。
         /// </summary>
-        /// <param name="first">链表范围的开始结点。</param>
-        /// <param name="terminal">链表范围的终结标记结点。</param>
+        /// <remarks>
+        /// Initializes a new instance of the game framework linked list range.
+        /// </remarks>
+        /// <param name="first">链表范围的开始结点 / The starting node of the linked list range</param>
+        /// <param name="terminal">链表范围的终结标记结点 / The terminal marker node of the linked list range</param>
         [UnityEngine.Scripting.Preserve]
         public GameFrameworkLinkedListRange(LinkedListNode<T> first, LinkedListNode<T> terminal)
         {
@@ -66,6 +72,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取链表范围是否有效。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the linked list range is valid.
+        /// </remarks>
         public bool IsValid
         {
             get { return m_First != null && m_Terminal != null && m_First != m_Terminal; }
@@ -74,6 +83,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取链表范围的开始结点。
         /// </summary>
+        /// <remarks>
+        /// Gets the starting node of the linked list range.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public LinkedListNode<T> First
         {
@@ -83,6 +95,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取链表范围的终结标记结点。
         /// </summary>
+        /// <remarks>
+        /// Gets the terminal marker node of the linked list range.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public LinkedListNode<T> Terminal
         {
@@ -92,6 +107,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取链表范围的结点数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the number of nodes in the linked list range.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public int Count
         {
@@ -115,8 +133,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 检查是否包含指定值。
         /// </summary>
-        /// <param name="value">要检查的值。</param>
-        /// <returns>是否包含指定值。</returns>
+        /// <remarks>
+        /// Checks whether the specified value is contained.
+        /// </remarks>
+        /// <param name="value">要检查的值 / The value to check</param>
+        /// <returns>是否包含指定值 / Whether the specified value is contained</returns>
         [UnityEngine.Scripting.Preserve]
         public bool Contains(T value)
         {
@@ -134,7 +155,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 返回循环访问集合的枚举数。
         /// </summary>
-        /// <returns>循环访问集合的枚举数。</returns>
+        /// <remarks>
+        /// Returns an enumerator that iterates through the collection.
+        /// </remarks>
+        /// <returns>循环访问集合的枚举数 / An enumerator that iterates through the collection</returns>
         [UnityEngine.Scripting.Preserve]
         public Enumerator GetEnumerator()
         {
@@ -144,7 +168,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 返回循环访问集合的枚举数。
         /// </summary>
-        /// <returns>循环访问集合的枚举数。</returns>
+        /// <remarks>
+        /// Returns an enumerator that iterates through the collection.
+        /// </remarks>
+        /// <returns>循环访问集合的枚举数 / An enumerator that iterates through the collection</returns>
         [UnityEngine.Scripting.Preserve]
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
@@ -154,7 +181,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 返回循环访问集合的枚举数。
         /// </summary>
-        /// <returns>循环访问集合的枚举数。</returns>
+        /// <remarks>
+        /// Returns an enumerator that iterates through the collection.
+        /// </remarks>
+        /// <returns>循环访问集合的枚举数 / An enumerator that iterates through the collection</returns>
         [UnityEngine.Scripting.Preserve]
         IEnumerator IEnumerable.GetEnumerator()
         {
@@ -164,6 +194,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 循环访问集合的枚举数。
         /// </summary>
+        /// <remarks>
+        /// Enumerator that iterates through the collection.
+        /// </remarks>
         [StructLayout(LayoutKind.Auto)]
         public struct Enumerator : IEnumerator<T>, IEnumerator
         {
@@ -186,6 +219,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取当前结点。
             /// </summary>
+            /// <remarks>
+            /// Gets the current node.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public T Current
             {
@@ -195,6 +231,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取当前的枚举数。
             /// </summary>
+            /// <remarks>
+            /// Gets the current enumerator.
+            /// </remarks>
             object IEnumerator.Current
             {
                 get { return m_CurrentValue; }
@@ -203,6 +242,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 清理枚举数。
             /// </summary>
+            /// <remarks>
+            /// Cleans up the enumerator.
+            /// </remarks>
             public void Dispose()
             {
             }
@@ -210,7 +252,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取下一个结点。
             /// </summary>
-            /// <returns>返回下一个结点。</returns>
+            /// <remarks>
+            /// Gets the next node.
+            /// </remarks>
+            /// <returns>返回下一个结点 / Returns the next node</returns>
             public bool MoveNext()
             {
                 if (m_Current == null || m_Current == m_GameFrameworkLinkedListRange.m_Terminal)
@@ -226,6 +271,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 重置枚举数。
             /// </summary>
+            /// <remarks>
+            /// Resets the enumerator.
+            /// </remarks>
             void IEnumerator.Reset()
             {
                 m_Current = m_GameFrameworkLinkedListRange.m_First;

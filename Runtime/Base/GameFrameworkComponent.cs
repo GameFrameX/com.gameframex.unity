@@ -37,32 +37,51 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 游戏框架组件抽象类。
     /// </summary>
+    /// <remarks>
+    /// Abstract base class for game framework components.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public abstract class GameFrameworkComponent : MonoBehaviour
     {
         /// <summary>
-        /// 是否自动注册
+        /// 是否自动注册。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets whether to automatically register.
+        /// </remarks>
+        /// <value>如果自动注册则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if auto register; otherwise <c>false</c></value>
         protected bool IsAutoRegister { get; set; } = true;
 
         /// <summary>
-        /// 实现类的类型
+        /// 实现类的类型。
         /// </summary>
+        /// <remarks>
+        /// The type of the implementation class.
+        /// </remarks>
         protected Type ImplementationComponentType = null;
 
         /// <summary>
-        /// 接口类的类型
+        /// 接口类的类型。
         /// </summary>
+        /// <remarks>
+        /// The type of the interface class.
+        /// </remarks>
         protected Type InterfaceComponentType = null;
 
         /// <summary>
         /// 游戏框架组件类型。
         /// </summary>
+        /// <remarks>
+        /// The type of the game framework component.
+        /// </remarks>
         [SerializeField] protected string componentType = string.Empty;
 
         /// <summary>
         /// 游戏框架组件初始化。
         /// </summary>
+        /// <remarks>
+        /// Initializes the game framework component.
+        /// </remarks>
         protected virtual void Awake()
         {
             GameEntry.RegisterComponent(this);
