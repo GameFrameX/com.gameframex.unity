@@ -36,12 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.Object 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.Object variable class.
+    /// </remarks>
     [Preserve]
     public sealed class VarObject : Variable<object>
     {
         /// <summary>
         /// 初始化 System.Object 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.Object variable class.
+        /// </remarks>
         [Preserve]
         public VarObject()
         {

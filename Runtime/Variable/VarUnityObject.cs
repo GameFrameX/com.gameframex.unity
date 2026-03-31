@@ -36,12 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// UnityEngine.Object 变量类。
     /// </summary>
+    /// <remarks>
+    /// UnityEngine.Object variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarUnityObject : Variable<Object>
     {
         /// <summary>
         /// 初始化 UnityEngine.Object 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the UnityEngine.Object variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarUnityObject()
         {
@@ -50,7 +56,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Object 到 UnityEngine.Object 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Object to UnityEngine.Object variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarUnityObject(Object value)
         {
@@ -62,7 +71,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Object 变量类到 UnityEngine.Object 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Object variable class to UnityEngine.Object.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator Object(VarUnityObject value)
         {

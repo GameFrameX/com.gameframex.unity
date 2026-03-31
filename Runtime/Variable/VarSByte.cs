@@ -36,12 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.SByte 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.SByte variable class.
+    /// </remarks>
     [Preserve]
     public sealed class VarSByte : Variable<sbyte>
     {
         /// <summary>
         /// 初始化 System.SByte 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.SByte variable class.
+        /// </remarks>
         [Preserve]
         public VarSByte()
         {
@@ -50,7 +56,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.SByte 到 System.SByte 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.SByte to System.SByte variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator VarSByte(sbyte value)
         {
@@ -62,7 +71,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.SByte 变量类到 System.SByte 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.SByte variable class to System.SByte.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator sbyte(VarSByte value)
         {

@@ -34,12 +34,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.Byte 数组变量类。
     /// </summary>
+    /// <remarks>
+    /// System.Byte array variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarByteArray : Variable<byte[]>
     {
         /// <summary>
         /// 初始化 System.Byte 数组变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.Byte array variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarByteArray()
         {
@@ -48,7 +54,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Byte 数组到 System.Byte 数组变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Byte array to System.Byte array variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarByteArray(byte[] value)
         {
@@ -60,7 +69,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Byte 数组变量类到 System.Byte 数组的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Byte array variable class to System.Byte array.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator byte[](VarByteArray value)
         {

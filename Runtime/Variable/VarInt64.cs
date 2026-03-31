@@ -36,12 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.Int64 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.Int64 variable class.
+    /// </remarks>
     [Preserve]
     public sealed class VarInt64 : Variable<long>
     {
         /// <summary>
         /// 初始化 System.Int64 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.Int64 variable class.
+        /// </remarks>
         [Preserve]
         public VarInt64()
         {
@@ -50,7 +56,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Int64 到 System.Int64 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Int64 to System.Int64 variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator VarInt64(long value)
         {
@@ -62,7 +71,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Int64 变量类到 System.Int64 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Int64 variable class to System.Int64.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator long(VarInt64 value)
         {

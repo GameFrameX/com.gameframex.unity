@@ -37,12 +37,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// UnityEngine.Quaternion 变量类。
     /// </summary>
+    /// <remarks>
+    /// UnityEngine.Quaternion variable class.
+    /// </remarks>
     [Preserve]
     public sealed class VarQuaternion : Variable<Quaternion>
     {
         /// <summary>
         /// 初始化 UnityEngine.Quaternion 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the UnityEngine.Quaternion variable class.
+        /// </remarks>
         [Preserve]
         public VarQuaternion()
         {
@@ -51,7 +57,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Quaternion 到 UnityEngine.Quaternion 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Quaternion to UnityEngine.Quaternion variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator VarQuaternion(Quaternion value)
         {
@@ -63,7 +72,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Quaternion 变量类到 UnityEngine.Quaternion 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Quaternion variable class to UnityEngine.Quaternion.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator Quaternion(VarQuaternion value)
         {

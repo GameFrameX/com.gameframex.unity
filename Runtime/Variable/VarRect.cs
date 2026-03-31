@@ -37,12 +37,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// UnityEngine.Rect 变量类。
     /// </summary>
+    /// <remarks>
+    /// UnityEngine.Rect variable class.
+    /// </remarks>
     [Preserve]
     public sealed class VarRect : Variable<Rect>
     {
         /// <summary>
         /// 初始化 UnityEngine.Rect 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the UnityEngine.Rect variable class.
+        /// </remarks>
         [Preserve]
         public VarRect()
         {
@@ -51,7 +57,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Rect 到 UnityEngine.Rect 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Rect to UnityEngine.Rect variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator VarRect(Rect value)
         {
@@ -63,7 +72,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Rect 变量类到 UnityEngine.Rect 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Rect variable class to UnityEngine.Rect.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator Rect(VarRect value)
         {

@@ -37,12 +37,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// UnityEngine.Transform 变量类。
     /// </summary>
+    /// <remarks>
+    /// UnityEngine.Transform variable class.
+    /// </remarks>
     [Preserve]
     public sealed class VarTransform : Variable<Transform>
     {
         /// <summary>
         /// 初始化 UnityEngine.Transform 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the UnityEngine.Transform variable class.
+        /// </remarks>
         [Preserve]
         public VarTransform()
         {
@@ -51,7 +57,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Transform 到 UnityEngine.Transform 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Transform to UnityEngine.Transform variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator VarTransform(Transform value)
         {
@@ -63,7 +72,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Transform 变量类到 UnityEngine.Transform 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Transform variable class to UnityEngine.Transform.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator Transform(VarTransform value)
         {

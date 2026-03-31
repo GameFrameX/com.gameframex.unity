@@ -36,12 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.Single 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.Single variable class.
+    /// </remarks>
     [Preserve]
     public sealed class VarSingle : Variable<float>
     {
         /// <summary>
         /// 初始化 System.Single 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.Single variable class.
+        /// </remarks>
         [Preserve]
         public VarSingle()
         {
@@ -50,7 +56,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Single 到 System.Single 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Single to System.Single variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator VarSingle(float value)
         {
@@ -62,7 +71,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Single 变量类到 System.Single 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Single variable class to System.Single.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator float(VarSingle value)
         {

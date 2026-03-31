@@ -37,12 +37,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// UnityEngine.Texture 变量类。
     /// </summary>
+    /// <remarks>
+    /// UnityEngine.Texture variable class.
+    /// </remarks>
     [Preserve]
     public sealed class VarTexture : Variable<Texture>
     {
         /// <summary>
         /// 初始化 UnityEngine.Texture 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the UnityEngine.Texture variable class.
+        /// </remarks>
         [Preserve]
         public VarTexture()
         {
@@ -51,7 +57,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Texture 到 UnityEngine.Texture 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Texture to UnityEngine.Texture variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator VarTexture(Texture value)
         {
@@ -63,7 +72,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Texture 变量类到 UnityEngine.Texture 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Texture variable class to UnityEngine.Texture.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator Texture(VarTexture value)
         {

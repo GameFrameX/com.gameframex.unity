@@ -36,12 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// UnityEngine.Vector3 变量类。
     /// </summary>
+    /// <remarks>
+    /// UnityEngine.Vector3 variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarVector3 : Variable<Vector3>
     {
         /// <summary>
         /// 初始化 UnityEngine.Vector3 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the UnityEngine.Vector3 variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarVector3()
         {
@@ -50,7 +56,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Vector3 到 UnityEngine.Vector3 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Vector3 to UnityEngine.Vector3 variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarVector3(Vector3 value)
         {
@@ -62,7 +71,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Vector3 变量类到 UnityEngine.Vector3 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Vector3 variable class to UnityEngine.Vector3.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator Vector3(VarVector3 value)
         {

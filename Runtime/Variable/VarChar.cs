@@ -34,12 +34,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.Char 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.Char variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarChar : Variable<char>
     {
         /// <summary>
         /// 初始化 System.Char 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.Char variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarChar()
         {
@@ -48,7 +54,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Char 到 System.Char 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Char to System.Char variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarChar(char value)
         {
@@ -60,7 +69,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Char 变量类到 System.Char 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Char variable class to System.Char.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator char(VarChar value)
         {

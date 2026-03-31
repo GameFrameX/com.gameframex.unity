@@ -736,29 +736,6 @@ namespace GameFrameX.Runtime
             _logHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4));
         }
 
-        /// <summary>
-        /// 打印信息级别日志，用于记录程序正常运行日志信息。
-        /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        public static void Info<T1, T2, T3, T4, T5>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
-        {
-            if (_logHelper == null)
-            {
-                return;
-            }
-
-            _logHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5));
-        }
 
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
@@ -786,34 +763,6 @@ namespace GameFrameX.Runtime
             }
 
             _logHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
-        }
-
-        /// <summary>
-        /// 打印信息级别日志，用于记录程序正常运行日志信息。
-        /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
-        {
-            if (_logHelper == null)
-            {
-                return;
-            }
-
-            _logHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
         }
 
         /// <summary>

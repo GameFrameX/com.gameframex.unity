@@ -36,12 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// UnityEngine.Vector4 变量类。
     /// </summary>
+    /// <remarks>
+    /// UnityEngine.Vector4 variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarVector4 : Variable<Vector4>
     {
         /// <summary>
         /// 初始化 UnityEngine.Vector4 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the UnityEngine.Vector4 variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarVector4()
         {
@@ -50,7 +56,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Vector4 到 UnityEngine.Vector4 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Vector4 to UnityEngine.Vector4 variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarVector4(Vector4 value)
         {
@@ -62,7 +71,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Vector4 变量类到 UnityEngine.Vector4 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Vector4 variable class to UnityEngine.Vector4.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator Vector4(VarVector4 value)
         {

@@ -36,12 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.String 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.String variable class.
+    /// </remarks>
     [Preserve]
     public sealed class VarString : Variable<string>
     {
         /// <summary>
         /// 初始化 System.String 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.String variable class.
+        /// </remarks>
         [Preserve]
         public VarString()
         {
@@ -50,7 +56,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.String 到 System.String 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.String to System.String variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator VarString(string value)
         {
@@ -62,7 +71,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.String 变量类到 System.String 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.String variable class to System.String.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [Preserve]
         public static implicit operator string(VarString value)
         {

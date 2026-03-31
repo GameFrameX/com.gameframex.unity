@@ -34,12 +34,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.Double 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.Double variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarDouble : Variable<double>
     {
         /// <summary>
         /// 初始化 System.Double 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.Double variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarDouble()
         {
@@ -48,7 +54,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Double 到 System.Double 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Double to System.Double variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarDouble(double value)
         {
@@ -60,7 +69,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Double 变量类到 System.Double 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Double variable class to System.Double.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator double(VarDouble value)
         {

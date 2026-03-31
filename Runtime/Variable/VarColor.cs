@@ -36,12 +36,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// UnityEngine.Color 变量类。
     /// </summary>
+    /// <remarks>
+    /// UnityEngine.Color variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarColor : Variable<Color>
     {
         /// <summary>
         /// 初始化 UnityEngine.Color 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the UnityEngine.Color variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarColor()
         {
@@ -50,7 +56,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Color 到 UnityEngine.Color 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Color to UnityEngine.Color variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarColor(Color value)
         {
@@ -62,7 +71,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 UnityEngine.Color 变量类到 UnityEngine.Color 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from UnityEngine.Color variable class to UnityEngine.Color.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator Color(VarColor value)
         {

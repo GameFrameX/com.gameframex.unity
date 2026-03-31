@@ -34,12 +34,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.UInt64 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.UInt64 variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarUInt64 : Variable<ulong>
     {
         /// <summary>
         /// 初始化 System.UInt64 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.UInt64 variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarUInt64()
         {
@@ -48,7 +54,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.UInt64 到 System.UInt64 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.UInt64 to System.UInt64 variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarUInt64(ulong value)
         {
@@ -60,7 +69,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.UInt64 变量类到 System.UInt64 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.UInt64 variable class to System.UInt64.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator ulong(VarUInt64 value)
         {

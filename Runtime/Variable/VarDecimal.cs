@@ -34,12 +34,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.Decimal 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.Decimal variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarDecimal : Variable<decimal>
     {
         /// <summary>
         /// 初始化 System.Decimal 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.Decimal variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarDecimal()
         {
@@ -48,7 +54,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Decimal 到 System.Decimal 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Decimal to System.Decimal variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarDecimal(decimal value)
         {
@@ -60,7 +69,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Decimal 变量类到 System.Decimal 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Decimal variable class to System.Decimal.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator decimal(VarDecimal value)
         {

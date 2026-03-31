@@ -34,12 +34,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.Boolean 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.Boolean variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarBoolean : Variable<bool>
     {
         /// <summary>
         /// 初始化 System.Boolean 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.Boolean variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarBoolean()
         {
@@ -48,7 +54,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Boolean 到 System.Boolean 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Boolean to System.Boolean variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarBoolean(bool value)
         {
@@ -60,7 +69,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Boolean 变量类到 System.Boolean 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Boolean variable class to System.Boolean.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator bool(VarBoolean value)
         {

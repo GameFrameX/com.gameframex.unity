@@ -34,12 +34,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.UInt16 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.UInt16 variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarUInt16 : Variable<ushort>
     {
         /// <summary>
         /// 初始化 System.UInt16 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.UInt16 variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarUInt16()
         {
@@ -48,7 +54,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.UInt16 到 System.UInt16 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.UInt16 to System.UInt16 variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarUInt16(ushort value)
         {
@@ -60,7 +69,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.UInt16 变量类到 System.UInt16 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.UInt16 variable class to System.UInt16.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator ushort(VarUInt16 value)
         {

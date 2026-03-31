@@ -34,12 +34,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.Int32 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.Int32 variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarInt32 : Variable<int>
     {
         /// <summary>
         /// 初始化 System.Int32 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.Int32 variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarInt32()
         {
@@ -48,7 +54,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Int32 到 System.Int32 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Int32 to System.Int32 variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarInt32(int value)
         {
@@ -60,7 +69,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Int32 变量类到 System.Int32 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Int32 variable class to System.Int32.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator int(VarInt32 value)
         {

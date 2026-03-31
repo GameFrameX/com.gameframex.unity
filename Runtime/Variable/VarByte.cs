@@ -34,12 +34,18 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// System.Byte 变量类。
     /// </summary>
+    /// <remarks>
+    /// System.Byte variable class.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public sealed class VarByte : Variable<byte>
     {
         /// <summary>
         /// 初始化 System.Byte 变量类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the System.Byte variable class.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public VarByte()
         {
@@ -48,7 +54,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Byte 到 System.Byte 变量类的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Byte to System.Byte variable class.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator VarByte(byte value)
         {
@@ -60,7 +69,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从 System.Byte 变量类到 System.Byte 的隐式转换。
         /// </summary>
-        /// <param name="value">值。</param>
+        /// <remarks>
+        /// Implicit conversion from System.Byte variable class to System.Byte.
+        /// </remarks>
+        /// <param name="value">值 / Value</param>
         [UnityEngine.Scripting.Preserve]
         public static implicit operator byte(VarByte value)
         {
