@@ -34,27 +34,42 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 开始处理任务的状态。
     /// </summary>
+    /// <remarks>
+    /// Enumeration that defines the possible results when starting to process a task.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public enum StartTaskStatus : byte
     {
         /// <summary>
         /// 可以立刻处理完成此任务。
         /// </summary>
+        /// <remarks>
+        /// The task can be completed immediately during the Start call.
+        /// </remarks>
         Done = 0,
 
         /// <summary>
         /// 可以继续处理此任务。
         /// </summary>
+        /// <remarks>
+        /// The task has started successfully and can continue processing in subsequent Update calls.
+        /// </remarks>
         CanResume,
 
         /// <summary>
         /// 不能继续处理此任务，需等待其它任务执行完成。
         /// </summary>
+        /// <remarks>
+        /// The task cannot be processed now and needs to wait for other tasks to complete. The task remains in the waiting queue.
+        /// </remarks>
         HasToWait,
 
         /// <summary>
         /// 不能继续处理此任务，出现未知错误。
         /// </summary>
+        /// <remarks>
+        /// An unknown error occurred while starting the task. The task will be removed from the queue.
+        /// </remarks>
         UnknownError
     }
 }

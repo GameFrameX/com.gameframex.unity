@@ -34,22 +34,34 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 任务状态。
     /// </summary>
+    /// <remarks>
+    /// Enumeration that defines the possible states of a task in the task pool.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public enum TaskStatus : byte
     {
         /// <summary>
         /// 未开始。
         /// </summary>
+        /// <remarks>
+        /// The task is waiting in the queue and has not started processing yet.
+        /// </remarks>
         Todo = 0,
 
         /// <summary>
         /// 执行中。
         /// </summary>
+        /// <remarks>
+        /// The task is currently being processed by an agent.
+        /// </remarks>
         Doing,
 
         /// <summary>
         /// 完成。
         /// </summary>
+        /// <remarks>
+        /// The task has completed its execution.
+        /// </remarks>
         Done
     }
 }
