@@ -1,3 +1,17 @@
+# [1.7.0](https://github.com/gameframex/com.gameframex.unity/compare/1.6.3...1.7.0) (2026-03-31)
+
+
+### Bug Fixes
+
+* **Extension:** 为字符串扩展方法添加空值检查 ([b8b1517](https://github.com/gameframex/com.gameframex.unity/commit/b8b151779aaf8efecbe773825d55602bfbfd19f3))
+* **Extension:** 修正集合扩展方法中的拼写错误和线程安全问题 ([3f92a96](https://github.com/gameframex/com.gameframex.unity/commit/3f92a960a0b4b572711ce381f180f1e8ad38c696))
+
+
+### Features
+
+* **编辑器:** 扩展小游戏宏定义支持并重构菜单项 ([acd450e](https://github.com/gameframex/com.gameframex.unity/commit/acd450e53a4e1ffa1888674fa91dc76d0456a9f4))
+* **随机数:** 添加设置种子和生成64位随机数的方法 ([e39cfa5](https://github.com/gameframex/com.gameframex.unity/commit/e39cfa52494cda5abbf8d3f58bbb6aadd6d7a1a0))
+
 ## [1.6.3](https://github.com/gameframex/com.gameframex.unity/compare/1.6.2...1.6.3) (2026-03-04)
 
 
