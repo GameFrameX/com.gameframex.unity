@@ -12,6 +12,12 @@ namespace GameFrameX.Runtime
         /// </summary>
         public static partial class Encryption
         {
+            /// <summary>
+            /// DSA 加密算法的实现。
+            /// </summary>
+            /// <remarks>
+            /// DSA encryption algorithm implementation.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public sealed class Dsa
             {
@@ -20,7 +26,10 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// Dsa 构造函数，使用提供的 DSACryptoServiceProvider 实例初始化。
                 /// </summary>
-                /// <param name="dsa">DSACryptoServiceProvider 实例</param>
+                /// <remarks>
+                /// Dsa constructor, initializes with the provided DSACryptoServiceProvider instance.
+                /// </remarks>
+                /// <param name="dsa">DSACryptoServiceProvider 实例 / The DSACryptoServiceProvider instance</param>
                 [UnityEngine.Scripting.Preserve]
                 public Dsa(DSACryptoServiceProvider dsa)
                 {
@@ -30,7 +39,10 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// Dsa 构造函数，使用提供的密钥字符串初始化。
                 /// </summary>
-                /// <param name="key">密钥字符串</param>
+                /// <remarks>
+                /// Dsa constructor, initializes with the provided key string.
+                /// </remarks>
+                /// <param name="key">密钥字符串 / The key string</param>
                 [UnityEngine.Scripting.Preserve]
                 public Dsa(string key)
                 {
@@ -42,7 +54,10 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 创建 DSA 密钥对。
                 /// </summary>
-                /// <returns>包含私钥和公钥的字典</returns>
+                /// <remarks>
+                /// Creates a DSA key pair.
+                /// </remarks>
+                /// <returns>包含私钥和公钥的字典 / A dictionary containing the private key and public key</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static Dictionary<string, string> Make()
                 {
@@ -56,9 +71,12 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用私钥对数据进行签名。
                 /// </summary>
-                /// <param name="dataToSign">要签名的数据</param>
-                /// <param name="privateKey">私钥字符串</param>
-                /// <returns>签名后的字节数组</returns>
+                /// <remarks>
+                /// Signs data using the private key.
+                /// </remarks>
+                /// <param name="dataToSign">要签名的数据 / The data to sign</param>
+                /// <param name="privateKey">私钥字符串 / The private key string</param>
+                /// <returns>签名后的字节数组 / The signed byte array</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static byte[] DSASignData(byte[] dataToSign, string privateKey)
                 {
@@ -77,9 +95,12 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用私钥对字符串数据进行签名。
                 /// </summary>
-                /// <param name="dataToSign">要签名的字符串数据</param>
-                /// <param name="privateKey">私钥字符串</param>
-                /// <returns>签名后的 Base64 字符串</returns>
+                /// <remarks>
+                /// Signs string data using the private key.
+                /// </remarks>
+                /// <param name="dataToSign">要签名的字符串数据 / The string data to sign</param>
+                /// <param name="privateKey">私钥字符串 / The private key string</param>
+                /// <returns>签名后的 Base64 字符串 / The Base64 signed string</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static string DSASignData(string dataToSign, string privateKey)
                 {
@@ -90,8 +111,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用 DSA 对数据进行签名。
                 /// </summary>
-                /// <param name="dataToSign">要签名的数据</param>
-                /// <returns>签名后的字节数组</returns>
+                /// <remarks>
+                /// Signs data using DSA.
+                /// </remarks>
+                /// <param name="dataToSign">要签名的数据 / The data to sign</param>
+                /// <returns>签名后的字节数组 / The signed byte array</returns>
                 [UnityEngine.Scripting.Preserve]
                 public byte[] SignData(byte[] dataToSign)
                 {
@@ -108,8 +132,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用 DSA 对字符串数据进行签名。
                 /// </summary>
-                /// <param name="dataToSign">要签名的字符串数据</param>
-                /// <returns>签名后的 Base64 字符串</returns>
+                /// <remarks>
+                /// Signs string data using DSA.
+                /// </remarks>
+                /// <param name="dataToSign">要签名的字符串数据 / The string data to sign</param>
+                /// <returns>签名后的 Base64 字符串 / The Base64 signed string</returns>
                 [UnityEngine.Scripting.Preserve]
                 public string SignData(string dataToSign)
                 {
@@ -120,10 +147,13 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 验证签名。
                 /// </summary>
-                /// <param name="dataToVerify">要验证的数据</param>
-                /// <param name="signedData">签名数据</param>
-                /// <param name="privateKey">私钥字符串</param>
-                /// <returns>验证结果</returns>
+                /// <remarks>
+                /// Verifies the signature.
+                /// </remarks>
+                /// <param name="dataToVerify">要验证的数据 / The data to verify</param>
+                /// <param name="signedData">签名数据 / The signed data</param>
+                /// <param name="privateKey">私钥字符串 / The private key string</param>
+                /// <returns>验证结果 / The verification result</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static bool DSAVerifyData(byte[] dataToVerify, byte[] signedData, string privateKey)
                 {
@@ -142,10 +172,13 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 验证签名。
                 /// </summary>
-                /// <param name="dataToVerify">要验证的字符串数据</param>
-                /// <param name="signedData">签名的 Base64 字符串</param>
-                /// <param name="privateKey">私钥字符串</param>
-                /// <returns>验证结果</returns>
+                /// <remarks>
+                /// Verifies the signature.
+                /// </remarks>
+                /// <param name="dataToVerify">要验证的字符串数据 / The string data to verify</param>
+                /// <param name="signedData">签名的 Base64 字符串 / The Base64 signed string</param>
+                /// <param name="privateKey">私钥字符串 / The private key string</param>
+                /// <returns>验证结果 / The verification result</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static bool DSAVerifyData(string dataToVerify, string signedData, string privateKey)
                 {
@@ -156,9 +189,12 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用 DSA 验证签名。
                 /// </summary>
-                /// <param name="dataToVerify">要验证的数据</param>
-                /// <param name="signedData">签名数据</param>
-                /// <returns>验证结果</returns>
+                /// <remarks>
+                /// Verifies the signature using DSA.
+                /// </remarks>
+                /// <param name="dataToVerify">要验证的数据 / The data to verify</param>
+                /// <param name="signedData">签名数据 / The signed data</param>
+                /// <returns>验证结果 / The verification result</returns>
                 [UnityEngine.Scripting.Preserve]
                 public bool VerifyData(byte[] dataToVerify, byte[] signedData)
                 {
@@ -175,9 +211,12 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用 DSA 验证签名。
                 /// </summary>
-                /// <param name="dataToVerify">要验证的字符串数据</param>
-                /// <param name="signedData">签名的 Base64 字符串</param>
-                /// <returns>验证结果</returns>
+                /// <remarks>
+                /// Verifies the signature using DSA.
+                /// </remarks>
+                /// <param name="dataToVerify">要验证的字符串数据 / The string data to verify</param>
+                /// <param name="signedData">签名的 Base64 字符串 / The Base64 signed string</param>
+                /// <returns>验证结果 / The verification result</returns>
                 [UnityEngine.Scripting.Preserve]
                 public bool VerifyData(string dataToVerify, string signedData)
                 {

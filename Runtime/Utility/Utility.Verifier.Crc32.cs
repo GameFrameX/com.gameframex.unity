@@ -38,6 +38,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// CRC32 算法。
             /// </summary>
+            /// <remarks>
+            /// CRC32 algorithm implementation.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             private sealed class Crc32
             {
@@ -52,6 +55,9 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 初始化 CRC32 类的新实例。
                 /// </summary>
+                /// <remarks>
+                /// Initializes a new instance of the CRC32 class.
+                /// </remarks>
                 [UnityEngine.Scripting.Preserve]
                 public Crc32()
                     : this(DefaultPolynomial, DefaultSeed)
@@ -61,8 +67,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用指定的多项式和种子初始化 CRC32 类的新实例。
                 /// </summary>
-                /// <param name="polynomial">用于计算 CRC 的多项式。</param>
-                /// <param name="seed">用于初始化哈希值的种子。</param>
+                /// <remarks>
+                /// Initializes a new instance of the CRC32 class with the specified polynomial and seed.
+                /// </remarks>
+                /// <param name="polynomial">用于计算 CRC 的多项式 / The polynomial for CRC calculation</param>
+                /// <param name="seed">用于初始化哈希值的种子 / The seed for initializing the hash value</param>
                 [UnityEngine.Scripting.Preserve]
                 public Crc32(uint polynomial, uint seed)
                 {
@@ -74,6 +83,9 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 初始化 CRC32 计算。
                 /// </summary>
+                /// <remarks>
+                /// Initializes the CRC32 calculation.
+                /// </remarks>
                 [UnityEngine.Scripting.Preserve]
                 public void Initialize()
                 {
@@ -83,9 +95,12 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 计算给定字节数组的哈希值。
                 /// </summary>
-                /// <param name="bytes">要计算哈希的字节数组。</param>
-                /// <param name="offset">字节数组的起始偏移量。</param>
-                /// <param name="length">要计算的字节数。</param>
+                /// <remarks>
+                /// Computes the hash value of the given byte array.
+                /// </remarks>
+                /// <param name="bytes">要计算哈希的字节数组 / The byte array to hash</param>
+                /// <param name="offset">字节数组的起始偏移量 / The starting offset in the byte array</param>
+                /// <param name="length">要计算的字节数 / The number of bytes to compute</param>
                 [UnityEngine.Scripting.Preserve]
                 public void HashCore(byte[] bytes, int offset, int length)
                 {
@@ -95,7 +110,10 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 返回计算的 CRC32 哈希值。
                 /// </summary>
-                /// <returns>计算的 CRC32 哈希值。</returns>
+                /// <remarks>
+                /// Returns the computed CRC32 hash value.
+                /// </remarks>
+                /// <returns>计算的 CRC32 哈希值 / The computed CRC32 hash value</returns>
                 [UnityEngine.Scripting.Preserve]
                 public uint HashFinal()
                 {

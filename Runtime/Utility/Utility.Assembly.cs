@@ -56,7 +56,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取已加载的程序集。
             /// </summary>
-            /// <returns>已加载的程序集。</returns>
+            /// <remarks>
+            /// Gets the loaded assemblies.
+            /// </remarks>
+            /// <returns>已加载的程序集 / The loaded assemblies</returns>
             [Preserve]
             public static System.Reflection.Assembly[] GetAssemblies()
             {
@@ -66,7 +69,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取已加载的程序集中的所有类型。
             /// </summary>
-            /// <returns>已加载的程序集中的所有类型。</returns>
+            /// <remarks>
+            /// Gets all types in the loaded assemblies.
+            /// </remarks>
+            /// <returns>已加载的程序集中的所有类型 / All types in the loaded assemblies</returns>
             [Preserve]
             public static Type[] GetTypes()
             {
@@ -82,7 +88,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取已加载的程序集中的所有类型。
             /// </summary>
-            /// <param name="results">已加载的程序集中的所有类型。</param>
+            /// <remarks>
+            /// Gets all types in the loaded assemblies.
+            /// </remarks>
+            /// <param name="results">已加载的程序集中的所有类型 / All types in the loaded assemblies</param>
             [Preserve]
             public static void GetTypes(List<Type> results)
             {
@@ -101,8 +110,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取已加载的程序集中的指定类型。
             /// </summary>
-            /// <param name="typeName">要获取的类型名。</param>
-            /// <returns>已加载的程序集中的指定类型。</returns>
+            /// <remarks>
+            /// Gets the specified type from the loaded assemblies.
+            /// </remarks>
+            /// <param name="typeName">要获取的类型名 / The type name to get</param>
+            /// <returns>已加载的程序集中的指定类型 / The specified type from the loaded assemblies</returns>
             [Preserve]
             public static Type GetType(string typeName)
             {
@@ -140,8 +152,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取已加载的程序集中的指定类型的子类列表。
             /// </summary>
-            /// <param name="type">指定类型</param>
-            /// <returns></returns>
+            /// <remarks>
+            /// Gets the list of subclass names of the specified type from the loaded assemblies.
+            /// </remarks>
+            /// <param name="type">指定类型 / The specified type</param>
+            /// <returns>子类全名列表 / The list of subclass full names</returns>
             [Preserve]
             public static List<string> GetRuntimeTypeNames(Type type)
             {

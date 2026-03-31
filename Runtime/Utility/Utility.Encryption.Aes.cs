@@ -10,8 +10,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 加密解密相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Encryption and decryption related utility functions.
+        /// </remarks>
         public static partial class Encryption
         {
+            /// <summary>
+            /// AES 加密算法的实现。
+            /// </summary>
+            /// <remarks>
+            /// AES encryption algorithm implementation.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public static class Aes
             {
@@ -20,10 +29,14 @@ namespace GameFrameX.Runtime
                 #region 加密字符串
 
                 /// <summary>
-                /// AES 加密(高级加密标准，是下一代的加密算法标准，速度快，安全级别高，目前 AES 标准的一个实现是 Rijndael 算法)
+                /// AES 加密（高级加密标准，是下一代的加密算法标准，速度快，安全级别高，目前 AES 标准的一个实现是 Rijndael 算法）。
                 /// </summary>
-                /// <param name="EncryptString">待加密密文</param>
-                /// <param name="EncryptKey">加密密钥</param>
+                /// <remarks>
+                /// AES encryption (Advanced Encryption Standard, the next generation encryption algorithm standard, fast and highly secure, one implementation of the AES standard is the Rijndael algorithm).
+                /// </remarks>
+                /// <param name="EncryptString">待加密密文 / The plaintext to encrypt</param>
+                /// <param name="EncryptKey">加密密钥 / The encryption key</param>
+                /// <returns>加密后的 Base64 字符串 / The Base64 encrypted string</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static string AESEncrypt(string EncryptString, string EncryptKey)
                 {
@@ -35,10 +48,14 @@ namespace GameFrameX.Runtime
                 #region 加密字节数组
 
                 /// <summary>
-                /// AES 加密(高级加密标准，是下一代的加密算法标准，速度快，安全级别高，目前 AES 标准的一个实现是 Rijndael 算法)
+                /// AES 加密（高级加密标准，是下一代的加密算法标准，速度快，安全级别高，目前 AES 标准的一个实现是 Rijndael 算法）。
                 /// </summary>
-                /// <param name="EncryptByte">待加密的字节数组</param>
-                /// <param name="EncryptKey">加密密钥</param>
+                /// <remarks>
+                /// AES encryption (Advanced Encryption Standard, the next generation encryption algorithm standard, fast and highly secure, one implementation of the AES standard is the Rijndael algorithm).
+                /// </remarks>
+                /// <param name="EncryptByte">待加密的字节数组 / The byte array to encrypt</param>
+                /// <param name="EncryptKey">加密密钥 / The encryption key</param>
+                /// <returns>加密后的字节数组 / The encrypted byte array</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static byte[] AESEncrypt(byte[] EncryptByte, string EncryptKey)
                 {
@@ -103,10 +120,14 @@ namespace GameFrameX.Runtime
                 #region 解密字符串
 
                 /// <summary>
-                /// AES 解密(高级加密标准，是下一代的加密算法标准，速度快，安全级别高，目前 AES 标准的一个实现是 Rijndael 算法)
+                /// AES 解密（高级加密标准，是下一代的加密算法标准，速度快，安全级别高，目前 AES 标准的一个实现是 Rijndael 算法）。
                 /// </summary>
-                /// <param name="DecryptString">待解密密文</param>
-                /// <param name="DecryptKey">解密密钥</param>
+                /// <remarks>
+                /// AES decryption (Advanced Encryption Standard, the next generation encryption algorithm standard, fast and highly secure, one implementation of the AES standard is the Rijndael algorithm).
+                /// </remarks>
+                /// <param name="DecryptString">待解密密文 / The ciphertext to decrypt</param>
+                /// <param name="DecryptKey">解密密钥 / The decryption key</param>
+                /// <returns>解密后的字符串 / The decrypted string</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static string AESDecrypt(string DecryptString, string DecryptKey)
                 {
@@ -118,10 +139,14 @@ namespace GameFrameX.Runtime
                 #region 解密字节数组
 
                 /// <summary>
-                /// AES 解密(高级加密标准，是下一代的加密算法标准，速度快，安全级别高，目前 AES 标准的一个实现是 Rijndael 算法)
+                /// AES 解密（高级加密标准，是下一代的加密算法标准，速度快，安全级别高，目前 AES 标准的一个实现是 Rijndael 算法）。
                 /// </summary>
-                /// <param name="DecryptByte">待解密的字节数组</param>
-                /// <param name="DecryptKey">解密密钥</param>
+                /// <remarks>
+                /// AES decryption (Advanced Encryption Standard, the next generation encryption algorithm standard, fast and highly secure, one implementation of the AES standard is the Rijndael algorithm).
+                /// </remarks>
+                /// <param name="DecryptByte">待解密的字节数组 / The byte array to decrypt</param>
+                /// <param name="DecryptKey">解密密钥 / The decryption key</param>
+                /// <returns>解密后的字节数组 / The decrypted byte array</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static byte[] AESDecrypt(byte[] DecryptByte, string DecryptKey)
                 {

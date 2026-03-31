@@ -9,11 +9,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 哈希计算相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Hash calculation related utility functions.
+        /// </remarks>
         public static partial class Hash
         {
             /// <summary>
-            /// xxHash
+            /// XXHash 哈希算法的实现。
             /// </summary>
+            /// <remarks>
+            /// XXHash hash algorithm implementation.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public static class XXHash
             {
@@ -107,8 +113,11 @@ namespace GameFrameX.Runtime
             }
 
             /// <summary>
-            /// XX Hash 计算帮助类
+            /// XXHash 计算帮助类。
             /// </summary>
+            /// <remarks>
+            /// XXHash calculation helper class.
+            /// </remarks>
             static class XXHashHelper
             {
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]

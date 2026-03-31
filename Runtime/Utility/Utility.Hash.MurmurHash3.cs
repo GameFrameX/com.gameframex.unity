@@ -7,24 +7,30 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 哈希计算相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Hash calculation related utility functions.
+        /// </remarks>
         public static partial class Hash
         {
             /// <summary>
-            /// MurmurHash3
-            /// </summary>
-            [UnityEngine.Scripting.Preserve]
-            /// <summary>
             /// MurmurHash3 哈希算法的实现。
             /// </summary>
+            /// <remarks>
+            /// MurmurHash3 hash algorithm implementation.
+            /// </remarks>
+            [UnityEngine.Scripting.Preserve]
             public static class MurmurHash3
             {
-                [UnityEngine.Scripting.Preserve]
                 /// <summary>
                 /// 计算给定字符串的 MurmurHash3 哈希值。
                 /// </summary>
-                /// <param name="str">要哈希的字符串。</param>
-                /// <param name="seed">哈希种子，默认为 27。</param>
-                /// <returns>计算得到的哈希值。</returns>
+                /// <remarks>
+                /// Computes the MurmurHash3 hash value of the given string.
+                /// </remarks>
+                /// <param name="str">要哈希的字符串 / The string to hash</param>
+                /// <param name="seed">哈希种子，默认为 27 / The hash seed, default is 27</param>
+                /// <returns>计算得到的哈希值 / The computed hash value</returns>
+                [UnityEngine.Scripting.Preserve]
                 public static uint Hash(string str, uint seed = 27)
                 {
                     var data = System.Text.Encoding.UTF8.GetBytes(str);

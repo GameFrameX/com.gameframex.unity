@@ -12,6 +12,12 @@ namespace GameFrameX.Runtime
         /// </summary>
         public static partial class Encryption
         {
+            /// <summary>
+            /// RSA 加密算法的实现。
+            /// </summary>
+            /// <remarks>
+            /// RSA encryption algorithm implementation.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public sealed class Rsa
             {
@@ -20,7 +26,10 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用提供的 RSACryptoServiceProvider 实例初始化 Rsa 类。
                 /// </summary>
-                /// <param name="rsa">RSACryptoServiceProvider 实例</param>
+                /// <remarks>
+                /// Initializes the Rsa class with the provided RSACryptoServiceProvider instance.
+                /// </remarks>
+                /// <param name="rsa">RSACryptoServiceProvider 实例 / The RSACryptoServiceProvider instance</param>
                 [UnityEngine.Scripting.Preserve]
                 public Rsa(RSACryptoServiceProvider rsa)
                 {
@@ -30,7 +39,10 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用提供的密钥字符串初始化 Rsa 类。
                 /// </summary>
-                /// <param name="key">密钥字符串</param>
+                /// <remarks>
+                /// Initializes the Rsa class with the provided key string.
+                /// </remarks>
+                /// <param name="key">密钥字符串 / The key string</param>
                 [UnityEngine.Scripting.Preserve]
                 public Rsa(string key)
                 {
@@ -42,7 +54,10 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 创建 RSA 密钥对。
                 /// </summary>
-                /// <returns>包含私钥和公钥的字典</returns>
+                /// <remarks>
+                /// Creates an RSA key pair.
+                /// </remarks>
+                /// <returns>包含私钥和公钥的字典 / A dictionary containing the private key and public key</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static Dictionary<string, string> Make()
                 {
@@ -56,9 +71,12 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用公钥加密内容。
                 /// </summary>
-                /// <param name="publicKey">公钥</param>
-                /// <param name="content">所加密的内容</param>
-                /// <returns>加密后的内容</returns>
+                /// <remarks>
+                /// Encrypts content using the public key.
+                /// </remarks>
+                /// <param name="publicKey">公钥 / The public key</param>
+                /// <param name="content">要加密的内容 / The content to encrypt</param>
+                /// <returns>加密后的 Base64 字符串 / The Base64 encrypted string</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static string RSAEncrypt(string publicKey, string content)
                 {
@@ -92,9 +110,12 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用私钥解密内容。
                 /// </summary>
-                /// <param name="privateKey">私钥</param>
-                /// <param name="content">加密后的内容</param>
-                /// <returns>解密后的内容</returns>
+                /// <remarks>
+                /// Decrypts content using the private key.
+                /// </remarks>
+                /// <param name="privateKey">私钥 / The private key</param>
+                /// <param name="content">加密后的内容 / The encrypted content</param>
+                /// <returns>解密后的内容 / The decrypted content</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static string RSADecrypt(string privateKey, string content)
                 {
@@ -128,9 +149,12 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 使用私钥对数据进行签名。
                 /// </summary>
-                /// <param name="dataToSign">要签名的数据</param>
-                /// <param name="privateKey">私钥字符串</param>
-                /// <returns>签名后的字节数组</returns>
+                /// <remarks>
+                /// Signs data using the private key.
+                /// </remarks>
+                /// <param name="dataToSign">要签名的数据 / The data to sign</param>
+                /// <param name="privateKey">私钥字符串 / The private key string</param>
+                /// <returns>签名后的字节数组 / The signed byte array</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static byte[] RSASignData(byte[] dataToSign, string privateKey)
                 {
@@ -176,10 +200,13 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 验证签名。
                 /// </summary>
-                /// <param name="dataToVerify">要验证的数据</param>
-                /// <param name="signedData">签名数据</param>
-                /// <param name="publicKey">公钥字符串</param>
-                /// <returns>验证结果</returns>
+                /// <remarks>
+                /// Verifies the signature.
+                /// </remarks>
+                /// <param name="dataToVerify">要验证的数据 / The data to verify</param>
+                /// <param name="signedData">签名数据 / The signed data</param>
+                /// <param name="publicKey">公钥字符串 / The public key string</param>
+                /// <returns>验证结果 / The verification result</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static bool RSAVerifyData(byte[] dataToVerify, byte[] signedData, string publicKey)
                 {

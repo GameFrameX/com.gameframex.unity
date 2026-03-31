@@ -9,23 +9,29 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 哈希计算相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Hash calculation related utility functions.
+        /// </remarks>
         public static partial class Hash
         {
             /// <summary>
-            /// Sha1
+            /// SHA1 哈希算法的实现。
             /// </summary>
-            /// <summary>
-            /// Sha1 哈希算法的实现。
-            /// </summary>
+            /// <remarks>
+            /// SHA1 hash algorithm implementation.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public static class Sha1
             {
 
                 /// <summary>
-                /// 计算给定内容的Sha1哈希值，使用UTF-8编码。
+                /// 计算给定内容的 SHA1 哈希值，使用 UTF-8 编码。
                 /// </summary>
-                /// <param name="content">要计算哈希值的内容。</param>
-                /// <returns>返回计算得到的Sha1哈希值。</returns>
+                /// <remarks>
+                /// Computes the SHA1 hash value of the given content using UTF-8 encoding.
+                /// </remarks>
+                /// <param name="content">要计算哈希值的内容 / The content to hash</param>
+                /// <returns>返回计算得到的 SHA1 哈希值 / The computed SHA1 hash value</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static string Hash(string content)
                 {
@@ -33,11 +39,14 @@ namespace GameFrameX.Runtime
                 }
 
                 /// <summary>
-                /// 使用指定编码计算Sha1哈希值。
+                /// 使用指定编码计算 SHA1 哈希值。
                 /// </summary>
-                /// <param name="content">要计算哈希值的内容。</param>
-                /// <param name="encode">用于编码的Encoding对象。</param>
-                /// <returns>返回计算得到的Sha1哈希值。</returns>
+                /// <remarks>
+                /// Computes the SHA1 hash value using the specified encoding.
+                /// </remarks>
+                /// <param name="content">要计算哈希值的内容 / The content to hash</param>
+                /// <param name="encode">用于编码的 Encoding 对象 / The encoding to use</param>
+                /// <returns>返回计算得到的 SHA1 哈希值 / The computed SHA1 hash value</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static string Hash(string content, Encoding encode)
                 {

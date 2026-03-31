@@ -10,21 +10,30 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 哈希计算相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Hash calculation related utility functions.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static partial class Hash
         {
             /// <summary>
-            /// HMACSha256
+            /// HMACSHA256 哈希算法的实现。
             /// </summary>
+            /// <remarks>
+            /// HMACSHA256 hash algorithm implementation.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public static class HMACSha256
             {
                 /// <summary>
-                /// 使用提供的密钥对指定消息进行HMACSHA256哈希计算。
+                /// 使用提供的密钥对指定消息进行 HMACSHA256 哈希计算。
                 /// </summary>
-                /// <param name="message">要进行哈希计算的消息。</param>
-                /// <param name="key">用于哈希计算的密钥。</param>
-                /// <returns>Base64编码的哈希值。</returns>
+                /// <remarks>
+                /// Computes the HMACSHA256 hash of the specified message using the provided key.
+                /// </remarks>
+                /// <param name="message">要进行哈希计算的消息 / The message to hash</param>
+                /// <param name="key">用于哈希计算的密钥 / The key for hash calculation</param>
+                /// <returns>Base64 编码的哈希值 / The Base64 encoded hash value</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static string Hash(string message, string key)
                 {

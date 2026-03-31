@@ -52,10 +52,13 @@ namespace GameFrameX.Runtime
             private static readonly Crc64 SAlgorithm64 = new Crc64();
 
             /// <summary>
-            /// 计算二进制流的CRC64
+            /// 计算二进制流的 CRC64。
             /// </summary>
-            /// <param name="bytes"></param>
-            /// <returns></returns>
+            /// <remarks>
+            /// Computes the CRC64 of the byte array.
+            /// </remarks>
+            /// <param name="bytes">要计算的二进制流 / The byte array to compute</param>
+            /// <returns>计算后的 CRC64 / The computed CRC64</returns>
             [Preserve]
             public static ulong GetCrc64(byte[] bytes)
             {
@@ -65,10 +68,13 @@ namespace GameFrameX.Runtime
             }
 
             /// <summary>
-            /// 计算流的CRC64
+            /// 计算流的 CRC64。
             /// </summary>
-            /// <param name="stream"></param>
-            /// <returns></returns>
+            /// <remarks>
+            /// Computes the CRC64 of the stream.
+            /// </remarks>
+            /// <param name="stream">要计算的流 / The stream to compute</param>
+            /// <returns>计算后的 CRC64 / The computed CRC64</returns>
             [Preserve]
             public static ulong GetCrc64(Stream stream)
             {
@@ -80,8 +86,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 计算二进制流的 CRC32。
             /// </summary>
-            /// <param name="bytes">指定的二进制流。</param>
-            /// <returns>计算后的 CRC32。</returns>
+            /// <remarks>
+            /// Computes the CRC32 of the byte array.
+            /// </remarks>
+            /// <param name="bytes">指定的二进制流 / The specified byte array</param>
+            /// <returns>计算后的 CRC32 / The computed CRC32</returns>
             [Preserve]
             public static int GetCrc32(byte[] bytes)
             {
@@ -96,10 +105,13 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 计算二进制流的 CRC32。
             /// </summary>
-            /// <param name="bytes">指定的二进制流。</param>
-            /// <param name="offset">二进制流的偏移。</param>
-            /// <param name="length">二进制流的长度。</param>
-            /// <returns>计算后的 CRC32。</returns>
+            /// <remarks>
+            /// Computes the CRC32 of the byte array with offset and length.
+            /// </remarks>
+            /// <param name="bytes">指定的二进制流 / The specified byte array</param>
+            /// <param name="offset">二进制流的偏移 / The offset of the byte array</param>
+            /// <param name="length">二进制流的长度 / The length of the byte array</param>
+            /// <returns>计算后的 CRC32 / The computed CRC32</returns>
             [Preserve]
             public static int GetCrc32(byte[] bytes, int offset, int length)
             {
@@ -122,8 +134,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 计算二进制流的 CRC32。
             /// </summary>
-            /// <param name="stream">指定的二进制流。</param>
-            /// <returns>计算后的 CRC32。</returns>
+            /// <remarks>
+            /// Computes the CRC32 of the stream.
+            /// </remarks>
+            /// <param name="stream">指定的二进制流 / The specified stream</param>
+            /// <returns>计算后的 CRC32 / The computed CRC32</returns>
             [Preserve]
             public static int GetCrc32(Stream stream)
             {
@@ -154,8 +169,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取 CRC32 数值的二进制数组。
             /// </summary>
-            /// <param name="crc32">CRC32 数值。</param>
-            /// <returns>CRC32 数值的二进制数组。</returns>
+            /// <remarks>
+            /// Gets the binary array of the CRC32 value.
+            /// </remarks>
+            /// <param name="crc32">CRC32 数值 / The CRC32 value</param>
+            /// <returns>CRC32 数值的二进制数组 / The binary array of the CRC32 value</returns>
             [Preserve]
             public static byte[] GetCrc32Bytes(int crc32)
             {
@@ -165,8 +183,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取 CRC32 数值的二进制数组。
             /// </summary>
-            /// <param name="crc32">CRC32 数值。</param>
-            /// <param name="bytes">要存放结果的数组。</param>
+            /// <remarks>
+            /// Gets the binary array of the CRC32 value.
+            /// </remarks>
+            /// <param name="crc32">CRC32 数值 / The CRC32 value</param>
+            /// <param name="bytes">要存放结果的数组 / The array to store the result</param>
             [Preserve]
             public static void GetCrc32Bytes(int crc32, byte[] bytes)
             {
@@ -176,9 +197,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取 CRC32 数值的二进制数组。
             /// </summary>
-            /// <param name="crc32">CRC32 数值。</param>
-            /// <param name="bytes">要存放结果的数组。</param>
-            /// <param name="offset">CRC32 数值的二进制数组在结果数组内的起始位置。</param>
+            /// <remarks>
+            /// Gets the binary array of the CRC32 value.
+            /// </remarks>
+            /// <param name="crc32">CRC32 数值 / The CRC32 value</param>
+            /// <param name="bytes">要存放结果的数组 / The array to store the result</param>
+            /// <param name="offset">CRC32 数值的二进制数组在结果数组内的起始位置 / The starting position in the result array</param>
             [Preserve]
             public static void GetCrc32Bytes(int crc32, byte[] bytes, int offset)
             {
