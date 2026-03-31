@@ -50,12 +50,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 判断字符串是否以目标字符串结尾
         /// </summary>
-        /// <param name="self"></param>
+        /// <param name="self">当前字符串</param>
         /// <param name="target">目标字符串</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
         public static bool EndsWithFast(this string self, string target)
         {
+            if (self == null || target == null)
+            {
+                return false;
+            }
+
             int ap = self.Length - 1;
             int bp = target.Length - 1;
 
@@ -71,12 +76,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 判断字符串是否以目标字符串开始
         /// </summary>
-        /// <param name="self"></param>
+        /// <param name="self">当前字符串</param>
         /// <param name="target">目标字符串</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
         public static bool StartsWithFast(this string self, string target)
         {
+            if (self == null || target == null)
+            {
+                return false;
+            }
+
             int aLen = self.Length;
             int bLen = target.Length;
 
@@ -158,13 +168,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 指定的字符串是 null、空还是仅由空白字符组成。
         /// </summary>
-        /// <param name="self"></param>
+        /// <param name="self">要检查的字符串</param>
         /// <returns></returns>
         [UnityEngine.Scripting.Preserve]
         public static bool IsNullOrWhiteSpace(this string self)
         {
-            const string nullString = "null";
-            return self.EqualsFast(nullString) || string.IsNullOrWhiteSpace(self);
+            return string.IsNullOrWhiteSpace(self);
         }
 
         /// <summary>
