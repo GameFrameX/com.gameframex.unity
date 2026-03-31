@@ -5,6 +5,12 @@ namespace GameFrameX.Runtime
 {
     public static partial class Utility
     {
+        /// <summary>
+        /// ID 生成器相关的实用函数。
+        /// </summary>
+        /// <remarks>
+        /// ID generator related utility functions.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static class IdGenerator
         {

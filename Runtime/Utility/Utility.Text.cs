@@ -36,6 +36,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 字符相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Text related utility functions.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static partial class Text
         {
@@ -44,7 +47,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 设置字符辅助器。
             /// </summary>
-            /// <param name="textHelper">要设置的字符辅助器。</param>
+            /// <remarks>
+            /// Sets the text helper.
+            /// </remarks>
+            /// <param name="textHelper">要设置的字符辅助器 / The text helper to set</param>
             [UnityEngine.Scripting.Preserve]
             public static void SetTextHelper(ITextHelper textHelper)
             {

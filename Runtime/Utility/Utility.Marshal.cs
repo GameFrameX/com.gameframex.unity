@@ -38,6 +38,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// Marshal 相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Marshal related utility functions.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static class Marshal
         {

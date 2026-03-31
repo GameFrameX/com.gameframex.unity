@@ -3,14 +3,20 @@
     public static partial class Utility
     {
         /// <summary>
-        /// AB实用函数集，主要是路径拼接
+        /// Asset Bundle 实用函数集，主要是路径拼接。
         /// </summary>
+        /// <remarks>
+        /// Asset Bundle utility functions, mainly for path concatenation.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static class Asset
         {
             /// <summary>
-            /// 路径
+            /// 路径常量和方法。
             /// </summary>
+            /// <remarks>
+            /// Path constants and methods.
+            /// </remarks>
             public static class Path
             {
                 /// <summary>

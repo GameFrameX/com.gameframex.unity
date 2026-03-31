@@ -39,6 +39,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// JSON 相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// JSON related utility functions.
+        /// </remarks>
         public static partial class Json
         {
             private static IJsonHelper s_JsonHelper = null;
@@ -46,7 +49,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 设置 JSON 辅助器。
             /// </summary>
-            /// <param name="jsonHelper">要设置的 JSON 辅助器。</param>
+            /// <remarks>
+            /// Sets the JSON helper.
+            /// </remarks>
+            /// <param name="jsonHelper">要设置的 JSON 辅助器 / The JSON helper to set</param>
             [Preserve]
             public static void SetJsonHelper(IJsonHelper jsonHelper)
             {

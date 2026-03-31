@@ -34,6 +34,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 实用函数集。
     /// </summary>
+    /// <remarks>
+    /// Utility functions collection.
+    /// </remarks>
     public static partial class Utility
     {
     }

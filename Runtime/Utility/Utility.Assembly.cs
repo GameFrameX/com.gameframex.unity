@@ -40,6 +40,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 程序集相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Assembly related utility functions.
+        /// </remarks>
         public static class Assembly
         {
             private static readonly System.Reflection.Assembly[] s_Assemblies = null;

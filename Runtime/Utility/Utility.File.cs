@@ -3,18 +3,24 @@
     public static partial class Utility
     {
         /// <summary>
-        /// 文件相关的实用函数
+        /// 文件相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// File related utility functions.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static class File
         {
             private static readonly string[] UnitList = new[] { "B", "KB", "MB", "GB", "TB", "PB" };
 
             /// <summary>
-            /// 获取字节大小
+            /// 获取字节大小的可读字符串表示。
             /// </summary>
-            /// <param name="size">字节大小</param>
-            /// <returns>格式化后的字节大小字符串</returns>
+            /// <remarks>
+            /// Gets a human-readable string representation of byte size.
+            /// </remarks>
+            /// <param name="size">字节大小 / The byte size</param>
+            /// <returns>格式化后的字节大小字符串 / The formatted byte size string</returns>
             [UnityEngine.Scripting.Preserve]
             public static string GetBytesSize(long size)
             {

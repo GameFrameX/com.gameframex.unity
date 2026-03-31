@@ -36,11 +36,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 常量相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Constant related utility functions.
+        /// </remarks>
         public static partial class Const
         {
             /// <summary>
-            /// 文件名后缀
+            /// 文件名后缀常量。
             /// </summary>
+            /// <remarks>
+            /// File name suffix constants.
+            /// </remarks>
             public static partial class FileNameSuffix
             {
                 /// <summary>

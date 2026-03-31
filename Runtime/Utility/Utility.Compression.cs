@@ -40,6 +40,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 压缩解压缩相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Compression and decompression related utility functions.
+        /// </remarks>
         [Preserve]
         public static partial class Compression
         {

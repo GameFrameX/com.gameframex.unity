@@ -40,6 +40,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 类型转换相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Type conversion related utility functions.
+        /// </remarks>
         [Preserve]
         public static class Converter
         {
@@ -49,6 +52,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取数据在此计算机结构中存储时的字节顺序。
             /// </summary>
+            /// <remarks>
+            /// Gets the byte order of data storage in this computer architecture.
+            /// </remarks>
             [Preserve]
             public static bool IsLittleEndian
             {
@@ -58,6 +64,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取或设置屏幕每英寸点数。
             /// </summary>
+            /// <remarks>
+            /// Gets or sets the screen dots per inch.
+            /// </remarks>
             [Preserve]
             public static float ScreenDpi { get; set; }
 

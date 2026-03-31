@@ -10,8 +10,11 @@ namespace GameFrameX.Runtime
     public static partial class Utility
     {
         /// <summary>
-        /// 网络相关的对象工具类
+        /// 网络相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Network related utility functions.
+        /// </remarks>
         [Preserve]
         public static class Net
         {

@@ -41,6 +41,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 加密解密相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Encryption and decryption related utility functions.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static partial class Encryption
         {

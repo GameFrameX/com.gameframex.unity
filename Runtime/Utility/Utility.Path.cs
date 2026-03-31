@@ -38,14 +38,20 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 路径相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Path related utility functions.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static class Path
         {
             /// <summary>
             /// 获取规范的路径。
             /// </summary>
-            /// <param name="path">要规范的路径。</param>
-            /// <returns>规范的路径。</returns>
+            /// <remarks>
+            /// Gets the regularized path.
+            /// </remarks>
+            /// <param name="path">要规范的路径 / The path to regularize</param>
+            /// <returns>规范的路径 / The regularized path</returns>
             [UnityEngine.Scripting.Preserve]
             public static string GetRegularPath(string path)
             {
@@ -60,8 +66,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取远程格式的路径（带有file:// 或 http:// 前缀）。
             /// </summary>
-            /// <param name="path">原始路径。</param>
-            /// <returns>远程格式路径。</returns>
+            /// <remarks>
+            /// Gets the remote format path (with file:// or http:// prefix).
+            /// </remarks>
+            /// <param name="path">原始路径 / The original path</param>
+            /// <returns>远程格式路径 / The remote format path</returns>
             [UnityEngine.Scripting.Preserve]
             public static string GetRemotePath(string path)
             {
@@ -77,8 +86,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 移除空文件夹。
             /// </summary>
-            /// <param name="directoryName">要处理的文件夹名称。</param>
-            /// <returns>是否移除空文件夹成功。</returns>
+            /// <remarks>
+            /// Removes empty directories.
+            /// </remarks>
+            /// <param name="directoryName">要处理的文件夹名称 / The directory name to process</param>
+            /// <returns>是否移除空文件夹成功 / Whether the empty directory was removed successfully</returns>
             [UnityEngine.Scripting.Preserve]
             public static bool RemoveEmptyDirectory(string directoryName)
             {

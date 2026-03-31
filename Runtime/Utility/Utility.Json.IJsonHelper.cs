@@ -40,6 +40,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// JSON 辅助器接口。
             /// </summary>
+            /// <remarks>
+            /// JSON helper interface.
+            /// </remarks>
             public interface IJsonHelper
             {
                 /// <summary>

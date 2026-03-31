@@ -38,6 +38,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 字符辅助器接口。
             /// </summary>
+            /// <remarks>
+            /// Text helper interface.
+            /// </remarks>
             public interface ITextHelper
             {
                 /// <summary>

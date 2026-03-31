@@ -40,6 +40,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 压缩解压缩辅助器接口。
             /// </summary>
+            /// <remarks>
+            /// Compression helper interface.
+            /// </remarks>
             public interface ICompressionHelper
             {
                 /// <summary>

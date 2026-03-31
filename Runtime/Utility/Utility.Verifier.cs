@@ -40,6 +40,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 校验相关的实用函数。
         /// </summary>
+        /// <remarks>
+        /// Verification related utility functions.
+        /// </remarks>
         [Preserve]
         public static partial class Verifier
         {
