@@ -661,26 +661,7 @@ namespace GameFrameX.Editor
             }
         }
 
-        /// <summary>
-        /// 设置 发布版本号更新
-        /// </summary>
-        /// <param name="target"></param>
-        /// <param name="path"></param>
-        [PostProcessBuild(999)]
-        public static void OnPostProcessBuild(BuildTarget target, string path)
-        {
-            if (target == BuildTarget.Android)
-            {
-                // Update Build Version Code
-                PlayerSettings.Android.bundleVersionCode = Convert.ToInt32(PlayerSettings.Android.bundleVersionCode) + 1;
-            }
 
-            if (target == BuildTarget.iOS)
-            {
-                // Update Build Version Code
-                PlayerSettings.iOS.buildNumber = (Convert.ToInt32(PlayerSettings.iOS.buildNumber) + 1).ToString();
-            }
-        }
 
         /// <summary>
         /// 获取工程路径
