@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/gameframex/com.gameframex.unity/compare/1.7.0...1.7.1) (2026-04-01)
+
+
+### Bug Fixes
+
+* 修复日志方法参数错误并更正类型名称 ([8c76328](https://github.com/gameframex/com.gameframex.unity/commit/8c76328c3ad084b7a9911dbf9866c6427a93d3a8))
+
 # [1.7.0](https://github.com/gameframex/com.gameframex.unity/compare/1.6.3...1.7.0) (2026-03-31)
 
 
