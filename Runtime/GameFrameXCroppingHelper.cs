@@ -153,7 +153,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.ZipHelper);
             _ = typeof(ObjectExtension);
             _ = typeof(SpanExtension);
-            _ = typeof(StringExtension);
+            _ = typeof(StringExtensions);
             _ = typeof(GameFrameX.Runtime.BidirectionalDictionary<,>);
             _ = typeof(GameFrameX.Runtime.CollectionExtensions);
             _ = typeof(GameFrameX.Runtime.DateTimeExtensions);

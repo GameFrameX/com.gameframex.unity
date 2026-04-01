@@ -719,6 +719,28 @@ namespace GameFrameX.Runtime
         /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
         /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
         /// <typeparam name="T4">日志参数 4 的类型 / The type of the fourth log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        public static void Info<T1, T2, T3, T4>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            if (_logHelper == null)
+            {
+                return;
+            }
+
+            _logHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4));
+        }
+
+        /// <summary>
+        /// 打印信息级别日志，用于记录程序正常运行日志信息。
+        /// </summary>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of the fourth log argument.</typeparam>
         /// <typeparam name="T5">日志参数 5 的类型 / The type of the fifth log argument.</typeparam>
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
@@ -733,9 +755,34 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            _logHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4));
+            _logHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5));
         }
 
+        /// <summary>
+        /// 打印信息级别日志，用于记录程序正常运行日志信息。
+        /// </summary>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of the first log argument.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of the second log argument.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of the third log argument.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of the fourth log argument.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of the fifth log argument.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of the sixth log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format string.</param>
+        /// <param name="arg1">日志参数 1 / The first log argument.</param>
+        /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
+        /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
+        public static void Info<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+        {
+            if (_logHelper == null)
+            {
+                return;
+            }
+
+            _logHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
+        }
 
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
@@ -762,7 +809,7 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            _logHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
+            _logHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
         }
 
         /// <summary>
