@@ -14,7 +14,7 @@ namespace GameFrameX.Runtime
     /// Provides extension methods for string manipulation including comparison, conversion, and validation.
     /// </remarks>
     [UnityEngine.Scripting.Preserve]
-    public static class StringExtensions
+    public static class StringExtension
     {
         /// <summary>
         /// 快速比较两个字符串内容是否一致
