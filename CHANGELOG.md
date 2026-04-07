@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/gameframex/com.gameframex.unity/compare/1.7.1...1.7.2) (2026-04-07)
+
+
+### Bug Fixes
+
+* **editor:** 将欢迎窗口的logo加载方式从Resources改为AssetDatabase ([57e09ff](https://github.com/gameframex/com.gameframex.unity/commit/57e09ff12838e61cc0fb700955bcbb06a74fe2b6))
+
 ## [1.7.1](https://github.com/gameframex/com.gameframex.unity/compare/1.7.0...1.7.1) (2026-04-01)
 
 
