@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/gameframex/com.gameframex.unity/compare/1.7.2...1.7.3) (2026-04-07)
+
+
+### Bug Fixes
+
+* **extension:** 重命名StringExtensions类为StringExtension ([336d219](https://github.com/gameframex/com.gameframex.unity/commit/336d219089582f06719d3e5f28226108c830af47))
+
 ## [1.7.2](https://github.com/gameframex/com.gameframex.unity/compare/1.7.1...1.7.2) (2026-04-07)
 
 
