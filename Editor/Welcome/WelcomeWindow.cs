@@ -38,6 +38,7 @@ namespace GameFrameX.Editor
     {
         private static readonly string FirstRunKey = "GameFrameX_WelcomeWindow_Shown";
         private static readonly string ShowOnStartupKey = "GameFrameX_ShowOnStartup";
+        private const string LogoAssetPath = "gameframex_logo.png";
 
         private bool showOnStartup = true;
         private Vector2 scrollPosition;
@@ -90,8 +91,15 @@ namespace GameFrameX.Editor
 
         private void LoadLogoTexture()
         {
-            // 方式1: 从Resources文件夹加载（如果Logo放在Resources文件夹中）
-            _logoTexture = Resources.Load<Texture2D>("gameframex_logo");
+            var assets = AssetDatabase.FindAssets("t:Texture gameframex_logo");
+            if (assets.Length <= 0)
+            {
+                _logoTexture = null;
+                return;
+            }
+
+            var path = AssetDatabase.GUIDToAssetPath(assets[0]);
+            _logoTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
         }
 
         private void OnGUI()
