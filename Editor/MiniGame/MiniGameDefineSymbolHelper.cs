@@ -9,21 +9,30 @@ namespace GameFrameX.Editor
     /// </summary>
     public static partial class MiniGameDefineSymbolHelper
     {
-        private static readonly string[][] AllMiniGameScriptingDefineSymbols =
+        private static string[][] GetAllMiniGameScriptingDefineSymbols()
         {
-            EnableWeChatMiniGameScriptingDefineSymbol,
-            EnableDouYinMiniGameScriptingDefineSymbol,
-            EnableKuaiShouMiniGameScriptingDefineSymbol,
-            EnableBaiduMiniGameScriptingDefineSymbol,
-            EnableAlipayMiniGameScriptingDefineSymbol,
-            EnableTapTapMiniGameScriptingDefineSymbol,
-        };
+            return new[]
+            {
+                EnableWeChatMiniGameScriptingDefineSymbol,
+                EnableDouYinMiniGameScriptingDefineSymbol,
+                EnableKuaiShouMiniGameScriptingDefineSymbol,
+                EnableBaiduMiniGameScriptingDefineSymbol,
+                EnableAlipayMiniGameScriptingDefineSymbol,
+                EnableTapTapMiniGameScriptingDefineSymbol,
+            };
+        }
 
         private static void DisableOtherMiniGameScriptingDefineSymbols(string[] currentMiniGameScriptingDefineSymbols)
         {
 #if UNITY_WEBGL
-            foreach (var defineSymbols in AllMiniGameScriptingDefineSymbols)
+            var closedCount = 0;
+            foreach (var defineSymbols in GetAllMiniGameScriptingDefineSymbols())
             {
+                if (defineSymbols == null)
+                {
+                    continue;
+                }
+
                 if (object.ReferenceEquals(defineSymbols, currentMiniGameScriptingDefineSymbols))
                 {
                     continue;
@@ -31,13 +40,18 @@ namespace GameFrameX.Editor
 
                 foreach (var define in defineSymbols)
                 {
-                    if (ScriptingDefineSymbols.HasScriptingDefineSymbol(BuildTargetGroup.WebGL, define))
+                    if (!ScriptingDefineSymbols.HasScriptingDefineSymbol(BuildTargetGroup.WebGL, define))
                     {
-                        ScriptingDefineSymbols.RemoveScriptingDefineSymbol(define);
-                        UnityEngine.Debug.Log($"小游戏宏定义 [{define}] 已经关闭");
+                        continue;
                     }
+
+                    ScriptingDefineSymbols.RemoveScriptingDefineSymbol(define);
+                    closedCount++;
+                    UnityEngine.Debug.Log($"小游戏宏定义 [{define}] 已经关闭");
                 }
             }
+
+            UnityEngine.Debug.Log($"小游戏宏定义互斥清理完成，共关闭 {closedCount} 个宏定义");
 #endif
         }
     }
