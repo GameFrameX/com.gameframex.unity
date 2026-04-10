@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/gameframex/com.gameframex.unity/compare/1.7.3...1.8.0) (2026-04-10)
+
+
+### Features
+
+* **editor:** 新增多个小游戏平台宏定义助手并重构代码结构 ([e83b90e](https://github.com/gameframex/com.gameframex.unity/commit/e83b90e2621de39aa21ed3d18ac2374a778b2709))
+
 ## [1.7.3](https://github.com/gameframex/com.gameframex.unity/compare/1.7.2...1.7.3) (2026-04-07)
 
 
