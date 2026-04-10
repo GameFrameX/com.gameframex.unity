@@ -26,6 +26,8 @@ namespace GameFrameX.Editor
 
                 Debug.Log($"抖音小游戏宏定义 [{define}] 已经打开");
             }
+
+            EnableUnifiedMiniGameScriptingDefineSymbol();
 #endif
         }
 
@@ -44,6 +46,8 @@ namespace GameFrameX.Editor
 
                 Debug.Log($"抖音小游戏宏定义 [{define}] 已经关闭");
             }
+
+            RefreshUnifiedMiniGameScriptingDefineSymbol();
 #endif
         }
     }
