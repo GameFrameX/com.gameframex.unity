@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/gameframex/com.gameframex.unity/compare/1.8.0...1.9.0) (2026-04-10)
+
+
+### Features
+
+* **editor:** 添加小游戏统一宏定义管理 ([5fa11fe](https://github.com/gameframex/com.gameframex.unity/commit/5fa11fead31f3958edf658d96e8292e345e4e9ba))
+
 # [1.8.0](https://github.com/gameframex/com.gameframex.unity/compare/1.7.3...1.8.0) (2026-04-10)
 
 
