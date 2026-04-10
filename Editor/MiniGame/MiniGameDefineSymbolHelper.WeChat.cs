@@ -7,8 +7,16 @@ namespace GameFrameX.Editor
 {
     public static partial class MiniGameDefineSymbolHelper
     {
+        /// <summary>
+        /// 微信小游戏适配宏定义集合。
+        /// Define symbols for WeChat mini game adaptation.
+        /// </summary>
         public static readonly string[] EnableWeChatMiniGameScriptingDefineSymbol = new[] { "ENABLE_WECHAT_MINI_GAME", "WEIXINMINIGAME" };
 
+        /// <summary>
+        /// 开启微信小游戏适配宏定义。
+        /// Enables define symbols for WeChat mini game adaptation.
+        /// </summary>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Enable WeChat Mini Game(开启[微信小游戏]适配)", false, 2000)]
 #endif
@@ -31,6 +39,10 @@ namespace GameFrameX.Editor
 #endif
         }
 
+        /// <summary>
+        /// 关闭微信小游戏适配宏定义。
+        /// Disables define symbols for WeChat mini game adaptation.
+        /// </summary>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Disable WeChat Mini Game(关闭[微信小游戏]适配)", false, 2001)]
 #endif

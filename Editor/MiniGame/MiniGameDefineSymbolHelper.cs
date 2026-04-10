@@ -5,12 +5,22 @@ using UnityEditor;
 namespace GameFrameX.Editor
 {
     /// <summary>
-    /// 小游戏宏定义帮助类
+    /// 小游戏宏定义帮助类。
+    /// Mini game scripting define symbol helper.
     /// </summary>
     public static partial class MiniGameDefineSymbolHelper
     {
+        /// <summary>
+        /// WebGL 小游戏统一宏定义。
+        /// Unified scripting define symbol for WebGL mini games.
+        /// </summary>
         private const string EnableWebGLMiniGameScriptingDefineSymbol = "ENABLE_WEBGL_MINI_GAME";
 
+        /// <summary>
+        /// 获取所有小游戏平台宏定义集合。
+        /// Gets all mini game platform define symbol arrays.
+        /// </summary>
+        /// <returns>小游戏平台宏定义数组集合 / Collection of mini game define symbol arrays.</returns>
         private static string[][] GetAllMiniGameScriptingDefineSymbols()
         {
             return new[]
@@ -24,6 +34,11 @@ namespace GameFrameX.Editor
             };
         }
 
+        /// <summary>
+        /// 关闭除当前平台以外的其它小游戏平台宏定义。
+        /// Disables define symbols of other mini game platforms except the current one.
+        /// </summary>
+        /// <param name="currentMiniGameScriptingDefineSymbols">当前平台宏定义集合 / Define symbols of the current platform.</param>
         private static void DisableOtherMiniGameScriptingDefineSymbols(string[] currentMiniGameScriptingDefineSymbols)
         {
 #if UNITY_WEBGL
@@ -57,6 +72,10 @@ namespace GameFrameX.Editor
 #endif
         }
 
+        /// <summary>
+        /// 打开 WebGL 小游戏统一宏定义。
+        /// Enables the unified WebGL mini game define symbol.
+        /// </summary>
         private static void EnableUnifiedMiniGameScriptingDefineSymbol()
         {
 #if UNITY_WEBGL
@@ -70,6 +89,10 @@ namespace GameFrameX.Editor
 #endif
         }
 
+        /// <summary>
+        /// 根据当前各平台宏定义状态刷新 WebGL 小游戏统一宏定义。
+        /// Refreshes the unified WebGL mini game define symbol according to platform define states.
+        /// </summary>
         private static void RefreshUnifiedMiniGameScriptingDefineSymbol()
         {
 #if UNITY_WEBGL

@@ -7,8 +7,16 @@ namespace GameFrameX.Editor
 {
     public static partial class MiniGameDefineSymbolHelper
     {
+        /// <summary>
+        /// 支付宝小游戏适配宏定义集合。
+        /// Define symbols for Alipay mini game adaptation.
+        /// </summary>
         public static readonly string[] EnableAlipayMiniGameScriptingDefineSymbol = new[] { "ENABLE_ALIPAY_MINI_GAME", "ALIPAYMINIGAME" };
 
+        /// <summary>
+        /// 开启支付宝小游戏适配宏定义。
+        /// Enables define symbols for Alipay mini game adaptation.
+        /// </summary>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Enable Alipay Mini Game(开启[支付宝小游戏]适配)", false, 2400)]
 #endif
@@ -31,6 +39,10 @@ namespace GameFrameX.Editor
 #endif
         }
 
+        /// <summary>
+        /// 关闭支付宝小游戏适配宏定义。
+        /// Disables define symbols for Alipay mini game adaptation.
+        /// </summary>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Disable Alipay Mini Game(关闭[支付宝小游戏]适配)", false, 2401)]
 #endif
