@@ -503,24 +503,45 @@ GameFrameX/
 
 ### Mini Game Platform Adaptation
 
-GameFrameX provides one-click mini game platform adaptation, supporting the following platforms:
+GameFrameX provides one-click mini game platform adaptation, supporting **21 mainstream mini game platforms** worldwide:
 
-| Platform | Define Symbol | Menu Path |
-|----------|---------------|-----------|
-| WeChat Mini Game | `WEIXINMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| Alipay Mini Game | `ALIPAYMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| DouYin Mini Game | `DOUYINMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| KuaiShou Mini Game | `KUAISHOUMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| Baidu Mini Game | `BAIDUMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| TapTap Mini Game | `TAPTAPMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| Meituan Mini Game | `MEITUANMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| Bilibili Mini Game | `BILIBILIMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
+#### 🇨🇳 China Mainland Platforms (14)
+
+| Platform | Define Symbol | Region | Menu Priority |
+|----------|---------------|--------|---------------|
+| WeChat Mini Game | `ENABLE_WECHAT_MINI_GAME` / `WEIXINMINIGAME` | 🇨🇳 China | 2000 |
+| DouYin Mini Game | `ENABLE_DOUYIN_MINI_GAME` / `DOUYINMINIGAME` | 🇨🇳 China | 2100 |
+| KuaiShou Mini Game | `ENABLE_KUAISHOU_MINI_GAME` / `KUAISHOUMINIGAME` | 🇨🇳 China | 2200 |
+| Baidu Mini Game | `ENABLE_BAIDU_MINI_GAME` / `BAIDUMINIGAME` | 🇨🇳 China | 2300 |
+| Alipay Mini Game | `ENABLE_ALIPAY_MINI_GAME` / `ALIPAYMINIGAME` | 🇨🇳 China | 2400 |
+| JD Mini Game | `ENABLE_JINGDONG_MINI_GAME` / `JINGDONGMINIGAME` | 🇨🇳 China | 2500 |
+| Taobao Mini Program | `ENABLE_TAOBAO_MINI_GAME` / `TAOBAOMINIGAME` | 🇨🇳 China | 2600 |
+| TapTap Mini Game | `ENABLE_TAPTAP_MINI_GAME` / `TAPTAPMINIGAME` | 🇨🇳 China | 2700 |
+| Meituan Mini Game | `ENABLE_MEITUAN_MINI_GAME` / `MEITUANMINIGAME` | 🇨🇳 China | 2800 |
+| Bilibili Mini Game | `ENABLE_BILIBILI_MINI_GAME` / `BILIBILIMINIGAME` | 🇨🇳 China | 2900 |
+| vivo Mini Game | `ENABLE_VIVO_MINI_GAME` / `VIVOMINIGAME` | 🇨🇳 China | 3100 |
+| OPPO Mini Game | `ENABLE_OPPO_MINI_GAME` / `OPPOSMINIGAME` | 🇨🇳 China | 3200 |
+| Xiaomi Mini Game | `ENABLE_XIAOMI_MINI_GAME` / `XIAOMIMINIGAME` | 🇨🇳 China | 3300 |
+| Huawei Mini Game | `ENABLE_HUAWEI_MINI_GAME` / `HUAWEIMINIGAME` | 🇨🇳 China | 3400 |
+
+#### 🌍 Global Platforms (7)
+
+| Platform | Define Symbol | Region | Menu Priority |
+|----------|---------------|--------|---------------|
+| Discord | `ENABLE_DISCORD_MINI_GAME` / `DISCORDMINIGAME` | 🌍 Global | 2700 |
+| YouTube | `ENABLE_YOUTUBE_MINI_GAME` / `YOUTUBEMINIGAME` | 🌍 Global | 2800 |
+| Facebook | `ENABLE_FACEBOOK_MINI_GAME` / `FACEBOOKMINIGAME` | 🌍 Global | 2900 |
+| Google Play | `ENABLE_GOOGLEPLAY_MINI_GAME` / `GOOGLEPLAYMINIGAME` | 🌍 Global | 3000 |
+| TikTok | `ENABLE_TIKTOK_MINI_GAME` / `TIKTOKMINIGAME` | 🌍 Global | 3500 |
+| CrazyGames | `ENABLE_CRAZYGAMES_MINI_GAME` / `CRAZYGAMESMINIGAME` | 🌍 Global | 3600 |
+| Poki | `ENABLE_POKI_MINI_GAME` / `POKIMINIGAME` | 🌍 Global | 3700 |
 
 #### Define Symbol Details
 
 - **Unified Define**: `ENABLE_WEBGL_MINI_GAME` - Shared by all mini game platforms
-- **Platform Defines**: Independent defines for conditional compilation
+- **Platform Defines**: Independent defines for conditional compilation per platform
 - **Mutex Mechanism**: Enabling one mini game platform automatically disables others
+- **Menu Path**: `GameFrameX/Scripting Define Symbols/Enable [Platform] Mini Game`
 
 ---
 

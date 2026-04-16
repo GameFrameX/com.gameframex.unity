@@ -286,7 +286,7 @@ Editor/
 │   └── ReferencePoolComponentInspector.cs # 引用池检视
 ├── InspectorLockShortcut/        # 检视面板锁定
 │   └── InspectorLockShortcut.cs # 快捷键锁定
-├── MiniGame/                      # 小游戏平台适配 ⭐
+├── MiniGame/                      # 小游戏平台适配（21个平台） ⭐
 │   ├── MiniGameDefineSymbolHelper.cs # 基础宏定义管理
 │   ├── MiniGameDefineSymbolHelper.WeChat.cs # 微信
 │   ├── MiniGameDefineSymbolHelper.Alipay.cs # 支付宝
@@ -295,7 +295,20 @@ Editor/
 │   ├── MiniGameDefineSymbolHelper.Baidu.cs # 百度
 │   ├── MiniGameDefineSymbolHelper.TapTap.cs # TapTap
 │   ├── MiniGameDefineSymbolHelper.Meituan.cs # 美团
-│   └── MiniGameDefineSymbolHelper.Bilibili.cs # Bilibili
+│   ├── MiniGameDefineSymbolHelper.Bilibili.cs # Bilibili
+│   ├── MiniGameDefineSymbolHelper.JingDong.cs # 京东
+│   ├── MiniGameDefineSymbolHelper.Taobao.cs # 淘宝
+│   ├── MiniGameDefineSymbolHelper.Vivo.cs # vivo
+│   ├── MiniGameDefineSymbolHelper.OPPO.cs # OPPO
+│   ├── MiniGameDefineSymbolHelper.Xiaomi.cs # 小米
+│   ├── MiniGameDefineSymbolHelper.Huawei.cs # 华为
+│   ├── MiniGameDefineSymbolHelper.Discord.cs # Discord
+│   ├── MiniGameDefineSymbolHelper.YouTube.cs # YouTube
+│   ├── MiniGameDefineSymbolHelper.Facebook.cs # Facebook
+│   ├── MiniGameDefineSymbolHelper.GooglePlay.cs # Google Play
+│   ├── MiniGameDefineSymbolHelper.TikTok.cs # TikTok
+│   ├── MiniGameDefineSymbolHelper.CrazyGames.cs # CrazyGames
+│   └── MiniGameDefineSymbolHelper.Poki.cs # Poki
 ├── PackageManager/               # 包管理器窗口
 │   ├── PackageManagerWindow.cs   # 包管理窗口
 │   └── PackagesManifest.cs     # 包清单管理
@@ -503,24 +516,45 @@ GameFrameX/
 
 ### 小游戏平台适配
 
-GameFrameX 提供一键切换的小游戏平台适配功能，支持以下平台：
+GameFrameX 提供一键切换的小游戏平台适配功能，支持**全球21个主流小游戏平台**：
 
-| 平台 | 宏定义 | 菜单路径 |
-|------|--------|----------|
-| 微信小程序 | `WEIXINMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| 支付宝小程序 | `ALIPAYMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| 抖音小程序 | `DOUYINMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| 快手小程序 | `KUAISHOUMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| 百度小程序 | `BAIDUMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| TapTap 小游戏 | `TAPTAPMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| 美团小程序 | `MEITUANMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| Bilibili 小程序 | `BILIBILIMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
+#### 🇨🇳 中国大陆平台（14个）
+
+| 平台 | 宏定义 | 地区 | 菜单优先级 |
+|------|--------|------|-----------|
+| 微信小程序 | `ENABLE_WECHAT_MINI_GAME` / `WEIXINMINIGAME` | 🇨🇳 中国 | 2000 |
+| 抖音小程序 | `ENABLE_DOUYIN_MINI_GAME` / `DOUYINMINIGAME` | 🇨🇳 中国 | 2100 |
+| 快手小程序 | `ENABLE_KUAISHOU_MINI_GAME` / `KUAISHOUMINIGAME` | 🇨🇳 中国 | 2200 |
+| 百度小程序 | `ENABLE_BAIDU_MINI_GAME` / `BAIDUMINIGAME` | 🇨🇳 中国 | 2300 |
+| 支付宝小程序 | `ENABLE_ALIPAY_MINI_GAME` / `ALIPAYMINIGAME` | 🇨🇳 中国 | 2400 |
+| 京东小程序 | `ENABLE_JINGDONG_MINI_GAME` / `JINGDONGMINIGAME` | 🇨🇳 中国 | 2500 |
+| 淘宝小程序 | `ENABLE_TAOBAO_MINI_GAME` / `TAOBAOMINIGAME` | 🇨🇳 中国 | 2600 |
+| TapTap 小游戏 | `ENABLE_TAPTAP_MINI_GAME` / `TAPTAPMINIGAME` | 🇨🇳 中国 | 2700 |
+| 美团小程序 | `ENABLE_MEITUAN_MINI_GAME` / `MEITUANMINIGAME` | 🇨🇳 中国 | 2800 |
+| Bilibili 小程序 | `ENABLE_BILIBILI_MINI_GAME` / `BILIBILIMINIGAME` | 🇨🇳 中国 | 2900 |
+| vivo 小游戏 | `ENABLE_VIVO_MINI_GAME` / `VIVOMINIGAME` | 🇨🇳 中国 | 3100 |
+| OPPO 小游戏 | `ENABLE_OPPO_MINI_GAME` / `OPPOSMINIGAME` | 🇨🇳 中国 | 3200 |
+| 小米小游戏 | `ENABLE_XIAOMI_MINI_GAME` / `XIAOMIMINIGAME` | 🇨🇳 中国 | 3300 |
+| 华为小游戏 | `ENABLE_HUAWEI_MINI_GAME` / `HUAWEIMINIGAME` | 🇨🇳 中国 | 3400 |
+
+#### 🌍 海外平台（7个）
+
+| 平台 | 宏定义 | 地区 | 菜单优先级 |
+|------|--------|------|-----------|
+| Discord | `ENABLE_DISCORD_MINI_GAME` / `DISCORDMINIGAME` | 🌍 全球 | 2700 |
+| YouTube | `ENABLE_YOUTUBE_MINI_GAME` / `YOUTUBEMINIGAME` | 🌍 全球 | 2800 |
+| Facebook | `ENABLE_FACEBOOK_MINI_GAME` / `FACEBOOKMINIGAME` | 🌍 全球 | 2900 |
+| Google Play | `ENABLE_GOOGLEPLAY_MINI_GAME` / `GOOGLEPLAYMINIGAME` | 🌍 全球 | 3000 |
+| TikTok | `ENABLE_TIKTOK_MINI_GAME` / `TIKTOKMINIGAME` | 🌍 全球 | 3500 |
+| CrazyGames | `ENABLE_CRAZYGAMES_MINI_GAME` / `CRAZYGAMESMINIGAME` | 🌍 全球 | 3600 |
+| Poki | `ENABLE_POKI_MINI_GAME` / `POKIMINIGAME` | 🌍 全球 | 3700 |
 
 #### 宏定义说明
 
 - **统一宏定义**: `ENABLE_WEBGL_MINI_GAME` - 所有小游戏平台共享
-- **平台宏定义**: 各平台独立宏，用于条件编译
+- **平台宏定义**: 各平台独立宏定义，用于条件编译
 - **互斥机制**: 开启任一小游戏平台会自动关闭其他平台
+- **菜单位置**: `GameFrameX/Scripting Define Symbols/Enable [平台名称] Mini Game`
 
 ---
 
@@ -542,6 +576,12 @@ GameFrameX 提供一键切换的小游戏平台适配功能，支持以下平台
 ---
 
 ## 🔄 更新日志
+
+### v1.4.0 (2025-04-16)
+- ✨ 新增13个小游戏平台支持（京东、淘宝、Discord、YouTube、Facebook、Google Play、vivo、OPPO、小米、华为、TikTok、CrazyGames、Poki）
+- ✨ 平台总数从8个扩展到21个，覆盖全球主流小游戏平台
+- 📚 更新所有语言版本的 README 文档，同步最新平台支持信息
+- 🐛 优化平台宏定义管理，提升互斥机制稳定性
 
 ### v1.3.6 (2025-05-28)
 - 🐛 修复文件 GUID 重复的问题

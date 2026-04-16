@@ -503,24 +503,45 @@ GameFrameX/
 
 ### 小遊戲平台適配
 
-GameFrameX 提供一鍵切換的小遊戲平台適配功能，支援以下平台：
+GameFrameX 提供一鍵切換的小遊戲平台適配功能，支援**全球21個主流小遊戲平台**：
 
-| 平台 | 宏定义 | 選單路徑 |
-|------|--------|----------|
-| 微信小程序 | `WEIXINMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| 支付宝小程序 | `ALIPAYMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| 抖音小程序 | `DOUYINMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| 快手小程序 | `KUAISHOUMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| 百度小程序 | `BAIDUMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| TapTap 小遊戲 | `TAPTAPMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| 美团小程序 | `MEITUANMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
-| Bilibili 小程序 | `BILIBILIMINIGAME` | `GameFrameX/Scripting Define Symbols/` |
+#### 🇨🇳 中國大陸平台（14個）
 
-#### 宏定义說明
+| 平台 | 宏定義 | 地區 | 選單優先級 |
+|------|--------|------|-----------|
+| 微信小程式 | `ENABLE_WECHAT_MINI_GAME` / `WEIXINMINIGAME` | 🇨🇳 中國 | 2000 |
+| 抖音小程式 | `ENABLE_DOUYIN_MINI_GAME` / `DOUYINMINIGAME` | 🇨🇳 中國 | 2100 |
+| 快手小程式 | `ENABLE_KUAISHOU_MINI_GAME` / `KUAISHOUMINIGAME` | 🇨🇳 中國 | 2200 |
+| 百度小程式 | `ENABLE_BAIDU_MINI_GAME` / `BAIDUMINIGAME` | 🇨🇳 中國 | 2300 |
+| 支付寶小程式 | `ENABLE_ALIPAY_MINI_GAME` / `ALIPAYMINIGAME` | 🇨🇳 中國 | 2400 |
+| 京東小程式 | `ENABLE_JINGDONG_MINI_GAME` / `JINGDONGMINIGAME` | 🇨🇳 中國 | 2500 |
+| 淘寶小程式 | `ENABLE_TAOBAO_MINI_GAME` / `TAOBAOMINIGAME` | 🇨🇳 中國 | 2600 |
+| TapTap 小遊戲 | `ENABLE_TAPTAP_MINI_GAME` / `TAPTAPMINIGAME` | 🇨🇳 中國 | 2700 |
+| 美團小程式 | `ENABLE_MEITUAN_MINI_GAME` / `MEITUANMINIGAME` | 🇨🇳 中國 | 2800 |
+| Bilibili 小程式 | `ENABLE_BILIBILI_MINI_GAME` / `BILIBILIMINIGAME` | 🇨🇳 中國 | 2900 |
+| vivo 小遊戲 | `ENABLE_VIVO_MINI_GAME` / `VIVOMINIGAME` | 🇨🇳 中國 | 3100 |
+| OPPO 小遊戲 | `ENABLE_OPPO_MINI_GAME` / `OPPOSMINIGAME` | 🇨🇳 中國 | 3200 |
+| 小米小遊戲 | `ENABLE_XIAOMI_MINI_GAME` / `XIAOMIMINIGAME` | 🇨🇳 中國 | 3300 |
+| 華為小遊戲 | `ENABLE_HUAWEI_MINI_GAME` / `HUAWEIMINIGAME` | 🇨🇳 中國 | 3400 |
 
-- **统一宏定义**: `ENABLE_WEBGL_MINI_GAME` - 所有小遊戲平台共享
-- **平台宏定义**: 各平台獨立宏，用于条件編譯
-- **互斥机制**: 开启任一小遊戲平台会自动关闭其他平台
+#### 🌍 海外平台（7個）
+
+| 平台 | 宏定義 | 地區 | 選單優先級 |
+|------|--------|------|-----------|
+| Discord | `ENABLE_DISCORD_MINI_GAME` / `DISCORDMINIGAME` | 🌍 全球 | 2700 |
+| YouTube | `ENABLE_YOUTUBE_MINI_GAME` / `YOUTUBEMINIGAME` | 🌍 全球 | 2800 |
+| Facebook | `ENABLE_FACEBOOK_MINI_GAME` / `FACEBOOKMINIGAME` | 🌍 全球 | 2900 |
+| Google Play | `ENABLE_GOOGLEPLAY_MINI_GAME` / `GOOGLEPLAYMINIGAME` | 🌍 全球 | 3000 |
+| TikTok | `ENABLE_TIKTOK_MINI_GAME` / `TIKTOKMINIGAME` | 🌍 全球 | 3500 |
+| CrazyGames | `ENABLE_CRAZYGAMES_MINI_GAME` / `CRAZYGAMESMINIGAME` | 🌍 全球 | 3600 |
+| Poki | `ENABLE_POKI_MINI_GAME` / `POKIMINIGAME` | 🌍 全球 | 3700 |
+
+#### 宏定義說明
+
+- **統一宏定義**: `ENABLE_WEBGL_MINI_GAME` - 所有小遊戲平台共享
+- **平台宏定義**: 各平台獨立宏定義，用于條件編譯
+- **互斥機制**: 開啟任一小遊戲平台會自動關閉其他平台
+- **選單位置**: `GameFrameX/Scripting Define Symbols/Enable [平台名稱] Mini Game`
 
 ---
 
