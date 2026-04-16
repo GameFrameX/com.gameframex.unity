@@ -2,7 +2,7 @@
 
 ![GameFrameX Logo](https://download.alianblank.com/gameframex/gameframex_logo_640.png)
 
-# GameFrameX Unity Package
+# GameFrameX Unity パッケージ
 
 [![Version](https://img.shields.io/badge/version-1.3.6-blue.svg)](https://github.com/GameFrameX/com.gameframex.unity)
 [![Unity](https://img.shields.io/badge/Unity-2019.4+-green.svg)](https://unity3d.com/get-unity/download)
@@ -11,7 +11,7 @@
 
 **インディゲーム開発者向けオールインワンソリューション · インディ開発者の夢を支援**
 
-[📖 Documentation](https://gameframex.doc.alianblank.com) • [🚀 Quick Start](#quick-start) • [💬 QQ Group: 467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
+[📖 ドキュメント](https://gameframex.doc.alianblank.com) • [🚀 クイックスタート](#🚀-クイックスタート) • [💬 QQグループ: 467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
 
 ---
 
@@ -23,9 +23,9 @@
 
 - [🏗️ プロジェクト概要](#🏗️-プロジェクト概要)
 - [📂 アーキテクチャ](#📂-アーキテクチャ)
-  - [Runtime モジュールの詳細](#-runtime-モジュール)
-  - [Plugins モジュールの詳細](#-plugins-モジュール)
-  - [Editor モジュールの詳細](#-editor-モジュール)
+  - [Runtime モジュールの詳細](#📦-runtime-モジュール)
+  - [Plugins モジュールの詳細](#🔌-plugins-モジュール)
+  - [Editor モジュールの詳細](#🛠️-editor-モジュール)
 - [🚀 クイックスタート](#🚀-クイックスタート)
 - [💡 使用例](#💡-使用例)
   - [Runtime 使用例](#runtime-使用例)
@@ -33,261 +33,263 @@
 - [🎯 プラットフォーム対応](#🎯-プラットフォーム対応)
 - [📚 ドキュメントとリソース](#📚-ドキュメントとリソース)
 - [🤝 コミュニティとサポート](#🤝-コミュニティとサポート)
-- [📄 ライセンス](#📄-ライセンス)
+- [� 変更履歴](#🔄-変更履歴)
+- [�📄 ライセンス](#📄-ライセンス)
+- [👨‍💻 作者](#👨‍💻-作者)
 
 </div>
 
 ---
 
-## 🏗️ Project Overview
+## 🏗️ プロジェクト概要
 
-GameFrameX is a modern Unity game framework designed for independent game developers, providing a complete end-to-end solution for game development. The framework follows a **three-layer modular architecture** design with rich built-in game development tools and components, helping developers quickly build high-quality game projects.
+GameFrameX は、インディpendentゲーム開発者向けに設計された最新のUnityゲームフレームワークであり、ゲーム開発のための完全なエンドツーエンドソリューションを提供します。このフレームワークは**三層モジュラーアーキテクチャ**設計を採用しており、豊富な組み込みゲーム開発ツールとコンポーネントを提供し、開発者が高品質なゲームプロジェクトを迅速に構築できるよう支援します。
 
-### 🎯 Key Features
+### 🎯 主な機能
 
-- 🏗️ **Three-Layer Architecture** - Clear separation: Runtime, Plugins, and Editor
-- 🔧 **Rich Toolset** - Built-in development aids and editor extensions
-- 📦 **Object Pool Management** - Efficient memory management and object reuse
-- 🎨 **Extension Methods Library** - Extensive Unity engine extensions
-- 🛠️ **Utility Classes** - Encryption, compression, networking, and more
-- 📱 **Multi-Platform Support** - PC, Mobile, WebGL and more
-- 🔥 **Hotfix Support** - Built-in HybridCLR hotfix solution
-- 🎮 **Mini Game Adaptation** - One-click switch between multiple mini game platforms
+- 🏗️ **三層アーキテクチャ** - Runtime、Plugins、Editorの明確な分離
+- 🔧 **豊富なツールセット** - 組み込みの開発支援とエディタ拡張機能
+- 📦 **オブジェクトプール管理** - 効率的なメモリ管理とオブジェクトの再利用
+- 🎨 **拡張メソッドライブラリ** - Unityエンジンの広範な拡張機能
+- 🛠️ **ユーティリティクラス** - 暗号化、圧縮、ネットワークなど
+- 📱 **マルチプラットフォーム対応** - PC、モバイル、WebGLなど
+- 🔥 **ホットフィックス対応** - 組み込みのHybridCLRホットフィックスソリューション
+- 🎮 **ミニゲーム対応** - 複数のミニゲームプラットフォームへのワンクリック切り替え
 
-### 📋 System Requirements
+### 📋 システム要件
 
-- **Unity Version**: 2019.4 or higher
-- **Platform Support**: Windows, macOS, Linux, iOS, Android, WebGL
-- **.NET Version**: .NET Standard 2.0+
+- **Unityバージョン**: 2019.4以上
+- **プラットフォーム対応**: Windows、macOS、Linux、iOS、Android、WebGL
+- **.NETバージョン**: .NET Standard 2.0+
 
 ---
 
-## 📂 Architecture
+## 📂 アーキテクチャ
 
-GameFrameX uses a clear three-layer architecture design, with each module having its own responsibilities and working together.
+GameFrameXは、各モジュールが各自の責任を持ち、協調して動作する明確な三層アーキテクチャ設計を使用しています。
 
-### 📦 Runtime Module
+### 📦 Runtime モジュール
 
-Core runtime code providing all functionality needed for game runtime.
+ゲームのランタイムに必要なすべての機能を提供するコアランタイムコードです。
 
 ```
 Runtime/
-├── Base/                          # Framework Core Foundation
-│   ├── DataStruct/               # Data Structures
-│   │   └── TypeNamePair.cs       # Type Name Pair
-│   ├── EventPool/                # Event Pool System
-│   │   ├── BaseEventArgs.cs      # Base Event Args
-│   │   ├── EventPool.EventNode.cs # Event Node
-│   │   ├── EventPool.cs          # Event Pool Core
-│   │   └── EventPoolMode.cs      # Event Pool Mode
-│   ├── Log/                      # Logging System
-│   │   ├── GameFrameworkLog.ILogHelper.cs # Log Interface
-│   │   ├── GameFrameworkLog.cs   # Log Core
-│   │   └── GameFrameworkLogLevel.cs # Log Level
-│   ├── ReferencePool/            # Reference Pool System
-│   │   ├── IReference.cs        # Reference Interface
-│   │   ├── ReferencePool.ReferenceCollection.cs # Reference Collection
-│   │   ├── ReferencePool.cs      # Reference Pool Core
-│   │   └── ReferencePoolInfo.cs   # Reference Pool Info
-│   ├── TaskPool/                 # Task Pool System
-│   │   ├── ITaskAgent.cs        # Task Agent Interface
-│   │   ├── StartTaskStatus.cs    # Task Status
-│   │   ├── TaskBase.cs          # Task Base
-│   │   ├── TaskInfo.cs          # Task Info
-│   │   ├── TaskPool.cs          # Task Pool Core
-│   │   └── TaskStatus.cs        # Task Status
-│   ├── Variable/                 # Variable System
-│   │   ├── GenericVariable.cs    # Generic Variable
-│   │   └── Variable.cs          # Variable Base
-│   ├── Version/                  # Version Management
-│   │   ├── Version.IVersionHelper.cs # Version Interface
-│   │   └── Version.cs           # Version Core
-│   ├── BaseComponent.cs          # Base Component
-│   ├── GameEntry.cs             # Game Entry
-│   ├── GameFrameworkComponent.cs # Framework Component
-│   ├── GameFrameworkEntry.cs    # Framework Entry
-│   ├── GameFrameworkEventArgs.cs # Framework Event Args
-│   ├── GameFrameworkException.cs # Framework Exception
-│   ├── GameFrameworkGuard.cs    # Framework Guard
-│   ├── GameFrameworkLinkedList.cs # Linked List
-│   ├── GameFrameworkLinkedListRange.cs # Linked List Range
-│   ├── GameFrameworkModule.cs   # Framework Module
-│   ├── GameFrameworkMonoSingleton.cs # Mono Singleton
-│   ├── GameFrameworkMultiDictionary.cs # Multi-Value Dictionary
-│   ├── GameFrameworkSerializer.cs # Serializer
-│   ├── GameFrameworkSingleton.cs # Singleton Base
-│   ├── ObjectDontDestroyOnLoad.cs # Scene Persistent Object
-│   └── ShutdownType.cs           # Shutdown Type
-├── Extension/                     # Extension Methods Library
-│   ├── Extension/                # Common Extensions
-│   │   ├── BidirectionalDictionary.cs # Bidirectional Dictionary
-│   │   ├── BinaryExtension.cs      # Binary Extension
-│   │   ├── BufferExtension.cs      # Buffer Extension
-│   │   ├── CollectionExtensions.cs # Collection Extensions
-│   │   ├── DateTimeExtensions.cs   # DateTime Extension
-│   │   ├── ObjectExtension.cs      # Object Extension
-│   │   ├── SpanExtension.cs        # Span Extension
-│   │   ├── StringExtensions.cs     # String Extensions
-│   │   ├── ThreadLocalRandom.cs    # Thread Local Random
-│   │   └── TypeExtensions.cs       # Type Extensions
-│   ├── SequenceReader/            # Sequence Reader
-│   │   ├── SequenceReader.cs       # Sequence Reader Core
-│   │   └── SequenceReaderExtensions.cs # Sequence Reader Extensions
-│   ├── UnityEngage.GameObject/    # GameObject Extension
-│   │   └── UnityEngage.GameObjectExtension.cs # GameObject Extension
-│   └── UnityEngine/               # Unity Type Extensions
-│       ├── Transform/             # Transform Extension
-│       ├── Vector2/               # Vector2 Extension
-│       ├── Vector3/               # Vector3 Extension
-│       └── Vector4/               # Vector4 Extension
-├── Helper/                        # Helper Classes
-│   ├── ApplicationHelper.cs      # Application Helper
-│   ├── CameraHelper.cs          # Camera Helper
-│   ├── DefaultCompressionHelper.cs # Default Compression Helper
-│   ├── DefaultLogHelper.cs       # Default Log Helper
-│   ├── DefaultTextHelper.cs      # Default Text Helper
-│   ├── DefaultVersionHelper.cs   # Default Version Helper
-│   ├── DistinctHelper.cs         # Distinct Helper
-│   ├── DoTweenHelper.cs          # DoTween Animation Helper
-│   ├── FileHelper.cs            # File Helper
-│   ├── GameObjectHelper.cs      # GameObject Helper
-│   ├── Helper.cs                # Helper Base Class
-│   ├── MathHelper.cs            # Math Helper
-│   ├── NetworkHelper.cs         # Network Helper
-│   ├── NewtonsoftJsonHelper.cs  # Newtonsoft JSON Helper
-│   ├── ObjectHelper.cs          # Object Helper
-│   ├── PathHelper.cs            # Path Helper
-│   ├── PositionHelper.cs        # Position Helper
-│   ├── RandomHelper.cs          # Random Helper
-│   ├── TimerHelper/             # Timer Helper
-│   │   ├── TimerHelper.cs       # Timer Core
-│   │   ├── TimerHelper.Current.cs # Current Time
-│   │   ├── TimerHelper.Day.cs   # Day Calculation
-│   │   ├── TimerHelper.Difference.cs # Time Difference
-│   │   ├── TimerHelper.Month.cs  # Month Calculation
-│   │   ├── TimerHelper.Range.cs  # Time Range
-│   │   ├── TimerHelper.TimeOffset.cs # Time Offset
-│   │   ├── TimerHelper.Timestamp.cs # Timestamp
-│   │   ├── TimerHelper.Week.cs   # Week Calculation
-│   │   └── TimerHelper.Year.cs   # Year Calculation
-│   ├── UnityRendererHelper.cs   # Unity Renderer Helper
-│   └── ZipHelper.cs             # ZIP Compression Helper
-├── ObjectPool/                    # Object Pool System
-│   ├── IObjectPool.cs           # Object Pool Interface
-│   ├── ObjectBase.cs            # Object Pool Base
-│   └── ObjectPoolComponent.cs   # Object Pool Component
-├── Property/                      # Property System
-│   └── BindableProperty.cs      # Bindable Property
-├── ReferencePool/                # Reference Pool System
-│   └── ReferencePoolComponent.cs # Reference Pool Component
-└── Utility/                       # Utility Classes
-    ├── Log.cs                     # Log Utility
-    ├── Utility.Assembly.cs        # Assembly Utility
-    ├── Utility.Asset.Path.cs      # Asset Path Utility
-    ├── Utility.Compression/      # Compression
-    │   ├── ICompressionHelper.cs  # Compression Interface
-    │   └── Utility.Compression.cs # Compression Core
-    ├── Utility.Const/            # Constants
-    │   └── FileNameSuffix.cs      # File Name Suffix
-    ├── Utility.Converter.cs       # Type Converter
-    ├── Utility.Encryption/        # Encryption
-    │   ├── Utility.Encryption.cs  # Encryption Core
-    │   ├── Aes.cs                # AES Encryption
-    │   ├── Rsa.cs                # RSA Encryption
-    │   └── Dsa.cs                # DSA Encryption
-    ├── Utility.File.cs           # File Operations
-    ├── Utility.Hash/             # Hash Calculation
+├── Base/                          # フレームワークコア基盤
+│   ├── DataStruct/               # データ構造体
+│   │   └── TypeNamePair.cs       # 型名ペア
+│   ├── EventPool/                # イベントプールシステム
+│   │   ├── BaseEventArgs.cs      # ベースイベント引数
+│   │   ├── EventPool.EventNode.cs # イベントノード
+│   │   ├── EventPool.cs          # イベントプールコア
+│   │   └── EventPoolMode.cs      # イベントプールモード
+│   ├── Log/                      # ログシステム
+│   │   ├── GameFrameworkLog.ILogHelper.cs # ログインターフェース
+│   │   ├── GameFrameworkLog.cs   # ログコア
+│   │   └── GameFrameworkLogLevel.cs # ログレベル
+│   ├── ReferencePool/            # 参照プールシステム
+│   │   ├── IReference.cs        # 参照インターフェース
+│   │   ├── ReferencePool.ReferenceCollection.cs # 参照コレクション
+│   │   ├── ReferencePool.cs      # 参照プールコア
+│   │   └── ReferencePoolInfo.cs   # 参照プール情報
+│   ├── TaskPool/                 # タスクプールシステム
+│   │   ├── ITaskAgent.cs        # タスクエージェントインターフェース
+│   │   ├── StartTaskStatus.cs    # タスクステータス
+│   │   ├── TaskBase.cs          # タスクベース
+│   │   ├── TaskInfo.cs          # タスク情報
+│   │   ├── TaskPool.cs          # タスクプールコア
+│   │   └── TaskStatus.cs        # タスクステータス
+│   ├── Variable/                 # 変数システム
+│   │   ├── GenericVariable.cs    # ジェネリック変数
+│   │   └── Variable.cs          # 変数ベース
+│   ├── Version/                  # バージョン管理
+│   │   ├── Version.IVersionHelper.cs # バージョンインターフェース
+│   │   └── Version.cs           # バージョンコア
+│   ├── BaseComponent.cs          # ベースコンポーネント
+│   ├── GameEntry.cs             # ゲームエントリー
+│   ├── GameFrameworkComponent.cs # フレームワークコンポーネント
+│   ├── GameFrameworkEntry.cs    # フレームワークエントリー
+│   ├── GameFrameworkEventArgs.cs # フレームワークイベント引数
+│   ├── GameFrameworkException.cs # フレームワーク例外
+│   ├── GameFrameworkGuard.cs    # フレームワークガード
+│   ├── GameFrameworkLinkedList.cs # 連結リスト
+│   ├── GameFrameworkLinkedListRange.cs # 連結リスト範囲
+│   ├── GameFrameworkModule.cs   # フレームワークモジュール
+│   ├── GameFrameworkMonoSingleton.cs # Monoシングルトン
+│   ├── GameFrameworkMultiDictionary.cs # マルチ値辞書
+│   ├── GameFrameworkSerializer.cs # シリアライザー
+│   ├── GameFrameworkSingleton.cs # シングルトンベース
+│   ├── ObjectDontDestroyOnLoad.cs # シーン永続オブジェクト
+│   └── ShutdownType.cs           # シャットダウンタイプ
+├── Extension/                     # 拡張メソッドライブラリ
+│   ├── Extension/                # 共通拡張
+│   │   ├── BidirectionalDictionary.cs # 双方向辞書
+│   │   ├── BinaryExtension.cs      # バイナリ拡張
+│   │   ├── BufferExtension.cs      # バッファ拡張
+│   │   ├── CollectionExtensions.cs # コレクション拡張
+│   │   ├── DateTimeExtensions.cs   # DateTime拡張
+│   │   ├── ObjectExtension.cs      # オブジェクト拡張
+│   │   ├── SpanExtension.cs        # Span拡張
+│   │   ├── StringExtensions.cs     # 文字列拡張
+│   │   ├── ThreadLocalRandom.cs    # スレッドローカル乱数
+│   │   └── TypeExtensions.cs       # 型拡張
+│   ├── SequenceReader/            # シーケンスリーダー
+│   │   ├── SequenceReader.cs       # シーケンスリーダーコア
+│   │   └── SequenceReaderExtensions.cs # シーケンスリーダー拡張
+│   ├── UnityEngage.GameObject/    # GameObject拡張
+│   │   └── UnityEngage.GameObjectExtension.cs # GameObject拡張
+│   └── UnityEngine/               # Unity型拡張
+│       ├── Transform/             # Transform拡張
+│       ├── Vector2/               # Vector2拡張
+│       ├── Vector3/               # Vector3拡張
+│       └── Vector4/               # Vector4拡張
+├── Helper/                        # ヘルパークラス
+│   ├── ApplicationHelper.cs      # アプリケーションヘルパー
+│   ├── CameraHelper.cs          # カメラヘルパー
+│   ├── DefaultCompressionHelper.cs # デフォルト圧縮ヘルパー
+│   ├── DefaultLogHelper.cs       # デフォルトログヘルパー
+│   ├── DefaultTextHelper.cs      # デフォルトテキストヘルパー
+│   ├── DefaultVersionHelper.cs   # デフォルトバージョンヘルパー
+│   ├── DistinctHelper.cs         # 重複除去ヘルパー
+│   ├── DoTweenHelper.cs          # DoTweenアニメーションヘルパー
+│   ├── FileHelper.cs            # ファイルヘルパー
+│   ├── GameObjectHelper.cs      # GameObjectヘルパー
+│   ├── Helper.cs                # ヘルパーベースクラス
+│   ├── MathHelper.cs            # 数学ヘルパー
+│   ├── NetworkHelper.cs         # ネットワークヘルパー
+│   ├── NewtonsoftJsonHelper.cs  # Newtonsoft JSONヘルパー
+│   ├── ObjectHelper.cs          # オブジェクトヘルパー
+│   ├── PathHelper.cs            # パスヘルパー
+│   ├── PositionHelper.cs        # 位置ヘルパー
+│   ├── RandomHelper.cs          # 乱数ヘルパー
+│   ├── TimerHelper/             # タイマーヘルパー
+│   │   ├── TimerHelper.cs       # タイマーコア
+│   │   ├── TimerHelper.Current.cs # 現在時刻
+│   │   ├── TimerHelper.Day.cs   # 日計算
+│   │   ├── TimerHelper.Difference.cs # 時間差
+│   │   ├── TimerHelper.Month.cs  # 月計算
+│   │   ├── TimerHelper.Range.cs  # 時間範囲
+│   │   ├── TimerHelper.TimeOffset.cs # タイムオフセット
+│   │   ├── TimerHelper.Timestamp.cs # タイムスタンプ
+│   │   ├── TimerHelper.Week.cs   # 週計算
+│   │   └── TimerHelper.Year.cs   # 年計算
+│   ├── UnityRendererHelper.cs   # UnityRendererヘルパー
+│   └── ZipHelper.cs             # ZIP圧縮ヘルパー
+├── ObjectPool/                    # オブジェクトプールシステム
+│   ├── IObjectPool.cs           # オブジェクトプールインターフェース
+│   ├── ObjectBase.cs            # オブジェクトプールベース
+│   └── ObjectPoolComponent.cs   # オブジェクトプールコンポーネント
+├── Property/                      # プロパティシステム
+│   └── BindableProperty.cs      # バインディング可能プロパティ
+├── ReferencePool/                # 参照プールシステム
+│   └── ReferencePoolComponent.cs # 参照プールコンポーネント
+└── Utility/                       # ユーティリティクラス
+    ├── Log.cs                     # ログユーティリティ
+    ├── Utility.Assembly.cs        # アセンブリユーティリティ
+    ├── Utility.Asset.Path.cs      # アセットパスユーティリティ
+    ├── Utility.Compression/      # 圧縮
+    │   ├── ICompressionHelper.cs  # 圧縮インターフェース
+    │   └── Utility.Compression.cs # 圧縮コア
+    ├── Utility.Const/            # 定数
+    │   └── FileNameSuffix.cs      # ファイル名サフィックス
+    ├── Utility.Converter.cs       # 型コンバーター
+    ├── Utility.Encryption/        # 暗号化
+    │   ├── Utility.Encryption.cs  # 暗号化コア
+    │   ├── Aes.cs                # AES暗号化
+    │   ├── Rsa.cs                # RSA暗号化
+    │   └── Dsa.cs                # DSA暗号化
+    ├── Utility.File.cs           # ファイル操作
+    ├── Utility.Hash/             # ハッシュ計算
     │   ├── HMACSha256.cs         # HMAC SHA256
     │   ├── Md5.cs                # MD5
     │   ├── Sha1.cs               # SHA1
     │   ├── MurmurHash3.cs        # MurmurHash3
     │   └── XxHash.cs             # XxHash
-    ├── Utility.IdGenerator.cs     # ID Generator
-    ├── Utility.Json/             # JSON Serialization
-    │   ├── IJsonHelper.cs        # JSON Interface
-    │   └── Utility.Json.cs       # JSON Core
-    ├── Utility.Marshal.cs         # Marshal Utility
-    ├── Utility.Net.cs            # Network Utility
-    ├── Utility.Object.cs          # Object Utility
-    ├── Utility.Path.cs           # Path Handling
-    ├── Utility.Random.cs         # Random Number
-    ├── Utility.Text/             # Text Processing
-    │   ├── ITextHelper.cs        # Text Interface
-    │   └── Utility.Text.cs       # Text Core
-    ├── Utility.Verifier/          # Verifier
-    │   ├── Verifier.cs           # Verifier Core
+    ├── Utility.IdGenerator.cs     # IDジェネレーター
+    ├── Utility.Json/             # JSONシリアライズ
+    │   ├── IJsonHelper.cs        # JSONインターフェース
+    │   └── Utility.Json.cs       # JSONコア
+    ├── Utility.Marshal.cs         # Marshalユーティリティ
+    ├── Utility.Net.cs            # ネットワークユーティリティ
+    ├── Utility.Object.cs          # オブジェクトユーティリティ
+    ├── Utility.Path.cs           # パス処理
+    ├── Utility.Random.cs         # 乱数
+    ├── Utility.Text/             # テキスト処理
+    │   ├── ITextHelper.cs        # テキストインターフェース
+    │   └── Utility.Text.cs       # テキストコア
+    ├── Utility.Verifier/          # 検証
+    │   ├── Verifier.cs           # 検証コア
     │   ├── Crc32.cs             # CRC32
     │   └── Crc64.cs             # CRC64
-    ├── Utility.cs                # Utility Entry
-    └── XString.cs                # Efficient String
+    ├── Utility.cs                # ユーティリティエントリー
+    └── XString.cs                # 高効率文字列
 ```
 
-#### Runtime Sub-Modules
+#### Runtime サブモジュール
 
-| Sub-Module | Description | Main Features |
+| サブモジュール | 説明 | 主な機能 |
 |------------|-------------|---------------|
-| **Base** | Framework Core | Component management, event pool, logging, reference pool, task pool, variable system, lifecycle management, singleton pattern |
-| **Extension** | Extension Library | Common extensions (string, collection, datetime), Unity type extensions (Transform, Vector), sequence reader, GameObject extensions |
-| **Helper** | Helper Classes | Application, camera, file, path, math, random, timer, network, JSON, rendering, position and more |
-| **ObjectPool** | Object Pool System | Object reuse, memory optimization, performance improvement |
-| **Property** | Property System | Bindable properties, data binding, MVVM support |
-| **ReferencePool** | Reference Pool System | Reference type management, GC optimization |
-| **Utility** | Utility Classes | Encryption (AES/RSA/DSA), compression, hash (MD5/SHA1/HMAC), CRC, JSON, file operations, ID generation, type conversion, text processing, logging |
+| **Base** | フレームワークコア | コンポーネント管理、イベントプール、ログ、参照プール、タスクプール、変数システム、ライフサイクル管理、シングルトンパターン |
+| **Extension** | 拡張ライブラリ | 共通拡張（文字列、コレクション、日時）、Unity型拡張（Transform、Vector）、シーケンスリーダー、GameObject拡張 |
+| **Helper** | ヘルパークラス | アプリケーション、カメラ、ファイル、パス、数学、乱数、タイマー、ネットワーク、JSON、レンダリング、位置など |
+| **ObjectPool** | オブジェクトプールシステム | オブジェクト再利用、メモリ最適化、パフォーマンス向上 |
+| **Property** | プロパティシステム | バインディング可能プロパティ、データバインディング、MVVMサポート |
+| **ReferencePool** | 参照プールシステム | 参照型管理、GC最適化 |
+| **Utility** | ユーティリティクラス | 暗号化（AES/RSA/DSA）、圧縮、ハッシュ（MD5/SHA1/HMAC）、CRC、JSON、ファイル操作、ID生成、型変換、テキスト処理、ログ |
 
-### 🔌 Plugins Module
+### 🔌 Plugins モジュール
 
-Native platform plugins and third-party dependencies.
+ネイティブプラットフォームプラグインとサードパーティ依存関係です。
 
 ```
 Plugins/
-├── iOS/                          # iOS Native Plugin
+├── iOS/                          # iOSネイティブプラグイン
 │   └── GameFrameX/
-│       ├── GameFrameX.mm                    # Core Functionality
-│       └── GameFrameXTrackingAuthorization.mm # Permission Tracking
-├── ICSharpCode.SharpZipLib.dll   # ZIP Compression Library
-├── Microsoft.NET.StringTools.dll  # String Tools
-├── System.Buffers.dll            # Memory Buffer
-├── System.IO.Pipelines.dll       # IO Pipeline
-├── System.Memory.dll            # Memory Management
-└── System.Runtime.CompilerServices.Unsafe.dll # Runtime Support
+│       ├── GameFrameX.mm                    # コア機能
+│       └── GameFrameXTrackingAuthorization.mm # 許可トラッキング
+├── ICSharpCode.SharpZipLib.dll   # ZIP圧縮ライブラリ
+├── Microsoft.NET.StringTools.dll  # 文字列ツール
+├── System.Buffers.dll            # メモリバッファ
+├── System.IO.Pipelines.dll       # IOパイプライン
+├── System.Memory.dll            # メモリ管理
+└── System.Runtime.CompilerServices.Unsafe.dll # ランタイムサポート
 ```
 
-#### Plugins Sub-Modules
+#### Plugins サブモジュール
 
-| Sub-Module | Description | Dependencies |
+| サブモジュール | 説明 | 依存関係 |
 |------------|-------------|--------------|
-| **iOS Plugin** | iOS native functionality | GameFrameX.mm |
-| **Compression Library** | ZIP file compression/decompression | SharpZipLib |
-| **Memory Management** | Efficient memory operations | StringTools, Memory, Buffers |
-| **Runtime Support** | .NET runtime extensions | CompilerServices.Unsafe |
+| **iOS Plugin** | iOSネイティブ機能 | GameFrameX.mm |
+| **Compression Library** | ZIPファイル圧縮/解凍 | SharpZipLib |
+| **Memory Management** | 効率的なメモリ操作 | StringTools, Memory, Buffers |
+| **Runtime Support** | .NETランタイム拡張 | CompilerServices.Unsafe |
 
-### 🛠️ Editor Module
+### 🛠️ Editor モジュール
 
-Editor tools and extensions for improved development efficiency.
+開発効率を向上させるためのエディタツールと拡張機能です。
 
 ```
 Editor/
-├── BuildHotfix/                  # Hotfix Build Tools
-│   ├── BuildHotfixHelper.cs     # Build Helper
-│   ├── HotFixAssemblyDefinitionHelper.cs # Hotfix Assembly
-│   └── HotFixEditorCompilerHelper.cs # Editor Compiler
-├── BuildProduct/                 # Product Build Assistant
-│   ├── BuildProductHelper.cs    # Build Helper
-│   ├── BuildPostProcessHelper.cs # Post Build Processing
-│   ├── IBuilderPreHookHandler.cs # Pre-Build Hook
-│   └── IBuilderPostHookHandler.cs # Post-Build Hook
-├── BuildWebGLTools/             # WebGL Build Tools
-│   └── BuildWebGLToolsWithHybridCLR.cs # HybridCLR WebGL Build
-├── Cropping/                     # Image Cropping Tool
-│   └── CroppingWindow.cs        # Cropping Window
-├── Inspector/                    # Custom Inspector Panels
-│   ├── BaseComponentInspector.cs # Base Component Inspector
-│   ├── ObjectPoolComponentInspector.cs # Object Pool Inspector
-│   └── ReferencePoolComponentInspector.cs # Reference Pool Inspector
-├── InspectorLockShortcut/        # Inspector Lock
-│   └── InspectorLockShortcut.cs # Keyboard Shortcut Lock
-├── MiniGame/                      # Mini Game Platform Adaptation ⭐
-│   ├── MiniGameDefineSymbolHelper.cs # Base Define Symbol Manager
+├── BuildHotfix/                  # ホットフィックスビルドツール
+│   ├── BuildHotfixHelper.cs     # ビルドヘルパー
+│   ├── HotFixAssemblyDefinitionHelper.cs # ホットフィックスアセンブリ
+│   └── HotFixEditorCompilerHelper.cs # エディタコンパイラ
+├── BuildProduct/                 # プロダクトビルドアシスタント
+│   ├── BuildProductHelper.cs    # ビルドヘルパー
+│   ├── BuildPostProcessHelper.cs # ポストビルド処理
+│   ├── IBuilderPreHookHandler.cs # プレビルドフック
+│   └── IBuilderPostHookHandler.cs # ポストビルドフック
+├── BuildWebGLTools/             # WebGLビルドツール
+│   └── BuildWebGLToolsWithHybridCLR.cs # HybridCLR WebGLビルド
+├── Cropping/                     # 画像トリミングツール
+│   └── CroppingWindow.cs        # トリミングウィンドウ
+├── Inspector/                    # カスタムインスペクタパネル
+│   ├── BaseComponentInspector.cs # ベースコンポーネントインスペクタ
+│   ├── ObjectPoolComponentInspector.cs # オブジェクトプールインスペクタ
+│   └── ReferencePoolComponentInspector.cs # 参照プールインスペクタ
+├── InspectorLockShortcut/        # インスペクタロック
+│   └── InspectorLockShortcut.cs # キーボードショートカットロック
+├── MiniGame/                      # ミニゲームプラットフォーム対応 ⭐
+│   ├── MiniGameDefineSymbolHelper.cs # ベース定義シンボルマネージャー
 │   ├── MiniGameDefineSymbolHelper.WeChat.cs # WeChat
 │   ├── MiniGameDefineSymbolHelper.Alipay.cs # Alipay
 │   ├── MiniGameDefineSymbolHelper.DouYin.cs # DouYin
@@ -296,57 +298,57 @@ Editor/
 │   ├── MiniGameDefineSymbolHelper.TapTap.cs # TapTap
 │   ├── MiniGameDefineSymbolHelper.Meituan.cs # Meituan
 │   └── MiniGameDefineSymbolHelper.Bilibili.cs # Bilibili
-├── PackageManager/               # Package Manager Window
-│   ├── PackageManagerWindow.cs   # Package Manager Window
-│   └── PackagesManifest.cs     # Package Manifest
-├── UpdatePackages/               # Package Update Tools
-│   └── UpdateAllPackageHelper.cs # Batch Update
-├── Welcome/                      # Welcome Window
-│   └── WelcomeWindow.cs         # Welcome Interface
-└── Misc/                         # Miscellaneous Tools
-    ├── HelperInfo.cs            # Helper Info
-    ├── LogRedirection.cs        # Log Redirection
-    ├── ScriptingDefineSymbols.cs # Define Symbol Manager
-    ├── Type.cs                  # Type Utility
-    └── OpenFolder.cs            # Open Folder
+├── PackageManager/               # パッケージマネージャーウィンドウ
+│   ├── PackageManagerWindow.cs   # パッケージマネージャーウィンドウ
+│   └── PackagesManifest.cs     # パッケージマニフェスト
+├── UpdatePackages/               # パッケージ更新ツール
+│   └── UpdateAllPackageHelper.cs # 一括更新
+├── Welcome/                      # ウェルカムウィンドウ
+│   └── WelcomeWindow.cs         # ウェルカムインターフェース
+└── Misc/                         # その他のツール
+    ├── HelperInfo.cs            # ヘルパー情報
+    ├── LogRedirection.cs        # ログリダイレクション
+    ├── ScriptingDefineSymbols.cs # 定義シンボルマネージャー
+    ├── Type.cs                  # 型ユーティリティ
+    └── OpenFolder.cs            # フォルダを開く
 ```
 
-#### Editor Sub-Modules
+#### Editor サブモジュール
 
-| Sub-Module | Description | Main Features |
+| サブモジュール | 説明 | 主な機能 |
 |------------|-------------|---------------|
-| **BuildHotfix** | Hotfix Build | HybridCLR hotfix assembly build and management |
-| **BuildProduct** | Product Build | Build process automation, pre/post hooks |
-| **BuildWebGLTools** | WebGL Build | WebGL platform specific build tools |
-| **Cropping** | Image Cropping | Visual image cropping tool |
-| **Inspector** | Custom Inspectors | Object pool, reference pool visual monitoring |
-| **InspectorLockShortcut** | Inspector Lock | Keyboard shortcut for locking Inspector panel |
-| **MiniGame** | Mini Game Adaptation | One-click switch between 8 mini game platforms |
-| **PackageManager** | Package Management | Visual package management interface |
-| **UpdatePackages** | Package Update | Batch update project dependencies |
-| **Welcome** | Welcome Interface | New user guide and quick access |
-| **Misc** | Miscellaneous | Logging, define symbols, types and more |
+| **BuildHotfix** | ホットフィックスビルド | HybridCLRホットフィックスアセンブリのビルド与管理 |
+| **BuildProduct** | プロダクトビルド | ビルドプロセスの自動化、プレ/ポストフック |
+| **BuildWebGLTools** | WebGLビルド | WebGLプラットフォーム固有のビルドツール |
+| **Cropping** | 画像トリミング | ビジュアル画像トリミングツール |
+| **Inspector** | カスタムインスペクタ | オブジェクトプール、参照プールのビジュアルモニタリング |
+| **InspectorLockShortcut** | インスペクタロック | インスペクタパネルのロック用キーボードショートカット |
+| **MiniGame** | ミニゲーム対応 | 8つのミニゲームプラットフォームへのワンクリック切り替え |
+| **PackageManager** | パッケージ管理 | ビジュアルパッケージ管理インターフェース |
+| **UpdatePackages** | パッケージ更新 | プロジェクト依存関係の一括更新 |
+| **Welcome** | ウェルカムインターフェース | 新規ユーザーガイドとクイックアクセス |
+| **Misc** | その他 | ログ、定義シンボル、型など |
 
 ---
 
-## 🚀 Quick Start
+## 🚀 クイックスタート
 
-### Installation
+### インストール
 
-#### Method 1: Unity Package Manager (Recommended)
+#### 方法1: Unity Package Manager（推奨）
 
-1. Open Unity Editor
-2. Go to `Window` → `Package Manager`
-3. Click the `+` button in the top-left corner
-4. Select `Add package from git URL`
-5. Enter: `https://github.com/GameFrameX/com.gameframex.unity.git`
+1. Unityエディタを開く
+2. `Window` → `Package Manager` に移動
+3. 左上の `+` ボタンをクリック
+4. `Add package from git URL` を選択
+5. 次を入力: `https://github.com/GameFrameX/com.gameframex.unity.git`
 
-#### Method 2: Manual Download
+#### 方法2: 手動ダウンロード
 
-1. Download the latest [Release](https://github.com/GameFrameX/com.gameframex.unity/releases)
-2. Extract to your project's `Packages` directory
+1. 最新の[リリース](https://github.com/GameFrameX/com.gameframex.unity/releases)をダウンロード
+2. プロジェクトの `Packages` ディレクトリに展開
 
-### Basic Usage
+### 基本的な使用方法
 
 ```csharp
 using GameFrameX.Runtime;
@@ -355,13 +357,13 @@ public class GameManager : MonoBehaviour
 {
     void Start()
     {
-        // Get object pool component
+        // オブジェクトプールコンポーネントを取得
         var objectPool = GameEntry.GetComponent<ObjectPoolComponent>();
         
-        // Get reference pool component
+        // 参照プールコンポーネントを取得
         var referencePool = GameEntry.GetComponent<ReferencePoolComponent>();
         
-        // Use extension methods
+        // 拡張メソッドを使用
         transform.SetPositionX(10f);
         gameObject.SetActiveOptimized(true);
     }
@@ -370,91 +372,91 @@ public class GameManager : MonoBehaviour
 
 ---
 
-## 💡 Usage Examples
+## 💡 使用例
 
-### Runtime Usage Examples
+### Runtime 使用例
 
-#### 🎯 Object Pool System
+#### 🎯 オブジェクトプールシステム
 
 ```csharp
-// Get object pool component
+// オブジェクトプールコンポーネントを取得
 var objectPool = GameEntry.GetComponent<ObjectPoolComponent>();
 
-// Create object pool
+// オブジェクトプールを作成
 objectPool.CreatePool<MyObject>("MyObjectPool", 10, 100);
 
-// Spawn object from pool
+// プールからオブジェクトを生成
 var obj = objectPool.Spawn<MyObject>("MyObjectPool");
 
-// Return object to pool
+// オブジェクトをプールに返却
 objectPool.Unspawn(obj);
 
-// Destroy object pool
+// オブジェクトプールを破棄
 objectPool.DestroyPool("MyObjectPool");
 ```
 
-#### 📝 Extension Methods
+#### 📝 拡張メソッド
 
 ```csharp
-// Transform extensions
+// Transform拡張
 transform.SetPositionX(10f);
 transform.SetLocalScaleXYZ(2f, 2f, 2f);
 transform.ResetTransformation();
 
-// Vector3 extensions
+// Vector3拡張
 Vector3 pos = transform.position;
 pos = pos.WithX(5f).WithY(10f);
 
-// GameObject extensions
+// GameObject拡張
 gameObject.SetActiveOptimized(true);
 gameObject.SetLayerRecursively(LayerMask.NameToLayer("UI"));
 ```
 
-#### 🔐 Utility Classes
+#### 🔐 ユーティリティクラス
 
 ```csharp
-// File operations
+// ファイル操作
 Utility.File.WriteAllBytes("path/to/file", data);
 byte[] content = Utility.File.ReadAllBytes("path/to/file");
 
-// AES encryption/decryption
+// AES暗号化/復号化
 string encrypted = Utility.Encryption.Aes.Encrypt("plaintext", "key");
 string decrypted = Utility.Encryption.Aes.Decrypt(encrypted, "key");
 
-// Hash calculation
+// ハッシュ計算
 string md5 = Utility.Hash.Md5.ComputeHash("input");
 string sha1 = Utility.Hash.Sha1.ComputeHash("input");
 
-// JSON serialization
+// JSONシリアライズ
 var json = Utility.Json.ToJson(myObject);
 var obj = Utility.Json.FromJson<MyClass>(json);
 ```
 
-#### 📡 Event System
+#### 📡 イベントシステム
 
 ```csharp
-// Define event args
+// イベント引数を定義
 public class PlayerDeadEventArgs : BaseEventArgs
 {
     public int PlayerId { get; set; }
     public float Damage { get; set; }
 }
 
-// Subscribe to event
+// イベントを購読
 GameEntry.Event.Subscribe(PlayerDeadEventArgs.EventId, OnPlayerDead);
 
-// Fire event
+// イベントを発火
 GameEntry.Event.Fire(this, PlayerDeadEventArgs.Create(playerId, damage));
 
-// Unsubscribe from event
+// イベントの購読解除
 GameEntry.Event.Unsubscribe(PlayerDeadEventArgs.EventId, OnPlayerDead);
 ```
 
-### Editor Tools
+### Editor ツール
 
-#### 🎮 Mini Game Platform Adaptation
+#### 🎮 ミニゲームプラットフォーム対応
 
-Quickly switch between mini game platforms in Unity menu:
+Unityメニューのミニゲームプラットフォーム間を簡単に切り替え:
 
 ```
 GameFrameX/
@@ -469,7 +471,7 @@ GameFrameX/
 │   └── Enable Bilibili Mini Game
 ```
 
-#### 🏗️ Build Tools
+#### 🏗️ ビルドツール
 
 ```
 GameFrameX/
@@ -478,7 +480,7 @@ GameFrameX/
 └── Build WebGL With HybridCLR
 ```
 
-#### 📦 Package Management
+#### 📦 パッケージ管理
 
 ```
 GameFrameX/
@@ -488,115 +490,115 @@ GameFrameX/
 
 ---
 
-## 🎯 Platform Support
+## 🎯 プラットフォーム対応
 
-### Operating Systems
+### オペレーティングシステム
 
-| Platform | Status | Supported Version |
+| プラットフォーム | ステータス | 対応バージョン |
 |----------|--------|-------------------|
-| Windows | ✅ Supported | Unity 2019.4+ |
-| macOS | ✅ Supported | Unity 2019.4+ |
-| Linux | ✅ Supported | Unity 2019.4+ |
-| iOS | ✅ Supported | Unity 2019.4+ |
-| Android | ✅ Supported | Unity 2019.4+ |
-| WebGL | ✅ Supported | Unity 2019.4+ |
+| Windows | ✅ 対応 | Unity 2019.4以上 |
+| macOS | ✅ 対応 | Unity 2019.4以上 |
+| Linux | ✅ 対応 | Unity 2019.4以上 |
+| iOS | ✅ 対応 | Unity 2019.4以上 |
+| Android | ✅ 対応 | Unity 2019.4以上 |
+| WebGL | ✅ 対応 | Unity 2019.4以上 |
 
-### Mini Game Platform Adaptation
+### ミニゲームプラットフォーム対応
 
-GameFrameX provides one-click mini game platform adaptation, supporting **21 mainstream mini game platforms** worldwide:
+GameFrameXはワンクリックでミニゲームプラットフォームに対応し、世界の各国の**21の主流ミニゲームプラットフォーム**をサポートしています:
 
-#### 🇨🇳 China Mainland Platforms (14)
+#### 🇨🇳 中国本土プラットフォーム（14）
 
-| Platform | Define Symbol | Region | Menu Priority |
+| プラットフォーム | 定義シンボル | 地域 | メニュー優先度 |
 |----------|---------------|--------|---------------|
-| WeChat Mini Game | `ENABLE_WECHAT_MINI_GAME` / `WEIXINMINIGAME` | 🇨🇳 China | 2000 |
-| DouYin Mini Game | `ENABLE_DOUYIN_MINI_GAME` / `DOUYINMINIGAME` | 🇨🇳 China | 2100 |
-| KuaiShou Mini Game | `ENABLE_KUAISHOU_MINI_GAME` / `KUAISHOUMINIGAME` | 🇨🇳 China | 2200 |
-| Baidu Mini Game | `ENABLE_BAIDU_MINI_GAME` / `BAIDUMINIGAME` | 🇨🇳 China | 2300 |
-| Alipay Mini Game | `ENABLE_ALIPAY_MINI_GAME` / `ALIPAYMINIGAME` | 🇨🇳 China | 2400 |
-| JD Mini Game | `ENABLE_JINGDONG_MINI_GAME` / `JINGDONGMINIGAME` | 🇨🇳 China | 2500 |
-| Taobao Mini Program | `ENABLE_TAOBAO_MINI_GAME` / `TAOBAOMINIGAME` | 🇨🇳 China | 2600 |
-| TapTap Mini Game | `ENABLE_TAPTAP_MINI_GAME` / `TAPTAPMINIGAME` | 🇨🇳 China | 2700 |
-| Meituan Mini Game | `ENABLE_MEITUAN_MINI_GAME` / `MEITUANMINIGAME` | 🇨🇳 China | 2800 |
-| Bilibili Mini Game | `ENABLE_BILIBILI_MINI_GAME` / `BILIBILIMINIGAME` | 🇨🇳 China | 2900 |
-| vivo Mini Game | `ENABLE_VIVO_MINI_GAME` / `VIVOMINIGAME` | 🇨🇳 China | 3100 |
-| OPPO Mini Game | `ENABLE_OPPO_MINI_GAME` / `OPPOSMINIGAME` | 🇨🇳 China | 3200 |
-| Xiaomi Mini Game | `ENABLE_XIAOMI_MINI_GAME` / `XIAOMIMINIGAME` | 🇨🇳 China | 3300 |
-| Huawei Mini Game | `ENABLE_HUAWEI_MINI_GAME` / `HUAWEIMINIGAME` | 🇨🇳 China | 3400 |
+| WeChat ミニゲーム | `ENABLE_WECHAT_MINI_GAME` / `WEIXINMINIGAME` | 🇨🇳 中国 | 2000 |
+| DouYin ミニゲーム | `ENABLE_DOUYIN_MINI_GAME` / `DOUYINMINIGAME` | 🇨🇳 中国 | 2100 |
+| KuaiShou ミニゲーム | `ENABLE_KUAISHOU_MINI_GAME` / `KUAISHOUMINIGAME` | 🇨🇳 中国 | 2200 |
+| Baidu ミニゲーム | `ENABLE_BAIDU_MINI_GAME` / `BAIDUMINIGAME` | 🇨🇳 中国 | 2300 |
+| Alipay ミニゲーム | `ENABLE_ALIPAY_MINI_GAME` / `ALIPAYMINIGAME` | 🇨🇳 中国 | 2400 |
+| JD ミニゲーム | `ENABLE_JINGDONG_MINI_GAME` / `JINGDONGMINIGAME` | 🇨🇳 中国 | 2500 |
+| Taobao ミニプログラム | `ENABLE_TAOBAO_MINI_GAME` / `TAOBAOMINIGAME` | 🇨🇳 中国 | 2600 |
+| TapTap ミニゲーム | `ENABLE_TAPTAP_MINI_GAME` / `TAPTAPMINIGAME` | 🇨🇳 中国 | 2700 |
+| Meituan ミニゲーム | `ENABLE_MEITUAN_MINI_GAME` / `MEITUANMINIGAME` | 🇨🇳 中国 | 2800 |
+| Bilibili ミニゲーム | `ENABLE_BILIBILI_MINI_GAME` / `BILIBILIMINIGAME` | 🇨🇳 中国 | 2900 |
+| vivo ミニゲーム | `ENABLE_VIVO_MINI_GAME` / `VIVOMINIGAME` | 🇨🇳 中国 | 3100 |
+| OPPO ミニゲーム | `ENABLE_OPPO_MINI_GAME` / `OPPOSMINIGAME` | 🇨🇳 中国 | 3200 |
+| Xiaomi ミニゲーム | `ENABLE_XIAOMI_MINI_GAME` / `XIAOMIMINIGAME` | 🇨🇳 中国 | 3300 |
+| Huawei ミニゲーム | `ENABLE_HUAWEI_MINI_GAME` / `HUAWEIMINIGAME` | 🇨🇳 中国 | 3400 |
 
-#### 🌍 Global Platforms (7)
+#### 🌍 グローバルプラットフォーム（7）
 
-| Platform | Define Symbol | Region | Menu Priority |
+| プラットフォーム | 定義シンボル | 地域 | メニュー優先度 |
 |----------|---------------|--------|---------------|
-| Discord | `ENABLE_DISCORD_MINI_GAME` / `DISCORDMINIGAME` | 🌍 Global | 2700 |
-| YouTube | `ENABLE_YOUTUBE_MINI_GAME` / `YOUTUBEMINIGAME` | 🌍 Global | 2800 |
-| Facebook | `ENABLE_FACEBOOK_MINI_GAME` / `FACEBOOKMINIGAME` | 🌍 Global | 2900 |
-| Google Play | `ENABLE_GOOGLEPLAY_MINI_GAME` / `GOOGLEPLAYMINIGAME` | 🌍 Global | 3000 |
-| TikTok | `ENABLE_TIKTOK_MINI_GAME` / `TIKTOKMINIGAME` | 🌍 Global | 3500 |
-| CrazyGames | `ENABLE_CRAZYGAMES_MINI_GAME` / `CRAZYGAMESMINIGAME` | 🌍 Global | 3600 |
-| Poki | `ENABLE_POKI_MINI_GAME` / `POKIMINIGAME` | 🌍 Global | 3700 |
+| Discord | `ENABLE_DISCORD_MINI_GAME` / `DISCORDMINIGAME` | 🌍 グローバル | 2700 |
+| YouTube | `ENABLE_YOUTUBE_MINI_GAME` / `YOUTUBEMINIGAME` | 🌍 グローバル | 2800 |
+| Facebook | `ENABLE_FACEBOOK_MINI_GAME` / `FACEBOOKMINIGAME` | 🌍 グローバル | 2900 |
+| Google Play | `ENABLE_GOOGLEPLAY_MINI_GAME` / `GOOGLEPLAYMINIGAME` | 🌍 グローバル | 3000 |
+| TikTok | `ENABLE_TIKTOK_MINI_GAME` / `TIKTOKMINIGAME` | 🌍 グローバル | 3500 |
+| CrazyGames | `ENABLE_CRAZYGAMES_MINI_GAME` / `CRAZYGAMESMINIGAME` | 🌍 グローバル | 3600 |
+| Poki | `ENABLE_POKI_MINI_GAME` / `POKIMINIGAME` | 🌍 グローバル | 3700 |
 
-#### Define Symbol Details
+#### 定義シンボルの詳細
 
-- **Unified Define**: `ENABLE_WEBGL_MINI_GAME` - Shared by all mini game platforms
-- **Platform Defines**: Independent defines for conditional compilation per platform
-- **Mutex Mechanism**: Enabling one mini game platform automatically disables others
-- **Menu Path**: `GameFrameX/Scripting Define Symbols/Enable [Platform] Mini Game`
-
----
-
-## 📚 Documentation & Resources
-
-- 📖 **Full Documentation**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
-- 🎯 **API Reference**: [API Documentation](https://gameframex.doc.alianblank.com/api)
-- 📝 **Example Projects**: [Examples Repository](https://github.com/GameFrameX/Examples)
-- 🎬 **Video Tutorials**: [YouTube Channel](https://youtube.com/gameframex)
+- **統合定義**: `ENABLE_WEBGL_MINI_GAME` - すべてのミニゲームプラットフォームで共有
+- **プラットフォーム定義**: 各プラットフォームの条件付きコンパイル用の独立定義
+- **相互排他メカニズム**: 1つのミニゲームプラットフォームを有効にすると、他のプラットフォームが自動的に無効になります
+- **メニュースパス**: `GameFrameX/Scripting Define Symbols/Enable [Platform] Mini Game`
 
 ---
 
-## 🤝 Community & Support
+## 📚 ドキュメントとリソース
 
-- 💬 **QQ Group**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
-- 🐛 **Issue Tracker**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity/issues)
-- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity/discussions)
+- 📖 **完全なドキュメント**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
+- 🎯 **APIリファレンス**: [APIドキュメント](https://gameframex.doc.alianblank.com/api)
+- 📝 **サンプルプロジェクト**: [サンプルレポジトリ](https://github.com/GameFrameX/Examples)
+- 🎬 **ビデオチュートリアル**: [YouTubeチャンネル](https://youtube.com/gameframex)
 
 ---
 
-## 🔄 Changelog
+## 🤝 コミュニティとサポート
+
+- 💬 **QQグループ**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
+- 🐛 **イシュートラッカー**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity/issues)
+- 💡 **機能リクエスト**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity/discussions)
+
+---
+
+## 🔄 変更履歴
 
 ### v1.3.6 (2025-05-28)
-- 🐛 Fixed duplicate GUID issues
-- ✨ Added Meituan, Bilibili mini game platform adaptation
-- ✨ Added more extension methods
-- 📚 Enhanced README documentation with complete module structure
-- 🔧 Optimized object pool performance
-- 📚 Improved documentation
+- 🐛 重複GUIDの問題を修正
+- ✨ Meituan、Bilibiliミニゲームプラットフォーム対応を追加
+- ✨ 追加の拡張メソッドを追加
+- 📚 完全なモジュール構造を含むREADMEドキュメントを強化
+- 🔧 オブジェクトプールのパフォーマンスを最適化
+- 📚 ドキュメントを改善
 
-View full changelog: [CHANGELOG.md](CHANGELOG.md)
-
----
-
-## 📄 License
-
-This project is distributed under **MIT License** and **Apache License 2.0** dual licensing.
-
-See full license text: [LICENSE.md](LICENSE.md)
+完全な変更履歴: [CHANGELOG.md](CHANGELOG.md)
 
 ---
 
-## 👨‍💻 Author
+## 📄 ライセンス
+
+このプロジェクトは**MIT License**と**Apache License 2.0**の二重ライセンスで配布されています。
+
+完全なライセンステキスト: [LICENSE.md](LICENSE.md)
+
+---
+
+## 👨‍💻 作者
 
 **Blank**
 
-- 🌐 Website: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
+- 🌐 ウェブサイト: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
 - 🐙 GitHub: [@GameFrameX](https://github.com/GameFrameX)
 
 ---
 
 <div align="center">
 
-**If this project helps you, please give us a ⭐ Star!**
+**このプロジェクトが役立ったら、⭐ をください！**
 
-[⬆ Back to Top](#gameframex-unity-package)
+[⬆ トップへ戻る](#gameframex-unity-パッケージ)
 
 </div>
