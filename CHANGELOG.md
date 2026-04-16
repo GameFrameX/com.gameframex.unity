@@ -1,3 +1,26 @@
+# [1.10.0](https://github.com/gameframex/com.gameframex.unity/compare/1.9.0...1.10.0) (2026-04-16)
+
+
+### Features
+
+* **Editor:** 添加 Discord 平台小游戏宏定义管理支持 ([14b1121](https://github.com/gameframex/com.gameframex.unity/commit/14b112199d83a83f45a2525a080200225512b1ed))
+* **Editor:** 添加 Facebook 小游戏平台宏定义支持 ([234ecef](https://github.com/gameframex/com.gameframex.unity/commit/234ecefeb534d9bd539c120314c44fe096bbbfd1))
+* **Editor:** 添加 Poki 小游戏平台宏定义配置支持 ([931248b](https://github.com/gameframex/com.gameframex.unity/commit/931248bb5f6c55feb820db85d6cf80e0176cbbf4))
+* **Editor:** 添加 TikTok 小游戏宏定义管理支持 ([f512956](https://github.com/gameframex/com.gameframex.unity/commit/f512956d1da8ddd38e0ca5851429f7db07456adc))
+* **Editor:** 添加Bilibili小游戏适配宏定义支持 ([a911ac4](https://github.com/gameframex/com.gameframex.unity/commit/a911ac4b76a0507a4ae2d5b3a540a08a405e59e2))
+* **Editor:** 添加vivo小游戏适配宏定义辅助工具 ([8fc9c27](https://github.com/gameframex/com.gameframex.unity/commit/8fc9c27f010c83e04273631a06ba6c6498e18e30))
+* **Editor:** 添加京东小游戏宏定义支持 ([f6b6058](https://github.com/gameframex/com.gameframex.unity/commit/f6b605816314d598a5a7b87b948c6303a9da80ed))
+* **Editor:** 添加华为小游戏宏定义配置支持 ([47db689](https://github.com/gameframex/com.gameframex.unity/commit/47db68958763584938dbb1776f802670e9f43bd1))
+* **Editor:** 添加小米小游戏适配宏定义工具 ([978f34d](https://github.com/gameframex/com.gameframex.unity/commit/978f34df49a5364fb9ae97d114e887507f55bab6))
+* **Editor:** 添加淘宝小程序宏定义支持 ([d4fcf1d](https://github.com/gameframex/com.gameframex.unity/commit/d4fcf1d7d36918f7c77965255b5263e201e49467))
+* **Editor:** 添加美团和哔哩哔哩小游戏平台定义符号支持 ([365335d](https://github.com/gameframex/com.gameframex.unity/commit/365335db72327f2a16c4e8a57e7830900d4e1942))
+* 添加 OPPO 小游戏适配宏定义助手 ([e73ab82](https://github.com/gameframex/com.gameframex.unity/commit/e73ab828f2f0ca847eee26ba1fe9a6d2bd65f21c))
+* 添加多个新平台的小游戏脚本定义符号 ([e250751](https://github.com/gameframex/com.gameframex.unity/commit/e25075160809737694eafcbe3e6a12e1111eff67))
+* **编辑器:** 添加 CrazyGames 小游戏平台宏定义管理功能 ([c0414a0](https://github.com/gameframex/com.gameframex.unity/commit/c0414a03956261934fa9ad8ba3c8030c85e35133))
+* **编辑器:** 添加 Google Play 游戏平台宏定义助手 ([210bc17](https://github.com/gameframex/com.gameframex.unity/commit/210bc17fb2f82b62f8394c4846fa7009c26d423e))
+* **编辑器:** 添加 YouTube 小游戏平台宏定义支持 ([aa42bd3](https://github.com/gameframex/com.gameframex.unity/commit/aa42bd34342787fd4c7ee866e876c7668f32c12a))
+* **编辑器:** 添加美团小游戏宏定义助手 ([3d5ae9f](https://github.com/gameframex/com.gameframex.unity/commit/3d5ae9f85a5b44b91dd983b0307d6540a9fd2cc0))
+
 # [1.9.0](https://github.com/gameframex/com.gameframex.unity/compare/1.8.0...1.9.0) (2026-04-10)
 
 
