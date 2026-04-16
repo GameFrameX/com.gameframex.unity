@@ -33,6 +33,19 @@ namespace GameFrameX.Editor
                 EnableTapTapMiniGameScriptingDefineSymbol,
                 EnableMeituanMiniGameScriptingDefineSymbol,
                 EnableBilibiliMiniGameScriptingDefineSymbol,
+                EnableJingDongMiniGameScriptingDefineSymbol,
+                EnableTaobaoMiniGameScriptingDefineSymbol,
+                EnableDiscordMiniGameScriptingDefineSymbol,
+                EnableYouTubeMiniGameScriptingDefineSymbol,
+                EnableFacebookMiniGameScriptingDefineSymbol,
+                EnableGooglePlayMiniGameScriptingDefineSymbol,
+                EnableVivoMiniGameScriptingDefineSymbol,
+                EnableOPPOMiniGameScriptingDefineSymbol,
+                EnableXiaomiMiniGameScriptingDefineSymbol,
+                EnableHuaweiMiniGameScriptingDefineSymbol,
+                EnableTikTokMiniGameScriptingDefineSymbol,
+                EnableCrazyGamesMiniGameScriptingDefineSymbol,
+                EnablePokiMiniGameScriptingDefineSymbol,
             };
         }
 
