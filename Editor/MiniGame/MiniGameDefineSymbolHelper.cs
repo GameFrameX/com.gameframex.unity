@@ -1,4 +1,4 @@
-﻿#if UNITY_WEBGL
+#if UNITY_WEBGL
 using UnityEditor;
 #endif
 
@@ -31,6 +31,8 @@ namespace GameFrameX.Editor
                 EnableBaiduMiniGameScriptingDefineSymbol,
                 EnableAlipayMiniGameScriptingDefineSymbol,
                 EnableTapTapMiniGameScriptingDefineSymbol,
+                EnableMeituanMiniGameScriptingDefineSymbol,
+                EnableBilibiliMiniGameScriptingDefineSymbol,
             };
         }
 
