@@ -19,6 +19,8 @@
 
 ---
 
+</div>
+
 ## 📑 Table of Contents
 
 - [🏗️ Project Overview](#🏗️-project-overview)
@@ -34,8 +36,6 @@
 - [📚 Documentation & Resources](#📚-documentation--resources)
 - [🤝 Community & Support](#🤝-community--support)
 - [📄 License](#📄-license)
-
-</div>
 
 ---
 
@@ -224,15 +224,15 @@ Runtime/
 
 #### Runtime Sub-Modules
 
-| Sub-Module | Description | Main Features |
-|------------|-------------|---------------|
-| **Base** | Framework Core | Component management, event pool, logging, reference pool, task pool, variable system, lifecycle management, singleton pattern |
-| **Extension** | Extension Library | Common extensions (string, collection, datetime), Unity type extensions (Transform, Vector), sequence reader, GameObject extensions |
-| **Helper** | Helper Classes | Application, camera, file, path, math, random, timer, network, JSON, rendering, position and more |
-| **ObjectPool** | Object Pool System | Object reuse, memory optimization, performance improvement |
-| **Property** | Property System | Bindable properties, data binding, MVVM support |
-| **ReferencePool** | Reference Pool System | Reference type management, GC optimization |
-| **Utility** | Utility Classes | Encryption (AES/RSA/DSA), compression, hash (MD5/SHA1/HMAC), CRC, JSON, file operations, ID generation, type conversion, text processing, logging |
+| Sub-Module        | Description           | Main Features                                                                                                                                     |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Base**          | Framework Core        | Component management, event pool, logging, reference pool, task pool, variable system, lifecycle management, singleton pattern                    |
+| **Extension**     | Extension Library     | Common extensions (string, collection, datetime), Unity type extensions (Transform, Vector), sequence reader, GameObject extensions               |
+| **Helper**        | Helper Classes        | Application, camera, file, path, math, random, timer, network, JSON, rendering, position and more                                                 |
+| **ObjectPool**    | Object Pool System    | Object reuse, memory optimization, performance improvement                                                                                        |
+| **Property**      | Property System       | Bindable properties, data binding, MVVM support                                                                                                   |
+| **ReferencePool** | Reference Pool System | Reference type management, GC optimization                                                                                                        |
+| **Utility**       | Utility Classes       | Encryption (AES/RSA/DSA), compression, hash (MD5/SHA1/HMAC), CRC, JSON, file operations, ID generation, type conversion, text processing, logging |
 
 ### 🔌 Plugins Module
 
@@ -254,12 +254,12 @@ Plugins/
 
 #### Plugins Sub-Modules
 
-| Sub-Module | Description | Dependencies |
-|------------|-------------|--------------|
-| **iOS Plugin** | iOS native functionality | GameFrameX.mm |
-| **Compression Library** | ZIP file compression/decompression | SharpZipLib |
-| **Memory Management** | Efficient memory operations | StringTools, Memory, Buffers |
-| **Runtime Support** | .NET runtime extensions | CompilerServices.Unsafe |
+| Sub-Module              | Description                        | Dependencies                 |
+| ----------------------- | ---------------------------------- | ---------------------------- |
+| **iOS Plugin**          | iOS native functionality           | GameFrameX.mm                |
+| **Compression Library** | ZIP file compression/decompression | SharpZipLib                  |
+| **Memory Management**   | Efficient memory operations        | StringTools, Memory, Buffers |
+| **Runtime Support**     | .NET runtime extensions            | CompilerServices.Unsafe      |
 
 ### 🛠️ Editor Module
 
@@ -288,27 +288,31 @@ Editor/
 │   └── InspectorLockShortcut.cs # Keyboard Shortcut Lock
 ├── MiniGame/                      # Mini Game Platform Adaptation (21 Platforms) ⭐
 │   ├── MiniGameDefineSymbolHelper.cs # Base Define Symbol Manager
-│   ├── MiniGameDefineSymbolHelper.WeChat.cs # WeChat
-│   ├── MiniGameDefineSymbolHelper.Alipay.cs # Alipay
-│   ├── MiniGameDefineSymbolHelper.DouYin.cs # DouYin
-│   ├── MiniGameDefineSymbolHelper.KuaiShou.cs # KuaiShou
-│   ├── MiniGameDefineSymbolHelper.Baidu.cs # Baidu
-│   ├── MiniGameDefineSymbolHelper.TapTap.cs # TapTap
-│   ├── MiniGameDefineSymbolHelper.Meituan.cs # Meituan
-│   ├── MiniGameDefineSymbolHelper.Bilibili.cs # Bilibili
-│   ├── MiniGameDefineSymbolHelper.JingDong.cs # JingDong (JD.com)
-│   ├── MiniGameDefineSymbolHelper.Taobao.cs # Taobao
-│   ├── MiniGameDefineSymbolHelper.Vivo.cs # vivo
-│   ├── MiniGameDefineSymbolHelper.OPPO.cs # OPPO
-│   ├── MiniGameDefineSymbolHelper.Xiaomi.cs # Xiaomi
-│   ├── MiniGameDefineSymbolHelper.Huawei.cs # Huawei
-│   ├── MiniGameDefineSymbolHelper.Discord.cs # Discord
-│   ├── MiniGameDefineSymbolHelper.YouTube.cs # YouTube
-│   ├── MiniGameDefineSymbolHelper.Facebook.cs # Facebook
-│   ├── MiniGameDefineSymbolHelper.GooglePlay.cs # Google Play
-│   ├── MiniGameDefineSymbolHelper.TikTok.cs # TikTok
-│   ├── MiniGameDefineSymbolHelper.CrazyGames.cs # CrazyGames
-│   └── MiniGameDefineSymbolHelper.Poki.cs # Poki
+│   ├── DomesticMiniGames/          # Domestic (China) Mini Games
+│   │   ├── MiniGameDefineSymbolHelper.WeChat.cs # WeChat
+│   │   ├── MiniGameDefineSymbolHelper.Alipay.cs # Alipay
+│   │   ├── MiniGameDefineSymbolHelper.DouYin.cs # DouYin
+│   │   ├── MiniGameDefineSymbolHelper.KuaiShou.cs # KuaiShou
+│   │   ├── MiniGameDefineSymbolHelper.Baidu.cs # Baidu
+│   │   ├── MiniGameDefineSymbolHelper.JingDong.cs # JingDong
+│   │   ├── MiniGameDefineSymbolHelper.Meituan.cs # Meituan
+│   │   ├── MiniGameDefineSymbolHelper.Taobao.cs # Taobao
+│   │   └── MiniGameDefineSymbolHelper.Bilibili.cs # Bilibili
+│   ├── InternationalMiniGames/     # International Mini Games
+│   │   ├── MiniGameDefineSymbolHelper.CrazyGames.cs # CrazyGames
+│   │   ├── MiniGameDefineSymbolHelper.Discord.cs # Discord
+│   │   ├── MiniGameDefineSymbolHelper.Facebook.cs # Facebook
+│   │   ├── MiniGameDefineSymbolHelper.GooglePlay.cs # Google Play
+│   │   ├── MiniGameDefineSymbolHelper.Poki.cs # Poki
+│   │   ├── MiniGameDefineSymbolHelper.TikTok.cs # TikTok
+│   │   └── MiniGameDefineSymbolHelper.YouTube.cs # YouTube
+│   ├── DeviceOEMs/                # Device OEM Mini Games
+│   │   ├── MiniGameDefineSymbolHelper.Huawei.cs # Huawei
+│   │   ├── MiniGameDefineSymbolHelper.OPPO.cs # OPPO
+│   │   ├── MiniGameDefineSymbolHelper.Vivo.cs # vivo
+│   │   └── MiniGameDefineSymbolHelper.Xiaomi.cs # Xiaomi
+│   └── GamePlatforms/             # Game Platform
+│       └── MiniGameDefineSymbolHelper.TapTap.cs # TapTap
 ├── PackageManager/               # Package Manager Window
 │   ├── PackageManagerWindow.cs   # Package Manager Window
 │   └── PackagesManifest.cs     # Package Manifest
@@ -326,19 +330,19 @@ Editor/
 
 #### Editor Sub-Modules
 
-| Sub-Module | Description | Main Features |
-|------------|-------------|---------------|
-| **BuildHotfix** | Hotfix Build | HybridCLR hotfix assembly build and management |
-| **BuildProduct** | Product Build | Build process automation, pre/post hooks |
-| **BuildWebGLTools** | WebGL Build | WebGL platform specific build tools |
-| **Cropping** | Image Cropping | Visual image cropping tool |
-| **Inspector** | Custom Inspectors | Object pool, reference pool visual monitoring |
-| **InspectorLockShortcut** | Inspector Lock | Keyboard shortcut for locking Inspector panel |
-| **MiniGame** | Mini Game Adaptation | One-click switch between 8 mini game platforms |
-| **PackageManager** | Package Management | Visual package management interface |
-| **UpdatePackages** | Package Update | Batch update project dependencies |
-| **Welcome** | Welcome Interface | New user guide and quick access |
-| **Misc** | Miscellaneous | Logging, define symbols, types and more |
+| Sub-Module                | Description          | Main Features                                                                                                           |
+| ------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **BuildHotfix**           | Hotfix Build         | HybridCLR hotfix assembly build and management                                                                          |
+| **BuildProduct**          | Product Build        | Build process automation, pre/post hooks                                                                                |
+| **BuildWebGLTools**       | WebGL Build          | WebGL platform specific build tools                                                                                     |
+| **Cropping**              | Image Cropping       | Visual image cropping tool                                                                                              |
+| **Inspector**             | Custom Inspectors    | Object pool, reference pool visual monitoring                                                                           |
+| **InspectorLockShortcut** | Inspector Lock       | Keyboard shortcut for locking Inspector panel                                                                           |
+| **MiniGame**              | Mini Game Adaptation | One-click switch between 21 mini game platforms (categorized into domestic, international, device OEMs, game platforms) |
+| **PackageManager**        | Package Management   | Visual package management interface                                                                                     |
+| **UpdatePackages**        | Package Update       | Batch update project dependencies                                                                                       |
+| **Welcome**               | Welcome Interface    | New user guide and quick access                                                                                         |
+| **Misc**                  | Miscellaneous        | Logging, define symbols, types and more                                                                                 |
 
 ---
 
@@ -472,14 +476,31 @@ Quickly switch between mini game platforms in Unity menu:
 ```
 GameFrameX/
 ├── Scripting Define Symbols/
-│   ├── Enable WeChat Mini Game
-│   ├── Enable Alipay Mini Game
-│   ├── Enable DouYin Mini Game
-│   ├── Enable KuaiShou Mini Game
-│   ├── Enable Baidu Mini Game
-│   ├── Enable TapTap Mini Game
-│   ├── Enable Meituan Mini Game
-│   └── Enable Bilibili Mini Game
+│   ├── Domestic Mini Games/
+│   │   ├── Enable WeChat Mini Game
+│   │   ├── Enable Alipay Mini Game
+│   │   ├── Enable DouYin Mini Game
+│   │   ├── Enable KuaiShou Mini Game
+│   │   ├── Enable Baidu Mini Game
+│   │   ├── Enable JingDong Mini Game
+│   │   ├── Enable Meituan Mini Game
+│   │   ├── Enable Taobao Mini Game
+│   │   └── Enable Bilibili Mini Game
+│   ├── International Mini Games/
+│   │   ├── Enable Discord Mini Game
+│   │   ├── Enable YouTube Mini Game
+│   │   ├── Enable Facebook Mini Game
+│   │   ├── Enable Google Play Mini Game
+│   │   ├── Enable TikTok Mini Game
+│   │   ├── Enable CrazyGames Mini Game
+│   │   └── Enable Poki Mini Game
+│   ├── Device OEMs/
+│   │   ├── Enable Huawei Mini Game
+│   │   ├── Enable OPPO Mini Game
+│   │   ├── Enable Vivo Mini Game
+│   │   └── Enable Xiaomi Mini Game
+│   └── Game Platforms/
+│       └── Enable TapTap Mini Game
 ```
 
 #### 🏗️ Build Tools
@@ -505,56 +526,66 @@ GameFrameX/
 
 ### Operating Systems
 
-| Platform | Status | Supported Version |
-|----------|--------|-------------------|
-| Windows | ✅ Supported | Unity 2019.4+ |
-| macOS | ✅ Supported | Unity 2019.4+ |
-| Linux | ✅ Supported | Unity 2019.4+ |
-| iOS | ✅ Supported | Unity 2019.4+ |
-| Android | ✅ Supported | Unity 2019.4+ |
-| WebGL | ✅ Supported | Unity 2019.4+ |
+| Platform | Status      | Supported Version |
+| -------- | ----------- | ----------------- |
+| Windows  | ✅ Supported | Unity 2019.4+     |
+| macOS    | ✅ Supported | Unity 2019.4+     |
+| Linux    | ✅ Supported | Unity 2019.4+     |
+| iOS      | ✅ Supported | Unity 2019.4+     |
+| Android  | ✅ Supported | Unity 2019.4+     |
+| WebGL    | ✅ Supported | Unity 2019.4+     |
 
 ### Mini Game Platform Adaptation
 
 GameFrameX provides one-click mini game platform adaptation, supporting **21 mainstream mini game platforms** worldwide:
 
-#### 🇨🇳 China Mainland Platforms (14)
+#### 🇨🇳 Domestic Mini Games (9)
 
-| Platform | Define Symbol | Region | Menu Priority |
-|----------|---------------|--------|---------------|
-| WeChat Mini Game | `ENABLE_WECHAT_MINI_GAME` / `WEIXINMINIGAME` | 🇨🇳 China | 2000 |
-| DouYin Mini Game | `ENABLE_DOUYIN_MINI_GAME` / `DOUYINMINIGAME` | 🇨🇳 China | 2100 |
-| KuaiShou Mini Game | `ENABLE_KUAISHOU_MINI_GAME` / `KUAISHOUMINIGAME` | 🇨🇳 China | 2200 |
-| Baidu Mini Game | `ENABLE_BAIDU_MINI_GAME` / `BAIDUMINIGAME` | 🇨🇳 China | 2300 |
-| Alipay Mini Game | `ENABLE_ALIPAY_MINI_GAME` / `ALIPAYMINIGAME` | 🇨🇳 China | 2400 |
-| JD Mini Game | `ENABLE_JINGDONG_MINI_GAME` / `JINGDONGMINIGAME` | 🇨🇳 China | 2500 |
-| Taobao Mini Program | `ENABLE_TAOBAO_MINI_GAME` / `TAOBAOMINIGAME` | 🇨🇳 China | 2600 |
-| TapTap Mini Game | `ENABLE_TAPTAP_MINI_GAME` / `TAPTAPMINIGAME` | 🇨🇳 China | 2700 |
-| Meituan Mini Game | `ENABLE_MEITUAN_MINI_GAME` / `MEITUANMINIGAME` | 🇨🇳 China | 2800 |
-| Bilibili Mini Game | `ENABLE_BILIBILI_MINI_GAME` / `BILIBILIMINIGAME` | 🇨🇳 China | 2900 |
-| vivo Mini Game | `ENABLE_VIVO_MINI_GAME` / `VIVOMINIGAME` | 🇨🇳 China | 3100 |
-| OPPO Mini Game | `ENABLE_OPPO_MINI_GAME` / `OPPOSMINIGAME` | 🇨🇳 China | 3200 |
-| Xiaomi Mini Game | `ENABLE_XIAOMI_MINI_GAME` / `XIAOMIMINIGAME` | 🇨🇳 China | 3300 |
-| Huawei Mini Game | `ENABLE_HUAWEI_MINI_GAME` / `HUAWEIMINIGAME` | 🇨🇳 China | 3400 |
+| Platform            | Define Symbol                                    | Region  | Menu Priority |
+| ------------------- | ------------------------------------------------ | ------- | ------------- |
+| WeChat Mini Game    | `ENABLE_WECHAT_MINI_GAME` / `WEIXINMINIGAME`     | 🇨🇳 China | 2000          |
+| Alipay Mini Game    | `ENABLE_ALIPAY_MINI_GAME` / `ALIPAYMINIGAME`     | 🇨🇳 China | 2400          |
+| DouYin Mini Game    | `ENABLE_DOUYIN_MINI_GAME` / `DOUYINMINIGAME`     | 🇨🇳 China | 2100          |
+| KuaiShou Mini Game  | `ENABLE_KUAISHOU_MINI_GAME` / `KUAISHOUMINIGAME` | 🇨🇳 China | 2200          |
+| Baidu Mini Game     | `ENABLE_BAIDU_MINI_GAME` / `BAIDUMINIGAME`       | 🇨🇳 China | 2300          |
+| JD Mini Game        | `ENABLE_JINGDONG_MINI_GAME` / `JINGDONGMINIGAME` | 🇨🇳 China | 2500          |
+| Taobao Mini Program | `ENABLE_TAOBAO_MINI_GAME` / `TAOBAOMINIGAME`     | 🇨🇳 China | 2600          |
+| Meituan Mini Game   | `ENABLE_MEITUAN_MINI_GAME` / `MEITUANMINIGAME`   | 🇨🇳 China | 2800          |
+| Bilibili Mini Game  | `ENABLE_BILIBILI_MINI_GAME` / `BILIBILIMINIGAME` | 🇨🇳 China | 2900          |
 
-#### 🌍 Global Platforms (7)
+#### 🌍 International Mini Games (7)
 
-| Platform | Define Symbol | Region | Menu Priority |
-|----------|---------------|--------|---------------|
-| Discord | `ENABLE_DISCORD_MINI_GAME` / `DISCORDMINIGAME` | 🌍 Global | 2700 |
-| YouTube | `ENABLE_YOUTUBE_MINI_GAME` / `YOUTUBEMINIGAME` | 🌍 Global | 2800 |
-| Facebook | `ENABLE_FACEBOOK_MINI_GAME` / `FACEBOOKMINIGAME` | 🌍 Global | 2900 |
-| Google Play | `ENABLE_GOOGLEPLAY_MINI_GAME` / `GOOGLEPLAYMINIGAME` | 🌍 Global | 3000 |
-| TikTok | `ENABLE_TIKTOK_MINI_GAME` / `TIKTOKMINIGAME` | 🌍 Global | 3500 |
-| CrazyGames | `ENABLE_CRAZYGAMES_MINI_GAME` / `CRAZYGAMESMINIGAME` | 🌍 Global | 3600 |
-| Poki | `ENABLE_POKI_MINI_GAME` / `POKIMINIGAME` | 🌍 Global | 3700 |
+| Platform    | Define Symbol                                        | Region   | Menu Priority |
+| ----------- | ---------------------------------------------------- | -------- | ------------- |
+| Discord     | `ENABLE_DISCORD_MINI_GAME` / `DISCORDMINIGAME`       | 🌍 Global | 2700          |
+| YouTube     | `ENABLE_YOUTUBE_MINI_GAME` / `YOUTUBEMINIGAME`       | 🌍 Global | 2800          |
+| Facebook    | `ENABLE_FACEBOOK_MINI_GAME` / `FACEBOOKMINIGAME`     | 🌍 Global | 2900          |
+| Google Play | `ENABLE_GOOGLEPLAY_MINI_GAME` / `GOOGLEPLAYMINIGAME` | 🌍 Global | 3000          |
+| TikTok      | `ENABLE_TIKTOK_MINI_GAME` / `TIKTOKMINIGAME`         | 🌍 Global | 3500          |
+| CrazyGames  | `ENABLE_CRAZYGAMES_MINI_GAME` / `CRAZYGAMESMINIGAME` | 🌍 Global | 3600          |
+| Poki        | `ENABLE_POKI_MINI_GAME` / `POKIMINIGAME`             | 🌍 Global | 3700          |
+
+#### 📱 Device OEMs (4)
+
+| Platform         | Define Symbol                                | Region  | Menu Priority |
+| ---------------- | -------------------------------------------- | ------- | ------------- |
+| Huawei Mini Game | `ENABLE_HUAWEI_MINI_GAME` / `HUAWEIMINIGAME` | 🇨🇳 China | 3400          |
+| OPPO Mini Game   | `ENABLE_OPPO_MINI_GAME` / `OPPOSMINIGAME`    | 🇨🇳 China | 3200          |
+| Vivo Mini Game   | `ENABLE_VIVO_MINI_GAME` / `VIVOMINIGAME`     | 🇨🇳 China | 3100          |
+| Xiaomi Mini Game | `ENABLE_XIAOMI_MINI_GAME` / `XIAOMIMINIGAME` | 🇨🇳 China | 3300          |
+
+#### 🎮 Game Platforms (1)
+
+| Platform         | Define Symbol                                | Region  | Menu Priority |
+| ---------------- | -------------------------------------------- | ------- | ------------- |
+| TapTap Mini Game | `ENABLE_TAPTAP_MINI_GAME` / `TAPTAPMINIGAME` | 🇨🇳 China | 2700          |
 
 #### Define Symbol Details
 
 - **Unified Define**: `ENABLE_WEBGL_MINI_GAME` - Shared by all mini game platforms
 - **Platform Defines**: Independent defines for conditional compilation per platform
 - **Mutex Mechanism**: Enabling one mini game platform automatically disables others
-- **Menu Path**: `GameFrameX/Scripting Define Symbols/Enable [Platform] Mini Game`
+- **Menu Path**: `GameFrameX/Scripting Define Symbols/[Category]/Enable [Platform] Mini Game`
 
 ---
 
