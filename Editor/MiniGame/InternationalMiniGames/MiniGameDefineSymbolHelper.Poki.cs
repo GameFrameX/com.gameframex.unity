@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for Poki platform adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable Poki Mini Game(开启[Poki]适配)", false, 3700)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Game Platforms(游戏平台)/Enable Poki Mini Game(开启[Poki]适配)", false, 3700)]
 #endif
         public static void EnablePokiMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for Poki platform adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable Poki Mini Game(关闭[Poki]适配)", false, 3701)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Game Platforms(游戏平台)/Disable Poki Mini Game(关闭[Poki]适配)", false, 3701)]
 #endif
         public static void DisablePokiMiniGame()
         {

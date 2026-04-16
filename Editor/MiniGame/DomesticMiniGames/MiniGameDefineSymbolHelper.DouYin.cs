@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for DouYin mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable DouYin Mini Game(开启[抖音小游戏]适配)", false, 2100)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Enable DouYin Mini Game(开启[抖音小游戏]适配)", false, 2100)]
 #endif
         public static void EnableDouYinMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for DouYin mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable DouYin Mini Game(关闭[抖音小游戏]适配)", false, 2101)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Disable DouYin Mini Game(关闭[抖音小游戏]适配)", false, 2101)]
 #endif
         public static void DisableDouYinMiniGame()
         {

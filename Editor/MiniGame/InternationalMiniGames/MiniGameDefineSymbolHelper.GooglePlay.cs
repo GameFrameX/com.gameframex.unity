@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for Google Play Games platform adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable Google Play Mini Game(开启[Google Play]适配)", false, 3000)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Enable Google Play Mini Game(开启[Google Play]适配)", false, 3200)]
 #endif
         public static void EnableGooglePlayMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for Google Play Games platform adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable Google Play Mini Game(关闭[Google Play]适配)", false, 3001)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Disable Google Play Mini Game(关闭[Google Play]适配)", false, 3201)]
 #endif
         public static void DisableGooglePlayMiniGame()
         {

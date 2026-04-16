@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for TapTap mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable TapTap Mini Game(开启[TapTap小游戏]适配)", false, 2500)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Game Platforms(游戏平台)/Enable TapTap Mini Game(开启[TapTap小游戏]适配)", false, 2500)]
 #endif
         public static void EnableTapTapMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for TapTap mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable TapTap Mini Game(关闭[TapTap小游戏]适配)", false, 2501)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Game Platforms(游戏平台)/Disable TapTap Mini Game(关闭[TapTap小游戏]适配)", false, 2501)]
 #endif
         public static void DisableTapTapMiniGame()
         {

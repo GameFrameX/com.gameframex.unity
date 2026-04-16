@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for CrazyGames platform adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable CrazyGames Mini Game(开启[CrazyGames]适配)", false, 3600)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Enable CrazyGames Mini Game(开启[CrazyGames]适配)", false, 3400)]
 #endif
         public static void EnableCrazyGamesMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for CrazyGames platform adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable CrazyGames Mini Game(关闭[CrazyGames]适配)", false, 3601)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Disable CrazyGames Mini Game(关闭[CrazyGames]适配)", false, 3401)]
 #endif
         public static void DisableCrazyGamesMiniGame()
         {

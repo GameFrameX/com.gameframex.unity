@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for Meituan mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable Meituan Mini Game(开启[美团小游戏]适配)", false, 2600)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Enable Meituan Mini Game(开启[美团小游戏]适配)", false, 2600)]
 #endif
         public static void EnableMeituanMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for Meituan mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable Meituan Mini Game(关闭[美团小游戏]适配)", false, 2601)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Disable Meituan Mini Game(关闭[美团小游戏]适配)", false, 2601)]
 #endif
         public static void DisableMeituanMiniGame()
         {

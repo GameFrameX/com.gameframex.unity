@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for TikTok mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable TikTok Mini Game(开启[TikTok小游戏]适配)", false, 3500)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Enable TikTok Mini Game(开启[TikTok小游戏]适配)", false, 3300)]
 #endif
         public static void EnableTikTokMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for TikTok mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable TikTok Mini Game(关闭[TikTok小游戏]适配)", false, 3501)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Disable TikTok Mini Game(关闭[TikTok小游戏]适配)", false, 3301)]
 #endif
         public static void DisableTikTokMiniGame()
         {

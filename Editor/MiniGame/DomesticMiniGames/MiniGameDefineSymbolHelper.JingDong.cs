@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for JingDong mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable JingDong Mini Game(开启[京东小游戏]适配)", false, 2500)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Enable JingDong Mini Game(开启[京东小游戏]适配)", false, 2500)]
 #endif
         public static void EnableJingDongMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for JingDong mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable JingDong Mini Game(关闭[京东小游戏]适配)", false, 2501)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Disable JingDong Mini Game(关闭[京东小游戏]适配)", false, 2501)]
 #endif
         public static void DisableJingDongMiniGame()
         {

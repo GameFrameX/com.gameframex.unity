@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for YouTube platform adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable YouTube Mini Game(开启[YouTube]适配)", false, 2800)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Enable YouTube Mini Game(开启[YouTube]适配)", false, 3000)]
 #endif
         public static void EnableYouTubeMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for YouTube platform adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable YouTube Mini Game(关闭[YouTube]适配)", false, 2801)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Disable YouTube Mini Game(关闭[YouTube]适配)", false, 3001)]
 #endif
         public static void DisableYouTubeMiniGame()
         {

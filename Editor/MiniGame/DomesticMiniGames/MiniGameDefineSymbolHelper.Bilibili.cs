@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for Bilibili mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable Bilibili Mini Game(开启[Bilibili小游戏]适配)", false, 2700)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Enable Bilibili Mini Game(开启[Bilibili小游戏]适配)", false, 2700)]
 #endif
         public static void EnableBilibiliMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for Bilibili mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable Bilibili Mini Game(关闭[Bilibili小游戏]适配)", false, 2701)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Disable Bilibili Mini Game(关闭[Bilibili小游戏]适配)", false, 2701)]
 #endif
         public static void DisableBilibiliMiniGame()
         {

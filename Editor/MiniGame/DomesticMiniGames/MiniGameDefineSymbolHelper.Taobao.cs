@@ -18,7 +18,7 @@ namespace GameFrameX.Editor
         /// Enables define symbols for Taobao mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Enable Taobao Mini Game(开启[淘宝小程序]适配)", false, 2600)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Enable Taobao Mini Game(开启[淘宝小程序]适配)", false, 2800)]
 #endif
         public static void EnableTaobaoMiniGame()
         {
@@ -44,7 +44,7 @@ namespace GameFrameX.Editor
         /// Disables define symbols for Taobao mini game adaptation.
         /// </summary>
 #if UNITY_WEBGL
-        [MenuItem("GameFrameX/Scripting Define Symbols/Disable Taobao Mini Game(关闭[淘宝小程序]适配)", false, 2601)]
+        [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Disable Taobao Mini Game(关闭[淘宝小程序]适配)", false, 2801)]
 #endif
         public static void DisableTaobaoMiniGame()
         {
