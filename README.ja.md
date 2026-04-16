@@ -1,6 +1,6 @@
 <div align="center">
 
-![GameFrameX Logo](https://download.alianblank.com/gameframex/gameframex_logo_640.png)
+![GameFrameX Logo](https://download.alianblank.com/gameframex/gameframex_logo_320.png)
 
 # GameFrameX Unity パッケージ
 
