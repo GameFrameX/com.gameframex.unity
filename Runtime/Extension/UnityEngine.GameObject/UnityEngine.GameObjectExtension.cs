@@ -6,7 +6,7 @@ using UnityEngine.Scripting;
 namespace GameFrameX.Runtime
 {
     [Preserve]
-    public static class UnityEngageGameObjectExtension
+    public static class UnityEngineGameObjectExtension
     {
         private static readonly List<Transform> s_CachedTransforms = new List<Transform>();
 
