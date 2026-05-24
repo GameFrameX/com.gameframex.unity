@@ -195,7 +195,7 @@ namespace GameFrameX.Runtime
                 return string.Empty;
             }
 
-            _listToStringBuilder ??= new StringBuilder();
+            _listToStringBuilder = _listToStringBuilder ?? new StringBuilder();
             _listToStringBuilder.Clear();
             foreach (T t in list)
             {
