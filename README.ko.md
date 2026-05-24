@@ -4,7 +4,7 @@
 
 # GameFrameX Unity 패키지
 
-[![Version](https://img.shields.io/badge/version-1.3.6-blue.svg)](https://github.com/GameFrameX/com.gameframex.unity)
+[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity)](https://github.com/GameFrameX/com.gameframex.unity)
 [![Unity](https://img.shields.io/badge/Unity-2019.4+-green.svg)](https://unity3d.com/get-unity/download)
 [![License](https://img.shields.io/badge/license-MIT+Apache%202.0-orange.svg)](LICENSE.md)
 [![Documentation](https://img.shields.io/badge/docs-gameframex.doc.alianblank.com-brightgreen.svg)](https://gameframex.doc.alianblank.com)
@@ -15,7 +15,7 @@
 
 ---
 
-🌐 **언어**: [English](./README.md) | [繁體中文](./README.zh-TW.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
+🌐 **언어**: [English](./README.md) | [繁體中文](./README.zh-TW.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | **한국어**
 
 ---
 
@@ -609,6 +609,12 @@ GameFrameX는 원클릭 미니게임 플랫폼 지원을 제공하며, 전 세�
 ---
 
 ## 🔄 변경 로그
+
+### v1.4.0 (2025-04-16)
+- ✨ 13개의 새로운 미니게임 플랫폼 추가 (JD, Taobao, Discord, YouTube, Facebook, Google Play, vivo, OPPO, Xiaomi, Huawei, TikTok, CrazyGames, Poki)
+- ✨ 플랫폼 총수를 8개에서 21개로 확장, 전 세계 주요 미니게임 플랫폼 포괄
+- 📚 모든 언어 버전의 README 문서를 최신 플랫폼 지원 정보로 업데이트
+- 🐛 플랫폼 정의 심볼 관리 최적화, 상호 배제 메커니즘 안정성 향상
 
 ### v1.3.6 (2025-05-28)
 - 🐛 중복 GUID 문제 수정
