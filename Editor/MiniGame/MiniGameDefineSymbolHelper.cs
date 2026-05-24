@@ -10,6 +10,7 @@ namespace GameFrameX.Editor
     /// </summary>
     public static partial class MiniGameDefineSymbolHelper
     {
+#if UNITY_WEBGL
         /// <summary>
         /// WebGL 小游戏统一宏定义。
         /// Unified scripting define symbol for WebGL mini games.
@@ -56,7 +57,6 @@ namespace GameFrameX.Editor
         /// <param name="currentMiniGameScriptingDefineSymbols">当前平台宏定义集合 / Define symbols of the current platform.</param>
         private static void DisableOtherMiniGameScriptingDefineSymbols(string[] currentMiniGameScriptingDefineSymbols)
         {
-#if UNITY_WEBGL
             var closedCount = 0;
             foreach (var defineSymbols in GetAllMiniGameScriptingDefineSymbols())
             {
@@ -84,7 +84,6 @@ namespace GameFrameX.Editor
             }
 
             UnityEngine.Debug.Log($"小游戏宏定义互斥清理完成，共关闭 {closedCount} 个宏定义");
-#endif
         }
 
         /// <summary>
@@ -93,7 +92,6 @@ namespace GameFrameX.Editor
         /// </summary>
         private static void EnableUnifiedMiniGameScriptingDefineSymbol()
         {
-#if UNITY_WEBGL
             if (ScriptingDefineSymbols.HasScriptingDefineSymbol(BuildTargetGroup.WebGL, EnableWebGLMiniGameScriptingDefineSymbol))
             {
                 return;
@@ -101,7 +99,6 @@ namespace GameFrameX.Editor
 
             ScriptingDefineSymbols.AddScriptingDefineSymbol(EnableWebGLMiniGameScriptingDefineSymbol);
             UnityEngine.Debug.Log($"小游戏统一宏定义 [{EnableWebGLMiniGameScriptingDefineSymbol}] 已经打开");
-#endif
         }
 
         /// <summary>
@@ -110,7 +107,6 @@ namespace GameFrameX.Editor
         /// </summary>
         private static void RefreshUnifiedMiniGameScriptingDefineSymbol()
         {
-#if UNITY_WEBGL
             var hasAnyMiniGameDefine = false;
             foreach (var defineSymbols in GetAllMiniGameScriptingDefineSymbols())
             {
@@ -153,7 +149,7 @@ namespace GameFrameX.Editor
                 ScriptingDefineSymbols.RemoveScriptingDefineSymbol(EnableWebGLMiniGameScriptingDefineSymbol);
                 UnityEngine.Debug.Log($"小游戏统一宏定义 [{EnableWebGLMiniGameScriptingDefineSymbol}] 已经关闭");
             }
-#endif
         }
+#endif
     }
 }
