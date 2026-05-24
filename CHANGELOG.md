@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/gameframex/com.gameframex.unity/compare/1.10.0...1.10.1) (2026-05-24)
+
+
+### Bug Fixes
+
+* **MiniGame:** 调整 UNITY_WEBGL 编译指令作用域 ([e9b0603](https://github.com/gameframex/com.gameframex.unity/commit/e9b0603c29ecbf4add8c888dee8a309a373c468d)), closes [#if](https://github.com/gameframex/com.gameframex.unity/issues/if)
+
 # [1.10.0](https://github.com/gameframex/com.gameframex.unity/compare/1.9.0...1.10.0) (2026-04-16)
 
 
