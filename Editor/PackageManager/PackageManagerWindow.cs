@@ -39,6 +39,9 @@ namespace GameFrameX.Editor
             // 工具条
             OnGUIByToolBar();
 
+            // 提示
+            OnGUIByBanner();
+
             // 垂直布局
             GUILayout.BeginHorizontal();
 
