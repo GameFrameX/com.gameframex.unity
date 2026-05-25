@@ -35,9 +35,7 @@
 - [🎯 プラットフォーム対応](#🎯-プラットフォーム対応)
 - [📚 ドキュメントとリソース](#📚-ドキュメントとリソース)
 - [🤝 コミュニティとサポート](#🤝-コミュニティとサポート)
-- [� 変更履歴](#🔄-変更履歴)
 - [�📄 ライセンス](#📄-ライセンス)
-- [👨‍💻 作者](#👨‍💻-作者)
 
 ---
 
@@ -364,6 +362,29 @@ Editor/
 
 1. 最新の[リリース](https://github.com/GameFrameX/com.gameframex.unity/releases)をダウンロード
 2. プロジェクトの `Packages` ディレクトリに展開
+
+#### 方法3: scopedRegistries を使用（UPM）
+
+Unity プロジェクトの `Packages/manifest.json` を編集し、`scopedRegistries` セクションを追加してください：
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.gameframex.unity": "1.10.1"
+  }
+}
+```
+
+`scopes` は、どのパッケージをこのレジストリから解決するかを制御します。`com.gameframex` で始まるパッケージのみがこのレジストリから取得されます。
 
 ### 基本的な使用方法
 

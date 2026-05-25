@@ -363,6 +363,29 @@ Editor/
 1. 下载最新的 [Release](https://github.com/GameFrameX/com.gameframex.unity/releases)
 2. 解压到项目的 `Packages` 目录下
 
+#### 方式三：通过 scopedRegistries 引入（UPM）
+
+编辑 Unity 项目的 `Packages/manifest.json`，添加 `scopedRegistries` 部分：
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.gameframex.unity": "1.10.1"
+  }
+}
+```
+
+`scopes` 控制哪些包通过此注册表解析。只有以 `com.gameframex` 开头的包才会从这个注册表获取。
+
 ### 基础使用
 
 ```csharp

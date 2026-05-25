@@ -35,9 +35,7 @@
 - [🎯 플랫폼 지원](#🎯-플랫폼-지원)
 - [📚 문서 및 자료](#📚-문서-및-자료)
 - [🤝 커뮤니티 및 지원](#🤝-커뮤니티-및-지원)
-- [� 변경 로그](#🔄-변경-로그)
 - [�📄 라이선스](#📄-라이선스)
-- [👨‍💻 작성자](#👨‍💻-작성자)
 
 ---
 
@@ -364,6 +362,29 @@ Editor/
 
 1. 최신[릴리스](https://github.com/GameFrameX/com.gameframex.unity/releases)를 다운로드합니다
 2. 프로젝트의 `Packages` 디렉토리에 압축을 풉니다
+
+#### 방법 3: scopedRegistries 사용 (UPM)
+
+Unity 프로젝트의 `Packages/manifest.json`을 편집하여 `scopedRegistries` 섹션을 추가하세요:
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.gameframex.unity": "1.10.1"
+  }
+}
+```
+
+`scopes`는 이 레지스트리를 통해 어떤 패키지를 해석할지 제어합니다. `com.gameframex`로 시작하는 패키지만 이 레지스트리에서 가져옵니다.
 
 ### 기본 사용법
 

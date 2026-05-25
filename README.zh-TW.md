@@ -363,6 +363,29 @@ Editor/
 1. 下载最新的 [Release](https://github.com/GameFrameX/com.gameframex.unity/releases)
 2. 解壓到項目的 `Packages` 目錄下
 
+#### 方式三：透過 scopedRegistries 引入（UPM）
+
+編輯 Unity 專案的 `Packages/manifest.json`，添加 `scopedRegistries` 部分：
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.gameframex.unity": "1.10.1"
+  }
+}
+```
+
+`scopes` 控制哪些套件透過此註冊表解析。只有以 `com.gameframex` 開頭的套件才會從這個註冊表取得。
+
 ### 基礎使用
 
 ```csharp

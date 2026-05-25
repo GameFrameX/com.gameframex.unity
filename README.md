@@ -363,6 +363,29 @@ Editor/
 1. Download the latest [Release](https://github.com/GameFrameX/com.gameframex.unity/releases)
 2. Extract to your project's `Packages` directory
 
+#### Method 3: Using scopedRegistries (UPM)
+
+Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.gameframex.unity": "1.10.1"
+  }
+}
+```
+
+`scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
+
 ### Basic Usage
 
 ```csharp
