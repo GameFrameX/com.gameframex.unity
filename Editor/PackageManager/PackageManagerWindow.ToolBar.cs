@@ -7,7 +7,7 @@ namespace GameFrameX.Editor
     public partial class PackageManagerWindow
     {
         // 下拉列表的选项
-        private readonly string[] _dropdownOptions = new string[] { "gitee.com", "github.com" };
+        private readonly string[] _dropdownOptions = new string[] { "cnb.cool", "github.com" };
         private int _selectedDropdownIndex = 0;
 
         private void OnGUIByToolBar()
