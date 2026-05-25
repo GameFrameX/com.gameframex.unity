@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/gameframex/com.gameframex.unity/compare/1.10.1...1.11.0) (2026-05-25)
+
+
+### Features
+
+* **PackageManager:** 添加 scoped registry 配置与迁移功能 ([d12075b](https://github.com/gameframex/com.gameframex.unity/commit/d12075b6b6cd7fa0b059e18f7f6b2b599577313b))
+
 ## [1.10.1](https://github.com/gameframex/com.gameframex.unity/compare/1.10.0...1.10.1) (2026-05-24)
 
 
