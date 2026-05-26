@@ -133,8 +133,8 @@ Runtime/
 │   ├── SequenceReader/            # シーケンスリーダー
 │   │   ├── SequenceReader.cs       # シーケンスリーダーコア
 │   │   └── SequenceReaderExtensions.cs # シーケンスリーダー拡張
-│   ├── UnityEngage.GameObject/    # GameObject拡張
-│   │   └── UnityEngage.GameObjectExtension.cs # GameObject拡張
+│   ├── UnityEngine.GameObject/    # GameObject拡張
+│   │   └── UnityEngine.GameObjectExtension.cs # GameObject拡張
 │   └── UnityEngine/               # Unity型拡張
 │       ├── Transform/             # Transform拡張
 │       ├── Vector2/               # Vector2拡張

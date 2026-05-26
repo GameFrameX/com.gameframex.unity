@@ -133,8 +133,8 @@ Runtime/
 │   ├── SequenceReader/            # 시퀀스 리더
 │   │   ├── SequenceReader.cs       # 시퀀스 리더 코어
 │   │   └── SequenceReaderExtensions.cs # 시퀀스 리더 확장
-│   ├── UnityEngage.GameObject/    # GameObject 확장
-│   │   └── UnityEngage.GameObjectExtension.cs # GameObject 확장
+│   ├── UnityEngine.GameObject/    # GameObject 확장
+│   │   └── UnityEngine.GameObjectExtension.cs # GameObject 확장
 │   └── UnityEngine/               # Unity 타입 확장
 │       ├── Transform/             # Transform 확장
 │       ├── Vector2/               # Vector2 확장

@@ -133,8 +133,8 @@ Runtime/
 │   ├── SequenceReader/            # 序列读取器
 │   │   ├── SequenceReader.cs       # 序列读取器核心
 │   │   └── SequenceReaderExtensions.cs # 序列读取器擴展
-│   ├── UnityEngage.GameObject/    # GameObject 擴展
-│   │   └── UnityEngage.GameObjectExtension.cs # GameObject 擴展
+│   ├── UnityEngine.GameObject/    # GameObject 擴展
+│   │   └── UnityEngine.GameObjectExtension.cs # GameObject 擴展
 │   └── UnityEngine/               # Unity 類型擴展
 │       ├── Transform/             # Transform 擴展
 │       ├── Vector2/               # Vector2 擴展

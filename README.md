@@ -133,8 +133,8 @@ Runtime/
 │   ├── SequenceReader/            # Sequence Reader
 │   │   ├── SequenceReader.cs       # Sequence Reader Core
 │   │   └── SequenceReaderExtensions.cs # Sequence Reader Extensions
-│   ├── UnityEngage.GameObject/    # GameObject Extension
-│   │   └── UnityEngage.GameObjectExtension.cs # GameObject Extension
+│   ├── UnityEngine.GameObject/    # GameObject Extension
+│   │   └── UnityEngine.GameObjectExtension.cs # GameObject Extension
 │   └── UnityEngine/               # Unity Type Extensions
 │       ├── Transform/             # Transform Extension
 │       ├── Vector2/               # Vector2 Extension
