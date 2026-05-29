@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/gameframex/com.gameframex.unity/compare/1.11.1...1.11.2) (2026-05-29)
+
+
+### Bug Fixes
+
+* **Runtime:** 移除 BetterStreamingAssets 程序集引用 ([08a135c](https://github.com/gameframex/com.gameframex.unity/commit/08a135c6ebb20d169c15efe007ee26b88ffadb1d))
+
 ## [1.11.1](https://github.com/gameframex/com.gameframex.unity/compare/1.11.0...1.11.1) (2026-05-28)
 
 
