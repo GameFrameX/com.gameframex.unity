@@ -43,7 +43,7 @@ namespace GameFrameX.Runtime
         /// Random related utility functions.
         /// </remarks>
         [Preserve]
-        public static class Random
+        public static class RandomUtility
         {
             private static System.Random s_Random = new System.Random((int)DateTime.UtcNow.Ticks);
 

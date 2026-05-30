@@ -110,7 +110,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.Utility.Net);
             _ = typeof(GameFrameX.Runtime.Utility.Object);
             _ = typeof(GameFrameX.Runtime.Utility.Path);
-            _ = typeof(GameFrameX.Runtime.Utility.Random);
+            _ = typeof(GameFrameX.Runtime.Utility.RandomUtility);
             _ = typeof(GameFrameX.Runtime.Utility.Text);
             _ = typeof(GameFrameX.Runtime.Utility.Text.ITextHelper);
             _ = typeof(GameFrameX.Runtime.Utility.Verifier);
