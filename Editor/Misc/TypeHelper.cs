@@ -39,7 +39,7 @@ namespace GameFrameX.Editor
     /// <summary>
     /// 类型相关的实用函数。
     /// </summary>
-    public static class Type
+    public static class TypeHelper
     {
         private static readonly string[] RuntimeAssemblyNames = Utility.Assembly.GetAssemblies().Where(m => !m.FullName.Contains("Editor")).Select(m => m.FullName).ToArray();
 

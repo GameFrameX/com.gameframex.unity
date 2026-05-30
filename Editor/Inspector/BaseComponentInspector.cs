@@ -222,7 +222,7 @@ namespace GameFrameX.Editor
                 NoneOptionName
             };
 
-            textHelperTypeNames.AddRange(Type.GetRuntimeTypeNames(typeof(Utility.Text.ITextHelper)));
+            textHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(Utility.Text.ITextHelper)));
             m_TextHelperTypeNames = textHelperTypeNames.ToArray();
             m_TextHelperTypeNameIndex = 0;
             if (!string.IsNullOrEmpty(m_TextHelperTypeName.stringValue))
@@ -258,7 +258,7 @@ namespace GameFrameX.Editor
                 NoneOptionName
             };
 
-            logHelperTypeNames.AddRange(Type.GetRuntimeTypeNames(typeof(GameFrameworkLog.ILogHelper)));
+            logHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(GameFrameworkLog.ILogHelper)));
             m_LogHelperTypeNames = logHelperTypeNames.ToArray();
             m_LogHelperTypeNameIndex = 0;
             if (!string.IsNullOrEmpty(m_LogHelperTypeName.stringValue))
@@ -276,7 +276,7 @@ namespace GameFrameX.Editor
                 NoneOptionName
             };
 
-            compressionHelperTypeNames.AddRange(Type.GetRuntimeTypeNames(typeof(Utility.Compression.ICompressionHelper)));
+            compressionHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(Utility.Compression.ICompressionHelper)));
             m_CompressionHelperTypeNames = compressionHelperTypeNames.ToArray();
             m_CompressionHelperTypeNameIndex = 0;
             if (!string.IsNullOrEmpty(m_CompressionHelperTypeName.stringValue))
@@ -294,7 +294,7 @@ namespace GameFrameX.Editor
                 NoneOptionName
             };
 
-            jsonHelperTypeNames.AddRange(Type.GetRuntimeTypeNames(typeof(Utility.Json.IJsonHelper)));
+            jsonHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(Utility.Json.IJsonHelper)));
             m_JsonHelperTypeNames = jsonHelperTypeNames.ToArray();
             m_JsonHelperTypeNameIndex = 0;
             if (!string.IsNullOrEmpty(m_JsonHelperTypeName.stringValue))
