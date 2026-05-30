@@ -40,7 +40,7 @@ namespace GameFrameX.Runtime
     /// Default version helper.
     /// </remarks>
     [UnityEngine.Scripting.Preserve]
-    public class DefaultVersionHelper : Version.IVersionHelper
+    public class DefaultVersionHelper : GameVersion.IVersionHelper
     {
         /// <summary>
         /// 获取游戏版本号。

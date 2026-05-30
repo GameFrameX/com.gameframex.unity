@@ -240,7 +240,7 @@ namespace GameFrameX.Editor
                 NoneOptionName
             };
 
-            versionHelperTypeNames.AddRange(Type.GetRuntimeTypeNames(typeof(Version.IVersionHelper)));
+            versionHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(GameVersion.IVersionHelper)));
             m_VersionHelperTypeNames = versionHelperTypeNames.ToArray();
             m_VersionHelperTypeNameIndex = 0;
             if (!string.IsNullOrEmpty(m_VersionHelperTypeName.stringValue))

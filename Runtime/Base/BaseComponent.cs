@@ -160,7 +160,7 @@ namespace GameFrameX.Runtime
             InitVersionHelper();
             InitLogHelper();
             // Log.Info("Game Framework Version: {0}", GameFramework.Version.GameFrameworkVersion);
-            Log.Info("Game Version: {0}, Unity Version: {1}", Version.GameVersion, Application.unityVersion);
+            Log.Info("Game Version: {0}, Unity Version: {1}", GameVersion.GameVersion, Application.unityVersion);
 #if UNITY_5_3_OR_NEWER || UNITY_5_3
             InitCompressionHelper();
             InitJsonHelper();
@@ -299,15 +299,15 @@ namespace GameFrameX.Runtime
                                                                      m_VersionHelperTypeName));
             }
 
-            Version.IVersionHelper versionHelper =
-                (Version.IVersionHelper)Activator.CreateInstance(versionHelperType);
+            GameVersion.IVersionHelper versionHelper =
+                (GameVersion.IVersionHelper)Activator.CreateInstance(versionHelperType);
             if (versionHelper == null)
             {
                 throw new GameFrameworkException(Utility.Text.Format("Can not create version helper instance '{0}'.",
                                                                      m_VersionHelperTypeName));
             }
 
-            Version.SetVersionHelper(versionHelper);
+            GameVersion.SetVersionHelper(versionHelper);
         }
 
         private void InitLogHelper()

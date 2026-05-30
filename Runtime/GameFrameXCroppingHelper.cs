@@ -148,8 +148,8 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.VarVector2);
             _ = typeof(GameFrameX.Runtime.VarVector3);
             _ = typeof(GameFrameX.Runtime.VarVector4);
-            _ = typeof(GameFrameX.Runtime.Version);
-            _ = typeof(GameFrameX.Runtime.Version.IVersionHelper);
+            _ = typeof(GameFrameX.Runtime.GameVersion);
+            _ = typeof(GameFrameX.Runtime.GameVersion.IVersionHelper);
             _ = typeof(GameFrameX.Runtime.ZipHelper);
             _ = typeof(ObjectExtension);
             _ = typeof(SpanExtension);
