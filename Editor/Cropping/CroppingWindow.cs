@@ -55,7 +55,7 @@ namespace GameFrameX.Editor
         }
 
         private string[] _dropdownOptions = new string[] { "Empty" };
-        private readonly string[] _ignoredTypes = new string[] { "UnityEngine".ToLower(), "UnityEditor".ToLower(), "Mono".ToLower(), "System".ToLower(), "dnlib".ToLower(), "Unity.Hotfix".ToLower(), "Unity.Baselib".ToLower(), ".Editor".ToLower(), "JetBrains".ToLower(), "NUnit".ToLower() };
+        private readonly string[] _ignoredTypes = new string[] { "unityengine", "unityeditor", "mono", "system", "dnlib", "unity.hotfix", "unity.baselib", ".editor", "jetbrains", "nunit" };
         private int _selectedDropdownIndex = 0;
         private string _searchText = string.Empty;
 
