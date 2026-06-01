@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using GameFrameX.ReadAssets.Runtime;
 
 namespace GameFrameX.Runtime
 {
@@ -162,7 +163,7 @@ namespace GameFrameX.Runtime
 #if ENABLE_GAME_FRAME_X_READ_ASSETS
             if (IsAndroidReadOnlyPath(path, out var readPath))
             {
-                return BlankReadAssets.BlankReadAssets.IsFileExists(readPath);
+                return BlankReadAssets.FileExists(readPath);
             }
 #endif
             return File.Exists(path);
@@ -218,7 +219,7 @@ namespace GameFrameX.Runtime
 #if ENABLE_GAME_FRAME_X_READ_ASSETS
             if (IsAndroidReadOnlyPath((path), out var readPath))
             {
-                return BlankReadAssets.BlankReadAssets.Read(readPath);
+                return BlankReadAssets.ReadAllBytes(readPath);
             }
 #endif
 
