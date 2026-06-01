@@ -197,10 +197,14 @@ namespace GameFrameX.Runtime
 
             _listToStringBuilder = _listToStringBuilder ?? new StringBuilder();
             _listToStringBuilder.Clear();
-            foreach (T t in list)
+            for (int i = 0; i < list.Count; i++)
             {
-                _listToStringBuilder.Append(t);
-                _listToStringBuilder.Append(separator);
+                if (i > 0)
+                {
+                    _listToStringBuilder.Append(separator);
+                }
+
+                _listToStringBuilder.Append(list[i]);
             }
 
             return _listToStringBuilder.ToString();
