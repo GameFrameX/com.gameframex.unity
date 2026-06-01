@@ -60,7 +60,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Returns the game version from the configured version helper.
         /// </remarks>
-        public static string GameVersion
+        public static string AppVersion
         {
             get
             {

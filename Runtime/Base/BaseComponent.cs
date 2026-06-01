@@ -160,7 +160,7 @@ namespace GameFrameX.Runtime
             InitVersionHelper();
             InitLogHelper();
             // Log.Info("Game Framework Version: {0}", GameFramework.Version.GameFrameworkVersion);
-            Log.Info("Game Version: {0}, Unity Version: {1}", GameVersion.GameVersion, Application.unityVersion);
+            Log.Info("Game Version: {0}, Unity Version: {1}", GameVersion.AppVersion, Application.unityVersion);
 #if UNITY_5_3_OR_NEWER || UNITY_5_3
             InitCompressionHelper();
             InitJsonHelper();
