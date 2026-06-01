@@ -109,7 +109,7 @@ namespace GameFrameX.Runtime
             if (!s_ModuleTypeMap.TryGetValue(interfaceType, out Type moduleType))
             {
                 string moduleName = Utility.Text.Format("{0}.{1}", interfaceType.Namespace, interfaceType.Name.Substring(1));
-                moduleType = s_ModuleTypeMap.TryGetValue(interfaceType, out moduleType) ? moduleType : Type.GetType(moduleName);
+                moduleType = Type.GetType(moduleName);
                 if (moduleType == null)
                 {
                     throw new GameFrameworkException(Utility.Text.Format("Can not find Game Framework module type '{0}'.", moduleName));
