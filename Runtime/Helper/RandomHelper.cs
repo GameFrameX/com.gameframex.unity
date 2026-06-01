@@ -75,7 +75,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static float Next()
         {
-            return ThreadLocalRandom.Current.Next(0, 100_000) / 100_000f;
+            return (float)ThreadLocalRandom.Current.NextDouble();
         }
     }
 }
