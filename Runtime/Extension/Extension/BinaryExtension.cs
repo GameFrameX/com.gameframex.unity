@@ -46,7 +46,8 @@ namespace GameFrameX.Runtime
     [Preserve]
     public static class BinaryExtension
     {
-        private static readonly byte[] s_CachedBytes = new byte[byte.MaxValue + 1];
+        [ThreadStatic]
+        private static byte[] s_CachedBytes;
 
         /// <summary>
         /// 从二进制流读取编码后的 32 位有符号整数。
@@ -227,14 +228,15 @@ namespace GameFrameX.Runtime
                 throw new GameFrameworkException("String is too long.");
             }
 
+            var cachedBytes = s_CachedBytes ?? (s_CachedBytes = new byte[byte.MaxValue + 1]);
             for (byte i = 0; i < length; i++)
             {
-                s_CachedBytes[i] = binaryReader.ReadByte();
+                cachedBytes[i] = binaryReader.ReadByte();
             }
 
-            Utility.Encryption.GetSelfXorBytes(s_CachedBytes, 0, length, encryptBytes);
-            string value = Utility.Converter.GetString(s_CachedBytes, 0, length);
-            Array.Clear(s_CachedBytes, 0, length);
+            Utility.Encryption.GetSelfXorBytes(cachedBytes, 0, length, encryptBytes);
+            string value = Utility.Converter.GetString(cachedBytes, 0, length);
+            Array.Clear(cachedBytes, 0, length);
             return value;
         }
 
@@ -256,15 +258,16 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            int length = Utility.Converter.GetBytes(value, s_CachedBytes);
+            var cachedBytes = s_CachedBytes ?? (s_CachedBytes = new byte[byte.MaxValue + 1]);
+            int length = Utility.Converter.GetBytes(value, cachedBytes);
             if (length > byte.MaxValue)
             {
                 throw new GameFrameworkException(Utility.Text.Format("String '{0}' is too long.", value));
             }
 
-            Utility.Encryption.GetSelfXorBytes(s_CachedBytes, encryptBytes);
+            Utility.Encryption.GetSelfXorBytes(cachedBytes, encryptBytes);
             binaryWriter.Write((byte)length);
-            binaryWriter.Write(s_CachedBytes, 0, length);
+            binaryWriter.Write(cachedBytes, 0, length);
         }
     }
 }
