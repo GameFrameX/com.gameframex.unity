@@ -44,7 +44,7 @@ namespace GameFrameX.Runtime
     [UnityEngine.Scripting.Preserve]
     public abstract class Variable<T> : Variable
     {
-        private T m_Value;
+        private T _value;
 
         /// <summary>
         /// 初始化变量的新实例。
@@ -55,7 +55,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public Variable()
         {
-            m_Value = default(T);
+            _value = default(T);
         }
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public T Value
         {
-            get { return m_Value; }
-            set { m_Value = value; }
+            get { return _value; }
+            set { _value = value; }
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public override object GetValue()
         {
-            return m_Value;
+            return _value;
         }
 
         /// <summary>
@@ -100,7 +100,12 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public override void SetValue(object value)
         {
-            m_Value = (T)value;
+            if (value != null && !(value is T))
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Cannot set value of type '{0}' to variable of type '{1}'.", value.GetType().FullName, typeof(T).FullName));
+            }
+
+            _value = (T)value;
         }
 
         /// <summary>
@@ -112,7 +117,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public override void Clear()
         {
-            m_Value = default(T);
+            _value = default(T);
         }
 
         /// <summary>
@@ -122,7 +127,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public override string ToString()
         {
-            return (m_Value != null) ? m_Value.ToString() : "<Null>";
+            return (_value != null) ? _value.ToString() : "<Null>";
         }
     }
 }
