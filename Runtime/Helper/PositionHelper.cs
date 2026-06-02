@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace GameFrameX.Runtime
@@ -233,6 +234,11 @@ namespace GameFrameX.Runtime
             Vector2 pointVec2 = (point.IgnoreYAxis() - originVec2).normalized;
 
             Vector2 vector2 = vector3.IgnoreYAxis();
+
+            if (Math.Abs(vector2.y) < 1e-6f)
+            {
+                return false;
+            }
 
             float verticalX = originVec2.x;
 
