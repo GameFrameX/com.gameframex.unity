@@ -16,7 +16,6 @@ namespace GameFrameX.Runtime
     [UnityEngine.Scripting.Preserve]
     public static class ZipHelper
     {
-        private static readonly Crc32 CRC = new Crc32();
 
         /// <summary>
         /// 压缩文件夹到流。
@@ -108,10 +107,10 @@ namespace GameFrameX.Runtime
                     Size = buffer.Length,
                 };
 
-                CRC.Reset();
-                CRC.Update(buffer);
+                var crc = new Crc32();
+                crc.Update(buffer);
 
-                ent.Crc = CRC.Value;
+                ent.Crc = crc.Value;
                 zipStream.PutNextEntry(ent);
                 zipStream.Write(buffer, 0, buffer.Length);
             }
@@ -192,9 +191,9 @@ namespace GameFrameX.Runtime
                         DateTime = DateTime.Now,
                         Size = readStream.Length
                     };
-                    CRC.Reset();
-                    CRC.Update(buffer);
-                    entry.Crc = CRC.Value;
+                    var crc = new Crc32();
+                    crc.Update(buffer);
+                    entry.Crc = crc.Value;
                     using (var zipStream = new ZipOutputStream(writeStream))
                     {
                         if (!string.IsNullOrEmpty(password))
