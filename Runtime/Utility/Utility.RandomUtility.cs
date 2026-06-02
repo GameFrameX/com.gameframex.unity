@@ -30,6 +30,7 @@
 // ==========================================================================================
 
 using System;
+using System.Threading;
 using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
@@ -45,7 +46,8 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static class RandomUtility
         {
-            private static System.Random s_Random = new System.Random((int)DateTime.UtcNow.Ticks);
+            private static int s_Seed = (int)DateTime.UtcNow.Ticks;
+            private static ThreadLocal<System.Random> s_Random = new ThreadLocal<System.Random>(() => new System.Random(Interlocked.Increment(ref s_Seed)));
 
             /// <summary>
             /// 设置随机数种子。
@@ -57,7 +59,10 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static void SetSeed(int seed)
             {
-                s_Random = new System.Random(seed);
+                s_Seed = seed;
+                var oldRandom = s_Random;
+                s_Random = new ThreadLocal<System.Random>(() => new System.Random(Interlocked.Increment(ref s_Seed)));
+                oldRandom.Dispose();
             }
 
             /// <summary>
@@ -70,7 +75,7 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static int GetRandom()
             {
-                return s_Random.Next();
+                return s_Random.Value.Next();
             }
 
             /// <summary>
@@ -84,7 +89,7 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static int GetRandom(int maxValue)
             {
-                return s_Random.Next(maxValue);
+                return s_Random.Value.Next(maxValue);
             }
 
             /// <summary>
@@ -99,7 +104,7 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static int GetRandom(int minValue, int maxValue)
             {
-                return s_Random.Next(minValue, maxValue);
+                return s_Random.Value.Next(minValue, maxValue);
             }
 
             /// <summary>
@@ -112,7 +117,7 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static double GetRandomDouble()
             {
-                return s_Random.NextDouble();
+                return s_Random.Value.NextDouble();
             }
 
             /// <summary>
@@ -125,7 +130,7 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static void GetRandomBytes(byte[] buffer)
             {
-                s_Random.NextBytes(buffer);
+                s_Random.Value.NextBytes(buffer);
             }
         }
     }
