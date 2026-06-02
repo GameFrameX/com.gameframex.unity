@@ -48,8 +48,6 @@ namespace GameFrameX.Runtime
         {
             private const int CachedBytesLength = 0x1000;
             private static readonly byte[] SCachedBytes = new byte[CachedBytesLength];
-            private static readonly Crc32 SAlgorithm = new Crc32();
-            private static readonly Crc64 SAlgorithm64 = new Crc64();
 
             /// <summary>
             /// 计算二进制流的 CRC64。
@@ -62,9 +60,9 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static ulong GetCrc64(byte[] bytes)
             {
-                SAlgorithm64.Reset();
-                SAlgorithm64.Append(bytes);
-                return SAlgorithm64.GetCurrentHashAsUInt64();
+                var algorithm = new Crc64();
+                algorithm.Append(bytes);
+                return algorithm.GetCurrentHashAsUInt64();
             }
 
             /// <summary>
@@ -78,9 +76,9 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static ulong GetCrc64(Stream stream)
             {
-                SAlgorithm64.Reset();
-                SAlgorithm64.Append(stream);
-                return SAlgorithm64.GetCurrentHashAsUInt64();
+                var algorithm = new Crc64();
+                algorithm.Append(stream);
+                return algorithm.GetCurrentHashAsUInt64();
             }
 
             /// <summary>
@@ -125,9 +123,9 @@ namespace GameFrameX.Runtime
                     throw new GameFrameworkException("Offset or length is invalid.");
                 }
 
-                SAlgorithm.HashCore(bytes, offset, length);
-                int result = (int)SAlgorithm.HashFinal();
-                SAlgorithm.Initialize();
+                var algorithm = new Crc32();
+                algorithm.HashCore(bytes, offset, length);
+                int result = (int)algorithm.HashFinal();
                 return result;
             }
 
@@ -147,12 +145,13 @@ namespace GameFrameX.Runtime
                     throw new GameFrameworkException("Stream is invalid.");
                 }
 
+                var algorithm = new Crc32();
                 while (true)
                 {
                     int bytesRead = stream.Read(SCachedBytes, 0, CachedBytesLength);
                     if (bytesRead > 0)
                     {
-                        SAlgorithm.HashCore(SCachedBytes, 0, bytesRead);
+                        algorithm.HashCore(SCachedBytes, 0, bytesRead);
                     }
                     else
                     {
@@ -160,8 +159,7 @@ namespace GameFrameX.Runtime
                     }
                 }
 
-                int result = (int)SAlgorithm.HashFinal();
-                SAlgorithm.Initialize();
+                int result = (int)algorithm.HashFinal();
                 Array.Clear(SCachedBytes, 0, CachedBytesLength);
                 return result;
             }
@@ -246,6 +244,7 @@ namespace GameFrameX.Runtime
                     length = bytesLength;
                 }
 
+                var algorithm = new Crc32();
                 int codeIndex = 0;
                 while (true)
                 {
@@ -263,7 +262,7 @@ namespace GameFrameX.Runtime
                             length -= bytesRead;
                         }
 
-                        SAlgorithm.HashCore(SCachedBytes, 0, bytesRead);
+                        algorithm.HashCore(SCachedBytes, 0, bytesRead);
                     }
                     else
                     {
@@ -271,8 +270,7 @@ namespace GameFrameX.Runtime
                     }
                 }
 
-                int result = (int)SAlgorithm.HashFinal();
-                SAlgorithm.Initialize();
+                int result = (int)algorithm.HashFinal();
                 Array.Clear(SCachedBytes, 0, CachedBytesLength);
                 return result;
             }
