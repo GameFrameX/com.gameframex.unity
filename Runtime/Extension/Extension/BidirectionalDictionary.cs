@@ -101,15 +101,14 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public bool TryAdd(TKey key, TValue value)
         {
-            if (!_forwardDictionary.ContainsKey(key))
+            if (_forwardDictionary.ContainsKey(key) || _reverseDictionary.ContainsKey(value))
             {
-                _forwardDictionary.Add(key, value);
-                _reverseDictionary.Add(value, key);
-                _count++;
-                return true;
+                return false;
             }
-
-            return false;
+            _forwardDictionary.Add(key, value);
+            _reverseDictionary.Add(value, key);
+            _count++;
+            return true;
         }
 
         /// <summary>
