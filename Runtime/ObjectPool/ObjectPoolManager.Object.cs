@@ -61,7 +61,14 @@ namespace GameFrameX.ObjectPool
             [UnityEngine.Scripting.Preserve]
             public string Name
             {
-                get { return m_Object.Name; }
+                get
+                {
+                    if (m_Object == null)
+                    {
+                        throw new GameFrameworkException("Object is not initialized.");
+                    }
+                    return m_Object.Name;
+                }
             }
 
             /// <summary>
@@ -70,8 +77,22 @@ namespace GameFrameX.ObjectPool
             [UnityEngine.Scripting.Preserve]
             public bool Locked
             {
-                get { return m_Object.Locked; }
-                internal set { m_Object.Locked = value; }
+                get
+                {
+                    if (m_Object == null)
+                    {
+                        throw new GameFrameworkException("Object is not initialized.");
+                    }
+                    return m_Object.Locked;
+                }
+                internal set
+                {
+                    if (m_Object == null)
+                    {
+                        throw new GameFrameworkException("Object is not initialized.");
+                    }
+                    m_Object.Locked = value;
+                }
             }
 
             /// <summary>
@@ -80,8 +101,22 @@ namespace GameFrameX.ObjectPool
             [UnityEngine.Scripting.Preserve]
             public int Priority
             {
-                get { return m_Object.Priority; }
-                internal set { m_Object.Priority = value; }
+                get
+                {
+                    if (m_Object == null)
+                    {
+                        throw new GameFrameworkException("Object is not initialized.");
+                    }
+                    return m_Object.Priority;
+                }
+                internal set
+                {
+                    if (m_Object == null)
+                    {
+                        throw new GameFrameworkException("Object is not initialized.");
+                    }
+                    m_Object.Priority = value;
+                }
             }
 
             /// <summary>
@@ -90,7 +125,14 @@ namespace GameFrameX.ObjectPool
             [UnityEngine.Scripting.Preserve]
             public bool CustomCanReleaseFlag
             {
-                get { return m_Object.CustomCanReleaseFlag; }
+                get
+                {
+                    if (m_Object == null)
+                    {
+                        throw new GameFrameworkException("Object is not initialized.");
+                    }
+                    return m_Object.CustomCanReleaseFlag;
+                }
             }
 
             /// <summary>
@@ -99,7 +141,14 @@ namespace GameFrameX.ObjectPool
             [UnityEngine.Scripting.Preserve]
             public DateTime LastUseTime
             {
-                get { return m_Object.LastUseTime; }
+                get
+                {
+                    if (m_Object == null)
+                    {
+                        throw new GameFrameworkException("Object is not initialized.");
+                    }
+                    return m_Object.LastUseTime;
+                }
             }
 
             /// <summary>

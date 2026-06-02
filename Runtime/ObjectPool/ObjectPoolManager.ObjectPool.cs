@@ -625,15 +625,16 @@ namespace GameFrameX.ObjectPool
             private List<T> DefaultReleaseObjectFilterCallback(List<T> candidateObjects, int toReleaseCount, DateTime expireTime)
             {
                 m_CachedToReleaseObjects.Clear();
+                var workingObjects = new List<T>(candidateObjects);
 
                 if (expireTime > DateTime.MinValue)
                 {
-                    for (int i = candidateObjects.Count - 1; i >= 0; i--)
+                    for (int i = workingObjects.Count - 1; i >= 0; i--)
                     {
-                        if (candidateObjects[i].LastUseTime <= expireTime)
+                        if (workingObjects[i].LastUseTime <= expireTime)
                         {
-                            m_CachedToReleaseObjects.Add(candidateObjects[i]);
-                            candidateObjects.RemoveAt(i);
+                            m_CachedToReleaseObjects.Add(workingObjects[i]);
+                            workingObjects.RemoveAt(i);
                             continue;
                         }
                     }
@@ -641,20 +642,20 @@ namespace GameFrameX.ObjectPool
                     toReleaseCount -= m_CachedToReleaseObjects.Count;
                 }
 
-                for (int i = 0; toReleaseCount > 0 && i < candidateObjects.Count; i++)
+                for (int i = 0; toReleaseCount > 0 && i < workingObjects.Count; i++)
                 {
-                    for (int j = i + 1; j < candidateObjects.Count; j++)
+                    for (int j = i + 1; j < workingObjects.Count; j++)
                     {
-                        if (candidateObjects[i].Priority > candidateObjects[j].Priority
-                            || candidateObjects[i].Priority == candidateObjects[j].Priority && candidateObjects[i].LastUseTime > candidateObjects[j].LastUseTime)
+                        if (workingObjects[i].Priority > workingObjects[j].Priority
+                            || workingObjects[i].Priority == workingObjects[j].Priority && workingObjects[i].LastUseTime > workingObjects[j].LastUseTime)
                         {
-                            T temp = candidateObjects[i];
-                            candidateObjects[i] = candidateObjects[j];
-                            candidateObjects[j] = temp;
+                            T temp = workingObjects[i];
+                            workingObjects[i] = workingObjects[j];
+                            workingObjects[j] = temp;
                         }
                     }
 
-                    m_CachedToReleaseObjects.Add(candidateObjects[i]);
+                    m_CachedToReleaseObjects.Add(workingObjects[i]);
                     toReleaseCount--;
                 }
 
