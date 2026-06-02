@@ -45,8 +45,9 @@ namespace GameFrameX.Runtime
         public static class Marshal
         {
             private const int BlockSize = 1024 * 4;
-            private static IntPtr s_CachedHGlobalPtr = IntPtr.Zero;
-            private static int s_CachedHGlobalSize = 0;
+            private static IntPtr _cachedHGlobalPtr = IntPtr.Zero;
+            private static int _cachedHGlobalSize;
+            private static readonly object Lock = new object();
 
             /// <summary>
             /// 获取缓存的从进程的非托管内存中分配的内存的大小。
@@ -54,7 +55,7 @@ namespace GameFrameX.Runtime
             [UnityEngine.Scripting.Preserve]
             public static int CachedHGlobalSize
             {
-                get { return s_CachedHGlobalSize; }
+                get { return _cachedHGlobalSize; }
             }
 
             /// <summary>
@@ -69,12 +70,15 @@ namespace GameFrameX.Runtime
                     throw new GameFrameworkException("Ensure size is invalid.");
                 }
 
-                if (s_CachedHGlobalPtr == IntPtr.Zero || s_CachedHGlobalSize < ensureSize)
+                lock (Lock)
                 {
-                    FreeCachedHGlobal();
-                    int size = (ensureSize - 1 + BlockSize) / BlockSize * BlockSize;
-                    s_CachedHGlobalPtr = System.Runtime.InteropServices.Marshal.AllocHGlobal(size);
-                    s_CachedHGlobalSize = size;
+                    if (_cachedHGlobalPtr == IntPtr.Zero || _cachedHGlobalSize < ensureSize)
+                    {
+                        FreeCachedHGlobal();
+                        var size = (ensureSize - 1 + BlockSize) / BlockSize * BlockSize;
+                        _cachedHGlobalPtr = System.Runtime.InteropServices.Marshal.AllocHGlobal(size);
+                        _cachedHGlobalSize = size;
+                    }
                 }
             }
 
@@ -84,11 +88,14 @@ namespace GameFrameX.Runtime
             [UnityEngine.Scripting.Preserve]
             public static void FreeCachedHGlobal()
             {
-                if (s_CachedHGlobalPtr != IntPtr.Zero)
+                lock (Lock)
                 {
-                    System.Runtime.InteropServices.Marshal.FreeHGlobal(s_CachedHGlobalPtr);
-                    s_CachedHGlobalPtr = IntPtr.Zero;
-                    s_CachedHGlobalSize = 0;
+                    if (_cachedHGlobalPtr != IntPtr.Zero)
+                    {
+                        System.Runtime.InteropServices.Marshal.FreeHGlobal(_cachedHGlobalPtr);
+                        _cachedHGlobalPtr = IntPtr.Zero;
+                        _cachedHGlobalSize = 0;
+                    }
                 }
             }
 
@@ -119,10 +126,14 @@ namespace GameFrameX.Runtime
                     throw new GameFrameworkException("Structure size is invalid.");
                 }
 
-                EnsureCachedHGlobalSize(structureSize);
-                System.Runtime.InteropServices.Marshal.StructureToPtr(structure, s_CachedHGlobalPtr, true);
-                byte[] result = new byte[structureSize];
-                System.Runtime.InteropServices.Marshal.Copy(s_CachedHGlobalPtr, result, 0, structureSize);
+                var result = new byte[structureSize];
+                lock (Lock)
+                {
+                    EnsureCachedHGlobalSize(structureSize);
+                    System.Runtime.InteropServices.Marshal.StructureToPtr(structure, _cachedHGlobalPtr, true);
+                    System.Runtime.InteropServices.Marshal.Copy(_cachedHGlobalPtr, result, 0, structureSize);
+                }
+
                 return result;
             }
 
@@ -195,9 +206,12 @@ namespace GameFrameX.Runtime
                     throw new GameFrameworkException("Result length is not enough.");
                 }
 
-                EnsureCachedHGlobalSize(structureSize);
-                System.Runtime.InteropServices.Marshal.StructureToPtr(structure, s_CachedHGlobalPtr, true);
-                System.Runtime.InteropServices.Marshal.Copy(s_CachedHGlobalPtr, result, startIndex, structureSize);
+                lock (Lock)
+                {
+                    EnsureCachedHGlobalSize(structureSize);
+                    System.Runtime.InteropServices.Marshal.StructureToPtr(structure, _cachedHGlobalPtr, true);
+                    System.Runtime.InteropServices.Marshal.Copy(_cachedHGlobalPtr, result, startIndex, structureSize);
+                }
             }
 
             /// <summary>
@@ -269,9 +283,12 @@ namespace GameFrameX.Runtime
                     throw new GameFrameworkException("Buffer length is not enough.");
                 }
 
-                EnsureCachedHGlobalSize(structureSize);
-                System.Runtime.InteropServices.Marshal.Copy(buffer, startIndex, s_CachedHGlobalPtr, structureSize);
-                return (T)System.Runtime.InteropServices.Marshal.PtrToStructure(s_CachedHGlobalPtr, typeof(T));
+                lock (Lock)
+                {
+                    EnsureCachedHGlobalSize(structureSize);
+                    System.Runtime.InteropServices.Marshal.Copy(buffer, startIndex, _cachedHGlobalPtr, structureSize);
+                    return (T)System.Runtime.InteropServices.Marshal.PtrToStructure(_cachedHGlobalPtr, typeof(T));
+                }
             }
         }
     }
