@@ -16,7 +16,7 @@ namespace GameFrameX.Runtime
         private static int _seed = Environment.TickCount;
         private static int? _customSeed;
 
-        private static readonly ThreadLocal<Random> _rng = new ThreadLocal<Random>(() => new Random(_customSeed ?? Interlocked.Increment(ref _seed)));
+        private static ThreadLocal<Random> _rng = new ThreadLocal<Random>(() => new Random(_customSeed ?? Interlocked.Increment(ref _seed)));
 
         /// <summary>
         /// The current random number seed available to this thread
@@ -41,6 +41,9 @@ namespace GameFrameX.Runtime
         public static void SetSeed(int seed)
         {
             _customSeed = seed;
+            var oldRng = _rng;
+            _rng = new ThreadLocal<Random>(() => new Random(_customSeed ?? Interlocked.Increment(ref _seed)));
+            oldRng.Dispose();
         }
 
         /// <summary>
