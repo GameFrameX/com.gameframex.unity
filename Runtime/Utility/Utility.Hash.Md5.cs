@@ -24,8 +24,6 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static class MD5
             {
-                private static readonly System.Security.Cryptography.MD5 MD5Cryptography = System.Security.Cryptography.MD5.Create();
-
                 /// <summary>
                 /// 获取字符串的 MD5 哈希值。
                 /// </summary>
@@ -37,8 +35,11 @@ namespace GameFrameX.Runtime
                 [Preserve]
                 public static string Hash(string input)
                 {
-                    var data = MD5Cryptography.ComputeHash(Encoding.UTF8.GetBytes(input));
-                    return ToHash(data);
+                    using (var md5 = System.Security.Cryptography.MD5.Create())
+                    {
+                        var data = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+                        return ToHash(data);
+                    }
                 }
 
                 /// <summary>
@@ -52,8 +53,11 @@ namespace GameFrameX.Runtime
                 [Preserve]
                 public static string Hash(Stream input)
                 {
-                    var data = MD5Cryptography.ComputeHash(input);
-                    return ToHash(data);
+                    using (var md5 = System.Security.Cryptography.MD5.Create())
+                    {
+                        var data = md5.ComputeHash(input);
+                        return ToHash(data);
+                    }
                 }
 
                 /// <summary>
@@ -94,7 +98,7 @@ namespace GameFrameX.Runtime
                 [Preserve]
                 public static string FileHash(string filePath)
                 {
-                    using (FileStream file = new FileStream(filePath, FileMode.Open))
+                    using (var file = new FileStream(filePath, FileMode.Open))
                     {
                         return Hash(file);
                     }
