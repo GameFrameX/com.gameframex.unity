@@ -8,7 +8,7 @@ namespace GameFrameX.Runtime
     [Preserve]
     public static class UnityEngineGameObjectExtension
     {
-        private static readonly List<Transform> s_CachedTransforms = new List<Transform>();
+        private static readonly List<Transform> CachedTransforms = new List<Transform>(64);
 
         /// <summary>
         /// 销毁组件。
@@ -114,13 +114,12 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static void SetLayerRecursively(this GameObject gameObject, int layer)
         {
-            gameObject.GetComponentsInChildren(true, s_CachedTransforms);
-            foreach (var tf in s_CachedTransforms)
+            CachedTransforms.Clear();
+            gameObject.GetComponentsInChildren(true, CachedTransforms);
+            foreach (var tf in CachedTransforms)
             {
                 tf.gameObject.layer = layer;
             }
-
-            s_CachedTransforms.Clear();
         }
     }
 }
