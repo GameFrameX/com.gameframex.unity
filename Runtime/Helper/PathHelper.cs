@@ -94,7 +94,6 @@ namespace GameFrameX.Runtime
             return path.Replace('\\', '/').Replace("\\", "/");
         }
 
-        static readonly StringBuilder CombineStringBuilder = new StringBuilder();
 
         /// <summary>
         /// 拼接路径
@@ -104,13 +103,13 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static string Combine(params string[] paths)
         {
-            CombineStringBuilder.Clear();
+            var sb = new StringBuilder();
             const string separatorA = "/";
             const string separatorB = "\\";
             for (var index = 0; index < paths.Length - 1; index++)
             {
                 var path = paths[index];
-                CombineStringBuilder.Append(path);
+                sb.Append(path);
                 if (path.EndsWithFast(separatorA) || path.EndsWithFast(separatorB))
                 {
                     continue;
@@ -121,11 +120,11 @@ namespace GameFrameX.Runtime
                     continue;
                 }
 
-                CombineStringBuilder.Append(separatorA);
+                sb.Append(separatorA);
             }
 
-            CombineStringBuilder.Append(paths[paths.Length - 1]);
-            return CombineStringBuilder.ToString();
+            sb.Append(paths[paths.Length - 1]);
+            return sb.ToString();
         }
     }
 }
