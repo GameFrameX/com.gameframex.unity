@@ -12,7 +12,8 @@ namespace GameFrameX.Runtime
     [UnityEngine.Scripting.Preserve]
     public abstract class GameFrameworkMonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static T _instance;
+        private static volatile T _instance;
+        private static readonly object Lock = new object();
 
         [UnityEngine.Scripting.Preserve]
         protected GameFrameworkMonoSingleton()
@@ -31,20 +32,29 @@ namespace GameFrameX.Runtime
         {
             get
             {
-                if (_instance == null)
+                if (_instance != null)
                 {
-                    _instance = (T)Object.FindObjectOfType(typeof(T));
+                    return _instance;
                 }
 
-                if (_instance == null)
+                lock (Lock)
                 {
-                    var insObj = new GameObject();
-                    _instance = insObj.AddComponent<T>();
-                    _instance.name = "[Singleton]" + typeof(T);
-
-                    if (Application.isPlaying)
+                    if (_instance != null)
                     {
-                        Object.DontDestroyOnLoad(insObj);
+                        return _instance;
+                    }
+
+                    _instance = (T)Object.FindObjectOfType(typeof(T));
+                    if (_instance == null)
+                    {
+                        var insObj = new GameObject();
+                        _instance = insObj.AddComponent<T>();
+                        _instance.name = "[Singleton]" + typeof(T).Name;
+
+                        if (Application.isPlaying)
+                        {
+                            Object.DontDestroyOnLoad(insObj);
+                        }
                     }
                 }
 
