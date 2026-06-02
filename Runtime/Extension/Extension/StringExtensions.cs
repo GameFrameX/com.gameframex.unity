@@ -338,14 +338,18 @@ namespace GameFrameX.Runtime
         public static int[] SplitToIntArray(this string str, char sep = '+')
         {
             if (string.IsNullOrEmpty(str))
+            {
                 return Array.Empty<int>();
+            }
 
             var arr = str.Split(sep);
             int[] ret = new int[arr.Length];
             for (int i = 0; i < arr.Length; ++i)
             {
                 if (int.TryParse(arr[i], out var t))
+                {
                     ret[i] = t;
+                }
             }
 
             return ret;
@@ -365,16 +369,22 @@ namespace GameFrameX.Runtime
         public static int[][] SplitTo2IntArray(this string str, char sep1 = ';', char sep2 = '+')
         {
             if (string.IsNullOrEmpty(str))
+            {
                 return Array.Empty<int[]>();
+            }
 
             var arr = str.Split(sep1);
             if (arr.Length <= 0)
+            {
                 return Array.Empty<int[]>();
+            }
 
             int[][] ret = new int[arr.Length][];
 
             for (int i = 0; i < arr.Length; ++i)
+            {
                 ret[i] = arr[i].SplitToIntArray(sep2);
+            }
             return ret;
         }
 
@@ -390,14 +400,18 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static void CreateAsDirectory(this string path, bool isFile = false)
         {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return;
+            }
+
             if (isFile)
             {
                 path = Path.GetDirectoryName(path);
             }
 
-            if (!Directory.Exists(path))
+            if (!string.IsNullOrEmpty(path) && !Directory.Exists(path))
             {
-                CreateAsDirectory(path, true);
                 Directory.CreateDirectory(path);
             }
         }
