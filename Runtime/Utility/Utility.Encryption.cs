@@ -47,7 +47,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static partial class Encryption
         {
-            internal const int QuickEncryptLength = 220;
+            private const int QuickEncryptLength = 220;
 
             /// <summary>
             /// 将 bytes 使用 code 做异或运算的快速版本。
@@ -160,7 +160,7 @@ namespace GameFrameX.Runtime
                 }
 
                 int codeIndex = startIndex % codeLength;
-                for (int i = startIndex; i < length; i++)
+                for (int i = startIndex; i < startIndex + length; i++)
                 {
                     bytes[i] ^= code[codeIndex++];
                     codeIndex %= codeLength;

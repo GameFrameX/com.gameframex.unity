@@ -86,9 +86,9 @@ namespace GameFrameX.Runtime
                         dsa.FromXmlString(privateKey);
                         return dsa.SignData(dataToSign);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        return null;
+                        throw new GameFrameworkException("DSA sign data failed.", ex);
                     }
                 }
 
@@ -123,9 +123,9 @@ namespace GameFrameX.Runtime
                     {
                         return _dsa.SignData(dataToSign);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        return null;
+                        throw new GameFrameworkException("DSA sign data failed.", ex);
                     }
                 }
 
@@ -163,9 +163,9 @@ namespace GameFrameX.Runtime
                         dsa.FromXmlString(privateKey);
                         return dsa.VerifyData(dataToVerify, signedData);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        return false;
+                        throw new GameFrameworkException("DSA verify data failed.", ex);
                     }
                 }
 
@@ -202,9 +202,9 @@ namespace GameFrameX.Runtime
                     {
                         return _dsa.VerifyData(dataToVerify, signedData);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        return false;
+                        throw new GameFrameworkException("DSA verify data failed.", ex);
                     }
                 }
 
@@ -224,9 +224,9 @@ namespace GameFrameX.Runtime
                     {
                         return VerifyData(Encoding.UTF8.GetBytes(dataToVerify), Convert.FromBase64String(signedData));
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        return false;
+                        throw new GameFrameworkException("DSA verify data failed.", ex);
                     }
                 }
             }

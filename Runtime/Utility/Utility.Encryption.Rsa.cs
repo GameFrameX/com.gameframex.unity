@@ -164,9 +164,9 @@ namespace GameFrameX.Runtime
                         rsa.FromXmlString(privateKey);
                         return rsa.SignData(dataToSign, new SHA1CryptoServiceProvider());
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        return null;
+                        throw new GameFrameworkException("RSA sign data failed.", ex);
                     }
                 }
 
@@ -184,9 +184,9 @@ namespace GameFrameX.Runtime
                     {
                         return _rsa.SignData(dataToSign, new SHA1CryptoServiceProvider());
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        return null;
+                        throw new GameFrameworkException("RSA sign data failed.", ex);
                     }
                 }
 
@@ -216,9 +216,9 @@ namespace GameFrameX.Runtime
                         rsa.FromXmlString(publicKey);
                         return rsa.VerifyData(dataToVerify, new SHA1CryptoServiceProvider(), signedData);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        return false;
+                        throw new GameFrameworkException("RSA verify data failed.", ex);
                     }
                 }
 
@@ -236,9 +236,9 @@ namespace GameFrameX.Runtime
                     {
                         return _rsa.VerifyData(dataToVerify, new SHA1CryptoServiceProvider(), signedData);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        return false;
+                        throw new GameFrameworkException("RSA verify data failed.", ex);
                     }
                 }
 
@@ -249,9 +249,9 @@ namespace GameFrameX.Runtime
                     {
                         return VerifyData(Encoding.UTF8.GetBytes(dataToVerify), Convert.FromBase64String(signedData));
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        return false;
+                        throw new GameFrameworkException("RSA verify data failed.", ex);
                     }
                 }
             }

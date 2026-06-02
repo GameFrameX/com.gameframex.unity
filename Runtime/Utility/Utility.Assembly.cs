@@ -45,12 +45,13 @@ namespace GameFrameX.Runtime
         /// </remarks>
         public static class Assembly
         {
-            private static readonly System.Reflection.Assembly[] s_Assemblies = null;
-            private static readonly Dictionary<string, Type> s_CachedTypes = new Dictionary<string, Type>(StringComparer.Ordinal);
+            private static readonly System.Reflection.Assembly[] Assemblies = null;
+            private static readonly Dictionary<string, Type> CachedTypes = new Dictionary<string, Type>(StringComparer.Ordinal);
+            private static readonly object Lock = new object();
 
             static Assembly()
             {
-                s_Assemblies = AppDomain.CurrentDomain.GetAssemblies();
+                Assemblies = AppDomain.CurrentDomain.GetAssemblies();
             }
 
             /// <summary>
@@ -63,7 +64,7 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static System.Reflection.Assembly[] GetAssemblies()
             {
-                return s_Assemblies;
+                return Assemblies;
             }
 
             /// <summary>
@@ -76,8 +77,8 @@ namespace GameFrameX.Runtime
             [Preserve]
             public static Type[] GetTypes()
             {
-                List<Type> results = new List<Type>();
-                foreach (System.Reflection.Assembly assembly in s_Assemblies)
+                var results = new List<Type>(256);
+                foreach (var assembly in Assemblies)
                 {
                     results.AddRange(assembly.GetTypes());
                 }
@@ -101,7 +102,7 @@ namespace GameFrameX.Runtime
                 }
 
                 results.Clear();
-                foreach (System.Reflection.Assembly assembly in s_Assemblies)
+                foreach (var assembly in Assemblies)
                 {
                     results.AddRange(assembly.GetTypes());
                 }
@@ -123,30 +124,32 @@ namespace GameFrameX.Runtime
                     throw new GameFrameworkException("Type name is invalid.");
                 }
 
-                Type type = null;
-                if (s_CachedTypes.TryGetValue(typeName, out type))
+                lock (Lock)
                 {
-                    return type;
-                }
-
-                type = Type.GetType(typeName);
-                if (type != null)
-                {
-                    s_CachedTypes.Add(typeName, type);
-                    return type;
-                }
-
-                foreach (System.Reflection.Assembly assembly in s_Assemblies)
-                {
-                    type = Type.GetType(Text.Format("{0}, {1}", typeName, assembly.FullName));
-                    if (type != null)
+                    if (CachedTypes.TryGetValue(typeName, out var type))
                     {
-                        s_CachedTypes.Add(typeName, type);
                         return type;
                     }
-                }
 
-                return null;
+                    type = Type.GetType(typeName);
+                    if (type != null)
+                    {
+                        CachedTypes.Add(typeName, type);
+                        return type;
+                    }
+
+                    foreach (System.Reflection.Assembly assembly in Assemblies)
+                    {
+                        type = Type.GetType(Text.Format("{0}, {1}", typeName, assembly.FullName));
+                        if (type != null)
+                        {
+                            CachedTypes.Add(typeName, type);
+                            return type;
+                        }
+                    }
+
+                    return null;
+                }
             }
 
             /// <summary>
@@ -161,7 +164,7 @@ namespace GameFrameX.Runtime
             public static List<string> GetRuntimeTypeNames(Type type)
             {
                 var types = GetTypes();
-                List<string> results = new List<string>();
+                var results = new List<string>(256);
                 foreach (var t in types)
                 {
                     if (t.IsAbstract || !t.IsClass)
