@@ -384,12 +384,13 @@ namespace GameFrameX.Runtime
                     noHandlerException = true;
                 }
 
-                ReferencePool.Release(e);
-
                 if (noHandlerException)
                 {
+                    ReferencePool.Release(e);
                     throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not allow no handler.", e.Id));
                 }
+
+                ReferencePool.Release(e);
             }
         }
     }
