@@ -49,12 +49,13 @@ namespace GameFrameX.Runtime
 
             if (directOnly)
             {
-                // 只检查直接实现的接口
-                return self.GetInterfaces().Any(i => i == target);
+                // 只检查直接声明的接口（排除通过其他接口继承的）
+                var allInterfaces = self.GetInterfaces();
+                return allInterfaces.Contains(target) && !allInterfaces.Any(i => i != target && i.GetInterfaces().Contains(target));
             }
 
             // 检查所有实现的接口（包括继承的接口）
-            return self.GetInterfaces().Any(i => i == target || i.GetInterfaces().Contains(target));
+            return self.GetInterfaces().Contains(target);
         }
     }
 }

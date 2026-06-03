@@ -22,7 +22,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static int GetDaysFrom(this DateTime now, DateTime dt)
         {
-            return (int)(now.Date - dt).TotalDays;
+            return (int)(now.Date - dt.Date).TotalDays;
         }
 
         /// <summary>

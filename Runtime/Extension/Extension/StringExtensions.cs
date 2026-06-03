@@ -302,7 +302,7 @@ namespace GameFrameX.Runtime
             }
 
             var startUnderscores = Regex.Match(input, @"^_+");
-            return startUnderscores + Regex.Replace(input, @"([a-z0-9])([A-Z])", "$1_$2").ToLower();
+            return startUnderscores + Regex.Replace(input.Substring(startUnderscores.Length), @"([a-z0-9])([A-Z])", "$1_$2").ToLower();
         }
 
         /// <summary>
@@ -456,9 +456,13 @@ namespace GameFrameX.Runtime
                             return line;
                         }
 
-                        offset++;
-                        position++;
-                        break;
+                        position = offset + 1;
+                        if ((ch == '\r') && (position < length) && (rawString[position] == '\n'))
+                        {
+                            position++;
+                        }
+
+                        return string.Empty;
 
                     default:
                         offset++;
