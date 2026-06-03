@@ -145,7 +145,7 @@ namespace GameFrameX.Runtime
         /// <seealso cref="UnixTimeMilliseconds"/>
         public static long UnixTimeSeconds()
         {
-            return new DateTimeOffset(GetNowWithUtc()).ToUnixTimeSeconds() + TimeOffsetSeconds;
+            return new DateTimeOffset(GetNowWithUtc()).ToUnixTimeSeconds();
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace GameFrameX.Runtime
         /// <seealso cref="UnixTimeSeconds"/>
         public static long UnixTimeMilliseconds()
         {
-            return new DateTimeOffset(GetNowWithUtc()).ToUnixTimeMilliseconds() + TimeOffsetMilliseconds;
+            return new DateTimeOffset(GetNowWithUtc()).ToUnixTimeMilliseconds();
         }
 
         /// <summary>
