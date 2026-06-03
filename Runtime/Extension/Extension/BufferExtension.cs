@@ -89,10 +89,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe void WriteInt(this byte[] buffer, int value, ref int offset)
         {
-            if (offset + IntSize > buffer.Length)
+            if (offset < 0 || offset + IntSize > buffer.Length)
             {
-                offset += IntSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + IntSize, buffer.Length));
             }
 
             fixed (byte* ptr = buffer)
@@ -114,10 +113,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe void WriteUInt(this byte[] buffer, uint value, ref int offset)
         {
-            if (offset + IntSize > buffer.Length)
+            if (offset < 0 || offset + IntSize > buffer.Length)
             {
-                offset += IntSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + IntSize, buffer.Length));
             }
 
             var span = buffer.AsSpan<byte>();
@@ -139,9 +137,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static void WriteUShort(this byte[] buffer, ushort value, ref int offset)
         {
-            if (offset + 2 > buffer.Length)
+            if (offset < 0 || offset + ShortSize > buffer.Length)
             {
-                offset += 2;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + 2, buffer.Length));
             }
             else
             {
@@ -165,10 +163,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe void WriteShort(this byte[] buffer, short value, ref int offset)
         {
-            if (offset + ShortSize > buffer.Length)
+            if (offset < 0 || offset + ShortSize > buffer.Length)
             {
-                offset += ShortSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + ShortSize, buffer.Length));
             }
 
             fixed (byte* ptr = buffer)
@@ -190,10 +187,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe void WriteLong(this byte[] buffer, long value, ref int offset)
         {
-            if (offset + LongSize > buffer.Length)
+            if (offset < 0 || offset + LongSize > buffer.Length)
             {
-                offset += LongSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + LongSize, buffer.Length));
             }
 
             fixed (byte* ptr = buffer)
@@ -215,10 +211,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe void WriteFloat(this byte[] buffer, float value, ref int offset)
         {
-            if (offset + FloatSize > buffer.Length)
+            if (offset < 0 || offset + FloatSize > buffer.Length)
             {
-                offset += FloatSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + FloatSize, buffer.Length));
             }
 
             fixed (byte* ptr = buffer)
@@ -241,10 +236,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe void WriteDouble(this byte[] buffer, double value, ref int offset)
         {
-            if (offset + DoubleSize > buffer.Length)
+            if (offset < 0 || offset + DoubleSize > buffer.Length)
             {
-                offset += DoubleSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + DoubleSize, buffer.Length));
             }
 
             fixed (byte* ptr = buffer)
@@ -267,10 +261,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe void WriteByte(this byte[] buffer, byte value, ref int offset)
         {
-            if (offset + ByteSize > buffer.Length)
+            if (offset < 0 || offset + ByteSize > buffer.Length)
             {
-                offset += ByteSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + ByteSize, buffer.Length));
             }
 
             fixed (byte* ptr = buffer)
@@ -298,9 +291,9 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            if (offset + value.Length + IntSize > buffer.Length)
+            if (offset < 0 || offset + value.Length + IntSize > buffer.Length)
             {
-                throw new ArgumentException($"buffer write out of index {offset + value.Length + IntSize}, {buffer.Length}");
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + value.Length + IntSize, buffer.Length));
             }
 
             fixed (byte* ptr = buffer, valPtr = value)
@@ -328,10 +321,9 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            if (offset + value.Length + IntSize > buffer.Length)
+            if (offset < 0 || offset + value.Length + IntSize > buffer.Length)
             {
-                offset += value.Length + IntSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + value.Length + IntSize, buffer.Length));
             }
 
             buffer.WriteInt(value.Length, ref offset);
@@ -351,10 +343,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe void WriteSByte(this byte[] buffer, sbyte value, ref int offset)
         {
-            if (offset + SbyteSize > buffer.Length)
+            if (offset < 0 || offset + SbyteSize > buffer.Length)
             {
-                offset += SbyteSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + SbyteSize, buffer.Length));
             }
 
             fixed (byte* ptr = buffer)
@@ -389,10 +380,9 @@ namespace GameFrameX.Runtime
             }
 
             // 预判已经超出长度了，直接计算长度就行了
-            if (offset + len + ShortSize > buffer.Length)
+            if (offset < 0 || offset + len + ShortSize > buffer.Length)
             {
-                offset += len + ShortSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + len + ShortSize, buffer.Length));
             }
 
             fixed (byte* ptr = buffer)
@@ -415,10 +405,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe void WriteBool(this byte[] buffer, bool value, ref int offset)
         {
-            if (offset + BoolSize > buffer.Length)
+            if (offset < 0 || offset + BoolSize > buffer.Length)
             {
-                offset += BoolSize;
-                return;
+                throw new ArgumentOutOfRangeException(nameof(offset), string.Format("buffer write out of index {0}, {1}", offset + BoolSize, buffer.Length));
             }
 
             fixed (byte* ptr = buffer)
@@ -444,7 +433,7 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe int ReadInt(this byte[] buffer, ref int offset)
         {
-            if (offset > buffer.Length + IntSize)
+            if (offset < 0 || offset + IntSize > buffer.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), "buffer read out of index");
             }
@@ -470,9 +459,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static uint ReadUInt(this byte[] buffer, ref int offset)
         {
-            if (offset > buffer.Length + UIntSize)
+            if (offset < 0 || offset + UIntSize > buffer.Length)
             {
-                throw new Exception("buffer read out of index");
+                throw new ArgumentOutOfRangeException(nameof(offset), "buffer read out of index");
             }
 
             Span<byte> span = buffer.AsSpan<byte>();
@@ -495,7 +484,7 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe short ReadShort(this byte[] buffer, ref int offset)
         {
-            if (offset > buffer.Length + ShortSize)
+            if (offset < 0 || offset + ShortSize > buffer.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), "buffer read out of index");
             }
@@ -520,9 +509,9 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static ushort ReadUShort(this byte[] buffer, ref int offset)
         {
-            if (offset > buffer.Length + UShortSize)
+            if (offset < 0 || offset + UShortSize > buffer.Length)
             {
-                throw new Exception("buffer read out of index");
+                throw new ArgumentOutOfRangeException(nameof(offset), "buffer read out of index");
             }
 
             Span<byte> span = buffer.AsSpan<byte>();
@@ -545,7 +534,7 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe long ReadLong(this byte[] buffer, ref int offset)
         {
-            if (offset > buffer.Length + LongSize)
+            if (offset < 0 || offset + LongSize > buffer.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), "buffer read out of index");
             }
@@ -570,7 +559,7 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe float ReadFloat(this byte[] buffer, ref int offset)
         {
-            if (offset > buffer.Length + FloatSize)
+            if (offset < 0 || offset + FloatSize > buffer.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), "buffer read out of index");
             }
@@ -596,7 +585,7 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe double ReadDouble(this byte[] buffer, ref int offset)
         {
-            if (offset > buffer.Length + DoubleSize)
+            if (offset < 0 || offset + DoubleSize > buffer.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), "buffer read out of index");
             }
@@ -622,7 +611,7 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe byte ReadByte(this byte[] buffer, ref int offset)
         {
-            if (offset > buffer.Length + ByteSize)
+            if (offset < 0 || offset + ByteSize > buffer.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), "buffer read out of index");
             }
@@ -649,7 +638,7 @@ namespace GameFrameX.Runtime
         public static unsafe byte[] ReadBytes(this byte[] buffer, int offset, int len)
         {
             //数据不可信
-            if (len <= 0 || offset > buffer.Length + len * ByteSize)
+            if (len <= 0 || offset < 0 || offset + len > buffer.Length)
             {
                 return Array.Empty<byte>();
             }
@@ -673,7 +662,7 @@ namespace GameFrameX.Runtime
         public static unsafe byte[] ReadBytes(this byte[] buffer, ref int offset, int len)
         {
             //数据不可信
-            if (len <= 0 || offset > buffer.Length + len * ByteSize)
+            if (len <= 0 || offset < 0 || offset + len > buffer.Length)
             {
                 return Array.Empty<byte>();
             }
@@ -698,7 +687,7 @@ namespace GameFrameX.Runtime
         {
             var len = ReadInt(buffer, ref offset);
             //数据不可信
-            if (len <= 0 || offset > buffer.Length + len * ByteSize)
+            if (len <= 0 || offset < 0 || offset + len > buffer.Length)
             {
                 return Array.Empty<byte>();
             }
@@ -721,7 +710,7 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe sbyte ReadSByte(this byte[] buffer, ref int offset)
         {
-            if (offset > buffer.Length + ByteSize)
+            if (offset < 0 || offset + ByteSize > buffer.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), "buffer read out of index");
             }
@@ -750,8 +739,10 @@ namespace GameFrameX.Runtime
             {
                 var len = ReadShort(buffer, ref offset);
                 //数据不可信
-                if (len <= 0 || offset > buffer.Length + len * ByteSize)
-                    return "";
+                if (len <= 0 || offset < 0 || offset + len > buffer.Length)
+                {
+                    return string.Empty;
+                }
 
                 var value = System.Text.Encoding.UTF8.GetString(buffer, offset, len);
                 offset += len;
@@ -771,7 +762,7 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static unsafe bool ReadBool(this byte[] buffer, ref int offset)
         {
-            if (offset > buffer.Length + BoolSize)
+            if (offset < 0 || offset + BoolSize > buffer.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(offset), "buffer read out of index");
             }
