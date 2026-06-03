@@ -83,7 +83,7 @@ namespace GameFrameX.Runtime
             LinkedListNode<GameFrameworkComponent> current = GameFrameworkComponents.First;
             while (current != null)
             {
-                if (current.Value.GetType() == type)
+                if (type.IsAssignableFrom(current.Value.GetType()))
                 {
                     return current.Value;
                 }
