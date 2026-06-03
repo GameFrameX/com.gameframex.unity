@@ -105,7 +105,7 @@ namespace GameFrameX.Runtime
                 throw new GameFrameworkException(Utility.Text.Format("Cannot set value of type '{0}' to variable of type '{1}'.", value.GetType().FullName, typeof(T).FullName));
             }
 
-            _value = (T)value;
+            _value = (value == null) ? default(T) : (T)value;
         }
 
         /// <summary>
