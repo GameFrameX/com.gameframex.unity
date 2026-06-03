@@ -62,7 +62,7 @@ namespace GameFrameX.Runtime
         public static long GetMonthStartTimestampWithTimeZone()
         {
             var date = GetMonthStartTimeWithTimeZone();
-            return DateTimeToUnixTimeSeconds(date);
+            return DateTimeToSecondsWithTimeZone(date);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace GameFrameX.Runtime
         public static long GetMonthEndTimestampWithTimeZone()
         {
             var date = GetMonthEndTimeWithTimeZone();
-            return DateTimeToUnixTimeSeconds(date);
+            return DateTimeToSecondsWithTimeZone(date);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace GameFrameX.Runtime
         public static long GetNextMonthEndTimestampWithTimeZone()
         {
             var date = GetNextMonthEndTimeWithTimeZone();
-            return DateTimeToUnixTimeSeconds(date);
+            return DateTimeToSecondsWithTimeZone(date);
         }
     }
 }
