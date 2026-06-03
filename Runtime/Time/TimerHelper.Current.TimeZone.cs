@@ -30,6 +30,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -47,6 +48,7 @@ namespace GameFrameX.Runtime
         /// Uses <see cref="GetNowWithTimeZone"/> to get the current time zone time.
         /// </remarks>
         /// <returns>返回一个6位字符串，表示当前时区 (<see cref="CurrentTimeZone"/>) 时间。例如：143045表示14:30:45 / Returns a 6-character string representing the current time zone time. For example: 143045 represents 14:30:45</returns>
+        [Preserve]
         public static string CurrentTimeWithTimeZoneFullString()
         {
             return GetNowWithTimeZone().ToString("HHmmss");
@@ -64,6 +66,7 @@ namespace GameFrameX.Runtime
         /// Internally calls CurrentTimeWithTimeZoneFullString() to get the string and then converts to integer.
         /// </remarks>
         /// <returns>返回一个6位整数，表示当前时区 (<see cref="CurrentTimeZone"/>) 时间。例如：143045表示14:30:45 / Returns a 6-digit integer representing the current time zone time. For example: 143045 represents 14:30:45</returns>
+        [Preserve]
         public static int CurrentTimeWithTimeZone()
         {
             return Convert.ToInt32(CurrentTimeWithTimeZoneFullString());
@@ -82,6 +85,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="format">时间格式字符串，默认为"yyyy-MM-dd HH:mm:ss.fff K" / Time format string, defaults to "yyyy-MM-dd HH:mm:ss.fff K"</param>
         /// <returns>返回指定格式的当前时区 (<see cref="CurrentTimeZone"/>) 时间字符串。例如默认格式返回："2023-12-25 14:30:45.123 +08:00" / Returns the current time zone time string in the specified format. For example, the default format returns: "2023-12-25 14:30:45.123 +08:00"</returns>
+        [Preserve]
         public static string CurrentDateTimeWithTimeZoneFormat(string format = "yyyy-MM-dd HH:mm:ss.fff K")
         {
             return GetNowWithTimeZone().ToString(format);
@@ -97,6 +101,7 @@ namespace GameFrameX.Runtime
         /// Mainly used for scenarios that need to display the current time zone time.
         /// </remarks>
         /// <returns>当前时间 / The current time</returns>
+        [Preserve]
         public static DateTime GetNowWithTimeZone()
         {
             return TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, CurrentTimeZone);
@@ -114,6 +119,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="timestamp">Unix时间戳（秒）。应为基于当前时区的时间戳 / Unix timestamp (seconds). Should be a timestamp based on the current time zone</param>
         /// <returns>经过的秒数。如果timestamp在未来，返回负数 / The number of seconds elapsed. Returns a negative number if timestamp is in the future</returns>
+        [Preserve]
         public static long GetElapsedSecondsWithTimeZone(long timestamp)
         {
             var currentTimestamp = UnixTimeSecondsWithTimeZoneOffset();
@@ -132,6 +138,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="timestampMs">Unix时间戳（毫秒）。应为基于当前时区的时间戳 / Unix timestamp (milliseconds). Should be a timestamp based on the current time zone</param>
         /// <returns>经过的毫秒数。如果timestampMs在未来，返回负数 / The number of milliseconds elapsed. Returns a negative number if timestampMs is in the future</returns>
+        [Preserve]
         public static long GetElapsedMillisecondsWithTimeZone(long timestampMs)
         {
             var currentTimestamp = UnixTimeMillisecondsWithTimeZoneOffset();

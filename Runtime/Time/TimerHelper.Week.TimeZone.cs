@@ -33,6 +33,7 @@
 
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -46,6 +47,7 @@ namespace GameFrameX.Runtime
         /// Uses <see cref="GetNowWithTimeZone"/> to get the current time zone time.
         /// Converts the DayOfWeek enum to its numeric value.
         /// </remarks>
+        [Preserve]
         public static int GetChinaDayOfWeekWithTimeZone()
         {
             return GetChinaDayOfWeekWithTimeZone(GetNowWithTimeZone());
@@ -60,6 +62,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>Returns the numeric value of day of week: Sunday=0, Monday=1, Tuesday=2, Wednesday=3, Thursday=4, Friday=5, Saturday=6</returns>
+        [Preserve]
         public static int GetChinaDayOfWeekWithTimeZone(DateTime date)
         {
             return (int)date.DayOfWeek;
@@ -75,6 +78,7 @@ namespace GameFrameX.Runtime
         /// If today is Sunday (DayOfWeek=0), it will be treated as the 7th day of the current week.
         /// </remarks>
         /// <returns>本周周一00:00:00的时间 / The time at 00:00:00 on Monday of the current week</returns>
+        [Preserve]
         public static DateTime GetWeekStartTimeWithTimeZone()
         {
             var now = GetNowWithTimeZone();
@@ -91,6 +95,7 @@ namespace GameFrameX.Runtime
         /// Return value = Standard Unix timestamp + time zone offset seconds.
         /// </remarks>
         /// <returns>本周周一00:00:00的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 00:00:00 on Monday of the current week + time zone offset</returns>
+        [Preserve]
         public static long GetWeekStartTimestampWithTimeZone()
         {
             return DateTimeToSecondsWithTimeZone(GetWeekStartTimeWithTimeZone());
@@ -105,6 +110,7 @@ namespace GameFrameX.Runtime
         /// Uses the <see cref="CurrentTimeZone"/> time zone for calculation.
         /// </remarks>
         /// <returns>本周周日23:59:59的时间 / The time at 23:59:59 on Sunday of the current week</returns>
+        [Preserve]
         public static DateTime GetWeekEndTimeWithTimeZone()
         {
             var now = GetNowWithTimeZone();
@@ -121,6 +127,7 @@ namespace GameFrameX.Runtime
         /// Return value = Standard Unix timestamp + time zone offset seconds.
         /// </remarks>
         /// <returns>本周周日23:59:59的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 23:59:59 on Sunday of the current week + time zone offset</returns>
+        [Preserve]
         public static long GetWeekEndTimestampWithTimeZone()
         {
             return DateTimeToSecondsWithTimeZone(GetWeekEndTimeWithTimeZone());
@@ -136,6 +143,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在周周一00:00:00的时间戳(秒) / The timestamp (seconds) at 00:00:00 on Monday of the week</returns>
+        [Preserve]
         public static long GetStartTimestampOfWeek(DateTime date)
         {
             var time = GetStartTimeOfWeek(date);
@@ -151,6 +159,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在周周一00:00:00的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 00:00:00 on Monday of the week + time zone offset</returns>
+        [Preserve]
         public static long GetStartTimestampOfWeekWithTimeZone(DateTime date)
         {
             return DateTimeToSecondsWithTimeZone(GetStartTimeOfWeek(date));
@@ -167,6 +176,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在周周日23:59:59的时间戳(秒) / The timestamp (seconds) at 23:59:59 on Sunday of the week</returns>
+        [Preserve]
         public static long GetEndTimestampOfWeek(DateTime date)
         {
             var time = GetEndTimeOfWeek(date);
@@ -182,6 +192,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在周周日23:59:59的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 23:59:59 on Sunday of the week + time zone offset</returns>
+        [Preserve]
         public static long GetEndTimestampOfWeekWithTimeZone(DateTime date)
         {
             return DateTimeToSecondsWithTimeZone(GetEndTimeOfWeek(date));
@@ -196,6 +207,7 @@ namespace GameFrameX.Runtime
         /// Uses the <see cref="CurrentTimeZone"/> time zone for calculation.
         /// </remarks>
         /// <returns>下周周一00:00:00的时间 / The time at 00:00:00 on Monday of next week</returns>
+        [Preserve]
         public static DateTime GetNextWeekStartTimeWithTimeZone()
         {
             var now = GetNowWithTimeZone();
@@ -212,6 +224,7 @@ namespace GameFrameX.Runtime
         /// Return value = Standard Unix timestamp + time zone offset seconds.
         /// </remarks>
         /// <returns>下周周一00:00:00的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 00:00:00 on Monday of next week + time zone offset</returns>
+        [Preserve]
         public static long GetNextWeekStartTimestampWithTimeZone()
         {
             return DateTimeToSecondsWithTimeZone(GetNextWeekStartTimeWithTimeZone());
@@ -226,6 +239,7 @@ namespace GameFrameX.Runtime
         /// Uses the <see cref="CurrentTimeZone"/> time zone for calculation.
         /// </remarks>
         /// <returns>下周周日23:59:59的时间 / The time at 23:59:59 on Sunday of next week</returns>
+        [Preserve]
         public static DateTime GetNextWeekEndTimeWithTimeZone()
         {
             return GetNextWeekStartTimeWithTimeZone().AddDays(7).AddSeconds(-1);
@@ -239,6 +253,7 @@ namespace GameFrameX.Runtime
         /// Return value = Standard Unix timestamp + time zone offset seconds.
         /// </remarks>
         /// <returns>下周周日23:59:59的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 23:59:59 on Sunday of next week + time zone offset</returns>
+        [Preserve]
         public static long GetNextWeekEndTimestampWithTimeZone()
         {
             var time = GetNextWeekEndTimeWithTimeZone();
@@ -256,6 +271,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="day">星期几 (DayOfWeek.Sunday 到 DayOfWeek.Saturday) / Day of week (DayOfWeek.Sunday to DayOfWeek.Saturday)</param>
         /// <returns>本周指定星期几的日期时间 / The date time of the specified day of the current week</returns>
+        [Preserve]
         public static DateTime GetDayOfWeekTimeWithTimeZone(DayOfWeek day)
         {
             return GetDayOfWeekTime(GetNowWithTimeZone(), day);

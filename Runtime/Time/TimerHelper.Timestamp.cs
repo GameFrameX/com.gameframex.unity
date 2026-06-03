@@ -30,6 +30,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -91,6 +92,7 @@ namespace GameFrameX.Runtime
         /// <seealso cref="EpochUtc"/>
         /// <seealso cref="TimeSpan.TicksPerSecond"/>
         /// <seealso cref="DateTime"/>
+        [Preserve]
         public static long TimestampToTicks(long timestampSeconds)
         {
             if (timestampSeconds < -62135596800L || timestampSeconds > 253402300799L)
@@ -162,6 +164,7 @@ namespace GameFrameX.Runtime
         /// <seealso cref="EpochUtc"/>
         /// <seealso cref="TimeSpan.TicksPerMillisecond"/>
         /// <seealso cref="DateTime"/>
+        [Preserve]
         public static long TimestampMillisToTicks(long timestampMillisSeconds)
         {
             if (timestampMillisSeconds < -62135596800000L || timestampMillisSeconds > 253402300799999L)
@@ -183,6 +186,7 @@ namespace GameFrameX.Runtime
         /// <param name="utcTimestampMilliseconds">毫秒时间戳 / Millisecond timestamp</param>
         /// <param name="utc">是否使用UTC时间 / Whether to use UTC time</param>
         /// <returns>转换后的时间。如果utc为false，则返回当前时区 (<see cref="CurrentTimeZone"/>) 的时间 / The converted time. If utc is false, returns the time in the current time zone (<see cref="CurrentTimeZone"/>)</returns>
+        [Preserve]
         public static DateTime TimeStampMillisecondToDateTime(long utcTimestampMilliseconds, bool utc = false)
         {
             var dateTime = EpochUtc.AddMilliseconds(utcTimestampMilliseconds);
@@ -203,6 +207,7 @@ namespace GameFrameX.Runtime
         /// <param name="utcTimestampSeconds">秒时间戳 / Second timestamp</param>
         /// <param name="utc">是否使用UTC时间 / Whether to use UTC time</param>
         /// <returns>转换后的时间。如果utc为false，则返回当前时区 (<see cref="CurrentTimeZone"/>) 的时间 / The converted time. If utc is false, returns the time in the current time zone (<see cref="CurrentTimeZone"/>)</returns>
+        [Preserve]
         public static DateTime TimestampSecondToDateTime(long utcTimestampSeconds, bool utc = false)
         {
             var dateTime = EpochUtc.AddSeconds(utcTimestampSeconds);

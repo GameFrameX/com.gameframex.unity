@@ -30,6 +30,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -47,6 +48,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTime">开始时间。例如：2024-01-10 00:00:00 / The start time. For example: 2024-01-10 00:00:00</param>
         /// <param name="endTime">结束时间。例如：2024-01-10 23:59:59 / The end time. For example: 2024-01-10 23:59:59</param>
         /// <returns>如果指定时间在开始时间和结束时间之间（包含边界），则返回true；否则返回false / Returns true if the specified time is between start time and end time (inclusive); otherwise returns false</returns>
+        [Preserve]
         public static bool IsTimeInRange(DateTime time, DateTime startTime, DateTime endTime)
         {
             return time >= startTime && time <= endTime;
@@ -65,6 +67,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTimestamp">开始时间戳（Unix秒级时间戳）。例如：1704816000 / The start timestamp (Unix seconds). For example: 1704816000</param>
         /// <param name="endTimestamp">结束时间戳（Unix秒级时间戳）。例如：1704902399 / The end timestamp (Unix seconds). For example: 1704902399</param>
         /// <returns>如果指定时间戳在开始时间戳和结束时间戳之间（包含边界），则返回true；否则返回false / Returns true if the specified timestamp is between start timestamp and end timestamp (inclusive); otherwise returns false</returns>
+        [Preserve]
         public static bool IsTimestampInRange(long timestamp, long startTimestamp, long endTimestamp)
         {
             return timestamp >= startTimestamp && timestamp <= endTimestamp;

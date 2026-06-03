@@ -30,6 +30,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -44,6 +45,7 @@ namespace GameFrameX.Runtime
         /// <param name="timestamp">自1970年1月1日午夜以来经过的秒数 / Number of seconds elapsed since midnight January 1, 1970</param>
         /// <returns>一个 TimeSpan 对象，表示从纪元到给定时间戳的间隔 / A TimeSpan object representing the interval from the epoch to the given timestamp</returns>
         /// <exception cref="ArgumentOutOfRangeException">当时间戳超出有效范围时抛出 / Thrown when the timestamp exceeds the valid range</exception>
+        [Preserve]
         public static TimeSpan TimeSpanWithTimestampWithTimeZone(long timestamp)
         {
             if (timestamp < -62135596800L || timestamp > 253402300799L)
@@ -63,6 +65,7 @@ namespace GameFrameX.Runtime
         /// <param name="timestampMilliseconds">自1970年1月1日午夜以来经过的毫秒数 / Number of milliseconds elapsed since midnight January 1, 1970</param>
         /// <returns>一个 TimeSpan 对象，表示从纪元到给定毫秒时间戳的间隔 / A TimeSpan object representing the interval from the epoch to the given millisecond timestamp</returns>
         /// <exception cref="ArgumentOutOfRangeException">当毫秒时间戳超出有效范围时抛出 / Thrown when the millisecond timestamp exceeds the valid range</exception>
+        [Preserve]
         public static TimeSpan TimeSpanWithTimestampWithTimeZoneMs(long timestampMilliseconds)
         {
             if (timestampMilliseconds < -62135596800000L || timestampMilliseconds > 253402300799999L)

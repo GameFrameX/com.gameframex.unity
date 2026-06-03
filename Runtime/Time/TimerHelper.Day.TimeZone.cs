@@ -30,6 +30,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -47,6 +48,7 @@ namespace GameFrameX.Runtime
         /// Uses <see cref="GetNowWithTimeZone"/> to get the current time zone time.
         /// </remarks>
         /// <returns>返回一个8位整数，表示当前时区 (<see cref="CurrentTimeZone"/>) 的日期。例如：20231225表示2023年12月25日 / Returns an 8-digit integer representing the current time zone date. For example: 20231225 represents December 25, 2023</returns>
+        [Preserve]
         public static int CurrentDateWithDayWithTimeZone()
         {
             return Convert.ToInt32(GetNowWithTimeZone().ToString("yyyyMMdd"));
@@ -64,6 +66,7 @@ namespace GameFrameX.Runtime
         /// <param name="endTimestamp">结束时间戳(秒),UTC时间戳将被转换为当前时区 (<see cref="CurrentTimeZone"/>) 时间 / End timestamp (seconds), UTC timestamp will be converted to current time zone time</param>
         /// <param name="hour">跨天计算的小时数,默认值为0,表示跨天计算 / The hour for day crossing calculation, defaults to 0, meaning day crossing calculation</param>
         /// <returns>间隔天数,如果开始时间晚于结束时间,返回负数 / The number of days interval, returns negative if start time is later than end time</returns>
+        [Preserve]
         public static int GetCrossDaysWithTimeZone(long startTimestamp, long endTimestamp, int hour = 0)
         {
             var startTime = TimestampSecondToDateTime(startTimestamp);
@@ -80,6 +83,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTime">起始日期 / The start date</param>
         /// <param name="hour">小时阈值 / Hour threshold</param>
         /// <returns>跨越的天数 / The number of days crossed</returns>
+        [Preserve]
         public static int GetCrossDaysWithTimeZone(DateTime startTime, int hour = 0)
         {
             return GetCrossDays(startTime, GetNowWithTimeZone(), hour);
@@ -95,6 +99,7 @@ namespace GameFrameX.Runtime
         /// Returns the time in the <see cref="CurrentTimeZone"/> time zone.
         /// </remarks>
         /// <returns>今天零点时间 / The midnight time of today</returns>
+        [Preserve]
         public static DateTime GetTodayStartTimeWithTimeZone()
         {
             var dateTime = GetNowWithTimeZone();
@@ -110,6 +115,7 @@ namespace GameFrameX.Runtime
         /// Suitable for scenarios requiring forged local timestamps.
         /// </remarks>
         /// <returns>今天零点时间戳(秒) + 时区偏移 / The midnight timestamp (seconds) of today + time zone offset</returns>
+        [Preserve]
         public static long GetTodayStartTimestampWithTimeZone()
         {
             var date = GetTodayStartTimeWithTimeZone();
@@ -126,6 +132,7 @@ namespace GameFrameX.Runtime
         /// Returns the time in the <see cref="CurrentTimeZone"/> time zone.
         /// </remarks>
         /// <returns>今天23:59:59的时间 / The time at 23:59:59 today</returns>
+        [Preserve]
         public static DateTime GetTodayEndTimeWithTimeZone()
         {
             return GetTodayStartTimeWithTimeZone().AddDays(1).AddSeconds(-1);
@@ -139,6 +146,7 @@ namespace GameFrameX.Runtime
         /// Return value = Standard Unix timestamp + time zone offset seconds.
         /// </remarks>
         /// <returns>今天23:59:59的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 23:59:59 today + time zone offset</returns>
+        [Preserve]
         public static long GetTodayEndTimestampWithTimeZone()
         {
             var date = GetTodayEndTimeWithTimeZone();
@@ -155,6 +163,7 @@ namespace GameFrameX.Runtime
         /// Uses the <see cref="CurrentTimeZone"/> time zone for calculation.
         /// </remarks>
         /// <returns>明天零点时间 / The midnight time of tomorrow</returns>
+        [Preserve]
         public static DateTime GetTomorrowStartTimeWithTimeZone()
         {
             return GetTodayStartTimeWithTimeZone().AddDays(1);
@@ -168,6 +177,7 @@ namespace GameFrameX.Runtime
         /// Return value = Standard Unix timestamp + time zone offset seconds.
         /// </remarks>
         /// <returns>明天零点时间戳(秒) + 时区偏移 / The midnight timestamp (seconds) of tomorrow + time zone offset</returns>
+        [Preserve]
         public static long GetTomorrowStartTimestampWithTimeZone()
         {
             return DateTimeToSecondsWithTimeZone(GetTomorrowStartTimeWithTimeZone());
@@ -183,6 +193,7 @@ namespace GameFrameX.Runtime
         /// Uses the <see cref="CurrentTimeZone"/> time zone for calculation.
         /// </remarks>
         /// <returns>明天23:59:59的时间 / The time at 23:59:59 tomorrow</returns>
+        [Preserve]
         public static DateTime GetTomorrowEndTimeWithTimeZone()
         {
             return GetNowWithTimeZone().Date.AddDays(2).AddSeconds(-1);
@@ -196,6 +207,7 @@ namespace GameFrameX.Runtime
         /// Return value = Standard Unix timestamp + time zone offset seconds.
         /// </remarks>
         /// <returns>明天23:59:59的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 23:59:59 tomorrow + time zone offset</returns>
+        [Preserve]
         public static long GetTomorrowEndTimestampWithTimeZone()
         {
             return DateTimeToSecondsWithTimeZone(GetTomorrowEndTimeWithTimeZone());
@@ -210,6 +222,7 @@ namespace GameFrameX.Runtime
         /// <param name="beginTimestamp">起始时间戳,从1970年1月1日以来经过的秒数 / Start timestamp, number of seconds elapsed since January 1, 1970</param>
         /// <param name="hour">小时阈值 / Hour threshold</param>
         /// <returns>跨越的天数 / The number of days crossed</returns>
+        [Preserve]
         public static int GetCrossDaysWithTimeZone(long beginTimestamp, int hour = 0)
         {
             var begin = TimestampSecondToDateTime(beginTimestamp);

@@ -32,6 +32,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -46,6 +47,7 @@ namespace GameFrameX.Runtime
         /// Uses UTC time zone for calculation.
         /// </remarks>
         /// <returns>今年1月1号00:00:00的时间 (UTC) / The time at 00:00:00 on January 1st of the current year (UTC)</returns>
+        [Preserve]
         public static DateTime GetYearStartTimeWithUtc()
         {
             var now = GetNowWithUtc();
@@ -61,6 +63,7 @@ namespace GameFrameX.Runtime
         /// Based on UTC time calculation.
         /// </remarks>
         /// <returns>今年1月1号00:00:00的时间戳(秒) (UTC) / The timestamp (seconds) at 00:00:00 on January 1st of the current year (UTC)</returns>
+        [Preserve]
         public static long GetYearStartTimestampWithUtc()
         {
             var date = GetYearStartTimeWithUtc();
@@ -76,6 +79,7 @@ namespace GameFrameX.Runtime
         /// Uses UTC time zone for calculation.
         /// </remarks>
         /// <returns>今年12月31号23:59:59的时间 (UTC) / The time at 23:59:59 on December 31st of the current year (UTC)</returns>
+        [Preserve]
         public static DateTime GetYearEndTimeWithUtc()
         {
             var now = GetNowWithUtc();
@@ -91,6 +95,7 @@ namespace GameFrameX.Runtime
         /// Based on UTC time calculation.
         /// </remarks>
         /// <returns>今年12月31号23:59:59的时间戳(秒) (UTC) / The timestamp (seconds) at 23:59:59 on December 31st of the current year (UTC)</returns>
+        [Preserve]
         public static long GetYearEndTimestampWithUtc()
         {
             var date = GetYearEndTimeWithUtc();
@@ -106,6 +111,7 @@ namespace GameFrameX.Runtime
         /// Uses UTC time zone for calculation.
         /// </remarks>
         /// <returns>明年1月1号00:00:00的时间 (UTC) / The time at 00:00:00 on January 1st of the next year (UTC)</returns>
+        [Preserve]
         public static DateTime GetNextYearStartTimeWithUtc()
         {
             return GetYearStartTimeWithUtc().AddYears(1);
@@ -120,6 +126,7 @@ namespace GameFrameX.Runtime
         /// Based on UTC time calculation.
         /// </remarks>
         /// <returns>明年1月1号00:00:00的时间戳(秒) (UTC) / The timestamp (seconds) at 00:00:00 on January 1st of the next year (UTC)</returns>
+        [Preserve]
         public static long GetNextYearStartTimestampWithUtc()
         {
             var date = GetNextYearStartTimeWithUtc();
@@ -136,6 +143,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在年12月31号23:59:59的时间戳(秒)（UTC） / The timestamp (seconds) at 23:59:59 on December 31st of the year (UTC)</returns>
+        [Preserve]
         public static long GetEndTimestampOfYearWithUtc(DateTime date)
         {
             var endTime = GetEndTimeOfYear(date);
@@ -152,6 +160,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在年1月1号00:00:00的时间戳(秒)（UTC） / The timestamp (seconds) at 00:00:00 on January 1st of the year (UTC)</returns>
+        [Preserve]
         public static long GetStartTimestampOfYearWithUtc(DateTime date)
         {
             var startTime = GetStartTimeOfYear(date);

@@ -31,6 +31,7 @@
 
 using System;
 using System.Threading;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -56,6 +57,7 @@ namespace GameFrameX.Runtime
         /// Gets the current time zone.
         /// </remarks>
         /// <value>当前时区信息 / Current time zone information</value>
+        [Preserve]
         public static TimeZoneInfo CurrentTimeZone
         {
             get { return _currentTimeZone; }
@@ -68,6 +70,7 @@ namespace GameFrameX.Runtime
         /// Sets the current time zone.
         /// </remarks>
         /// <param name="timeZone">时区信息 / Time zone information</param>
+        [Preserve]
         public static void SetTimeZone(TimeZoneInfo timeZone)
         {
             _currentTimeZone = timeZone ?? TimeZoneInfo.Utc;
@@ -81,6 +84,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="timeZoneId">时区ID，如 "China Standard Time" 或 "UTC" / Time zone ID, e.g. "China Standard Time" or "UTC"</param>
         /// <returns>如果成功设置时区返回 <c>true</c>；如果时区ID无效则返回 <c>false</c> 并回退到 UTC / Returns <c>true</c> if time zone is set successfully; returns <c>false</c> and falls back to UTC if the time zone ID is invalid</returns>
+        [Preserve]
         public static bool SetTimeZone(string timeZoneId)
         {
             try
@@ -143,6 +147,7 @@ namespace GameFrameX.Runtime
         /// </code>
         /// </example>
         /// <seealso cref="UnixTimeMilliseconds"/>
+        [Preserve]
         public static long UnixTimeSeconds()
         {
             return new DateTimeOffset(GetNowWithUtc()).ToUnixTimeSeconds();
@@ -166,6 +171,7 @@ namespace GameFrameX.Runtime
         /// </code>
         /// </example>
         /// <seealso cref="UnixTimeSeconds"/>
+        [Preserve]
         public static long UnixTimeMilliseconds()
         {
             return new DateTimeOffset(GetNowWithUtc()).ToUnixTimeMilliseconds();
@@ -182,6 +188,7 @@ namespace GameFrameX.Runtime
         /// <returns>
         /// 返回一个 <see cref="long"/> 值，表示将当前设置时区的时间视为 UTC 时间时的 Unix 时间戳。即：标准 Unix 时间戳 + 时区偏移秒数 + <see cref="TimeOffsetSeconds"/> / A <see cref="long"/> value representing the Unix timestamp when treating the current time zone time as UTC time. That is: standard Unix timestamp + time zone offset seconds + <see cref="TimeOffsetSeconds"/>.
         /// </returns>
+        [Preserve]
         public static long UnixTimeSecondsWithTimeZoneOffset()
         {
             var utcNow = GetNowWithUtc();
@@ -200,6 +207,7 @@ namespace GameFrameX.Runtime
         /// <returns>
         /// 返回一个 <see cref="long"/> 值，表示将当前设置时区的时间视为 UTC 时间时的 Unix 时间戳。即：标准 Unix 时间戳 + 时区偏移毫秒数 + <see cref="TimeOffsetMilliseconds"/> / A <see cref="long"/> value representing the Unix timestamp when treating the current time zone time as UTC time. That is: standard Unix timestamp + time zone offset milliseconds + <see cref="TimeOffsetMilliseconds"/>.
         /// </returns>
+        [Preserve]
         public static long UnixTimeMillisecondsWithTimeZoneOffset()
         {
             var utcNow = GetNowWithUtc();
@@ -219,6 +227,7 @@ namespace GameFrameX.Runtime
         /// <returns>
         /// 返回一个 <see cref="long"/> 值，表示将指定时间视为 UTC 时间时的 Unix 时间戳 + 时区偏移 / A <see cref="long"/> value representing the Unix timestamp when treating the specified time as UTC time + time zone offset.
         /// </returns>
+        [Preserve]
         public static long DateTimeToSecondsWithTimeZone(DateTime time)
         {
             var utcTime = ConvertToUtc(time);
@@ -238,6 +247,7 @@ namespace GameFrameX.Runtime
         /// <returns>
         /// 返回一个 <see cref="long"/> 值，表示将指定时间视为 UTC 时间时的 Unix 时间戳 + 时区偏移 / A <see cref="long"/> value representing the Unix timestamp when treating the specified time as UTC time + time zone offset.
         /// </returns>
+        [Preserve]
         public static long TimeToMillisecondsWithTimeZone(DateTime time)
         {
             var utcTime = ConvertToUtc(time);
@@ -337,6 +347,7 @@ namespace GameFrameX.Runtime
         /// <seealso cref="DateTimeToSecond"/>
         /// <seealso cref="EpochUtc"/>
         /// <seealso cref="EpochLocal"/>
+        [Preserve]
         public static long DateTimeToMilliseconds(DateTime time, bool utc = false)
         {
             if (utc)
@@ -387,6 +398,7 @@ namespace GameFrameX.Runtime
         /// <seealso cref="DateTimeToMilliseconds"/>
         /// <seealso cref="EpochUtc"/>
         /// <seealso cref="EpochLocal"/>
+        [Preserve]
         public static long DateTimeToSecond(DateTime time, bool utc = false)
         {
             if (utc)

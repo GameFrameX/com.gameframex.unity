@@ -32,6 +32,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -48,6 +49,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="day">星期几 (DayOfWeek.Sunday 到 DayOfWeek.Saturday) / Day of week (DayOfWeek.Sunday to DayOfWeek.Saturday)</param>
         /// <returns>本周指定星期几的UTC日期时间 / The UTC date time of the specified day of the current week</returns>
+        [Preserve]
         public static DateTime GetDayOfWeekTime(DayOfWeek day)
         {
             return GetDayOfWeekTime(GetNowWithUtc(), day);
@@ -62,6 +64,7 @@ namespace GameFrameX.Runtime
         /// Uses the <see cref="CurrentTimeZone"/> time zone for calculation.
         /// </remarks>
         /// <returns>下周周一00:00:00的时间 / The time at 00:00:00 on Monday of next week</returns>
+        [Preserve]
         public static DateTime GetNextWeekStartTimeWithUtc()
         {
             var now = GetNowWithUtc();
@@ -78,6 +81,7 @@ namespace GameFrameX.Runtime
         /// Return value = Standard Unix timestamp + time zone offset seconds.
         /// </remarks>
         /// <returns>下周周一00:00:00的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 00:00:00 on Monday of next week + time zone offset</returns>
+        [Preserve]
         public static long GetNextWeekStartTimestampWithUtc()
         {
             return DateTimeToUnixTimeSeconds(GetNextWeekStartTimeWithUtc());
@@ -92,6 +96,7 @@ namespace GameFrameX.Runtime
         /// Uses the <see cref="CurrentTimeZone"/> time zone for calculation.
         /// </remarks>
         /// <returns>下周周日23:59:59的时间 / The time at 23:59:59 on Sunday of next week</returns>
+        [Preserve]
         public static DateTime GetNextWeekEndTimeWithUtc()
         {
             return GetNextWeekStartTimeWithUtc().AddDays(7).AddSeconds(-1);
@@ -106,6 +111,7 @@ namespace GameFrameX.Runtime
         /// Converts the time to UTC before calculating the timestamp.
         /// </remarks>
         /// <returns>下周周日23:59:59的时间戳(秒) / The timestamp (seconds) at 23:59:59 on Sunday of next week</returns>
+        [Preserve]
         public static long GetNextWeekEndTimestampWithUtc()
         {
             var date = GetNextWeekEndTimeWithUtc();
@@ -121,6 +127,7 @@ namespace GameFrameX.Runtime
         /// Uses UTC time zone for calculation.
         /// </remarks>
         /// <returns>本周周一00:00:00的时间（UTC） / The time at 00:00:00 on Monday of the current week (UTC)</returns>
+        [Preserve]
         public static DateTime GetWeekStartTimeWithUtc()
         {
             var now = GetNowWithUtc();
@@ -138,6 +145,7 @@ namespace GameFrameX.Runtime
         /// Based on UTC time calculation.
         /// </remarks>
         /// <returns>本周周一00:00:00的时间戳(秒)（UTC） / The timestamp (seconds) at 00:00:00 on Monday of the current week (UTC)</returns>
+        [Preserve]
         public static long GetWeekStartTimestampWithUtc()
         {
             var date = GetWeekStartTimeWithUtc();
@@ -153,6 +161,7 @@ namespace GameFrameX.Runtime
         /// Uses UTC time zone for calculation.
         /// </remarks>
         /// <returns>本周周日23:59:59的时间（UTC） / The time at 23:59:59 on Sunday of the current week (UTC)</returns>
+        [Preserve]
         public static DateTime GetWeekEndTimeWithUtc()
         {
             var now = GetNowWithUtc();
@@ -170,6 +179,7 @@ namespace GameFrameX.Runtime
         /// Based on UTC time calculation.
         /// </remarks>
         /// <returns>本周周日23:59:59的时间戳(秒)（UTC） / The timestamp (seconds) at 23:59:59 on Sunday of the current week (UTC)</returns>
+        [Preserve]
         public static long GetWeekEndTimestampWithUtc()
         {
             var date = GetWeekEndTimeWithUtc();
@@ -186,6 +196,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在周周一00:00:00的时间戳(秒)（UTC） / The timestamp (seconds) at 00:00:00 on Monday of the week (UTC)</returns>
+        [Preserve]
         public static long GetStartTimestampOfWeekWithUtc(DateTime date)
         {
             var dayOfWeek = (int)date.DayOfWeek;
@@ -204,6 +215,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在周周日23:59:59的时间戳(秒)（UTC） / The timestamp (seconds) at 23:59:59 on Sunday of the week (UTC)</returns>
+        [Preserve]
         public static long GetEndTimestampOfWeekWithUtc(DateTime date)
         {
             var dayOfWeek = (int)date.DayOfWeek;

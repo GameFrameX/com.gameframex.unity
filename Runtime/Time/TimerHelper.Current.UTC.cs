@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -16,6 +17,7 @@ namespace GameFrameX.Runtime
         /// Uses DateTime.UtcNow to get UTC time.
         /// </remarks>
         /// <returns>返回一个6位字符串，表示当前UTC时间。例如：143045表示14:30:45 / Returns a 6-character string representing the current UTC time. For example: 143045 represents 14:30:45</returns>
+        [Preserve]
         public static string CurrentTimeWithUtcFullString()
         {
             return GetNowWithUtc().ToString("HHmmss");
@@ -33,6 +35,7 @@ namespace GameFrameX.Runtime
         /// Internally calls CurrentTimeWithUtcFullString() to get the string and then converts to integer.
         /// </remarks>
         /// <returns>返回一个6位整数，表示当前UTC时间。例如：143045表示14:30:45 / Returns a 6-digit integer representing the current UTC time. For example: 143045 represents 14:30:45</returns>
+        [Preserve]
         public static int CurrentTimeWithUtc()
         {
             return Convert.ToInt32(CurrentTimeWithUtcFullString());
@@ -51,6 +54,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="format">时间格式字符串，默认为"yyyy-MM-dd HH:mm:ss.fff K" / Time format string, defaults to "yyyy-MM-dd HH:mm:ss.fff K"</param>
         /// <returns>返回指定格式的UTC时间字符串。例如默认格式返回："2023-12-25 06:30:45.123 +00:00" / Returns the UTC time string in the specified format. For example, the default format returns: "2023-12-25 06:30:45.123 +00:00"</returns>
+        [Preserve]
         public static string CurrentDateTimeWithUtcFormat(string format = "yyyy-MM-dd HH:mm:ss.fff K")
         {
             return GetNowWithUtc().ToString(format);
@@ -66,6 +70,7 @@ namespace GameFrameX.Runtime
         /// Mainly used for scenarios that require a unified time standard.
         /// </remarks>
         /// <returns>当前UTC时间 / The current UTC time</returns>
+        [Preserve]
         public static DateTime GetNowWithUtc()
         {
             return DateTime.UtcNow;

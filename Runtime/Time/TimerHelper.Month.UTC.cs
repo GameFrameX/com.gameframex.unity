@@ -30,6 +30,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -44,6 +45,7 @@ namespace GameFrameX.Runtime
         /// Uses UTC time zone for calculation.
         /// </remarks>
         /// <returns>本月1号00:00:00的时间（UTC） / The time at 00:00:00 on the 1st of the current month (UTC)</returns>
+        [Preserve]
         public static DateTime GetMonthStartTimeWithUtc()
         {
             var now = GetNowWithUtc();
@@ -59,6 +61,7 @@ namespace GameFrameX.Runtime
         /// Based on UTC time calculation.
         /// </remarks>
         /// <returns>本月1号00:00:00的时间戳(秒)（UTC） / The timestamp (seconds) at 00:00:00 on the 1st of the current month (UTC)</returns>
+        [Preserve]
         public static long GetMonthStartTimestampWithUtc()
         {
             var date = GetMonthStartTimeWithUtc();
@@ -74,6 +77,7 @@ namespace GameFrameX.Runtime
         /// Uses UTC time zone for calculation.
         /// </remarks>
         /// <returns>本月最后一天23:59:59的时间（UTC） / The time at 23:59:59 on the last day of the current month (UTC)</returns>
+        [Preserve]
         public static DateTime GetMonthEndTimeWithUtc()
         {
             var now = GetNowWithUtc();
@@ -89,6 +93,7 @@ namespace GameFrameX.Runtime
         /// Based on UTC time calculation.
         /// </remarks>
         /// <returns>本月最后一天23:59:59的时间戳(秒)（UTC） / The timestamp (seconds) at 23:59:59 on the last day of the current month (UTC)</returns>
+        [Preserve]
         public static long GetMonthEndTimestampWithUtc()
         {
             var date = GetMonthEndTimeWithUtc();
@@ -104,6 +109,7 @@ namespace GameFrameX.Runtime
         /// Uses UTC time zone for calculation.
         /// </remarks>
         /// <returns>下个月1号00:00:00的时间（UTC） / The time at 00:00:00 on the 1st of the next month (UTC)</returns>
+        [Preserve]
         public static DateTime GetNextMonthStartTimeWithUtc()
         {
             var date = GetMonthStartTimeWithUtc();
@@ -119,6 +125,7 @@ namespace GameFrameX.Runtime
         /// Based on UTC time calculation.
         /// </remarks>
         /// <returns>下个月1号00:00:00的时间戳(秒)（UTC） / The timestamp (seconds) at 00:00:00 on the 1st of the next month (UTC)</returns>
+        [Preserve]
         public static long GetNextMonthStartTimestampWithUtc()
         {
             var date = GetNextMonthStartTimeWithUtc();
@@ -134,6 +141,7 @@ namespace GameFrameX.Runtime
         /// Uses UTC time zone for calculation.
         /// </remarks>
         /// <returns>下个月最后一天23:59:59的时间（UTC） / The time at 23:59:59 on the last day of the next month (UTC)</returns>
+        [Preserve]
         public static DateTime GetNextMonthEndTimeWithUtc()
         {
             var date = GetNextMonthStartTimeWithUtc();
@@ -149,6 +157,7 @@ namespace GameFrameX.Runtime
         /// Based on UTC time calculation.
         /// </remarks>
         /// <returns>下个月最后一天23:59:59的时间戳(秒)（UTC） / The timestamp (seconds) at 23:59:59 on the last day of the next month (UTC)</returns>
+        [Preserve]
         public static long GetNextMonthEndTimestampWithUtc()
         {
             var date = GetNextMonthEndTimeWithUtc();

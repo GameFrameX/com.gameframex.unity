@@ -32,6 +32,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -47,6 +48,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在年1月1号00:00:00的时间 / The time at 00:00:00 on January 1st of the year</returns>
+        [Preserve]
         public static DateTime GetStartTimeOfYear(DateTime date)
         {
             return new DateTime(date.Year, 1, 1);
@@ -62,6 +64,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在年12月31号23:59:59的时间 / The time at 23:59:59 on December 31st of the year</returns>
+        [Preserve]
         public static DateTime GetEndTimeOfYear(DateTime date)
         {
             return GetStartTimeOfYear(date).AddYears(1).AddSeconds(-1);
@@ -77,6 +80,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在年1月1号00:00:00的时间戳(秒) / The timestamp (seconds) at 00:00:00 on January 1st of the year</returns>
+        [Preserve]
         public static long GetStartTimestampOfYear(DateTime date)
         {
             var time = GetStartTimeOfYear(date);
@@ -93,6 +97,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在年12月31号23:59:59的时间戳(秒) / The timestamp (seconds) at 23:59:59 on December 31st of the year</returns>
+        [Preserve]
         public static long GetEndTimestampOfYear(DateTime date)
         {
             var time = GetEndTimeOfYear(date);

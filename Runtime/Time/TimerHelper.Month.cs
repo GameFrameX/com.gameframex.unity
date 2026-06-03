@@ -30,6 +30,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -45,6 +46,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在月1号00:00:00的时间 / The time at 00:00:00 on the 1st of the month</returns>
+        [Preserve]
         public static DateTime GetStartTimeOfMonth(DateTime date)
         {
             return new DateTime(date.Year, date.Month, 1);
@@ -60,6 +62,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在月最后一天23:59:59的时间 / The time at 23:59:59 on the last day of the month</returns>
+        [Preserve]
         public static DateTime GetEndTimeOfMonth(DateTime date)
         {
             return GetStartTimeOfMonth(date).AddMonths(1).AddSeconds(-1);
@@ -75,6 +78,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在月1号00:00:00的时间戳(秒) / The timestamp (seconds) at 00:00:00 on the 1st of the month</returns>
+        [Preserve]
         public static long GetStartTimestampOfMonth(DateTime date)
         {
             var time = GetStartTimeOfMonth(date);
@@ -91,6 +95,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在月1号00:00:00的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 00:00:00 on the 1st of the month + time zone offset</returns>
+        [Preserve]
         public static long GetStartTimestampOfMonthWithTimeZone(DateTime date)
         {
             return DateTimeToSecondsWithTimeZone(GetStartTimeOfMonth(date));
@@ -106,6 +111,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在月最后一天23:59:59的时间戳(秒) / The timestamp (seconds) at 23:59:59 on the last day of the month</returns>
+        [Preserve]
         public static long GetEndTimestampOfMonth(DateTime date)
         {
             var time = GetEndTimeOfMonth(date);
@@ -121,6 +127,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在月最后一天23:59:59的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 23:59:59 on the last day of the month + time zone offset</returns>
+        [Preserve]
         public static long GetEndTimestampOfMonthWithTimeZone(DateTime date)
         {
             return DateTimeToSecondsWithTimeZone(GetEndTimeOfMonth(date));

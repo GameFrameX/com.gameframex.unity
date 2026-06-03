@@ -30,6 +30,7 @@
 // ==========================================================================================
 
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -49,6 +50,7 @@ namespace GameFrameX.Runtime
         /// <param name="endUtcTimestampSeconds">结束时间戳（秒） / End timestamp (seconds)</param>
         /// <param name="isUseUtc">是否使用UTC时间，默认为true / Whether to use UTC time, defaults to true</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
+        [Preserve]
         public static TimeSpan GetTimeDifference(long startUtcTimestampSeconds, long endUtcTimestampSeconds, bool isUseUtc = true)
         {
             var startTime = TimestampSecondToDateTime(startUtcTimestampSeconds, isUseUtc);
@@ -70,6 +72,7 @@ namespace GameFrameX.Runtime
         /// <param name="endUtcTimestampMillisecond">结束时间戳（毫秒） / End timestamp (milliseconds)</param>
         /// <param name="isUseUtc">是否使用UTC时间，默认为true / Whether to use UTC time, defaults to true</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
+        [Preserve]
         public static TimeSpan GetTimeDifferenceMillisecond(long startUtcTimestampMillisecond, long endUtcTimestampMillisecond, bool isUseUtc = true)
         {
             var startTime = TimeStampMillisecondToDateTime(startUtcTimestampMillisecond, isUseUtc);
@@ -90,6 +93,7 @@ namespace GameFrameX.Runtime
         /// <param name="time">指定时间 / The specified time</param>
         /// <param name="isUseUtc">是否使用UTC时间作为当前时间，默认为false（使用当前时区 (<see cref="CurrentTimeZone"/>) 时间） / Whether to use UTC time as current time, defaults to false (uses current time zone time)</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
+        [Preserve]
         public static TimeSpan GetTimeDifferenceFromNow(DateTime time, bool isUseUtc = false)
         {
             var now = isUseUtc ? GetNowWithUtc() : GetNowWithTimeZone();
@@ -109,6 +113,7 @@ namespace GameFrameX.Runtime
         /// <param name="timestamp">时间戳（秒） / Timestamp (seconds)</param>
         /// <param name="isUseUtc">是否使用UTC时间，默认为true / Whether to use UTC time, defaults to true</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
+        [Preserve]
         public static TimeSpan GetTimeDifferenceFromNow(long timestamp, bool isUseUtc = true)
         {
             var time = TimestampSecondToDateTime(timestamp, isUseUtc);
@@ -128,6 +133,7 @@ namespace GameFrameX.Runtime
         /// <param name="timestampMs">时间戳（毫秒） / Timestamp (milliseconds)</param>
         /// <param name="isUseUtc">是否使用UTC时间，默认为true / Whether to use UTC time, defaults to true</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
+        [Preserve]
         public static TimeSpan GetTimeDifferenceFromNowMs(long timestampMs, bool isUseUtc = true)
         {
             var time = TimeStampMillisecondToDateTime(timestampMs, isUseUtc);
@@ -147,6 +153,7 @@ namespace GameFrameX.Runtime
         /// <param name="time">指定时间 / The specified time</param>
         /// <param name="isUseUtc">是否使用UTC时间作为当前时间，默认为false（使用当前时区 (<see cref="CurrentTimeZone"/>) 时间） / Whether to use UTC time as current time, defaults to false (uses current time zone time)</param>
         /// <returns>经过的秒数（如果指定时间在未来，返回负数） / The number of seconds elapsed (returns negative if the specified time is in the future)</returns>
+        [Preserve]
         public static long GetElapsedSeconds(DateTime time, bool isUseUtc = false)
         {
             var now = isUseUtc ? GetNowWithUtc() : GetNowWithTimeZone();
@@ -167,6 +174,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTimestampSeconds">开始时间戳（秒） / Start timestamp (seconds)</param>
         /// <param name="endTimestampSeconds">结束时间戳（秒） / End timestamp (seconds)</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
+        [Preserve]
         public static TimeSpan GetTimeDifferenceWithTimeZone(long startTimestampSeconds, long endTimestampSeconds)
         {
             var startTime = TimestampSecondToDateTime(startTimestampSeconds, false);
@@ -187,6 +195,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTimestampMillisecond">开始时间戳（毫秒） / Start timestamp (milliseconds)</param>
         /// <param name="endTimestampMillisecond">结束时间戳（毫秒） / End timestamp (milliseconds)</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
+        [Preserve]
         public static TimeSpan GetTimeDifferenceMillisecondWithTimeZone(long startTimestampMillisecond, long endTimestampMillisecond)
         {
             var startTime = TimeStampMillisecondToDateTime(startTimestampMillisecond, false);
@@ -206,6 +215,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="time">指定时间 / The specified time</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
+        [Preserve]
         public static TimeSpan GetTimeDifferenceFromNowWithTimeZone(DateTime time)
         {
             var now = GetNowWithTimeZone();
@@ -224,6 +234,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="timestamp">时间戳（秒） / Timestamp (seconds)</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
+        [Preserve]
         public static TimeSpan GetTimeDifferenceFromNowWithTimeZone(long timestamp)
         {
             var time = TimestampSecondToDateTime(timestamp, false);
@@ -242,6 +253,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="timestampMs">时间戳（毫秒） / Timestamp (milliseconds)</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
+        [Preserve]
         public static TimeSpan GetTimeDifferenceFromNowMsWithTimeZone(long timestampMs)
         {
             var time = TimeStampMillisecondToDateTime(timestampMs, false);
@@ -260,6 +272,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="time">指定时间 / The specified time</param>
         /// <returns>经过的秒数（如果指定时间在未来，返回负数） / The number of seconds elapsed (returns negative if the specified time is in the future)</returns>
+        [Preserve]
         public static long GetElapsedSecondsWithTimeZone(DateTime time)
         {
             var now = GetNowWithTimeZone();
