@@ -36,52 +36,93 @@ namespace GameFrameX.Runtime
     public static partial class TimerHelper
     {
         /// <summary>
-        /// 时区偏移秒数，用于调整时间计算的偏移量。正值表示向未来偏移，负值表示向过去偏移。
+        /// 服务器与本地的时间差（秒）。服务器时间戳 - 本地 UTC 时间戳。
         /// </summary>
         /// <remarks>
-        /// Time zone offset in seconds, used to adjust time calculations. Positive values shift toward the future, negative values shift toward the past.
+        /// Server-to-local time delta in seconds. Server timestamp - local UTC timestamp.
         /// </remarks>
-        /// <value>时区偏移秒数 / Time zone offset in seconds</value>
-        public static long TimeOffsetSeconds { get; private set; } = 0;
+        /// <value>服务器时间差（秒） / Server time delta in seconds</value>
+        public static long TimeOffsetSeconds { get; private set; }
 
         /// <summary>
-        /// 时区偏移毫秒数，用于调整时间计算的偏移量。正值表示向未来偏移，负值表示向过去偏移。
+        /// 服务器与本地的时间差（毫秒）。服务器时间戳 - 本地 UTC 时间戳。
         /// </summary>
         /// <remarks>
-        /// Time zone offset in milliseconds, used to adjust time calculations. Positive values shift toward the future, negative values shift toward the past.
+        /// Server-to-local time delta in milliseconds. Server timestamp - local UTC timestamp.
         /// </remarks>
-        /// <value>时区偏移毫秒数 / Time zone offset in milliseconds</value>
-        public static long TimeOffsetMilliseconds { get; private set; } = 0;
+        /// <value>服务器时间差（毫秒） / Server time delta in milliseconds</value>
+        public static long TimeOffsetMilliseconds { get; private set; }
 
         /// <summary>
-        /// 设置时区偏移值。
+        /// 通过服务器秒级时间戳同步时间差。
         /// </summary>
         /// <remarks>
-        /// Sets the time zone offset values.
-        /// This method adjusts the baseline for time calculations.
-        /// For example, pass positive values to simulate future time, or negative values to simulate past time.
-        /// Commonly used for debugging and testing scenarios.
+        /// Synchronizes the time delta using a server second-level timestamp.
+        /// Call this on each heartbeat to keep the client in sync with the server.
         /// </remarks>
-        /// <param name="offsetSeconds">秒级偏移量 / Offset in seconds</param>
-        /// <param name="offsetMilliseconds">毫秒级偏移量 / Offset in milliseconds</param>
-        public static void SetTimeOffset(long offsetSeconds, long offsetMilliseconds)
+        /// <param name="serverTimestampSeconds">服务器当前秒级时间戳 / Server current second-level timestamp</param>
+        public static void SyncServerTimeSeconds(long serverTimestampSeconds)
         {
-            TimeOffsetSeconds = offsetSeconds;
-            TimeOffsetMilliseconds = offsetMilliseconds;
+            var localSeconds = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            TimeOffsetSeconds = serverTimestampSeconds - localSeconds;
+            TimeOffsetMilliseconds = TimeOffsetSeconds * 1000;
         }
 
         /// <summary>
-        /// 重置时区偏移值为默认值（0）。
+        /// 通过服务器毫秒级时间戳同步时间差。
         /// </summary>
         /// <remarks>
-        /// Resets the time zone offset values to their defaults (0).
+        /// Synchronizes the time delta using a server millisecond-level timestamp.
+        /// Call this on each heartbeat to keep the client in sync with the server.
+        /// </remarks>
+        /// <param name="serverTimestampMilliseconds">服务器当前毫秒级时间戳 / Server current millisecond-level timestamp</param>
+        public static void SyncServerTimeMilliseconds(long serverTimestampMilliseconds)
+        {
+            var localMilliseconds = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
+            TimeOffsetMilliseconds = serverTimestampMilliseconds - localMilliseconds;
+            TimeOffsetSeconds = TimeOffsetMilliseconds / 1000;
+        }
+
+        /// <summary>
+        /// 获取当前服务器时间（秒）。
+        /// </summary>
+        /// <remarks>
+        /// Gets the current server time in seconds.
+        /// Returns local UTC timestamp + time delta synced from the server.
+        /// Call <see cref="SyncServerTimeSeconds"/> first to establish the delta.
+        /// </remarks>
+        /// <returns>服务器当前秒级时间戳 / Server current second-level timestamp</returns>
+        public static long ServerNowSeconds()
+        {
+            return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() + TimeOffsetSeconds;
+        }
+
+        /// <summary>
+        /// 获取当前服务器时间（毫秒）。
+        /// </summary>
+        /// <remarks>
+        /// Gets the current server time in milliseconds.
+        /// Returns local UTC timestamp + time delta synced from the server.
+        /// Call <see cref="SyncServerTimeMilliseconds"/> first to establish the delta.
+        /// </remarks>
+        /// <returns>服务器当前毫秒级时间戳 / Server current millisecond-level timestamp</returns>
+        public static long ServerNowMilliseconds()
+        {
+            return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds() + TimeOffsetMilliseconds;
+        }
+
+        /// <summary>
+        /// 重置时间偏移值为默认值（0）。
+        /// </summary>
+        /// <remarks>
+        /// Resets the time offset values to their defaults (0).
         /// This method resets both second-level and millisecond-level offsets to zero,
-        /// restoring time calculations to their unadjusted state.
+        /// restoring time calculations to the local UTC time.
         /// </remarks>
         public static void ResetTimeOffset()
         {
-            TimeOffsetSeconds = default;
-            TimeOffsetMilliseconds = default;
+            TimeOffsetSeconds = 0;
+            TimeOffsetMilliseconds = 0;
         }
     }
 }
