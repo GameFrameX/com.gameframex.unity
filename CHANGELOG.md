@@ -1,3 +1,46 @@
+# [1.12.0](https://github.com/gameframex/com.gameframex.unity/compare/1.11.2...1.12.0) (2026-06-03)
+
+
+### Bug Fixes
+
+* **base:** EventPool 在抛出无处理器异常前先释放事件引用，避免引用池泄漏 ([ae10bd0](https://github.com/gameframex/com.gameframex.unity/commit/ae10bd05d5d49986ce0c02cbec98726eb0e93eb4))
+* **base:** GameFrameworkMonoSingleton 使用 double-checked locking 保证线程安全并修正游戏对象命名 ([f847898](https://github.com/gameframex/com.gameframex.unity/commit/f8478988df7d96b3bb94050ed62731a9f5652e13))
+* **base:** GenericVariable SetValue 增加类型检查防止无效类型转换，并统一字段命名为下划线前缀 ([a7beeb0](https://github.com/gameframex/com.gameframex.unity/commit/a7beeb0776a8d84c868f0b927145ff7dfcd9091f))
+* **base:** 修复 Variable.SetValue 对值类型传入 null 时崩溃 ([28e89d0](https://github.com/gameframex/com.gameframex.unity/commit/28e89d08c1ec2d6bf69da74c21190b80a5c4daf7))
+* **base:** 修复组件类型查找不支持派生类型的问题 ([a9322a4](https://github.com/gameframex/com.gameframex.unity/commit/a9322a4d0f9fef845aab73b0809d9a8d10844165))
+* **buffer:** 修复 Span 缓冲区读写越界检查逻辑，增加负偏移检测 ([82a1849](https://github.com/gameframex/com.gameframex.unity/commit/82a1849c8df9816319f91cbab7b34d38d0d72350))
+* **buffer:** 修复缓冲区读写越界检查逻辑，增加负偏移检测 ([175a0eb](https://github.com/gameframex/com.gameframex.unity/commit/175a0ebbd3ffc0a54f7c18a21628828eb911ebfe))
+* **extension:** BidirectionalDictionary TryAdd 增加反向字典重复值检查防止双向映射不一致 ([8e63297](https://github.com/gameframex/com.gameframex.unity/commit/8e6329787bf2127de7fd12ed10ca09b31816b73f))
+* **extension:** GameObjectExtension 预分配缓存列表容量并确保使用前 Clear ([11373e5](https://github.com/gameframex/com.gameframex.unity/commit/11373e5c7a97cb8100c2ecab02b43aa1ab7c9b9c))
+* **extension:** StringExtensions CreateAsDirectory 使用 IsNullOrWhiteSpace 过滤空白输入并移除冗余递归调用 ([0521398](https://github.com/gameframex/com.gameframex.unity/commit/052139890af28f50d34fe7d50a9e1e114102c5bf))
+* **extensions:** 修复双向字典、日期、字符串、类型扩展的 bug ([5120bb1](https://github.com/gameframex/com.gameframex.unity/commit/5120bb169cdb0bda7b1371eba22473e37f067598))
+* **extension:** ThreadLocalRandom SetSeed 时重建 ThreadLocal 实例使种子生效 ([86c6d42](https://github.com/gameframex/com.gameframex.unity/commit/86c6d42bf28cad92a1b077cbc1fb743c82de0b3c))
+* **helper:** DefaultCompressionHelper 添加 using 确保 GZipInputStream 释放并统一字段命名 ([179c87b](https://github.com/gameframex/com.gameframex.unity/commit/179c87be8d53b6a0d7c7bc376b137e6e885e260f))
+* **helper:** PathHelper 移除静态 StringBuilder 避免线程安全问题 ([3348898](https://github.com/gameframex/com.gameframex.unity/commit/33488983696a14b9743a25eb8bd6b08f99aa935c))
+* **helper:** PositionHelper 添加除零防护避免向量 y 分量为零时崩溃 ([5cdcd16](https://github.com/gameframex/com.gameframex.unity/commit/5cdcd16f6e062f99c9b10d7e737522e40a483849))
+* **helper:** ZipHelper 移除静态 Crc32 实例避免线程安全问题 ([2e48290](https://github.com/gameframex/com.gameframex.unity/commit/2e482909e796f52ff4de1787d3f66330f746bc24))
+* **objectpool:** 空值防护及释放过滤不修改入参列表 ([a06c28d](https://github.com/gameframex/com.gameframex.unity/commit/a06c28d31c850befb2242c08a875295ee99ac2df))
+* **runtime:** BinaryExtension 使用 ThreadStatic 保证线程安全 ([b848a36](https://github.com/gameframex/com.gameframex.unity/commit/b848a36ca79b19340250491e07a26d868bd569dd))
+* **runtime:** CollectionExtensions.Join 修复末尾多余分隔符 ([435d176](https://github.com/gameframex/com.gameframex.unity/commit/435d17660fe36b24630dd74bb93dd5cf63fe324b))
+* **runtime:** RandomHelper.Next 使用 NextDouble 提高精度 ([01678e1](https://github.com/gameframex/com.gameframex.unity/commit/01678e126330da6b97b1b90ee60f11be8538ddbe))
+* **time:** Month.WithTimeZone 时间戳方法统一使用 DateTimeToSecondsWithTimeZone ([921a9a1](https://github.com/gameframex/com.gameframex.unity/commit/921a9a1a926f81a5523833a526533473cb4ebc8d))
+* **time:** UnixTimeSeconds/UnixTimeMilliseconds 去除 TimeOffset 污染，返回纯净 UTC 时间戳 ([0f84181](https://github.com/gameframex/com.gameframex.unity/commit/0f84181ceb8adb2ba50b2ad5888b7dc0bb22df1b))
+* **utility:** Marshal 非托管内存指针添加 lock 保护线程安全 ([b2ccb0d](https://github.com/gameframex/com.gameframex.unity/commit/b2ccb0dc3d480b5237e4bcaddc571d76844666d4))
+* **utility:** MD5 移除静态实例避免线程安全问题 ([68ff188](https://github.com/gameframex/com.gameframex.unity/commit/68ff18873e34bffc9b55dd3b52eeda5f2e94f799))
+* **utility:** RandomUtility 使用 ThreadLocal 保证线程安全并修复 SetSeed 失效问题 ([75fef41](https://github.com/gameframex/com.gameframex.unity/commit/75fef4121864999a2816f73807c45d966fdb181e))
+* **utility:** 多处修复线程安全、加密安全及异常处理 ([97549d9](https://github.com/gameframex/com.gameframex.unity/commit/97549d9b0f5ee6d4ba351ee1bcf76f143e2e82c2))
+* **utility:** 移除 Verifier 静态 CRC 实例避免线程安全问题 ([1fb41a7](https://github.com/gameframex/com.gameframex.unity/commit/1fb41a724a21977785cdf269a775722042680327))
+
+
+### Features
+
+* **time:** 为 TimerHelper 公开成员添加 [Preserve] 防裁剪标签 ([97a9b40](https://github.com/gameframex/com.gameframex.unity/commit/97a9b40e9bf09c9efcd9da09ce163e9253a7ea09))
+
+
+### Performance Improvements
+
+* **editor:** CroppingWindow 移除冗余 ToLower 调用 ([19ce200](https://github.com/gameframex/com.gameframex.unity/commit/19ce200cf5c0290145941476b8c9e2f25e535bf3))
+
 ## [1.11.2](https://github.com/gameframex/com.gameframex.unity/compare/1.11.1...1.11.2) (2026-05-29)
 
 
