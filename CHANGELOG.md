@@ -1,3 +1,20 @@
+# [2.0.0](https://github.com/gameframex/com.gameframex.unity/compare/1.12.0...2.0.0) (2026-06-05)
+
+
+### Bug Fixes
+
+* **test:** 使用完全限定命名空间避免 SequenceReader 冲突 ([631c07d](https://github.com/gameframex/com.gameframex.unity/commit/631c07d652496e3f9585294ae1914bec9ae60a0c))
+
+
+### chore
+
+* 标记下一版本为破坏性更新 ([c326147](https://github.com/gameframex/com.gameframex.unity/commit/c3261476889c8ba826b229f8125833c405b4b0f4))
+
+
+### BREAKING CHANGES
+
+* 下个版本将包含多项公共 API 行为变更，升级前请阅读 CHANGELOG。
+
 # [1.12.0](https://github.com/gameframex/com.gameframex.unity/compare/1.11.2...1.12.0) (2026-06-03)
 
 
