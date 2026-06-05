@@ -14,7 +14,7 @@ namespace GameFrameX.Tests
         public void Constructor_FromMemory_SetsProperties()
         {
             var data = new byte[] { 1, 2, 3, 4, 5 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             Assert.AreEqual(5, reader.Length);
             Assert.AreEqual(0, reader.Consumed);
@@ -27,7 +27,7 @@ namespace GameFrameX.Tests
         {
             var data = new byte[] { 1, 2, 3 };
             var sequence = new ReadOnlySequence<byte>(data);
-            var reader = new SequenceReader<byte>(sequence);
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(sequence);
 
             Assert.AreEqual(3, reader.Length);
             Assert.AreEqual(0, reader.Consumed);
@@ -37,7 +37,7 @@ namespace GameFrameX.Tests
         [Test]
         public void Constructor_EmptyMemory_EndIsTrue()
         {
-            var reader = new SequenceReader<byte>(ReadOnlyMemory<byte>.Empty);
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(ReadOnlyMemory<byte>.Empty);
 
             Assert.IsTrue(reader.End);
             Assert.AreEqual(0, reader.Length);
@@ -46,7 +46,7 @@ namespace GameFrameX.Tests
         [Test]
         public void Constructor_EmptySequence_EndIsTrue()
         {
-            var reader = new SequenceReader<byte>(ReadOnlySequence<byte>.Empty);
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(ReadOnlySequence<byte>.Empty);
 
             Assert.IsTrue(reader.End);
         }
@@ -59,7 +59,7 @@ namespace GameFrameX.Tests
         public void TryPeek_HasData_ReturnsFirstByte()
         {
             var data = new byte[] { 42, 43, 44 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             bool result = reader.TryPeek(out byte value);
 
@@ -72,7 +72,7 @@ namespace GameFrameX.Tests
         public void TryPeek_CalledTwice_ReturnsSameValue()
         {
             var data = new byte[] { 99 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             reader.TryPeek(out byte first);
             reader.TryPeek(out byte second);
@@ -83,7 +83,7 @@ namespace GameFrameX.Tests
         [Test]
         public void TryPeek_Empty_ReturnsFalse()
         {
-            var reader = new SequenceReader<byte>(ReadOnlyMemory<byte>.Empty);
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(ReadOnlyMemory<byte>.Empty);
 
             bool result = reader.TryPeek(out byte value);
 
@@ -99,7 +99,7 @@ namespace GameFrameX.Tests
         public void TryRead_HasData_ReturnsAndAdvances()
         {
             var data = new byte[] { 10, 20, 30 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             Assert.IsTrue(reader.TryRead(out byte v1));
             Assert.AreEqual(10, v1);
@@ -114,7 +114,7 @@ namespace GameFrameX.Tests
         public void TryRead_ReadAllData_EndIsTrue()
         {
             var data = new byte[] { 1 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             reader.TryRead(out _);
 
@@ -125,7 +125,7 @@ namespace GameFrameX.Tests
         public void TryRead_PastEnd_ReturnsFalse()
         {
             var data = new byte[] { 1 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             reader.TryRead(out _);
 
@@ -141,7 +141,7 @@ namespace GameFrameX.Tests
         public void Advance_ByCount_SkipsBytes()
         {
             var data = new byte[] { 10, 20, 30, 40, 50 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             reader.Advance(2);
 
@@ -154,7 +154,7 @@ namespace GameFrameX.Tests
         public void Advance_ToEnd_ReachesEnd()
         {
             var data = new byte[] { 1, 2, 3 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             reader.Advance(3);
 
@@ -165,7 +165,7 @@ namespace GameFrameX.Tests
         public void Advance_PastEnd_ThrowsArgumentOutOfRangeException()
         {
             var data = new byte[] { 1, 2, 3 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             bool threw = false;
             try
@@ -187,7 +187,7 @@ namespace GameFrameX.Tests
         public void Rewind_AfterRead_GoesBack()
         {
             var data = new byte[] { 10, 20, 30 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             reader.TryRead(out _);
             reader.TryRead(out _);
@@ -202,7 +202,7 @@ namespace GameFrameX.Tests
         public void Rewind_ToStart_ResetsToBeginning()
         {
             var data = new byte[] { 10, 20, 30 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             reader.TryRead(out _);
             reader.TryRead(out _);
@@ -217,7 +217,7 @@ namespace GameFrameX.Tests
         public void Rewind_NegativeCount_ThrowsArgumentOutOfRangeException()
         {
             var data = new byte[] { 1, 2, 3 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             bool threw1 = false;
             try
@@ -235,7 +235,7 @@ namespace GameFrameX.Tests
         public void Rewind_PastStart_ThrowsArgumentOutOfRangeException()
         {
             var data = new byte[] { 1, 2, 3 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             bool threw2 = false;
             try
@@ -257,7 +257,7 @@ namespace GameFrameX.Tests
         public void Remaining_DecreasesAsDataIsRead()
         {
             var data = new byte[] { 1, 2, 3 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             Assert.AreEqual(3, reader.Remaining);
             reader.TryRead(out _);
@@ -272,7 +272,7 @@ namespace GameFrameX.Tests
         public void Consumed_IncreasesAsDataIsRead()
         {
             var data = new byte[] { 1, 2, 3 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             Assert.AreEqual(0, reader.Consumed);
             reader.TryRead(out _);
@@ -289,7 +289,7 @@ namespace GameFrameX.Tests
         public void TryCopyTo_EnoughData_CopiesCorrectly()
         {
             var data = new byte[] { 1, 2, 3, 4, 5 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
             var dest = new byte[3];
 
             bool result = reader.TryCopyTo(dest);
@@ -303,7 +303,7 @@ namespace GameFrameX.Tests
         public void TryCopyTo_NotEnoughData_ReturnsFalse()
         {
             var data = new byte[] { 1, 2 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
             var dest = new byte[5];
 
             bool result = reader.TryCopyTo(dest);
@@ -315,7 +315,7 @@ namespace GameFrameX.Tests
         public void TryCopyTo_DoesNotAdvanceReader()
         {
             var data = new byte[] { 10, 20, 30 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
             var dest = new byte[2];
 
             reader.TryCopyTo(dest);
@@ -338,7 +338,7 @@ namespace GameFrameX.Tests
                 Array.Reverse(bytes);
             }
 
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
 
             bool result = reader.TryReadBigEndian(out short value);
 
@@ -356,7 +356,7 @@ namespace GameFrameX.Tests
                 Array.Reverse(bytes);
             }
 
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
 
             bool result = reader.TryReadBigEndian(out int value);
 
@@ -374,7 +374,7 @@ namespace GameFrameX.Tests
                 Array.Reverse(bytes);
             }
 
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
 
             bool result = reader.TryReadBigEndian(out long value);
 
@@ -392,7 +392,7 @@ namespace GameFrameX.Tests
                 Array.Reverse(bytes);
             }
 
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
 
             bool result = reader.TryReadBigEndian(out ushort value);
 
@@ -410,7 +410,7 @@ namespace GameFrameX.Tests
                 Array.Reverse(bytes);
             }
 
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
 
             bool result = reader.TryReadBigEndian(out uint value);
 
@@ -428,7 +428,7 @@ namespace GameFrameX.Tests
                 Array.Reverse(bytes);
             }
 
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
 
             bool result = reader.TryReadBigEndian(out ulong value);
 
@@ -446,7 +446,7 @@ namespace GameFrameX.Tests
                 Array.Reverse(bytes);
             }
 
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
 
             bool result = reader.TryReadBigEndian(out float value);
 
@@ -464,7 +464,7 @@ namespace GameFrameX.Tests
                 Array.Reverse(bytes);
             }
 
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(bytes));
 
             bool result = reader.TryReadBigEndian(out double value);
 
@@ -476,7 +476,7 @@ namespace GameFrameX.Tests
         public void TryReadBigEndian_InsufficientData_ReturnsFalse()
         {
             var data = new byte[] { 0x01 };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             Assert.IsFalse(reader.TryReadBigEndian(out short _));
             Assert.IsFalse(reader.TryReadBigEndian(out int _));
@@ -491,7 +491,7 @@ namespace GameFrameX.Tests
         public void TryRead_SByte_ValidData()
         {
             var data = new byte[] { 0xFF };
-            var reader = new SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(new ReadOnlyMemory<byte>(data));
 
             bool result = reader.TryRead(out sbyte value);
 
@@ -502,7 +502,7 @@ namespace GameFrameX.Tests
         [Test]
         public void TryRead_SByte_Empty_ReturnsFalse()
         {
-            var reader = new SequenceReader<byte>(ReadOnlyMemory<byte>.Empty);
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(ReadOnlyMemory<byte>.Empty);
 
             bool result = reader.TryRead(out sbyte value);
 
@@ -522,7 +522,7 @@ namespace GameFrameX.Tests
             var segment3 = new byte[] { 5 };
 
             var sequence = CreateMultiSegmentSequence(segment1, segment2, segment3);
-            var reader = new SequenceReader<byte>(sequence);
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(sequence);
 
             for (int i = 1; i <= 5; i++)
             {
@@ -540,7 +540,7 @@ namespace GameFrameX.Tests
             var segment2 = new byte[] { 0x56, 0x78 };
 
             var sequence = CreateMultiSegmentSequence(segment1, segment2);
-            var reader = new SequenceReader<byte>(sequence);
+            var reader = new GameFrameX.Runtime.SequenceReader<byte>(sequence);
 
             bool result = reader.TryReadBigEndian(out int value);
 
