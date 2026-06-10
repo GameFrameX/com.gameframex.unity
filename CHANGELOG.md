@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/gameframex/com.gameframex.unity/compare/2.0.0...2.0.1) (2026-06-10)
+
+
+### Bug Fixes
+
+* **event:** 取消订阅时 handler 不存在改为警告而非抛异常 ([5900647](https://github.com/gameframex/com.gameframex.unity/commit/5900647cd8a15ec6699c2e94c66404699b57ea4f))
+
 # [2.0.0](https://github.com/gameframex/com.gameframex.unity/compare/1.12.0...2.0.0) (2026-06-05)
 
 
