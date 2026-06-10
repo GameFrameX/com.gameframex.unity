@@ -274,7 +274,8 @@ namespace GameFrameX.Runtime
 
                 if (!_eventHandlers.Remove(id, handler))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not exists specified handler.", id));
+                    Log.Warning("EventPool: Event '{0}' not exists specified handler, skip unsubscribe.", id);
+                    return;
                 }
             }
         }
