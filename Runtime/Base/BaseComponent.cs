@@ -53,15 +53,15 @@ namespace GameFrameX.Runtime
 
         // [SerializeField] private bool m_EditorResourceMode = true;
 
-        [SerializeField] private string m_TextHelperTypeName = "UnityGameFramework.Runtime.DefaultTextHelper";
+        [SerializeField] private string m_TextHelperTypeName = "GameFrameX.Runtime.DefaultTextHelper";
 
-        [SerializeField] private string m_VersionHelperTypeName = "UnityGameFramework.Runtime.DefaultVersionHelper";
+        [SerializeField] private string m_VersionHelperTypeName = "GameFrameX.Runtime.DefaultVersionHelper";
 
-        [SerializeField] private string m_LogHelperTypeName = "UnityGameFramework.Runtime.DefaultLogHelper";
+        [SerializeField] private string m_LogHelperTypeName = "GameFrameX.Runtime.DefaultLogHelper";
 
-        [SerializeField] private string m_CompressionHelperTypeName = "UnityGameFramework.Runtime.DefaultCompressionHelper";
+        [SerializeField] private string m_CompressionHelperTypeName = "GameFrameX.Runtime.DefaultCompressionHelper";
 
-        [SerializeField] private string m_JsonHelperTypeName = "UnityGameFramework.Runtime.DefaultJsonHelper";
+        [SerializeField] private string m_JsonHelperTypeName = "GameFrameX.Runtime.LitJsonHelper";
 
         [SerializeField] private int m_FrameRate = 30;
 
