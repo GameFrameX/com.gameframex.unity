@@ -2,6 +2,7 @@
   "name": "GameFrameX.Runtime",
   "references": [
     "BlankReadAssets.Runtime",
+    "GameFrameX.LitJSON.Runtime",
     "UniTask.Runtime"
   ],
   "includePlatforms": [],
