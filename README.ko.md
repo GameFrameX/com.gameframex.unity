@@ -154,7 +154,7 @@ Runtime/
 │   ├── Helper.cs                # 헬퍼 베이스 클래스
 │   ├── MathHelper.cs            # 수학 헬퍼
 │   ├── NetworkHelper.cs         # 네트워크 헬퍼
-│   ├── NewtonsoftJsonHelper.cs  # Newtonsoft JSON 헬퍼
+│   ├── LitJsonHelper.cs  # LitJSON 헬퍼
 │   ├── ObjectHelper.cs          # 오브젝트 헬퍼
 │   ├── PathHelper.cs            # 경로 헬퍼
 │   ├── PositionHelper.cs        # 위치 헬퍼
