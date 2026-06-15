@@ -57,11 +57,11 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.GameObjectHelper);
             _ = typeof(GameFrameX.Runtime.Helper);
             _ = typeof(GameFrameX.Runtime.IReference);
+            _ = typeof(GameFrameX.Runtime.LitJsonHelper);
             _ = typeof(GameFrameX.Runtime.ITaskAgent<>);
             _ = typeof(GameFrameX.Runtime.Log);
             _ = typeof(GameFrameX.Runtime.MathHelper);
             _ = typeof(GameFrameX.Runtime.NetworkHelper);
-            _ = typeof(GameFrameX.Runtime.NewtonsoftJsonHelper);
             _ = typeof(GameFrameX.Runtime.ObjectDontDestroyOnLoad);
             _ = typeof(GameFrameX.Runtime.ObjectHelper);
             _ = typeof(GameFrameX.Runtime.ObjectPoolComponent);

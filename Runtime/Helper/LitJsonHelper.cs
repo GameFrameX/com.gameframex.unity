@@ -1,4 +1,4 @@
-﻿// ==========================================================================================
+// ==========================================================================================
 //  GameFrameX 组织及其衍生项目的版权、商标、专利及其他相关权利
 //  GameFrameX organization and its derivative projects' copyrights, trademarks, patents, and related rights
 //  均受中华人民共和国及相关国际法律法规保护。
@@ -30,31 +30,44 @@
 // ==========================================================================================
 
 using System;
-using Newtonsoft.Json;
+using GameFrameX.LitJSON.Runtime;
 
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 默认 JSON 函数集辅助器。
+    /// LitJSON 函数集辅助器。
     /// </summary>
     /// <remarks>
-    /// Default JSON helper using Newtonsoft.Json.
+    /// Optional JSON helper using LitJSON.
     /// </remarks>
     [UnityEngine.Scripting.Preserve]
-    public class NewtonsoftJsonHelper : Utility.Json.IJsonHelper
+    public class LitJsonHelper : Utility.Json.IJsonHelper
     {
+        /// <summary>
+        /// 初始化 LitJSON 函数集辅助器的新实例。
+        /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the LitJSON helper.
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        public LitJsonHelper()
+        {
+        }
+
         /// <summary>
         /// 将对象序列化为 JSON 字符串。
         /// </summary>
-        /// <remarks>
-        /// Serializes an object to a JSON string.
-        /// </remarks>
-        /// <param name="obj">要序列化的对象 / Object to serialize</param>
-        /// <returns>序列化后的 JSON 字符串 / Serialized JSON string</returns>
+        /// <param name="obj">要序列化的对象。</param>
+        /// <returns>序列化后的 JSON 字符串。</returns>
         [UnityEngine.Scripting.Preserve]
         public string ToJson(object obj)
         {
-            return JsonConvert.SerializeObject(obj);
+            if (obj == null)
+            {
+                return "null";
+            }
+
+            return JsonMapper.ToJson(obj, false);
         }
 
         /// <summary>
@@ -66,7 +79,24 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public T ToObject<T>(string json)
         {
-            return JsonConvert.DeserializeObject<T>(json);
+            if (json == null)
+            {
+                throw new ArgumentNullException(nameof(json));
+            }
+
+            if (json.Length == 0)
+            {
+                return default;
+            }
+
+            try
+            {
+                return JsonMapper.ToObject<T>(json);
+            }
+            catch (JsonException exception)
+            {
+                throw new GameFrameworkException(exception.Message, exception);
+            }
         }
 
         /// <summary>
@@ -78,7 +108,29 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public object ToObject(Type objectType, string json)
         {
-            return JsonConvert.DeserializeObject(json, objectType);
+            if (objectType == null)
+            {
+                throw new ArgumentNullException(nameof(objectType));
+            }
+
+            if (json == null)
+            {
+                throw new ArgumentNullException(nameof(json));
+            }
+
+            if (json.Length == 0)
+            {
+                return null;
+            }
+
+            try
+            {
+                return JsonMapper.ToObject(json, objectType);
+            }
+            catch (JsonException exception)
+            {
+                throw new GameFrameworkException(exception.Message, exception);
+            }
         }
     }
 }
