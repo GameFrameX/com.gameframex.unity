@@ -9,7 +9,7 @@ namespace GameFrameX.Runtime
     /// Application helper class.
     /// </remarks>
     [UnityEngine.Scripting.Preserve]
-    public static class ApplicationHelper
+    public static partial class ApplicationHelper
     {
         /// <summary>
         /// 获取当前是否在Unity编辑器中运行。
@@ -72,38 +72,18 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取当前是否在WebGL微信小游戏平台运行。
+        /// 获取当前是否在鸿蒙平台运行。
         /// </summary>
         /// <remarks>
-        /// Gets whether the application is running on the WebGL WeChat Mini Game platform.
+        /// Gets whether the application is running on the HarmonyOS platform.
         /// </remarks>
-        /// <value>如果在微信小游戏平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on WeChat Mini Game; otherwise <c>false</c></value>
+        /// <value>如果在鸿蒙平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on HarmonyOS; otherwise <c>false</c></value>
         [UnityEngine.Scripting.Preserve]
-        public static bool IsWebGLWeChatMiniGame
+        public static bool IsHarmonyOS
         {
             get
             {
-#if UNITY_WEBGL && ENABLE_WECHAT_MINI_GAME
-                return true;
-#else
-                return false;
-#endif
-            }
-        }
-
-        /// <summary>
-        /// 获取当前是否在WebGL抖音小游戏平台运行。
-        /// </summary>
-        /// <remarks>
-        /// Gets whether the application is running on the WebGL Douyin Mini Game platform.
-        /// </remarks>
-        /// <value>如果在抖音小游戏平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on Douyin Mini Game; otherwise <c>false</c></value>
-        [UnityEngine.Scripting.Preserve]
-        public static bool IsWebGLDouYinMiniGame
-        {
-            get
-            {
-#if UNITY_WEBGL && ENABLE_DOUYIN_MINI_GAME
+#if UNITY_HARMONYOS || UNITY_OPENHARMONY || HARMONYOS || OPENHARMONY
                 return true;
 #else
                 return false;
@@ -174,10 +154,34 @@ namespace GameFrameX.Runtime
         /// <item><description>"Android": Android平台 / Android platform</description></item>
         /// <item><description>"MacOs": macOS平台 / macOS platform</description></item>
         /// <item><description>"iOS": iOS平台 / iOS platform</description></item>
-        /// <item><description>"WebGL": WebGL平台 / WebGL platform</description></item>
+        /// <item><description>"HarmonyOS": 鸿蒙平台 / HarmonyOS platform</description></item>
+        /// <item><description>"WebGL": WebGL平台（未启用小游戏平台宏时） / WebGL platform when no mini game platform define is enabled</description></item>
+        /// <item><description>"WeChatMiniGame": 微信小游戏 / WeChat Mini Game</description></item>
+        /// <item><description>"AlipayMiniGame": 支付宝小游戏 / Alipay Mini Game</description></item>
+        /// <item><description>"DouYinMiniGame": 抖音小游戏 / DouYin Mini Game</description></item>
+        /// <item><description>"KuaiShouMiniGame": 快手小游戏 / KuaiShou Mini Game</description></item>
+        /// <item><description>"BaiduMiniGame": 百度小游戏 / Baidu Mini Game</description></item>
+        /// <item><description>"JingDongMiniGame": 京东小游戏 / JingDong Mini Game</description></item>
+        /// <item><description>"TaobaoMiniGame": 淘宝小程序 / Taobao Mini Program</description></item>
+        /// <item><description>"MeituanMiniGame": 美团小游戏 / Meituan Mini Game</description></item>
+        /// <item><description>"BilibiliMiniGame": Bilibili小游戏 / Bilibili Mini Game</description></item>
+        /// <item><description>"DiscordMiniGame": Discord小游戏 / Discord Mini Game</description></item>
+        /// <item><description>"YouTubeMiniGame": YouTube小游戏 / YouTube Mini Game</description></item>
+        /// <item><description>"FacebookMiniGame": Facebook小游戏 / Facebook Mini Game</description></item>
+        /// <item><description>"GooglePlayMiniGame": Google Play小游戏 / Google Play Mini Game</description></item>
+        /// <item><description>"TikTokMiniGame": TikTok小游戏 / TikTok Mini Game</description></item>
+        /// <item><description>"CrazyGamesMiniGame": CrazyGames小游戏 / CrazyGames Mini Game</description></item>
+        /// <item><description>"PokiMiniGame": Poki小游戏 / Poki Mini Game</description></item>
+        /// <item><description>"HuaweiMiniGame": 华为小游戏 / Huawei Mini Game</description></item>
+        /// <item><description>"OPPOMiniGame": OPPO小游戏 / OPPO Mini Game</description></item>
+        /// <item><description>"VivoMiniGame": vivo小游戏 / vivo Mini Game</description></item>
+        /// <item><description>"XiaomiMiniGame": 小米小游戏 / Xiaomi Mini Game</description></item>
+        /// <item><description>"TapTapMiniGame": TapTap小游戏 / TapTap Mini Game</description></item>
         /// <item><description>"Windows": Windows平台 / Windows platform</description></item>
         /// <item><description>空字符串: 其他未定义的平台 / Empty string: other undefined platforms</description></item>
         /// </list>
+        /// 在WebGL构建中会优先根据已启用的小游戏平台宏返回具体平台名。
+        /// In WebGL builds, the enabled mini game platform define takes precedence over the generic WebGL name.
         /// </value>
         [UnityEngine.Scripting.Preserve]
         public static string PlatformName
@@ -190,8 +194,10 @@ namespace GameFrameX.Runtime
                 return "MacOs";
 #elif UNITY_IOS || UNITY_IPHONE
                 return "iOS";
+#elif UNITY_HARMONYOS || UNITY_OPENHARMONY || HARMONYOS || OPENHARMONY
+                return "HarmonyOS";
 #elif UNITY_WEBGL
-                return "WebGL";
+                return WebGLPlatformName;
 #elif UNITY_STANDALONE_WIN
                 return "Windows";
 #else
