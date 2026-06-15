@@ -1,7 +1,8 @@
 {
     "name": "GameFrameX.Tests",
     "references": [
-        "GameFrameX.Runtime"
+        "GameFrameX.Runtime",
+        "GameFrameX.LitJSON.Runtime"
     ],
     "includePlatforms": [
         "Editor"
