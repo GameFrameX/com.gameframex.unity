@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
@@ -151,7 +150,7 @@ namespace GameFrameX.Editor
             _packages = new List<PackageManagerInfo>();
             var manifestPath = Path.Combine(Application.dataPath, "..", "Packages", "manifest.json");
             string jsonContent = File.ReadAllText(manifestPath);
-            PackagesManifest = JsonConvert.DeserializeObject<PackagesManifest>(jsonContent);
+            PackagesManifest = LitJSON.Runtime.JsonMapper.ToObject<PackagesManifest>(jsonContent);
         }
 
         /// <summary>
@@ -176,7 +175,7 @@ namespace GameFrameX.Editor
         void SavePackages(PackagesManifest manifest)
         {
             var manifestPath = Path.Combine(Application.dataPath, "..", "Packages", "manifest.json");
-            File.WriteAllText(manifestPath, JsonConvert.SerializeObject(manifest, Formatting.Indented));
+            File.WriteAllText(manifestPath, LitJSON.Runtime.JsonMapper.ToJson(manifest, true));
         }
     }
 }

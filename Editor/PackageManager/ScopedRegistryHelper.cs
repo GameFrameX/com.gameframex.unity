@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Xml;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
@@ -37,25 +36,25 @@ namespace GameFrameX.Editor
         private static void SetScopedRegistry(string name, string url, string[] scopes)
         {
             string json = File.ReadAllText(ManifestPath);
-            JObject manifest = JObject.Parse(json);
+            PackagesManifest manifest = LitJSON.Runtime.JsonMapper.ToObject<PackagesManifest>(json);
 
-            JArray scopedRegistries = manifest["scopedRegistries"] as JArray;
+            List<ScopedRegistry> scopedRegistries = manifest.ScopedRegistries;
             if (scopedRegistries == null)
             {
-                scopedRegistries = new JArray();
-                manifest["scopedRegistries"] = scopedRegistries;
+                scopedRegistries = new List<ScopedRegistry>();
+                manifest.ScopedRegistries = scopedRegistries;
             }
 
-            JToken existing = scopedRegistries.FirstOrDefault(r =>
-                r["name"]?.ToString() == name || r["url"]?.ToString() == url);
+            ScopedRegistry existing = scopedRegistries.FirstOrDefault(r =>
+                r.Name == name || r.Url == url);
 
             if (existing != null)
             {
-                JArray existingScopes = existing["scopes"] as JArray;
+                List<string> existingScopes = existing.Scopes;
                 if (existingScopes == null)
                 {
-                    existingScopes = new JArray();
-                    existing["scopes"] = existingScopes;
+                    existingScopes = new List<string>();
+                    existing.Scopes = existingScopes;
                 }
 
                 bool changed = false;
@@ -70,7 +69,7 @@ namespace GameFrameX.Editor
 
                 if (changed)
                 {
-                    File.WriteAllText(ManifestPath, manifest.ToString(Formatting.Indented));
+                    File.WriteAllText(ManifestPath, manifest.ToString(true));    
                     Debug.Log($"[ScopedRegistry] Updated scopes for '{name}'.");
                     EditorUtility.DisplayDialog("Scoped Registry", $"Updated scopes for '{name}'.", "OK");
                 }
@@ -82,13 +81,13 @@ namespace GameFrameX.Editor
             }
             else
             {
-                JObject newRegistry = new JObject();
-                newRegistry["name"] = name;
-                newRegistry["url"] = url;
-                newRegistry["scopes"] = new JArray(scopes);
+                ScopedRegistry newRegistry = new ScopedRegistry();
+                newRegistry.Name = name;
+                newRegistry.Url = url;
+                newRegistry.Scopes = scopes.ToList();
                 scopedRegistries.Add(newRegistry);
 
-                File.WriteAllText(ManifestPath, manifest.ToString(Formatting.Indented));
+                File.WriteAllText(ManifestPath, manifest.ToString(true));
                 Debug.Log($"[ScopedRegistry] Added '{name}' scoped registry.");
                 EditorUtility.DisplayDialog("Scoped Registry", $"Added '{name}' scoped registry.", "OK");
             }
@@ -104,15 +103,15 @@ namespace GameFrameX.Editor
             }
 
             string json = File.ReadAllText(ManifestPath);
-            JObject manifest = JObject.Parse(json);
-            JArray scopedRegistries = manifest["scopedRegistries"] as JArray;
+            PackagesManifest manifest = LitJSON.Runtime.JsonMapper.ToObject<PackagesManifest>(json);
+            List<ScopedRegistry> scopedRegistries = manifest.ScopedRegistries;
             if (scopedRegistries == null)
             {
                 return false;
             }
 
             return scopedRegistries.Any(r =>
-                r["url"]?.ToString() == "https://gameframex.upm.alianblank.uk");
+                r.Url == "https://gameframex.upm.alianblank.uk");
         }
 
         public static void MigrateToRegistry()
@@ -131,8 +130,8 @@ namespace GameFrameX.Editor
             SetScopedRegistry("GameFrameX", "https://gameframex.upm.alianblank.uk", new[] { "com.gameframex" });
 
             string json = File.ReadAllText(ManifestPath);
-            JObject manifest = JObject.Parse(json);
-            JObject dependencies = manifest["dependencies"] as JObject;
+            PackagesManifest manifest = LitJSON.Runtime.JsonMapper.ToObject<PackagesManifest>(json);
+            Dictionary<string, string> dependencies = manifest.Dependencies;
             if (dependencies == null)
             {
                 return;

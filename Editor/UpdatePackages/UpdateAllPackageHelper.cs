@@ -4,7 +4,6 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
-using Newtonsoft.Json.Linq;
 
 namespace GameFrameX.Editor
 {
@@ -45,8 +44,8 @@ namespace GameFrameX.Editor
         private static void UpdatePackagesFromManifest(string manifestPath)
         {
             string jsonContent = File.ReadAllText(manifestPath);
-            JObject manifest = JObject.Parse(jsonContent);
-            JObject dependencies = (JObject)manifest["dependencies"];
+            PackagesManifest manifest = LitJSON.Runtime.JsonMapper.ToObject<PackagesManifest>(jsonContent);
+            Dictionary<string, string> dependencies = manifest.Dependencies;
 
             if (dependencies != null)
             {
