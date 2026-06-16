@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/gameframex/com.gameframex.unity/compare/2.0.1...2.1.0) (2026-06-16)
+
+
+### Features
+
+* **application-helper:** 添加鸿蒙平台与多平台小游戏运行环境识别 ([0caabaf](https://github.com/gameframex/com.gameframex.unity/commit/0caabafb164889f39ded5450b09e6f3329ee5efe))
+
 ## [2.0.1](https://github.com/gameframex/com.gameframex.unity/compare/2.0.0...2.0.1) (2026-06-10)
 
 
