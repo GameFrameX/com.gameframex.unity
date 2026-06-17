@@ -92,6 +92,166 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 获取当前是否在UWP平台运行。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the UWP platform.
+        /// </remarks>
+        /// <value>如果在UWP平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on UWP; otherwise <c>false</c></value>
+        [UnityEngine.Scripting.Preserve]
+        public static bool IsUWP
+        {
+            get
+            {
+#if UNITY_WSA
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        /// <summary>
+        /// 获取当前是否在tvOS平台运行。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the tvOS platform.
+        /// </remarks>
+        /// <value>如果在tvOS平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on tvOS; otherwise <c>false</c></value>
+        [UnityEngine.Scripting.Preserve]
+        public static bool IsTvOS
+        {
+            get
+            {
+#if UNITY_TVOS
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        /// <summary>
+        /// 获取当前是否在VisionOS平台运行。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the VisionOS platform.
+        /// </remarks>
+        /// <value>如果在VisionOS平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on VisionOS; otherwise <c>false</c></value>
+        [UnityEngine.Scripting.Preserve]
+        public static bool IsVisionOS
+        {
+            get
+            {
+#if UNITY_VISIONOS
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        /// <summary>
+        /// 获取当前是否在Xbox平台运行。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the Xbox platform.
+        /// </remarks>
+        /// <value>如果在Xbox平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on Xbox; otherwise <c>false</c></value>
+        [UnityEngine.Scripting.Preserve]
+        public static bool IsXbox
+        {
+            get
+            {
+#if UNITY_XBOXONE || UNITY_GAMECORE_XBOXONE || UNITY_GAMECORE_SCARLETT
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        /// <summary>
+        /// 获取当前是否在PlayStation平台运行。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on a PlayStation platform.
+        /// </remarks>
+        /// <value>如果在PlayStation平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on PlayStation; otherwise <c>false</c></value>
+        [UnityEngine.Scripting.Preserve]
+        public static bool IsPlayStation
+        {
+            get
+            {
+#if UNITY_PS4 || UNITY_PS5
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        /// <summary>
+        /// 获取当前是否在PlayStation 4平台运行。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the PlayStation 4 platform.
+        /// </remarks>
+        /// <value>如果在PlayStation 4平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on PlayStation 4; otherwise <c>false</c></value>
+        [UnityEngine.Scripting.Preserve]
+        public static bool IsPlayStation4
+        {
+            get
+            {
+#if UNITY_PS4
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        /// <summary>
+        /// 获取当前是否在PlayStation 5平台运行。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the PlayStation 5 platform.
+        /// </remarks>
+        /// <value>如果在PlayStation 5平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on PlayStation 5; otherwise <c>false</c></value>
+        [UnityEngine.Scripting.Preserve]
+        public static bool IsPlayStation5
+        {
+            get
+            {
+#if UNITY_PS5
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        /// <summary>
+        /// 获取当前是否在Nintendo Switch平台运行。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether the application is running on the Nintendo Switch platform.
+        /// </remarks>
+        /// <value>如果在Nintendo Switch平台则为 <c>true</c>；否则为 <c>false</c> / <c>true</c> if on Nintendo Switch; otherwise <c>false</c></value>
+        [UnityEngine.Scripting.Preserve]
+        public static bool IsNintendoSwitch
+        {
+            get
+            {
+#if UNITY_SWITCH
+                return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        /// <summary>
         /// 获取当前是否在Windows平台运行。
         /// </summary>
         /// <remarks>
@@ -154,6 +314,9 @@ namespace GameFrameX.Runtime
         /// <item><description>"Android": Android平台 / Android platform</description></item>
         /// <item><description>"MacOs": macOS平台 / macOS platform</description></item>
         /// <item><description>"iOS": iOS平台 / iOS platform</description></item>
+        /// <item><description>"tvOS": tvOS平台 / tvOS platform</description></item>
+        /// <item><description>"VisionOS": VisionOS平台 / VisionOS platform</description></item>
+        /// <item><description>"UWP": Windows通用平台 / Universal Windows Platform</description></item>
         /// <item><description>"HarmonyOS": 鸿蒙平台 / HarmonyOS platform</description></item>
         /// <item><description>"WebGL": WebGL平台（未启用小游戏平台宏时） / WebGL platform when no mini game platform define is enabled</description></item>
         /// <item><description>"WeChatMiniGame": 微信小游戏 / WeChat Mini Game</description></item>
@@ -178,6 +341,10 @@ namespace GameFrameX.Runtime
         /// <item><description>"XiaomiMiniGame": 小米小游戏 / Xiaomi Mini Game</description></item>
         /// <item><description>"TapTapMiniGame": TapTap小游戏 / TapTap Mini Game</description></item>
         /// <item><description>"Windows": Windows平台 / Windows platform</description></item>
+        /// <item><description>"Linux": Linux平台 / Linux platform</description></item>
+        /// <item><description>"Xbox": Xbox平台 / Xbox platform</description></item>
+        /// <item><description>"PlayStation": PlayStation平台 / PlayStation platform</description></item>
+        /// <item><description>"NintendoSwitch": Nintendo Switch平台 / Nintendo Switch platform</description></item>
         /// <item><description>空字符串: 其他未定义的平台 / Empty string: other undefined platforms</description></item>
         /// </list>
         /// 在WebGL构建中会优先根据已启用的小游戏平台宏返回具体平台名。
@@ -192,14 +359,28 @@ namespace GameFrameX.Runtime
                 return "Android";
 #elif UNITY_STANDALONE_OSX
                 return "MacOs";
+#elif UNITY_TVOS
+                return "tvOS";
+#elif UNITY_VISIONOS
+                return "VisionOS";
 #elif UNITY_IOS || UNITY_IPHONE
                 return "iOS";
 #elif UNITY_HARMONYOS || UNITY_OPENHARMONY || HARMONYOS || OPENHARMONY
                 return "HarmonyOS";
 #elif UNITY_WEBGL
                 return WebGLPlatformName;
+#elif UNITY_WSA
+                return "UWP";
 #elif UNITY_STANDALONE_WIN
                 return "Windows";
+#elif UNITY_STANDALONE_LINUX
+                return "Linux";
+#elif UNITY_XBOXONE || UNITY_GAMECORE_XBOXONE || UNITY_GAMECORE_SCARLETT
+                return "Xbox";
+#elif UNITY_PS4 || UNITY_PS5
+                return "PlayStation";
+#elif UNITY_SWITCH
+                return "NintendoSwitch";
 #else
                 return string.Empty;
 #endif
