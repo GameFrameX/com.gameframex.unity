@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/gameframex/com.gameframex.unity/compare/2.1.0...2.2.0) (2026-06-17)
+
+
+### Features
+
+* **aot-preserve:** 添加 HybridCLR 热更新 AOT 元数据保留生成模块 ([17e0270](https://github.com/gameframex/com.gameframex.unity/commit/17e02706ee4d947878ce38cefe7c6ffd10bb6aae))
+
 # [2.1.0](https://github.com/gameframex/com.gameframex.unity/compare/2.0.1...2.1.0) (2026-06-16)
 
 
