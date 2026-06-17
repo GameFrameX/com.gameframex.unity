@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/gameframex/com.gameframex.unity/compare/2.2.0...2.3.0) (2026-06-17)
+
+
+### Features
+
+* **application:** 扩展平台检测支持更多平台 ([b88dcb8](https://github.com/gameframex/com.gameframex.unity/commit/b88dcb87ef0357b3fa151e1205500c388fb30a8b))
+
 # [2.2.0](https://github.com/gameframex/com.gameframex.unity/compare/2.1.0...2.2.0) (2026-06-17)
 
 
