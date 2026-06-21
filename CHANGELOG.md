@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/gameframex/com.gameframex.unity/compare/2.3.0...2.3.1) (2026-06-21)
+
+
+### Bug Fixes
+
+* **aot-preserve:** 移除构建前置处理器避免中断打包 ([9f4067d](https://github.com/gameframex/com.gameframex.unity/commit/9f4067d21c570d93ba569cd80b8990756da1a729))
+
 # [2.3.0](https://github.com/gameframex/com.gameframex.unity/compare/2.2.0...2.3.0) (2026-06-17)
 
 
