@@ -1,3 +1,15 @@
+# [2.4.0](https://github.com/gameframex/com.gameframex.unity/compare/2.3.1...2.4.0) (2026-07-03)
+
+
+### Bug Fixes
+
+* **runtime-host:** 扫描器跳过测试程序集 ([bc32059](https://github.com/gameframex/com.gameframex.unity/commit/bc32059bf954830d2e1c1ff8f61910f9de8ffb26))
+
+
+### Features
+
+* **runtime-host:** 引入组件运行时托管子系统 ([c250cfd](https://github.com/gameframex/com.gameframex.unity/commit/c250cfdb80d1d80b109658c4538776ec7bf4f848))
+
 ## [2.3.1](https://github.com/gameframex/com.gameframex.unity/compare/2.3.0...2.3.1) (2026-06-21)
 
 
