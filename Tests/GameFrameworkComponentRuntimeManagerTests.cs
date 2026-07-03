@@ -90,6 +90,20 @@ namespace GameFrameX.Tests
             Assert.AreEqual(-8000, plan.Components[2].Order);
         }
 
+        [Test]
+        public void Scan_IgnoresUnitTestAssemblyTypes()
+        {
+            var scanResult = GameFrameXRuntimeScanner.Scan();
+
+            Assert.IsFalse(scanResult.ComponentTypes.Contains(typeof(TestRuntimeManagerComponent)));
+            Assert.IsFalse(scanResult.ComponentTypes.Contains(typeof(DefaultRuntimeOrderComponent)));
+
+            foreach (var descriptor in scanResult.ManagerDescriptors)
+            {
+                Assert.AreNotEqual(typeof(TestRuntimeManager), descriptor.ImplementationType);
+            }
+        }
+
         private interface ITestRuntimeManager
         {
         }

@@ -20,7 +20,7 @@ namespace GameFrameX.Runtime
             var assemblies = Utility.Assembly.GetAssemblies();
             foreach (var assembly in assemblies)
             {
-                if (assembly == null || IsEditorAssembly(assembly))
+                if (assembly == null || ShouldSkipAssembly(assembly))
                 {
                     continue;
                 }
@@ -51,11 +51,22 @@ namespace GameFrameX.Runtime
             return result;
         }
 
-        private static bool IsEditorAssembly(Assembly assembly)
+        private static bool ShouldSkipAssembly(Assembly assembly)
         {
             string name = assembly.GetName().Name;
+            return IsEditorAssemblyName(name) || IsTestAssemblyName(name);
+        }
+
+        private static bool IsEditorAssemblyName(string name)
+        {
             return name.EndsWith(".Editor", StringComparison.Ordinal) ||
                    name.IndexOf("Editor", StringComparison.OrdinalIgnoreCase) >= 0 && name.StartsWith("UnityEditor", StringComparison.Ordinal);
+        }
+
+        private static bool IsTestAssemblyName(string name)
+        {
+            return name.EndsWith(".Tests", StringComparison.OrdinalIgnoreCase) ||
+                   name.IndexOf(".Tests.", StringComparison.OrdinalIgnoreCase) >= 0;
         }
 
         private static Type[] GetLoadableTypes(Assembly assembly, GameFrameXRuntimeScanResult result)
