@@ -39,6 +39,7 @@ namespace GameFrameX.Runtime
     [DisallowMultipleComponent]
     [AddComponentMenu("GameFrameX/ReferencePool")]
     [UnityEngine.Scripting.Preserve]
+    [GameFrameXAutoComponent(-9000)]
     public sealed class ReferencePoolComponent : GameFrameworkComponent
     {
         [SerializeField] private ReferenceStrictCheckType m_EnableStrictCheck = ReferenceStrictCheckType.AlwaysEnable;

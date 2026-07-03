@@ -42,6 +42,7 @@ namespace GameFrameX.Runtime
     [DisallowMultipleComponent]
     [AddComponentMenu("GameFrameX/Object Pool")]
     [UnityEngine.Scripting.Preserve]
+    [GameFrameXAutoComponent(-8000)]
     public sealed class ObjectPoolComponent : GameFrameworkComponent
     {
         private IObjectPoolManager m_ObjectPoolManager = null;

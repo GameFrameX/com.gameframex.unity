@@ -44,6 +44,7 @@ namespace GameFrameX.Runtime
     [DisallowMultipleComponent]
     [AddComponentMenu("GameFrameX/Base")]
     [UnityEngine.Scripting.Preserve]
+    [GameFrameXAutoComponent(-10000)]
     [DefaultExecutionOrder(-500)]
     public sealed class BaseComponent : GameFrameworkComponent
     {
@@ -70,20 +71,6 @@ namespace GameFrameX.Runtime
         [SerializeField] private bool m_RunInBackground = true;
 
         [SerializeField] private bool m_NeverSleep = true;
-
-        /// <summary>
-        /// 获取或设置是否使用编辑器资源模式（仅编辑器内有效）。
-        /// </summary>
-        // public bool EditorResourceMode
-        // {
-        //     get { return m_EditorResourceMode; }
-        //     set { m_EditorResourceMode = value; }
-        // }
-
-        /*/// <summary>
-        /// 获取或设置编辑器资源辅助器。
-        /// </summary>
-        public IResourceManager EditorResourceHelper { get; set; }*/
 
         /// <summary>
         /// 获取或设置游戏帧率。 / Gets or sets the game frame rate.
@@ -155,7 +142,7 @@ namespace GameFrameX.Runtime
             IsAutoRegister = false;
             base.Awake();
 
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(gameObject);
             InitTextHelper();
             InitVersionHelper();
             InitLogHelper();
@@ -292,15 +279,14 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            Type versionHelperType = Utility.Assembly.GetType(m_VersionHelperTypeName);
+            var versionHelperType = Utility.Assembly.GetType(m_VersionHelperTypeName);
             if (versionHelperType == null)
             {
                 throw new GameFrameworkException(Utility.Text.Format("Can not find version helper type '{0}'.",
                                                                      m_VersionHelperTypeName));
             }
 
-            GameVersion.IVersionHelper versionHelper =
-                (GameVersion.IVersionHelper)Activator.CreateInstance(versionHelperType);
+            var versionHelper = (GameVersion.IVersionHelper)Activator.CreateInstance(versionHelperType);
             if (versionHelper == null)
             {
                 throw new GameFrameworkException(Utility.Text.Format("Can not create version helper instance '{0}'.",
@@ -317,19 +303,16 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            Type logHelperType = Utility.Assembly.GetType(m_LogHelperTypeName);
+            var logHelperType = Utility.Assembly.GetType(m_LogHelperTypeName);
             if (logHelperType == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find log helper type '{0}'.",
-                                                                     m_LogHelperTypeName));
+                throw new GameFrameworkException(Utility.Text.Format("Can not find log helper type '{0}'.", m_LogHelperTypeName));
             }
 
-            GameFrameworkLog.ILogHelper logHelper =
-                (GameFrameworkLog.ILogHelper)Activator.CreateInstance(logHelperType);
+            var logHelper = (GameFrameworkLog.ILogHelper)Activator.CreateInstance(logHelperType);
             if (logHelper == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not create log helper instance '{0}'.",
-                                                                     m_LogHelperTypeName));
+                throw new GameFrameworkException(Utility.Text.Format("Can not create log helper instance '{0}'.", m_LogHelperTypeName));
             }
 
             GameFrameworkLog.SetLogHelper(logHelper);
@@ -342,15 +325,14 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            Type compressionHelperType = Utility.Assembly.GetType(m_CompressionHelperTypeName);
+            var compressionHelperType = Utility.Assembly.GetType(m_CompressionHelperTypeName);
             if (compressionHelperType == null)
             {
                 Log.Error("Can not find compression helper type '{0}'.", m_CompressionHelperTypeName);
                 return;
             }
 
-            Utility.Compression.ICompressionHelper compressionHelper =
-                (Utility.Compression.ICompressionHelper)Activator.CreateInstance(compressionHelperType);
+            var compressionHelper = (Utility.Compression.ICompressionHelper)Activator.CreateInstance(compressionHelperType);
             if (compressionHelper == null)
             {
                 Log.Error("Can not create compression helper instance '{0}'.", m_CompressionHelperTypeName);
@@ -367,14 +349,14 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            Type jsonHelperType = Utility.Assembly.GetType(m_JsonHelperTypeName);
+            var jsonHelperType = Utility.Assembly.GetType(m_JsonHelperTypeName);
             if (jsonHelperType == null)
             {
                 Log.Error("Can not find JSON helper type '{0}'.", m_JsonHelperTypeName);
                 return;
             }
 
-            Utility.Json.IJsonHelper jsonHelper = (Utility.Json.IJsonHelper)Activator.CreateInstance(jsonHelperType);
+            var jsonHelper = (Utility.Json.IJsonHelper)Activator.CreateInstance(jsonHelperType);
             if (jsonHelper == null)
             {
                 Log.Error("Can not create JSON helper instance '{0}'.", m_JsonHelperTypeName);
@@ -388,7 +370,7 @@ namespace GameFrameX.Runtime
         {
             Log.Info("Low memory reported...");
 
-            ObjectPoolComponent objectPoolComponent = GameEntry.GetComponent<ObjectPoolComponent>();
+            var objectPoolComponent = GameEntry.GetComponent<ObjectPoolComponent>();
             if (objectPoolComponent != null)
             {
                 objectPoolComponent.ReleaseAllUnused();

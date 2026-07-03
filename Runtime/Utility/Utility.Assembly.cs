@@ -121,7 +121,7 @@ namespace GameFrameX.Runtime
             {
                 if (string.IsNullOrEmpty(typeName))
                 {
-                    throw new GameFrameworkException("Type name is invalid.");
+                    return null;
                 }
 
                 lock (Lock)
