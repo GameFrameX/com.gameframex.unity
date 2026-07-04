@@ -15,6 +15,7 @@ namespace GameFrameX.Runtime
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset()
         {
+            GameFrameXRuntimeModeResolver.Reset();
             GameFrameXRuntimeHost.Reset();
         }
 
@@ -32,7 +33,14 @@ namespace GameFrameX.Runtime
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Start()
         {
-            GameFrameXRuntimeHost.EnsureStarted();
+            var modeResult = GameFrameXRuntimeModeResolver.Resolve();
+            if (modeResult.Mode == GameFrameXRuntimeMode.ManualSceneMode)
+            {
+                GameFrameXRuntimeHost.RecordManualSceneMode(modeResult);
+                return;
+            }
+
+            GameFrameXRuntimeHost.EnsureStarted(modeResult);
         }
     }
 }

@@ -21,12 +21,22 @@ namespace GameFrameX.Tests
 
             GameEntry.Shutdown(ShutdownType.None);
             GameFrameworkEntry.Shutdown();
+            GameFrameXRuntimeModeResolver.Reset();
+            GameFrameXRuntimeHost.Reset();
             GameFrameXRuntimeManagerResolver.Reset();
         }
 
         [Test]
         public void Awake_AutoResolvedManager_WritesComponentTypeForInspector()
         {
+            GameFrameXRuntimeManagerResolver.RegisterDescriptors(new[]
+            {
+                new GameFrameXRuntimeManagerDescriptor(typeof(ITestRuntimeManager), typeof(TestRuntimeManager), 0),
+            });
+            Assert.AreEqual(
+                typeof(TestRuntimeManager),
+                GameFrameXRuntimeManagerResolver.Resolve(typeof(ITestRuntimeManager), null));
+
             m_GameObject = new GameObject("Runtime Manager Component Test");
             var component = m_GameObject.AddComponent<TestRuntimeManagerComponent>();
 
@@ -102,6 +112,66 @@ namespace GameFrameX.Tests
             {
                 Assert.AreNotEqual(typeof(TestRuntimeManager), descriptor.ImplementationType);
             }
+        }
+
+        [Test]
+        public void Resolve_NoBaseComponent_UsesAutoPackageMode()
+        {
+            GameFrameXRuntimeModeResolver.Reset();
+
+            var result = GameFrameXRuntimeModeResolver.Resolve();
+
+            Assert.AreEqual(GameFrameXRuntimeMode.AutoPackageMode, result.Mode);
+            Assert.AreEqual(result, GameFrameXRuntimeModeResolver.LastResult);
+            Assert.IsTrue(result.Reason.Contains("No registered or scene BaseComponent"));
+        }
+
+        [Test]
+        public void Resolve_SceneBaseComponent_UsesManualSceneMode()
+        {
+            GameFrameXRuntimeModeResolver.Reset();
+            m_GameObject = new GameObject("Manual GFX");
+            m_GameObject.AddComponent<BaseComponent>();
+
+            var result = GameFrameXRuntimeModeResolver.Resolve();
+
+            Assert.AreEqual(GameFrameXRuntimeMode.ManualSceneMode, result.Mode);
+            Assert.AreEqual("Manual GFX", result.ManualEntryPath);
+        }
+
+        [Test]
+        public void RecordManualSceneMode_DoesNotCreateAutoHostPlan()
+        {
+            GameFrameXRuntimeHost.Reset();
+            var result = new GameFrameXRuntimeModeResult(
+                GameFrameXRuntimeMode.ManualSceneMode,
+                "Unit test manual entry.",
+                "Manual GFX");
+
+            GameFrameXRuntimeHost.RecordManualSceneMode(result);
+
+            Assert.AreEqual(result, GameFrameXRuntimeHost.LastModeResult);
+            Assert.IsNotNull(GameFrameXRuntimeHost.LastPlan);
+            Assert.AreEqual(0, GameFrameXRuntimeHost.LastPlan.Components.Count);
+            Assert.IsTrue(GameFrameXRuntimeHost.LastPlan.Diagnostics[0].Contains("ManualSceneMode"));
+            Assert.IsNull(GameObject.Find("[GameFrameX]"));
+        }
+
+        [Test]
+        public void Reset_ClearsRuntimeModeState()
+        {
+            GameFrameXRuntimeModeResolver.Resolve();
+            GameFrameXRuntimeHost.RecordManualSceneMode(new GameFrameXRuntimeModeResult(
+                GameFrameXRuntimeMode.ManualSceneMode,
+                "Unit test manual entry.",
+                "Manual GFX"));
+
+            GameFrameXRuntimeModeResolver.Reset();
+            GameFrameXRuntimeHost.Reset();
+
+            Assert.IsNull(GameFrameXRuntimeModeResolver.LastResult);
+            Assert.IsNull(GameFrameXRuntimeHost.LastModeResult);
+            Assert.IsNull(GameFrameXRuntimeHost.LastPlan);
         }
 
         private interface ITestRuntimeManager
