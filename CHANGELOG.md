@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/gameframex/com.gameframex.unity/compare/2.4.0...2.5.0) (2026-07-04)
+
+
+### Features
+
+* **runtime-host:** 区分手动场景与自动包启动模式 ([34980ef](https://github.com/gameframex/com.gameframex.unity/commit/34980efb309d6ae716e54104b7e3ff4c028dc6e0))
+
 # [2.4.0](https://github.com/gameframex/com.gameframex.unity/compare/2.3.1...2.4.0) (2026-07-03)
 
 
