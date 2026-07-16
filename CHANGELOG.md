@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/gameframex/com.gameframex.unity/compare/2.5.0...2.5.1) (2026-07-16)
+
+
+### Bug Fixes
+
+* **welcome:** 修正 UI 系统帮助链接 ([8a245f0](https://github.com/gameframex/com.gameframex.unity/commit/8a245f098406788677e397734d69d375dcb0af93)), closes [#8](https://github.com/gameframex/com.gameframex.unity/issues/8)
+
 # [2.5.0](https://github.com/gameframex/com.gameframex.unity/compare/2.4.0...2.5.0) (2026-07-04)
 
 
