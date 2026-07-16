@@ -159,7 +159,7 @@ namespace GameFrameX.Editor
             DrawSection("通信协议", "查看通信协议的规范和要求相关内容", "https://gameframex.doc.alianblank.com/protobuf/note.html");
 
             // UI 系统部分
-            DrawSection("UI 系统", "查看 UI 系统相关内容", "https://gameframex.doc.alianblank.com/unity/component/ui.html");
+            DrawSection("UI 系统", "查看 UI 系统相关内容", "https://gameframex.doc.alianblank.com/client/unity/component/ui/01.overview.html");
 
             //  BUG 反馈部分
             DrawSection("BUG 反馈", "反馈 BUG", "https://github.com/GameFrameX/GameFrameX/issues/new");
