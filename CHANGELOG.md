@@ -1,3 +1,10 @@
+## [2.5.2](https://github.com/gameframex/com.gameframex.unity/compare/2.5.1...2.5.2) (2026-07-30)
+
+
+### Bug Fixes
+
+* **package:** 更新依赖项版本以修复兼容性问题 ([0a1cd25](https://github.com/gameframex/com.gameframex.unity/commit/0a1cd250c1796d22ffc4415168de8be972f20fbe))
+
 ## [2.5.1](https://github.com/gameframex/com.gameframex.unity/compare/2.5.0...2.5.1) (2026-07-16)
 
 
