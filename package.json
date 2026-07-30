@@ -19,14 +19,16 @@
     "type": "git"
   },
   "dependencies": {
-    "com.gameframex.unity.litjson": "1.2.0",
+    "com.gameframex.unity.litjson": "1.2.2",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",
     "com.unity.modules.audio": "1.0.0",
     "com.unity.modules.imgui": "1.0.0",
     "com.unity.modules.jsonserialize": "1.0.0",
-    "com.unity.modules.unitywebrequest": "1.0.0"
+    "com.unity.modules.unitywebrequest": "1.0.0",
+    "com.gameframex.unity.readassets": "1.2.1",
+    "com.gameframex.unity.cysharp.unitask": "2.6.2"
   },
   "devDependencies": {
     "semantic-release": "^24.2.0",
