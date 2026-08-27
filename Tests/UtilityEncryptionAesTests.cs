@@ -18,16 +18,16 @@ namespace GameFrameX.Tests
         [Test]
         public void AESEncryptSecure_DecryptSecure_String_RoundTrip()
         {
-            string encrypted = Utility.Encryption.Aes.AESEncryptSecure(TestPlaintext, TestKey);
-            string decrypted = Utility.Encryption.Aes.AESDecryptSecure(encrypted, TestKey);
+            string encrypted = EncryptionUtility.Aes.AESEncryptSecure(TestPlaintext, TestKey);
+            string decrypted = EncryptionUtility.Aes.AESDecryptSecure(encrypted, TestKey);
             Assert.AreEqual(TestPlaintext, decrypted);
         }
 
         [Test]
         public void AESEncryptSecure_DecryptSecure_Bytes_RoundTrip()
         {
-            byte[] encrypted = Utility.Encryption.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
-            byte[] decrypted = Utility.Encryption.Aes.AESDecryptSecure(encrypted, TestKey);
+            byte[] encrypted = EncryptionUtility.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
+            byte[] decrypted = EncryptionUtility.Aes.AESDecryptSecure(encrypted, TestKey);
             CollectionAssert.AreEqual(TestPlaintextBytes, decrypted);
         }
 
@@ -39,8 +39,8 @@ namespace GameFrameX.Tests
         public void AESEncrypt_Decrypt_String_RoundTrip()
         {
             #pragma warning disable CS0618
-            string encrypted = Utility.Encryption.Aes.AESEncrypt(TestPlaintext, TestKey);
-            string decrypted = Utility.Encryption.Aes.AESDecrypt(encrypted, TestKey);
+            string encrypted = EncryptionUtility.Aes.AESEncrypt(TestPlaintext, TestKey);
+            string decrypted = EncryptionUtility.Aes.AESDecrypt(encrypted, TestKey);
             #pragma warning restore CS0618
             Assert.AreEqual(TestPlaintext, decrypted);
         }
@@ -49,8 +49,8 @@ namespace GameFrameX.Tests
         public void AESEncrypt_Decrypt_Bytes_RoundTrip()
         {
             #pragma warning disable CS0618
-            byte[] encrypted = Utility.Encryption.Aes.AESEncrypt(TestPlaintextBytes, TestKey);
-            byte[] decrypted = Utility.Encryption.Aes.AESDecrypt(encrypted, TestKey);
+            byte[] encrypted = EncryptionUtility.Aes.AESEncrypt(TestPlaintextBytes, TestKey);
+            byte[] decrypted = EncryptionUtility.Aes.AESDecrypt(encrypted, TestKey);
             #pragma warning restore CS0618
             CollectionAssert.AreEqual(TestPlaintextBytes, decrypted);
         }
@@ -62,16 +62,16 @@ namespace GameFrameX.Tests
         [Test]
         public void AESEncryptSecure_SamePlaintext_ProducesDifferentCiphertext()
         {
-            string encrypted1 = Utility.Encryption.Aes.AESEncryptSecure(TestPlaintext, TestKey);
-            string encrypted2 = Utility.Encryption.Aes.AESEncryptSecure(TestPlaintext, TestKey);
+            string encrypted1 = EncryptionUtility.Aes.AESEncryptSecure(TestPlaintext, TestKey);
+            string encrypted2 = EncryptionUtility.Aes.AESEncryptSecure(TestPlaintext, TestKey);
             Assert.AreNotEqual(encrypted1, encrypted2);
         }
 
         [Test]
         public void AESEncryptSecure_Bytes_SamePlaintext_ProducesDifferentCiphertext()
         {
-            byte[] encrypted1 = Utility.Encryption.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
-            byte[] encrypted2 = Utility.Encryption.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
+            byte[] encrypted1 = EncryptionUtility.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
+            byte[] encrypted2 = EncryptionUtility.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
             Assert.AreEqual(encrypted1.Length, encrypted2.Length);
             bool allSame = true;
             for (int i = 0; i < encrypted1.Length; i++)
@@ -92,7 +92,7 @@ namespace GameFrameX.Tests
         [Test]
         public void AESEncryptSecure_CiphertextFormat_ContainsIVAndSalt()
         {
-            byte[] encrypted = Utility.Encryption.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
+            byte[] encrypted = EncryptionUtility.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
             Assert.Greater(encrypted.Length, 32 + TestPlaintextBytes.Length);
         }
 
@@ -105,7 +105,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                Utility.Encryption.Aes.AESEncryptSecure((byte[])null, TestKey);
+                EncryptionUtility.Aes.AESEncryptSecure((byte[])null, TestKey);
             });
         }
 
@@ -114,7 +114,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<Exception>(() =>
             {
-                Utility.Encryption.Aes.AESEncryptSecure(new byte[0], TestKey);
+                EncryptionUtility.Aes.AESEncryptSecure(new byte[0], TestKey);
             });
         }
 
@@ -123,7 +123,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<Exception>(() =>
             {
-                Utility.Encryption.Aes.AESEncryptSecure(TestPlaintextBytes, null);
+                EncryptionUtility.Aes.AESEncryptSecure(TestPlaintextBytes, null);
             });
         }
 
@@ -132,7 +132,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<Exception>(() =>
             {
-                Utility.Encryption.Aes.AESEncryptSecure(TestPlaintextBytes, "");
+                EncryptionUtility.Aes.AESEncryptSecure(TestPlaintextBytes, "");
             });
         }
 
@@ -141,7 +141,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                Utility.Encryption.Aes.AESDecryptSecure((byte[])null, TestKey);
+                EncryptionUtility.Aes.AESDecryptSecure((byte[])null, TestKey);
             });
         }
 
@@ -151,27 +151,27 @@ namespace GameFrameX.Tests
             byte[] shortData = new byte[32];
             Assert.Throws<Exception>(() =>
             {
-                Utility.Encryption.Aes.AESDecryptSecure(shortData, TestKey);
+                EncryptionUtility.Aes.AESDecryptSecure(shortData, TestKey);
             });
         }
 
         [Test]
         public void AESDecryptSecure_EmptyKey_Throws()
         {
-            byte[] encrypted = Utility.Encryption.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
+            byte[] encrypted = EncryptionUtility.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
             Assert.Throws<Exception>(() =>
             {
-                Utility.Encryption.Aes.AESDecryptSecure(encrypted, "");
+                EncryptionUtility.Aes.AESDecryptSecure(encrypted, "");
             });
         }
 
         [Test]
         public void AESDecryptSecure_WrongKey_Throws()
         {
-            byte[] encrypted = Utility.Encryption.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
+            byte[] encrypted = EncryptionUtility.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
             Assert.Throws<CryptographicException>(() =>
             {
-                Utility.Encryption.Aes.AESDecryptSecure(encrypted, "WrongKey1234567890");
+                EncryptionUtility.Aes.AESDecryptSecure(encrypted, "WrongKey1234567890");
             });
         }
 
@@ -183,18 +183,18 @@ namespace GameFrameX.Tests
         public void AESEncrypt_ProducesDataDecryptableBy_AESDecryptSecure()
         {
             #pragma warning disable CS0618
-            byte[] encrypted = Utility.Encryption.Aes.AESEncrypt(TestPlaintextBytes, TestKey);
+            byte[] encrypted = EncryptionUtility.Aes.AESEncrypt(TestPlaintextBytes, TestKey);
             #pragma warning restore CS0618
-            byte[] decrypted = Utility.Encryption.Aes.AESDecryptSecure(encrypted, TestKey);
+            byte[] decrypted = EncryptionUtility.Aes.AESDecryptSecure(encrypted, TestKey);
             CollectionAssert.AreEqual(TestPlaintextBytes, decrypted);
         }
 
         [Test]
         public void AESEncryptSecure_ProducesDataDecryptableBy_AESDecrypt()
         {
-            byte[] encrypted = Utility.Encryption.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
+            byte[] encrypted = EncryptionUtility.Aes.AESEncryptSecure(TestPlaintextBytes, TestKey);
             #pragma warning disable CS0618
-            byte[] decrypted = Utility.Encryption.Aes.AESDecrypt(encrypted, TestKey);
+            byte[] decrypted = EncryptionUtility.Aes.AESDecrypt(encrypted, TestKey);
             #pragma warning restore CS0618
             CollectionAssert.AreEqual(TestPlaintextBytes, decrypted);
         }
@@ -207,8 +207,8 @@ namespace GameFrameX.Tests
         public void AESEncryptSecure_DecryptSecure_Unicode_RoundTrip()
         {
             string unicode = "你好世界 🎮";
-            string encrypted = Utility.Encryption.Aes.AESEncryptSecure(unicode, TestKey);
-            string decrypted = Utility.Encryption.Aes.AESDecryptSecure(encrypted, TestKey);
+            string encrypted = EncryptionUtility.Aes.AESEncryptSecure(unicode, TestKey);
+            string decrypted = EncryptionUtility.Aes.AESDecryptSecure(encrypted, TestKey);
             Assert.AreEqual(unicode, decrypted);
         }
 
@@ -222,8 +222,8 @@ namespace GameFrameX.Tests
             for (int i = 0; i < 10; i++)
             {
                 string plaintext = "Round trip test " + i;
-                string encrypted = Utility.Encryption.Aes.AESEncryptSecure(plaintext, TestKey);
-                string decrypted = Utility.Encryption.Aes.AESDecryptSecure(encrypted, TestKey);
+                string encrypted = EncryptionUtility.Aes.AESEncryptSecure(plaintext, TestKey);
+                string decrypted = EncryptionUtility.Aes.AESDecryptSecure(encrypted, TestKey);
                 Assert.AreEqual(plaintext, decrypted, $"Failed at iteration {i}");
             }
         }

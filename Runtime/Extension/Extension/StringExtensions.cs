@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using UnityEngine;
 
 namespace GameFrameX.Runtime
 {
@@ -118,6 +119,31 @@ namespace GameFrameX.Runtime
             }
 
             return (bp == bLen);
+        }
+
+        public static int ToInt(this string str, int def = 0)
+        {
+            return !int.TryParse(str, out var ret) ? def : ret;
+        }
+
+        public static long ToLong(this string str, long def = 0)
+        {
+            return !long.TryParse(str, out var ret) ? def : ret;
+        }
+
+        public static float ToFloat(this string str, float def = 0f)
+        {
+            return !float.TryParse(str, out var ret) ? def : ret;
+        }
+
+        public static double ToDouble(this string str, double def = 0)
+        {
+            return !double.TryParse(str, out var ret) ? def : ret;
+        }
+
+        public static T ToEnum<T>(this string str, bool ignoreCase = false, T def = default) where T : struct
+        {
+            return !Enum.TryParse<T>(str, ignoreCase, out var ret) ? def : ret;
         }
 
         /// <summary>
@@ -478,6 +504,29 @@ namespace GameFrameX.Runtime
             }
 
             return null;
+        }
+
+        public static void Print(this string str, Color? color = null)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return;
+            }
+
+            var logContent = Application.isBatchMode
+                ? str
+                : str.WithColor(color ?? Color.green);
+            Debug.Log(logContent);
+        }
+
+        public static string WithColor(this string str, Color color)
+        {
+            return $"<color=#{ColorUtility.ToHtmlStringRGBA(color)}>{str}</color>";
+        }
+
+        public static string WithSize(this string str, float size)
+        {
+            return $"<size={size}>{str}</size>";
         }
     }
 }

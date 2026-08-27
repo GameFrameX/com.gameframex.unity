@@ -12,44 +12,44 @@ namespace GameFrameX.Tests
         [Test]
         public void Hash_EmptyString_ReturnsExpectedSha1()
         {
-            string result = Utility.Hash.Sha1.Hash("");
+            string result = HashUtility.Sha1.Hash("");
             Assert.AreEqual("da39a3ee5e6b4b0d3255bfef95601890afd80709", result);
         }
 
         [Test]
         public void Hash_KnownInput_ReturnsExpectedSha1()
         {
-            string result = Utility.Hash.Sha1.Hash("Hello World");
+            string result = HashUtility.Sha1.Hash("Hello World");
             Assert.AreEqual("0a4d55a8d778e5022fab701977c5d840bbc486d0", result);
         }
 
         [Test]
         public void Hash_AnotherKnownInput()
         {
-            string result = Utility.Hash.Sha1.Hash("abcdefghijklmnopqrstuvwxyz");
+            string result = HashUtility.Sha1.Hash("abcdefghijklmnopqrstuvwxyz");
             Assert.AreEqual("32d10c7b8cf96570ca04ce37f2a19d84240d3a89", result);
         }
 
         [Test]
         public void Hash_SameInput_SameOutput()
         {
-            string hash1 = Utility.Hash.Sha1.Hash("deterministic");
-            string hash2 = Utility.Hash.Sha1.Hash("deterministic");
+            string hash1 = HashUtility.Sha1.Hash("deterministic");
+            string hash2 = HashUtility.Sha1.Hash("deterministic");
             Assert.AreEqual(hash1, hash2);
         }
 
         [Test]
         public void Hash_DifferentInput_DifferentOutput()
         {
-            string hash1 = Utility.Hash.Sha1.Hash("foo");
-            string hash2 = Utility.Hash.Sha1.Hash("bar");
+            string hash1 = HashUtility.Sha1.Hash("foo");
+            string hash2 = HashUtility.Sha1.Hash("bar");
             Assert.AreNotEqual(hash1, hash2);
         }
 
         [Test]
         public void Hash_Returns40CharHexString()
         {
-            string result = Utility.Hash.Sha1.Hash("test");
+            string result = HashUtility.Sha1.Hash("test");
             Assert.AreEqual(40, result.Length);
             foreach (char c in result)
             {
@@ -62,7 +62,7 @@ namespace GameFrameX.Tests
         [Test]
         public void Hash_UnicodeInput()
         {
-            string result = Utility.Hash.Sha1.Hash("中文");
+            string result = HashUtility.Sha1.Hash("中文");
             Assert.AreEqual(40, result.Length);
         }
 
@@ -74,7 +74,7 @@ namespace GameFrameX.Tests
             {
                 sb.Append("x");
             }
-            string result = Utility.Hash.Sha1.Hash(sb.ToString());
+            string result = HashUtility.Sha1.Hash(sb.ToString());
             Assert.AreEqual(40, result.Length);
         }
 
@@ -85,8 +85,8 @@ namespace GameFrameX.Tests
         [Test]
         public void Hash_WithUnicodeEncoding()
         {
-            string utf8Hash = Utility.Hash.Sha1.Hash("test", Encoding.UTF8);
-            string unicodeHash = Utility.Hash.Sha1.Hash("test", Encoding.Unicode);
+            string utf8Hash = HashUtility.Sha1.Hash("test", Encoding.UTF8);
+            string unicodeHash = HashUtility.Sha1.Hash("test", Encoding.Unicode);
             Assert.AreEqual(40, utf8Hash.Length);
             Assert.AreEqual(40, unicodeHash.Length);
             Assert.AreNotEqual(utf8Hash, unicodeHash);
@@ -96,8 +96,8 @@ namespace GameFrameX.Tests
         public void Hash_WithASCII_SameAsUTF8ForASCII()
         {
             string input = "ASCII only";
-            string utf8Result = Utility.Hash.Sha1.Hash(input, Encoding.UTF8);
-            string asciiResult = Utility.Hash.Sha1.Hash(input, Encoding.ASCII);
+            string utf8Result = HashUtility.Sha1.Hash(input, Encoding.UTF8);
+            string asciiResult = HashUtility.Sha1.Hash(input, Encoding.ASCII);
             Assert.AreEqual(utf8Result, asciiResult);
         }
 

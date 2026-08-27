@@ -203,7 +203,7 @@ namespace GameFrameX.Runtime
             stream.WriteByte(version);
             if (!_serializeCallbacks.TryGetValue(version, out var callback))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Serialize callback '{0}' is not exist.", version));
+                throw new GameFrameworkException(GameFrameworkText.Format("Serialize callback '{0}' is not exist.", version));
             }
 
             return callback(stream, data);
@@ -226,13 +226,13 @@ namespace GameFrameX.Runtime
             byte header2 = (byte)stream.ReadByte();
             if (header0 != header[0] || header1 != header[1] || header2 != header[2])
             {
-                throw new GameFrameworkException(Utility.Text.Format("Header is invalid, need '{0}{1}{2}', current '{3}{4}{5}'.", (char)header[0], (char)header[1], (char)header[2], (char)header0, (char)header1, (char)header2));
+                throw new GameFrameworkException(GameFrameworkText.Format("Header is invalid, need '{0}{1}{2}', current '{3}{4}{5}'.", (char)header[0], (char)header[1], (char)header[2], (char)header0, (char)header1, (char)header2));
             }
 
             byte version = (byte)stream.ReadByte();
             if (!_deserializeCallbacks.TryGetValue(version, out var callback))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Deserialize callback '{0}' is not exist.", version));
+                throw new GameFrameworkException(GameFrameworkText.Format("Deserialize callback '{0}' is not exist.", version));
             }
 
             return callback(stream);

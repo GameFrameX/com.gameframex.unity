@@ -62,14 +62,14 @@ namespace GameFrameX.Editor
 
         public void Init(SerializedObject serializedObject)
         {
-            m_HelperTypeName = serializedObject.FindProperty(Utility.Text.Format("m_{0}HelperTypeName", m_Name));
-            m_CustomHelper = serializedObject.FindProperty(Utility.Text.Format("m_Custom{0}Helper", m_Name));
+            m_HelperTypeName = serializedObject.FindProperty(GameFrameworkText.Format("m_{0}HelperTypeName", m_Name));
+            m_CustomHelper = serializedObject.FindProperty(GameFrameworkText.Format("m_Custom{0}Helper", m_Name));
         }
 
         public void Draw()
         {
             string displayName = FieldNameForDisplay(m_Name);
-            int selectedIndex = EditorGUILayout.Popup(Utility.Text.Format("{0} Helper", displayName), m_HelperTypeNameIndex, m_HelperTypeNames);
+            int selectedIndex = EditorGUILayout.Popup(GameFrameworkText.Format("{0} Helper", displayName), m_HelperTypeNameIndex, m_HelperTypeNames);
             if (selectedIndex != m_HelperTypeNameIndex)
             {
                 m_HelperTypeNameIndex = selectedIndex;
@@ -81,7 +81,7 @@ namespace GameFrameX.Editor
                 EditorGUILayout.PropertyField(m_CustomHelper);
                 if (m_CustomHelper.objectReferenceValue == null)
                 {
-                    EditorGUILayout.HelpBox(Utility.Text.Format("You must set Custom {0} Helper.", displayName), MessageType.Error);
+                    EditorGUILayout.HelpBox(GameFrameworkText.Format("You must set Custom {0} Helper.", displayName), MessageType.Error);
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace GameFrameX.Editor
                 CustomOptionName
             };
 
-            helperTypeNameList.AddRange(Utility.Assembly.GetRuntimeTypeNames(typeof(T)));
+            helperTypeNameList.AddRange(AssemblyUtility.GetRuntimeTypeNames(typeof(T)));
             m_HelperTypeNames = helperTypeNameList.ToArray();
 
             m_HelperTypeNameIndex = 0;

@@ -17,7 +17,7 @@ namespace GameFrameX.Runtime
         public static GameFrameXRuntimeScanResult Scan()
         {
             var result = new GameFrameXRuntimeScanResult();
-            var assemblies = Utility.Assembly.GetAssemblies();
+            var assemblies = AssemblyUtility.GetAssemblies();
             foreach (var assembly in assemblies)
             {
                 if (assembly == null || ShouldSkipAssembly(assembly))
@@ -77,12 +77,12 @@ namespace GameFrameX.Runtime
             }
             catch (ReflectionTypeLoadException exception)
             {
-                result.Errors.Add(Utility.Text.Format("Assembly '{0}' contains unloaded types: {1}", assembly.FullName, exception.Message));
+                result.Errors.Add(GameFrameworkText.Format("Assembly '{0}' contains unloaded types: {1}", assembly.FullName, exception.Message));
                 return exception.Types;
             }
             catch (Exception exception)
             {
-                result.Errors.Add(Utility.Text.Format("Can not scan assembly '{0}': {1}", assembly.FullName, exception.Message));
+                result.Errors.Add(GameFrameworkText.Format("Can not scan assembly '{0}': {1}", assembly.FullName, exception.Message));
                 return Array.Empty<Type>();
             }
         }

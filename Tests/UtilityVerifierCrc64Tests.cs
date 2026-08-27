@@ -9,14 +9,14 @@ namespace GameFrameX.Tests
     [TestFixture]
     public class UtilityVerifierCrc64Tests
     {
-        #region GetCrc64 (byte[] via Utility.Verifier)
+        #region GetCrc64 (byte[] via VerifierUtility)
 
         [Test]
         public void GetCrc64_SameInput_SameOutput()
         {
             byte[] data = Encoding.ASCII.GetBytes("123456789");
-            ulong hash1 = Utility.Verifier.GetCrc64(data);
-            ulong hash2 = Utility.Verifier.GetCrc64(data);
+            ulong hash1 = VerifierUtility.GetCrc64(data);
+            ulong hash2 = VerifierUtility.GetCrc64(data);
             Assert.AreEqual(hash1, hash2);
         }
 
@@ -25,22 +25,22 @@ namespace GameFrameX.Tests
         {
             byte[] data1 = Encoding.ASCII.GetBytes("foo");
             byte[] data2 = Encoding.ASCII.GetBytes("bar");
-            ulong hash1 = Utility.Verifier.GetCrc64(data1);
-            ulong hash2 = Utility.Verifier.GetCrc64(data2);
+            ulong hash1 = VerifierUtility.GetCrc64(data1);
+            ulong hash2 = VerifierUtility.GetCrc64(data2);
             Assert.AreNotEqual(hash1, hash2);
         }
 
         [Test]
         public void GetCrc64_EmptyArray()
         {
-            ulong result = Utility.Verifier.GetCrc64(new byte[0]);
+            ulong result = VerifierUtility.GetCrc64(new byte[0]);
             Assert.AreEqual(0ul, result);
         }
 
         [Test]
         public void GetCrc64_SingleByte()
         {
-            ulong result = Utility.Verifier.GetCrc64(new byte[] { 42 });
+            ulong result = VerifierUtility.GetCrc64(new byte[] { 42 });
             Assert.AreNotEqual(0ul, result);
         }
 
@@ -52,7 +52,7 @@ namespace GameFrameX.Tests
             {
                 data[i] = (byte)(i & 0xFF);
             }
-            ulong result = Utility.Verifier.GetCrc64(data);
+            ulong result = VerifierUtility.GetCrc64(data);
             Assert.AreNotEqual(0ul, result);
         }
 
@@ -64,10 +64,10 @@ namespace GameFrameX.Tests
         public void GetCrc64_Stream_MatchesByteArray()
         {
             byte[] data = Encoding.UTF8.GetBytes("Stream vs byte array test");
-            ulong fromArray = Utility.Verifier.GetCrc64(data);
+            ulong fromArray = VerifierUtility.GetCrc64(data);
             using (var stream = new MemoryStream(data))
             {
-                ulong fromStream = Utility.Verifier.GetCrc64(stream);
+                ulong fromStream = VerifierUtility.GetCrc64(stream);
                 Assert.AreEqual(fromArray, fromStream);
             }
         }
@@ -77,7 +77,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                Utility.Verifier.GetCrc64((Stream)null);
+                VerifierUtility.GetCrc64((Stream)null);
             });
         }
 
@@ -86,7 +86,7 @@ namespace GameFrameX.Tests
         {
             using (var stream = new MemoryStream())
             {
-                ulong result = Utility.Verifier.GetCrc64(stream);
+                ulong result = VerifierUtility.GetCrc64(stream);
                 Assert.AreEqual(0ul, result);
             }
         }
@@ -100,14 +100,14 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                Utility.Verifier.Crc64.Hash(null);
+                VerifierUtility.Crc64.Hash(null);
             });
         }
 
         [Test]
         public void Crc64_Hash_EmptyArray()
         {
-            byte[] result = Utility.Verifier.Crc64.Hash(new byte[0]);
+            byte[] result = VerifierUtility.Crc64.Hash(new byte[0]);
             Assert.AreEqual(8, result.Length);
             foreach (byte b in result)
             {
@@ -119,8 +119,8 @@ namespace GameFrameX.Tests
         public void Crc64_Hash_SameInput_SameOutput()
         {
             byte[] data = new byte[] { 1, 2, 3, 4, 5 };
-            byte[] hash1 = Utility.Verifier.Crc64.Hash(data);
-            byte[] hash2 = Utility.Verifier.Crc64.Hash(data);
+            byte[] hash1 = VerifierUtility.Crc64.Hash(data);
+            byte[] hash2 = VerifierUtility.Crc64.Hash(data);
             CollectionAssert.AreEqual(hash1, hash2);
         }
 
@@ -128,14 +128,14 @@ namespace GameFrameX.Tests
         public void Crc64_Hash_Returns8Bytes()
         {
             byte[] data = new byte[] { 42 };
-            byte[] result = Utility.Verifier.Crc64.Hash(data);
+            byte[] result = VerifierUtility.Crc64.Hash(data);
             Assert.AreEqual(8, result.Length);
         }
 
         [Test]
         public void Crc64_HashToUInt64_EmptyInput_IsZero()
         {
-            ulong result = Utility.Verifier.Crc64.HashToUInt64(new byte[0]);
+            ulong result = VerifierUtility.Crc64.HashToUInt64(new byte[0]);
             Assert.AreEqual(0ul, result);
         }
 
@@ -143,15 +143,15 @@ namespace GameFrameX.Tests
         public void Crc64_HashToUInt64_SameInput_SameOutput()
         {
             byte[] data = new byte[] { 10, 20, 30 };
-            ulong hash1 = Utility.Verifier.Crc64.HashToUInt64(data);
-            ulong hash2 = Utility.Verifier.Crc64.HashToUInt64(data);
+            ulong hash1 = VerifierUtility.Crc64.HashToUInt64(data);
+            ulong hash2 = VerifierUtility.Crc64.HashToUInt64(data);
             Assert.AreEqual(hash1, hash2);
         }
 
         [Test]
         public void Crc64_AppendAndGetHash()
         {
-            var crc = new Utility.Verifier.Crc64();
+            var crc = new VerifierUtility.Crc64();
             crc.Append(Encoding.ASCII.GetBytes("test data"));
             byte[] hash = crc.GetCurrentHash();
             Assert.AreEqual(8, hash.Length);
@@ -160,7 +160,7 @@ namespace GameFrameX.Tests
         [Test]
         public void Crc64_ResetClearsState()
         {
-            var crc = new Utility.Verifier.Crc64();
+            var crc = new VerifierUtility.Crc64();
             crc.Append(new byte[] { 1, 2, 3 });
             crc.Reset();
             Assert.AreEqual(0ul, crc.GetCurrentHashAsUInt64());
@@ -171,10 +171,10 @@ namespace GameFrameX.Tests
         {
             byte[] data = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
 
-            var crc1 = new Utility.Verifier.Crc64();
+            var crc1 = new VerifierUtility.Crc64();
             crc1.Append(data);
 
-            var crc2 = new Utility.Verifier.Crc64();
+            var crc2 = new VerifierUtility.Crc64();
             crc2.Append(new byte[] { 1, 2, 3, 4 });
             crc2.Append(new byte[] { 5, 6, 7, 8 });
 
@@ -184,7 +184,7 @@ namespace GameFrameX.Tests
         [Test]
         public void Crc64_GetHashAndReset_ClearsState()
         {
-            var crc = new Utility.Verifier.Crc64();
+            var crc = new VerifierUtility.Crc64();
             crc.Append(new byte[] { 1, 2, 3 });
             byte[] hash = crc.GetHashAndReset();
             Assert.AreEqual(8, hash.Length);
@@ -194,14 +194,14 @@ namespace GameFrameX.Tests
         [Test]
         public void Crc64_HashLengthInBytes_Is8()
         {
-            var crc = new Utility.Verifier.Crc64();
+            var crc = new VerifierUtility.Crc64();
             Assert.AreEqual(8, crc.HashLengthInBytes);
         }
 
         [Test]
         public void Crc64_GetCurrentHashTwice_SameResult()
         {
-            var crc = new Utility.Verifier.Crc64();
+            var crc = new VerifierUtility.Crc64();
             crc.Append(new byte[] { 42 });
             byte[] hash1 = crc.GetCurrentHash();
             byte[] hash2 = crc.GetCurrentHash();
@@ -211,7 +211,7 @@ namespace GameFrameX.Tests
         [Test]
         public void Crc64_AppendByteArray_Null_Throws()
         {
-            var crc = new Utility.Verifier.Crc64();
+            var crc = new VerifierUtility.Crc64();
             Assert.Throws<ArgumentNullException>(() =>
             {
                 crc.Append((byte[])null);
@@ -221,7 +221,7 @@ namespace GameFrameX.Tests
         [Test]
         public void Crc64_AppendStream_Null_Throws()
         {
-            var crc = new Utility.Verifier.Crc64();
+            var crc = new VerifierUtility.Crc64();
             Assert.Throws<ArgumentNullException>(() =>
             {
                 crc.Append((Stream)null);
@@ -232,7 +232,7 @@ namespace GameFrameX.Tests
         public void Crc64_TryHash_DestinationTooSmall_ReturnsFalse()
         {
             Span<byte> dest = stackalloc byte[4];
-            bool result = Utility.Verifier.Crc64.TryHash(new byte[] { 1 }, dest, out int written);
+            bool result = VerifierUtility.Crc64.TryHash(new byte[] { 1 }, dest, out int written);
             Assert.IsFalse(result);
             Assert.AreEqual(0, written);
         }
@@ -242,7 +242,7 @@ namespace GameFrameX.Tests
         {
             Span<byte> dest = stackalloc byte[8];
             ReadOnlySpan<byte> source = new ReadOnlySpan<byte>(new byte[] { 1, 2, 3 });
-            bool result = Utility.Verifier.Crc64.TryHash(source, dest, out int written);
+            bool result = VerifierUtility.Crc64.TryHash(source, dest, out int written);
             Assert.IsTrue(result);
             Assert.AreEqual(8, written);
         }
@@ -253,7 +253,7 @@ namespace GameFrameX.Tests
             byte[] data = Encoding.ASCII.GetBytes("stream test");
             using (var stream = new MemoryStream(data))
             {
-                var crc = new Utility.Verifier.Crc64();
+                var crc = new VerifierUtility.Crc64();
                 crc.Append(stream);
                 byte[] hash = crc.GetCurrentHash();
                 Assert.AreEqual(8, hash.Length);

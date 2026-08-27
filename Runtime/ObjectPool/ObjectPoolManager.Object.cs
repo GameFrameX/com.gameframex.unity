@@ -240,7 +240,7 @@ namespace GameFrameX.ObjectPool
                 m_SpawnCount--;
                 if (m_SpawnCount < 0)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Object '{0}' spawn count is less than 0.", Name));
+                    throw new GameFrameworkException(GameFrameworkText.Format("Object '{0}' spawn count is less than 0.", Name));
                 }
             }
 

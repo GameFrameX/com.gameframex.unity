@@ -106,7 +106,7 @@ namespace GameFrameX.Runtime
             }
 
             string typeName = m_Type.FullName;
-            return (string.IsNullOrEmpty(m_Name) ? typeName : Utility.Text.Format("{0}.{1}", typeName, m_Name)) ?? string.Empty;
+            return (string.IsNullOrEmpty(m_Name) ? typeName : GameFrameworkText.Format("{0}.{1}", typeName, m_Name)) ?? string.Empty;
         }
 
         /// <summary>

@@ -76,7 +76,7 @@ namespace GameFrameX.Runtime
 
                 if (!managerOverride.InterfaceType.IsAssignableFrom(managerOverride.ImplementationType))
                 {
-                    UnityEngine.Debug.LogWarning(Utility.Text.Format(
+                    UnityEngine.Debug.LogWarning(GameFrameworkText.Format(
                         "GameFrameX auto runtime manager override '{0}' is not assignable to interface '{1}'.",
                         managerOverride.ImplementationType.FullName,
                         managerOverride.InterfaceType.FullName));
@@ -106,10 +106,10 @@ namespace GameFrameX.Runtime
 
             if (!string.IsNullOrEmpty(configuredTypeName))
             {
-                Type configuredType = Utility.Assembly.GetType(configuredTypeName);
+                Type configuredType = AssemblyUtility.GetType(configuredTypeName);
                 if (configuredType == null)
                 {
-                    UnityEngine.Debug.LogWarning(Utility.Text.Format(
+                    UnityEngine.Debug.LogWarning(GameFrameworkText.Format(
                         "GameFrameX auto runtime can not resolve configured manager '{0}' for interface '{1}'.",
                         configuredTypeName,
                         interfaceType.FullName));
@@ -118,14 +118,14 @@ namespace GameFrameX.Runtime
 
                 if (!interfaceType.IsAssignableFrom(configuredType))
                 {
-                    UnityEngine.Debug.LogWarning(Utility.Text.Format(
+                    UnityEngine.Debug.LogWarning(GameFrameworkText.Format(
                         "GameFrameX auto runtime configured manager '{0}' is not assignable to interface '{1}'.",
                         configuredType.FullName,
                         interfaceType.FullName));
                     return null;
                 }
 
-                UnityEngine.Debug.Log(Utility.Text.Format(
+                UnityEngine.Debug.Log(GameFrameworkText.Format(
                     "GameFrameX auto runtime manager selected by component config: {0} -> {1}.",
                     interfaceType.FullName,
                     configuredType.FullName));
@@ -134,7 +134,7 @@ namespace GameFrameX.Runtime
 
             if (ManagerOverrides.TryGetValue(interfaceType, out var managerOverride))
             {
-                UnityEngine.Debug.Log(Utility.Text.Format(
+                UnityEngine.Debug.Log(GameFrameworkText.Format(
                     "GameFrameX auto runtime manager selected by runtime override: {0} -> {1}.",
                     interfaceType.FullName,
                     managerOverride.ImplementationType.FullName));
@@ -148,14 +148,14 @@ namespace GameFrameX.Runtime
                 descriptors.Sort(CompareManagerDescriptor);
                 if (descriptors.Count > 1)
                 {
-                    UnityEngine.Debug.LogWarning(Utility.Text.Format(
+                    UnityEngine.Debug.LogWarning(GameFrameworkText.Format(
                         "GameFrameX auto runtime manager conflict for interface '{0}'. Selected '{1}' by priority.",
                         interfaceType.FullName,
                         descriptors[0].ImplementationType.FullName));
                 }
                 else
                 {
-                    UnityEngine.Debug.Log(Utility.Text.Format(
+                    UnityEngine.Debug.Log(GameFrameworkText.Format(
                         "GameFrameX auto runtime manager selected by scan: {0} -> {1}.",
                         interfaceType.FullName,
                         descriptors[0].ImplementationType.FullName));
@@ -166,11 +166,11 @@ namespace GameFrameX.Runtime
 
             if (interfaceType.Name.Length > 1 && interfaceType.Name[0] == 'I')
             {
-                string conventionName = Utility.Text.Format("{0}.{1}", interfaceType.Namespace, interfaceType.Name.Substring(1));
-                Type conventionType = Utility.Assembly.GetType(conventionName);
+                string conventionName = GameFrameworkText.Format("{0}.{1}", interfaceType.Namespace, interfaceType.Name.Substring(1));
+                Type conventionType = AssemblyUtility.GetType(conventionName);
                 if (conventionType != null && interfaceType.IsAssignableFrom(conventionType))
                 {
-                    UnityEngine.Debug.Log(Utility.Text.Format(
+                    UnityEngine.Debug.Log(GameFrameworkText.Format(
                         "GameFrameX auto runtime manager selected by naming convention: {0} -> {1}.",
                         interfaceType.FullName,
                         conventionType.FullName));
@@ -178,7 +178,7 @@ namespace GameFrameX.Runtime
                 }
             }
 
-            UnityEngine.Debug.LogWarning(Utility.Text.Format(
+            UnityEngine.Debug.LogWarning(GameFrameworkText.Format(
                 "GameFrameX auto runtime can not resolve manager for interface '{0}'.",
                 interfaceType.FullName));
             return null;

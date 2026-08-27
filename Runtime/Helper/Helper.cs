@@ -75,7 +75,7 @@ namespace GameFrameX.Runtime
             T helper = null;
             if (!string.IsNullOrEmpty(helperTypeName))
             {
-                System.Type helperType = Utility.Assembly.GetType(helperTypeName);
+                System.Type helperType = AssemblyUtility.GetType(helperTypeName);
                 if (helperType == null)
                 {
                     Log.Warning("Can not find helper type '{0}'.", helperTypeName);
@@ -123,7 +123,7 @@ namespace GameFrameX.Runtime
             T helper = null;
             if (!string.IsNullOrEmpty(helperTypeName))
             {
-                System.Type helperType = Utility.Assembly.GetType(helperTypeName);
+                System.Type helperType = AssemblyUtility.GetType(helperTypeName);
                 if (helperType == null)
                 {
                     Log.Warning("Can not find helper type '{0}'.", helperTypeName);

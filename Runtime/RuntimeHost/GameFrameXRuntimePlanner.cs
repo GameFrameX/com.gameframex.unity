@@ -33,7 +33,7 @@ namespace GameFrameX.Runtime
                 if (configs != null && configs.TryGetValue(componentType, out var config))
                 {
                     ApplyConfig(descriptor, config);
-                    plan.Diagnostics.Add(Utility.Text.Format(
+                    plan.Diagnostics.Add(GameFrameworkText.Format(
                         "Apply runtime override to component '{0}': enabled={1}, order={2}, manager={3}, valueCount={4}.",
                         componentType.FullName,
                         config.Enabled.HasValue ? config.Enabled.Value.ToString() : "default",
@@ -44,7 +44,7 @@ namespace GameFrameX.Runtime
 
                 if (!descriptor.Enabled)
                 {
-                    plan.Diagnostics.Add(Utility.Text.Format("Skip component '{0}' by runtime override.", componentType.FullName));
+                    plan.Diagnostics.Add(GameFrameworkText.Format("Skip component '{0}' by runtime override.", componentType.FullName));
                     continue;
                 }
 

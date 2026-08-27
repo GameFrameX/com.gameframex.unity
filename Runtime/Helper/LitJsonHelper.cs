@@ -43,7 +43,7 @@ namespace GameFrameX.Runtime
     /// Optional JSON helper using LitJSON.
     /// </remarks>
     [UnityEngine.Scripting.Preserve]
-    public class LitJsonHelper : Utility.Json.IJsonHelper
+    public class LitJsonHelper : GameFrameworkJson.IJsonHelper
     {
         /// <summary>
         /// 初始化 LitJSON 函数集辅助器的新实例。

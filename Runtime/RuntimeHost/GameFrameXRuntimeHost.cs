@@ -104,8 +104,8 @@ namespace GameFrameX.Runtime
             GameFrameXRuntimeManagerResolver.RegisterOverrides(overrideContext.GetManagerOverrides());
 
             s_LastPlan = GameFrameXRuntimePlanner.CreatePlan(scanResult, overrideContext);
-            s_LastPlan.Diagnostics.Add(Utility.Text.Format("Runtime mode: {0}. Reason: {1}.", s_LastModeResult.Mode, s_LastModeResult.Reason));
-            s_LastPlan.Diagnostics.Add(Utility.Text.Format(
+            s_LastPlan.Diagnostics.Add(GameFrameworkText.Format("Runtime mode: {0}. Reason: {1}.", s_LastModeResult.Mode, s_LastModeResult.Reason));
+            s_LastPlan.Diagnostics.Add(GameFrameworkText.Format(
                 "Scan result: {0} component(s), {1} manager implementation(s), {2} manager override(s).",
                 scanResult.ComponentTypes.Count,
                 scanResult.ManagerDescriptors.Count,
@@ -121,7 +121,7 @@ namespace GameFrameX.Runtime
 
             s_Host.SetActive(true);
             s_Started = true;
-            s_LastPlan.Diagnostics.Add(Utility.Text.Format("Startup elapsed: {0} ms.", stopwatch.ElapsedMilliseconds));
+            s_LastPlan.Diagnostics.Add(GameFrameworkText.Format("Startup elapsed: {0} ms.", stopwatch.ElapsedMilliseconds));
             WriteDiagnostics();
         }
 
@@ -137,7 +137,7 @@ namespace GameFrameX.Runtime
                 string.Empty);
             s_Started = true;
             s_LastPlan = new GameFrameXRuntimePlan();
-            s_LastPlan.Diagnostics.Add(Utility.Text.Format("Runtime mode: {0}. Reason: {1}. Manual entry: {2}.",
+            s_LastPlan.Diagnostics.Add(GameFrameworkText.Format("Runtime mode: {0}. Reason: {1}. Manual entry: {2}.",
                 s_LastModeResult.Mode,
                 s_LastModeResult.Reason,
                 string.IsNullOrEmpty(s_LastModeResult.ManualEntryPath) ? "unknown" : s_LastModeResult.ManualEntryPath));
@@ -219,11 +219,11 @@ namespace GameFrameX.Runtime
             }
             else
             {
-                Debug.Log(Utility.Text.Format("GameFrameX auto runtime started. Components: {0}.", s_LastPlan.Components.Count));
+                Debug.Log(GameFrameworkText.Format("GameFrameX auto runtime started. Components: {0}.", s_LastPlan.Components.Count));
             }
             foreach (var component in s_LastPlan.Components)
             {
-                Debug.Log(Utility.Text.Format(
+                Debug.Log(GameFrameworkText.Format(
                     "GameFrameX auto runtime enabled component: {0}, node: {1}/{2}, order: {3}.",
                     component.ComponentType.FullName,
                     HostName,
@@ -233,7 +233,7 @@ namespace GameFrameX.Runtime
 
             foreach (var diagnostic in s_LastPlan.Diagnostics)
             {
-                Debug.LogWarning(Utility.Text.Format("GameFrameX auto runtime: {0}", diagnostic));
+                Debug.LogWarning(GameFrameworkText.Format("GameFrameX auto runtime: {0}", diagnostic));
             }
         }
     }

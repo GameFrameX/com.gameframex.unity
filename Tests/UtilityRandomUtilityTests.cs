@@ -12,7 +12,7 @@ namespace GameFrameX.Tests
         [Test]
         public void GetRandom_ReturnsNonNegative()
         {
-            int result = Utility.RandomUtility.GetRandom();
+            int result = RandomUtility.GetRandom();
             Assert.GreaterOrEqual(result, 0);
         }
 
@@ -22,7 +22,7 @@ namespace GameFrameX.Tests
             HashSet<int> results = new HashSet<int>();
             for (int i = 0; i < 100; i++)
             {
-                results.Add(Utility.RandomUtility.GetRandom());
+                results.Add(RandomUtility.GetRandom());
             }
             Assert.Greater(results.Count, 1, "100 random calls should produce more than 1 unique value");
         }
@@ -34,14 +34,14 @@ namespace GameFrameX.Tests
         [Test]
         public void GetRandom_MaxValue_Zero()
         {
-            int result = Utility.RandomUtility.GetRandom(0);
+            int result = RandomUtility.GetRandom(0);
             Assert.AreEqual(0, result);
         }
 
         [Test]
         public void GetRandom_MaxValue_One()
         {
-            int result = Utility.RandomUtility.GetRandom(1);
+            int result = RandomUtility.GetRandom(1);
             Assert.AreEqual(0, result);
         }
 
@@ -51,7 +51,7 @@ namespace GameFrameX.Tests
             const int max = 100;
             for (int i = 0; i < 200; i++)
             {
-                int result = Utility.RandomUtility.GetRandom(max);
+                int result = RandomUtility.GetRandom(max);
                 Assert.GreaterOrEqual(result, 0);
                 Assert.Less(result, max);
             }
@@ -63,7 +63,7 @@ namespace GameFrameX.Tests
             const int max = 1000000;
             for (int i = 0; i < 100; i++)
             {
-                int result = Utility.RandomUtility.GetRandom(max);
+                int result = RandomUtility.GetRandom(max);
                 Assert.GreaterOrEqual(result, 0);
                 Assert.Less(result, max);
             }
@@ -76,7 +76,7 @@ namespace GameFrameX.Tests
         [Test]
         public void GetRandom_Range_SameMinAndMax_ReturnsMin()
         {
-            int result = Utility.RandomUtility.GetRandom(5, 5);
+            int result = RandomUtility.GetRandom(5, 5);
             Assert.AreEqual(5, result);
         }
 
@@ -87,7 +87,7 @@ namespace GameFrameX.Tests
             const int max = 20;
             for (int i = 0; i < 200; i++)
             {
-                int result = Utility.RandomUtility.GetRandom(min, max);
+                int result = RandomUtility.GetRandom(min, max);
                 Assert.GreaterOrEqual(result, min);
                 Assert.Less(result, max);
             }
@@ -100,7 +100,7 @@ namespace GameFrameX.Tests
             const int max = 50;
             for (int i = 0; i < 200; i++)
             {
-                int result = Utility.RandomUtility.GetRandom(min, max);
+                int result = RandomUtility.GetRandom(min, max);
                 Assert.GreaterOrEqual(result, min);
                 Assert.Less(result, max);
             }
@@ -109,7 +109,7 @@ namespace GameFrameX.Tests
         [Test]
         public void GetRandom_Range_SpanIsOne()
         {
-            int result = Utility.RandomUtility.GetRandom(42, 43);
+            int result = RandomUtility.GetRandom(42, 43);
             Assert.AreEqual(42, result);
         }
 
@@ -122,7 +122,7 @@ namespace GameFrameX.Tests
         {
             for (int i = 0; i < 100; i++)
             {
-                double result = Utility.RandomUtility.GetRandomDouble();
+                double result = RandomUtility.GetRandomDouble();
                 Assert.GreaterOrEqual(result, 0.0);
                 Assert.Less(result, 1.0);
             }
@@ -134,7 +134,7 @@ namespace GameFrameX.Tests
             HashSet<double> results = new HashSet<double>();
             for (int i = 0; i < 100; i++)
             {
-                results.Add(Utility.RandomUtility.GetRandomDouble());
+                results.Add(RandomUtility.GetRandomDouble());
             }
             Assert.Greater(results.Count, 1);
         }
@@ -147,7 +147,7 @@ namespace GameFrameX.Tests
         public void GetRandomBytes_FillsBuffer()
         {
             byte[] buffer = new byte[100];
-            Utility.RandomUtility.GetRandomBytes(buffer);
+            RandomUtility.GetRandomBytes(buffer);
             Assert.AreEqual(100, buffer.Length);
         }
 
@@ -155,7 +155,7 @@ namespace GameFrameX.Tests
         public void GetRandomBytes_NotAllZeros()
         {
             byte[] buffer = new byte[100];
-            Utility.RandomUtility.GetRandomBytes(buffer);
+            RandomUtility.GetRandomBytes(buffer);
             bool allZero = true;
             for (int i = 0; i < buffer.Length; i++)
             {
@@ -172,7 +172,7 @@ namespace GameFrameX.Tests
         public void GetRandomBytes_SingleByte()
         {
             byte[] buffer = new byte[1];
-            Utility.RandomUtility.GetRandomBytes(buffer);
+            RandomUtility.GetRandomBytes(buffer);
             Assert.AreEqual(1, buffer.Length);
         }
 
@@ -181,8 +181,8 @@ namespace GameFrameX.Tests
         {
             byte[] buffer1 = new byte[1000];
             byte[] buffer2 = new byte[1000];
-            Utility.RandomUtility.GetRandomBytes(buffer1);
-            Utility.RandomUtility.GetRandomBytes(buffer2);
+            RandomUtility.GetRandomBytes(buffer1);
+            RandomUtility.GetRandomBytes(buffer2);
             bool allSame = true;
             for (int i = 0; i < buffer1.Length; i++)
             {
@@ -202,13 +202,13 @@ namespace GameFrameX.Tests
         [Test]
         public void SetSeed_DeterministicSequence()
         {
-            Utility.RandomUtility.SetSeed(42);
-            int first1 = Utility.RandomUtility.GetRandom();
-            int first2 = Utility.RandomUtility.GetRandom();
+            RandomUtility.SetSeed(42);
+            int first1 = RandomUtility.GetRandom();
+            int first2 = RandomUtility.GetRandom();
 
-            Utility.RandomUtility.SetSeed(42);
-            int second1 = Utility.RandomUtility.GetRandom();
-            int second2 = Utility.RandomUtility.GetRandom();
+            RandomUtility.SetSeed(42);
+            int second1 = RandomUtility.GetRandom();
+            int second2 = RandomUtility.GetRandom();
 
             Assert.AreEqual(first1, second1);
             Assert.AreEqual(first2, second2);
@@ -217,13 +217,92 @@ namespace GameFrameX.Tests
         [Test]
         public void SetSeed_DifferentSeed_DifferentSequence()
         {
-            Utility.RandomUtility.SetSeed(1);
-            int r1 = Utility.RandomUtility.GetRandom();
+            RandomUtility.SetSeed(1);
+            int r1 = RandomUtility.GetRandom();
 
-            Utility.RandomUtility.SetSeed(2);
-            int r2 = Utility.RandomUtility.GetRandom();
+            RandomUtility.SetSeed(2);
+            int r2 = RandomUtility.GetRandom();
 
             Assert.AreNotEqual(r1, r2);
+        }
+
+        #endregion
+
+        #region GetRandomFloat
+
+        [Test]
+        public void GetRandomFloat_WithinRange()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                float result = RandomUtility.GetRandomFloat();
+                Assert.GreaterOrEqual(result, 0.0f);
+                Assert.Less(result, 1.0f);
+            }
+        }
+
+        [Test]
+        public void GetRandomFloat_WithSeed_ReturnsReproducibleValue()
+        {
+            RandomUtility.SetSeed(123);
+            float first = RandomUtility.GetRandomFloat();
+
+            RandomUtility.SetSeed(123);
+            float second = RandomUtility.GetRandomFloat();
+
+            Assert.AreEqual(first, second);
+        }
+
+        #endregion
+
+        #region GetRandomInt64
+
+        [Test]
+        public void GetRandomInt64_WithSeed_ReturnsReproducibleValue()
+        {
+            RandomUtility.SetSeed(77);
+            long first = RandomUtility.GetRandomInt64();
+
+            RandomUtility.SetSeed(77);
+            long second = RandomUtility.GetRandomInt64();
+
+            Assert.AreEqual(first, second);
+        }
+
+        [Test]
+        public void GetRandomInt64_MultipleCalls_ProduceDifferentValues()
+        {
+            long a = RandomUtility.GetRandomInt64();
+            long b = RandomUtility.GetRandomInt64();
+            long c = RandomUtility.GetRandomInt64();
+
+            Assert.AreNotEqual(a, b, "Two consecutive calls should usually differ");
+            Assert.AreNotEqual(b, c, "Three consecutive calls should usually differ");
+        }
+
+        #endregion
+
+        #region GetRandomUInt64
+
+        [Test]
+        public void GetRandomUInt64_WithSeed_ReturnsReproducibleValue()
+        {
+            RandomUtility.SetSeed(55);
+            ulong first = RandomUtility.GetRandomUInt64();
+
+            RandomUtility.SetSeed(55);
+            ulong second = RandomUtility.GetRandomUInt64();
+
+            Assert.AreEqual(first, second);
+        }
+
+        [Test]
+        public void GetRandomUInt64_MultipleCalls_ProduceDifferentValues()
+        {
+            ulong a = RandomUtility.GetRandomUInt64();
+            ulong b = RandomUtility.GetRandomUInt64();
+
+            Assert.AreNotEqual(a, b);
         }
 
         #endregion

@@ -6,7 +6,7 @@ namespace GameFrameX.Tests
     [TestFixture]
     public class UtilityTextTests
     {
-        private class StubTextHelper : Utility.Text.ITextHelper
+        private class StubTextHelper : GameFrameworkText.ITextHelper
         {
             public string Format(string format, params object[] args)
             {
@@ -97,7 +97,7 @@ namespace GameFrameX.Tests
         [TearDown]
         public void TearDown()
         {
-            Utility.Text.SetTextHelper(null);
+            GameFrameworkText.SetTextHelper(null);
         }
 
         #region Format without helper (default string.Format)
@@ -105,63 +105,63 @@ namespace GameFrameX.Tests
         [Test]
         public void Format_ParamsArgs_Works()
         {
-            string result = Utility.Text.Format("Hello {0}", "World");
+            string result = GameFrameworkText.Format("Hello {0}", "World");
             Assert.AreEqual("Hello World", result);
         }
 
         [Test]
         public void Format_SingleArg_Works()
         {
-            string result = Utility.Text.Format("Value: {0}", 42);
+            string result = GameFrameworkText.Format("Value: {0}", 42);
             Assert.AreEqual("Value: 42", result);
         }
 
         [Test]
         public void Format_TwoArgs_Works()
         {
-            string result = Utility.Text.Format("{0} and {1}", "A", "B");
+            string result = GameFrameworkText.Format("{0} and {1}", "A", "B");
             Assert.AreEqual("A and B", result);
         }
 
         [Test]
         public void Format_ThreeArgs_Works()
         {
-            string result = Utility.Text.Format("{0}-{1}-{2}", 1, 2, 3);
+            string result = GameFrameworkText.Format("{0}-{1}-{2}", 1, 2, 3);
             Assert.AreEqual("1-2-3", result);
         }
 
         [Test]
         public void Format_FourArgs_Works()
         {
-            string result = Utility.Text.Format("{0}{1}{2}{3}", "A", "B", "C", "D");
+            string result = GameFrameworkText.Format("{0}{1}{2}{3}", "A", "B", "C", "D");
             Assert.AreEqual("ABCD", result);
         }
 
         [Test]
         public void Format_FiveArgs_Works()
         {
-            string result = Utility.Text.Format("{0}{1}{2}{3}{4}", 1, 2, 3, 4, 5);
+            string result = GameFrameworkText.Format("{0}{1}{2}{3}{4}", 1, 2, 3, 4, 5);
             Assert.AreEqual("12345", result);
         }
 
         [Test]
         public void Format_SixArgs_Works()
         {
-            string result = Utility.Text.Format("{0}{1}{2}{3}{4}{5}", 1, 2, 3, 4, 5, 6);
+            string result = GameFrameworkText.Format("{0}{1}{2}{3}{4}{5}", 1, 2, 3, 4, 5, 6);
             Assert.AreEqual("123456", result);
         }
 
         [Test]
         public void Format_SevenArgs_Works()
         {
-            string result = Utility.Text.Format("{0}{1}{2}{3}{4}{5}{6}", 1, 2, 3, 4, 5, 6, 7);
+            string result = GameFrameworkText.Format("{0}{1}{2}{3}{4}{5}{6}", 1, 2, 3, 4, 5, 6, 7);
             Assert.AreEqual("1234567", result);
         }
 
         [Test]
         public void Format_EightArgs_Works()
         {
-            string result = Utility.Text.Format("{0}{1}{2}{3}{4}{5}{6}{7}", 1, 2, 3, 4, 5, 6, 7, 8);
+            string result = GameFrameworkText.Format("{0}{1}{2}{3}{4}{5}{6}{7}", 1, 2, 3, 4, 5, 6, 7, 8);
             Assert.AreEqual("12345678", result);
         }
 
@@ -170,7 +170,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Text.Format(null, "arg");
+                GameFrameworkText.Format(null, "arg");
             });
         }
 
@@ -179,7 +179,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Text.Format<int>(null, 1);
+                GameFrameworkText.Format<int>(null, 1);
             });
         }
 
@@ -188,7 +188,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Text.Format<int, int>(null, 1, 2);
+                GameFrameworkText.Format<int, int>(null, 1, 2);
             });
         }
 
@@ -199,44 +199,44 @@ namespace GameFrameX.Tests
         [Test]
         public void Format_WithHelper_UsesHelper()
         {
-            Utility.Text.SetTextHelper(new StubTextHelper());
-            string result = Utility.Text.Format("Hello {0}", "World");
+            GameFrameworkText.SetTextHelper(new StubTextHelper());
+            string result = GameFrameworkText.Format("Hello {0}", "World");
             Assert.AreEqual("[STUB]Hello World", result);
         }
 
         [Test]
         public void Format_SingleArg_WithHelper_UsesHelper()
         {
-            Utility.Text.SetTextHelper(new StubTextHelper());
-            string result = Utility.Text.Format("Value: {0}", 42);
+            GameFrameworkText.SetTextHelper(new StubTextHelper());
+            string result = GameFrameworkText.Format("Value: {0}", 42);
             Assert.AreEqual("[STUB]Value: 42", result);
         }
 
         [Test]
         public void Format_TwoArgs_WithHelper_UsesHelper()
         {
-            Utility.Text.SetTextHelper(new StubTextHelper());
-            string result = Utility.Text.Format("{0} and {1}", "A", "B");
+            GameFrameworkText.SetTextHelper(new StubTextHelper());
+            string result = GameFrameworkText.Format("{0} and {1}", "A", "B");
             Assert.AreEqual("[STUB]A and B", result);
         }
 
         [Test]
         public void Format_ThreeArgs_WithHelper_UsesHelper()
         {
-            Utility.Text.SetTextHelper(new StubTextHelper());
-            string result = Utility.Text.Format("{0}-{1}-{2}", 1, 2, 3);
+            GameFrameworkText.SetTextHelper(new StubTextHelper());
+            string result = GameFrameworkText.Format("{0}-{1}-{2}", 1, 2, 3);
             Assert.AreEqual("[STUB]1-2-3", result);
         }
 
         [Test]
         public void SetTextHelper_Null_ResetsHelper()
         {
-            Utility.Text.SetTextHelper(new StubTextHelper());
-            string stubResult = Utility.Text.Format("{0}", "test");
+            GameFrameworkText.SetTextHelper(new StubTextHelper());
+            string stubResult = GameFrameworkText.Format("{0}", "test");
             Assert.IsTrue(stubResult.StartsWith("[STUB]"));
 
-            Utility.Text.SetTextHelper(null);
-            string defaultResult = Utility.Text.Format("{0}", "test");
+            GameFrameworkText.SetTextHelper(null);
+            string defaultResult = GameFrameworkText.Format("{0}", "test");
             Assert.AreEqual("test", defaultResult);
         }
 
