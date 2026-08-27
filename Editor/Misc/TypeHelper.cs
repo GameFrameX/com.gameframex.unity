@@ -43,9 +43,9 @@ namespace GameFrameX.Editor
     /// </summary>
     public static class TypeHelper
     {
-        private static readonly string[] RuntimeAssemblyNames = Utility.Assembly.GetAssemblies().Where(m => !m.FullName.Contains("Editor")).Select(m => m.FullName).ToArray();
+        private static readonly string[] RuntimeAssemblyNames = AssemblyUtility.GetAssemblies().Where(m => !m.FullName.Contains("Editor")).Select(m => m.FullName).ToArray();
 
-        private static readonly string[] RuntimeOrEditorAssemblyNames = Utility.Assembly.GetAssemblies().Select(m => m.FullName).ToArray();
+        private static readonly string[] RuntimeOrEditorAssemblyNames = AssemblyUtility.GetAssemblies().Select(m => m.FullName).ToArray();
 
         /// <summary>
         /// 在运行时程序集中获取指定基类的所有子类的名称。

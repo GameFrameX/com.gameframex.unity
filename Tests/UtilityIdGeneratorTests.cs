@@ -14,10 +14,10 @@ namespace GameFrameX.Tests
         [Test]
         public void UtcTimeStart_Is2020Jan1()
         {
-            Assert.AreEqual(2020, Utility.IdGenerator.UtcTimeStart.Year);
-            Assert.AreEqual(1, Utility.IdGenerator.UtcTimeStart.Month);
-            Assert.AreEqual(1, Utility.IdGenerator.UtcTimeStart.Day);
-            Assert.AreEqual(DateTimeKind.Utc, Utility.IdGenerator.UtcTimeStart.Kind);
+            Assert.AreEqual(2020, IdGeneratorUtility.UtcTimeStart.Year);
+            Assert.AreEqual(1, IdGeneratorUtility.UtcTimeStart.Month);
+            Assert.AreEqual(1, IdGeneratorUtility.UtcTimeStart.Day);
+            Assert.AreEqual(DateTimeKind.Utc, IdGeneratorUtility.UtcTimeStart.Kind);
         }
 
         #endregion
@@ -27,15 +27,15 @@ namespace GameFrameX.Tests
         [Test]
         public void GetNextUniqueId_ReturnsSequential()
         {
-            long id1 = Utility.IdGenerator.GetNextUniqueId();
-            long id2 = Utility.IdGenerator.GetNextUniqueId();
+            long id1 = IdGeneratorUtility.GetNextUniqueId();
+            long id2 = IdGeneratorUtility.GetNextUniqueId();
             Assert.AreEqual(id1 + 1, id2, "Sequential calls should produce consecutive IDs");
         }
 
         [Test]
         public void GetNextUniqueId_ReturnsPositive()
         {
-            long id = Utility.IdGenerator.GetNextUniqueId();
+            long id = IdGeneratorUtility.GetNextUniqueId();
             Assert.Greater(id, 0);
         }
 
@@ -46,7 +46,7 @@ namespace GameFrameX.Tests
             HashSet<long> ids = new HashSet<long>();
             for (int i = 0; i < count; i++)
             {
-                long id = Utility.IdGenerator.GetNextUniqueId();
+                long id = IdGeneratorUtility.GetNextUniqueId();
                 Assert.IsTrue(ids.Add(id), $"Duplicate ID found: {id}");
             }
             Assert.AreEqual(count, ids.Count);
@@ -68,7 +68,7 @@ namespace GameFrameX.Tests
                     List<long> localIds = new List<long>();
                     for (int i = 0; i < perThread; i++)
                     {
-                        localIds.Add(Utility.IdGenerator.GetNextUniqueId());
+                        localIds.Add(IdGeneratorUtility.GetNextUniqueId());
                     }
                     lock (lockObj)
                     {
@@ -99,8 +99,8 @@ namespace GameFrameX.Tests
         [Test]
         public void GetNextUniqueIntId_ReturnsSequential()
         {
-            int id1 = Utility.IdGenerator.GetNextUniqueIntId();
-            int id2 = Utility.IdGenerator.GetNextUniqueIntId();
+            int id1 = IdGeneratorUtility.GetNextUniqueIntId();
+            int id2 = IdGeneratorUtility.GetNextUniqueIntId();
             Assert.AreEqual(id1 + 1, id2);
         }
 
@@ -111,7 +111,7 @@ namespace GameFrameX.Tests
             HashSet<int> ids = new HashSet<int>();
             for (int i = 0; i < count; i++)
             {
-                int id = Utility.IdGenerator.GetNextUniqueIntId();
+                int id = IdGeneratorUtility.GetNextUniqueIntId();
                 Assert.IsTrue(ids.Add(id), $"Duplicate int ID found: {id}");
             }
             Assert.AreEqual(count, ids.Count);

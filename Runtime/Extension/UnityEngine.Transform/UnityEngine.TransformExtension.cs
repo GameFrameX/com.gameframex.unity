@@ -383,5 +383,20 @@ namespace GameFrameX.Runtime
             transform.localRotation = Quaternion.identity;
             transform.localScale = Vector3.one;
         }
+
+        /// <summary>
+        /// 创建游戏对象
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        [UnityEngine.Scripting.Preserve]
+        public static GameObject CreateChild(this Transform transform, string name)
+        {
+            Debug.Assert(!ReferenceEquals(transform, null), nameof(transform) + " == null");
+            var gameObject = new GameObject(name);
+            gameObject.transform.SetParent(transform);
+            return gameObject;
+        }
     }
 }

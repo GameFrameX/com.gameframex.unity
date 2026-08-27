@@ -77,7 +77,7 @@ namespace GameFrameX.Editor
                     else
                     {
                         string searchText = _searchText.ToLower();
-                        var types = Utility.Assembly.GetTypes();
+                        var types = AssemblyUtility.GetTypes();
                         var result = new List<string>();
                         foreach (var type in types)
                         {
@@ -138,7 +138,7 @@ namespace GameFrameX.Editor
         private void Generate(string targetTypeName)
         {
             _generatedText = string.Empty;
-            var targetType = Utility.Assembly.GetType(targetTypeName);
+            var targetType = AssemblyUtility.GetType(targetTypeName);
             if (targetType != null)
             {
                 var types = targetType.Assembly.GetTypes();

@@ -272,7 +272,7 @@ namespace GameFrameX.Runtime
 
             if (!typeof(IReference).IsAssignableFrom(referenceType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Reference type '{0}' is invalid.", referenceType.FullName));
+                throw new GameFrameworkException(GameFrameworkText.Format("Reference type '{0}' is invalid.", referenceType.FullName));
             }
         }
 

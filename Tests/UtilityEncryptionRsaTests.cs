@@ -16,7 +16,7 @@ namespace GameFrameX.Tests
         [SetUp]
         public void SetUp()
         {
-            _keys = Utility.Encryption.Rsa.Make();
+            _keys = EncryptionUtility.Rsa.Make();
             _publicKey = _keys["publicKey"];
             _privateKey = _keys["privateKey"];
         }
@@ -49,8 +49,8 @@ namespace GameFrameX.Tests
         public void RSAEncrypt_RSADecrypt_String_RoundTrip()
         {
             string plaintext = "Hello RSA!";
-            string encrypted = Utility.Encryption.Rsa.RSAEncrypt(_publicKey, plaintext);
-            string decrypted = Utility.Encryption.Rsa.RSADecrypt(_privateKey, encrypted);
+            string encrypted = EncryptionUtility.Rsa.RSAEncrypt(_publicKey, plaintext);
+            string decrypted = EncryptionUtility.Rsa.RSADecrypt(_privateKey, encrypted);
             Assert.AreEqual(plaintext, decrypted);
         }
 
@@ -58,8 +58,8 @@ namespace GameFrameX.Tests
         public void RSAEncrypt_RSADecrypt_Bytes_RoundTrip()
         {
             byte[] data = Encoding.UTF8.GetBytes("Byte data test");
-            byte[] encrypted = Utility.Encryption.Rsa.RSAEncrypt(_publicKey, data);
-            byte[] decrypted = Utility.Encryption.Rsa.RSADecrypt(_privateKey, encrypted);
+            byte[] encrypted = EncryptionUtility.Rsa.RSAEncrypt(_publicKey, data);
+            byte[] decrypted = EncryptionUtility.Rsa.RSADecrypt(_privateKey, encrypted);
             CollectionAssert.AreEqual(data, decrypted);
         }
 
@@ -73,7 +73,7 @@ namespace GameFrameX.Tests
             using (var rsa = new RSACryptoServiceProvider())
             {
                 rsa.FromXmlString(_privateKey);
-                var rsaInstance = new Utility.Encryption.Rsa(rsa);
+                var rsaInstance = new EncryptionUtility.Rsa(rsa);
 
                 string plaintext = "Instance test";
                 string encrypted = rsaInstance.Encrypt(plaintext);
@@ -88,7 +88,7 @@ namespace GameFrameX.Tests
             using (var rsa = new RSACryptoServiceProvider())
             {
                 rsa.FromXmlString(_privateKey);
-                var rsaInstance = new Utility.Encryption.Rsa(rsa);
+                var rsaInstance = new EncryptionUtility.Rsa(rsa);
 
                 byte[] data = Encoding.UTF8.GetBytes("Instance bytes");
                 byte[] encrypted = rsaInstance.Encrypt(data);
@@ -104,7 +104,7 @@ namespace GameFrameX.Tests
         [Test]
         public void Instance_CreateWithKeyString_RoundTrip()
         {
-            var rsaInstance = new Utility.Encryption.Rsa(_privateKey);
+            var rsaInstance = new EncryptionUtility.Rsa(_privateKey);
             string plaintext = "Key string test";
             string encrypted = rsaInstance.Encrypt(plaintext);
             string decrypted = rsaInstance.Decrypt(encrypted);
@@ -119,11 +119,11 @@ namespace GameFrameX.Tests
         public void RSASignData_RSAVerifyData_Bytes_RoundTrip()
         {
             byte[] data = Encoding.UTF8.GetBytes("Sign this data");
-            byte[] signature = Utility.Encryption.Rsa.RSASignData(data, _privateKey);
+            byte[] signature = EncryptionUtility.Rsa.RSASignData(data, _privateKey);
             Assert.IsNotNull(signature);
             Assert.Greater(signature.Length, 0);
 
-            bool verified = Utility.Encryption.Rsa.RSAVerifyData(data, signature, _publicKey);
+            bool verified = EncryptionUtility.Rsa.RSAVerifyData(data, signature, _publicKey);
             Assert.IsTrue(verified);
         }
 
@@ -131,10 +131,10 @@ namespace GameFrameX.Tests
         public void RSASignData_RSAVerifyData_String_RoundTrip()
         {
             string data = "String to sign";
-            string signature = Utility.Encryption.Rsa.RSASignData(data, _privateKey);
+            string signature = EncryptionUtility.Rsa.RSASignData(data, _privateKey);
             Assert.IsNotNull(signature);
 
-            bool verified = Utility.Encryption.Rsa.RSAVerifyData(data, signature, _publicKey);
+            bool verified = EncryptionUtility.Rsa.RSAVerifyData(data, signature, _publicKey);
             Assert.IsTrue(verified);
         }
 
@@ -144,7 +144,7 @@ namespace GameFrameX.Tests
             using (var rsa = new RSACryptoServiceProvider())
             {
                 rsa.FromXmlString(_privateKey);
-                var rsaInstance = new Utility.Encryption.Rsa(rsa);
+                var rsaInstance = new EncryptionUtility.Rsa(rsa);
 
                 byte[] data = Encoding.UTF8.GetBytes("Instance sign");
                 byte[] signature = rsaInstance.SignData(data);
@@ -159,7 +159,7 @@ namespace GameFrameX.Tests
             using (var rsa = new RSACryptoServiceProvider())
             {
                 rsa.FromXmlString(_privateKey);
-                var rsaInstance = new Utility.Encryption.Rsa(rsa);
+                var rsaInstance = new EncryptionUtility.Rsa(rsa);
 
                 string data = "Instance string sign";
                 string signature = rsaInstance.SignData(data);
@@ -172,9 +172,9 @@ namespace GameFrameX.Tests
         public void RSAVerifyData_WrongData_ReturnsFalse()
         {
             byte[] data = Encoding.UTF8.GetBytes("Original data");
-            byte[] signature = Utility.Encryption.Rsa.RSASignData(data, _privateKey);
+            byte[] signature = EncryptionUtility.Rsa.RSASignData(data, _privateKey);
             byte[] wrongData = Encoding.UTF8.GetBytes("Wrong data");
-            bool verified = Utility.Encryption.Rsa.RSAVerifyData(wrongData, signature, _publicKey);
+            bool verified = EncryptionUtility.Rsa.RSAVerifyData(wrongData, signature, _publicKey);
             Assert.IsFalse(verified);
         }
 
@@ -182,9 +182,9 @@ namespace GameFrameX.Tests
         public void RSAVerifyData_WrongSignature_ReturnsFalse()
         {
             byte[] data = Encoding.UTF8.GetBytes("Original data");
-            byte[] signature = Utility.Encryption.Rsa.RSASignData(data, _privateKey);
+            byte[] signature = EncryptionUtility.Rsa.RSASignData(data, _privateKey);
             signature[0] = (byte)(signature[0] ^ 0xFF);
-            bool verified = Utility.Encryption.Rsa.RSAVerifyData(data, signature, _publicKey);
+            bool verified = EncryptionUtility.Rsa.RSAVerifyData(data, signature, _publicKey);
             Assert.IsFalse(verified);
         }
 
@@ -198,7 +198,7 @@ namespace GameFrameX.Tests
             byte[] data = Encoding.UTF8.GetBytes("test");
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Encryption.Rsa.RSASignData(data, "invalid key");
+                EncryptionUtility.Rsa.RSASignData(data, "invalid key");
             });
         }
 
@@ -209,7 +209,7 @@ namespace GameFrameX.Tests
             byte[] sig = new byte[128];
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Encryption.Rsa.RSAVerifyData(data, sig, "invalid key");
+                EncryptionUtility.Rsa.RSAVerifyData(data, sig, "invalid key");
             });
         }
 
@@ -221,8 +221,8 @@ namespace GameFrameX.Tests
         public void RSAEncrypt_RSADecrypt_Unicode_RoundTrip()
         {
             string plaintext = "你好世界 🌍";
-            string encrypted = Utility.Encryption.Rsa.RSAEncrypt(_publicKey, plaintext);
-            string decrypted = Utility.Encryption.Rsa.RSADecrypt(_privateKey, encrypted);
+            string encrypted = EncryptionUtility.Rsa.RSAEncrypt(_publicKey, plaintext);
+            string decrypted = EncryptionUtility.Rsa.RSADecrypt(_privateKey, encrypted);
             Assert.AreEqual(plaintext, decrypted);
         }
 

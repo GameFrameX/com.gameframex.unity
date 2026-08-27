@@ -17,11 +17,13 @@ namespace GameFrameX.Editor
     public static class BuildProductHelper
     {
         private static string _buildPath;
+        private const int ScreenWidth = 1080;
+        private const int ScreenHeight = 1920;
 
         private static List<System.Type> RunHook(System.Type hookType)
         {
             List<System.Type> result = new List<System.Type>();
-            var types = Utility.Assembly.GetTypes();
+            var types = AssemblyUtility.GetTypes();
             foreach (var type in types)
             {
                 if (type.IsAbstract)
@@ -87,8 +89,8 @@ namespace GameFrameX.Editor
             if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneOSX)
             {
                 PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-                PlayerSettings.defaultScreenHeight = 720;
-                PlayerSettings.defaultScreenWidth = 1280;
+                PlayerSettings.defaultScreenHeight = ScreenHeight;
+                PlayerSettings.defaultScreenWidth = ScreenWidth;
             }
 
             AssetDatabase.SaveAssets();
@@ -113,8 +115,8 @@ namespace GameFrameX.Editor
             {
                 HotFixEditorCompilerHelper.AddEditor();
                 PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-                PlayerSettings.defaultScreenHeight = 720;
-                PlayerSettings.defaultScreenWidth = 1280;
+                PlayerSettings.defaultScreenHeight = ScreenHeight;
+                PlayerSettings.defaultScreenWidth = ScreenWidth;
                 EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows64;
                 UpdateBuildTime();
                 AssetDatabase.SaveAssets();
@@ -142,7 +144,7 @@ namespace GameFrameX.Editor
 
                 var pathName = Path.GetDirectoryName(resultDirectory);
                 Debug.Log("Build Output Path:" + resultDirectory);
-                // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
+                // ZipUtility.CompressDirectory(resultDirectory, pathName + ".zip");
             }
             finally
             {
@@ -166,8 +168,8 @@ namespace GameFrameX.Editor
             {
                 HotFixEditorCompilerHelper.AddEditor();
                 PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-                PlayerSettings.defaultScreenHeight = 720;
-                PlayerSettings.defaultScreenWidth = 1280;
+                PlayerSettings.defaultScreenHeight = ScreenHeight;
+                PlayerSettings.defaultScreenWidth = ScreenWidth;
                 EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows;
                 UpdateBuildTime();
                 AssetDatabase.SaveAssets();
@@ -196,7 +198,7 @@ namespace GameFrameX.Editor
 
                 var pathName = Path.GetDirectoryName(resultDirectory);
                 Debug.Log("Build Output Path:" + resultDirectory);
-                // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
+                // ZipUtility.CompressDirectory(resultDirectory, pathName + ".zip");
             }
             finally
             {
@@ -219,8 +221,8 @@ namespace GameFrameX.Editor
                 HotFixEditorCompilerHelper.AddEditor();
                 // PlayerSettings.SplashScreen.show = false;
                 PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-                PlayerSettings.defaultScreenHeight = 720;
-                PlayerSettings.defaultScreenWidth = 1280;
+                PlayerSettings.defaultScreenHeight = ScreenHeight;
+                PlayerSettings.defaultScreenWidth = ScreenWidth;
                 UpdateBuildTime();
 
                 AssetDatabase.SaveAssets();
@@ -247,7 +249,7 @@ namespace GameFrameX.Editor
 
                 var pathName = Path.GetDirectoryName(resultDirectory);
                 Debug.Log("Build Output Path:" + resultDirectory);
-                // ZipHelper.CompressDirectory(resultDirectory, pathName + ".zip");
+                // ZipUtility.CompressDirectory(resultDirectory, pathName + ".zip");
             }
             finally
             {
@@ -439,7 +441,7 @@ namespace GameFrameX.Editor
 
                 EditorUserBuildSettings.buildAppBundle = true;
                 // 开启符号表的输出
-                EditorUserBuildSettings.androidCreateSymbolsZip = true;
+                EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Debugging;
                 AssetDatabase.SaveAssets();
                 _buildPath = aabFilePath;
                 RunPreHookBuild();
@@ -725,9 +727,7 @@ namespace GameFrameX.Editor
             switch (EditorUserBuildSettings.activeBuildTarget)
             {
                 case BuildTarget.StandaloneOSX:
-                case BuildTarget.StandaloneOSXIntel:
                 case BuildTarget.StandaloneWindows:
-                case BuildTarget.StandaloneLinux:
                 case BuildTarget.StandaloneWindows64:
                 case BuildTarget.WebGL:
                 case BuildTarget.StandaloneLinux64:

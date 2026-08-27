@@ -224,7 +224,7 @@ namespace GameFrameX.Editor
                 NoneOptionName
             };
 
-            textHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(Utility.Text.ITextHelper)));
+            textHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(GameFrameworkText.ITextHelper)));
             m_TextHelperTypeNames = textHelperTypeNames.ToArray();
             m_TextHelperTypeNameIndex = 0;
             if (!string.IsNullOrEmpty(m_TextHelperTypeName.stringValue))
@@ -278,7 +278,7 @@ namespace GameFrameX.Editor
                 NoneOptionName
             };
 
-            compressionHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(Utility.Compression.ICompressionHelper)));
+            compressionHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(GameFrameworkCompression.ICompressionHelper)));
             m_CompressionHelperTypeNames = compressionHelperTypeNames.ToArray();
             m_CompressionHelperTypeNameIndex = 0;
             if (!string.IsNullOrEmpty(m_CompressionHelperTypeName.stringValue))
@@ -296,7 +296,7 @@ namespace GameFrameX.Editor
                 NoneOptionName
             };
 
-            jsonHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(Utility.Json.IJsonHelper)));
+            jsonHelperTypeNames.AddRange(TypeHelper.GetRuntimeTypeNames(typeof(GameFrameworkJson.IJsonHelper)));
             m_JsonHelperTypeNames = jsonHelperTypeNames.ToArray();
             m_JsonHelperTypeNameIndex = 0;
             if (!string.IsNullOrEmpty(m_JsonHelperTypeName.stringValue))

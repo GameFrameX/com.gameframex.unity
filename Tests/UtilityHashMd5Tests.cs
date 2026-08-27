@@ -13,28 +13,28 @@ namespace GameFrameX.Tests
         [Test]
         public void Hash_KnownInput_ReturnsExpectedMd5()
         {
-            string result = Utility.Hash.MD5.Hash("");
+            string result = HashUtility.MD5.Hash("");
             Assert.AreEqual("d41d8cd98f00b204e9800998ecf8427e", result);
         }
 
         [Test]
         public void Hash_HelloWorld_ReturnsExpectedMd5()
         {
-            string result = Utility.Hash.MD5.Hash("Hello World");
+            string result = HashUtility.MD5.Hash("Hello World");
             Assert.AreEqual("b10a8db164e0754105b7a99be72e3fe5", result);
         }
 
         [Test]
         public void Hash_LowercaseAlphabet()
         {
-            string result = Utility.Hash.MD5.Hash("abcdefghijklmnopqrstuvwxyz");
+            string result = HashUtility.MD5.Hash("abcdefghijklmnopqrstuvwxyz");
             Assert.AreEqual("c3fcd3d76192e4007dfb496cca67e13b", result);
         }
 
         [Test]
         public void Hash_NumericString()
         {
-            string result = Utility.Hash.MD5.Hash("1234567890");
+            string result = HashUtility.MD5.Hash("1234567890");
             Assert.AreEqual("e807f1fcf82d132f9bb018ca6738a19f", result);
         }
 
@@ -42,23 +42,23 @@ namespace GameFrameX.Tests
         public void Hash_SameInput_SameOutput()
         {
             string input = "consistency check";
-            string hash1 = Utility.Hash.MD5.Hash(input);
-            string hash2 = Utility.Hash.MD5.Hash(input);
+            string hash1 = HashUtility.MD5.Hash(input);
+            string hash2 = HashUtility.MD5.Hash(input);
             Assert.AreEqual(hash1, hash2);
         }
 
         [Test]
         public void Hash_DifferentInput_DifferentOutput()
         {
-            string hash1 = Utility.Hash.MD5.Hash("input1");
-            string hash2 = Utility.Hash.MD5.Hash("input2");
+            string hash1 = HashUtility.MD5.Hash("input1");
+            string hash2 = HashUtility.MD5.Hash("input2");
             Assert.AreNotEqual(hash1, hash2);
         }
 
         [Test]
         public void Hash_Returns32CharHexString()
         {
-            string result = Utility.Hash.MD5.Hash("test");
+            string result = HashUtility.MD5.Hash("test");
             Assert.AreEqual(32, result.Length);
             foreach (char c in result)
             {
@@ -71,7 +71,7 @@ namespace GameFrameX.Tests
         [Test]
         public void Hash_UnicodeInput()
         {
-            string result = Utility.Hash.MD5.Hash("你好");
+            string result = HashUtility.MD5.Hash("你好");
             Assert.AreEqual(32, result.Length);
             Assert.IsNotNull(result);
         }
@@ -84,7 +84,7 @@ namespace GameFrameX.Tests
             {
                 sb.Append("a");
             }
-            string result = Utility.Hash.MD5.Hash(sb.ToString());
+            string result = HashUtility.MD5.Hash(sb.ToString());
             Assert.AreEqual(32, result.Length);
         }
 
@@ -98,7 +98,7 @@ namespace GameFrameX.Tests
             byte[] data = Encoding.UTF8.GetBytes("Hello World");
             using (MemoryStream stream = new MemoryStream(data))
             {
-                string result = Utility.Hash.MD5.Hash(stream);
+                string result = HashUtility.MD5.Hash(stream);
                 Assert.AreEqual("b10a8db164e0754105b7a99be72e3fe5", result);
             }
         }
@@ -108,7 +108,7 @@ namespace GameFrameX.Tests
         {
             using (MemoryStream stream = new MemoryStream())
             {
-                string result = Utility.Hash.MD5.Hash(stream);
+                string result = HashUtility.MD5.Hash(stream);
                 Assert.AreEqual("d41d8cd98f00b204e9800998ecf8427e", result);
             }
         }
@@ -120,24 +120,24 @@ namespace GameFrameX.Tests
         [Test]
         public void IsVerify_SameHash_ReturnsTrue()
         {
-            string hash = Utility.Hash.MD5.Hash("test");
-            Assert.IsTrue(Utility.Hash.MD5.IsVerify(hash, hash));
+            string hash = HashUtility.MD5.Hash("test");
+            Assert.IsTrue(HashUtility.MD5.IsVerify(hash, hash));
         }
 
         [Test]
         public void IsVerify_DifferentHash_ReturnsFalse()
         {
-            string hash1 = Utility.Hash.MD5.Hash("test1");
-            string hash2 = Utility.Hash.MD5.Hash("test2");
-            Assert.IsFalse(Utility.Hash.MD5.IsVerify(hash1, hash2));
+            string hash1 = HashUtility.MD5.Hash("test1");
+            string hash2 = HashUtility.MD5.Hash("test2");
+            Assert.IsFalse(HashUtility.MD5.IsVerify(hash1, hash2));
         }
 
         [Test]
         public void IsVerify_CaseInsensitive()
         {
-            string hash1 = Utility.Hash.MD5.Hash("test");
+            string hash1 = HashUtility.MD5.Hash("test");
             string hash2 = hash1.ToUpper();
-            Assert.IsTrue(Utility.Hash.MD5.IsVerify(hash1, hash2));
+            Assert.IsTrue(HashUtility.MD5.IsVerify(hash1, hash2));
         }
 
         #endregion
@@ -151,7 +151,7 @@ namespace GameFrameX.Tests
             try
             {
                 File.WriteAllText(tempFile, "Hello World");
-                string result = Utility.Hash.MD5.FileHash(tempFile);
+                string result = HashUtility.MD5.FileHash(tempFile);
                 Assert.AreEqual("b10a8db164e0754105b7a99be72e3fe5", result);
             }
             finally

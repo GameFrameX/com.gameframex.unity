@@ -1,0 +1,278 @@
+﻿// ==========================================================================================
+//  GameFrameX 组织及其衍生项目的版权、商标、专利及其他相关权利
+//  GameFrameX organization and its derivative projects' copyrights, trademarks, patents, and related rights
+//  均受中华人民共和国及相关国际法律法规保护。
+//  are protected by the laws of the People's Republic of China and relevant international regulations.
+// 
+//  使用本项目须严格遵守相应法律法规及开源许可证之规定。
+//  Usage of this project must strictly comply with applicable laws, regulations, and open-source licenses.
+// 
+//  本项目采用 Apache License 2.0 许可证分发，
+//  This project is licensed under the Apache License 2.0,
+//  完整许可证文本请参见源代码根目录下的 LICENSE 文件。
+//  please refer to the LICENSE file in the root directory of the source code for the full license text.
+// 
+//  禁止利用本项目实施任何危害国家安全、破坏社会秩序、
+//  It is prohibited to use this project to engage in any activities that endanger national security, disrupt social order,
+//  侵犯他人合法权益等法律法规所禁止的行为！
+//  or infringe upon the legitimate rights and interests of others, as prohibited by laws and regulations!
+//  因基于本项目二次开发所产生的一切法律纠纷与责任，
+//  Any legal disputes and liabilities arising from secondary development based on this project
+//  本项目组织与贡献者概不承担。
+//  shall be borne solely by the developer; the project organization and contributors assume no responsibility.
+// 
+//  GitHub 仓库：https://github.com/GameFrameX
+//  GitHub Repository: https://github.com/GameFrameX
+//  Gitee  仓库：https://gitee.com/GameFrameX
+//  Gitee Repository:  https://gitee.com/GameFrameX
+//  CNB  仓库：https://cnb.cool/GameFrameX
+//  CNB Repository:  https://cnb.cool/GameFrameX
+//  官方文档：https://gameframex.doc.alianblank.com/
+//  Official Documentation: https://gameframex.doc.alianblank.com/
+// ==========================================================================================
+
+using System;
+using System.IO;
+using UnityEngine.Scripting;
+
+namespace GameFrameX.Runtime
+{
+        /// <summary>
+    /// 校验相关的实用函数。
+    /// </summary>
+    /// <remarks>
+    /// Verification related utility functions.
+    /// </remarks>
+    [Preserve]
+    public static partial class VerifierUtility
+    {
+        private const int CachedBytesLength = 0x1000;
+        private static readonly byte[] SCachedBytes = new byte[CachedBytesLength];
+
+        /// <summary>
+        /// 计算二进制流的 CRC64。
+        /// </summary>
+        /// <remarks>
+        /// Computes the CRC64 of the byte array.
+        /// </remarks>
+        /// <param name="bytes">要计算的二进制流 / The byte array to compute</param>
+        /// <returns>计算后的 CRC64 / The computed CRC64</returns>
+        [Preserve]
+        public static ulong GetCrc64(byte[] bytes)
+        {
+            var algorithm = new Crc64();
+            algorithm.Append(bytes);
+            return algorithm.GetCurrentHashAsUInt64();
+        }
+
+        /// <summary>
+        /// 计算流的 CRC64。
+        /// </summary>
+        /// <remarks>
+        /// Computes the CRC64 of the stream.
+        /// </remarks>
+        /// <param name="stream">要计算的流 / The stream to compute</param>
+        /// <returns>计算后的 CRC64 / The computed CRC64</returns>
+        [Preserve]
+        public static ulong GetCrc64(Stream stream)
+        {
+            var algorithm = new Crc64();
+            algorithm.Append(stream);
+            return algorithm.GetCurrentHashAsUInt64();
+        }
+
+        /// <summary>
+        /// 计算二进制流的 CRC32。
+        /// </summary>
+        /// <remarks>
+        /// Computes the CRC32 of the byte array.
+        /// </remarks>
+        /// <param name="bytes">指定的二进制流 / The specified byte array</param>
+        /// <returns>计算后的 CRC32 / The computed CRC32</returns>
+        [Preserve]
+        public static int GetCrc32(byte[] bytes)
+        {
+            if (bytes == null)
+            {
+                throw new GameFrameworkException("Bytes is invalid.");
+            }
+
+            return GetCrc32(bytes, 0, bytes.Length);
+        }
+
+        /// <summary>
+        /// 计算二进制流的 CRC32。
+        /// </summary>
+        /// <remarks>
+        /// Computes the CRC32 of the byte array with offset and length.
+        /// </remarks>
+        /// <param name="bytes">指定的二进制流 / The specified byte array</param>
+        /// <param name="offset">二进制流的偏移 / The offset of the byte array</param>
+        /// <param name="length">二进制流的长度 / The length of the byte array</param>
+        /// <returns>计算后的 CRC32 / The computed CRC32</returns>
+        [Preserve]
+        public static int GetCrc32(byte[] bytes, int offset, int length)
+        {
+            if (bytes == null)
+            {
+                throw new GameFrameworkException("Bytes is invalid.");
+            }
+
+            if (offset < 0 || length < 0 || offset + length > bytes.Length)
+            {
+                throw new GameFrameworkException("Offset or length is invalid.");
+            }
+
+            var algorithm = new Crc32();
+            algorithm.HashCore(bytes, offset, length);
+            int result = (int)algorithm.HashFinal();
+            return result;
+        }
+
+        /// <summary>
+        /// 计算二进制流的 CRC32。
+        /// </summary>
+        /// <remarks>
+        /// Computes the CRC32 of the stream.
+        /// </remarks>
+        /// <param name="stream">指定的二进制流 / The specified stream</param>
+        /// <returns>计算后的 CRC32 / The computed CRC32</returns>
+        [Preserve]
+        public static int GetCrc32(Stream stream)
+        {
+            if (stream == null)
+            {
+                throw new GameFrameworkException("Stream is invalid.");
+            }
+
+            var algorithm = new Crc32();
+            while (true)
+            {
+                int bytesRead = stream.Read(SCachedBytes, 0, CachedBytesLength);
+                if (bytesRead > 0)
+                {
+                    algorithm.HashCore(SCachedBytes, 0, bytesRead);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            int result = (int)algorithm.HashFinal();
+            Array.Clear(SCachedBytes, 0, CachedBytesLength);
+            return result;
+        }
+
+        /// <summary>
+        /// 获取 CRC32 数值的二进制数组。
+        /// </summary>
+        /// <remarks>
+        /// Gets the binary array of the CRC32 value.
+        /// </remarks>
+        /// <param name="crc32">CRC32 数值 / The CRC32 value</param>
+        /// <returns>CRC32 数值的二进制数组 / The binary array of the CRC32 value</returns>
+        [Preserve]
+        public static byte[] GetCrc32Bytes(int crc32)
+        {
+            return new byte[] { (byte)((crc32 >> 24) & 0xff), (byte)((crc32 >> 16) & 0xff), (byte)((crc32 >> 8) & 0xff), (byte)(crc32 & 0xff) };
+        }
+
+        /// <summary>
+        /// 获取 CRC32 数值的二进制数组。
+        /// </summary>
+        /// <remarks>
+        /// Gets the binary array of the CRC32 value.
+        /// </remarks>
+        /// <param name="crc32">CRC32 数值 / The CRC32 value</param>
+        /// <param name="bytes">要存放结果的数组 / The array to store the result</param>
+        [Preserve]
+        public static void GetCrc32Bytes(int crc32, byte[] bytes)
+        {
+            GetCrc32Bytes(crc32, bytes, 0);
+        }
+
+        /// <summary>
+        /// 获取 CRC32 数值的二进制数组。
+        /// </summary>
+        /// <remarks>
+        /// Gets the binary array of the CRC32 value.
+        /// </remarks>
+        /// <param name="crc32">CRC32 数值 / The CRC32 value</param>
+        /// <param name="bytes">要存放结果的数组 / The array to store the result</param>
+        /// <param name="offset">CRC32 数值的二进制数组在结果数组内的起始位置 / The starting position in the result array</param>
+        [Preserve]
+        public static void GetCrc32Bytes(int crc32, byte[] bytes, int offset)
+        {
+            if (bytes == null)
+            {
+                throw new GameFrameworkException("Result is invalid.");
+            }
+
+            if (offset < 0 || offset + 4 > bytes.Length)
+            {
+                throw new GameFrameworkException("Offset or length is invalid.");
+            }
+
+            bytes[offset] = (byte)((crc32 >> 24) & 0xff);
+            bytes[offset + 1] = (byte)((crc32 >> 16) & 0xff);
+            bytes[offset + 2] = (byte)((crc32 >> 8) & 0xff);
+            bytes[offset + 3] = (byte)(crc32 & 0xff);
+        }
+
+        internal static int GetCrc32(Stream stream, byte[] code, int length)
+        {
+            if (stream == null)
+            {
+                throw new GameFrameworkException("Stream is invalid.");
+            }
+
+            if (code == null)
+            {
+                throw new GameFrameworkException("Code is invalid.");
+            }
+
+            int codeLength = code.Length;
+            if (codeLength <= 0)
+            {
+                throw new GameFrameworkException("Code length is invalid.");
+            }
+
+            int bytesLength = (int)stream.Length;
+            if (length < 0 || length > bytesLength)
+            {
+                length = bytesLength;
+            }
+
+            var algorithm = new Crc32();
+            int codeIndex = 0;
+            while (true)
+            {
+                int bytesRead = stream.Read(SCachedBytes, 0, CachedBytesLength);
+                if (bytesRead > 0)
+                {
+                    if (length > 0)
+                    {
+                        for (int i = 0; i < bytesRead && i < length; i++)
+                        {
+                            SCachedBytes[i] ^= code[codeIndex++];
+                            codeIndex %= codeLength;
+                        }
+
+                        length -= bytesRead;
+                    }
+
+                    algorithm.HashCore(SCachedBytes, 0, bytesRead);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            int result = (int)algorithm.HashFinal();
+            Array.Clear(SCachedBytes, 0, CachedBytesLength);
+            return result;
+        }
+    }
+}

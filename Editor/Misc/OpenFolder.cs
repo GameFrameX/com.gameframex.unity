@@ -98,7 +98,7 @@ namespace GameFrameX.Editor
         /// <param name="folder">要打开的文件夹的路径。</param>
         public static void Execute(string folder)
         {
-            folder = Utility.Text.Format("\"{0}\"", folder);
+            folder = GameFrameworkText.Format("\"{0}\"", folder);
             switch (Application.platform)
             {
                 case RuntimePlatform.WindowsEditor:
@@ -110,7 +110,7 @@ namespace GameFrameX.Editor
                     break;
 
                 default:
-                    throw new GameFrameworkException(Utility.Text.Format("Not support open folder on '{0}' platform.", Application.platform));
+                    throw new GameFrameworkException(GameFrameworkText.Format("Not support open folder on '{0}' platform.", Application.platform));
             }
         }
     }

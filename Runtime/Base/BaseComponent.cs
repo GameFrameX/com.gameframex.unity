@@ -154,10 +154,10 @@ namespace GameFrameX.Runtime
             InitCompressionHelper();
             InitJsonHelper();
 
-            Utility.Converter.ScreenDpi = Screen.dpi;
-            if (Utility.Converter.ScreenDpi <= 0)
+            ConverterUtility.ScreenDpi = Screen.dpi;
+            if (ConverterUtility.ScreenDpi <= 0)
             {
-                Utility.Converter.ScreenDpi = DefaultDpi;
+                ConverterUtility.ScreenDpi = DefaultDpi;
             }
 
             // m_EditorResourceMode &= Application.isEditor;
@@ -257,21 +257,21 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            Type textHelperType = Utility.Assembly.GetType(m_TextHelperTypeName);
+            Type textHelperType = AssemblyUtility.GetType(m_TextHelperTypeName);
             if (textHelperType == null)
             {
                 Log.Error("Can not find text helper type '{0}'.", m_TextHelperTypeName);
                 return;
             }
 
-            Utility.Text.ITextHelper textHelper = (Utility.Text.ITextHelper)Activator.CreateInstance(textHelperType);
+            GameFrameworkText.ITextHelper textHelper = (GameFrameworkText.ITextHelper)Activator.CreateInstance(textHelperType);
             if (textHelper == null)
             {
                 Log.Error("Can not create text helper instance '{0}'.", m_TextHelperTypeName);
                 return;
             }
 
-            Utility.Text.SetTextHelper(textHelper);
+            GameFrameworkText.SetTextHelper(textHelper);
         }
 
         private void InitVersionHelper()
@@ -281,17 +281,17 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            var versionHelperType = Utility.Assembly.GetType(m_VersionHelperTypeName);
+            var versionHelperType = AssemblyUtility.GetType(m_VersionHelperTypeName);
             if (versionHelperType == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find version helper type '{0}'.",
+                throw new GameFrameworkException(GameFrameworkText.Format("Can not find version helper type '{0}'.",
                                                                      m_VersionHelperTypeName));
             }
 
             var versionHelper = (GameVersion.IVersionHelper)Activator.CreateInstance(versionHelperType);
             if (versionHelper == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not create version helper instance '{0}'.",
+                throw new GameFrameworkException(GameFrameworkText.Format("Can not create version helper instance '{0}'.",
                                                                      m_VersionHelperTypeName));
             }
 
@@ -305,16 +305,16 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            var logHelperType = Utility.Assembly.GetType(m_LogHelperTypeName);
+            var logHelperType = AssemblyUtility.GetType(m_LogHelperTypeName);
             if (logHelperType == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find log helper type '{0}'.", m_LogHelperTypeName));
+                throw new GameFrameworkException(GameFrameworkText.Format("Can not find log helper type '{0}'.", m_LogHelperTypeName));
             }
 
             var logHelper = (GameFrameworkLog.ILogHelper)Activator.CreateInstance(logHelperType);
             if (logHelper == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not create log helper instance '{0}'.", m_LogHelperTypeName));
+                throw new GameFrameworkException(GameFrameworkText.Format("Can not create log helper instance '{0}'.", m_LogHelperTypeName));
             }
 
             GameFrameworkLog.SetLogHelper(logHelper);
@@ -327,21 +327,21 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            var compressionHelperType = Utility.Assembly.GetType(m_CompressionHelperTypeName);
+            var compressionHelperType = AssemblyUtility.GetType(m_CompressionHelperTypeName);
             if (compressionHelperType == null)
             {
                 Log.Error("Can not find compression helper type '{0}'.", m_CompressionHelperTypeName);
                 return;
             }
 
-            var compressionHelper = (Utility.Compression.ICompressionHelper)Activator.CreateInstance(compressionHelperType);
+            var compressionHelper = (GameFrameworkCompression.ICompressionHelper)Activator.CreateInstance(compressionHelperType);
             if (compressionHelper == null)
             {
                 Log.Error("Can not create compression helper instance '{0}'.", m_CompressionHelperTypeName);
                 return;
             }
 
-            Utility.Compression.SetCompressionHelper(compressionHelper);
+            GameFrameworkCompression.SetCompressionHelper(compressionHelper);
         }
 
         private void InitJsonHelper()
@@ -351,21 +351,21 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            var jsonHelperType = Utility.Assembly.GetType(m_JsonHelperTypeName);
+            var jsonHelperType = AssemblyUtility.GetType(m_JsonHelperTypeName);
             if (jsonHelperType == null)
             {
                 Log.Error("Can not find JSON helper type '{0}'.", m_JsonHelperTypeName);
                 return;
             }
 
-            var jsonHelper = (Utility.Json.IJsonHelper)Activator.CreateInstance(jsonHelperType);
+            var jsonHelper = (GameFrameworkJson.IJsonHelper)Activator.CreateInstance(jsonHelperType);
             if (jsonHelper == null)
             {
                 Log.Error("Can not create JSON helper instance '{0}'.", m_JsonHelperTypeName);
                 return;
             }
 
-            Utility.Json.SetJsonHelper(jsonHelper);
+            GameFrameworkJson.SetJsonHelper(jsonHelper);
         }
 
         private void OnLowMemory()
