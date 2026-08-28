@@ -57,7 +57,7 @@ namespace GameFrameX.Editor
                     continue;
                 }
 
-                File.Copy(srcPath, Path.Combine(CodeDir, hotfix + Utility.Const.FileNameSuffix.Binary), true);
+                File.Copy(srcPath, Path.Combine(CodeDir, hotfix + FileNameSuffix.Binary), true);
             }
 
             Debug.Log($"复制Hotfix DLL到{CodeDir}完成");
@@ -78,7 +78,7 @@ namespace GameFrameX.Editor
                 Directory.CreateDirectory(AOTCodeDir);
             }
 
-            FileHelper.CleanDirectory(AOTCodeDir);
+            FileUtility.CleanDirectory(AOTCodeDir);
 
             DirectoryInfo directoryInfo = new DirectoryInfo(Application.dataPath);
             string path = Path.Combine(directoryInfo.Parent.FullName, "HybridCLRData", "AssembliesPostIl2CppStrip", EditorUserBuildSettings.activeBuildTarget.ToString());
@@ -95,7 +95,7 @@ namespace GameFrameX.Editor
             foreach (var fileInfo in files)
             {
                 stringBuilder.AppendLine(fileInfo.Name);
-                fileInfo.CopyTo(AOTCodeDir + "/" + fileInfo.Name + Utility.Const.FileNameSuffix.Binary, true);
+                fileInfo.CopyTo(AOTCodeDir + "/" + fileInfo.Name + FileNameSuffix.Binary, true);
             }
 
             Debug.Log(stringBuilder);

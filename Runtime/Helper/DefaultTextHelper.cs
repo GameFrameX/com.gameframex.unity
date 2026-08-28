@@ -41,7 +41,7 @@ namespace GameFrameX.Runtime
     /// 默认字符辅助器。
     /// </summary>
     [UnityEngine.Scripting.Preserve]
-    public class DefaultTextHelper : Utility.Text.ITextHelper
+    public class DefaultTextHelper : GameFrameworkText.ITextHelper
     {
         private const int StringBuilderCapacity = 1024;
 

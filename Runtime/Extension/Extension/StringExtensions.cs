@@ -120,6 +120,31 @@ namespace GameFrameX.Runtime
             return (bp == bLen);
         }
 
+        public static int ToInt(this string str, int def = 0)
+        {
+            return !int.TryParse(str, out var ret) ? def : ret;
+        }
+
+        public static long ToLong(this string str, long def = 0)
+        {
+            return !long.TryParse(str, out var ret) ? def : ret;
+        }
+
+        public static float ToFloat(this string str, float def = 0f)
+        {
+            return !float.TryParse(str, out var ret) ? def : ret;
+        }
+
+        public static double ToDouble(this string str, double def = 0)
+        {
+            return !double.TryParse(str, out var ret) ? def : ret;
+        }
+
+        public static T ToEnum<T>(this string str, bool ignoreCase = false, T def = default) where T : struct
+        {
+            return !Enum.TryParse<T>(str, ignoreCase, out var ret) ? def : ret;
+        }
+
         /// <summary>
         /// 字符串转字符数组
         /// </summary>
@@ -479,5 +504,6 @@ namespace GameFrameX.Runtime
 
             return null;
         }
+
     }
 }

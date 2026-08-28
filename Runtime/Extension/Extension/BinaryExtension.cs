@@ -236,8 +236,8 @@ namespace GameFrameX.Runtime
                 cachedBytes[i] = binaryReader.ReadByte();
             }
 
-            Utility.Encryption.GetSelfXorBytes(cachedBytes, 0, length, encryptBytes);
-            string value = Utility.Converter.GetString(cachedBytes, 0, length);
+            EncryptionUtility.GetSelfXorBytes(cachedBytes, 0, length, encryptBytes);
+            string value = ConverterUtility.GetString(cachedBytes, 0, length);
             Array.Clear(cachedBytes, 0, length);
             return value;
         }
@@ -261,13 +261,13 @@ namespace GameFrameX.Runtime
             }
 
             var cachedBytes = s_CachedBytes ?? (s_CachedBytes = new byte[byte.MaxValue + 1]);
-            int length = Utility.Converter.GetBytes(value, cachedBytes);
+            int length = ConverterUtility.GetBytes(value, cachedBytes);
             if (length > byte.MaxValue)
             {
-                throw new GameFrameworkException(Utility.Text.Format("String '{0}' is too long.", value));
+                throw new GameFrameworkException(GameFrameworkText.Format("String '{0}' is too long.", value));
             }
 
-            Utility.Encryption.GetSelfXorBytes(cachedBytes, encryptBytes);
+            EncryptionUtility.GetSelfXorBytes(cachedBytes, encryptBytes);
             binaryWriter.Write((byte)length);
             binaryWriter.Write(cachedBytes, 0, length);
         }

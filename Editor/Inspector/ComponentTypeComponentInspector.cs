@@ -57,7 +57,7 @@ namespace GameFrameX.Editor
                 NoneOptionName
             };
 
-            managerTypeNames.AddRange(Utility.Assembly.GetRuntimeTypeNames(type));
+            managerTypeNames.AddRange(AssemblyUtility.GetRuntimeTypeNames(type));
             ComponentTypeNames = managerTypeNames.ToArray();
             ComponentTypeNameIndex = 0;
             if (!ComponentType.stringValue.IsNullOrEmpty())

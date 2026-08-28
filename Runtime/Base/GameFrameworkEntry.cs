@@ -81,7 +81,7 @@ namespace GameFrameX.Runtime
 
             s_GameFrameworkModules.Clear();
             ReferencePool.ClearAll();
-            Utility.Marshal.FreeCachedHGlobal();
+            MarshalUtility.FreeCachedHGlobal();
             GameFrameworkLog.SetLogHelper(null);
         }
 
@@ -100,21 +100,21 @@ namespace GameFrameX.Runtime
 
             if (!interfaceType.IsInterface)
             {
-                throw new GameFrameworkException(Utility.Text.Format("You must get module by interface, but '{0}' is not.", interfaceType.FullName));
+                throw new GameFrameworkException(GameFrameworkText.Format("You must get module by interface, but '{0}' is not.", interfaceType.FullName));
             }
 
             if (!interfaceType.FullName.StartsWith("GameFrameX.", StringComparison.Ordinal))
             {
-                throw new GameFrameworkException(Utility.Text.Format("You must get a Game Framework module, but '{0}' is not.", interfaceType.FullName));
+                throw new GameFrameworkException(GameFrameworkText.Format("You must get a Game Framework module, but '{0}' is not.", interfaceType.FullName));
             }
 
             if (!s_ModuleTypeMap.TryGetValue(interfaceType, out Type moduleType))
             {
-                string moduleName = Utility.Text.Format("{0}.{1}", interfaceType.Namespace, interfaceType.Name.Substring(1));
+                string moduleName = GameFrameworkText.Format("{0}.{1}", interfaceType.Namespace, interfaceType.Name.Substring(1));
                 moduleType = Type.GetType(moduleName);
                 if (moduleType == null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not find Game Framework module type '{0}'.", moduleName));
+                    throw new GameFrameworkException(GameFrameworkText.Format("Can not find Game Framework module type '{0}'.", moduleName));
                 }
             }
 
@@ -156,12 +156,12 @@ namespace GameFrameX.Runtime
         {
             if (!interfaceType.IsInterface)
             {
-                throw new GameFrameworkException(Utility.Text.Format("You must register module by interface, but '{0}' is not.", interfaceType.FullName));
+                throw new GameFrameworkException(GameFrameworkText.Format("You must register module by interface, but '{0}' is not.", interfaceType.FullName));
             }
 
             if (!implType.IsClass || implType.IsInterface || implType.IsAbstract)
             {
-                throw new GameFrameworkException(Utility.Text.Format("You must register module by Class and not Interface and Abstract, but '{0}' is not.", implType.FullName));
+                throw new GameFrameworkException(GameFrameworkText.Format("You must register module by Class and not Interface and Abstract, but '{0}' is not.", implType.FullName));
             }
 
             if (!s_ModuleTypeMap.TryGetValue(interfaceType, out _))
@@ -183,7 +183,7 @@ namespace GameFrameX.Runtime
             var module = (GameFrameworkModule)Activator.CreateInstance(moduleType);
             if (module == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not create module '{0}'.", moduleType.FullName));
+                throw new GameFrameworkException(GameFrameworkText.Format("Can not create module '{0}'.", moduleType.FullName));
             }
 
             var current = s_GameFrameworkModules.First;

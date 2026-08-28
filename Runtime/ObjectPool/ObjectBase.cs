@@ -177,7 +177,7 @@ namespace GameFrameX.ObjectPool
         {
             if (target == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Target '{0}' is invalid.", name));
+                throw new GameFrameworkException(GameFrameworkText.Format("Target '{0}' is invalid.", name));
             }
 
             m_Name = name ?? string.Empty;

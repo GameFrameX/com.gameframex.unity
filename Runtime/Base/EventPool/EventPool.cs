@@ -222,11 +222,11 @@ namespace GameFrameX.Runtime
                 }
                 else if ((_eventPoolMode & EventPoolMode.AllowMultiHandler) != EventPoolMode.AllowMultiHandler)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not allow multi handler.", id));
+                    throw new GameFrameworkException(GameFrameworkText.Format("Event '{0}' not allow multi handler.", id));
                 }
                 else if ((_eventPoolMode & EventPoolMode.AllowDuplicateHandler) != EventPoolMode.AllowDuplicateHandler && Check(id, handler))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not allow duplicate handler.", id));
+                    throw new GameFrameworkException(GameFrameworkText.Format("Event '{0}' not allow duplicate handler.", id));
                 }
                 else
                 {
@@ -390,7 +390,7 @@ namespace GameFrameX.Runtime
                 if (noHandlerException)
                 {
                     ReferencePool.Release(e);
-                    throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not allow no handler.", e.Id));
+                    throw new GameFrameworkException(GameFrameworkText.Format("Event '{0}' not allow no handler.", e.Id));
                 }
 
                 ReferencePool.Release(e);

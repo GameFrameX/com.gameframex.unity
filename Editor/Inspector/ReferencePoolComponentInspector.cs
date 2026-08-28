@@ -113,7 +113,7 @@ namespace GameFrameX.Editor
 
                             if (GUILayout.Button("Export CSV Data"))
                             {
-                                string exportFileName = EditorUtility.SaveFilePanel("Export CSV Data", string.Empty, Utility.Text.Format("Reference Pool Data - {0}.csv", assemblyReferencePoolInfo.Key), string.Empty);
+                                string exportFileName = EditorUtility.SaveFilePanel("Export CSV Data", string.Empty, GameFrameworkText.Format("Reference Pool Data - {0}.csv", assemblyReferencePoolInfo.Key), string.Empty);
                                 if (!string.IsNullOrEmpty(exportFileName))
                                 {
                                     try
@@ -123,15 +123,15 @@ namespace GameFrameX.Editor
                                         data[index++] = "Class Name,Full Class Name,Unused,Using,Acquire,Release,Add,Remove";
                                         foreach (ReferencePoolInfo referencePoolInfo in assemblyReferencePoolInfo.Value)
                                         {
-                                            data[index++] = Utility.Text.Format("{0},{1},{2},{3},{4},{5},{6},{7}", referencePoolInfo.Type.Name, referencePoolInfo.Type.FullName, referencePoolInfo.UnusedReferenceCount, referencePoolInfo.UsingReferenceCount, referencePoolInfo.AcquireReferenceCount, referencePoolInfo.ReleaseReferenceCount, referencePoolInfo.AddReferenceCount, referencePoolInfo.RemoveReferenceCount);
+                                            data[index++] = GameFrameworkText.Format("{0},{1},{2},{3},{4},{5},{6},{7}", referencePoolInfo.Type.Name, referencePoolInfo.Type.FullName, referencePoolInfo.UnusedReferenceCount, referencePoolInfo.UsingReferenceCount, referencePoolInfo.AcquireReferenceCount, referencePoolInfo.ReleaseReferenceCount, referencePoolInfo.AddReferenceCount, referencePoolInfo.RemoveReferenceCount);
                                         }
 
                                         File.WriteAllLines(exportFileName, data, Encoding.UTF8);
-                                        Debug.Log(Utility.Text.Format("Export reference pool CSV data to '{0}' success.", exportFileName));
+                                        Debug.Log(GameFrameworkText.Format("Export reference pool CSV data to '{0}' success.", exportFileName));
                                     }
                                     catch (Exception exception)
                                     {
-                                        Debug.LogError(Utility.Text.Format("Export reference pool CSV data to '{0}' failure, exception is '{1}'.", exportFileName, exception));
+                                        Debug.LogError(GameFrameworkText.Format("Export reference pool CSV data to '{0}' failure, exception is '{1}'.", exportFileName, exception));
                                     }
                                 }
                             }
@@ -159,7 +159,7 @@ namespace GameFrameX.Editor
 
         private void DrawReferencePoolInfo(ReferencePoolInfo referencePoolInfo)
         {
-            EditorGUILayout.LabelField(m_ShowFullClassName ? referencePoolInfo.Type.FullName : referencePoolInfo.Type.Name, Utility.Text.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", referencePoolInfo.UnusedReferenceCount, referencePoolInfo.UsingReferenceCount, referencePoolInfo.AcquireReferenceCount, referencePoolInfo.ReleaseReferenceCount, referencePoolInfo.AddReferenceCount, referencePoolInfo.RemoveReferenceCount));
+            EditorGUILayout.LabelField(m_ShowFullClassName ? referencePoolInfo.Type.FullName : referencePoolInfo.Type.Name, GameFrameworkText.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", referencePoolInfo.UnusedReferenceCount, referencePoolInfo.UsingReferenceCount, referencePoolInfo.AcquireReferenceCount, referencePoolInfo.ReleaseReferenceCount, referencePoolInfo.AddReferenceCount, referencePoolInfo.RemoveReferenceCount));
         }
 
         private int Comparison(ReferencePoolInfo a, ReferencePoolInfo b)

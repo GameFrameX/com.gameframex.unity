@@ -14,7 +14,7 @@ namespace GameFrameX.Tests
         public void GetCrc32_KnownVector()
         {
             byte[] data = Encoding.ASCII.GetBytes("123456789");
-            int result = Utility.Verifier.GetCrc32(data);
+            int result = VerifierUtility.GetCrc32(data);
             Assert.AreEqual(unchecked((int)0xCBF43926u), result, "CRC32 of '123456789' should be 0xCBF43926");
         }
 
@@ -22,8 +22,8 @@ namespace GameFrameX.Tests
         public void GetCrc32_SameInput_SameOutput()
         {
             byte[] data = new byte[] { 1, 2, 3, 4, 5 };
-            int hash1 = Utility.Verifier.GetCrc32(data);
-            int hash2 = Utility.Verifier.GetCrc32(data);
+            int hash1 = VerifierUtility.GetCrc32(data);
+            int hash2 = VerifierUtility.GetCrc32(data);
             Assert.AreEqual(hash1, hash2);
         }
 
@@ -32,8 +32,8 @@ namespace GameFrameX.Tests
         {
             byte[] data1 = new byte[] { 1, 2, 3 };
             byte[] data2 = new byte[] { 4, 5, 6 };
-            int hash1 = Utility.Verifier.GetCrc32(data1);
-            int hash2 = Utility.Verifier.GetCrc32(data2);
+            int hash1 = VerifierUtility.GetCrc32(data1);
+            int hash2 = VerifierUtility.GetCrc32(data2);
             Assert.AreNotEqual(hash1, hash2);
         }
 
@@ -42,21 +42,21 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Verifier.GetCrc32((byte[])null);
+                VerifierUtility.GetCrc32((byte[])null);
             });
         }
 
         [Test]
         public void GetCrc32_EmptyArray()
         {
-            int result = Utility.Verifier.GetCrc32(new byte[0]);
+            int result = VerifierUtility.GetCrc32(new byte[0]);
             Assert.AreEqual(0, result);
         }
 
         [Test]
         public void GetCrc32_SingleByte()
         {
-            int result = Utility.Verifier.GetCrc32(new byte[] { 0x00 });
+            int result = VerifierUtility.GetCrc32(new byte[] { 0x00 });
             Assert.AreNotEqual(0, result);
         }
 
@@ -68,7 +68,7 @@ namespace GameFrameX.Tests
             {
                 data[i] = (byte)(i & 0xFF);
             }
-            int result = Utility.Verifier.GetCrc32(data);
+            int result = VerifierUtility.GetCrc32(data);
             Assert.AreNotEqual(0, result);
         }
 
@@ -81,8 +81,8 @@ namespace GameFrameX.Tests
         {
             byte[] fullData = new byte[] { 0, 0, 0, 1, 2, 3, 0, 0 };
             byte[] subData = new byte[] { 1, 2, 3 };
-            int hash1 = Utility.Verifier.GetCrc32(fullData, 3, 3);
-            int hash2 = Utility.Verifier.GetCrc32(subData);
+            int hash1 = VerifierUtility.GetCrc32(fullData, 3, 3);
+            int hash2 = VerifierUtility.GetCrc32(subData);
             Assert.AreEqual(hash1, hash2);
         }
 
@@ -91,7 +91,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Verifier.GetCrc32(null, 0, 0);
+                VerifierUtility.GetCrc32(null, 0, 0);
             });
         }
 
@@ -100,7 +100,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Verifier.GetCrc32(new byte[] { 1 }, -1, 1);
+                VerifierUtility.GetCrc32(new byte[] { 1 }, -1, 1);
             });
         }
 
@@ -109,7 +109,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Verifier.GetCrc32(new byte[] { 1 }, 0, -1);
+                VerifierUtility.GetCrc32(new byte[] { 1 }, 0, -1);
             });
         }
 
@@ -118,7 +118,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Verifier.GetCrc32(new byte[] { 1, 2, 3 }, 1, 3);
+                VerifierUtility.GetCrc32(new byte[] { 1, 2, 3 }, 1, 3);
             });
         }
 
@@ -126,12 +126,12 @@ namespace GameFrameX.Tests
         public void GetCrc32_ChunkedVsFull_SameResult()
         {
             byte[] data = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
-            int fullHash = Utility.Verifier.GetCrc32(data);
+            int fullHash = VerifierUtility.GetCrc32(data);
 
-            int partialHash = Utility.Verifier.GetCrc32(data, 0, 4);
-            partialHash ^= Utility.Verifier.GetCrc32(data, 4, 4);
+            int partialHash = VerifierUtility.GetCrc32(data, 0, 4);
+            partialHash ^= VerifierUtility.GetCrc32(data, 4, 4);
 
-            Assert.AreEqual(fullHash, Utility.Verifier.GetCrc32(data));
+            Assert.AreEqual(fullHash, VerifierUtility.GetCrc32(data));
         }
 
         #endregion
@@ -144,7 +144,7 @@ namespace GameFrameX.Tests
             byte[] data = Encoding.ASCII.GetBytes("123456789");
             using (var stream = new MemoryStream(data))
             {
-                int result = Utility.Verifier.GetCrc32(stream);
+                int result = VerifierUtility.GetCrc32(stream);
                 Assert.AreEqual(unchecked((int)0xCBF43926u), result);
             }
         }
@@ -154,7 +154,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Verifier.GetCrc32((Stream)null);
+                VerifierUtility.GetCrc32((Stream)null);
             });
         }
 
@@ -162,10 +162,10 @@ namespace GameFrameX.Tests
         public void GetCrc32_Stream_MatchesByteArray()
         {
             byte[] data = Encoding.UTF8.GetBytes("Stream vs byte array test");
-            int fromArray = Utility.Verifier.GetCrc32(data);
+            int fromArray = VerifierUtility.GetCrc32(data);
             using (var stream = new MemoryStream(data))
             {
-                int fromStream = Utility.Verifier.GetCrc32(stream);
+                int fromStream = VerifierUtility.GetCrc32(stream);
                 Assert.AreEqual(fromArray, fromStream);
             }
         }
@@ -177,8 +177,8 @@ namespace GameFrameX.Tests
         [Test]
         public void GetCrc32Bytes_Returns4Bytes()
         {
-            int crc32 = Utility.Verifier.GetCrc32(Encoding.ASCII.GetBytes("test"));
-            byte[] bytes = Utility.Verifier.GetCrc32Bytes(crc32);
+            int crc32 = VerifierUtility.GetCrc32(Encoding.ASCII.GetBytes("test"));
+            byte[] bytes = VerifierUtility.GetCrc32Bytes(crc32);
             Assert.AreEqual(4, bytes.Length);
         }
 
@@ -187,7 +187,7 @@ namespace GameFrameX.Tests
         {
             int crc32 = 0x12345678;
             byte[] buffer = new byte[4];
-            Utility.Verifier.GetCrc32Bytes(crc32, buffer);
+            VerifierUtility.GetCrc32Bytes(crc32, buffer);
             Assert.AreEqual(0x12, buffer[0]);
             Assert.AreEqual(0x34, buffer[1]);
             Assert.AreEqual(0x56, buffer[2]);
@@ -199,7 +199,7 @@ namespace GameFrameX.Tests
         {
             int crc32 = unchecked((int)0xAABBCCDDu);
             byte[] buffer = new byte[10];
-            Utility.Verifier.GetCrc32Bytes(crc32, buffer, 3);
+            VerifierUtility.GetCrc32Bytes(crc32, buffer, 3);
             Assert.AreEqual(0xAA, buffer[3]);
             Assert.AreEqual(0xBB, buffer[4]);
             Assert.AreEqual(0xCC, buffer[5]);
@@ -211,7 +211,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Verifier.GetCrc32Bytes(0, null, 0);
+                VerifierUtility.GetCrc32Bytes(0, null, 0);
             });
         }
 
@@ -221,7 +221,7 @@ namespace GameFrameX.Tests
             byte[] buffer = new byte[4];
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Verifier.GetCrc32Bytes(0, buffer, -1);
+                VerifierUtility.GetCrc32Bytes(0, buffer, -1);
             });
         }
 
@@ -231,7 +231,7 @@ namespace GameFrameX.Tests
             byte[] buffer = new byte[3];
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Verifier.GetCrc32Bytes(0, buffer, 0);
+                VerifierUtility.GetCrc32Bytes(0, buffer, 0);
             });
         }
 

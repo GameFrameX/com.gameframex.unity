@@ -13,7 +13,7 @@ namespace GameFrameX.Tests
         [Test]
         public void IsLittleEndian_MatchesBitConverter()
         {
-            Assert.AreEqual(BitConverter.IsLittleEndian, Utility.Converter.IsLittleEndian);
+            Assert.AreEqual(BitConverter.IsLittleEndian, ConverterUtility.IsLittleEndian);
         }
 
         #endregion
@@ -23,76 +23,76 @@ namespace GameFrameX.Tests
         [Test]
         public void GetCentimetersFromPixels_Throws_WhenDpiNotSet()
         {
-            Utility.Converter.ScreenDpi = 0;
+            ConverterUtility.ScreenDpi = 0;
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetCentimetersFromPixels(100f);
+                ConverterUtility.GetCentimetersFromPixels(100f);
             });
         }
 
         [Test]
         public void GetPixelsFromCentimeters_Throws_WhenDpiNotSet()
         {
-            Utility.Converter.ScreenDpi = 0;
+            ConverterUtility.ScreenDpi = 0;
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetPixelsFromCentimeters(10f);
+                ConverterUtility.GetPixelsFromCentimeters(10f);
             });
         }
 
         [Test]
         public void GetInchesFromPixels_Throws_WhenDpiNotSet()
         {
-            Utility.Converter.ScreenDpi = 0;
+            ConverterUtility.ScreenDpi = 0;
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetInchesFromPixels(100f);
+                ConverterUtility.GetInchesFromPixels(100f);
             });
         }
 
         [Test]
         public void GetPixelsFromInches_Throws_WhenDpiNotSet()
         {
-            Utility.Converter.ScreenDpi = 0;
+            ConverterUtility.ScreenDpi = 0;
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetPixelsFromInches(10f);
+                ConverterUtility.GetPixelsFromInches(10f);
             });
         }
 
         [Test]
         public void GetCentimetersFromPixels_ReturnsCorrectValue()
         {
-            Utility.Converter.ScreenDpi = 96f;
-            float result = Utility.Converter.GetCentimetersFromPixels(96f);
+            ConverterUtility.ScreenDpi = 96f;
+            float result = ConverterUtility.GetCentimetersFromPixels(96f);
             Assert.AreEqual(2.54f, result, 0.0001f);
         }
 
         [Test]
         public void GetPixelsFromCentimeters_RoundTrip()
         {
-            Utility.Converter.ScreenDpi = 96f;
+            ConverterUtility.ScreenDpi = 96f;
             float pixels = 200f;
-            float cm = Utility.Converter.GetCentimetersFromPixels(pixels);
-            float back = Utility.Converter.GetPixelsFromCentimeters(cm);
+            float cm = ConverterUtility.GetCentimetersFromPixels(pixels);
+            float back = ConverterUtility.GetPixelsFromCentimeters(cm);
             Assert.AreEqual(pixels, back, 0.001f);
         }
 
         [Test]
         public void GetInchesFromPixels_ReturnsCorrectValue()
         {
-            Utility.Converter.ScreenDpi = 96f;
-            float result = Utility.Converter.GetInchesFromPixels(96f);
+            ConverterUtility.ScreenDpi = 96f;
+            float result = ConverterUtility.GetInchesFromPixels(96f);
             Assert.AreEqual(1f, result, 0.0001f);
         }
 
         [Test]
         public void GetPixelsFromInches_RoundTrip()
         {
-            Utility.Converter.ScreenDpi = 96f;
+            ConverterUtility.ScreenDpi = 96f;
             float inches = 2f;
-            float px = Utility.Converter.GetPixelsFromInches(inches);
-            float back = Utility.Converter.GetInchesFromPixels(px);
+            float px = ConverterUtility.GetPixelsFromInches(inches);
+            float back = ConverterUtility.GetInchesFromPixels(px);
             Assert.AreEqual(inches, back, 0.001f);
         }
 
@@ -103,7 +103,7 @@ namespace GameFrameX.Tests
         [Test]
         public void GetBytes_Bool_True()
         {
-            byte[] result = Utility.Converter.GetBytes(true);
+            byte[] result = ConverterUtility.GetBytes(true);
             Assert.AreEqual(1, result.Length);
             Assert.AreEqual(1, result[0]);
         }
@@ -111,7 +111,7 @@ namespace GameFrameX.Tests
         [Test]
         public void GetBytes_Bool_False()
         {
-            byte[] result = Utility.Converter.GetBytes(false);
+            byte[] result = ConverterUtility.GetBytes(false);
             Assert.AreEqual(1, result.Length);
             Assert.AreEqual(0, result[0]);
         }
@@ -121,7 +121,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes(true, null, 0);
+                ConverterUtility.GetBytes(true, null, 0);
             });
         }
 
@@ -131,7 +131,7 @@ namespace GameFrameX.Tests
             byte[] buffer = new byte[1];
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes(true, buffer, -1);
+                ConverterUtility.GetBytes(true, buffer, -1);
             });
         }
 
@@ -141,26 +141,26 @@ namespace GameFrameX.Tests
             byte[] buffer = new byte[1];
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes(true, buffer, 1);
+                ConverterUtility.GetBytes(true, buffer, 1);
             });
         }
 
         [Test]
         public void GetBoolean_RoundTrip()
         {
-            byte[] bytes = Utility.Converter.GetBytes(true);
-            Assert.IsTrue(Utility.Converter.GetBoolean(bytes));
+            byte[] bytes = ConverterUtility.GetBytes(true);
+            Assert.IsTrue(ConverterUtility.GetBoolean(bytes));
 
-            bytes = Utility.Converter.GetBytes(false);
-            Assert.IsFalse(Utility.Converter.GetBoolean(bytes));
+            bytes = ConverterUtility.GetBytes(false);
+            Assert.IsFalse(ConverterUtility.GetBoolean(bytes));
         }
 
         [Test]
         public void GetBoolean_WithOffset()
         {
             byte[] buffer = new byte[3];
-            Utility.Converter.GetBytes(true, buffer, 1);
-            Assert.IsTrue(Utility.Converter.GetBoolean(buffer, 1));
+            ConverterUtility.GetBytes(true, buffer, 1);
+            Assert.IsTrue(ConverterUtility.GetBoolean(buffer, 1));
         }
 
         #endregion
@@ -171,9 +171,9 @@ namespace GameFrameX.Tests
         public void GetBytes_Int16_RoundTrip()
         {
             short value = -12345;
-            byte[] bytes = Utility.Converter.GetBytes(value);
+            byte[] bytes = ConverterUtility.GetBytes(value);
             Assert.AreEqual(2, bytes.Length);
-            Assert.AreEqual(value, Utility.Converter.GetInt16(bytes));
+            Assert.AreEqual(value, ConverterUtility.GetInt16(bytes));
         }
 
         [Test]
@@ -181,8 +181,8 @@ namespace GameFrameX.Tests
         {
             short value = 1234;
             byte[] buffer = new byte[10];
-            Utility.Converter.GetBytes(value, buffer, 4);
-            Assert.AreEqual(value, Utility.Converter.GetInt16(buffer, 4));
+            ConverterUtility.GetBytes(value, buffer, 4);
+            Assert.AreEqual(value, ConverterUtility.GetInt16(buffer, 4));
         }
 
         [Test]
@@ -190,7 +190,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes((short)1, null, 0);
+                ConverterUtility.GetBytes((short)1, null, 0);
             });
         }
 
@@ -200,7 +200,7 @@ namespace GameFrameX.Tests
             byte[] buffer = new byte[2];
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes((short)1, buffer, -1);
+                ConverterUtility.GetBytes((short)1, buffer, -1);
             });
         }
 
@@ -210,7 +210,7 @@ namespace GameFrameX.Tests
             byte[] buffer = new byte[1];
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes((short)1, buffer, 0);
+                ConverterUtility.GetBytes((short)1, buffer, 0);
             });
         }
 
@@ -222,8 +222,8 @@ namespace GameFrameX.Tests
         public void GetBytes_UInt16_RoundTrip()
         {
             ushort value = 65000;
-            byte[] bytes = Utility.Converter.GetBytes(value);
-            Assert.AreEqual(value, Utility.Converter.GetUInt16(bytes));
+            byte[] bytes = ConverterUtility.GetBytes(value);
+            Assert.AreEqual(value, ConverterUtility.GetUInt16(bytes));
         }
 
         [Test]
@@ -231,8 +231,8 @@ namespace GameFrameX.Tests
         {
             ushort value = 54321;
             byte[] buffer = new byte[10];
-            Utility.Converter.GetBytes(value, buffer, 3);
-            Assert.AreEqual(value, Utility.Converter.GetUInt16(buffer, 3));
+            ConverterUtility.GetBytes(value, buffer, 3);
+            Assert.AreEqual(value, ConverterUtility.GetUInt16(buffer, 3));
         }
 
         #endregion
@@ -243,27 +243,27 @@ namespace GameFrameX.Tests
         public void GetBytes_Int32_RoundTrip()
         {
             int value = -987654;
-            byte[] bytes = Utility.Converter.GetBytes(value);
+            byte[] bytes = ConverterUtility.GetBytes(value);
             Assert.AreEqual(4, bytes.Length);
-            Assert.AreEqual(value, Utility.Converter.GetInt32(bytes));
+            Assert.AreEqual(value, ConverterUtility.GetInt32(bytes));
         }
 
         [Test]
         public void GetBytes_Int32_Zero()
         {
-            Assert.AreEqual(0, Utility.Converter.GetInt32(Utility.Converter.GetBytes(0)));
+            Assert.AreEqual(0, ConverterUtility.GetInt32(ConverterUtility.GetBytes(0)));
         }
 
         [Test]
         public void GetBytes_Int32_MaxValue()
         {
-            Assert.AreEqual(int.MaxValue, Utility.Converter.GetInt32(Utility.Converter.GetBytes(int.MaxValue)));
+            Assert.AreEqual(int.MaxValue, ConverterUtility.GetInt32(ConverterUtility.GetBytes(int.MaxValue)));
         }
 
         [Test]
         public void GetBytes_Int32_MinValue()
         {
-            Assert.AreEqual(int.MinValue, Utility.Converter.GetInt32(Utility.Converter.GetBytes(int.MinValue)));
+            Assert.AreEqual(int.MinValue, ConverterUtility.GetInt32(ConverterUtility.GetBytes(int.MinValue)));
         }
 
         [Test]
@@ -271,7 +271,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes(1, null, 0);
+                ConverterUtility.GetBytes(1, null, 0);
             });
         }
 
@@ -281,7 +281,7 @@ namespace GameFrameX.Tests
             byte[] buffer = new byte[3];
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes(1, buffer, 0);
+                ConverterUtility.GetBytes(1, buffer, 0);
             });
         }
 
@@ -293,8 +293,8 @@ namespace GameFrameX.Tests
         public void GetBytes_UInt32_RoundTrip()
         {
             uint value = 3000000000;
-            byte[] bytes = Utility.Converter.GetBytes(value);
-            Assert.AreEqual(value, Utility.Converter.GetUInt32(bytes));
+            byte[] bytes = ConverterUtility.GetBytes(value);
+            Assert.AreEqual(value, ConverterUtility.GetUInt32(bytes));
         }
 
         #endregion
@@ -305,15 +305,15 @@ namespace GameFrameX.Tests
         public void GetBytes_Int64_RoundTrip()
         {
             long value = -9876543210L;
-            byte[] bytes = Utility.Converter.GetBytes(value);
+            byte[] bytes = ConverterUtility.GetBytes(value);
             Assert.AreEqual(8, bytes.Length);
-            Assert.AreEqual(value, Utility.Converter.GetInt64(bytes));
+            Assert.AreEqual(value, ConverterUtility.GetInt64(bytes));
         }
 
         [Test]
         public void GetBytes_Int64_MaxValue()
         {
-            Assert.AreEqual(long.MaxValue, Utility.Converter.GetInt64(Utility.Converter.GetBytes(long.MaxValue)));
+            Assert.AreEqual(long.MaxValue, ConverterUtility.GetInt64(ConverterUtility.GetBytes(long.MaxValue)));
         }
 
         [Test]
@@ -321,7 +321,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes(1L, null, 0);
+                ConverterUtility.GetBytes(1L, null, 0);
             });
         }
 
@@ -333,8 +333,8 @@ namespace GameFrameX.Tests
         public void GetBytes_UInt64_RoundTrip()
         {
             ulong value = 18000000000000000UL;
-            byte[] bytes = Utility.Converter.GetBytes(value);
-            Assert.AreEqual(value, Utility.Converter.GetUInt64(bytes));
+            byte[] bytes = ConverterUtility.GetBytes(value);
+            Assert.AreEqual(value, ConverterUtility.GetUInt64(bytes));
         }
 
         #endregion
@@ -345,9 +345,9 @@ namespace GameFrameX.Tests
         public void GetBytes_Char_RoundTrip()
         {
             char value = 'A';
-            byte[] bytes = Utility.Converter.GetBytes(value);
+            byte[] bytes = ConverterUtility.GetBytes(value);
             Assert.AreEqual(2, bytes.Length);
-            Assert.AreEqual(value, Utility.Converter.GetChar(bytes));
+            Assert.AreEqual(value, ConverterUtility.GetChar(bytes));
         }
 
         [Test]
@@ -355,8 +355,8 @@ namespace GameFrameX.Tests
         {
             char value = '中';
             byte[] buffer = new byte[10];
-            Utility.Converter.GetBytes(value, buffer, 5);
-            Assert.AreEqual(value, Utility.Converter.GetChar(buffer, 5));
+            ConverterUtility.GetBytes(value, buffer, 5);
+            Assert.AreEqual(value, ConverterUtility.GetChar(buffer, 5));
         }
 
         #endregion
@@ -367,29 +367,29 @@ namespace GameFrameX.Tests
         public void GetBytes_Single_RoundTrip()
         {
             float value = 3.14f;
-            byte[] bytes = Utility.Converter.GetBytes(value);
+            byte[] bytes = ConverterUtility.GetBytes(value);
             Assert.AreEqual(4, bytes.Length);
-            Assert.AreEqual(value, Utility.Converter.GetSingle(bytes), 0.0001f);
+            Assert.AreEqual(value, ConverterUtility.GetSingle(bytes), 0.0001f);
         }
 
         [Test]
         public void GetBytes_Single_Zero()
         {
-            Assert.AreEqual(0f, Utility.Converter.GetSingle(Utility.Converter.GetBytes(0f)), 0.0001f);
+            Assert.AreEqual(0f, ConverterUtility.GetSingle(ConverterUtility.GetBytes(0f)), 0.0001f);
         }
 
         [Test]
         public void GetBytes_Single_NegativeInfinity()
         {
             float value = float.NegativeInfinity;
-            Assert.AreEqual(value, Utility.Converter.GetSingle(Utility.Converter.GetBytes(value)));
+            Assert.AreEqual(value, ConverterUtility.GetSingle(ConverterUtility.GetBytes(value)));
         }
 
         [Test]
         public void GetBytes_Single_NaN()
         {
             float value = float.NaN;
-            Assert.IsNaN(Utility.Converter.GetSingle(Utility.Converter.GetBytes(value)));
+            Assert.IsNaN(ConverterUtility.GetSingle(ConverterUtility.GetBytes(value)));
         }
 
         [Test]
@@ -397,8 +397,8 @@ namespace GameFrameX.Tests
         {
             float value = -999.5f;
             byte[] buffer = new byte[10];
-            Utility.Converter.GetBytes(value, buffer, 3);
-            Assert.AreEqual(value, Utility.Converter.GetSingle(buffer, 3), 0.0001f);
+            ConverterUtility.GetBytes(value, buffer, 3);
+            Assert.AreEqual(value, ConverterUtility.GetSingle(buffer, 3), 0.0001f);
         }
 
         #endregion
@@ -409,9 +409,9 @@ namespace GameFrameX.Tests
         public void GetBytes_Double_RoundTrip()
         {
             double value = 2.718281828;
-            byte[] bytes = Utility.Converter.GetBytes(value);
+            byte[] bytes = ConverterUtility.GetBytes(value);
             Assert.AreEqual(8, bytes.Length);
-            Assert.AreEqual(value, Utility.Converter.GetDouble(bytes), 0.0000001);
+            Assert.AreEqual(value, ConverterUtility.GetDouble(bytes), 0.0000001);
         }
 
         [Test]
@@ -419,8 +419,8 @@ namespace GameFrameX.Tests
         {
             double value = -123.456;
             byte[] buffer = new byte[20];
-            Utility.Converter.GetBytes(value, buffer, 5);
-            Assert.AreEqual(value, Utility.Converter.GetDouble(buffer, 5), 0.0000001);
+            ConverterUtility.GetBytes(value, buffer, 5);
+            Assert.AreEqual(value, ConverterUtility.GetDouble(buffer, 5), 0.0000001);
         }
 
         #endregion
@@ -431,8 +431,8 @@ namespace GameFrameX.Tests
         public void GetBytes_String_UTF8_RoundTrip()
         {
             string value = "Hello World";
-            byte[] bytes = Utility.Converter.GetBytes(value);
-            string result = Utility.Converter.GetString(bytes);
+            byte[] bytes = ConverterUtility.GetBytes(value);
+            string result = ConverterUtility.GetString(bytes);
             Assert.AreEqual(value, result);
         }
 
@@ -440,8 +440,8 @@ namespace GameFrameX.Tests
         public void GetBytes_String_Unicode_RoundTrip()
         {
             string value = "你好世界";
-            byte[] bytes = Utility.Converter.GetBytes(value, Encoding.Unicode);
-            string result = Utility.Converter.GetString(bytes, Encoding.Unicode);
+            byte[] bytes = ConverterUtility.GetBytes(value, Encoding.Unicode);
+            string result = ConverterUtility.GetString(bytes, Encoding.Unicode);
             Assert.AreEqual(value, result);
         }
 
@@ -450,7 +450,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes(null, Encoding.UTF8);
+                ConverterUtility.GetBytes(null, Encoding.UTF8);
             });
         }
 
@@ -459,7 +459,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes("test", (System.Text.Encoding)null);
+                ConverterUtility.GetBytes("test", (System.Text.Encoding)null);
             });
         }
 
@@ -468,7 +468,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetString(null);
+                ConverterUtility.GetString(null);
             });
         }
 
@@ -477,7 +477,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetString(new byte[0], null);
+                ConverterUtility.GetString(new byte[0], null);
             });
         }
 
@@ -485,8 +485,8 @@ namespace GameFrameX.Tests
         public void GetString_WithOffsetAndLength()
         {
             string value = "ABCDEFGH";
-            byte[] bytes = Utility.Converter.GetBytes(value);
-            string result = Utility.Converter.GetString(bytes, 0, 5);
+            byte[] bytes = ConverterUtility.GetBytes(value);
+            string result = ConverterUtility.GetString(bytes, 0, 5);
             Assert.AreEqual("ABCDE", result);
         }
 
@@ -495,9 +495,9 @@ namespace GameFrameX.Tests
         {
             string value = "Test";
             byte[] buffer = new byte[10];
-            int written = Utility.Converter.GetBytes(value, buffer, 0);
+            int written = ConverterUtility.GetBytes(value, buffer, 0);
             Assert.AreEqual(Encoding.UTF8.GetByteCount(value), written);
-            Assert.AreEqual(value, Utility.Converter.GetString(buffer, 0, written));
+            Assert.AreEqual(value, ConverterUtility.GetString(buffer, 0, written));
         }
 
         [Test]
@@ -506,7 +506,7 @@ namespace GameFrameX.Tests
             byte[] buffer = new byte[10];
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetBytes(null, Encoding.UTF8, buffer, 0);
+                ConverterUtility.GetBytes(null, Encoding.UTF8, buffer, 0);
             });
         }
 
@@ -515,7 +515,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Converter.GetString(null, 0, 0, Encoding.UTF8);
+                ConverterUtility.GetString(null, 0, 0, Encoding.UTF8);
             });
         }
 
@@ -528,15 +528,15 @@ namespace GameFrameX.Tests
         {
             byte[] buffer = new byte[100];
 
-            Utility.Converter.GetBytes(true, buffer, 0);
-            Utility.Converter.GetBytes((short)1234, buffer, 1);
-            Utility.Converter.GetBytes(56789, buffer, 3);
-            Utility.Converter.GetBytes(3.14f, buffer, 7);
+            ConverterUtility.GetBytes(true, buffer, 0);
+            ConverterUtility.GetBytes((short)1234, buffer, 1);
+            ConverterUtility.GetBytes(56789, buffer, 3);
+            ConverterUtility.GetBytes(3.14f, buffer, 7);
 
-            Assert.IsTrue(Utility.Converter.GetBoolean(buffer, 0));
-            Assert.AreEqual((short)1234, Utility.Converter.GetInt16(buffer, 1));
-            Assert.AreEqual(56789, Utility.Converter.GetInt32(buffer, 3));
-            Assert.AreEqual(3.14f, Utility.Converter.GetSingle(buffer, 7), 0.001f);
+            Assert.IsTrue(ConverterUtility.GetBoolean(buffer, 0));
+            Assert.AreEqual((short)1234, ConverterUtility.GetInt16(buffer, 1));
+            Assert.AreEqual(56789, ConverterUtility.GetInt32(buffer, 3));
+            Assert.AreEqual(3.14f, ConverterUtility.GetSingle(buffer, 7), 0.001f);
         }
 
         #endregion
