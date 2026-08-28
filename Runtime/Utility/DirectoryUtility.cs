@@ -83,7 +83,7 @@ namespace GameFrameX.Runtime
             }
             catch (Exception e)
             {
-                e.Message.Print(Color.red);
+                Log.Error(e.ToString());
             }
         }
 

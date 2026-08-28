@@ -4,7 +4,6 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using UnityEngine;
 
 namespace GameFrameX.Runtime
 {
@@ -506,27 +505,5 @@ namespace GameFrameX.Runtime
             return null;
         }
 
-        public static void Print(this string str, Color? color = null)
-        {
-            if (string.IsNullOrEmpty(str))
-            {
-                return;
-            }
-
-            var logContent = Application.isBatchMode
-                ? str
-                : str.WithColor(color ?? Color.green);
-            Debug.Log(logContent);
-        }
-
-        public static string WithColor(this string str, Color color)
-        {
-            return $"<color=#{ColorUtility.ToHtmlStringRGBA(color)}>{str}</color>";
-        }
-
-        public static string WithSize(this string str, float size)
-        {
-            return $"<size={size}>{str}</size>";
-        }
     }
 }
