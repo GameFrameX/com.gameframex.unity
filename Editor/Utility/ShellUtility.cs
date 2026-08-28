@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading;
 
-namespace GameFrameX.Runtime
+namespace GameFrameX.Editor
 {
     public static partial class ShellUtility
     {
