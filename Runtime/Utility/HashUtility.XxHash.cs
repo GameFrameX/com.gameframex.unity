@@ -13,7 +13,7 @@ namespace GameFrameX.Runtime
         /// XXHash hash algorithm implementation.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        public static class XXHash
+        public static class XxHash
         {
             /// <summary>
             /// 计算给定字节数组的32位哈希值。
@@ -23,7 +23,7 @@ namespace GameFrameX.Runtime
             [UnityEngine.Scripting.Preserve]
             public static uint Hash32(byte[] buffer)
             {
-                return XXHashHelper.Hash32(buffer);
+                return XxHashHelper.Hash32(buffer);
             }
 
             /// <summary>
@@ -34,7 +34,7 @@ namespace GameFrameX.Runtime
             [UnityEngine.Scripting.Preserve]
             public static uint Hash32(string text)
             {
-                return XXHashHelper.Hash32(text);
+                return XxHashHelper.Hash32(text);
             }
 
             /// <summary>
@@ -45,7 +45,7 @@ namespace GameFrameX.Runtime
             [UnityEngine.Scripting.Preserve]
             public static uint Hash32(Type type)
             {
-                return XXHashHelper.Hash32(type);
+                return XxHashHelper.Hash32(type);
             }
 
             /// <summary>
@@ -56,7 +56,7 @@ namespace GameFrameX.Runtime
             [UnityEngine.Scripting.Preserve]
             public static uint Hash32<T>()
             {
-                return XXHashHelper.Hash32<T>();
+                return XxHashHelper.Hash32<T>();
             }
 
             /// <summary>
@@ -67,7 +67,7 @@ namespace GameFrameX.Runtime
             [UnityEngine.Scripting.Preserve]
             public static ulong Hash64(byte[] buffer)
             {
-                return XXHashHelper.Hash64(buffer);
+                return XxHashHelper.Hash64(buffer);
             }
 
             /// <summary>
@@ -78,7 +78,7 @@ namespace GameFrameX.Runtime
             [UnityEngine.Scripting.Preserve]
             public static ulong Hash64(string text)
             {
-                return XXHashHelper.Hash64(text);
+                return XxHashHelper.Hash64(text);
             }
 
             /// <summary>
@@ -89,7 +89,7 @@ namespace GameFrameX.Runtime
             [UnityEngine.Scripting.Preserve]
             public static ulong Hash64(Type type)
             {
-                return XXHashHelper.Hash64(type);
+                return XxHashHelper.Hash64(type);
             }
 
             /// <summary>
@@ -100,7 +100,7 @@ namespace GameFrameX.Runtime
             [UnityEngine.Scripting.Preserve]
             public static ulong Hash64<T>()
             {
-                return XXHashHelper.Hash64<T>();
+                return XxHashHelper.Hash64<T>();
             }
         }
 
@@ -110,7 +110,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// XXHash calculation helper class.
         /// </remarks>
-        static class XXHashHelper
+        static class XxHashHelper
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             static unsafe uint Hash32(byte* input, int length, uint seed = 0)

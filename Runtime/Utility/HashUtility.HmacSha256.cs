@@ -13,7 +13,7 @@ namespace GameFrameX.Runtime
         /// HMACSHA256 hash algorithm implementation.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
-        public static class HMACSha256
+        public static class HmacSha256
         {
             /// <summary>
             /// 使用提供的密钥对指定消息进行 HMACSHA256 哈希计算。

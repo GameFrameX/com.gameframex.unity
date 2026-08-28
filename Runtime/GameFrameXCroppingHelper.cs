@@ -91,11 +91,11 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.EncryptionUtility.Rsa);
             _ = typeof(GameFrameX.Runtime.FileUtility);
             _ = typeof(GameFrameX.Runtime.HashUtility);
-            _ = typeof(GameFrameX.Runtime.HashUtility.HMACSha256);
-            _ = typeof(GameFrameX.Runtime.HashUtility.MD5);
+            _ = typeof(GameFrameX.Runtime.HashUtility.HmacSha256);
+            _ = typeof(GameFrameX.Runtime.HashUtility.Md5);
             _ = typeof(GameFrameX.Runtime.HashUtility.MurmurHash3);
             _ = typeof(GameFrameX.Runtime.HashUtility.Sha1);
-            _ = typeof(GameFrameX.Runtime.HashUtility.XXHash);
+            _ = typeof(GameFrameX.Runtime.HashUtility.XxHash);
             _ = typeof(GameFrameX.Runtime.IdGeneratorUtility);
             _ = typeof(GameFrameX.Runtime.MarshalUtility);
             _ = typeof(GameFrameX.Runtime.NetworkUtility);

@@ -14,7 +14,7 @@ namespace GameFrameX.Runtime
         /// MD5 hash algorithm implementation.
         /// </remarks>
         [Preserve]
-        public static class MD5
+        public static class Md5
         {
             /// <summary>
             /// 获取字符串的 MD5 哈希值。
