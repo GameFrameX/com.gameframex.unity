@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GameFrameX.Runtime
 {
@@ -21,31 +20,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static GameObject FindChildGamObjectByName(string nodeName, string sceneName = null)
         {
-            Scene scene;
-            if (sceneName.IsNullOrWhiteSpace())
-            {
-                scene = SceneManager.GetActiveScene();
-            }
-            else
-            {
-                scene = SceneManager.GetSceneByName(sceneName);
-                if (!scene.isLoaded)
-                {
-                    return null;
-                }
-            }
-
-            var rootObjects = scene.GetRootGameObjects();
-            foreach (var rootObject in rootObjects)
-            {
-                var result = rootObject.FindChildGamObjectByName(nodeName);
-                if (result.IsNotNull())
-                {
-                    return result;
-                }
-            }
-
-            return null;
+            return UnityEngineGameObjectExtension.FindChildGamObjectByName(nodeName, sceneName);
         }
     }
 }
