@@ -119,19 +119,18 @@ namespace GameFrameX.Runtime
         [Preserve]
         public static void SetLayer(this GameObject gameObject, int layer, bool recursively = true)
         {
-            if (gameObject.layer != layer)
+            if (!recursively)
             {
                 gameObject.layer = layer;
+                return;
             }
 
-            if (recursively)
+            // GetComponentsInChildren 的结果包含自身, 无需单独设置 gameObject.layer
+            CachedTransforms.Clear();
+            gameObject.GetComponentsInChildren(true, CachedTransforms);
+            foreach (var sg in CachedTransforms)
             {
-                CachedTransforms.Clear();
-                gameObject.GetComponentsInChildren(true, CachedTransforms);
-                foreach (var sg in CachedTransforms)
-                {
-                    sg.gameObject.layer = layer;
-                }
+                sg.gameObject.layer = layer;
             }
         }
 
