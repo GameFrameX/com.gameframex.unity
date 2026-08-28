@@ -148,7 +148,9 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.DateTimeExtensions);
             _ = typeof(GameFrameX.Runtime.ThreadLocalRandom);
             _ = typeof(GameFrameX.Runtime.TypeExtensions);
+            _ = typeof(GameFrameX.Runtime.UnityEngineCameraExtension);
             _ = typeof(GameFrameX.Runtime.UnityEngineGameObjectExtension);
+            _ = typeof(GameFrameX.Runtime.UnityEngineRendererExtension);
             _ = typeof(GameFrameX.Runtime.UnityEngineTransformExtension);
             _ = typeof(GameFrameX.Runtime.UnityEngineVector2Extension);
             _ = typeof(GameFrameX.Runtime.UnityEngineVector3Extension);
