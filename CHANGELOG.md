@@ -1,3 +1,10 @@
+## [2.5.3](https://github.com/gameframex/com.gameframex.unity/compare/2.5.2...2.5.3) (2026-08-29)
+
+
+### Bug Fixes
+
+* **runtime:** PathHelper.Combine 绝对路径段正确追加分隔符 ([e89eb8c](https://github.com/gameframex/com.gameframex.unity/commit/e89eb8c6052590c6847f20429395706149e1efaa))
+
 ## [2.5.2](https://github.com/gameframex/com.gameframex.unity/compare/2.5.1...2.5.2) (2026-07-30)
 
 
