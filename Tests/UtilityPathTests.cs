@@ -225,5 +225,58 @@ namespace GameFrameX.Tests
         }
 
         #endregion
+
+        #region PathHelper.Combine
+
+        [Test]
+        public void Combine_SingleSegment_ReturnsUnchanged()
+        {
+            string result = PathHelper.Combine("img.png");
+            Assert.AreEqual("img.png", result);
+        }
+
+        [Test]
+        public void Combine_TwoRelativeSegments_AddsSeparator()
+        {
+            string result = PathHelper.Combine("cache", "img.png");
+            Assert.AreEqual("cache/img.png", result);
+        }
+
+        [Test]
+        public void Combine_AbsolutePathSegment_AppendsSeparator()
+        {
+            string result = PathHelper.Combine("/Users/blank/cache", "img.png");
+            Assert.AreEqual("/Users/blank/cache/img.png", result);
+        }
+
+        [Test]
+        public void Combine_TrailingSlashSegment_DoesNotDuplicate()
+        {
+            string result = PathHelper.Combine("cache/", "img.png");
+            Assert.AreEqual("cache/img.png", result);
+        }
+
+        [Test]
+        public void Combine_PureSeparatorSegment_DoesNotDuplicate()
+        {
+            string result = PathHelper.Combine("/", "img.png");
+            Assert.AreEqual("/img.png", result);
+        }
+
+        [Test]
+        public void Combine_TrailingBackslashSegment_DoesNotDuplicate()
+        {
+            string result = PathHelper.Combine("dir\\", "file.txt");
+            Assert.AreEqual("dir\\file.txt", result);
+        }
+
+        [Test]
+        public void Combine_MultipleSegments_AbsolutePathJoint()
+        {
+            string result = PathHelper.Combine("/Users", "blank", "cache", "img.png");
+            Assert.AreEqual("/Users/blank/cache/img.png", result);
+        }
+
+        #endregion
     }
 }
