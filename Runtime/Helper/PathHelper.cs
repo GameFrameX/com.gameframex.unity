@@ -115,11 +115,6 @@ namespace GameFrameX.Runtime
                     continue;
                 }
 
-                if (path.StartsWithFast(separatorA) || path.StartsWithFast(separatorB))
-                {
-                    continue;
-                }
-
                 sb.Append(separatorA);
             }
 
