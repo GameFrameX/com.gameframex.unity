@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// 华为小游戏适配宏定义集合。
-        /// Define symbols for Huawei mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for Huawei mini game adaptation.
+        /// </remarks>
         public static readonly string[] EnableHuaweiMiniGameScriptingDefineSymbol = new[] { "ENABLE_HUAWEI_MINI_GAME", "HUAWEIMINIGAME" };
 
         /// <summary>
         /// 开启华为小游戏适配宏定义。
-        /// Enables define symbols for Huawei mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for Huawei mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Device OEMs(设备厂商)/Enable Huawei Mini Game(开启[华为小游戏]适配)", false, 3900)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭华为小游戏适配宏定义。
-        /// Disables define symbols for Huawei mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for Huawei mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Device OEMs(设备厂商)/Disable Huawei Mini Game(关闭[华为小游戏]适配)", false, 3901)]
 #endif

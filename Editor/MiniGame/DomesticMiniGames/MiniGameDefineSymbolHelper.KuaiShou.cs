@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// 快手小游戏适配宏定义集合。
-        /// Define symbols for KuaiShou mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for KuaiShou mini game adaptation.
+        /// </remarks>
         public static readonly string[] EnableKuaiShouMiniGameScriptingDefineSymbol = new[] { "ENABLE_KUAISHOU_MINI_GAME", "KUAISHOUMINIGAME" };
 
         /// <summary>
         /// 开启快手小游戏适配宏定义。
-        /// Enables define symbols for KuaiShou mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for KuaiShou mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Enable KuaiShou Mini Game(开启[快手小游戏]适配)", false, 2200)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭快手小游戏适配宏定义。
-        /// Disables define symbols for KuaiShou mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for KuaiShou mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Disable KuaiShou Mini Game(关闭[快手小游戏]适配)", false, 2201)]
 #endif

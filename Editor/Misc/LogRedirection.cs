@@ -45,6 +45,9 @@ namespace UnityGameFramework.Editor
     /// <summary>
     /// 日志重定向相关的实用函数。
     /// </summary>
+    /// <remarks>
+    /// Utility functions related to log redirection.
+    /// </remarks>
     internal static class LogRedirection
     {
         private static readonly Regex LogRegex = new Regex(@" \(at (.+)\:(\d+)\)\r?\n");

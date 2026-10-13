@@ -3,7 +3,6 @@
     "rootNamespace": "GameFrameX.Editor",
     "references": [
         "GameFrameX.Runtime",
-        "WxEditor",
         "GameFrameX.LitJSON.Runtime"
     ],
     "includePlatforms": [

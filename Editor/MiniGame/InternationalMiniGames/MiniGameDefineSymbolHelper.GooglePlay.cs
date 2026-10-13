@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// Google Play 游戏平台适配宏定义集合。
-        /// Define symbols for Google Play Games platform adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for Google Play Games platform adaptation.
+        /// </remarks>
         public static readonly string[] EnableGooglePlayMiniGameScriptingDefineSymbol = new[] { "ENABLE_GOOGLEPLAY_MINI_GAME", "GOOGLEPLAYMINIGAME" };
 
         /// <summary>
         /// 开启 Google Play 游戏平台适配宏定义。
-        /// Enables define symbols for Google Play Games platform adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for Google Play Games platform adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Enable Google Play Mini Game(开启[Google Play]适配)", false, 3200)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭 Google Play 游戏平台适配宏定义。
-        /// Disables define symbols for Google Play Games platform adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for Google Play Games platform adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Disable Google Play Mini Game(关闭[Google Play]适配)", false, 3201)]
 #endif

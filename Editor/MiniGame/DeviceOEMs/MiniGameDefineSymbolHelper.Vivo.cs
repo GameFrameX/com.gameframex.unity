@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// vivo 小游戏适配宏定义集合。
-        /// Define symbols for vivo mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for vivo mini game adaptation.
+        /// </remarks>
         public static readonly string[] EnableVivoMiniGameScriptingDefineSymbol = new[] { "ENABLE_VIVO_MINI_GAME", "VIVOMINIGAME" };
 
         /// <summary>
         /// 开启 vivo 小游戏适配宏定义。
-        /// Enables define symbols for vivo mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for vivo mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Device OEMs(设备厂商)/Enable Vivo Mini Game(开启[vivo小游戏]适配)", false, 3600)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭 vivo 小游戏适配宏定义。
-        /// Disables define symbols for vivo mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for vivo mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Device OEMs(设备厂商)/Disable Vivo Mini Game(关闭[vivo小游戏]适配)", false, 3601)]
 #endif

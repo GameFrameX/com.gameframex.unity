@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// 百度小游戏适配宏定义集合。
-        /// Define symbols for Baidu mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for Baidu mini game adaptation.
+        /// </remarks>
         public static readonly string[] EnableBaiduMiniGameScriptingDefineSymbol = new[] { "ENABLE_BAIDU_MINI_GAME", "BAIDUMINIGAME" };
 
         /// <summary>
         /// 开启百度小游戏适配宏定义。
-        /// Enables define symbols for Baidu mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for Baidu mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Enable Baidu Mini Game(开启[百度小游戏]适配)", false, 2300)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭百度小游戏适配宏定义。
-        /// Disables define symbols for Baidu mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for Baidu mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Disable Baidu Mini Game(关闭[百度小游戏]适配)", false, 2301)]
 #endif

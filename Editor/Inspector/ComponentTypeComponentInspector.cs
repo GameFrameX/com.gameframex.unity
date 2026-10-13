@@ -4,12 +4,24 @@ using UnityEditor;
 
 namespace GameFrameX.Editor
 {
+    /// <summary>
+    /// 组件类型 Inspector 抽象类，提供组件类型的下拉选择绘制。
+    /// </summary>
+    /// <remarks>
+    /// Abstract Inspector for component types, providing a dropdown for selecting the component type.
+    /// </remarks>
     public abstract class ComponentTypeComponentInspector : GameFrameworkInspector
     {
         protected SerializedProperty ComponentType = null;
         protected string[] ComponentTypeNames = null;
         protected int ComponentTypeNameIndex = 0;
 
+        /// <summary>
+        /// 绘制事件。
+        /// </summary>
+        /// <remarks>
+        /// The draw event.
+        /// </remarks>
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
@@ -17,11 +29,16 @@ namespace GameFrameX.Editor
 
             EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
             {
-                int componentTypeSelectedIndex = EditorGUILayout.Popup("ComponentType", ComponentTypeNameIndex, ComponentTypeNames);
-                if (componentTypeSelectedIndex != ComponentTypeNameIndex)
+                // 子类可通过不调用 RefreshComponentTypeNames 声明无类型列表（如 C9 后配置收敛到 Options 的组件），
+                // 此时跳过下拉绘制，避免 null 数组传入 EditorGUILayout.Popup 导致 NRE。
+                if (ComponentTypeNames != null)
                 {
-                    ComponentTypeNameIndex = componentTypeSelectedIndex;
-                    ComponentType.stringValue = componentTypeSelectedIndex <= 0 ? null : ComponentTypeNames[componentTypeSelectedIndex];
+                    int componentTypeSelectedIndex = EditorGUILayout.Popup("ComponentType", ComponentTypeNameIndex, ComponentTypeNames);
+                    if (componentTypeSelectedIndex != ComponentTypeNameIndex)
+                    {
+                        ComponentTypeNameIndex = componentTypeSelectedIndex;
+                        ComponentType.stringValue = componentTypeSelectedIndex <= 0 ? null : ComponentTypeNames[componentTypeSelectedIndex];
+                    }
                 }
             }
 

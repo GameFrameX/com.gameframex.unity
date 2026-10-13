@@ -192,7 +192,7 @@ namespace GameFrameX.Editor
             /// </summary>
             /// <remarks>
             /// Merges multiple string arrays and deduplicates with ordering.
-            /// </summary>
+            /// </remarks>
             /// <param name="values">待合并的字符串数组集合 / The collection of string arrays to merge</param>
             /// <returns>合并去重后的字符串数组 / The merged and deduplicated string array</returns>
             private static string[] MergeStrings(IEnumerable<string[]> values)

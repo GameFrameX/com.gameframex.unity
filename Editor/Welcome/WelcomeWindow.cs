@@ -36,6 +36,12 @@ using UnityEngine;
 
 namespace GameFrameX.Editor
 {
+    /// <summary>
+    /// GameFrameX 欢迎窗口。
+    /// </summary>
+    /// <remarks>
+    /// The welcome window of GameFrameX.
+    /// </remarks>
     public class WelcomeWindow : EditorWindow
     {
         private static readonly string FirstRunKey = "GameFrameX_WelcomeWindow_Shown";
@@ -45,10 +51,16 @@ namespace GameFrameX.Editor
         private bool showOnStartup = true;
         private Vector2 scrollPosition;
 
+        /// <summary>
+        /// 显示欢迎窗口。
+        /// </summary>
+        /// <remarks>
+        /// Shows the welcome window.
+        /// </remarks>
         [MenuItem("GameFrameX/Welcome Window", false, 99999999)]
         public static void ShowWindow()
         {
-            var window = GetWindow<WelcomeWindow>("GameFrameX 欢迎界面");
+            var window = GetWindow<WelcomeWindow>("GameFrameX 欢迎界面 / Welcome");
             window.minSize = new Vector2(640, 800);
             window.maxSize = new Vector2(640, 800);
             window.ShowModalUtility();
@@ -74,7 +86,7 @@ namespace GameFrameX.Editor
                 // 检查用户设置是否应该显示
                 if (EditorPrefs.GetBool(ShowOnStartupKey, true))
                 {
-                    var window = GetWindow<WelcomeWindow>("GameFrameX 欢迎界面");
+                    var window = GetWindow<WelcomeWindow>("GameFrameX 欢迎界面 / Welcome");
                     window.minSize = new Vector2(640, 800);
                     window.maxSize = new Vector2(640, 800);
                     window.ShowModalUtility();
@@ -134,8 +146,9 @@ namespace GameFrameX.Editor
                 fontSize = 12
             };
 
-            GUILayout.Label("欢迎使用 GameFrameX", titleStyle);
-            GUILayout.Label("独立游戏前后端一体化解决方案,独立游戏开发者的圆梦大使", subTitleStyle);
+            GUILayout.Label("欢迎使用 GameFrameX / Welcome to GameFrameX", titleStyle);
+            GUILayout.Label("独立游戏前后端一体化解决方案，独立游戏开发者的圆梦大使", subTitleStyle);
+            GUILayout.Label("All-in-One Solution for Indie Game Development · Empowering Indie Developers' Dreams", subTitleStyle);
             GUILayout.EndVertical();
 
             GUILayout.FlexibleSpace();
@@ -146,25 +159,25 @@ namespace GameFrameX.Editor
             scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.ExpandHeight(true));
 
             // 视频教程部分
-            DrawSection("视频教程", "观看我们的入门视频教程", "https://space.bilibili.com/101356690/lists/3861146?type=season");
+            DrawSection("视频教程 / Video Tutorials", "观看我们的入门视频教程 / Watch our beginner video tutorials", "https://space.bilibili.com/101356690/lists/3861146?type=season");
 
             // 文档链接部分
-            DrawSection("官方文档", "查看详细的开发文档", "https://gameframex.doc.alianblank.com/");
+            DrawSection("官方文档 / Documentation", "查看详细的开发文档 / Read the detailed development documentation", "https://gameframex.doc.alianblank.com/");
 
             // 常见问题部分
-            DrawSection("常见问题", "查看常见问题及解决方案", "https://gameframex.doc.alianblank.com/faq");
+            DrawSection("常见问题 / FAQ", "查看常见问题及解决方案 / Browse common issues and solutions", "https://gameframex.doc.alianblank.com/faq");
 
             // 配置表部分
-            DrawSection("配置表", "查看配置表的规范和要求相关内容", "https://gameframex.doc.alianblank.com/config/");
+            DrawSection("配置表 / Config Tables", "查看配置表的规范和要求相关内容 / Config table conventions and requirements", "https://gameframex.doc.alianblank.com/config/");
 
             // 通信协议部分
-            DrawSection("通信协议", "查看通信协议的规范和要求相关内容", "https://gameframex.doc.alianblank.com/protobuf/note.html");
+            DrawSection("通信协议 / Protocols", "查看通信协议的规范和要求相关内容 / Communication protocol conventions and requirements", "https://gameframex.doc.alianblank.com/protobuf/note.html");
 
             // UI 系统部分
-            DrawSection("UI 系统", "查看 UI 系统相关内容", "https://gameframex.doc.alianblank.com/client/unity/component/ui/01.overview.html");
+            DrawSection("UI 系统 / UI System", "查看 UI 系统相关内容 / Explore the UI system documentation", "https://gameframex.doc.alianblank.com/client/unity/component/ui/01.overview.html");
 
             //  BUG 反馈部分
-            DrawSection("BUG 反馈", "反馈 BUG", "https://github.com/GameFrameX/GameFrameX/issues/new");
+            DrawSection("BUG 反馈 / Bug Report", "反馈 BUG / Report a bug", "https://github.com/GameFrameX/GameFrameX/issues/new");
 
             GUILayout.EndScrollView();
 
@@ -173,7 +186,7 @@ namespace GameFrameX.Editor
             // 底部复选框
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            showOnStartup = EditorGUILayout.ToggleLeft("下次启动时显示此窗口", showOnStartup, GUILayout.Width(200));
+            showOnStartup = EditorGUILayout.ToggleLeft("下次启动时显示此窗口 / Show on startup", showOnStartup, GUILayout.Width(320));
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
 
@@ -200,7 +213,7 @@ namespace GameFrameX.Editor
 
             GUILayout.Space(5);
 
-            if (GUILayout.Button("立即访问"))
+            if (GUILayout.Button("立即访问 / Visit Now"))
             {
                 Application.OpenURL(url);
             }

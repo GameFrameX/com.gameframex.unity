@@ -38,18 +38,27 @@ namespace GameFrameX.Editor
     /// <summary>
     /// 在构建完成后执行
     /// </summary>
+    /// <remarks>
+    /// Executed after the build is completed.
+    /// </remarks>
     public interface IBuilderPostHookHandler
     {
         /// <summary>
         /// 优先级,数值越大优先级越低
         /// </summary>
+        /// <remarks>
+        /// The priority; a larger value means a lower priority.
+        /// </remarks>
         int Priority { get; }
 
         /// <summary>
         /// 执行
         /// </summary>
-        /// <param name="target">构建目标平台</param>
-        /// <param name="path">路径或者目录</param>
+        /// <remarks>
+        /// Runs the handler.
+        /// </remarks>
+        /// <param name="target">构建目标平台 / The build target platform</param>
+        /// <param name="path">路径或者目录 / The path or directory</param>
         void Run(BuildTarget target, string path);
     }
 }

@@ -41,6 +41,9 @@ namespace GameFrameX.Editor
     /// <summary>
     /// 类型相关的实用函数。
     /// </summary>
+    /// <remarks>
+    /// Type related utility functions.
+    /// </remarks>
     public static class TypeHelper
     {
         private static readonly string[] RuntimeAssemblyNames = Utility.Assembly.GetAssemblies().Where(m => !m.FullName.Contains("Editor")).Select(m => m.FullName).ToArray();
@@ -50,8 +53,11 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 在运行时程序集中获取指定基类的所有子类的名称。
         /// </summary>
-        /// <param name="typeBase">基类类型。</param>
-        /// <returns>指定基类的所有子类的名称。</returns>
+        /// <remarks>
+        /// Gets the names of all subclasses of the specified base type in runtime assemblies.
+        /// </remarks>
+        /// <param name="typeBase">基类类型。 / The base type.</param>
+        /// <returns>指定基类的所有子类的名称。 / The names of all subclasses of the specified base type.</returns>
         public static string[] GetRuntimeTypeNames(System.Type typeBase)
         {
             return GetTypeNames(typeBase, RuntimeAssemblyNames);
@@ -60,8 +66,11 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 在运行时或编辑器程序集中获取指定基类的所有子类的名称。
         /// </summary>
-        /// <param name="typeBase">基类类型。</param>
-        /// <returns>指定基类的所有子类的名称。</returns>
+        /// <remarks>
+        /// Gets the names of all subclasses of the specified base type in runtime or editor assemblies.
+        /// </remarks>
+        /// <param name="typeBase">基类类型。 / The base type.</param>
+        /// <returns>指定基类的所有子类的名称。 / The names of all subclasses of the specified base type.</returns>
         internal static string[] GetRuntimeOrEditorTypeNames(System.Type typeBase)
         {
             return GetTypeNames(typeBase, RuntimeOrEditorAssemblyNames);

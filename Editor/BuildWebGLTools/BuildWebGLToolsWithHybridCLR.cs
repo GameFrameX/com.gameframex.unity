@@ -8,12 +8,18 @@ namespace GameFrameX.Editor
     /// <summary>
     /// 当使用HybridCLR发布到WEBGL的时候执行
     /// </summary>
+    /// <remarks>
+    /// Executed when building to WebGL with HybridCLR.
+    /// </remarks>
     public static class BuildWebGLToolsWithHybridCLR
     {
         /// <summary>
         /// 获取工程路径
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets the project path.
+        /// </remarks>
+        /// <returns>工程路径 / The project path</returns>
         private static string GetProjectPath()
         {
             return Application.dataPath.Replace("Assets", string.Empty);

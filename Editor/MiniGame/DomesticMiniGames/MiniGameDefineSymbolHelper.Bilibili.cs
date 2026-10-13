@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// Bilibili小游戏适配宏定义集合。
-        /// Define symbols for Bilibili mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for Bilibili mini game adaptation.
+        /// </remarks>
         public static readonly string[] EnableBilibiliMiniGameScriptingDefineSymbol = new[] { "ENABLE_BILIBILI_MINI_GAME", "BILIBILIMINIGAME" };
 
         /// <summary>
         /// 开启Bilibili小游戏适配宏定义。
-        /// Enables define symbols for Bilibili mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for Bilibili mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Enable Bilibili Mini Game(开启[Bilibili小游戏]适配)", false, 2700)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭Bilibili小游戏适配宏定义。
-        /// Disables define symbols for Bilibili mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for Bilibili mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Disable Bilibili Mini Game(关闭[Bilibili小游戏]适配)", false, 2701)]
 #endif

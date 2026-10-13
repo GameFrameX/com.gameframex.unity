@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// 淘宝小程序适配宏定义集合。
-        /// Define symbols for Taobao mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for Taobao mini game adaptation.
+        /// </remarks>
         public static readonly string[] EnableTaobaoMiniGameScriptingDefineSymbol = new[] { "ENABLE_TAOBAO_MINI_GAME", "TAOBAOMINIGAME" };
 
         /// <summary>
         /// 开启淘宝小程序适配宏定义。
-        /// Enables define symbols for Taobao mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for Taobao mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Enable Taobao Mini Game(开启[淘宝小程序]适配)", false, 2800)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭淘宝小程序适配宏定义。
-        /// Disables define symbols for Taobao mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for Taobao mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Domestic Mini Games(国内小游戏)/Disable Taobao Mini Game(关闭[淘宝小程序]适配)", false, 2801)]
 #endif

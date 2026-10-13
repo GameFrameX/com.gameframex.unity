@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// Discord 平台适配宏定义集合。
-        /// Define symbols for Discord platform adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for Discord platform adaptation.
+        /// </remarks>
         public static readonly string[] EnableDiscordMiniGameScriptingDefineSymbol = new[] { "ENABLE_DISCORD_MINI_GAME", "DISCORDMINIGAME" };
 
         /// <summary>
         /// 开启 Discord 平台适配宏定义。
-        /// Enables define symbols for Discord platform adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for Discord platform adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Enable Discord Mini Game(开启[Discord]适配)", false, 2900)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭 Discord 平台适配宏定义。
-        /// Disables define symbols for Discord platform adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for Discord platform adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Disable Discord Mini Game(关闭[Discord]适配)", false, 2901)]
 #endif

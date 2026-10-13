@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// 小米小游戏适配宏定义集合。
-        /// Define symbols for Xiaomi mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for Xiaomi mini game adaptation.
+        /// </remarks>
         public static readonly string[] EnableXiaomiMiniGameScriptingDefineSymbol = new[] { "ENABLE_XIAOMI_MINI_GAME", "XIAOMIMINIGAME" };
 
         /// <summary>
         /// 开启小米小游戏适配宏定义。
-        /// Enables define symbols for Xiaomi mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for Xiaomi mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Device OEMs(设备厂商)/Enable Xiaomi Mini Game(开启[小米小游戏]适配)", false, 3800)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭小米小游戏适配宏定义。
-        /// Disables define symbols for Xiaomi mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for Xiaomi mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Device OEMs(设备厂商)/Disable Xiaomi Mini Game(关闭[小米小游戏]适配)", false, 3801)]
 #endif

@@ -5,6 +5,9 @@ namespace GameFrameX.Editor
     /// <summary>
     /// 游戏框架 Inspector 抽象类。
     /// </summary>
+    /// <remarks>
+    /// Abstract class for game framework Inspectors.
+    /// </remarks>
     public abstract class GameFrameworkInspector : UnityEditor.Editor
     {
         protected const string NoneOptionName = "<None>";
@@ -13,6 +16,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 绘制事件。
         /// </summary>
+        /// <remarks>
+        /// The draw event.
+        /// </remarks>
         public override void OnInspectorGUI()
         {
             if (m_IsCompiling && !EditorApplication.isCompiling)
@@ -30,6 +36,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 编译开始事件。
         /// </summary>
+        /// <remarks>
+        /// The compile start event.
+        /// </remarks>
         protected virtual void OnCompileStart()
         {
         }
@@ -37,6 +46,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 编译完成事件。
         /// </summary>
+        /// <remarks>
+        /// The compile complete event.
+        /// </remarks>
         protected virtual void OnCompileComplete()
         {
         }

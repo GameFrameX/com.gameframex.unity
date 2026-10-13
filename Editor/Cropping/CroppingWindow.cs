@@ -44,8 +44,17 @@ namespace GameFrameX.Editor
     /// <summary>
     /// 防裁剪代码生成窗口
     /// </summary>
+    /// <remarks>
+    /// Editor window for generating code stripping prevention attributes.
+    /// </remarks>
     public sealed class CroppingWindow : EditorWindow
     {
+        /// <summary>
+        /// 显示防裁剪代码生成窗口。
+        /// </summary>
+        /// <remarks>
+        /// Shows the code stripping prevention window.
+        /// </remarks>
         [MenuItem("GameFrameX/Cropping(防止裁剪代码生成)", false, 2001)]
         public static void ShowWindow()
         {
@@ -132,9 +141,12 @@ namespace GameFrameX.Editor
         private string _generatedText = string.Empty;
 
         /// <summary>
-        /// 生成
+        /// 生成所选类型的防裁剪引用代码。
         /// </summary>
-        /// <param name="targetTypeName"></param>
+        /// <remarks>
+        /// Generates the code stripping prevention reference code for the selected type.
+        /// </remarks>
+        /// <param name="targetTypeName">目标类型完整名 / Full name of the target type</param>
         private void Generate(string targetTypeName)
         {
             _generatedText = string.Empty;

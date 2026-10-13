@@ -14,9 +14,14 @@ namespace GameFrameX.Editor
     /// <summary>
     ///  导出和发布产品帮助类
     /// </summary>
+    /// <remarks>
+    /// Helper class for exporting and publishing products.
+    /// </remarks>
     public static class BuildProductHelper
     {
         private static string _buildPath;
+        private const int ScreenWidth = 1080;
+        private const int ScreenHeight = 1920;
 
         private static List<System.Type> RunHook(System.Type hookType)
         {
@@ -78,6 +83,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 当前激活的平台
         /// </summary>
+        /// <remarks>
+        /// Builds for the currently active platform.
+        /// </remarks>
         /*[MenuItem("GameFrameX/Build/Active Build Target", false, 20)]
         public static void BuildPlayerToActiveBuildTarget()
         {
@@ -87,8 +95,8 @@ namespace GameFrameX.Editor
             if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.StandaloneOSX)
             {
                 PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-                PlayerSettings.defaultScreenHeight = 720;
-                PlayerSettings.defaultScreenWidth = 1280;
+                PlayerSettings.defaultScreenHeight = ScreenHeight;
+                PlayerSettings.defaultScreenWidth = ScreenWidth;
             }
 
             AssetDatabase.SaveAssets();
@@ -113,8 +121,8 @@ namespace GameFrameX.Editor
             {
                 HotFixEditorCompilerHelper.AddEditor();
                 PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-                PlayerSettings.defaultScreenHeight = 720;
-                PlayerSettings.defaultScreenWidth = 1280;
+                PlayerSettings.defaultScreenHeight = ScreenHeight;
+                PlayerSettings.defaultScreenWidth = ScreenWidth;
                 EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows64;
                 UpdateBuildTime();
                 AssetDatabase.SaveAssets();
@@ -151,6 +159,12 @@ namespace GameFrameX.Editor
             }
         }
 
+        /// <summary>
+        /// 发布 Windows 32 位版本
+        /// </summary>
+        /// <remarks>
+        /// Builds the player for the 32-bit Windows target.
+        /// </remarks>
         [MenuItem("GameFrameX/Build/Windows X32", false, 100)]
         public static void BuildPlayerToWindows32BuildTarget()
         {
@@ -166,8 +180,8 @@ namespace GameFrameX.Editor
             {
                 HotFixEditorCompilerHelper.AddEditor();
                 PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-                PlayerSettings.defaultScreenHeight = 720;
-                PlayerSettings.defaultScreenWidth = 1280;
+                PlayerSettings.defaultScreenHeight = ScreenHeight;
+                PlayerSettings.defaultScreenWidth = ScreenWidth;
                 EditorUserBuildSettings.selectedStandaloneTarget = BuildTarget.StandaloneWindows;
                 UpdateBuildTime();
                 AssetDatabase.SaveAssets();
@@ -204,6 +218,12 @@ namespace GameFrameX.Editor
                 RunPostHookBuild();
             }
         }
+        /// <summary>
+        /// 发布 Mac OS 版本
+        /// </summary>
+        /// <remarks>
+        /// Builds the player for the macOS target.
+        /// </remarks>
 
         [MenuItem("GameFrameX/Build/Mac Os", false, 200)]
         public static void BuildPlayerToMacBuildTarget()
@@ -219,8 +239,8 @@ namespace GameFrameX.Editor
                 HotFixEditorCompilerHelper.AddEditor();
                 // PlayerSettings.SplashScreen.show = false;
                 PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
-                PlayerSettings.defaultScreenHeight = 720;
-                PlayerSettings.defaultScreenWidth = 1280;
+                PlayerSettings.defaultScreenHeight = ScreenHeight;
+                PlayerSettings.defaultScreenWidth = ScreenWidth;
                 UpdateBuildTime();
 
                 AssetDatabase.SaveAssets();
@@ -260,7 +280,10 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 复制 SteamWorks 配置
         /// </summary>
-        /// <param name="buildDirectory">目标目录</param>
+        /// <remarks>
+        /// Copies the SteamWorks configuration.
+        /// </remarks>
+        /// <param name="buildDirectory">目标目录 / Target directory</param>
         private static void CopySteamWorksConfig(DirectoryInfo buildDirectory)
         {
 #if STEAMWORKS_NET
@@ -277,7 +300,10 @@ namespace GameFrameX.Editor
         /// 发布 WebGL
         /// 该接口主要用于外部调用
         /// </summary>
-        /// <returns>构建结果地址</returns>
+        /// <remarks>
+        /// Builds the WebGL player. This API is mainly for external invocation.
+        /// </remarks>
+        /// <returns>构建结果地址 / The build output path</returns>
         public static string BuildPlayerWebGL()
         {
             BuildPlayerToWebGL();
@@ -287,6 +313,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 WebGL
         /// </summary>
+        /// <remarks>
+        /// Builds the WebGL player.
+        /// </remarks>
         [MenuItem("GameFrameX/Build/WebGL", false, 300)]
         private static void BuildPlayerToWebGL()
         {
@@ -314,41 +343,14 @@ namespace GameFrameX.Editor
                 RunPostHookBuild();
             }
         }
-#if ENABLE_WX_MINI_GAME
-        /// <summary>
-        /// 发布 微信小游戏 WebGL
-        /// </summary>
-        [MenuItem("GameFrameX/Build/WeChat MiniGame WebGL", false, 300)]
-        private static void BuildPlayerToWeChatMiniGameWebGL()
-        {
-            // PlayerSettings.SplashScreen.show = false;
-
-            if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.WebGL)
-            {
-                Debug.LogError("当前构建目标不是 WebGL");
-                return;
-            }
-
-            try
-            {
-                HotFixEditorCompilerHelper.AddEditor();
-                UpdateBuildTime();
-                WeChatWASM.WXConvertCore.config.ProjectConf.DST = BuildOutputPath();
-                AssetDatabase.SaveAssets();
-                WeChatWASM.WXConvertCore.DoExport();
-                Debug.Log("Build Output Path:" + BuildOutputPath());
-            }
-            finally
-            {
-                HotFixEditorCompilerHelper.RemoveEditor();
-            }
-        }
-#endif
         /// <summary>
         /// 发布 APK
         /// 该接口主要用于外部调用
         /// </summary>
-        /// <returns>构建结果地址</returns>
+        /// <remarks>
+        /// Builds the APK. This API is mainly for external invocation.
+        /// </remarks>
+        /// <returns>构建结果地址 / The build output path</returns>
         public static string BuildPlayerAndroid()
         {
             BuildPlayerToAndroid();
@@ -360,7 +362,10 @@ namespace GameFrameX.Editor
         /// 发布 Xcode
         /// 该接口主要用于外部调用
         /// </summary>
-        /// <returns>构建结果地址</returns>
+        /// <remarks>
+        /// Builds the Xcode project. This API is mainly for external invocation.
+        /// </remarks>
+        /// <returns>构建结果地址 / The build output path</returns>
         public static string BuildPlayerXcode()
         {
             ExportToXcodeToRelease();
@@ -370,6 +375,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 APK
         /// </summary>
+        /// <remarks>
+        /// Builds the APK.
+        /// </remarks>
         [MenuItem("GameFrameX/Build/Apk", false, 400)]
         private static void BuildPlayerToAndroid()
         {
@@ -403,6 +411,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 AAB
         /// </summary>
+        /// <remarks>
+        /// Builds the AAB.
+        /// </remarks>
         [MenuItem("GameFrameX/Build/AAB", false, 400)]
         private static void BuildAppBundleForAndroid()
         {
@@ -439,7 +450,7 @@ namespace GameFrameX.Editor
 
                 EditorUserBuildSettings.buildAppBundle = true;
                 // 开启符号表的输出
-                EditorUserBuildSettings.androidCreateSymbolsZip = true;
+                EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Debugging;
                 AssetDatabase.SaveAssets();
                 _buildPath = aabFilePath;
                 RunPreHookBuild();
@@ -457,7 +468,10 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 复制build.Gradle 到目标目录
         /// </summary>
-        /// <param name="targetPath"></param>
+        /// <remarks>
+        /// Copies build.gradle to the target directory.
+        /// </remarks>
+        /// <param name="targetPath">目标目录 / Target directory path</param>
         private static void CopyFileByBuildGradle(string targetPath)
         {
 #if UNITY_ANDROID
@@ -525,9 +539,12 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 获取程序的输出目录
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets the output directory of the program.
+        /// </remarks>
+        /// <param name="path">路径 / The path</param>
+        /// <param name="name">名称 / The name</param>
+        /// <returns>输出目录 / The output directory</returns>
         static string GetOutPutPath(string path, string name)
         {
             return $"{path}/launcher/build/outputs/apk/{name}/";
@@ -536,6 +553,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 AS Debug 版本
         /// </summary>
+        /// <remarks>
+        /// Builds the Android Studio debug project.
+        /// </remarks>
         [MenuItem("GameFrameX/Build/AndroidStudio Project Debug", false, 500)]
         private static void ExportToAndroidStudioToDevelop()
         {
@@ -571,6 +591,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 AS Release 版本
         /// </summary>
+        /// <remarks>
+        /// Builds the Android Studio release project.
+        /// </remarks>
         [MenuItem("GameFrameX/Build/AndroidStudio Project Release", false, 500)]
         private static void ExportToAndroidStudioToRelease()
         {
@@ -606,6 +629,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 Xcode Debug 版本
         /// </summary>
+        /// <remarks>
+        /// Builds the Xcode debug project.
+        /// </remarks>
         [MenuItem("GameFrameX/Build/Xcode Project Debug", false, 250)]
         private static void ExportToXcodeToDevelop()
         {
@@ -637,6 +663,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 发布 Xcode Release 版本
         /// </summary>
+        /// <remarks>
+        /// Builds the Xcode release project.
+        /// </remarks>
         [MenuItem("GameFrameX/Build/Xcode Project Release", false, 250)]
         private static void ExportToXcodeToRelease()
         {
@@ -666,7 +695,10 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 获取工程路径
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets the project path.
+        /// </remarks>
+        /// <returns>工程路径 / The project path</returns>
         private static string GetProjectPath()
         {
             return Application.dataPath.Replace("Assets", string.Empty);
@@ -675,6 +707,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 构建导出根目录
         /// </summary>
+        /// <remarks>
+        /// The root directory for build exports.
+        /// </remarks>
         private static string GetBuildRootPath
         {
             get { return $"{GetProjectPath()}Builds"; }
@@ -691,6 +726,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 更新时间命名
         /// </summary>
+        /// <remarks>
+        /// Updates the build time naming.
+        /// </remarks>
         private static void UpdateBuildTime()
         {
             _buildTime = DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -699,7 +737,10 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 获取发布导出路径
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>
+        /// Gets the build export path.
+        /// </remarks>
+        /// <returns>发布导出路径 / The build export path</returns>
         private static string BuildOutputPath()
         {
             var pathName = $"{Application.identifier}_{_buildTime}_v_{PlayerSettings.bundleVersion}";
@@ -725,9 +766,7 @@ namespace GameFrameX.Editor
             switch (EditorUserBuildSettings.activeBuildTarget)
             {
                 case BuildTarget.StandaloneOSX:
-                case BuildTarget.StandaloneOSXIntel:
                 case BuildTarget.StandaloneWindows:
-                case BuildTarget.StandaloneLinux:
                 case BuildTarget.StandaloneWindows64:
                 case BuildTarget.WebGL:
                 case BuildTarget.StandaloneLinux64:

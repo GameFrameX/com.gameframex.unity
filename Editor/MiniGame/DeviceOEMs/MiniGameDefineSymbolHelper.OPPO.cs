@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// OPPO 小游戏适配宏定义集合。
-        /// Define symbols for OPPO mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for OPPO mini game adaptation.
+        /// </remarks>
         public static readonly string[] EnableOPPOMiniGameScriptingDefineSymbol = new[] { "ENABLE_OPPO_MINI_GAME", "OPPOSMINIGAME" };
 
         /// <summary>
         /// 开启 OPPO 小游戏适配宏定义。
-        /// Enables define symbols for OPPO mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for OPPO mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Device OEMs(设备厂商)/Enable OPPO Mini Game(开启[OPPO小游戏]适配)", false, 3700)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭 OPPO 小游戏适配宏定义。
-        /// Disables define symbols for OPPO mini game adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for OPPO mini game adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/Device OEMs(设备厂商)/Disable OPPO Mini Game(关闭[OPPO小游戏]适配)", false, 3701)]
 #endif

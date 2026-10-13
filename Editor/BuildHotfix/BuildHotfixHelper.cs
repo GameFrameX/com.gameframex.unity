@@ -11,6 +11,9 @@ namespace GameFrameX.Editor
     /// <summary>
     /// 热更新编辑器
     /// </summary>
+    /// <remarks>
+    /// Hot update editor helper.
+    /// </remarks>
     [InitializeOnLoad]
     public static class BuildHotfixHelper
     {
@@ -40,6 +43,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 复制热更新代码
         /// </summary>
+        /// <remarks>
+        /// Copies the hot update code.
+        /// </remarks>
         [MenuItem("GameFrameX/Build/Copy HotFix Code(复制热更新代码到Assets>Bundles>Code)", false, 10)]
         public static void CopyHotfixCode()
         {
@@ -65,11 +71,20 @@ namespace GameFrameX.Editor
         }
 #endif
 #if ENABLE_GAME_FRAME_X_HYBRID_CLR
+        /// <summary>
+        /// AOT 代码目录
+        /// </summary>
+        /// <remarks>
+        /// The directory where AOT code is stored.
+        /// </remarks>
         public const string AOTCodeDir = "Assets/Bundles/AOTCode/";
 
         /// <summary>
         /// 复制AOT代码
         /// </summary>
+        /// <remarks>
+        /// Copies the AOT code.
+        /// </remarks>
         [MenuItem("GameFrameX/Build/Copy AOT Code(复制AOT代码到Assets>Bundles>AOTCode)", false, 11)]
         public static void CopyAOTCode()
         {
@@ -104,11 +119,20 @@ namespace GameFrameX.Editor
         }
 #endif
 
+        /// <summary>
+        /// HybridCLR 脚本宏定义符号
+        /// </summary>
+        /// <remarks>
+        /// The HybridCLR scripting define symbol.
+        /// </remarks>
         public const string HybridCLRScriptingDefineSymbol = "DISABLE_HYBRIDCLR";
 
         /// <summary>
         /// 禁用 HybridCLR：添加 DISABLE_HYBRIDCLR 宏，关闭热更新功能。
         /// </summary>
+        /// <remarks>
+        /// Disables HybridCLR by adding the DISABLE_HYBRIDCLR symbol to turn off hot updates.
+        /// </remarks>
         [MenuItem("GameFrameX/Scripting Define Symbols/Disable HybridCLR(关闭HybridCLR适配)", false, 5000)]
         public static void DisableHybridCLR()
         {
@@ -118,6 +142,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 启用 HybridCLR：移除 DISABLE_HYBRIDCLR 宏，开启热更新功能。
         /// </summary>
+        /// <remarks>
+        /// Enables HybridCLR by removing the DISABLE_HYBRIDCLR symbol to turn on hot updates.
+        /// </remarks>
         [MenuItem("GameFrameX/Scripting Define Symbols/Enable HybridCLR(开启HybridCLR适配)", false, 5001)]
         public static void EnableHybridCLR()
         {

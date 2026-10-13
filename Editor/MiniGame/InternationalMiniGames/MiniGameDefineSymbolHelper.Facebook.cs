@@ -9,14 +9,18 @@ namespace GameFrameX.Editor
     {
         /// <summary>
         /// Facebook 平台适配宏定义集合。
-        /// Define symbols for Facebook platform adaptation.
         /// </summary>
+        /// <remarks>
+        /// Define symbols for Facebook platform adaptation.
+        /// </remarks>
         public static readonly string[] EnableFacebookMiniGameScriptingDefineSymbol = new[] { "ENABLE_FACEBOOK_MINI_GAME", "FACEBOOKMINIGAME" };
 
         /// <summary>
         /// 开启 Facebook 平台适配宏定义。
-        /// Enables define symbols for Facebook platform adaptation.
         /// </summary>
+        /// <remarks>
+        /// Enables define symbols for Facebook platform adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Enable Facebook Mini Game(开启[Facebook]适配)", false, 3100)]
 #endif
@@ -41,8 +45,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭 Facebook 平台适配宏定义。
-        /// Disables define symbols for Facebook platform adaptation.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols for Facebook platform adaptation.
+        /// </remarks>
 #if UNITY_WEBGL
         [MenuItem("GameFrameX/Scripting Define Symbols/International Mini Games(海外小游戏)/Disable Facebook Mini Game(关闭[Facebook]适配)", false, 3101)]
 #endif

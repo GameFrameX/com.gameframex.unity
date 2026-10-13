@@ -6,21 +6,27 @@ namespace GameFrameX.Editor
 {
     /// <summary>
     /// 小游戏宏定义帮助类。
-    /// Mini game scripting define symbol helper.
     /// </summary>
+    /// <remarks>
+    /// Mini game scripting define symbol helper.
+    /// </remarks>
     public static partial class MiniGameDefineSymbolHelper
     {
 #if UNITY_WEBGL
         /// <summary>
         /// WebGL 小游戏统一宏定义。
-        /// Unified scripting define symbol for WebGL mini games.
         /// </summary>
+        /// <remarks>
+        /// Unified scripting define symbol for WebGL mini games.
+        /// </remarks>
         private const string EnableWebGLMiniGameScriptingDefineSymbol = "ENABLE_WEBGL_MINI_GAME";
 
         /// <summary>
         /// 获取所有小游戏平台宏定义集合。
-        /// Gets all mini game platform define symbol arrays.
         /// </summary>
+        /// <remarks>
+        /// Gets all mini game platform define symbol arrays.
+        /// </remarks>
         /// <returns>小游戏平台宏定义数组集合 / Collection of mini game define symbol arrays.</returns>
         private static string[][] GetAllMiniGameScriptingDefineSymbols()
         {
@@ -52,8 +58,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 关闭除当前平台以外的其它小游戏平台宏定义。
-        /// Disables define symbols of other mini game platforms except the current one.
         /// </summary>
+        /// <remarks>
+        /// Disables define symbols of other mini game platforms except the current one.
+        /// </remarks>
         /// <param name="currentMiniGameScriptingDefineSymbols">当前平台宏定义集合 / Define symbols of the current platform.</param>
         private static void DisableOtherMiniGameScriptingDefineSymbols(string[] currentMiniGameScriptingDefineSymbols)
         {
@@ -88,8 +96,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 打开 WebGL 小游戏统一宏定义。
-        /// Enables the unified WebGL mini game define symbol.
         /// </summary>
+        /// <remarks>
+        /// Enables the unified WebGL mini game define symbol.
+        /// </remarks>
         private static void EnableUnifiedMiniGameScriptingDefineSymbol()
         {
             if (ScriptingDefineSymbols.HasScriptingDefineSymbol(BuildTargetGroup.WebGL, EnableWebGLMiniGameScriptingDefineSymbol))
@@ -103,8 +113,10 @@ namespace GameFrameX.Editor
 
         /// <summary>
         /// 根据当前各平台宏定义状态刷新 WebGL 小游戏统一宏定义。
-        /// Refreshes the unified WebGL mini game define symbol according to platform define states.
         /// </summary>
+        /// <remarks>
+        /// Refreshes the unified WebGL mini game define symbol according to platform define states.
+        /// </remarks>
         private static void RefreshUnifiedMiniGameScriptingDefineSymbol()
         {
             var hasAnyMiniGameDefine = false;

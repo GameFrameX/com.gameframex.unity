@@ -33,13 +33,22 @@ using UnityEditor.Callbacks;
 
 namespace GameFrameX.Editor
 {
+    /// <summary>
+    /// 构建后处理帮助类
+    /// </summary>
+    /// <remarks>
+    /// Helper class for post-build processing.
+    /// </remarks>
     public static class BuildPostProcessHelper
     {
         /// <summary>
         /// 设置 发布版本号更新
         /// </summary>
-        /// <param name="target"></param>
-        /// <param name="path"></param>
+        /// <remarks>
+        /// Updates the release version number after a build.
+        /// </remarks>
+        /// <param name="target">构建目标平台 / The build target platform</param>
+        /// <param name="path">构建输出路径 / The build output path</param>
         [PostProcessBuild(999)]
         public static void OnPostProcessBuild(BuildTarget target, string path)
         {

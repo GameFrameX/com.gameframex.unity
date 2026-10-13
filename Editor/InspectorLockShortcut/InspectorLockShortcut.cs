@@ -2,6 +2,12 @@
 
 namespace GameFrameX.Editor
 {
+    /// <summary>
+    /// Inspector 锁定快捷键窗口。
+    /// </summary>
+    /// <remarks>
+    /// Editor window providing an Inspector lock shortcut.
+    /// </remarks>
     public sealed class InspectorLockShortcut : EditorWindow
     {
         [MenuItem("Window/Toggle Inspector Lock %l")]

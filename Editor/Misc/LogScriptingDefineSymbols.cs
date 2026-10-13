@@ -38,6 +38,9 @@ namespace GameFrameX.Editor
     /// <summary>
     /// 日志脚本宏定义。
     /// </summary>
+    /// <remarks>
+    /// Log scripting define symbols.
+    /// </remarks>
     public static class LogScriptingDefineSymbols
     {
         private const string EnableLogScriptingDefineSymbol = "ENABLE_LOG";
@@ -73,6 +76,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 禁用所有日志脚本宏定义。
         /// </summary>
+        /// <remarks>
+        /// Disables all log scripting define symbols.
+        /// </remarks>
         [MenuItem("GameFrameX/Scripting Define Symbols/Disable All Logs(禁用所有日志脚本宏定义)", false, 30)]
         public static void DisableAllLogs()
         {
@@ -92,6 +98,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启所有日志脚本宏定义。
         /// </summary>
+        /// <remarks>
+        /// Enables all log scripting define symbols.
+        /// </remarks>
         [MenuItem("GameFrameX/Scripting Define Symbols/Enable All Logs(开启所有日志脚本宏定义)", false, 31)]
         public static void EnableAllLogs()
         {
@@ -102,6 +111,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启调试及以上级别的日志脚本宏定义。
         /// </summary>
+        /// <remarks>
+        /// Enables the debug-and-above level log scripting define symbol.
+        /// </remarks>
         [MenuItem("GameFrameX/Scripting Define Symbols/Enable Debug And Above Logs(开启调试及以上级别的日志脚本宏定义)", false, 32)]
         public static void EnableDebugAndAboveLogs()
         {
@@ -111,6 +123,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启信息及以上级别的日志脚本宏定义。
         /// </summary>
+        /// <remarks>
+        /// Enables the info-and-above level log scripting define symbol.
+        /// </remarks>
         [MenuItem("GameFrameX/Scripting Define Symbols/Enable Info And Above Logs(开启信息及以上级别的日志脚本宏定义)", false, 33)]
         public static void EnableInfoAndAboveLogs()
         {
@@ -120,6 +135,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启警告及以上级别的日志脚本宏定义。
         /// </summary>
+        /// <remarks>
+        /// Enables the warning-and-above level log scripting define symbol.
+        /// </remarks>
         [MenuItem("GameFrameX/Scripting Define Symbols/Enable Warning And Above Logs(开启警告及以上级别的日志脚本宏定义)", false, 34)]
         public static void EnableWarningAndAboveLogs()
         {
@@ -129,6 +147,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启错误及以上级别的日志脚本宏定义。
         /// </summary>
+        /// <remarks>
+        /// Enables the error-and-above level log scripting define symbol.
+        /// </remarks>
         [MenuItem("GameFrameX/Scripting Define Symbols/Enable Error And Above Logs(开启错误及以上级别的日志脚本宏定义)", false, 35)]
         public static void EnableErrorAndAboveLogs()
         {
@@ -138,6 +159,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 开启严重错误及以上级别的日志脚本宏定义。
         /// </summary>
+        /// <remarks>
+        /// Enables the fatal-and-above level log scripting define symbol.
+        /// </remarks>
         [MenuItem("GameFrameX/Scripting Define Symbols/Enable Fatal And Above Logs(开启严重错误及以上级别的日志脚本宏定义)", false, 36)]
         public static void EnableFatalAndAboveLogs()
         {
@@ -147,7 +171,10 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 设置日志脚本宏定义。
         /// </summary>
-        /// <param name="aboveLogScriptingDefineSymbol">要设置的日志脚本宏定义。</param>
+        /// <remarks>
+        /// Sets the log scripting define symbol.
+        /// </remarks>
+        /// <param name="aboveLogScriptingDefineSymbol">要设置的日志脚本宏定义。 / The log scripting define symbol to set.</param>
         public static void SetAboveLogScriptingDefineSymbol(string aboveLogScriptingDefineSymbol)
         {
             if (string.IsNullOrEmpty(aboveLogScriptingDefineSymbol))
@@ -169,7 +196,10 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 设置日志脚本宏定义。
         /// </summary>
-        /// <param name="specifyLogScriptingDefineSymbols">要设置的日志脚本宏定义。</param>
+        /// <remarks>
+        /// Sets the log scripting define symbols.
+        /// </remarks>
+        /// <param name="specifyLogScriptingDefineSymbols">要设置的日志脚本宏定义。 / The log scripting define symbols to set.</param>
         public static void SetSpecifyLogScriptingDefineSymbols(string[] specifyLogScriptingDefineSymbols)
         {
             if (specifyLogScriptingDefineSymbols == null || specifyLogScriptingDefineSymbols.Length <= 0)

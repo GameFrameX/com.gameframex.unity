@@ -41,11 +41,17 @@ namespace GameFrameX.Editor
     /// <summary>
     /// 打开文件夹相关的实用函数。
     /// </summary>
+    /// <remarks>
+    /// Utility functions related to opening folders.
+    /// </remarks>
     public static class OpenFolder
     {
         /// <summary>
         /// 打开 Data Path 文件夹。
         /// </summary>
+        /// <remarks>
+        /// Opens the Data Path folder.
+        /// </remarks>
         [MenuItem("GameFrameX/Open Folder/Data Path(打开Data Path文件夹)", false, 10)]
         public static void OpenFolderDataPath()
         {
@@ -55,6 +61,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 打开 Persistent Data Path 文件夹。
         /// </summary>
+        /// <remarks>
+        /// Opens the Persistent Data Path folder.
+        /// </remarks>
         [MenuItem("GameFrameX/Open Folder/Persistent Data Path(打开Persistent Data Path文件夹)", false, 11)]
         public static void OpenFolderPersistentDataPath()
         {
@@ -64,6 +73,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 打开 Streaming Assets Path 文件夹。
         /// </summary>
+        /// <remarks>
+        /// Opens the Streaming Assets Path folder.
+        /// </remarks>
         [MenuItem("GameFrameX/Open Folder/Streaming Assets Path(打开Streaming Assets Path文件夹)", false, 12)]
         public static void OpenFolderStreamingAssetsPath()
         {
@@ -73,6 +85,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 打开 Temporary Cache Path 文件夹。
         /// </summary>
+        /// <remarks>
+        /// Opens the Temporary Cache Path folder.
+        /// </remarks>
         [MenuItem("GameFrameX/Open Folder/Temporary Cache Path(打开Temporary Cache Path文件夹)", false, 13)]
         public static void OpenFolderTemporaryCachePath()
         {
@@ -84,6 +99,9 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 打开 Console Log Path 文件夹。
         /// </summary>
+        /// <remarks>
+        /// Opens the Console Log Path folder.
+        /// </remarks>
         [MenuItem("GameFrameX/Open Folder/Console Log Path(打开Console Log Path文件夹)", false, 14)]
         public static void OpenFolderConsoleLogPath()
         {
@@ -95,7 +113,10 @@ namespace GameFrameX.Editor
         /// <summary>
         /// 打开指定路径的文件夹。
         /// </summary>
-        /// <param name="folder">要打开的文件夹的路径。</param>
+        /// <remarks>
+        /// Opens the folder at the specified path.
+        /// </remarks>
+        /// <param name="folder">要打开的文件夹的路径。 / The path of the folder to open.</param>
         public static void Execute(string folder)
         {
             folder = Utility.Text.Format("\"{0}\"", folder);
