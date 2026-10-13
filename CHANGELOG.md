@@ -1,3 +1,32 @@
+## [Unreleased]
+
+### ⚠ BREAKING CHANGES
+
+* **runtime:** 新增 `GameFrameXOptions` 模块 Options 启动配置注册表：`Configure` 注入值 > Options 字段默认值，模块首次实例化时一次性消费；已消费后再次 `Configure` 抛出 `GameFrameworkException`
+* **runtime:** `GameFrameworkEntry.InstantiateAllModules` 启动期全量实例化（三模式统一）；`[GameFrameXLazyModule]` 标注的模块跳过，保留 `GetModule` 惰性兜底逃生口
+* **runtime:** 反射字典通道删除：`SetValue` / `SetComponentValue` 组件值参数注入接口移除，结构性属性保留
+* **runtime:** 组件值参数序列化字段移除（Timer / Event / Fsm / ObjectPool / Mono / WebView / Config 等组件保留为薄入口、纯转发无序列化字段），编辑期配置入口收敛到代码 Options；Play 期经活视图 / 模块 API 调整
+* **runtime:** 新增 `ReferencePoolOptions` 启动配置（字段默认值同原 Inspector 序列化默认）
+* **runtime:** 未消费 Options 诊断：`Reset` / `Shutdown` 时对"已注册但从未被任何模块消费"的 Options 输出 Warning
+* **editor:** 移除 UPM 迁移期的旧包管理界面：`PackageManagerWindow`（git 源切换 / git tag 版本列表）、`UpdateAllPackageHelper`（批量重装 git 包）与 `ScopedRegistryHelper`（scoped registry 配置 / git 依赖迁移）随 `GameFrameX/Package Manager` 菜单一并退役，包管理统一走 Unity 原生 Package Manager
+
+### 迁移对照表
+
+| 旧用法 | 新用法 |
+| --- | --- |
+| `GameEntry.GetComponent<X>()` | `GameFrameworkEntry.GetModule<IXManager>()`（或 `GameApp.X` 直达） |
+| Inspector 类型名下拉选择 Helper | Options `Func` 工厂闭包（Custom 引用优先） |
+| `RuntimeConfig.SetValue` / `SetComponentValue` | `GameFrameXOptions.Configure(new XxxOptions { ... })` |
+| `GameFrameX/Package Manager` / `Update All Packages` 菜单 | Unity 原生 `Window/Package Manager`（scoped registry / embedded 包） |
+
+### Features
+
+* **editor:** 欢迎界面文案中英双语：标题、副标题、分区卡片、访问按钮与启动开关均显示「中文 / English」对照
+
+### Bug Fixes
+
+* **editor:** `ComponentTypeComponentInspector` 在子类未提供类型列表（`ComponentTypeNames` 为空，如 C9 后配置收敛到 Options 的组件 Inspector）时跳过 `ComponentType` 下拉绘制，修复 `EditorGUIUtility.TempContent` NullReferenceException
+
 ## [2.5.4](https://github.com/gameframex/com.gameframex.unity/compare/2.5.3...2.5.4) (2026-09-13)
 
 

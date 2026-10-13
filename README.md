@@ -4,382 +4,87 @@
 
 # GameFrameX Unity Package
 
+[![License](https://img.shields.io/badge/license-blue.svg)](LICENSE.md)
 [![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity)](https://github.com/GameFrameX/com.gameframex.unity)
-[![Unity](https://img.shields.io/badge/Unity-2019.4+-green.svg)](https://unity3d.com/get-unity/download)
-[![License](https://img.shields.io/badge/license-MIT+Apache%202.0-orange.svg)](LICENSE.md)
+[![Unity Version](https://img.shields.io/badge/Unity-2019.4-black?logo=unity)](https://unity.com/)
 [![Documentation](https://img.shields.io/badge/docs-gameframex.doc.alianblank.com-brightgreen.svg)](https://gameframex.doc.alianblank.com)
+
+[![Discord](https://img.shields.io/badge/-5865F2?logo=discord&logoColor=white)](https://discord.gg/VDWUJWMDw9)
+[![GitHub](https://img.shields.io/badge/-181717?logo=github&logoColor=white)](https://github.com/GameFrameX/gameframex)
+[![Bilibili](https://img.shields.io/badge/-00A1D6?logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1yrpeepEn7)
+[![Gitee](https://img.shields.io/badge/-C71D23?logo=gitee&logoColor=white)](https://gitee.com/GameFrameX/gameframex)
 
 **All-in-One Solution for Indie Game Development · Empowering Indie Developers' Dreams**
 
-[📖 Documentation](https://gameframex.doc.alianblank.com) • [🚀 Quick Start](#quick-start) • [💬 QQ Group: 467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
+[Documentation](https://gameframex.doc.alianblank.com) · [Quick Start](#quick-start) · QQ Group: 467608841 / 233840761
 
----
+<br />
 
-🌐 **Language**: **English** | [繁體中文](./README.zh-TW.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [한국어](./README.ko.md)
+**English** | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
 
----
+<br />
 
 </div>
 
-## 📑 Table of Contents
+---
 
-- [🏗️ Project Overview](#🏗️-project-overview)
-- [📂 Architecture](#📂-architecture)
-  - [Runtime Module](#-runtime-module)
-  - [Plugins Module](#-plugins-module)
-  - [Editor Module](#-editor-module)
-- [🚀 Quick Start](#🚀-quick-start)
-- [💡 Usage Examples](#💡-usage-examples)
-  - [Runtime Examples](#runtime-usage-examples)
-  - [Editor Tools](#editor-tools)
-- [🎯 Platform Support](#🎯-platform-support)
-- [📚 Documentation & Resources](#📚-documentation--resources)
-- [🤝 Community & Support](#🤝-community--support)
-- [📄 License](#📄-license)
+## Project Overview
+
+GameFrameX is a modern Unity game framework designed for independent game developers, providing a complete end-to-end solution for game development. The framework follows a three-layer modular architecture and ships with rich built-in tools and components, helping developers ship high-quality game projects faster.
+
+`com.gameframex.unity` is the core package — it contains the runtime kernels (event pool, reference pool, task pool, object pool, variable / property systems, extensions, helpers, utilities), the editor toolchain (build pipeline with hotfix, WebGL + HybridCLR tools, mini-game platform adaptation, welcome window, inspector enhancements, inspector lock shortcut, cropping, scripting define symbol manager), native iOS bridge plugin and bundled .NET libraries (SharpZipLib, System.Memory / Buffers / Pipelines). It is the foundation every other GameFrameX Unity package depends on.
+
+### Features
+
+- Three-layer architecture: Runtime / Plugins / Editor with clear responsibilities.
+- Rich runtime toolkit: EventPool, ReferencePool, TaskPool, ObjectPool, Variable / Property, extensions and Helper classes.
+- Editor toolchain: BuildProduct / BuildHotfix pipeline, BuildWebGLTools with HybridCLR, mini-game adaptation for 21 platforms, welcome window, inspector enhancements.
+- Utility layer: encryption (AES / RSA / DSA), compression (ZIP), hash (MD5 / SHA1 / HMAC / CRC), JSON, file / path / network helpers, ID generator, text processing.
+- Hotfix-ready: HybridCLR hotfix build pipeline integrated with the standard build process.
+- Multi-platform: Windows, macOS, Linux, iOS, Android, WebGL, plus 21 mini-game platforms worldwide.
+
+### System Requirements
+
+- Unity: 2019.4 or higher
+- Platforms: Windows, macOS, Linux, iOS, Android, WebGL
+- .NET: .NET Standard 2.0+
 
 ---
 
-## 🏗️ Project Overview
-
-GameFrameX is a modern Unity game framework designed for independent game developers, providing a complete end-to-end solution for game development. The framework follows a **three-layer modular architecture** design with rich built-in game development tools and components, helping developers quickly build high-quality game projects.
-
-### 🎯 Key Features
-
-- 🏗️ **Three-Layer Architecture** - Clear separation: Runtime, Plugins, and Editor
-- 🔧 **Rich Toolset** - Built-in development aids and editor extensions
-- 📦 **Object Pool Management** - Efficient memory management and object reuse
-- 🎨 **Extension Methods Library** - Extensive Unity engine extensions
-- 🛠️ **Utility Classes** - Encryption, compression, networking, and more
-- 📱 **Multi-Platform Support** - PC, Mobile, WebGL and more
-- 🔥 **Hotfix Support** - Built-in HybridCLR hotfix solution
-- 🎮 **Mini Game Adaptation** - One-click switch between multiple mini game platforms
-
-### 📋 System Requirements
-
-- **Unity Version**: 2019.4 or higher
-- **Platform Support**: Windows, macOS, Linux, iOS, Android, WebGL
-- **.NET Version**: .NET Standard 2.0+
-
----
-
-## 📂 Architecture
-
-GameFrameX uses a clear three-layer architecture design, with each module having its own responsibilities and working together.
-
-### 📦 Runtime Module
-
-Core runtime code providing all functionality needed for game runtime.
-
-```
-Runtime/
-├── Base/                          # Framework Core Foundation
-│   ├── DataStruct/               # Data Structures
-│   │   └── TypeNamePair.cs       # Type Name Pair
-│   ├── EventPool/                # Event Pool System
-│   │   ├── BaseEventArgs.cs      # Base Event Args
-│   │   ├── EventPool.EventNode.cs # Event Node
-│   │   ├── EventPool.cs          # Event Pool Core
-│   │   └── EventPoolMode.cs      # Event Pool Mode
-│   ├── Log/                      # Logging System
-│   │   ├── GameFrameworkLog.ILogHelper.cs # Log Interface
-│   │   ├── GameFrameworkLog.cs   # Log Core
-│   │   └── GameFrameworkLogLevel.cs # Log Level
-│   ├── ReferencePool/            # Reference Pool System
-│   │   ├── IReference.cs        # Reference Interface
-│   │   ├── ReferencePool.ReferenceCollection.cs # Reference Collection
-│   │   ├── ReferencePool.cs      # Reference Pool Core
-│   │   └── ReferencePoolInfo.cs   # Reference Pool Info
-│   ├── TaskPool/                 # Task Pool System
-│   │   ├── ITaskAgent.cs        # Task Agent Interface
-│   │   ├── StartTaskStatus.cs    # Task Status
-│   │   ├── TaskBase.cs          # Task Base
-│   │   ├── TaskInfo.cs          # Task Info
-│   │   ├── TaskPool.cs          # Task Pool Core
-│   │   └── TaskStatus.cs        # Task Status
-│   ├── Variable/                 # Variable System
-│   │   ├── GenericVariable.cs    # Generic Variable
-│   │   └── Variable.cs          # Variable Base
-│   ├── Version/                  # Version Management
-│   │   ├── Version.IVersionHelper.cs # Version Interface
-│   │   └── Version.cs           # Version Core
-│   ├── BaseComponent.cs          # Base Component
-│   ├── GameEntry.cs             # Game Entry
-│   ├── GameFrameworkComponent.cs # Framework Component
-│   ├── GameFrameworkEntry.cs    # Framework Entry
-│   ├── GameFrameworkEventArgs.cs # Framework Event Args
-│   ├── GameFrameworkException.cs # Framework Exception
-│   ├── GameFrameworkGuard.cs    # Framework Guard
-│   ├── GameFrameworkLinkedList.cs # Linked List
-│   ├── GameFrameworkLinkedListRange.cs # Linked List Range
-│   ├── GameFrameworkModule.cs   # Framework Module
-│   ├── GameFrameworkMonoSingleton.cs # Mono Singleton
-│   ├── GameFrameworkMultiDictionary.cs # Multi-Value Dictionary
-│   ├── GameFrameworkSerializer.cs # Serializer
-│   ├── GameFrameworkSingleton.cs # Singleton Base
-│   ├── ObjectDontDestroyOnLoad.cs # Scene Persistent Object
-│   └── ShutdownType.cs           # Shutdown Type
-├── Extension/                     # Extension Methods Library
-│   ├── Extension/                # Common Extensions
-│   │   ├── BidirectionalDictionary.cs # Bidirectional Dictionary
-│   │   ├── BinaryExtension.cs      # Binary Extension
-│   │   ├── BufferExtension.cs      # Buffer Extension
-│   │   ├── CollectionExtensions.cs # Collection Extensions
-│   │   ├── DateTimeExtensions.cs   # DateTime Extension
-│   │   ├── ObjectExtension.cs      # Object Extension
-│   │   ├── SpanExtension.cs        # Span Extension
-│   │   ├── StringExtensions.cs     # String Extensions
-│   │   ├── ThreadLocalRandom.cs    # Thread Local Random
-│   │   └── TypeExtensions.cs       # Type Extensions
-│   ├── SequenceReader/            # Sequence Reader
-│   │   ├── SequenceReader.cs       # Sequence Reader Core
-│   │   └── SequenceReaderExtensions.cs # Sequence Reader Extensions
-│   ├── UnityEngine.GameObject/    # GameObject Extension
-│   │   └── UnityEngine.GameObjectExtension.cs # GameObject Extension
-│   └── UnityEngine/               # Unity Type Extensions
-│       ├── Transform/             # Transform Extension
-│       ├── Vector2/               # Vector2 Extension
-│       ├── Vector3/               # Vector3 Extension
-│       └── Vector4/               # Vector4 Extension
-├── Helper/                        # Helper Classes
-│   ├── ApplicationHelper.cs      # Application Helper
-│   ├── CameraHelper.cs          # Camera Helper
-│   ├── DefaultCompressionHelper.cs # Default Compression Helper
-│   ├── DefaultLogHelper.cs       # Default Log Helper
-│   ├── DefaultTextHelper.cs      # Default Text Helper
-│   ├── DefaultVersionHelper.cs   # Default Version Helper
-│   ├── DistinctHelper.cs         # Distinct Helper
-│   ├── DoTweenHelper.cs          # DoTween Animation Helper
-│   ├── FileHelper.cs            # File Helper
-│   ├── GameObjectHelper.cs      # GameObject Helper
-│   ├── Helper.cs                # Helper Base Class
-│   ├── MathHelper.cs            # Math Helper
-│   ├── NetworkHelper.cs         # Network Helper
-│   ├── LitJsonHelper.cs  # LitJSON Helper
-│   ├── ObjectHelper.cs          # Object Helper
-│   ├── PathHelper.cs            # Path Helper
-│   ├── PositionHelper.cs        # Position Helper
-│   ├── RandomHelper.cs          # Random Helper
-│   ├── TimerHelper/             # Timer Helper
-│   │   ├── TimerHelper.cs       # Timer Core
-│   │   ├── TimerHelper.Current.cs # Current Time
-│   │   ├── TimerHelper.Day.cs   # Day Calculation
-│   │   ├── TimerHelper.Difference.cs # Time Difference
-│   │   ├── TimerHelper.Month.cs  # Month Calculation
-│   │   ├── TimerHelper.Range.cs  # Time Range
-│   │   ├── TimerHelper.TimeOffset.cs # Time Offset
-│   │   ├── TimerHelper.Timestamp.cs # Timestamp
-│   │   ├── TimerHelper.Week.cs   # Week Calculation
-│   │   └── TimerHelper.Year.cs   # Year Calculation
-│   ├── UnityRendererHelper.cs   # Unity Renderer Helper
-│   └── ZipHelper.cs             # ZIP Compression Helper
-├── ObjectPool/                    # Object Pool System
-│   ├── IObjectPool.cs           # Object Pool Interface
-│   ├── ObjectBase.cs            # Object Pool Base
-│   └── ObjectPoolComponent.cs   # Object Pool Component
-├── Property/                      # Property System
-│   └── BindableProperty.cs      # Bindable Property
-├── ReferencePool/                # Reference Pool System
-│   └── ReferencePoolComponent.cs # Reference Pool Component
-└── Utility/                       # Utility Classes
-    ├── Log.cs                     # Log Utility
-    ├── Utility.Assembly.cs        # Assembly Utility
-    ├── Utility.Asset.Path.cs      # Asset Path Utility
-    ├── Utility.Compression/      # Compression
-    │   ├── ICompressionHelper.cs  # Compression Interface
-    │   └── Utility.Compression.cs # Compression Core
-    ├── Utility.Const/            # Constants
-    │   └── FileNameSuffix.cs      # File Name Suffix
-    ├── Utility.Converter.cs       # Type Converter
-    ├── Utility.Encryption/        # Encryption
-    │   ├── Utility.Encryption.cs  # Encryption Core
-    │   ├── Aes.cs                # AES Encryption
-    │   ├── Rsa.cs                # RSA Encryption
-    │   └── Dsa.cs                # DSA Encryption
-    ├── Utility.Hash/             # Hash Calculation
-    │   ├── HMACSha256.cs         # HMAC SHA256
-    │   ├── Md5.cs                # MD5
-    │   ├── Sha1.cs               # SHA1
-    │   ├── MurmurHash3.cs        # MurmurHash3
-    │   └── XxHash.cs             # XxHash
-    ├── Utility.IdGenerator.cs     # ID Generator
-    ├── Utility.Json/             # JSON Serialization
-    │   ├── IJsonHelper.cs        # JSON Interface
-    │   └── Utility.Json.cs       # JSON Core
-    ├── Utility.Marshal.cs         # Marshal Utility
-    ├── Utility.Text/             # Text Processing
-    │   ├── ITextHelper.cs        # Text Interface
-    │   └── Utility.Text.cs       # Text Core
-    ├── Utility.Verifier/          # Verifier
-    │   ├── Verifier.cs           # Verifier Core
-    │   ├── Crc32.cs             # CRC32
-    │   └── Crc64.cs             # CRC64
-    ├── Utility.cs                # Utility Entry
-    └── XString.cs                # Efficient String
-```
-
-#### Runtime Sub-Modules
-
-| Sub-Module        | Description           | Main Features                                                                                                                                     |
-| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Base**          | Framework Core        | Component management, event pool, logging, reference pool, task pool, variable system, lifecycle management, singleton pattern                    |
-| **Extension**     | Extension Library     | Common extensions (string, collection, datetime), Unity type extensions (Transform, Vector), sequence reader, GameObject extensions               |
-| **Helper**        | Helper Classes        | Application, camera, file, path, math, random, timer, network, JSON, rendering, position and more                                                 |
-| **ObjectPool**    | Object Pool System    | Object reuse, memory optimization, performance improvement                                                                                        |
-| **Property**      | Property System       | Bindable properties, data binding, MVVM support                                                                                                   |
-| **ReferencePool** | Reference Pool System | Reference type management, GC optimization                                                                                                        |
-| **Utility**       | Utility Classes       | Encryption (AES/RSA/DSA), compression, hash (MD5/SHA1/HMAC), CRC, JSON, file operations, ID generation, type conversion, text processing, logging |
-
-### 🔌 Plugins Module
-
-Native platform plugins and third-party dependencies.
-
-```
-Plugins/
-├── iOS/                          # iOS Native Plugin
-│   └── GameFrameX/
-│       ├── GameFrameX.mm                    # Core Functionality
-│       └── GameFrameXTrackingAuthorization.mm # Permission Tracking
-├── ICSharpCode.SharpZipLib.dll   # ZIP Compression Library
-├── Microsoft.NET.StringTools.dll  # String Tools
-├── System.Buffers.dll            # Memory Buffer
-├── System.IO.Pipelines.dll       # IO Pipeline
-├── System.Memory.dll            # Memory Management
-└── System.Runtime.CompilerServices.Unsafe.dll # Runtime Support
-```
-
-#### Plugins Sub-Modules
-
-| Sub-Module              | Description                        | Dependencies                 |
-| ----------------------- | ---------------------------------- | ---------------------------- |
-| **iOS Plugin**          | iOS native functionality           | GameFrameX.mm                |
-| **Compression Library** | ZIP file compression/decompression | SharpZipLib                  |
-| **Memory Management**   | Efficient memory operations        | StringTools, Memory, Buffers |
-| **Runtime Support**     | .NET runtime extensions            | CompilerServices.Unsafe      |
-
-### 🛠️ Editor Module
-
-Editor tools and extensions for improved development efficiency.
-
-```
-Editor/
-├── BuildHotfix/                  # Hotfix Build Tools
-│   ├── BuildHotfixHelper.cs     # Build Helper
-│   ├── HotFixAssemblyDefinitionHelper.cs # Hotfix Assembly
-│   └── HotFixEditorCompilerHelper.cs # Editor Compiler
-├── BuildProduct/                 # Product Build Assistant
-│   ├── BuildProductHelper.cs    # Build Helper
-│   ├── BuildPostProcessHelper.cs # Post Build Processing
-│   ├── IBuilderPreHookHandler.cs # Pre-Build Hook
-│   └── IBuilderPostHookHandler.cs # Post-Build Hook
-├── BuildWebGLTools/             # WebGL Build Tools
-│   └── BuildWebGLToolsWithHybridCLR.cs # HybridCLR WebGL Build
-├── Cropping/                     # Image Cropping Tool
-│   └── CroppingWindow.cs        # Cropping Window
-├── Inspector/                    # Custom Inspector Panels
-│   ├── BaseComponentInspector.cs # Base Component Inspector
-│   ├── ObjectPoolComponentInspector.cs # Object Pool Inspector
-│   └── ReferencePoolComponentInspector.cs # Reference Pool Inspector
-├── InspectorLockShortcut/        # Inspector Lock
-│   └── InspectorLockShortcut.cs # Keyboard Shortcut Lock
-├── MiniGame/                      # Mini Game Platform Adaptation (21 Platforms) ⭐
-│   ├── MiniGameDefineSymbolHelper.cs # Base Define Symbol Manager
-│   ├── DomesticMiniGames/          # Domestic (China) Mini Games
-│   │   ├── MiniGameDefineSymbolHelper.WeChat.cs # WeChat
-│   │   ├── MiniGameDefineSymbolHelper.Alipay.cs # Alipay
-│   │   ├── MiniGameDefineSymbolHelper.DouYin.cs # DouYin
-│   │   ├── MiniGameDefineSymbolHelper.KuaiShou.cs # KuaiShou
-│   │   ├── MiniGameDefineSymbolHelper.Baidu.cs # Baidu
-│   │   ├── MiniGameDefineSymbolHelper.JingDong.cs # JingDong
-│   │   ├── MiniGameDefineSymbolHelper.Meituan.cs # Meituan
-│   │   ├── MiniGameDefineSymbolHelper.Taobao.cs # Taobao
-│   │   └── MiniGameDefineSymbolHelper.Bilibili.cs # Bilibili
-│   ├── InternationalMiniGames/     # International Mini Games
-│   │   ├── MiniGameDefineSymbolHelper.CrazyGames.cs # CrazyGames
-│   │   ├── MiniGameDefineSymbolHelper.Discord.cs # Discord
-│   │   ├── MiniGameDefineSymbolHelper.Facebook.cs # Facebook
-│   │   ├── MiniGameDefineSymbolHelper.GooglePlay.cs # Google Play
-│   │   ├── MiniGameDefineSymbolHelper.Poki.cs # Poki
-│   │   ├── MiniGameDefineSymbolHelper.TikTok.cs # TikTok
-│   │   └── MiniGameDefineSymbolHelper.YouTube.cs # YouTube
-│   ├── DeviceOEMs/                # Device OEM Mini Games
-│   │   ├── MiniGameDefineSymbolHelper.Huawei.cs # Huawei
-│   │   ├── MiniGameDefineSymbolHelper.OPPO.cs # OPPO
-│   │   ├── MiniGameDefineSymbolHelper.Vivo.cs # vivo
-│   │   └── MiniGameDefineSymbolHelper.Xiaomi.cs # Xiaomi
-│   └── GamePlatforms/             # Game Platform
-│       └── MiniGameDefineSymbolHelper.TapTap.cs # TapTap
-├── PackageManager/               # Package Manager Window
-│   ├── PackageManagerWindow.cs   # Package Manager Window
-│   └── PackagesManifest.cs     # Package Manifest
-├── UpdatePackages/               # Package Update Tools
-│   └── UpdateAllPackageHelper.cs # Batch Update
-├── Welcome/                      # Welcome Window
-│   └── WelcomeWindow.cs         # Welcome Interface
-└── Misc/                         # Miscellaneous Tools
-    ├── HelperInfo.cs            # Helper Info
-    ├── LogRedirection.cs        # Log Redirection
-    ├── ScriptingDefineSymbols.cs # Define Symbol Manager
-    ├── Type.cs                  # Type Utility
-    └── OpenFolder.cs            # Open Folder
-```
-
-#### Editor Sub-Modules
-
-| Sub-Module                | Description          | Main Features                                                                                                           |
-| ------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| **BuildHotfix**           | Hotfix Build         | HybridCLR hotfix assembly build and management                                                                          |
-| **BuildProduct**          | Product Build        | Build process automation, pre/post hooks                                                                                |
-| **BuildWebGLTools**       | WebGL Build          | WebGL platform specific build tools                                                                                     |
-| **Cropping**              | Image Cropping       | Visual image cropping tool                                                                                              |
-| **Inspector**             | Custom Inspectors    | Object pool, reference pool visual monitoring                                                                           |
-| **InspectorLockShortcut** | Inspector Lock       | Keyboard shortcut for locking Inspector panel                                                                           |
-| **MiniGame**              | Mini Game Adaptation | One-click switch between 21 mini game platforms (categorized into domestic, international, device OEMs, game platforms) |
-| **PackageManager**        | Package Management   | Visual package management interface                                                                                     |
-| **UpdatePackages**        | Package Update       | Batch update project dependencies                                                                                       |
-| **Welcome**               | Welcome Interface    | New user guide and quick access                                                                                         |
-| **Misc**                  | Miscellaneous        | Logging, define symbols, types and more                                                                                 |
-
----
-
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
-#### Method 1: Unity Package Manager (Recommended)
+Choose one of the following methods:
 
-1. Open Unity Editor
-2. Go to `Window` → `Package Manager`
-3. Click the `+` button in the top-left corner
-4. Select `Add package from git URL`
-5. Enter: `https://github.com/GameFrameX/com.gameframex.unity.git`
+1. Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
+   ```json
+   {
+     "scopedRegistries": [
+       {
+         "name": "GameFrameX",
+         "url": "https://gameframex.upm.alianblank.uk",
+         "scopes": [
+           "com.gameframex.unity"
+         ]
+       }
+     ],
+     "dependencies": {
+       "com.gameframex.unity": "2.5.4"
+     }
+   }
+   ```
 
-#### Method 2: Manual Download
+   `scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex.unity` will be fetched from it.
 
-1. Download the latest [Release](https://github.com/GameFrameX/com.gameframex.unity/releases)
-2. Extract to your project's `Packages` directory
-
-#### Method 3: Using scopedRegistries (UPM)
-
-Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
-
-```json
-{
-  "scopedRegistries": [
-    {
-      "name": "GameFrameX",
-      "url": "https://gameframex.upm.alianblank.uk",
-      "scopes": [
-        "com.gameframex"
-      ]
-    }
-  ],
-  "dependencies": {
-    "com.gameframex.unity": "1.10.1"
-  }
-}
-```
-
-`scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
+2. Add to `manifest.json` dependencies:
+   ```json
+   {
+     "com.gameframex.unity": "https://github.com/GameFrameX/com.gameframex.unity.git"
+   }
+   ```
+3. Use **Package Manager** in Unity with **Git URL**: `https://github.com/GameFrameX/com.gameframex.unity.git`
+4. Clone the repository into your Unity project's `Packages` directory. It will be loaded automatically.
 
 ### Basic Usage
 
@@ -390,26 +95,98 @@ public class GameManager : MonoBehaviour
 {
     void Start()
     {
-        // Get object pool component
+        // Get a component from the framework entry
         var objectPool = GameEntry.GetComponent<ObjectPoolComponent>();
-        
-        // Get reference pool component
+
+        // Get a reference pool component
         var referencePool = GameEntry.GetComponent<ReferencePoolComponent>();
-        
-        // Use extension methods
+
+        // Use extension methods on engine types
         transform.SetPositionX(10f);
         gameObject.SetActiveOptimized(true);
     }
 }
 ```
 
+### Host Framework Integration (Headless Three-Line Contract)
+
+GameFrameX can be embedded into other Unity frameworks or a custom host as a pure C# kernel: no `[GameFrameX]` node is created at runtime, no GameFrameX business components are attached, registered modules are driven by the host.
+
+```csharp
+using GameFrameX.Runtime;
+
+// 1. Start: call once before the first scene load; repeated startup is rejected by the single-instance guard
+GameFrameworkStartup.Headless();
+
+// 2. Drive: forward from the host main loop every frame
+//    (or attach UnityGameFrameworkDriver component to drive it for you)
+GameFrameworkEntry.Update(deltaTime, unscaledDeltaTime);
+
+// 3. Shutdown: must be called on host exit, otherwise static modules leak
+//    (UnityGameFrameworkDriver calls it automatically on destroy)
+GameFrameworkEntry.Shutdown();
+```
+
+Log routing — implement `ILogHelper` to pipe framework logs into the host's own logging system:
+
+```csharp
+public sealed class HostLogBridge : GameFrameworkLog.ILogHelper
+{
+    public void Log(GameFrameworkLogLevel level, object message)
+    {
+        MyLogger.Write(level, message.ToString()); // the host's own logging system
+    }
+}
+
+GameFrameworkLog.SetLogHelper(new HostLogBridge());
+```
+
+Constraints and behavior:
+
+- Single instance: only one GameFrameX instance per run; calling `Headless()` again while a session is running throws, and it is re-entrant after `Shutdown()`.
+- Three-mode mutual exclusion: once the Headless contract is active, manual scene entries and the auto package host are both rejected with diagnostics; attaching GameFrameX components is forbidden in Headless mode.
+- Low memory: forward the host's own low-memory / pause events via `GameFrameworkEntry.NotifyLowMemory()`; the Unity path (BaseComponent, UnityGameFrameworkDriver) is wired automatically with identical behavior.
+
+### Module Options Startup Configuration
+
+Each module ships an `XxxOptions` startup configuration (field defaults match the former Inspector serialized defaults), injected once via `GameFrameXOptions.Configure` before the module is first instantiated; serialized parameter fields on components have been removed and edit-time configuration now lives in code.
+
+```csharp
+using GameFrameX.Runtime;
+
+// Unified injection point across the three modes: Manual / AutoPackage before the first scene load (BeforeSceneLoad)
+[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+static void ConfigureFramework()
+{
+    // Set only the deltas; everything else uses package defaults
+    GameFrameXOptions.Configure(new DownloadOptions { Timeout = 60f });
+}
+
+// Headless: the host calls Configure immediately before GameFrameworkStartup.Headless()
+// (the auto package host is created at AfterSceneLoad, still after the BeforeSceneLoad Configure)
+```
+
+- Priority: `Configure`-injected values > Options field defaults; consumed once when the module is first instantiated.
+- Timing: after startup full instantiation, any `Configure` throws a `GameFrameworkException` — a mistimed configuration never fails silently.
+- Tiers: fields are real-time by default (mutable at runtime via module APIs); startup-only fields (agent counts, Helper types, …) are marked `[GameFrameXStartupOnly]` — runtime changes are rejected with a Warning.
+- Unconsumed diagnostics: on `Reset` / `Shutdown`, options registered but never consumed by any module produce a Warning (usually an uninstalled package or a structurally disabled component).
+
+Override Helper implementations with factory closures (custom references win, replacing the former Inspector type-name dropdown; UI backend packages FairyGUI / UGUI self-register defaults via the backend registry):
+
+```csharp
+GameFrameXOptions.Configure(new UIOptions
+{
+    UIFormHelperFactory = () => new MyUIFormHelper(),
+});
+```
+
+Live view: components remain thin entries (pure forwarding) and the Inspector no longer carries parameters; during Play you can inspect the effective configuration in the module debug view, and runtime adjustments always go through the `GetModule<T>()` / `GameApp.X` module APIs.
+
 ---
 
-## 💡 Usage Examples
+## Usage Examples
 
-### Runtime Usage Examples
-
-#### 🎯 Object Pool System
+### Object Pool System
 
 ```csharp
 // Get object pool component
@@ -428,7 +205,7 @@ objectPool.Unspawn(obj);
 objectPool.DestroyPool("MyObjectPool");
 ```
 
-#### 📝 Extension Methods
+### Extension Methods
 
 ```csharp
 // Transform extensions
@@ -445,7 +222,7 @@ gameObject.SetActiveOptimized(true);
 gameObject.SetLayerRecursively(LayerMask.NameToLayer("UI"));
 ```
 
-#### 🔐 Utility Classes
+### Utility Classes
 
 ```csharp
 // File operations
@@ -453,7 +230,7 @@ FileHelper.WriteAllBytes("path/to/file", data);
 byte[] content = FileHelper.ReadAllBytes("path/to/file");
 string size = FileHelper.GetBytesSize(1024 * 1024); // "1MB"
 
-// AES encryption/decryption
+// AES encryption / decryption
 string encrypted = Utility.Encryption.Aes.Encrypt("plaintext", "key");
 string decrypted = Utility.Encryption.Aes.Decrypt(encrypted, "key");
 
@@ -466,7 +243,7 @@ var json = Utility.Json.ToJson(myObject);
 var obj = Utility.Json.FromJson<MyClass>(json);
 ```
 
-#### 📡 Event System
+### Event System
 
 ```csharp
 // Define event args
@@ -488,9 +265,9 @@ GameEntry.Event.Unsubscribe(PlayerDeadEventArgs.EventId, OnPlayerDead);
 
 ### Editor Tools
 
-#### 🎮 Mini Game Platform Adaptation
+#### Mini Game Platform Adaptation
 
-Quickly switch between mini game platforms in Unity menu:
+Switch between mini-game platforms from the Unity menu:
 
 ```
 GameFrameX/
@@ -522,7 +299,7 @@ GameFrameX/
 │       └── Enable TapTap Mini Game
 ```
 
-#### 🏗️ Build Tools
+#### Build Tools
 
 ```
 GameFrameX/
@@ -531,141 +308,223 @@ GameFrameX/
 └── Build WebGL With HybridCLR
 ```
 
-#### 📦 Package Management
+---
+
+## Architecture
+
+GameFrameX uses a three-layer architecture; each module has its own responsibility and they work together.
+
+### Runtime
+
+Core runtime code providing all functionality needed at game runtime.
 
 ```
-GameFrameX/
-├── Package Manager
-└── Update All Packages
+Runtime/
+├── Base/                          Framework Core Foundation
+│   ├── DataStruct/                Data Structures
+│   ├── EventPool/                 Event Pool System
+│   ├── Log/                       Logging System
+│   ├── ReferencePool/             Reference Pool System
+│   ├── TaskPool/                  Task Pool System
+│   ├── Variable/                  Variable System
+│   ├── Version/                   Version Management
+│   ├── BaseComponent.cs
+│   ├── GameEntry.cs
+│   ├── GameFrameworkComponent.cs
+│   ├── GameFrameworkEntry.cs
+│   ├── GameFrameworkEventArgs.cs
+│   ├── GameFrameworkException.cs
+│   ├── GameFrameworkLinkedList.cs
+│   ├── GameFrameworkMultiDictionary.cs
+│   ├── GameFrameworkMonoSingleton.cs
+│   ├── GameFrameworkSerializer.cs
+│   ├── GameFrameworkSingleton.cs
+│   ├── GameFrameworkStartup.cs
+│   ├── IGameFrameworkModule.cs
+│   ├── ObjectDontDestroyOnLoad.cs
+│   └── UnityGameFrameworkDriver.cs
+├── Extension/                     Extension Methods Library
+│   ├── Extension/                 Common extensions
+│   ├── SequenceReader/            Sequence Reader
+│   ├── UnityEngine.GameObject/    GameObject extension
+│   └── UnityEngine/               Unity type extensions (Transform, Vector2/3/4)
+├── Helper/                        Helper classes (Application, Camera, File, Path,
+│                                  Math, Random, Timer, Network, JSON, Renderer,
+│                                  Zip, DoTween, Timer split by period, etc.)
+├── ObjectPool/                    Object Pool System
+├── Property/                      Property System (BindableProperty)
+├── ReferencePool/                 Reference Pool System
+└── Utility/                       Utility classes (Encryption, Compression, Hash,
+                                   JSON, Marshal, Text, Verifier, Const, IdGenerator)
+```
+
+### Plugins
+
+Native platform plugins and bundled third-party .NET libraries.
+
+```
+Plugins/
+├── iOS/                           iOS native bridge (GameFrameX.mm, TrackingAuthorization)
+├── ICSharpCode.SharpZipLib.dll    ZIP compression library
+├── Microsoft.NET.StringTools.dll   String tools
+├── System.Buffers.dll             Memory buffers
+├── System.IO.Pipelines.dll        IO pipelines
+├── System.Memory.dll              Memory management
+└── System.Runtime.CompilerServices.Unsafe.dll   Runtime support
+```
+
+### Editor
+
+Editor tools and extensions for development efficiency.
+
+```
+Editor/
+├── BuildHotfix/                    Hotfix build tools (HybridCLR)
+├── BuildProduct/                   Product build with pre / post hooks
+├── BuildWebGLTools/                WebGL build optimization (HybridCLR)
+├── Cropping/                       Image cropping tool
+├── Inspector/                      Custom inspectors for Base / ObjectPool / ReferencePool
+├── InspectorLockShortcut/          Inspector panel lock shortcut
+├── MiniGame/                       Mini-game adaptation (21 platforms)
+│   ├── DomesticMiniGames/          WeChat, Alipay, DouYin, KuaiShou, Baidu, JD, Meituan, Taobao, Bilibili
+│   ├── InternationalMiniGames/     Discord, YouTube, Facebook, Google Play, TikTok, CrazyGames, Poki
+│   ├── DeviceOEMs/                 Huawei, OPPO, Vivo, Xiaomi
+│   └── GamePlatforms/              TapTap
+├── Welcome/                        Welcome window
+└── Misc/                           Logging redirection, scripting define symbols, type utility, open folder
 ```
 
 ---
 
-## 🎯 Platform Support
+## Platform Support
 
 ### Operating Systems
 
-| Platform | Status      | Supported Version |
-| -------- | ----------- | ----------------- |
-| Windows  | ✅ Supported | Unity 2019.4+     |
-| macOS    | ✅ Supported | Unity 2019.4+     |
-| Linux    | ✅ Supported | Unity 2019.4+     |
-| iOS      | ✅ Supported | Unity 2019.4+     |
-| Android  | ✅ Supported | Unity 2019.4+     |
-| WebGL    | ✅ Supported | Unity 2019.4+     |
+| Platform | Status | Supported Version |
+| -------- | ------ | ----------------- |
+| Windows  | Supported | Unity 2019.4+ |
+| macOS    | Supported | Unity 2019.4+ |
+| Linux    | Supported | Unity 2019.4+ |
+| iOS      | Supported | Unity 2019.4+ |
+| Android  | Supported | Unity 2019.4+ |
+| WebGL    | Supported | Unity 2019.4+ |
 
 ### Mini Game Platform Adaptation
 
-GameFrameX provides one-click mini game platform adaptation, supporting **21 mainstream mini game platforms** worldwide:
+GameFrameX provides one-click mini-game platform adaptation for 21 mainstream platforms worldwide.
 
-#### 🇨🇳 Domestic Mini Games (9)
+#### Domestic Mini Games (9)
 
-| Platform            | Define Symbol                                    | Region  | Menu Priority |
-| ------------------- | ------------------------------------------------ | ------- | ------------- |
-| WeChat Mini Game    | `ENABLE_WECHAT_MINI_GAME` / `WEIXINMINIGAME`     | 🇨🇳 China | 2000          |
-| Alipay Mini Game    | `ENABLE_ALIPAY_MINI_GAME` / `ALIPAYMINIGAME`     | 🇨🇳 China | 2400          |
-| DouYin Mini Game    | `ENABLE_DOUYIN_MINI_GAME` / `DOUYINMINIGAME`     | 🇨🇳 China | 2100          |
-| KuaiShou Mini Game  | `ENABLE_KUAISHOU_MINI_GAME` / `KUAISHOUMINIGAME` | 🇨🇳 China | 2200          |
-| Baidu Mini Game     | `ENABLE_BAIDU_MINI_GAME` / `BAIDUMINIGAME`       | 🇨🇳 China | 2300          |
-| JD Mini Game        | `ENABLE_JINGDONG_MINI_GAME` / `JINGDONGMINIGAME` | 🇨🇳 China | 2500          |
-| Taobao Mini Program | `ENABLE_TAOBAO_MINI_GAME` / `TAOBAOMINIGAME`     | 🇨🇳 China | 2600          |
-| Meituan Mini Game   | `ENABLE_MEITUAN_MINI_GAME` / `MEITUANMINIGAME`   | 🇨🇳 China | 2800          |
-| Bilibili Mini Game  | `ENABLE_BILIBILI_MINI_GAME` / `BILIBILIMINIGAME` | 🇨🇳 China | 2900          |
+| Platform | Define Symbol | Region | Menu Priority |
+| -------- | ------------- | ------ | ------------- |
+| WeChat Mini Game | `ENABLE_WECHAT_MINI_GAME` / `WEIXINMINIGAME` | China | 2000 |
+| Alipay Mini Game | `ENABLE_ALIPAY_MINI_GAME` / `ALIPAYMINIGAME` | China | 2400 |
+| DouYin Mini Game | `ENABLE_DOUYIN_MINI_GAME` / `DOUYINMINIGAME` | China | 2100 |
+| KuaiShou Mini Game | `ENABLE_KUAISHOU_MINI_GAME` / `KUAISHOUMINIGAME` | China | 2200 |
+| Baidu Mini Game | `ENABLE_BAIDU_MINI_GAME` / `BAIDUMINIGAME` | China | 2300 |
+| JD Mini Game | `ENABLE_JINGDONG_MINI_GAME` / `JINGDONGMINIGAME` | China | 2500 |
+| Taobao Mini Program | `ENABLE_TAOBAO_MINI_GAME` / `TAOBAOMINIGAME` | China | 2600 |
+| Meituan Mini Game | `ENABLE_MEITUAN_MINI_GAME` / `MEITUANMINIGAME` | China | 2800 |
+| Bilibili Mini Game | `ENABLE_BILIBILI_MINI_GAME` / `BILIBILIMINIGAME` | China | 2900 |
 
-#### 🌍 International Mini Games (7)
+#### International Mini Games (7)
 
-| Platform    | Define Symbol                                        | Region   | Menu Priority |
-| ----------- | ---------------------------------------------------- | -------- | ------------- |
-| Discord     | `ENABLE_DISCORD_MINI_GAME` / `DISCORDMINIGAME`       | 🌍 Global | 2700          |
-| YouTube     | `ENABLE_YOUTUBE_MINI_GAME` / `YOUTUBEMINIGAME`       | 🌍 Global | 2800          |
-| Facebook    | `ENABLE_FACEBOOK_MINI_GAME` / `FACEBOOKMINIGAME`     | 🌍 Global | 2900          |
-| Google Play | `ENABLE_GOOGLEPLAY_MINI_GAME` / `GOOGLEPLAYMINIGAME` | 🌍 Global | 3000          |
-| TikTok      | `ENABLE_TIKTOK_MINI_GAME` / `TIKTOKMINIGAME`         | 🌍 Global | 3500          |
-| CrazyGames  | `ENABLE_CRAZYGAMES_MINI_GAME` / `CRAZYGAMESMINIGAME` | 🌍 Global | 3600          |
-| Poki        | `ENABLE_POKI_MINI_GAME` / `POKIMINIGAME`             | 🌍 Global | 3700          |
+| Platform | Define Symbol | Region | Menu Priority |
+| -------- | ------------- | ------ | ------------- |
+| Discord | `ENABLE_DISCORD_MINI_GAME` / `DISCORDMINIGAME` | Global | 2700 |
+| YouTube | `ENABLE_YOUTUBE_MINI_GAME` / `YOUTUBEMINIGAME` | Global | 2800 |
+| Facebook | `ENABLE_FACEBOOK_MINI_GAME` / `FACEBOOKMINIGAME` | Global | 2900 |
+| Google Play | `ENABLE_GOOGLEPLAY_MINI_GAME` / `GOOGLEPLAYMINIGAME` | Global | 3000 |
+| TikTok | `ENABLE_TIKTOK_MINI_GAME` / `TIKTOKMINIGAME` | Global | 3500 |
+| CrazyGames | `ENABLE_CRAZYGAMES_MINI_GAME` / `CRAZYGAMESMINIGAME` | Global | 3600 |
+| Poki | `ENABLE_POKI_MINI_GAME` / `POKIMINIGAME` | Global | 3700 |
 
-#### 📱 Device OEMs (4)
+#### Device OEMs (4)
 
-| Platform         | Define Symbol                                | Region  | Menu Priority |
-| ---------------- | -------------------------------------------- | ------- | ------------- |
-| Huawei Mini Game | `ENABLE_HUAWEI_MINI_GAME` / `HUAWEIMINIGAME` | 🇨🇳 China | 3400          |
-| OPPO Mini Game   | `ENABLE_OPPO_MINI_GAME` / `OPPOSMINIGAME`    | 🇨🇳 China | 3200          |
-| Vivo Mini Game   | `ENABLE_VIVO_MINI_GAME` / `VIVOMINIGAME`     | 🇨🇳 China | 3100          |
-| Xiaomi Mini Game | `ENABLE_XIAOMI_MINI_GAME` / `XIAOMIMINIGAME` | 🇨🇳 China | 3300          |
+| Platform | Define Symbol | Region | Menu Priority |
+| -------- | ------------- | ------ | ------------- |
+| Huawei Mini Game | `ENABLE_HUAWEI_MINI_GAME` / `HUAWEIMINIGAME` | China | 3400 |
+| OPPO Mini Game | `ENABLE_OPPO_MINI_GAME` / `OPPOSMINIGAME` | China | 3200 |
+| Vivo Mini Game | `ENABLE_VIVO_MINI_GAME` / `VIVOMINIGAME` | China | 3100 |
+| Xiaomi Mini Game | `ENABLE_XIAOMI_MINI_GAME` / `XIAOMIMINIGAME` | China | 3300 |
 
-#### 🎮 Game Platforms (1)
+#### Game Platforms (1)
 
-| Platform         | Define Symbol                                | Region  | Menu Priority |
-| ---------------- | -------------------------------------------- | ------- | ------------- |
-| TapTap Mini Game | `ENABLE_TAPTAP_MINI_GAME` / `TAPTAPMINIGAME` | 🇨🇳 China | 2700          |
+| Platform | Define Symbol | Region | Menu Priority |
+| -------- | ------------- | ------ | ------------- |
+| TapTap Mini Game | `ENABLE_TAPTAP_MINI_GAME` / `TAPTAPMINIGAME` | China | 2700 |
 
 #### Define Symbol Details
 
-- **Unified Define**: `ENABLE_WEBGL_MINI_GAME` - Shared by all mini game platforms
-- **Platform Defines**: Independent defines for conditional compilation per platform
-- **Mutex Mechanism**: Enabling one mini game platform automatically disables others
-- **Menu Path**: `GameFrameX/Scripting Define Symbols/[Category]/Enable [Platform] Mini Game`
+- Unified define: `ENABLE_WEBGL_MINI_GAME` shared by all mini-game platforms.
+- Platform defines: each platform has independent defines for conditional compilation.
+- Mutex mechanism: enabling one mini-game platform automatically disables others.
+- Menu path: `GameFrameX/Scripting Define Symbols/[Category]/Enable [Platform] Mini Game`.
 
 ---
 
-## 📚 Documentation & Resources
+## Dependencies
 
-- 📖 **Full Documentation**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
-- 🎯 **API Reference**: [API Documentation](https://gameframex.doc.alianblank.com/api)
-- 📝 **Example Projects**: [Examples Repository](https://github.com/GameFrameX/Examples)
-- 🎬 **Video Tutorials**: [YouTube Channel](https://youtube.com/gameframex)
+Declared in `package.json`:
 
----
+- `com.gameframex.unity.litjson` 1.2.2
+- `com.gameframex.unity.readassets` 1.2.1
+- `com.gameframex.unity.cysharp.unitask` 2.6.2
+- `com.unity.modules.androidjni` 1.0.0
+- `com.unity.modules.animation` 1.0.0
+- `com.unity.modules.assetbundle` 1.0.0
+- `com.unity.modules.audio` 1.0.0
+- `com.unity.modules.imgui` 1.0.0
+- `com.unity.modules.jsonserialize` 1.0.0
+- `com.unity.modules.unitywebrequest` 1.0.0
 
-## 🤝 Community & Support
-
-- 💬 **QQ Group**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
-- 🐛 **Issue Tracker**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity/issues)
-- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity/discussions)
-
----
-
-## 🔄 Changelog
-
-### v1.4.0 (2025-04-16)
-- ✨ Added 13 new mini game platforms (JD, Taobao, Discord, YouTube, Facebook, Google Play, vivo, OPPO, Xiaomi, Huawei, TikTok, CrazyGames, Poki)
-- ✨ Expanded from 8 to 21 platforms, covering global mainstream mini game platforms
-- 📚 Updated all language versions of README documentation with latest platform support
-- 🐛 Optimized platform define symbol management and improved mutex mechanism stability
-
-### v1.3.6 (2025-05-28)
-- 🐛 Fixed duplicate GUID issues
-- ✨ Added Meituan, Bilibili mini game platform adaptation
-- ✨ Added more extension methods
-- 📚 Enhanced README documentation with complete module structure
-- 🔧 Optimized object pool performance
-- 📚 Improved documentation
-
-View full changelog: [CHANGELOG.md](CHANGELOG.md)
+Dev tools: `semantic-release`, `@semantic-release/changelog`, `@semantic-release/git`.
 
 ---
 
-## 📄 License
+## Documentation & Resources
 
-This project is distributed under **MIT License** and **Apache License 2.0** dual licensing.
-
-See full license text: [LICENSE.md](LICENSE.md)
+- Documentation: https://gameframex.doc.alianblank.com
+- API Reference: https://gameframex.doc.alianblank.com/api
+- Example Projects: https://github.com/GameFrameX/Examples
+- Video Tutorials: https://www.youtube.com/channel/UCD9QhSFJ5xZkn5NTSV-DVAw
 
 ---
 
-## 👨‍💻 Author
+## Community & Support
 
-**Blank**
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/GameFrameX/gameframex)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/VDWUjWMDw9)
+[<img src="https://cdn.jsdelivr.net/npm/devicon@2/icons/linkedin/linkedin-original.svg" height="28" alt="LinkedIn" />](https://www.linkedin.com/in/alianblank)
+[![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://www.reddit.com/r/GameFrameX/)
+[![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/alian_blank)
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCD9QhSFJ5xZkn5NTSV-DVAw)
+[![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?style=for-the-badge&logo=bluesky&logoColor=white)](https://bsky.app/profile/alianblank.bsky.social)
+[![Bilibili](https://img.shields.io/badge/Bilibili-00A1D6?style=for-the-badge&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1yrpeepEn7)
+[![Gitee](https://img.shields.io/badge/Gitee-C71D23?style=for-the-badge&logo=gitee&logoColor=white)](https://gitee.com/GameFrameX/gameframex)
+![QQ](https://img.shields.io/badge/QQ-467608841%2F233840761-EB1923?style=for-the-badge&logo=qq&logoColor=white)
 
-- 🌐 Website: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
-- 🐙 GitHub: [@GameFrameX](https://github.com/GameFrameX)
+- GitHub Issues: https://github.com/GameFrameX/com.gameframex.unity/issues
+- GitHub Discussions: https://github.com/GameFrameX/com.gameframex.unity/discussions
+
+---
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for the full release history.
+
+---
+
+## License
+
+See [LICENSE.md](LICENSE.md) for the full license text.
 
 ---
 
 <div align="center">
 
-**If this project helps you, please give us a ⭐ Star!**
+If this project helps you, please give it a Star.
 
-[⬆ Back to Top](#gameframex-unity-package)
+[Back to Top](#gameframex-unity-package)
 
 </div>
