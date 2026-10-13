@@ -195,7 +195,6 @@ Runtime/
     │   ├── Aes.cs                # AES 암호화
     │   ├── Rsa.cs                # RSA 암호화
     │   └── Dsa.cs                # DSA 암호화
-    ├── Utility.File.cs           # 파일 작업
     ├── Utility.Hash/             # 해시 계산
     │   ├── HMACSha256.cs         # HMAC SHA256
     │   ├── Md5.cs                # MD5
@@ -207,10 +206,6 @@ Runtime/
     │   ├── IJsonHelper.cs        # JSON 인터페이스
     │   └── Utility.Json.cs       # JSON 코어
     ├── Utility.Marshal.cs         # Marshal 유틸리티
-    ├── Utility.Net.cs            # 네트워크 유틸리티
-    ├── Utility.Object.cs          # 오브젝트 유틸리티
-    ├── Utility.Path.cs           # 경로 처리
-    ├── Utility.Random.cs         # 랜덤 번호
     ├── Utility.Text/             # 텍스트 처리
     │   ├── ITextHelper.cs        # 텍스트 인터페이스
     │   └── Utility.Text.cs       # 텍스트 코어
@@ -454,8 +449,9 @@ gameObject.SetLayerRecursively(LayerMask.NameToLayer("UI"));
 
 ```csharp
 // 파일 작업
-Utility.File.WriteAllBytes("path/to/file", data);
-byte[] content = Utility.File.ReadAllBytes("path/to/file");
+FileHelper.WriteAllBytes("path/to/file", data);
+byte[] content = FileHelper.ReadAllBytes("path/to/file");
+string size = FileHelper.GetBytesSize(1024 * 1024); // "1MB"
 
 // AES 암호화/복호화
 string encrypted = Utility.Encryption.Aes.Encrypt("plaintext", "key");

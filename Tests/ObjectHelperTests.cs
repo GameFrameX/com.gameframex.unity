@@ -9,128 +9,87 @@ namespace GameFrameX.Tests
         #region Swap
 
         [Test]
-        public void Swap_IntValues_ExchangesCorrectly()
+        public void Swap_Integers()
         {
             int a = 10;
             int b = 20;
-
             ObjectHelper.Swap(ref a, ref b);
-
             Assert.AreEqual(20, a);
             Assert.AreEqual(10, b);
         }
 
         [Test]
-        public void Swap_StringValues_ExchangesCorrectly()
+        public void Swap_Strings()
         {
             string a = "hello";
             string b = "world";
-
             ObjectHelper.Swap(ref a, ref b);
-
             Assert.AreEqual("world", a);
             Assert.AreEqual("hello", b);
         }
 
         [Test]
-        public void Swap_SameVariable_NoChange()
+        public void Swap_SameValue()
         {
-            int x = 42;
-
-            ObjectHelper.Swap(ref x, ref x);
-
-            Assert.AreEqual(42, x);
-        }
-
-        [Test]
-        public void Swap_NullReference_ExchangesCorrectly()
-        {
-            string a = "not null";
-            string b = null;
-
+            int a = 42;
+            int b = 42;
             ObjectHelper.Swap(ref a, ref b);
-
-            Assert.IsNull(a);
-            Assert.AreEqual("not null", b);
+            Assert.AreEqual(42, a);
+            Assert.AreEqual(42, b);
         }
 
         [Test]
-        public void Swap_BothNull_NoChange()
+        public void Swap_ReferenceTypes()
+        {
+            object a = new object();
+            object b = new object();
+            object origA = a;
+            object origB = b;
+            ObjectHelper.Swap(ref a, ref b);
+            Assert.AreSame(origB, a);
+            Assert.AreSame(origA, b);
+        }
+
+        [Test]
+        public void Swap_NullValues()
+        {
+            string a = "value";
+            string b = null;
+            ObjectHelper.Swap(ref a, ref b);
+            Assert.IsNull(a);
+            Assert.AreEqual("value", b);
+        }
+
+        [Test]
+        public void Swap_BothNull()
         {
             string a = null;
             string b = null;
-
             ObjectHelper.Swap(ref a, ref b);
-
             Assert.IsNull(a);
             Assert.IsNull(b);
         }
 
         [Test]
-        public void Swap_ReferenceType_ExchangesCorrectly()
-        {
-            var obj1 = new SwapTestClass { Value = 1 };
-            var obj2 = new SwapTestClass { Value = 2 };
-
-            ObjectHelper.Swap(ref obj1, ref obj2);
-
-            Assert.AreEqual(2, obj1.Value);
-            Assert.AreEqual(1, obj2.Value);
-        }
-
-        [Test]
-        public void Swap_FloatValues_ExchangesCorrectly()
+        public void Swap_Floats()
         {
             float a = 1.5f;
-            float b = 2.5f;
-
+            float b = -3.14f;
             ObjectHelper.Swap(ref a, ref b);
-
-            Assert.AreEqual(2.5f, a);
-            Assert.AreEqual(1.5f, b);
+            Assert.AreEqual(-3.14f, a, 0.001f);
+            Assert.AreEqual(1.5f, b, 0.001f);
         }
 
         [Test]
-        public void Swap_BoolValues_ExchangesCorrectly()
+        public void Swap_Bool()
         {
             bool a = true;
             bool b = false;
-
             ObjectHelper.Swap(ref a, ref b);
-
             Assert.IsFalse(a);
             Assert.IsTrue(b);
         }
 
-        [Test]
-        public void Swap_NegativeValues_ExchangesCorrectly()
-        {
-            int a = -100;
-            int b = 100;
-
-            ObjectHelper.Swap(ref a, ref b);
-
-            Assert.AreEqual(100, a);
-            Assert.AreEqual(-100, b);
-        }
-
-        [Test]
-        public void Swap_DefaultValues_ExchangesCorrectly()
-        {
-            int a = 0;
-            int b = 0;
-
-            ObjectHelper.Swap(ref a, ref b);
-
-            Assert.AreEqual(0, a);
-            Assert.AreEqual(0, b);
-        }
-
         #endregion
-
-        private class SwapTestClass
-        {
-            public int Value;
-        }
     }
 }

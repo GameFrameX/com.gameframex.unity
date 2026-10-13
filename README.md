@@ -195,7 +195,6 @@ Runtime/
     │   ├── Aes.cs                # AES Encryption
     │   ├── Rsa.cs                # RSA Encryption
     │   └── Dsa.cs                # DSA Encryption
-    ├── Utility.File.cs           # File Operations
     ├── Utility.Hash/             # Hash Calculation
     │   ├── HMACSha256.cs         # HMAC SHA256
     │   ├── Md5.cs                # MD5
@@ -207,10 +206,6 @@ Runtime/
     │   ├── IJsonHelper.cs        # JSON Interface
     │   └── Utility.Json.cs       # JSON Core
     ├── Utility.Marshal.cs         # Marshal Utility
-    ├── Utility.Net.cs            # Network Utility
-    ├── Utility.Object.cs          # Object Utility
-    ├── Utility.Path.cs           # Path Handling
-    ├── Utility.Random.cs         # Random Number
     ├── Utility.Text/             # Text Processing
     │   ├── ITextHelper.cs        # Text Interface
     │   └── Utility.Text.cs       # Text Core
@@ -454,8 +449,9 @@ gameObject.SetLayerRecursively(LayerMask.NameToLayer("UI"));
 
 ```csharp
 // File operations
-Utility.File.WriteAllBytes("path/to/file", data);
-byte[] content = Utility.File.ReadAllBytes("path/to/file");
+FileHelper.WriteAllBytes("path/to/file", data);
+byte[] content = FileHelper.ReadAllBytes("path/to/file");
+string size = FileHelper.GetBytesSize(1024 * 1024); // "1MB"
 
 // AES encryption/decryption
 string encrypted = Utility.Encryption.Aes.Encrypt("plaintext", "key");

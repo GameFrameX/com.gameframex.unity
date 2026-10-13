@@ -195,7 +195,6 @@ Runtime/
     │   ├── Aes.cs                # AES 加密
     │   ├── Rsa.cs                # RSA 加密
     │   └── Dsa.cs                # DSA 加密
-    ├── Utility.File.cs           # 文件操作
     ├── Utility.Hash/             # 哈希计算
     │   ├── HMACSha256.cs         # HMAC SHA256
     │   ├── Md5.cs                # MD5
@@ -207,10 +206,6 @@ Runtime/
     │   ├── IJsonHelper.cs        # JSON 介面
     │   └── Utility.Json.cs       # JSON 核心
     ├── Utility.Marshal.cs         # 序列化工具
-    ├── Utility.Net.cs            # 網路工具
-    ├── Utility.Object.cs          # 物件工具
-    ├── Utility.Path.cs           # 路徑處理
-    ├── Utility.Random.cs         # 随机数
     ├── Utility.Text/             # 文本處理
     │   ├── ITextHelper.cs        # 文本介面
     │   └── Utility.Text.cs       # 文本核心
@@ -454,8 +449,9 @@ gameObject.SetLayerRecursively(LayerMask.NameToLayer("UI"));
 
 ```csharp
 // 文件操作
-Utility.File.WriteAllBytes("path/to/file", data);
-byte[] content = Utility.File.ReadAllBytes("path/to/file");
+FileHelper.WriteAllBytes("path/to/file", data);
+byte[] content = FileHelper.ReadAllBytes("path/to/file");
+string size = FileHelper.GetBytesSize(1024 * 1024); // "1MB"
 
 // AES 加密解密
 string encrypted = Utility.Encryption.Aes.Encrypt("plaintext", "key");

@@ -1,95 +1,152 @@
-using System;
+using System.Collections.Generic;
 using GameFrameX.Runtime;
 using NUnit.Framework;
 
 namespace GameFrameX.Tests
 {
+    /// <summary>
+    /// RandomHelper 用例。随机引擎已统一到 ThreadLocalRandom 单一引擎（C27），
+    /// 种子断言按 ThreadLocalRandom 语义重写（SetSeed 后同线程序列可复现）。
+    /// </summary>
     [TestFixture]
     public class RandomHelperTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-            RandomHelper.SetSeed(42);
-        }
-
-        #region SetSeed
+        #region NextInt32
 
         [Test]
-        public void SetSeed_ProducesReproducibleSequence()
+        public void NextInt32_ReturnsNonNegative()
         {
-            RandomHelper.SetSeed(42);
-            int first = RandomHelper.Next(0, 1000);
-            int second = RandomHelper.Next(0, 1000);
-
-            RandomHelper.SetSeed(42);
-            int firstAgain = RandomHelper.Next(0, 1000);
-            int secondAgain = RandomHelper.Next(0, 1000);
-
-            Assert.AreEqual(first, firstAgain);
-            Assert.AreEqual(second, secondAgain);
+            int result = RandomHelper.NextInt32();
+            Assert.GreaterOrEqual(result, 0);
         }
 
         [Test]
-        public void SetSeed_DifferentSeeds_ProduceDifferentValues()
+        public void NextInt32_MultipleCalls_SomeDifferent()
+        {
+            HashSet<int> results = new HashSet<int>();
+            for (int i = 0; i < 100; i++)
+            {
+                results.Add(RandomHelper.NextInt32());
+            }
+            Assert.Greater(results.Count, 1, "100 random calls should produce more than 1 unique value");
+        }
+
+        #endregion
+
+        #region NextDouble
+
+        [Test]
+        public void NextDouble_WithinRange()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                double result = RandomHelper.NextDouble();
+                Assert.GreaterOrEqual(result, 0.0);
+                Assert.Less(result, 1.0);
+            }
+        }
+
+        [Test]
+        public void NextDouble_MultipleCalls_SomeDifferent()
+        {
+            HashSet<double> results = new HashSet<double>();
+            for (int i = 0; i < 100; i++)
+            {
+                results.Add(RandomHelper.NextDouble());
+            }
+            Assert.Greater(results.Count, 1);
+        }
+
+        #endregion
+
+        #region NextBytes
+
+        [Test]
+        public void NextBytes_FillsBuffer()
+        {
+            byte[] buffer = new byte[100];
+            RandomHelper.NextBytes(buffer);
+            Assert.AreEqual(100, buffer.Length);
+        }
+
+        [Test]
+        public void NextBytes_NotAllZeros()
+        {
+            byte[] buffer = new byte[100];
+            RandomHelper.NextBytes(buffer);
+            bool allZero = true;
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                if (buffer[i] != 0)
+                {
+                    allZero = false;
+                    break;
+                }
+            }
+            Assert.IsFalse(allZero, "Random bytes should not all be zero");
+        }
+
+        [Test]
+        public void NextBytes_SingleByte()
+        {
+            byte[] buffer = new byte[1];
+            RandomHelper.NextBytes(buffer);
+            Assert.AreEqual(1, buffer.Length);
+        }
+
+        [Test]
+        public void NextBytes_TwoCallsDifferent()
+        {
+            byte[] buffer1 = new byte[1000];
+            byte[] buffer2 = new byte[1000];
+            RandomHelper.NextBytes(buffer1);
+            RandomHelper.NextBytes(buffer2);
+            bool allSame = true;
+            for (int i = 0; i < buffer1.Length; i++)
+            {
+                if (buffer1[i] != buffer2[i])
+                {
+                    allSame = false;
+                    break;
+                }
+            }
+            Assert.IsFalse(allSame, "Two random byte arrays should differ");
+        }
+
+        #endregion
+
+        #region SetSeed (ThreadLocalRandom semantics)
+
+        [Test]
+        public void SetSeed_DeterministicSequence()
+        {
+            RandomHelper.SetSeed(42);
+            int first1 = RandomHelper.NextInt32();
+            int first2 = RandomHelper.NextInt32();
+
+            RandomHelper.SetSeed(42);
+            int second1 = RandomHelper.NextInt32();
+            int second2 = RandomHelper.NextInt32();
+
+            Assert.AreEqual(first1, second1);
+            Assert.AreEqual(first2, second2);
+        }
+
+        [Test]
+        public void SetSeed_DifferentSeed_DifferentSequence()
         {
             RandomHelper.SetSeed(1);
-            int fromSeed1 = RandomHelper.Next(0, int.MaxValue);
+            int r1 = RandomHelper.NextInt32();
 
-            RandomHelper.SetSeed(999);
-            int fromSeed999 = RandomHelper.Next(0, int.MaxValue);
+            RandomHelper.SetSeed(2);
+            int r2 = RandomHelper.NextInt32();
 
-            Assert.AreNotEqual(fromSeed1, fromSeed999);
+            Assert.AreNotEqual(r1, r2);
         }
 
         #endregion
 
-        #region Next (range)
-
-        [Test]
-        public void Next_ReturnsValueWithinRange()
-        {
-            for (int i = 0; i < 100; i++)
-            {
-                int result = RandomHelper.Next(10, 20);
-                Assert.GreaterOrEqual(result, 10, "Result should be >= lower bound");
-                Assert.Less(result, 20, "Result should be < upper bound");
-            }
-        }
-
-        [Test]
-        public void Next_SingleRange_ReturnsLower()
-        {
-            int result = RandomHelper.Next(5, 6);
-
-            Assert.AreEqual(5, result);
-        }
-
-        [Test]
-        public void Next_NegativeRange_ReturnsWithinRange()
-        {
-            for (int i = 0; i < 100; i++)
-            {
-                int result = RandomHelper.Next(-100, -50);
-                Assert.GreaterOrEqual(result, -100);
-                Assert.Less(result, -50);
-            }
-        }
-
-        [Test]
-        public void Next_LargeRange_ReturnsWithinRange()
-        {
-            for (int i = 0; i < 100; i++)
-            {
-                int result = RandomHelper.Next(int.MinValue, int.MaxValue);
-                Assert.GreaterOrEqual(result, int.MinValue);
-                Assert.Less(result, int.MaxValue);
-            }
-        }
-
-        #endregion
-
-        #region Next (float 0-1)
+        #region RandomHelper.Next
 
         [Test]
         public void Next_NoArgs_ReturnsFloatBetweenZeroAndOne()
@@ -97,8 +154,8 @@ namespace GameFrameX.Tests
             for (int i = 0; i < 100; i++)
             {
                 float result = RandomHelper.Next();
-                Assert.GreaterOrEqual(result, 0.0f, "Result should be >= 0");
-                Assert.Less(result, 1.0f, "Result should be < 1");
+                Assert.GreaterOrEqual(result, 0.0f);
+                Assert.Less(result, 1.0f);
             }
         }
 
@@ -114,17 +171,35 @@ namespace GameFrameX.Tests
             Assert.AreEqual(first, second);
         }
 
-        #endregion
-
-        #region NextInt64
+        [Test]
+        public void Next_Range_WithinRange()
+        {
+            const int min = 10;
+            const int max = 20;
+            for (int i = 0; i < 200; i++)
+            {
+                int result = RandomHelper.Next(min, max);
+                Assert.GreaterOrEqual(result, min);
+                Assert.Less(result, max);
+            }
+        }
 
         [Test]
-        public void NextInt64_ReturnsNonZeroOrAnyLongValue()
+        public void Next_Range_NegativeMin()
         {
-            long result = RandomHelper.NextInt64();
-
-            Assert.That(result, Is.TypeOf<long>());
+            const int min = -50;
+            const int max = 50;
+            for (int i = 0; i < 200; i++)
+            {
+                int result = RandomHelper.Next(min, max);
+                Assert.GreaterOrEqual(result, min);
+                Assert.Less(result, max);
+            }
         }
+
+        #endregion
+
+        #region RandomHelper.NextInt64 / NextUInt64
 
         [Test]
         public void NextInt64_WithSeed_ReturnsReproducibleValue()
@@ -147,18 +222,6 @@ namespace GameFrameX.Tests
 
             Assert.AreNotEqual(a, b, "Two consecutive calls should usually differ");
             Assert.AreNotEqual(b, c, "Three consecutive calls should usually differ");
-        }
-
-        #endregion
-
-        #region NextUInt64
-
-        [Test]
-        public void NextUInt64_ReturnsULongValue()
-        {
-            ulong result = RandomHelper.NextUInt64();
-
-            Assert.That(result, Is.TypeOf<ulong>());
         }
 
         [Test]

@@ -5,50 +5,50 @@ using NUnit.Framework;
 namespace GameFrameX.Tests
 {
     [TestFixture]
-    public class UtilityPathTests
+    public class PathHelperTests
     {
-        #region GetRegularPath
+        #region NormalizePath (absorbs legacy GetRegularPath semantics)
 
         [Test]
-        public void GetRegularPath_NullInput_ReturnsNull()
+        public void NormalizePath_NullInput_ReturnsNull()
         {
-            string result = Utility.Path.GetRegularPath(null);
+            string result = PathHelper.NormalizePath(null);
             Assert.IsNull(result);
         }
 
         [Test]
-        public void GetRegularPath_ConvertsBackslashes()
+        public void NormalizePath_ConvertsBackslashes()
         {
-            string result = Utility.Path.GetRegularPath("folder\\subfolder\\file.txt");
+            string result = PathHelper.NormalizePath("folder\\subfolder\\file.txt");
             Assert.AreEqual("folder/subfolder/file.txt", result);
         }
 
         [Test]
-        public void GetRegularPath_NoBackslashes_Unchanged()
+        public void NormalizePath_NoBackslashes_Unchanged()
         {
             string path = "folder/subfolder/file.txt";
-            string result = Utility.Path.GetRegularPath(path);
+            string result = PathHelper.NormalizePath(path);
             Assert.AreEqual(path, result);
         }
 
         [Test]
-        public void GetRegularPath_EmptyString()
+        public void NormalizePath_EmptyString()
         {
-            string result = Utility.Path.GetRegularPath("");
+            string result = PathHelper.NormalizePath("");
             Assert.AreEqual("", result);
         }
 
         [Test]
-        public void GetRegularPath_MixedSlashes()
+        public void NormalizePath_MixedSlashes()
         {
-            string result = Utility.Path.GetRegularPath("folder/sub\\mixed/file");
+            string result = PathHelper.NormalizePath("folder/sub\\mixed/file");
             Assert.AreEqual("folder/sub/mixed/file", result);
         }
 
         [Test]
-        public void GetRegularPath_WindowsDrive()
+        public void NormalizePath_WindowsDrive()
         {
-            string result = Utility.Path.GetRegularPath("C:\\Users\\test");
+            string result = PathHelper.NormalizePath("C:\\Users\\test");
             Assert.AreEqual("C:/Users/test", result);
         }
 
@@ -59,14 +59,14 @@ namespace GameFrameX.Tests
         [Test]
         public void GetRemotePath_NullInput_ReturnsNull()
         {
-            string result = Utility.Path.GetRemotePath(null);
+            string result = PathHelper.GetRemotePath(null);
             Assert.IsNull(result);
         }
 
         [Test]
         public void GetRemotePath_RelativePath_PrefixesFileProtocol()
         {
-            string result = Utility.Path.GetRemotePath("path/to/file.txt");
+            string result = PathHelper.GetRemotePath("path/to/file.txt");
             Assert.AreEqual("file:///path/to/file.txt", result);
         }
 
@@ -74,7 +74,7 @@ namespace GameFrameX.Tests
         public void GetRemotePath_AlreadyHasProtocol_Unchanged()
         {
             string path = "http://example.com/file";
-            string result = Utility.Path.GetRemotePath(path);
+            string result = PathHelper.GetRemotePath(path);
             Assert.AreEqual(path, result);
         }
 
@@ -82,7 +82,7 @@ namespace GameFrameX.Tests
         public void GetRemotePath_HttpsProtocol_Unchanged()
         {
             string path = "https://example.com/file";
-            string result = Utility.Path.GetRemotePath(path);
+            string result = PathHelper.GetRemotePath(path);
             Assert.AreEqual(path, result);
         }
 
@@ -90,21 +90,21 @@ namespace GameFrameX.Tests
         public void GetRemotePath_FileProtocol_Unchanged()
         {
             string path = "file:///path/to/file.txt";
-            string result = Utility.Path.GetRemotePath(path);
+            string result = PathHelper.GetRemotePath(path);
             Assert.AreEqual(path, result);
         }
 
         [Test]
         public void GetRemotePath_WindowsPath_ConvertsAndPrefixes()
         {
-            string result = Utility.Path.GetRemotePath("C:\\path\\file.txt");
+            string result = PathHelper.GetRemotePath("C:\\path\\file.txt");
             Assert.AreEqual("file:///C:/path/file.txt", result);
         }
 
         [Test]
         public void GetRemotePath_EmptyString()
         {
-            string result = Utility.Path.GetRemotePath("");
+            string result = PathHelper.GetRemotePath("");
             Assert.AreEqual("file:///", result);
         }
 
@@ -117,7 +117,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Path.RemoveEmptyDirectory(null);
+                PathHelper.RemoveEmptyDirectory(null);
             });
         }
 
@@ -126,7 +126,7 @@ namespace GameFrameX.Tests
         {
             Assert.Throws<GameFrameworkException>(() =>
             {
-                Utility.Path.RemoveEmptyDirectory("");
+                PathHelper.RemoveEmptyDirectory("");
             });
         }
 
@@ -134,7 +134,7 @@ namespace GameFrameX.Tests
         public void RemoveEmptyDirectory_NonExistentPath_ReturnsFalse()
         {
             string nonExistent = Path.Combine(Path.GetTempPath(), "GameFrameX_Test_NonExistent_" + System.Guid.NewGuid());
-            bool result = Utility.Path.RemoveEmptyDirectory(nonExistent);
+            bool result = PathHelper.RemoveEmptyDirectory(nonExistent);
             Assert.IsFalse(result);
         }
 
@@ -146,7 +146,7 @@ namespace GameFrameX.Tests
             {
                 Directory.CreateDirectory(tempDir);
                 Assert.IsTrue(Directory.Exists(tempDir));
-                bool result = Utility.Path.RemoveEmptyDirectory(tempDir);
+                bool result = PathHelper.RemoveEmptyDirectory(tempDir);
                 Assert.IsTrue(result);
                 Assert.IsFalse(Directory.Exists(tempDir));
             }
@@ -167,7 +167,7 @@ namespace GameFrameX.Tests
             {
                 Directory.CreateDirectory(tempDir);
                 File.WriteAllText(Path.Combine(tempDir, "test.txt"), "data");
-                bool result = Utility.Path.RemoveEmptyDirectory(tempDir);
+                bool result = PathHelper.RemoveEmptyDirectory(tempDir);
                 Assert.IsFalse(result);
                 Assert.IsTrue(Directory.Exists(tempDir));
             }
@@ -189,7 +189,7 @@ namespace GameFrameX.Tests
                 Directory.CreateDirectory(tempDir);
                 string subDir = Path.Combine(tempDir, "empty_sub");
                 Directory.CreateDirectory(subDir);
-                bool result = Utility.Path.RemoveEmptyDirectory(tempDir);
+                bool result = PathHelper.RemoveEmptyDirectory(tempDir);
                 Assert.IsTrue(result);
                 Assert.IsFalse(Directory.Exists(tempDir));
             }
@@ -212,7 +212,7 @@ namespace GameFrameX.Tests
                 string subDir = Path.Combine(tempDir, "nonempty_sub");
                 Directory.CreateDirectory(subDir);
                 File.WriteAllText(Path.Combine(subDir, "file.txt"), "data");
-                bool result = Utility.Path.RemoveEmptyDirectory(tempDir);
+                bool result = PathHelper.RemoveEmptyDirectory(tempDir);
                 Assert.IsFalse(result);
             }
             finally
@@ -222,6 +222,106 @@ namespace GameFrameX.Tests
                     Directory.Delete(tempDir, true);
                 }
             }
+        }
+
+        #endregion
+
+        #region CreateIfNotExists / DeleteIfExists / ClearFiles (absorbs legacy directory utility semantics)
+
+        [Test]
+        public void CreateIfNotExists_CreatesMissingDirectory()
+        {
+            string tempDir = Path.Combine(Path.GetTempPath(), "GameFrameX_Test_Create_" + System.Guid.NewGuid());
+            try
+            {
+                PathHelper.CreateIfNotExists(tempDir);
+                Assert.IsTrue(Directory.Exists(tempDir));
+            }
+            finally
+            {
+                if (Directory.Exists(tempDir))
+                {
+                    Directory.Delete(tempDir, true);
+                }
+            }
+        }
+
+        [Test]
+        public void CreateIfNotExists_ExistingDirectory_Unchanged()
+        {
+            string tempDir = Path.Combine(Path.GetTempPath(), "GameFrameX_Test_Exists_" + System.Guid.NewGuid());
+            try
+            {
+                Directory.CreateDirectory(tempDir);
+                PathHelper.CreateIfNotExists(tempDir);
+                Assert.IsTrue(Directory.Exists(tempDir));
+            }
+            finally
+            {
+                if (Directory.Exists(tempDir))
+                {
+                    Directory.Delete(tempDir, true);
+                }
+            }
+        }
+
+        [Test]
+        public void CreateIfNotExists_EmptyOrNull_DoesNothing()
+        {
+            Assert.DoesNotThrow(() =>
+            {
+                PathHelper.CreateIfNotExists(null);
+                PathHelper.CreateIfNotExists("");
+            });
+        }
+
+        [Test]
+        public void DeleteIfExists_RemovesDirectoryWithFiles()
+        {
+            string tempDir = Path.Combine(Path.GetTempPath(), "GameFrameX_Test_Delete_" + System.Guid.NewGuid());
+            Directory.CreateDirectory(tempDir);
+            File.WriteAllText(Path.Combine(tempDir, "test.txt"), "data");
+            PathHelper.DeleteIfExists(tempDir);
+            Assert.IsFalse(Directory.Exists(tempDir));
+        }
+
+        [Test]
+        public void DeleteIfExists_MissingDirectory_DoesNothing()
+        {
+            string tempDir = Path.Combine(Path.GetTempPath(), "GameFrameX_Test_DeleteMissing_" + System.Guid.NewGuid());
+            Assert.DoesNotThrow(() => PathHelper.DeleteIfExists(tempDir));
+        }
+
+        [Test]
+        public void ClearFiles_RemovesFilesButKeepsStructure()
+        {
+            string tempDir = Path.Combine(Path.GetTempPath(), "GameFrameX_Test_Clear_" + System.Guid.NewGuid());
+            try
+            {
+                Directory.CreateDirectory(tempDir);
+                string subDir = Path.Combine(tempDir, "sub");
+                Directory.CreateDirectory(subDir);
+                File.WriteAllText(Path.Combine(tempDir, "a.txt"), "data");
+                File.WriteAllText(Path.Combine(subDir, "b.txt"), "data");
+                PathHelper.ClearFiles(tempDir);
+                Assert.IsTrue(Directory.Exists(tempDir));
+                Assert.IsTrue(Directory.Exists(subDir));
+                Assert.AreEqual(0, Directory.GetFiles(tempDir, "*", SearchOption.AllDirectories).Length);
+            }
+            finally
+            {
+                if (Directory.Exists(tempDir))
+                {
+                    Directory.Delete(tempDir, true);
+                }
+            }
+        }
+
+        [Test]
+        public void ClearFiles_MissingDirectory_DoesNothing()
+        {
+            string tempDir = Path.Combine(Path.GetTempPath(), "GameFrameX_Test_ClearMissing_" + System.Guid.NewGuid());
+            Assert.DoesNotThrow(() => PathHelper.ClearFiles(tempDir));
         }
 
         #endregion

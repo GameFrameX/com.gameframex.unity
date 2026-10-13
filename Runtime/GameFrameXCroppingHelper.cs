@@ -96,7 +96,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.Utility.Encryption.Aes);
             _ = typeof(GameFrameX.Runtime.Utility.Encryption.Dsa);
             _ = typeof(GameFrameX.Runtime.Utility.Encryption.Rsa);
-            _ = typeof(GameFrameX.Runtime.Utility.File);
             _ = typeof(GameFrameX.Runtime.Utility.Hash);
             _ = typeof(GameFrameX.Runtime.Utility.Hash.HMACSha256);
             _ = typeof(GameFrameX.Runtime.Utility.Hash.MD5);
@@ -107,10 +106,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.Utility.Json);
             _ = typeof(GameFrameX.Runtime.Utility.Json.IJsonHelper);
             _ = typeof(GameFrameX.Runtime.Utility.Marshal);
-            _ = typeof(GameFrameX.Runtime.Utility.Net);
-            _ = typeof(GameFrameX.Runtime.Utility.Object);
-            _ = typeof(GameFrameX.Runtime.Utility.Path);
-            _ = typeof(GameFrameX.Runtime.Utility.RandomUtility);
             _ = typeof(GameFrameX.Runtime.Utility.Text);
             _ = typeof(GameFrameX.Runtime.Utility.Text.ITextHelper);
             _ = typeof(GameFrameX.Runtime.Utility.Verifier);

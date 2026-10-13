@@ -77,5 +77,47 @@ namespace GameFrameX.Runtime
         {
             return (float)ThreadLocalRandom.Current.NextDouble();
         }
+
+        /// <summary>
+        /// 获取Int32范围内的随机数（C27 迁入）。
+        /// 随机引擎统一到 ThreadLocalRandom 单一引擎，避免双引擎并存导致的种子语义分裂。
+        /// </summary>
+        /// <remarks>
+        /// Gets a non-negative random Int32 value.
+        /// </remarks>
+        /// <returns>返回一个大于等于零且小于 System.Int32.MaxValue 的 32 位带符号整数 / A non-negative 32-bit signed integer</returns>
+        [UnityEngine.Scripting.Preserve]
+        public static int NextInt32()
+        {
+            return ThreadLocalRandom.Current.Next();
+        }
+
+        /// <summary>
+        /// 获取 0.0 与 1.0 之间的随机双精度浮点数（C27 迁入）。
+        /// 随机引擎统一到 ThreadLocalRandom 单一引擎。
+        /// </summary>
+        /// <remarks>
+        /// Gets a random double between 0.0 and 1.0.
+        /// </remarks>
+        /// <returns>返回一个大于等于 0.0 并且小于 1.0 的双精度浮点数 / A double-precision floating point number</returns>
+        [UnityEngine.Scripting.Preserve]
+        public static double NextDouble()
+        {
+            return ThreadLocalRandom.Current.NextDouble();
+        }
+
+        /// <summary>
+        /// 用随机数填充指定字节数组的元素（C27 迁入）。
+        /// 随机引擎统一到 ThreadLocalRandom 单一引擎。
+        /// </summary>
+        /// <remarks>
+        /// Fills the elements of a specified array of bytes with random numbers.
+        /// </remarks>
+        /// <param name="buffer">包含随机数的字节数组 / The byte array to contain random numbers</param>
+        [UnityEngine.Scripting.Preserve]
+        public static void NextBytes(byte[] buffer)
+        {
+            ThreadLocalRandom.Current.NextBytes(buffer);
+        }
     }
 }

@@ -355,5 +355,38 @@ namespace GameFrameX.Runtime
         {
             File.WriteAllBytes(path, buffer);
         }
+
+        private static readonly string[] UnitList = new[] { "B", "KB", "MB", "GB", "TB", "PB" };
+
+        /// <summary>
+        /// 获取字节大小的可读字符串表示（C27 自旧文件门面迁入）。
+        /// 采用 1024 进制换算单位（B/KB/MB/GB/TB/PB）；非整值保留两位小数并去除尾部多余的零与小数点。
+        /// </summary>
+        /// <remarks>
+        /// Gets a human-readable string representation of byte size.
+        /// </remarks>
+        /// <param name="size">字节大小 / The byte size</param>
+        /// <returns>格式化后的字节大小字符串 / The formatted byte size string</returns>
+        [UnityEngine.Scripting.Preserve]
+        public static string GetBytesSize(long size)
+        {
+            double dSize = size;
+            int unitIndex = 0;
+
+            while (dSize >= 1024 && unitIndex < UnitList.Length - 1)
+            {
+                dSize /= 1024;
+                unitIndex++;
+            }
+
+            if (unitIndex == 0)
+            {
+                return dSize + UnitList[unitIndex];
+            }
+
+            // 格式化为保留两位小数，但去除尾部不必要的零
+            string formattedSize = dSize.ToString("F2").TrimEnd('0').TrimEnd('.');
+            return formattedSize + UnitList[unitIndex];
+        }
     }
 }
