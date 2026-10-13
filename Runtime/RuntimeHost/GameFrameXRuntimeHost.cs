@@ -8,6 +8,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 管理 GameFrameX 自动运行时 Host。
     /// </summary>
+    /// <remarks>
+    /// Manages the GameFrameX auto runtime host.
+    /// </remarks>
     [Preserve]
     public static class GameFrameXRuntimeHost
     {
@@ -17,12 +20,38 @@ namespace GameFrameX.Runtime
 
         private static GameObject s_Host;
         private static bool s_Started;
+        private static bool s_HeadlessRequested;
         private static GameFrameXRuntimePlan s_LastPlan;
         private static GameFrameXRuntimeModeResult s_LastModeResult;
 
         /// <summary>
+        /// 获取宿主是否已请求 Headless 启动（由 <see cref="GameFrameworkStartup.Headless"/> 标记）。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether the host has requested headless startup (marked by <see cref="GameFrameworkStartup.Headless"/>).
+        /// </remarks>
+        internal static bool IsHeadlessRequested
+        {
+            get { return s_HeadlessRequested; }
+        }
+
+        /// <summary>
+        /// 标记宿主已请求 Headless 启动，三模式互斥裁决据此拒绝自动 Host 与手动场景入口。
+        /// </summary>
+        /// <remarks>
+        /// Marks that the host has requested headless startup; the three-mode mutual exclusion rejects the auto host and manual scene entries accordingly.
+        /// </remarks>
+        internal static void MarkHeadlessRequested()
+        {
+            s_HeadlessRequested = true;
+        }
+
+        /// <summary>
         /// 获取最近一次启动计划。
         /// </summary>
+        /// <remarks>
+        /// Gets the most recent startup plan.
+        /// </remarks>
         public static GameFrameXRuntimePlan LastPlan
         {
             get { return s_LastPlan; }
@@ -31,6 +60,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取最近一次运行模式裁决结果。
         /// </summary>
+        /// <remarks>
+        /// Gets the most recent runtime mode resolution result.
+        /// </remarks>
         public static GameFrameXRuntimeModeResult LastModeResult
         {
             get { return s_LastModeResult; }
@@ -39,10 +71,14 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 重置自动运行时 Host 状态。
         /// </summary>
+        /// <remarks>
+        /// Resets the auto runtime host state.
+        /// </remarks>
         public static void Reset()
         {
             s_Host = null;
             s_Started = false;
+            s_HeadlessRequested = false;
             s_LastPlan = null;
             s_LastModeResult = null;
             PendingConfigs.Clear();
@@ -52,6 +88,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 确保自动运行时已经启动。
         /// </summary>
+        /// <remarks>
+        /// Ensures the auto runtime has started.
+        /// </remarks>
         public static void EnsureStarted()
         {
             EnsureStarted(new GameFrameXRuntimeModeResult(
@@ -63,7 +102,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 确保自动运行时已经启动。
         /// </summary>
-        /// <param name="modeResult">运行模式裁决结果。</param>
+        /// <remarks>
+        /// Ensures the auto runtime has started.
+        /// </remarks>
+        /// <param name="modeResult">运行模式裁决结果。 / The runtime mode resolution result.</param>
         public static void EnsureStarted(GameFrameXRuntimeModeResult modeResult)
         {
             if (s_Started)
@@ -82,6 +124,12 @@ namespace GameFrameX.Runtime
                 GameFrameXRuntimeMode.AutoPackageMode,
                 "Auto runtime host was requested without mode result.",
                 string.Empty);
+
+            if (s_LastModeResult.Mode == GameFrameXRuntimeMode.HeadlessMode)
+            {
+                RecordHeadlessMode(s_LastModeResult);
+                return;
+            }
 
             if (s_LastModeResult.Mode == GameFrameXRuntimeMode.ManualSceneMode)
             {
@@ -128,7 +176,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 记录手动场景模式诊断，不创建自动 Host。
         /// </summary>
-        /// <param name="modeResult">运行模式裁决结果。</param>
+        /// <remarks>
+        /// Records manual scene mode diagnostics without creating the auto host.
+        /// </remarks>
+        /// <param name="modeResult">运行模式裁决结果。 / The runtime mode resolution result.</param>
         public static void RecordManualSceneMode(GameFrameXRuntimeModeResult modeResult)
         {
             s_LastModeResult = modeResult ?? new GameFrameXRuntimeModeResult(
@@ -146,10 +197,40 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 记录 Headless 模式诊断：不创建 [GameFrameX] 自动 Host、不扫描组件、不写 pending config。
+        /// </summary>
+        /// <remarks>
+        /// Records headless mode diagnostics: no [GameFrameX] auto host, no component scan, no pending config.
+        /// </remarks>
+        /// <param name="modeResult">运行模式裁决结果。 / The runtime mode resolution result.</param>
+        public static void RecordHeadlessMode(GameFrameXRuntimeModeResult modeResult)
+        {
+            s_LastModeResult = modeResult ?? new GameFrameXRuntimeModeResult(
+                GameFrameXRuntimeMode.HeadlessMode,
+                "Headless mode was requested without mode result.",
+                string.Empty);
+            s_Started = true;
+            s_LastPlan = new GameFrameXRuntimePlan();
+            s_LastPlan.Diagnostics.Add(Utility.Text.Format("Runtime mode: {0}. Reason: {1}.", s_LastModeResult.Mode, s_LastModeResult.Reason));
+            if (!string.IsNullOrEmpty(s_LastModeResult.ManualEntryPath))
+            {
+                s_LastPlan.Diagnostics.Add(Utility.Text.Format(
+                    "Rejected manual scene entry: {0}. Headless host contract takes precedence.",
+                    s_LastModeResult.ManualEntryPath));
+            }
+
+            s_LastPlan.Diagnostics.Add("Auto host startup skipped by headless host contract.");
+            WriteDiagnostics();
+        }
+
+        /// <summary>
         /// 获取组件待应用的运行时配置。
         /// </summary>
-        /// <param name="componentType">组件类型。</param>
-        /// <returns>运行时配置。</returns>
+        /// <remarks>
+        /// Gets the runtime configuration pending for the component.
+        /// </remarks>
+        /// <param name="componentType">组件类型。 / The component type.</param>
+        /// <returns>运行时配置。 / The runtime configuration.</returns>
         internal static GameFrameXComponentRuntimeConfig GetPendingConfig(Type componentType)
         {
             if (componentType == null)
@@ -183,14 +264,27 @@ namespace GameFrameX.Runtime
                 PendingConfigs[descriptor.ComponentType] = descriptor.Config;
             }
 
+            // RequireComponent 可能在先前组件创建时已在宿主子树上自动补齐同类型组件（如 FairyGUIComponent 自动附带 FairyGUIPackageComponent），
+            // 此时直接复用该实例并应用配置，避免再创建一个会在注册阶段被判重复的实例。
+            var existingComponent = s_Host != null ? s_Host.GetComponentInChildren(descriptor.ComponentType, true) : null;
+            if (existingComponent != null)
+            {
+                if (existingComponent is IGameFrameXComponentRuntimeConfigurable configurable && descriptor.Config != null)
+                {
+                    configurable.ApplyRuntimeConfig(descriptor.Config);
+                }
+
+                return;
+            }
+
             var componentNodeName = GetComponentNodeName(descriptor.ComponentType);
             var componentNode = new GameObject(componentNodeName);
             componentNode.transform.SetParent(s_Host.transform, false);
 
             var component = componentNode.AddComponent(descriptor.ComponentType) as GameFrameworkComponent;
-            if (component is IGameFrameXComponentRuntimeConfigurable configurable && descriptor.Config != null)
+            if (component is IGameFrameXComponentRuntimeConfigurable configurable2 && descriptor.Config != null)
             {
-                configurable.ApplyRuntimeConfig(descriptor.Config);
+                configurable2.ApplyRuntimeConfig(descriptor.Config);
             }
         }
 
@@ -213,7 +307,11 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            if (s_LastModeResult != null && s_LastModeResult.Mode == GameFrameXRuntimeMode.ManualSceneMode)
+            if (s_LastModeResult != null && s_LastModeResult.Mode == GameFrameXRuntimeMode.HeadlessMode)
+            {
+                Debug.Log("GameFrameX headless runtime detected. Auto host startup skipped by host contract.");
+            }
+            else if (s_LastModeResult != null && s_LastModeResult.Mode == GameFrameXRuntimeMode.ManualSceneMode)
             {
                 Debug.Log("GameFrameX manual scene runtime detected. Auto host startup skipped.");
             }

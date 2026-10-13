@@ -54,6 +54,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 获取缓存的从进程的非托管内存中分配的内存的大小。
             /// </summary>
+            /// <remarks>
+            /// Gets the size of the memory allocated from the unmanaged memory of the process and cached.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public static int CachedHGlobalSize
             {
@@ -63,7 +66,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 确保从进程的非托管内存中分配足够大小的内存并缓存。
             /// </summary>
-            /// <param name="ensureSize">要确保从进程的非托管内存中分配内存的大小。</param>
+            /// <remarks>
+            /// Ensures that enough memory is allocated from the unmanaged memory of the process and cached.
+            /// </remarks>
+            /// <param name="ensureSize">要确保从进程的非托管内存中分配内存的大小。 / The size of memory to ensure is allocated from the unmanaged memory of the process.</param>
             [UnityEngine.Scripting.Preserve]
             public static void EnsureCachedHGlobalSize(int ensureSize)
             {
@@ -87,6 +93,9 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 释放缓存的从进程的非托管内存中分配的内存。
             /// </summary>
+            /// <remarks>
+            /// Frees the memory allocated from the unmanaged memory of the process and cached.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public static void FreeCachedHGlobal()
             {
@@ -104,9 +113,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将数据从对象转换为二进制流。
             /// </summary>
-            /// <typeparam name="T">要转换的对象的类型。</typeparam>
-            /// <param name="structure">要转换的对象。</param>
-            /// <returns>存储转换结果的二进制流。</returns>
+            /// <remarks>
+            /// Converts data from an object to a binary stream.
+            /// </remarks>
+            /// <typeparam name="T">要转换的对象的类型。 / The type of the object to convert.</typeparam>
+            /// <param name="structure">要转换的对象。 / The object to convert.</param>
+            /// <returns>存储转换结果的二进制流。 / The binary stream that stores the conversion result.</returns>
             [UnityEngine.Scripting.Preserve]
             public static byte[] StructureToBytes<T>(T structure)
             {
@@ -116,10 +128,13 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将数据从对象转换为二进制流。
             /// </summary>
-            /// <typeparam name="T">要转换的对象的类型。</typeparam>
-            /// <param name="structure">要转换的对象。</param>
-            /// <param name="structureSize">要转换的对象的大小。</param>
-            /// <returns>存储转换结果的二进制流。</returns>
+            /// <remarks>
+            /// Converts data from an object to a binary stream.
+            /// </remarks>
+            /// <typeparam name="T">要转换的对象的类型。 / The type of the object to convert.</typeparam>
+            /// <param name="structure">要转换的对象。 / The object to convert.</param>
+            /// <param name="structureSize">要转换的对象的大小。 / The size of the object to convert.</param>
+            /// <returns>存储转换结果的二进制流。 / The binary stream that stores the conversion result.</returns>
             [UnityEngine.Scripting.Preserve]
             internal static byte[] StructureToBytes<T>(T structure, int structureSize)
             {
@@ -142,9 +157,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将数据从对象转换为二进制流。
             /// </summary>
-            /// <typeparam name="T">要转换的对象的类型。</typeparam>
-            /// <param name="structure">要转换的对象。</param>
-            /// <param name="result">存储转换结果的二进制流。</param>
+            /// <remarks>
+            /// Converts data from an object to a binary stream.
+            /// </remarks>
+            /// <typeparam name="T">要转换的对象的类型。 / The type of the object to convert.</typeparam>
+            /// <param name="structure">要转换的对象。 / The object to convert.</param>
+            /// <param name="result">存储转换结果的二进制流。 / The binary stream that stores the conversion result.</param>
             [UnityEngine.Scripting.Preserve]
             public static void StructureToBytes<T>(T structure, byte[] result)
             {
@@ -154,10 +172,13 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将数据从对象转换为二进制流。
             /// </summary>
-            /// <typeparam name="T">要转换的对象的类型。</typeparam>
-            /// <param name="structure">要转换的对象。</param>
-            /// <param name="structureSize">要转换的对象的大小。</param>
-            /// <param name="result">存储转换结果的二进制流。</param>
+            /// <remarks>
+            /// Converts data from an object to a binary stream.
+            /// </remarks>
+            /// <typeparam name="T">要转换的对象的类型。 / The type of the object to convert.</typeparam>
+            /// <param name="structure">要转换的对象。 / The object to convert.</param>
+            /// <param name="structureSize">要转换的对象的大小。 / The size of the object to convert.</param>
+            /// <param name="result">存储转换结果的二进制流。 / The binary stream that stores the conversion result.</param>
             [UnityEngine.Scripting.Preserve]
             internal static void StructureToBytes<T>(T structure, int structureSize, byte[] result)
             {
@@ -167,10 +188,13 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将数据从对象转换为二进制流。
             /// </summary>
-            /// <typeparam name="T">要转换的对象的类型。</typeparam>
-            /// <param name="structure">要转换的对象。</param>
-            /// <param name="result">存储转换结果的二进制流。</param>
-            /// <param name="startIndex">写入存储转换结果的二进制流的起始位置。</param>
+            /// <remarks>
+            /// Converts data from an object to a binary stream.
+            /// </remarks>
+            /// <typeparam name="T">要转换的对象的类型。 / The type of the object to convert.</typeparam>
+            /// <param name="structure">要转换的对象。 / The object to convert.</param>
+            /// <param name="result">存储转换结果的二进制流。 / The binary stream that stores the conversion result.</param>
+            /// <param name="startIndex">写入存储转换结果的二进制流的起始位置。 / The start position in the binary stream to write the conversion result.</param>
             [UnityEngine.Scripting.Preserve]
             public static void StructureToBytes<T>(T structure, byte[] result, int startIndex)
             {
@@ -180,11 +204,14 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将数据从对象转换为二进制流。
             /// </summary>
-            /// <typeparam name="T">要转换的对象的类型。</typeparam>
-            /// <param name="structure">要转换的对象。</param>
-            /// <param name="structureSize">要转换的对象的大小。</param>
-            /// <param name="result">存储转换结果的二进制流。</param>
-            /// <param name="startIndex">写入存储转换结果的二进制流的起始位置。</param>
+            /// <remarks>
+            /// Converts data from an object to a binary stream.
+            /// </remarks>
+            /// <typeparam name="T">要转换的对象的类型。 / The type of the object to convert.</typeparam>
+            /// <param name="structure">要转换的对象。 / The object to convert.</param>
+            /// <param name="structureSize">要转换的对象的大小。 / The size of the object to convert.</param>
+            /// <param name="result">存储转换结果的二进制流。 / The binary stream that stores the conversion result.</param>
+            /// <param name="startIndex">写入存储转换结果的二进制流的起始位置。 / The start position in the binary stream to write the conversion result.</param>
             [UnityEngine.Scripting.Preserve]
             internal static void StructureToBytes<T>(T structure, int structureSize, byte[] result, int startIndex)
             {
@@ -219,9 +246,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将数据从二进制流转换为对象。
             /// </summary>
-            /// <typeparam name="T">要转换的对象的类型。</typeparam>
-            /// <param name="buffer">要转换的二进制流。</param>
-            /// <returns>存储转换结果的对象。</returns>
+            /// <remarks>
+            /// Converts data from a binary stream to an object.
+            /// </remarks>
+            /// <typeparam name="T">要转换的对象的类型。 / The type of the object to convert.</typeparam>
+            /// <param name="buffer">要转换的二进制流。 / The binary stream to convert.</param>
+            /// <returns>存储转换结果的对象。 / The object that stores the conversion result.</returns>
             [UnityEngine.Scripting.Preserve]
             public static T BytesToStructure<T>(byte[] buffer)
             {
@@ -231,10 +261,13 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将数据从二进制流转换为对象。
             /// </summary>
-            /// <typeparam name="T">要转换的对象的类型。</typeparam>
-            /// <param name="buffer">要转换的二进制流。</param>
-            /// <param name="startIndex">读取要转换的二进制流的起始位置。</param>
-            /// <returns>存储转换结果的对象。</returns>
+            /// <remarks>
+            /// Converts data from a binary stream to an object.
+            /// </remarks>
+            /// <typeparam name="T">要转换的对象的类型。 / The type of the object to convert.</typeparam>
+            /// <param name="buffer">要转换的二进制流。 / The binary stream to convert.</param>
+            /// <param name="startIndex">读取要转换的二进制流的起始位置。 / The start position in the binary stream to read from.</param>
+            /// <returns>存储转换结果的对象。 / The object that stores the conversion result.</returns>
             [UnityEngine.Scripting.Preserve]
             public static T BytesToStructure<T>(byte[] buffer, int startIndex)
             {
@@ -244,10 +277,13 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将数据从二进制流转换为对象。
             /// </summary>
-            /// <typeparam name="T">要转换的对象的类型。</typeparam>
-            /// <param name="structureSize">要转换的对象的大小。</param>
-            /// <param name="buffer">要转换的二进制流。</param>
-            /// <returns>存储转换结果的对象。</returns>
+            /// <remarks>
+            /// Converts data from a binary stream to an object.
+            /// </remarks>
+            /// <typeparam name="T">要转换的对象的类型。 / The type of the object to convert.</typeparam>
+            /// <param name="structureSize">要转换的对象的大小。 / The size of the object to convert.</param>
+            /// <param name="buffer">要转换的二进制流。 / The binary stream to convert.</param>
+            /// <returns>存储转换结果的对象。 / The object that stores the conversion result.</returns>
             [UnityEngine.Scripting.Preserve]
             internal static T BytesToStructure<T>(int structureSize, byte[] buffer)
             {
@@ -257,11 +293,14 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将数据从二进制流转换为对象。
             /// </summary>
-            /// <typeparam name="T">要转换的对象的类型。</typeparam>
-            /// <param name="structureSize">要转换的对象的大小。</param>
-            /// <param name="buffer">要转换的二进制流。</param>
-            /// <param name="startIndex">读取要转换的二进制流的起始位置。</param>
-            /// <returns>存储转换结果的对象。</returns>
+            /// <remarks>
+            /// Converts data from a binary stream to an object.
+            /// </remarks>
+            /// <typeparam name="T">要转换的对象的类型。 / The type of the object to convert.</typeparam>
+            /// <param name="structureSize">要转换的对象的大小。 / The size of the object to convert.</param>
+            /// <param name="buffer">要转换的二进制流。 / The binary stream to convert.</param>
+            /// <param name="startIndex">读取要转换的二进制流的起始位置。 / The start position in the binary stream to read from.</param>
+            /// <returns>存储转换结果的对象。 / The object that stores the conversion result.</returns>
             [UnityEngine.Scripting.Preserve]
             internal static T BytesToStructure<T>(int structureSize, byte[] buffer, int startIndex)
             {

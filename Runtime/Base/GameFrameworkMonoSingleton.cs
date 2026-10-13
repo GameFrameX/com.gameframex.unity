@@ -8,7 +8,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Game framework MonoBehaviour singleton base class that automatically creates and persists the instance across scenes.
     /// </remarks>
-    /// <typeparam name="T">单例类型（必须继承自MonoBehaviour）/ The type of the singleton class (must inherit from MonoBehaviour)</typeparam>
+    /// <typeparam name="T">单例类型（必须继承自 MonoBehaviour） / The type of the singleton class (must inherit from MonoBehaviour)</typeparam>
     [UnityEngine.Scripting.Preserve]
     public abstract class GameFrameworkMonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {

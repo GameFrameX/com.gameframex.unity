@@ -39,12 +39,15 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 日志工具集。
     /// </summary>
+    /// <remarks>
+    /// Logging utility set.
+    /// </remarks>
     public static class Log
     {
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -57,7 +60,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -70,9 +73,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T">日志参数的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg">日志参数。</param>
+        /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg">日志参数 / Log argument.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -85,11 +88,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -102,13 +105,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -121,15 +124,15 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -142,17 +145,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -165,19 +168,19 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -190,21 +193,21 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -217,23 +220,23 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -246,25 +249,25 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -277,27 +280,27 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -310,29 +313,29 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -345,31 +348,31 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -382,33 +385,33 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -421,35 +424,35 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -462,37 +465,37 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <typeparam name="T15">日志参数 15 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
-        /// <param name="arg15">日志参数 15。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <typeparam name="T15">日志参数 15 的类型 / The type of log argument 15.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
+        /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -505,39 +508,39 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印调试级别日志，用于记录调试类日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <typeparam name="T15">日志参数 15 的类型。</typeparam>
-        /// <typeparam name="T16">日志参数 16 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
-        /// <param name="arg15">日志参数 15。</param>
-        /// <param name="arg16">日志参数 16。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <typeparam name="T15">日志参数 15 的类型 / The type of log argument 15.</typeparam>
+        /// <typeparam name="T16">日志参数 16 的类型 / The type of log argument 16.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
+        /// <param name="arg15">日志参数 15 / Log argument 15.</param>
+        /// <param name="arg16">日志参数 16 / Log argument 16.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
@@ -550,7 +553,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -564,7 +567,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -578,9 +581,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T">日志参数的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg">日志参数。</param>
+        /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg">日志参数 / Log argument.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -594,11 +597,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -612,13 +615,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -632,15 +635,15 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -654,17 +657,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -678,19 +681,19 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -704,21 +707,21 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -732,23 +735,23 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -762,25 +765,25 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -794,27 +797,27 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -828,29 +831,29 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -864,31 +867,31 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -902,33 +905,33 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -942,35 +945,35 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -984,37 +987,37 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <typeparam name="T15">日志参数 15 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
-        /// <param name="arg15">日志参数 15。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <typeparam name="T15">日志参数 15 的类型 / The type of log argument 15.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
+        /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -1028,39 +1031,39 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印信息级别日志，用于记录程序正常运行日志信息。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <typeparam name="T15">日志参数 15 的类型。</typeparam>
-        /// <typeparam name="T16">日志参数 16 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
-        /// <param name="arg15">日志参数 15。</param>
-        /// <param name="arg16">日志参数 16。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <typeparam name="T15">日志参数 15 的类型 / The type of log argument 15.</typeparam>
+        /// <typeparam name="T16">日志参数 16 的类型 / The type of log argument 16.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
+        /// <param name="arg15">日志参数 15 / Log argument 15.</param>
+        /// <param name="arg16">日志参数 16 / Log argument 16.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
@@ -1074,7 +1077,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1089,7 +1092,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1104,9 +1107,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T">日志参数的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg">日志参数。</param>
+        /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg">日志参数 / Log argument.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1121,11 +1124,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1140,13 +1143,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1161,15 +1164,15 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1184,17 +1187,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1209,19 +1212,19 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1236,21 +1239,21 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1265,23 +1268,23 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1296,25 +1299,25 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1329,27 +1332,27 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1364,29 +1367,29 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1401,31 +1404,31 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1440,33 +1443,33 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1481,35 +1484,35 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1524,37 +1527,37 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <typeparam name="T15">日志参数 15 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
-        /// <param name="arg15">日志参数 15。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <typeparam name="T15">日志参数 15 的类型 / The type of log argument 15.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
+        /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1569,39 +1572,39 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印警告级别日志，建议在发生局部功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <typeparam name="T15">日志参数 15 的类型。</typeparam>
-        /// <typeparam name="T16">日志参数 16 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
-        /// <param name="arg15">日志参数 15。</param>
-        /// <param name="arg16">日志参数 16。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <typeparam name="T15">日志参数 15 的类型 / The type of log argument 15.</typeparam>
+        /// <typeparam name="T16">日志参数 16 的类型 / The type of log argument 16.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
+        /// <param name="arg15">日志参数 15 / Log argument 15.</param>
+        /// <param name="arg16">日志参数 16 / Log argument 16.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
@@ -1616,7 +1619,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1632,7 +1635,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1648,9 +1651,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T">日志参数的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg">日志参数。</param>
+        /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg">日志参数 / Log argument.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1666,11 +1669,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1686,13 +1689,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1708,15 +1711,15 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1732,17 +1735,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1758,19 +1761,19 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1786,21 +1789,21 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1816,23 +1819,23 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1848,25 +1851,25 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1882,27 +1885,27 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1918,29 +1921,29 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1956,31 +1959,31 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -1996,33 +1999,33 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -2038,35 +2041,35 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -2082,37 +2085,37 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <typeparam name="T15">日志参数 15 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
-        /// <param name="arg15">日志参数 15。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <typeparam name="T15">日志参数 15 的类型 / The type of log argument 15.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
+        /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -2128,39 +2131,39 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印错误级别日志，建议在发生功能逻辑错误，但尚不会导致游戏崩溃或异常时使用。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <typeparam name="T15">日志参数 15 的类型。</typeparam>
-        /// <typeparam name="T16">日志参数 16 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
-        /// <param name="arg15">日志参数 15。</param>
-        /// <param name="arg16">日志参数 16。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <typeparam name="T15">日志参数 15 的类型 / The type of log argument 15.</typeparam>
+        /// <typeparam name="T16">日志参数 16 的类型 / The type of log argument 16.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
+        /// <param name="arg15">日志参数 15 / Log argument 15.</param>
+        /// <param name="arg16">日志参数 16 / Log argument 16.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
@@ -2176,7 +2179,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2193,7 +2196,7 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <param name="message">日志内容。</param>
+        /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2210,9 +2213,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T">日志参数的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg">日志参数。</param>
+        /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg">日志参数 / Log argument.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2229,11 +2232,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2250,13 +2253,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2273,15 +2276,15 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2298,17 +2301,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2325,19 +2328,19 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2354,21 +2357,21 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2385,23 +2388,23 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2418,25 +2421,25 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2453,27 +2456,27 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2490,29 +2493,29 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2529,31 +2532,31 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2570,33 +2573,33 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2613,35 +2616,35 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2658,37 +2661,37 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <typeparam name="T15">日志参数 15 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
-        /// <param name="arg15">日志参数 15。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <typeparam name="T15">日志参数 15 的类型 / The type of log argument 15.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
+        /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
@@ -2705,39 +2708,39 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 打印严重错误级别日志，建议在发生严重错误，可能导致游戏崩溃或异常时使用，此时应尝试重启进程或重建游戏框架。
         /// </summary>
-        /// <typeparam name="T1">日志参数 1 的类型。</typeparam>
-        /// <typeparam name="T2">日志参数 2 的类型。</typeparam>
-        /// <typeparam name="T3">日志参数 3 的类型。</typeparam>
-        /// <typeparam name="T4">日志参数 4 的类型。</typeparam>
-        /// <typeparam name="T5">日志参数 5 的类型。</typeparam>
-        /// <typeparam name="T6">日志参数 6 的类型。</typeparam>
-        /// <typeparam name="T7">日志参数 7 的类型。</typeparam>
-        /// <typeparam name="T8">日志参数 8 的类型。</typeparam>
-        /// <typeparam name="T9">日志参数 9 的类型。</typeparam>
-        /// <typeparam name="T10">日志参数 10 的类型。</typeparam>
-        /// <typeparam name="T11">日志参数 11 的类型。</typeparam>
-        /// <typeparam name="T12">日志参数 12 的类型。</typeparam>
-        /// <typeparam name="T13">日志参数 13 的类型。</typeparam>
-        /// <typeparam name="T14">日志参数 14 的类型。</typeparam>
-        /// <typeparam name="T15">日志参数 15 的类型。</typeparam>
-        /// <typeparam name="T16">日志参数 16 的类型。</typeparam>
-        /// <param name="format">日志格式。</param>
-        /// <param name="arg1">日志参数 1。</param>
-        /// <param name="arg2">日志参数 2。</param>
-        /// <param name="arg3">日志参数 3。</param>
-        /// <param name="arg4">日志参数 4。</param>
-        /// <param name="arg5">日志参数 5。</param>
-        /// <param name="arg6">日志参数 6。</param>
-        /// <param name="arg7">日志参数 7。</param>
-        /// <param name="arg8">日志参数 8。</param>
-        /// <param name="arg9">日志参数 9。</param>
-        /// <param name="arg10">日志参数 10。</param>
-        /// <param name="arg11">日志参数 11。</param>
-        /// <param name="arg12">日志参数 12。</param>
-        /// <param name="arg13">日志参数 13。</param>
-        /// <param name="arg14">日志参数 14。</param>
-        /// <param name="arg15">日志参数 15。</param>
-        /// <param name="arg16">日志参数 16。</param>
+        /// <typeparam name="T1">日志参数 1 的类型 / The type of log argument 1.</typeparam>
+        /// <typeparam name="T2">日志参数 2 的类型 / The type of log argument 2.</typeparam>
+        /// <typeparam name="T3">日志参数 3 的类型 / The type of log argument 3.</typeparam>
+        /// <typeparam name="T4">日志参数 4 的类型 / The type of log argument 4.</typeparam>
+        /// <typeparam name="T5">日志参数 5 的类型 / The type of log argument 5.</typeparam>
+        /// <typeparam name="T6">日志参数 6 的类型 / The type of log argument 6.</typeparam>
+        /// <typeparam name="T7">日志参数 7 的类型 / The type of log argument 7.</typeparam>
+        /// <typeparam name="T8">日志参数 8 的类型 / The type of log argument 8.</typeparam>
+        /// <typeparam name="T9">日志参数 9 的类型 / The type of log argument 9.</typeparam>
+        /// <typeparam name="T10">日志参数 10 的类型 / The type of log argument 10.</typeparam>
+        /// <typeparam name="T11">日志参数 11 的类型 / The type of log argument 11.</typeparam>
+        /// <typeparam name="T12">日志参数 12 的类型 / The type of log argument 12.</typeparam>
+        /// <typeparam name="T13">日志参数 13 的类型 / The type of log argument 13.</typeparam>
+        /// <typeparam name="T14">日志参数 14 的类型 / The type of log argument 14.</typeparam>
+        /// <typeparam name="T15">日志参数 15 的类型 / The type of log argument 15.</typeparam>
+        /// <typeparam name="T16">日志参数 16 的类型 / The type of log argument 16.</typeparam>
+        /// <param name="format">日志格式 / Log format.</param>
+        /// <param name="arg1">日志参数 1 / Log argument 1.</param>
+        /// <param name="arg2">日志参数 2 / Log argument 2.</param>
+        /// <param name="arg3">日志参数 3 / Log argument 3.</param>
+        /// <param name="arg4">日志参数 4 / Log argument 4.</param>
+        /// <param name="arg5">日志参数 5 / Log argument 5.</param>
+        /// <param name="arg6">日志参数 6 / Log argument 6.</param>
+        /// <param name="arg7">日志参数 7 / Log argument 7.</param>
+        /// <param name="arg8">日志参数 8 / Log argument 8.</param>
+        /// <param name="arg9">日志参数 9 / Log argument 9.</param>
+        /// <param name="arg10">日志参数 10 / Log argument 10.</param>
+        /// <param name="arg11">日志参数 11 / Log argument 11.</param>
+        /// <param name="arg12">日志参数 12 / Log argument 12.</param>
+        /// <param name="arg13">日志参数 13 / Log argument 13.</param>
+        /// <param name="arg14">日志参数 14 / Log argument 14.</param>
+        /// <param name="arg15">日志参数 15 / Log argument 15.</param>
+        /// <param name="arg16">日志参数 16 / Log argument 16.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]

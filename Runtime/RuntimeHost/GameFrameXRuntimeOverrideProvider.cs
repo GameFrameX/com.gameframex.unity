@@ -6,6 +6,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 管理自动运行时覆盖 Provider。
     /// </summary>
+    /// <remarks>
+    /// Manages auto runtime override providers.
+    /// </remarks>
     [Preserve]
     public static class GameFrameXRuntimeOverrideProvider
     {
@@ -14,7 +17,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 注册运行时覆盖 Provider。
         /// </summary>
-        /// <param name="provider">运行时覆盖 Provider。</param>
+        /// <remarks>
+        /// Registers a runtime override provider.
+        /// </remarks>
+        /// <param name="provider">运行时覆盖 Provider。 / The runtime override provider.</param>
         public static void RegisterProvider(IGameFrameXRuntimeOverrideProvider provider)
         {
             if (provider == null)
@@ -31,7 +37,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 注销运行时覆盖 Provider。
         /// </summary>
-        /// <param name="provider">运行时覆盖 Provider。</param>
+        /// <remarks>
+        /// Unregisters a runtime override provider.
+        /// </remarks>
+        /// <param name="provider">运行时覆盖 Provider。 / The runtime override provider.</param>
         public static void UnregisterProvider(IGameFrameXRuntimeOverrideProvider provider)
         {
             if (provider == null)
@@ -45,6 +54,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 清理已注册的运行时覆盖 Provider。
         /// </summary>
+        /// <remarks>
+        /// Clears the registered runtime override providers.
+        /// </remarks>
         public static void ClearProviders()
         {
             Providers.Clear();
@@ -53,7 +65,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 收集所有运行时覆盖。
         /// </summary>
-        /// <returns>运行时覆盖上下文。</returns>
+        /// <remarks>
+        /// Collects all runtime overrides.
+        /// </remarks>
+        /// <returns>运行时覆盖上下文。 / The runtime override context.</returns>
         internal static GameFrameXRuntimeOverrideContext CollectOverrides()
         {
             var context = new GameFrameXRuntimeOverrideContext();

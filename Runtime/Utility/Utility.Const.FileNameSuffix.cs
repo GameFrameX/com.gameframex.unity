@@ -54,76 +54,121 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// Json 文件
                 /// </summary>
+                /// <remarks>
+                /// Json file.
+                /// </remarks>
                 public const string Json = ".json";
 
                 /// <summary>
                 /// Wav 文件
                 /// </summary>
+                /// <remarks>
+                /// Wav file.
+                /// </remarks>
                 public const string Wav = ".wav";
 
                 /// <summary>
                 /// Mp3 文件
                 /// </summary>
+                /// <remarks>
+                /// Mp3 file.
+                /// </remarks>
                 public const string Mp3 = ".mp3";
 
                 /// <summary>
                 /// Xml 文件
                 /// </summary>
+                /// <remarks>
+                /// Xml file.
+                /// </remarks>
                 public const string Xml = ".xml";
 
                 /// <summary>
                 /// 文本文件
                 /// </summary>
+                /// <remarks>
+                /// Text file.
+                /// </remarks>
                 public const string Txt = ".txt";
 
                 /// <summary>
                 /// 日志文件
                 /// </summary>
+                /// <remarks>
+                /// Log file.
+                /// </remarks>
                 public const string Log = ".log";
 
                 /// <summary>
                 /// CSharp 文件
                 /// </summary>
+                /// <remarks>
+                /// CSharp file.
+                /// </remarks>
                 public const string CSharp = ".cs";
 
                 /// <summary>
                 /// Zip 压缩文件
                 /// </summary>
+                /// <remarks>
+                /// Zip archive file.
+                /// </remarks>
                 public const string Zip = ".zip";
 
                 /// <summary>
                 /// 图片PNG
                 /// </summary>
+                /// <remarks>
+                /// PNG image.
+                /// </remarks>
                 public const string PNG = ".png";
 
                 /// <summary>
                 /// 图片JPG
                 /// </summary>
+                /// <remarks>
+                /// JPG image.
+                /// </remarks>
                 public const string JPG = ".jpg";
 
                 /// <summary>
                 /// 二进制文件
                 /// </summary>
+                /// <remarks>
+                /// Binary file.
+                /// </remarks>
                 public const string Binary = ".bytes";
 
                 /// <summary>
                 /// 配置文件
                 /// </summary>
+                /// <remarks>
+                /// Config file.
+                /// </remarks>
                 public const string Config = ".config";
 
                 /// <summary>
                 /// DLL 文件
                 /// </summary>
+                /// <remarks>
+                /// DLL file.
+                /// </remarks>
                 public const string DLL = ".dll";
 
                 /// <summary>
                 /// PDB 调试文件
                 /// </summary>
+                /// <remarks>
+                /// PDB debug file.
+                /// </remarks>
                 public const string PDB = ".pdb";
 
                 /// <summary>
                 /// Asset 文件
                 /// </summary>
+                /// <remarks>
+                /// Asset file.
+                /// </remarks>
                 public const string Asset = ".asset";
             }
         }

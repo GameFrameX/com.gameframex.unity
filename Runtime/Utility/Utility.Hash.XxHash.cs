@@ -26,8 +26,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 计算给定字节数组的32位哈希值。
                 /// </summary>
-                /// <param name="buffer">要计算哈希值的字节数组。</param>
-                /// <returns>返回计算得到的32位哈希值。</returns>
+                /// <remarks>
+                /// Computes the 32-bit hash value of the given byte array.
+                /// </remarks>
+                /// <param name="buffer">要计算哈希值的字节数组。 / The byte array to hash.</param>
+                /// <returns>返回计算得到的32位哈希值。 / The computed 32-bit hash value.</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static uint Hash32(byte[] buffer)
                 {
@@ -37,8 +40,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 计算给定字符串的32位哈希值。
                 /// </summary>
-                /// <param name="text">要计算哈希值的字符串。</param>
-                /// <returns>返回计算得到的32位哈希值。</returns>
+                /// <remarks>
+                /// Computes the 32-bit hash value of the given string.
+                /// </remarks>
+                /// <param name="text">要计算哈希值的字符串。 / The string to hash.</param>
+                /// <returns>返回计算得到的32位哈希值。 / The computed 32-bit hash value.</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static uint Hash32(string text)
                 {
@@ -48,8 +54,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 计算给定类型的32位哈希值。
                 /// </summary>
-                /// <param name="type">要计算哈希值的类型。</param>
-                /// <returns>返回计算得到的32位哈希值。</returns>
+                /// <remarks>
+                /// Computes the 32-bit hash value of the given type.
+                /// </remarks>
+                /// <param name="type">要计算哈希值的类型。 / The type to hash.</param>
+                /// <returns>返回计算得到的32位哈希值。 / The computed 32-bit hash value.</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static uint Hash32(Type type)
                 {
@@ -59,8 +68,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 计算给定泛型类型的32位哈希值。
                 /// </summary>
-                /// <typeparam name="T">要计算哈希值的泛型类型。</typeparam>
-                /// <returns>返回计算得到的32位哈希值。</returns>
+                /// <remarks>
+                /// Computes the 32-bit hash value of the given generic type.
+                /// </remarks>
+                /// <typeparam name="T">要计算哈希值的泛型类型。 / The generic type to hash.</typeparam>
+                /// <returns>返回计算得到的32位哈希值。 / The computed 32-bit hash value.</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static uint Hash32<T>()
                 {
@@ -70,8 +82,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 计算给定字节数组的64位哈希值。
                 /// </summary>
-                /// <param name="buffer">要计算哈希值的字节数组。</param>
-                /// <returns>返回计算得到的64位哈希值。</returns>
+                /// <remarks>
+                /// Computes the 64-bit hash value of the given byte array.
+                /// </remarks>
+                /// <param name="buffer">要计算哈希值的字节数组。 / The byte array to hash.</param>
+                /// <returns>返回计算得到的64位哈希值。 / The computed 64-bit hash value.</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static ulong Hash64(byte[] buffer)
                 {
@@ -81,8 +96,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 计算给定字符串的64位哈希值。
                 /// </summary>
-                /// <param name="text">要计算哈希值的字符串。</param>
-                /// <returns>返回计算得到的64位哈希值。</returns>
+                /// <remarks>
+                /// Computes the 64-bit hash value of the given string.
+                /// </remarks>
+                /// <param name="text">要计算哈希值的字符串。 / The string to hash.</param>
+                /// <returns>返回计算得到的64位哈希值。 / The computed 64-bit hash value.</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static ulong Hash64(string text)
                 {
@@ -92,8 +110,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 计算给定类型的64位哈希值。
                 /// </summary>
-                /// <param name="type">要计算哈希值的类型。</param>
-                /// <returns>返回计算得到的64位哈希值。</returns>
+                /// <remarks>
+                /// Computes the 64-bit hash value of the given type.
+                /// </remarks>
+                /// <param name="type">要计算哈希值的类型。 / The type to hash.</param>
+                /// <returns>返回计算得到的64位哈希值。 / The computed 64-bit hash value.</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static ulong Hash64(Type type)
                 {
@@ -103,8 +124,11 @@ namespace GameFrameX.Runtime
                 /// <summary>
                 /// 计算给定泛型类型的64位哈希值。
                 /// </summary>
-                /// <typeparam name="T">要计算哈希值的泛型类型。</typeparam>
-                /// <returns>返回计算得到的64位哈希值。</returns>
+                /// <remarks>
+                /// Computes the 64-bit hash value of the given generic type.
+                /// </remarks>
+                /// <typeparam name="T">要计算哈希值的泛型类型。 / The generic type to hash.</typeparam>
+                /// <returns>返回计算得到的64位哈希值。 / The computed 64-bit hash value.</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static ulong Hash64<T>()
                 {
@@ -318,6 +342,14 @@ namespace GameFrameX.Runtime
                     }
                 }
 
+                /// <summary>
+                /// 计算给定字节数组的32位哈希值。
+                /// </summary>
+                /// <remarks>
+                /// Computes the 32-bit hash value of the given byte array.
+                /// </remarks>
+                /// <param name="buffer">要计算哈希值的字节数组 / The byte array to hash</param>
+                /// <returns>计算得到的32位哈希值 / The computed 32-bit hash value</returns>
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
                 [UnityEngine.Scripting.Preserve]
                 public static uint Hash32(byte[] buffer)
@@ -332,18 +364,50 @@ namespace GameFrameX.Runtime
                     }
                 }
 
+                /// <summary>
+                /// 计算给定字符串（UTF-8 编码）的32位哈希值。
+                /// </summary>
+                /// <remarks>
+                /// Computes the 32-bit hash value of the given string encoded in UTF-8.
+                /// </remarks>
+                /// <param name="text">要计算哈希值的字符串 / The string to hash</param>
+                /// <returns>计算得到的32位哈希值 / The computed 32-bit hash value</returns>
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
                 [UnityEngine.Scripting.Preserve]
                 public static uint Hash32(string text) => Hash32(Encoding.UTF8.GetBytes(text));
 
+                /// <summary>
+                /// 计算给定类型全名的32位哈希值。
+                /// </summary>
+                /// <remarks>
+                /// Computes the 32-bit hash value of the given type's full name.
+                /// </remarks>
+                /// <param name="type">要计算哈希值的类型 / The type to hash</param>
+                /// <returns>计算得到的32位哈希值 / The computed 32-bit hash value</returns>
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
                 [UnityEngine.Scripting.Preserve]
                 public static uint Hash32(Type type) => Hash32(type.FullName);
 
+                /// <summary>
+                /// 计算给定泛型类型的32位哈希值。
+                /// </summary>
+                /// <remarks>
+                /// Computes the 32-bit hash value of the given generic type.
+                /// </remarks>
+                /// <typeparam name="T">要计算哈希值的泛型类型 / The generic type to hash</typeparam>
+                /// <returns>计算得到的32位哈希值 / The computed 32-bit hash value</returns>
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
                 [UnityEngine.Scripting.Preserve]
                 public static uint Hash32<T>() => Hash32(typeof(T));
 
+                /// <summary>
+                /// 计算给定字节数组的64位哈希值。
+                /// </summary>
+                /// <remarks>
+                /// Computes the 64-bit hash value of the given byte array.
+                /// </remarks>
+                /// <param name="buffer">要计算哈希值的字节数组 / The byte array to hash</param>
+                /// <returns>计算得到的64位哈希值 / The computed 64-bit hash value</returns>
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
                 [UnityEngine.Scripting.Preserve]
                 public static ulong Hash64(byte[] buffer)
@@ -358,14 +422,38 @@ namespace GameFrameX.Runtime
                     }
                 }
 
+                /// <summary>
+                /// 计算给定字符串（UTF-8 编码）的64位哈希值。
+                /// </summary>
+                /// <remarks>
+                /// Computes the 64-bit hash value of the given string encoded in UTF-8.
+                /// </remarks>
+                /// <param name="text">要计算哈希值的字符串 / The string to hash</param>
+                /// <returns>计算得到的64位哈希值 / The computed 64-bit hash value</returns>
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
                 [UnityEngine.Scripting.Preserve]
                 public static ulong Hash64(string text) => Hash64(Encoding.UTF8.GetBytes(text));
 
+                /// <summary>
+                /// 计算给定类型全名的64位哈希值。
+                /// </summary>
+                /// <remarks>
+                /// Computes the 64-bit hash value of the given type's full name.
+                /// </remarks>
+                /// <param name="type">要计算哈希值的类型 / The type to hash</param>
+                /// <returns>计算得到的64位哈希值 / The computed 64-bit hash value</returns>
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
                 [UnityEngine.Scripting.Preserve]
                 public static ulong Hash64(Type type) => Hash64(type.FullName);
 
+                /// <summary>
+                /// 计算给定泛型类型的64位哈希值。
+                /// </summary>
+                /// <remarks>
+                /// Computes the 64-bit hash value of the given generic type.
+                /// </remarks>
+                /// <typeparam name="T">要计算哈希值的泛型类型 / The generic type to hash</typeparam>
+                /// <returns>计算得到的64位哈希值 / The computed 64-bit hash value</returns>
                 [MethodImpl(MethodImplOptions.AggressiveInlining)]
                 [UnityEngine.Scripting.Preserve]
                 public static ulong Hash64<T>() => Hash64(typeof(T));

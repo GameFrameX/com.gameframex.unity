@@ -87,6 +87,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取组件本次 Awake 是否已完成运行时注册。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the component has completed runtime registration during this Awake.
+        /// </remarks>
         protected bool IsRuntimeComponentReady { get; private set; }
 
         /// <summary>
@@ -132,7 +135,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 应用组件运行时配置覆盖。
         /// </summary>
-        /// <param name="config">组件运行时配置。</param>
+        /// <remarks>
+        /// Applies the component runtime configuration overrides.
+        /// </remarks>
+        /// <param name="config">组件运行时配置。 / The component runtime configuration.</param>
         public virtual void ApplyRuntimeConfig(GameFrameXComponentRuntimeConfig config)
         {
             if (config == null)
@@ -149,11 +155,6 @@ namespace GameFrameX.Runtime
                 componentType = config.ManagerImplementationTypeName;
             }
 
-            foreach (var pair in config.GetValues())
-            {
-                ApplyRuntimeConfigValue(pair.Key, pair.Value);
-            }
-
             m_RuntimeConfigApplied = true;
         }
 
@@ -167,59 +168,6 @@ namespace GameFrameX.Runtime
             ApplyRuntimeConfig(GameFrameXRuntimeHost.GetPendingConfig(GetType()));
         }
 
-        private void ApplyRuntimeConfigValue(string name, object value)
-        {
-            if (string.IsNullOrEmpty(name))
-            {
-                return;
-            }
 
-            const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-            var currentType = GetType();
-            while (currentType != null && currentType != typeof(MonoBehaviour))
-            {
-                FieldInfo fieldInfo = currentType.GetField(name, flags);
-                if (fieldInfo != null)
-                {
-                    fieldInfo.SetValue(this, ConvertRuntimeConfigValue(value, fieldInfo.FieldType));
-                    return;
-                }
-
-                PropertyInfo propertyInfo = currentType.GetProperty(name, flags);
-                if (propertyInfo != null && propertyInfo.CanWrite)
-                {
-                    propertyInfo.SetValue(this, ConvertRuntimeConfigValue(value, propertyInfo.PropertyType), null);
-                    return;
-                }
-
-                currentType = currentType.BaseType;
-            }
-        }
-
-        private static object ConvertRuntimeConfigValue(object value, Type targetType)
-        {
-            if (value == null || targetType == null)
-            {
-                return value;
-            }
-
-            var valueType = value.GetType();
-            if (targetType.IsAssignableFrom(valueType))
-            {
-                return value;
-            }
-
-            if (targetType.IsEnum)
-            {
-                if (value is string enumName)
-                {
-                    return Enum.Parse(targetType, enumName);
-                }
-
-                return Enum.ToObject(targetType, value);
-            }
-
-            return Convert.ChangeType(value, targetType);
-        }
     }
 }

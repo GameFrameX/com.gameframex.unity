@@ -39,10 +39,13 @@ namespace GameFrameX.ObjectPool
     /// <summary>
     /// 释放对象筛选函数。
     /// </summary>
-    /// <typeparam name="T">对象类型。</typeparam>
-    /// <param name="candidateObjects">要筛选的对象集合。</param>
-    /// <param name="toReleaseCount">需要释放的对象数量。</param>
-    /// <param name="expireTime">对象过期参考时间。</param>
-    /// <returns>经筛选需要释放的对象集合。</returns>
+    /// <remarks>
+    /// Callback used to filter objects to release.
+    /// </remarks>
+    /// <typeparam name="T">对象类型。 / Type of the objects.</typeparam>
+    /// <param name="candidateObjects">要筛选的对象集合。 / The collection of candidate objects to filter.</param>
+    /// <param name="toReleaseCount">需要释放的对象数量。 / Number of objects to release.</param>
+    /// <param name="expireTime">对象过期参考时间。 / Reference expire time of objects.</param>
+    /// <returns>经筛选需要释放的对象集合。 / The filtered collection of objects to release.</returns>
     public delegate List<T> ReleaseObjectFilterCallback<T>(List<T> candidateObjects, int toReleaseCount, DateTime expireTime) where T : ObjectBase;
 }

@@ -2,6 +2,12 @@ using UnityEngine;
 
 namespace GameFrameX.Runtime
 {
+    /// <summary>
+    /// Transform 相关扩展方法类
+    /// </summary>
+    /// <remarks>
+    /// Provides extension methods for Transform, such as finding children and resetting transforms.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class UnityEngineTransformExtension
     {
@@ -382,6 +388,24 @@ namespace GameFrameX.Runtime
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
             transform.localScale = Vector3.one;
+        }
+
+        /// <summary>
+        /// 创建游戏对象
+        /// </summary>
+        /// <remarks>
+        /// Creates a child game object with the specified name under the transform.
+        /// </remarks>
+        /// <param name="parent">父变换 / The parent transform</param>
+        /// <param name="name">子对象名称 / The name of the child object</param>
+        /// <returns>新创建的子游戏对象 / The newly created child game object</returns>
+        [UnityEngine.Scripting.Preserve]
+        public static GameObject CreateChild(this Transform transform, string name)
+        {
+            Debug.Assert(!ReferenceEquals(transform, null), nameof(transform) + " == null");
+            var gameObject = new GameObject(name);
+            gameObject.transform.SetParent(transform);
+            return gameObject;
         }
     }
 }

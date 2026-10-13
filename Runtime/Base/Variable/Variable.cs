@@ -65,12 +65,18 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取变量值。
         /// </summary>
+        /// <remarks>
+        /// Gets the value of the variable.
+        /// </remarks>
         /// <returns>变量值。 / The variable value.</returns>
         public abstract object GetValue();
 
         /// <summary>
         /// 设置变量值。
         /// </summary>
+        /// <remarks>
+        /// Sets the value of the variable.
+        /// </remarks>
         /// <param name="value">变量值。 / The variable value to set.</param>
         public abstract void SetValue(object value);
 

@@ -33,6 +33,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 应用程序内部资源路径存放路径
         /// </summary>
+        /// <remarks>
+        /// Application internal resource path.
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static string AppResPath
         {
@@ -42,6 +45,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 应用程序内部资源路径存放路径(www/webrequest专用)
         /// </summary>
+        /// <remarks>
+        /// Application internal resource path (for www/webrequest).
+        /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static string AppResPath4Web
         {
@@ -59,7 +65,7 @@ namespace GameFrameX.Runtime
         /// 获取平台名称
         /// </summary>
         /// <remarks>
-        /// 此属性已废弃，请使用 ApplicationHelper.PlatformName 替代
+        /// Gets the platform name. This property is obsolete; use ApplicationHelper.PlatformName instead.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
         [Obsolete("此方法已废弃，请使用 ApplicationHelper.PlatformName 替代")]
@@ -86,8 +92,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 规范化路径
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Normalizes the path by converting separators to forward slashes.
+        /// </remarks>
+        /// <param name="path">待规范化的路径 / The path to normalize</param>
+        /// <returns>规范化后的路径 / The normalized path</returns>
         [UnityEngine.Scripting.Preserve]
         public static string NormalizePath(string path)
         {
@@ -253,8 +262,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 拼接路径
         /// </summary>
-        /// <param name="paths"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Combines path segments into a single path.
+        /// </remarks>
+        /// <param name="paths">路径片段 / Path segments</param>
+        /// <returns>拼接后的路径 / The combined path</returns>
         [UnityEngine.Scripting.Preserve]
         public static string Combine(params string[] paths)
         {

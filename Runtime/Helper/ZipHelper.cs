@@ -25,7 +25,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="folderToZip">要压缩的文件夹路径 / Folder path to compress</param>
         /// <param name="stream">压缩输出流 / Compressed output stream</param>
-        /// <param name="password">压缩密码（可选）/ Compression password (optional)</param>
+        /// <param name="password">压缩密码（可选） / Compression password (optional)</param>
         /// <returns>如果成功返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if successful; otherwise <c>false</c></returns> 
         [UnityEngine.Scripting.Preserve]
         public static bool CompressDirectoryToStream(string folderToZip, Stream stream, string password = null)
@@ -42,7 +42,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="folderToZip">要压缩的文件夹路径 / Folder path to compress</param>
         /// <param name="stream">压缩输出流 / Compressed output stream</param>
-        /// <param name="password">压缩密码（可选）/ Compression password (optional)</param>
+        /// <param name="password">压缩密码（可选） / Compression password (optional)</param>
         /// <returns>如果成功返回ZipOutputStream；否则返回null / ZipOutputStream if successful; otherwise null</returns> 
         [UnityEngine.Scripting.Preserve]
         public static ZipOutputStream CompressDirectoryToZipStream(string folderToZip, Stream stream, string password = null)
@@ -142,7 +142,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="folderToZip">要压缩的文件夹路径 / Folder path to compress</param>
         /// <param name="zipFile">压缩文件完整路径 / Full path of the zip file to create</param>
-        /// <param name="password">压缩密码（可选）/ Compression password (optional)</param>
+        /// <param name="password">压缩密码（可选） / Compression password (optional)</param>
         /// <returns>如果成功返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if successful; otherwise <c>false</c></returns> 
         [UnityEngine.Scripting.Preserve]
         public static bool CompressDirectory(string folderToZip, string zipFile, string password = null)
@@ -170,7 +170,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="fileToZip">要压缩的文件完整路径 / Full path of the file to compress</param>
         /// <param name="zipFile">压缩后的文件完整路径 / Full path of the zip file to create</param>
-        /// <param name="password">压缩密码（可选）/ Compression password (optional)</param>
+        /// <param name="password">压缩密码（可选） / Compression password (optional)</param>
         /// <returns>如果成功返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if successful; otherwise <c>false</c></returns> 
         [UnityEngine.Scripting.Preserve]
         public static bool CompressFile(string fileToZip, string zipFile, string password = null)
@@ -221,7 +221,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="fileToUnZip">待解压的文件完整路径 / Full path of the zip file to extract</param>
         /// <param name="zipFolder">解压目标目录 / Target directory for extraction</param>
-        /// <param name="password">解压密码（可选）/ Extraction password (optional)</param>
+        /// <param name="password">解压密码（可选） / Extraction password (optional)</param>
         /// <returns>如果成功返回 <c>true</c>；否则返回 <c>false</c> / <c>true</c> if successful; otherwise <c>false</c></returns> 
         [UnityEngine.Scripting.Preserve]
         public static bool DecompressFile(string fileToUnZip, string zipFolder, string password = null)
@@ -287,9 +287,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 压缩数据。使用Deflate算法将原始字节数组压缩成更小的字节数组。
         /// </summary>
-        /// <param name="content">要压缩的原始字节数组。不能为null。</param>
-        /// <returns>压缩后的字节数组。如果输入为空数组，则直接返回该空数组。如果压缩过程中发生异常，则返回原始数组。</returns>
-        /// <exception cref="ArgumentNullException">当输入参数content为null时抛出。</exception>
+        /// <remarks>
+        /// Compresses data using the Deflate algorithm.
+        /// </remarks>
+        /// <param name="content">要压缩的原始字节数组。不能为null。 / The raw byte array to compress. Must not be null.</param>
+        /// <returns>压缩后的字节数组。如果输入为空数组，则直接返回该空数组。如果压缩过程中发生异常，则返回原始数组。 / The compressed byte array. Returns the input array if it is empty or an exception occurs during compression.</returns>
+        /// <exception cref="ArgumentNullException">当输入参数content为null时抛出。 / Thrown when the content parameter is null.</exception>
         [UnityEngine.Scripting.Preserve]
         public static byte[] Compress(byte[] content)
         {
@@ -334,10 +337,13 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 解压数据。使用Inflate算法将压缩的字节数组还原成原始字节数组。
         /// </summary>
-        /// <param name="content">要解压的压缩字节数组。不能为null。</param>
-        /// <returns>解压后的原始字节数组。如果输入为空数组，则直接返回该空数组。如果解压过程中发生异常，则返回原始数组。</returns>
-        /// <exception cref="ArgumentNullException">当输入参数content为null时抛出。</exception>
-        /// <exception cref="InvalidDataException">当压缩数据格式无效或已损坏时抛出。</exception>
+        /// <remarks>
+        /// Decompresses data using the Inflate algorithm.
+        /// </remarks>
+        /// <param name="content">要解压的压缩字节数组。不能为null。 / The compressed byte array to decompress. Must not be null.</param>
+        /// <returns>解压后的原始字节数组。如果输入为空数组，则直接返回该空数组。如果解压过程中发生异常，则返回原始数组。 / The decompressed byte array. Returns the input array if it is empty or an exception occurs during decompression.</returns>
+        /// <exception cref="ArgumentNullException">当输入参数content为null时抛出。 / Thrown when the content parameter is null.</exception>
+        /// <exception cref="InvalidDataException">当压缩数据格式无效或已损坏时抛出。 / Thrown when the compressed data format is invalid or corrupted.</exception>
         [UnityEngine.Scripting.Preserve]
         public static byte[] Decompress(byte[] content)
         {

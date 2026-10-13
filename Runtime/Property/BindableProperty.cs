@@ -3,6 +3,12 @@ using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
+    /// <summary>
+    /// 可绑定属性，值变化时触发注册的回调。
+    /// </summary>
+    /// <remarks>
+    /// Bindable property that invokes registered callbacks when its value changes.
+    /// </remarks>
     [Preserve]
     public sealed class BindableProperty<T>
     {
@@ -12,6 +18,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 值
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the value and triggers the change callback when the new value differs.
+        /// </remarks>
         public T Value
         {
             get { return _value; }
@@ -33,7 +42,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 默认构造函数
         /// </summary>
-        /// <param name="defaultValue">默认值</param>
+        /// <remarks>
+        /// Initializes a new instance with an optional default value.
+        /// </remarks>
+        /// <param name="defaultValue">默认值 / Default value</param>
         [Preserve]
         public BindableProperty(T defaultValue = default) : this()
         {
@@ -44,8 +56,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 注册值变化事件
         /// </summary>
-        /// <param name="callback"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Registers a value-changed callback.
+        /// </remarks>
+        /// <param name="callback">值变化回调 / Value-changed callback</param>
+        /// <returns>当前可绑定属性 / The current bindable property</returns>
         [Preserve]
         public BindableProperty<T> Add(Action<T> callback)
         {
@@ -57,8 +72,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 注册事件
         /// </summary>
-        /// <param name="callback"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Registers a callback and immediately invokes it with the current value.
+        /// </remarks>
+        /// <param name="callback">事件回调 / Event callback</param>
+        /// <returns>当前可绑定属性 / The current bindable property</returns>
         [Preserve]
         public BindableProperty<T> RegisterWithInitValue(Action<T> callback)
         {
@@ -70,7 +88,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 移除事件
         /// </summary>
-        /// <param name="callback">事件</param>
+        /// <remarks>
+        /// Removes an event callback.
+        /// </remarks>
+        /// <param name="callback">事件 / Event callback</param>
         [Preserve]
         public void Remove(Action<T> callback)
         {
@@ -81,6 +102,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 清除事件
         /// </summary>
+        /// <remarks>
+        /// Clears all event callbacks.
+        /// </remarks>
         [Preserve]
         public void Clear()
         {

@@ -2,6 +2,12 @@ using UnityEngine;
 
 namespace GameFrameX.Runtime
 {
+    /// <summary>
+    /// 对 Unity 的扩展方法。
+    /// </summary>
+    /// <remarks>
+    /// Extension methods for Unity types.
+    /// </remarks>
     [UnityEngine.Scripting.Preserve]
     public static class UnityEngineVector2Extension
     {

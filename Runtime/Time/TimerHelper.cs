@@ -40,6 +40,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 时间辅助工具类
     /// </summary>
+    /// <remarks>
+    /// Timer helper utility class.
+    /// </remarks>
     public static partial class TimerHelper
     {
         /// <summary>

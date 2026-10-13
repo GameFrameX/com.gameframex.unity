@@ -54,9 +54,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将 bytes 使用 code 做异或运算的快速版本。
             /// </summary>
-            /// <param name="bytes">原始二进制流。</param>
-            /// <param name="code">异或二进制流。</param>
-            /// <returns>异或后的二进制流。</returns>
+            /// <remarks>
+            /// A fast version that XORs the bytes with the code.
+            /// </remarks>
+            /// <param name="bytes">原始二进制流。 / The original binary stream.</param>
+            /// <param name="code">异或二进制流。 / The XOR binary stream.</param>
+            /// <returns>异或后的二进制流。 / The XORed binary stream.</returns>
             [UnityEngine.Scripting.Preserve]
             public static byte[] GetQuickXorBytes(byte[] bytes, byte[] code)
             {
@@ -66,8 +69,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将 bytes 使用 code 做异或运算的快速版本。此方法将复用并改写传入的 bytes 作为返回值，而不额外分配内存空间。
             /// </summary>
-            /// <param name="bytes">原始及异或后的二进制流。</param>
-            /// <param name="code">异或二进制流。</param>
+            /// <remarks>
+            /// A fast version that XORs the bytes with the code. This method reuses and overwrites the passed-in bytes as the return value without allocating extra memory.
+            /// </remarks>
+            /// <param name="bytes">原始及异或后的二进制流。 / The original and XORed binary stream.</param>
+            /// <param name="code">异或二进制流。 / The XOR binary stream.</param>
             [UnityEngine.Scripting.Preserve]
             public static void GetQuickSelfXorBytes(byte[] bytes, byte[] code)
             {
@@ -77,9 +83,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将 bytes 使用 code 做异或运算。
             /// </summary>
-            /// <param name="bytes">原始二进制流。</param>
-            /// <param name="code">异或二进制流。</param>
-            /// <returns>异或后的二进制流。</returns>
+            /// <remarks>
+            /// XORs the bytes with the code.
+            /// </remarks>
+            /// <param name="bytes">原始二进制流。 / The original binary stream.</param>
+            /// <param name="code">异或二进制流。 / The XOR binary stream.</param>
+            /// <returns>异或后的二进制流。 / The XORed binary stream.</returns>
             [UnityEngine.Scripting.Preserve]
             public static byte[] GetXorBytes(byte[] bytes, byte[] code)
             {
@@ -94,8 +103,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将 bytes 使用 code 做异或运算。此方法将复用并改写传入的 bytes 作为返回值，而不额外分配内存空间。
             /// </summary>
-            /// <param name="bytes">原始及异或后的二进制流。</param>
-            /// <param name="code">异或二进制流。</param>
+            /// <remarks>
+            /// XORs the bytes with the code. This method reuses and overwrites the passed-in bytes as the return value without allocating extra memory.
+            /// </remarks>
+            /// <param name="bytes">原始及异或后的二进制流。 / The original and XORed binary stream.</param>
+            /// <param name="code">异或二进制流。 / The XOR binary stream.</param>
             [UnityEngine.Scripting.Preserve]
             public static void GetSelfXorBytes(byte[] bytes, byte[] code)
             {
@@ -110,11 +122,14 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将 bytes 使用 code 做异或运算。
             /// </summary>
-            /// <param name="bytes">原始二进制流。</param>
-            /// <param name="startIndex">异或计算的开始位置。</param>
-            /// <param name="length">异或计算长度，若小于 0，则计算整个二进制流。</param>
-            /// <param name="code">异或二进制流。</param>
-            /// <returns>异或后的二进制流。</returns>
+            /// <remarks>
+            /// XORs the bytes with the code.
+            /// </remarks>
+            /// <param name="bytes">原始二进制流。 / The original binary stream.</param>
+            /// <param name="startIndex">异或计算的开始位置。 / The start position of the XOR computation.</param>
+            /// <param name="length">异或计算长度，若小于 0，则计算整个二进制流。 / The length of the XOR computation; if less than 0, the entire binary stream is processed.</param>
+            /// <param name="code">异或二进制流。 / The XOR binary stream.</param>
+            /// <returns>异或后的二进制流。 / The XORed binary stream.</returns>
             [UnityEngine.Scripting.Preserve]
             public static byte[] GetXorBytes(byte[] bytes, int startIndex, int length, byte[] code)
             {
@@ -133,10 +148,13 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 将 bytes 使用 code 做异或运算。此方法将复用并改写传入的 bytes 作为返回值，而不额外分配内存空间。
             /// </summary>
-            /// <param name="bytes">原始及异或后的二进制流。</param>
-            /// <param name="startIndex">异或计算的开始位置。</param>
-            /// <param name="length">异或计算长度。</param>
-            /// <param name="code">异或二进制流。</param>
+            /// <remarks>
+            /// XORs the bytes with the code. This method reuses and overwrites the passed-in bytes as the return value without allocating extra memory.
+            /// </remarks>
+            /// <param name="bytes">原始及异或后的二进制流。 / The original and XORed binary stream.</param>
+            /// <param name="startIndex">异或计算的开始位置。 / The start position of the XOR computation.</param>
+            /// <param name="length">异或计算长度。 / The length of the XOR computation.</param>
+            /// <param name="code">异或二进制流。 / The XOR binary stream.</param>
             [UnityEngine.Scripting.Preserve]
             public static void GetSelfXorBytes(byte[] bytes, int startIndex, int length, byte[] code)
             {

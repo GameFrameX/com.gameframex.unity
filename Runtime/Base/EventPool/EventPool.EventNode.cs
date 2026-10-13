@@ -50,8 +50,11 @@ namespace GameFrameX.Runtime
             private T _eventArgs = null;
 
             /// <summary>
-            /// 发送者 / The event sender.
+            /// 发送者。
             /// </summary>
+            /// <remarks>
+            /// The event sender.
+            /// </remarks>
             [Preserve] // 添加 Preserve 标签
             public object Sender
             {
@@ -59,8 +62,11 @@ namespace GameFrameX.Runtime
             }
 
             /// <summary>
-            /// 事件参数 / The event arguments.
+            /// 事件参数。
             /// </summary>
+            /// <remarks>
+            /// The event arguments.
+            /// </remarks>
             [Preserve] // 添加 Preserve 标签
             public T EventArgs
             {
@@ -68,8 +74,11 @@ namespace GameFrameX.Runtime
             }
 
             /// <summary>
-            /// 创建事件节点 / Creates an event node.
+            /// 创建事件节点。
             /// </summary>
+            /// <remarks>
+            /// Creates an event node.
+            /// </remarks>
             /// <param name="sender">事件源。 / The event source.</param>
             /// <param name="eventArgs">事件参数。 / The event arguments.</param>
             /// <returns>创建的事件节点实例。 / The created event node instance.</returns>

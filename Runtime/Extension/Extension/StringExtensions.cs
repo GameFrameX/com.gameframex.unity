@@ -121,6 +121,83 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 字符串安全转换为 int，转换失败返回默认值。
+        /// </summary>
+        /// <remarks>
+        /// Converts the string to an int, returning the default value if parsing fails.
+        /// </remarks>
+        /// <param name="str">当前字符串 / The current string</param>
+        /// <param name="def">转换失败时的默认值 / The default value if parsing fails</param>
+        /// <returns>转换结果或默认值 / The parsed value or the default</returns>
+        [UnityEngine.Scripting.Preserve]
+        public static int ToInt(this string str, int def = 0)
+        {
+            return !int.TryParse(str, out var ret) ? def : ret;
+        }
+
+        /// <summary>
+        /// 字符串安全转换为 long，转换失败返回默认值。
+        /// </summary>
+        /// <remarks>
+        /// Converts the string to a long, returning the default value if parsing fails.
+        /// </remarks>
+        /// <param name="str">当前字符串 / The current string</param>
+        /// <param name="def">转换失败时的默认值 / The default value if parsing fails</param>
+        /// <returns>转换结果或默认值 / The parsed value or the default</returns>
+        [UnityEngine.Scripting.Preserve]
+        public static long ToLong(this string str, long def = 0)
+        {
+            return !long.TryParse(str, out var ret) ? def : ret;
+        }
+
+        /// <summary>
+        /// 字符串安全转换为 float，转换失败返回默认值。
+        /// </summary>
+        /// <remarks>
+        /// Converts the string to a float, returning the default value if parsing fails.
+        /// </remarks>
+        /// <param name="str">当前字符串 / The current string</param>
+        /// <param name="def">转换失败时的默认值 / The default value if parsing fails</param>
+        /// <returns>转换结果或默认值 / The parsed value or the default</returns>
+        [UnityEngine.Scripting.Preserve]
+        public static float ToFloat(this string str, float def = 0f)
+        {
+            return !float.TryParse(str, out var ret) ? def : ret;
+        }
+
+        /// <summary>
+        /// 字符串安全转换为 double，转换失败返回默认值。
+        /// </summary>
+        /// <remarks>
+        /// Converts the string to a double, returning the default value if parsing fails.
+        /// </remarks>
+        /// <param name="str">当前字符串 / The current string</param>
+        /// <param name="def">转换失败时的默认值 / The default value if parsing fails</param>
+        /// <returns>转换结果或默认值 / The parsed value or the default</returns>
+        [UnityEngine.Scripting.Preserve]
+        public static double ToDouble(this string str, double def = 0)
+        {
+            return !double.TryParse(str, out var ret) ? def : ret;
+        }
+
+        /// <summary>
+        /// 字符串安全转换为枚举，转换失败返回默认值。
+        /// </summary>
+        /// <remarks>
+        /// Converts the string to the specified enum, returning the default value if parsing fails.
+        /// </remarks>
+        /// <typeparam name="T">枚举类型 / The enum type</typeparam>
+        /// <param name="str">当前字符串 / The current string</param>
+        /// <param name="ignoreCase">是否忽略大小写 / Whether to ignore case</param>
+        /// <param name="def">转换失败时的默认值 / The default value if parsing fails</param>
+        /// <returns>转换结果或默认值 / The parsed value or the default</returns>
+        [UnityEngine.Scripting.Preserve]
+        public static T ToEnum<T>(this string str, bool ignoreCase = false, T def = default) where T : struct
+        {
+            return !Enum.TryParse<T>(str, ignoreCase, out var ret) ? def : ret;
+        }
+
+        /// <summary>
         /// 字符串转字符数组
         /// </summary>
         /// <remarks>

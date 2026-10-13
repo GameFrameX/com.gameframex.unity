@@ -45,9 +45,10 @@ namespace GameFrameX.Runtime
     public abstract class BaseEventArgs : GameFrameworkEventArgs
     {
         /// <summary>
-        /// 获取事件ID。 / Gets the event identifier.
+        /// 获取事件ID。
         /// </summary>
         /// <remarks>
+        /// Gets the event identifier.
         /// Abstract property that must be implemented by derived classes to provide a unique identifier for the event type.
         /// Each event type should have a unique ID for proper event handling and routing.
         /// </remarks>

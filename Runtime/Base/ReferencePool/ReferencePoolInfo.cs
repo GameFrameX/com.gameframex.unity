@@ -59,13 +59,13 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Creates a new instance of ReferencePoolInfo with the specified statistics.
         /// </remarks>
-        /// <param name="type">引用池类型。/ The type of the reference pool.</param>
-        /// <param name="unusedReferenceCount">未使用引用数量。/ The count of unused references in the pool.</param>
-        /// <param name="usingReferenceCount">正在使用引用数量。/ The count of references currently in use.</param>
-        /// <param name="acquireReferenceCount">获取引用数量。/ The total count of references acquired from the pool.</param>
-        /// <param name="releaseReferenceCount">归还引用数量。/ The total count of references released back to the pool.</param>
-        /// <param name="addReferenceCount">增加引用数量。/ The total count of references added to the pool.</param>
-        /// <param name="removeReferenceCount">移除引用数量。/ The total count of references removed from the pool.</param>
+        /// <param name="type">引用池类型。 / The type of the reference pool.</param>
+        /// <param name="unusedReferenceCount">未使用引用数量。 / The count of unused references in the pool.</param>
+        /// <param name="usingReferenceCount">正在使用引用数量。 / The count of references currently in use.</param>
+        /// <param name="acquireReferenceCount">获取引用数量。 / The total count of references acquired from the pool.</param>
+        /// <param name="releaseReferenceCount">归还引用数量。 / The total count of references released back to the pool.</param>
+        /// <param name="addReferenceCount">增加引用数量。 / The total count of references added to the pool.</param>
+        /// <param name="removeReferenceCount">移除引用数量。 / The total count of references removed from the pool.</param>
         [UnityEngine.Scripting.Preserve]
         public ReferencePoolInfo(Type type, int unusedReferenceCount, int usingReferenceCount, int acquireReferenceCount, int releaseReferenceCount, int addReferenceCount, int removeReferenceCount)
         {

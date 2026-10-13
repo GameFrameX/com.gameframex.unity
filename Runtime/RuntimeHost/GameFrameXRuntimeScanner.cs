@@ -7,13 +7,19 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 扫描已加载程序集中的 GameFrameX 组件和 Manager。
     /// </summary>
+    /// <remarks>
+    /// Scans loaded assemblies for GameFrameX components and managers.
+    /// </remarks>
     [Preserve]
     public static class GameFrameXRuntimeScanner
     {
         /// <summary>
         /// 执行运行时扫描。
         /// </summary>
-        /// <returns>扫描结果。</returns>
+        /// <remarks>
+        /// Performs the runtime scan.
+        /// </remarks>
+        /// <returns>扫描结果。 / The scan result.</returns>
         public static GameFrameXRuntimeScanResult Scan()
         {
             var result = new GameFrameXRuntimeScanResult();
@@ -41,7 +47,7 @@ namespace GameFrameX.Runtime
                         }
                     }
 
-                    if (typeof(GameFrameworkModule).IsAssignableFrom(type))
+                    if (typeof(IGameFrameworkModule).IsAssignableFrom(type))
                     {
                         AddManagerDescriptors(result, type);
                     }
@@ -119,7 +125,17 @@ namespace GameFrameX.Runtime
                    interfaceType.IsInterface &&
                    interfaceType.FullName != null &&
                    interfaceType.FullName.StartsWith("GameFrameX.", StringComparison.Ordinal) &&
+                   !IsFrameworkContractInterface(interfaceType) &&
                    interfaceType.IsAssignableFrom(implementationType);
+        }
+
+        private static bool IsFrameworkContractInterface(Type interfaceType)
+        {
+            return interfaceType == typeof(IGameFrameworkModule) ||
+                   interfaceType == typeof(IUpdatableModule) ||
+                   interfaceType == typeof(IShutdownableModule) ||
+                   interfaceType == typeof(IPrioritizedModule) ||
+                   interfaceType == typeof(ILowMemoryAwareModule);
         }
     }
 }

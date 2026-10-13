@@ -84,6 +84,14 @@ namespace GameFrameX.Runtime
                     return Convert.ToBase64String(res);
                 }
 
+                /// <summary>
+                /// 使用当前实例的密钥加密内容。
+                /// </summary>
+                /// <remarks>
+                /// Encrypts content using the current instance's key.
+                /// </remarks>
+                /// <param name="content">要加密的内容 / The content to encrypt</param>
+                /// <returns>加密后的 Base64 字符串 / The Base64 encrypted string</returns>
                 [UnityEngine.Scripting.Preserve]
                 public string Encrypt(string content)
                 {
@@ -91,6 +99,15 @@ namespace GameFrameX.Runtime
                     return Convert.ToBase64String(res);
                 }
 
+                /// <summary>
+                /// 使用指定公钥加密字节数组。
+                /// </summary>
+                /// <remarks>
+                /// Encrypts a byte array using the specified public key.
+                /// </remarks>
+                /// <param name="publicKey">公钥 / The public key</param>
+                /// <param name="content">要加密的字节数组 / The byte array to encrypt</param>
+                /// <returns>加密后的字节数组 / The encrypted byte array</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static byte[] RSAEncrypt(string publicKey, byte[] content)
                 {
@@ -100,6 +117,14 @@ namespace GameFrameX.Runtime
                     return cipherBytes;
                 }
 
+                /// <summary>
+                /// 使用当前实例的密钥加密字节数组。
+                /// </summary>
+                /// <remarks>
+                /// Encrypts a byte array using the current instance's key.
+                /// </remarks>
+                /// <param name="content">要加密的字节数组 / The byte array to encrypt</param>
+                /// <returns>加密后的字节数组 / The encrypted byte array</returns>
                 [UnityEngine.Scripting.Preserve]
                 public byte[] Encrypt(byte[] content)
                 {
@@ -123,6 +148,15 @@ namespace GameFrameX.Runtime
                     return Encoding.UTF8.GetString(res);
                 }
 
+                /// <summary>
+                /// 使用指定私钥解密字节数组。
+                /// </summary>
+                /// <remarks>
+                /// Decrypts a byte array using the specified private key.
+                /// </remarks>
+                /// <param name="privateKey">私钥 / The private key</param>
+                /// <param name="content">要解密的字节数组 / The byte array to decrypt</param>
+                /// <returns>解密后的字节数组 / The decrypted byte array</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static byte[] RSADecrypt(string privateKey, byte[] content)
                 {
@@ -132,6 +166,14 @@ namespace GameFrameX.Runtime
                     return cipherBytes;
                 }
 
+                /// <summary>
+                /// 使用当前实例的密钥解密 Base64 字符串。
+                /// </summary>
+                /// <remarks>
+                /// Decrypts a Base64 string using the current instance's key.
+                /// </remarks>
+                /// <param name="content">要解密的 Base64 字符串 / The Base64 string to decrypt</param>
+                /// <returns>解密后的字符串 / The decrypted string</returns>
                 [UnityEngine.Scripting.Preserve]
                 public string Decrypt(string content)
                 {
@@ -139,6 +181,14 @@ namespace GameFrameX.Runtime
                     return Encoding.UTF8.GetString(res);
                 }
 
+                /// <summary>
+                /// 使用当前实例的密钥解密字节数组。
+                /// </summary>
+                /// <remarks>
+                /// Decrypts a byte array using the current instance's key.
+                /// </remarks>
+                /// <param name="content">要解密的字节数组 / The byte array to decrypt</param>
+                /// <returns>解密后的字节数组 / The decrypted byte array</returns>
                 [UnityEngine.Scripting.Preserve]
                 public byte[] Decrypt(byte[] content)
                 {
@@ -170,6 +220,15 @@ namespace GameFrameX.Runtime
                     }
                 }
 
+                /// <summary>
+                /// 使用指定私钥对字符串进行签名。
+                /// </summary>
+                /// <remarks>
+                /// Signs a string using the specified private key.
+                /// </remarks>
+                /// <param name="dataToSign">要签名的字符串 / The string to sign</param>
+                /// <param name="privateKey">私钥 / The private key</param>
+                /// <returns>签名后的 Base64 字符串 / The Base64 signed string</returns>
                 [UnityEngine.Scripting.Preserve]
                 public static string RSASignData(string dataToSign, string privateKey)
                 {
@@ -177,6 +236,15 @@ namespace GameFrameX.Runtime
                     return Convert.ToBase64String(res);
                 }
 
+                /// <summary>
+                /// 使用当前实例的密钥对字节数组进行签名。
+                /// </summary>
+                /// <remarks>
+                /// Signs a byte array using the current instance's key.
+                /// </remarks>
+                /// <param name="dataToSign">要签名的字节数组 / The byte array to sign</param>
+                /// <returns>签名后的字节数组 / The signed byte array</returns>
+                /// <exception cref="GameFrameworkException">当签名操作失败时抛出 / Thrown when the sign operation fails</exception>
                 [UnityEngine.Scripting.Preserve]
                 public byte[] SignData(byte[] dataToSign)
                 {
@@ -190,6 +258,15 @@ namespace GameFrameX.Runtime
                     }
                 }
 
+                /// <summary>
+                /// 使用当前实例的密钥对字符串进行签名。
+                /// </summary>
+                /// <remarks>
+                /// Signs a string using the current instance's key.
+                /// </remarks>
+                /// <param name="dataToSign">要签名的字符串 / The string to sign</param>
+                /// <returns>签名后的 Base64 字符串 / The Base64 signed string</returns>
+                /// <exception cref="GameFrameworkException">当签名操作失败时抛出 / Thrown when the sign operation fails</exception>
                 [UnityEngine.Scripting.Preserve]
                 public string SignData(string dataToSign)
                 {
@@ -222,6 +299,16 @@ namespace GameFrameX.Runtime
                     }
                 }
 
+                /// <summary>
+                /// 使用指定公钥验证字符串签名。
+                /// </summary>
+                /// <remarks>
+                /// Verifies a string signature using the specified public key.
+                /// </remarks>
+                /// <param name="dataToVerify">要验证的字符串 / The string to verify</param>
+                /// <param name="signedData">Base64 编码的签名数据 / The Base64 encoded signed data</param>
+                /// <param name="publicKey">公钥 / The public key</param>
+                /// <returns>如果签名有效则返回 <c>true</c>；否则返回 <c>false</c> / Returns <c>true</c> if the signature is valid; otherwise <c>false</c></returns>
                 [UnityEngine.Scripting.Preserve]
                 public static bool RSAVerifyData(string dataToVerify, string signedData, string publicKey)
                 {
@@ -229,6 +316,16 @@ namespace GameFrameX.Runtime
                         publicKey);
                 }
 
+                /// <summary>
+                /// 使用当前实例的密钥验证字节数组签名。
+                /// </summary>
+                /// <remarks>
+                /// Verifies a byte array signature using the current instance's key.
+                /// </remarks>
+                /// <param name="dataToVerify">要验证的字节数组 / The byte array to verify</param>
+                /// <param name="signedData">签名数据字节数组 / The signed data byte array</param>
+                /// <returns>如果签名有效则返回 <c>true</c>；否则返回 <c>false</c> / Returns <c>true</c> if the signature is valid; otherwise <c>false</c></returns>
+                /// <exception cref="GameFrameworkException">当验证操作失败时抛出 / Thrown when the verify operation fails</exception>
                 [UnityEngine.Scripting.Preserve]
                 public bool VerifyData(byte[] dataToVerify, byte[] signedData)
                 {
@@ -242,6 +339,16 @@ namespace GameFrameX.Runtime
                     }
                 }
 
+                /// <summary>
+                /// 使用当前实例的密钥验证字符串签名。
+                /// </summary>
+                /// <remarks>
+                /// Verifies a string signature using the current instance's key.
+                /// </remarks>
+                /// <param name="dataToVerify">要验证的字符串 / The string to verify</param>
+                /// <param name="signedData">Base64 编码的签名数据 / The Base64 encoded signed data</param>
+                /// <returns>如果签名有效则返回 <c>true</c>；否则返回 <c>false</c> / Returns <c>true</c> if the signature is valid; otherwise <c>false</c></returns>
+                /// <exception cref="GameFrameworkException">当验证操作失败时抛出 / Thrown when the verify operation fails</exception>
                 [UnityEngine.Scripting.Preserve]
                 public bool VerifyData(string dataToVerify, string signedData)
                 {

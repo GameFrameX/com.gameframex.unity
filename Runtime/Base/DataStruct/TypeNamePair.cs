@@ -51,8 +51,11 @@ namespace GameFrameX.Runtime
         private readonly string m_Name;
 
         /// <summary>
-        /// 初始化类型和名称的组合值的新实例。 / Initializes a new instance of the TypeNamePair struct.
+        /// 初始化类型和名称的组合值的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the TypeNamePair struct.
+        /// </remarks>
         /// <param name="type">类型。 / The type.</param>
         [Preserve]
         public TypeNamePair(Type type) : this(type, string.Empty)
@@ -60,8 +63,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 初始化类型和名称的组合值的新实例。 / Initializes a new instance of the TypeNamePair struct.
+        /// 初始化类型和名称的组合值的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the TypeNamePair struct.
+        /// </remarks>
         /// <param name="type">类型。 / The type.</param>
         /// <param name="name">名称。 / The name.</param>
         [Preserve]
@@ -77,8 +83,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取类型。 / Gets the type.
+        /// 获取类型。
         /// </summary>
+        /// <remarks>
+        /// Gets the type.
+        /// </remarks>
         [Preserve]
         public Type Type
         {
@@ -86,8 +95,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取名称。 / Gets the name.
+        /// 获取名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the name.
+        /// </remarks>
         [Preserve]
         public string Name
         {
@@ -95,8 +107,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取类型和名称的组合值字符串。 / Gets the combined string representation of type and name.
+        /// 获取类型和名称的组合值字符串。
         /// </summary>
+        /// <remarks>
+        /// Gets the combined string representation of type and name.
+        /// </remarks>
         /// <returns>类型和名称的组合值字符串。 / The combined string representation of type and name.</returns>
         public override string ToString()
         {
@@ -110,8 +125,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取对象的哈希值。 / Gets the hash code of the object.
+        /// 获取对象的哈希值。
         /// </summary>
+        /// <remarks>
+        /// Gets the hash code of the object.
+        /// </remarks>
         /// <returns>对象的哈希值。 / The hash code of the object.</returns>
         public override int GetHashCode()
         {
@@ -119,8 +137,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 比较对象是否与自身相等。 / Determines whether the specified object is equal to the current instance.
+        /// 比较对象是否与自身相等。
         /// </summary>
+        /// <remarks>
+        /// Determines whether the specified object is equal to the current instance.
+        /// </remarks>
         /// <param name="obj">要比较的对象。 / The object to compare with.</param>
         /// <returns>被比较的对象是否与自身相等。 / True if the specified object is equal to the current instance; otherwise, false.</returns>
         public override bool Equals(object obj)
@@ -129,8 +150,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 比较对象是否与自身相等。 / Determines whether the specified TypeNamePair is equal to the current instance.
+        /// 比较对象是否与自身相等。
         /// </summary>
+        /// <remarks>
+        /// Determines whether the specified TypeNamePair is equal to the current instance.
+        /// </remarks>
         /// <param name="value">要比较的对象。 / The TypeNamePair to compare with.</param>
         /// <returns>被比较的对象是否与自身相等。 / True if the specified TypeNamePair is equal to the current instance; otherwise, false.</returns>
         public bool Equals(TypeNamePair value)
@@ -139,8 +163,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 判断两个对象是否相等。 / Determines whether two TypeNamePair instances are equal.
+        /// 判断两个对象是否相等。
         /// </summary>
+        /// <remarks>
+        /// Determines whether two TypeNamePair instances are equal.
+        /// </remarks>
         /// <param name="a">值 a。 / The first TypeNamePair to compare.</param>
         /// <param name="b">值 b。 / The second TypeNamePair to compare.</param>
         /// <returns>两个对象是否相等。 / True if the two TypeNamePair instances are equal; otherwise, false.</returns>
@@ -150,8 +177,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 判断两个对象是否不相等。 / Determines whether two TypeNamePair instances are not equal.
+        /// 判断两个对象是否不相等。
         /// </summary>
+        /// <remarks>
+        /// Determines whether two TypeNamePair instances are not equal.
+        /// </remarks>
         /// <param name="a">值 a。 / The first TypeNamePair to compare.</param>
         /// <param name="b">值 b。 / The second TypeNamePair to compare.</param>
         /// <returns>两个对象是否不相等。 / True if the two TypeNamePair instances are not equal; otherwise, false.</returns>

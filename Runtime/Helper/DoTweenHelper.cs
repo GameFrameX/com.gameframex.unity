@@ -31,11 +31,14 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从浮点值到另一个值
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one float value to another.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(float startValue, float endValue, float time, Action<float> update)
         {
@@ -45,11 +48,14 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从整形值到另一个值
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one int value to another.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(int startValue, int endValue, float time, Action<int> update)
         {
@@ -59,11 +65,14 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从无符号整形值到另一个值
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one uint value to another.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(uint startValue, uint endValue, float time, Action<uint> update)
         {
@@ -73,11 +82,14 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从长整形值到另一个值
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one long value to another.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(long startValue, long endValue, float time, Action<long> update)
         {
@@ -87,11 +99,14 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 从无符号长整形值到另一个值
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one ulong value to another.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(ulong startValue, ulong endValue, float time, Action<ulong> update)
         {
@@ -99,14 +114,17 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 
+        /// 从浮点值到另一个值，并在完成时触发回调
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <param name="complete">完成回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one float value to another with a complete callback.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <param name="complete">完成回调 / Complete callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(float startValue, float endValue, float time, Action<float> update, Action complete)
         {
@@ -114,13 +132,16 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 
+        /// 从三维向量值到另一个值
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one Vector3 value to another.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(Vector3 startValue, Vector3 endValue, float time, Action<Vector3> update)
         {
@@ -128,14 +149,17 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 
+        /// 从三维向量值到另一个值，并在完成时触发回调
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <param name="complete">完成回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one Vector3 value to another with a complete callback.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <param name="complete">完成回调 / Complete callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(Vector3 startValue, Vector3 endValue, float time, Action<Vector3> update, Action complete)
         {
@@ -143,13 +167,16 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 
+        /// 从三维整数向量值到另一个值
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one Vector3Int value to another.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(Vector3Int startValue, Vector3Int endValue, float time, Action<Vector3Int> update)
         {
@@ -157,13 +184,16 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 
+        /// 从二维向量值到另一个值
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one Vector2 value to another.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(Vector2 startValue, Vector2 endValue, float time, Action<Vector2> update)
         {
@@ -171,14 +201,17 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 
+        /// 从二维向量值到另一个值，并在完成时触发回调
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <param name="complete">完成回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one Vector2 value to another with a complete callback.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <param name="complete">完成回调 / Complete callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(Vector2 startValue, Vector2 endValue, float time, Action<Vector2> update, Action complete)
         {
@@ -186,13 +219,16 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 
+        /// 从二维整数向量值到另一个值
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one Vector2Int value to another.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(Vector2Int startValue, Vector2Int endValue, float time, Action<Vector2Int> update)
         {
@@ -200,14 +236,17 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 
+        /// 从二维整数向量值到另一个值，并在完成时触发回调
         /// </summary>
-        /// <param name="startValue">开始值</param>
-        /// <param name="endValue">结束值</param>
-        /// <param name="time">持续时长</param>
-        /// <param name="update">更新回调</param>
-        /// <param name="complete">完成回调</param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Tweens from one Vector2Int value to another with a complete callback.
+        /// </remarks>
+        /// <param name="startValue">开始值 / Start value</param>
+        /// <param name="endValue">结束值 / End value</param>
+        /// <param name="time">持续时长 / Duration</param>
+        /// <param name="update">更新回调 / Update callback</param>
+        /// <param name="complete">完成回调 / Complete callback</param>
+        /// <returns>补间动画对象 / The tweener</returns>
         [UnityEngine.Scripting.Preserve]
         public static Tweener To(Vector2Int startValue, Vector2Int endValue, float time, Action<Vector2Int> update, Action complete)
         {

@@ -40,6 +40,9 @@ namespace GameFrameX.ObjectPool
     /// <summary>
     /// 对象池基类。
     /// </summary>
+    /// <remarks>
+    /// Base class of object pools.
+    /// </remarks>
     [Preserve]
     public abstract class ObjectPoolBase
     {
@@ -48,6 +51,9 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 初始化对象池基类的新实例。
         /// </summary>
+        /// <remarks>
+        /// Initializes a new instance of the object pool base class.
+        /// </remarks>
         [Preserve]
         public ObjectPoolBase()
             : this(null)
@@ -57,7 +63,10 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 初始化对象池基类的新实例。
         /// </summary>
-        /// <param name="name">对象池名称。</param>
+        /// <remarks>
+        /// Initializes a new instance of the object pool base class.
+        /// </remarks>
+        /// <param name="name">对象池名称。 / Name of the object pool.</param>
         [Preserve]
         public ObjectPoolBase(string name)
         {
@@ -67,6 +76,9 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象池名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the name of the object pool.
+        /// </remarks>
         [Preserve]
         public string Name
         {
@@ -76,6 +88,9 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象池完整名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the full name of the object pool.
+        /// </remarks>
         [Preserve]
         public string FullName
         {
@@ -85,74 +100,110 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象池对象类型。
         /// </summary>
+        /// <remarks>
+        /// Gets the type of objects in the pool.
+        /// </remarks>
         [Preserve]
         public abstract Type ObjectType { get; }
 
         /// <summary>
         /// 获取对象池中对象的数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the number of objects in the object pool.
+        /// </remarks>
         [Preserve]
         public abstract int Count { get; }
 
         /// <summary>
         /// 获取对象池中能被释放的对象的数量。
         /// </summary>
+        /// <remarks>
+        /// Gets the number of objects in the pool that can be released.
+        /// </remarks>
         [Preserve]
         public abstract int CanReleaseCount { get; }
 
         /// <summary>
         /// 获取是否允许对象被多次获取。
         /// </summary>
+        /// <remarks>
+        /// Gets whether an object can be spawned multiple times.
+        /// </remarks>
         [Preserve]
         public abstract bool AllowMultiSpawn { get; }
 
         /// <summary>
         /// 获取或设置对象池自动释放可释放对象的间隔秒数。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the interval in seconds at which releasable objects are automatically released.
+        /// </remarks>
         [Preserve]
         public abstract float AutoReleaseInterval { get; set; }
 
         /// <summary>
         /// 获取或设置对象池的容量。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the capacity of the object pool.
+        /// </remarks>
         [Preserve]
         public abstract int Capacity { get; set; }
 
         /// <summary>
         /// 获取或设置对象池对象过期秒数。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the expire time in seconds of objects in the pool.
+        /// </remarks>
         [Preserve]
         public abstract float ExpireTime { get; set; }
 
         /// <summary>
         /// 获取或设置对象池的优先级。
         /// </summary>
+        /// <remarks>
+        /// Gets or sets the priority of the object pool.
+        /// </remarks>
         [Preserve]
         public abstract int Priority { get; set; }
 
         /// <summary>
         /// 释放对象池中的可释放对象。
         /// </summary>
+        /// <remarks>
+        /// Releases the releasable objects in the object pool.
+        /// </remarks>
         [Preserve]
         public abstract void Release();
 
         /// <summary>
         /// 释放对象池中的可释放对象。
         /// </summary>
-        /// <param name="toReleaseCount">尝试释放对象数量。</param>
+        /// <remarks>
+        /// Releases the releasable objects in the object pool.
+        /// </remarks>
+        /// <param name="toReleaseCount">尝试释放对象数量。 / Number of objects to try to release.</param>
         [Preserve]
         public abstract void Release(int toReleaseCount);
 
         /// <summary>
         /// 释放对象池中的所有未使用对象。
         /// </summary>
+        /// <remarks>
+        /// Releases all unused objects in the object pool.
+        /// </remarks>
         [Preserve]
         public abstract void ReleaseAllUnused();
 
         /// <summary>
         /// 获取所有对象信息。
         /// </summary>
-        /// <returns>所有对象信息。</returns>
+        /// <remarks>
+        /// Gets the information of all objects.
+        /// </remarks>
+        /// <returns>所有对象信息。 / Information of all objects.</returns>
         [Preserve]
         public abstract ObjectInfo[] GetAllObjectInfos();
 

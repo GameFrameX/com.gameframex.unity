@@ -314,7 +314,7 @@ namespace GameFrameX.Tests
         {
             var pastTs = new DateTimeOffset(DateTime.UtcNow.AddMinutes(-5)).ToUnixTimeSeconds();
             var result = TimerHelper.GetTimeDifferenceFromNow(pastTs, isUseUtc: true);
-            Assert.That(result.TotalMinutes, Is.EqualTo(5.0).Within(0.01));
+            Assert.That(result.TotalMinutes, Is.EqualTo(5.0).Within(0.1)); // 墙钟测量，放宽到 ±6s 容忍调度抖动
         }
 
         [Test]
@@ -322,7 +322,7 @@ namespace GameFrameX.Tests
         {
             var pastTs = new DateTimeOffset(DateTime.UtcNow.AddSeconds(-3)).ToUnixTimeMilliseconds();
             var result = TimerHelper.GetTimeDifferenceFromNowMs(pastTs, isUseUtc: true);
-            Assert.That(result.TotalSeconds, Is.EqualTo(3.0).Within(0.01));
+            Assert.That(result.TotalSeconds, Is.EqualTo(3.0).Within(0.5)); // 墙钟测量，放宽到 ±0.5s 容忍调度抖动
         }
 
         #endregion

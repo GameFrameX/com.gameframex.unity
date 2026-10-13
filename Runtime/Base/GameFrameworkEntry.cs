@@ -45,15 +45,26 @@ namespace GameFrameX.Runtime
     [UnityEngine.Scripting.Preserve]
     public static class GameFrameworkEntry
     {
-        private static readonly GameFrameworkLinkedList<GameFrameworkModule> s_GameFrameworkModules = new GameFrameworkLinkedList<GameFrameworkModule>();
+        private static readonly GameFrameworkLinkedList<IGameFrameworkModule> s_GameFrameworkModules = new GameFrameworkLinkedList<IGameFrameworkModule>();
 
         private static readonly Dictionary<Type, Type> s_ModuleTypeMap = new Dictionary<Type, Type>();
 
         /// <summary>
-        /// 所有游戏框架模块轮询。
+        /// 获取模块会话版本号。每次 <see cref="Shutdown"/> 清空模块实例后自增，用于外部缓存（如 GameApp 静态访问器）
+        /// 检测模块实例集已重建并重新解析，保证与 <see cref="GetModule{T}"/> 路径行为一致。
         /// </summary>
         /// <remarks>
-        /// Polls all game framework modules.
+        /// Gets the module session version. It increments after every <see cref="Shutdown"/> clears module instances,
+        /// so external caches (such as GameApp static accessors) can detect that the module instance set has been rebuilt
+        /// and re-resolve, keeping behavior consistent with the <see cref="GetModule{T}"/> path.
+        /// </remarks>
+        public static int SessionVersion { get; private set; }
+
+        /// <summary>
+        /// 轮询所有可轮询游戏框架模块。
+        /// </summary>
+        /// <remarks>
+        /// Polls all updatable game framework modules. Modules that do not implement <see cref="IUpdatableModule"/> are skipped.
         /// </remarks>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位 / Logical elapsed time in seconds</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位 / Real elapsed time in seconds</param>
@@ -61,28 +72,64 @@ namespace GameFrameX.Runtime
         {
             foreach (var module in s_GameFrameworkModules)
             {
-                module.Update(elapseSeconds, realElapseSeconds);
+                if (module is IUpdatableModule updatableModule)
+                {
+                    updatableModule.Update(elapseSeconds, realElapseSeconds);
+                }
             }
         }
 
         /// <summary>
-        /// 关闭并清理所有游戏框架模块。
+        /// 通知所有低内存感知游戏框架模块释放可回收资源。
         /// </summary>
         /// <remarks>
-        /// Shuts down and cleans up all game framework modules.
+        /// 宿主低内存事件转发入口：Unity 路径（BaseComponent / <see cref="UnityGameFrameworkDriver"/> 的 <c>Application.lowMemory</c> 钩子）
+        /// 与 Headless 路径（宿主转发自身 OnLowMemory / OnApplicationPause）共用本方法，行为一致。
+        /// 仅对实现 <see cref="ILowMemoryAwareModule"/> 的模块分发，未实现者被跳过。
+        /// <para>
+        /// English: Entry point for forwarding host low-memory events. The Unity path (the <c>Application.lowMemory</c> hooks of
+        /// BaseComponent / <see cref="UnityGameFrameworkDriver"/>) and the Headless path (host forwarding its own
+        /// OnLowMemory / OnApplicationPause) share this method with identical behavior. Dispatched only to modules implementing
+        /// <see cref="ILowMemoryAwareModule"/>; others are skipped.
+        /// </para>
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        public static void NotifyLowMemory()
+        {
+            foreach (var module in s_GameFrameworkModules)
+            {
+                if (module is ILowMemoryAwareModule lowMemoryAwareModule)
+                {
+                    lowMemoryAwareModule.OnLowMemory();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 关闭并清理所有可关闭游戏框架模块。
+        /// </summary>
+        /// <remarks>
+        /// Shuts down and cleans up all shutdownable game framework modules in reverse priority order. Modules that do not implement <see cref="IShutdownableModule"/> are skipped.
         /// </remarks>
         [UnityEngine.Scripting.Preserve]
         public static void Shutdown()
         {
             for (var current = s_GameFrameworkModules.Last; current != null; current = current.Previous)
             {
-                current.Value.Shutdown();
+                if (current.Value is IShutdownableModule shutdownableModule)
+                {
+                    shutdownableModule.Shutdown();
+                }
             }
 
             s_GameFrameworkModules.Clear();
+            s_ModuleTypeMap.Clear();
             ReferencePool.ClearAll();
             Utility.Marshal.FreeCachedHGlobal();
             GameFrameworkLog.SetLogHelper(null);
+            GameFrameXOptions.Reset();
+
+            SessionVersion++;
         }
 
         /// <summary>
@@ -130,7 +177,7 @@ namespace GameFrameX.Runtime
         /// <param name="moduleType">要获取的游戏框架模块类型 / Type of the game framework module to get</param>
         /// <returns>要获取的游戏框架模块 / The game framework module to get</returns>
         [UnityEngine.Scripting.Preserve]
-        public static GameFrameworkModule GetModule(Type moduleType)
+        public static IGameFrameworkModule GetModule(Type moduleType)
         {
             foreach (var module in s_GameFrameworkModules)
             {
@@ -171,6 +218,40 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 启动期全量实例化类型映射中的模块（按注册映射去重，创建时按 <see cref="IPrioritizedModule.Priority"/> 排序）。
+        /// </summary>
+        /// <remarks>
+        /// 安装即启用：启动完成点（AutoPackage：AfterSceneLoad 模式裁决后；Headless：<see cref="GameFrameworkStartup.Headless"/> 调用内）调用一次，
+        /// 全部已注册模块即完成创建并消费各自 Options；幂等（已存在实例不重复创建）。
+        /// 标注 <see cref="GameFrameXLazyModuleAttribute"/> 的模块跳过（保留 <see cref="GetModule(System.Type)"/> 惰性兜底）。
+        /// <para>
+        /// English: Enabled upon install: called once at the startup completion point (AutoPackage: after the AfterSceneLoad mode
+        /// verdict; Headless: inside the <see cref="GameFrameworkStartup.Headless"/> call), all registered modules are created and
+        /// consume their Options. Idempotent (existing instances are not created again). Modules marked with
+        /// <see cref="GameFrameXLazyModuleAttribute"/> are skipped (the <see cref="GetModule(System.Type)"/> lazy fallback is retained).
+        /// </para>
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        public static void InstantiateAllModules()
+        {
+            var implemented = new HashSet<Type>();
+            foreach (var implType in s_ModuleTypeMap.Values)
+            {
+                if (!implemented.Add(implType))
+                {
+                    continue;
+                }
+
+                if (implType.IsDefined(typeof(GameFrameXLazyModuleAttribute), false))
+                {
+                    continue;
+                }
+
+                GetModule(implType);
+            }
+        }
+
+        /// <summary>
         /// 创建游戏框架模块。
         /// </summary>
         /// <remarks>
@@ -178,18 +259,19 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="moduleType">要创建的游戏框架模块类型 / Type of the game framework module to create</param>
         /// <returns>要创建的游戏框架模块 / The created game framework module</returns>
-        private static GameFrameworkModule CreateModule(Type moduleType)
+        private static IGameFrameworkModule CreateModule(Type moduleType)
         {
-            var module = (GameFrameworkModule)Activator.CreateInstance(moduleType);
+            var module = (IGameFrameworkModule)Activator.CreateInstance(moduleType);
             if (module == null)
             {
                 throw new GameFrameworkException(Utility.Text.Format("Can not create module '{0}'.", moduleType.FullName));
             }
 
+            var priority = GetPriority(module);
             var current = s_GameFrameworkModules.First;
             while (current != null)
             {
-                if (module.Priority > current.Value.Priority)
+                if (priority > GetPriority(current.Value))
                 {
                     break;
                 }
@@ -207,6 +289,30 @@ namespace GameFrameX.Runtime
             }
 
             return module;
+        }
+
+        /// <summary>
+        /// 获取游戏框架模块优先级。
+        /// </summary>
+        /// <remarks>
+        /// Gets the priority of a game framework module. Modules that do not implement <see cref="IPrioritizedModule"/> are treated as 0.
+        /// </remarks>
+        /// <param name="module">要获取优先级的游戏框架模块 / The game framework module to get the priority of</param>
+        /// <returns>游戏框架模块优先级 / The priority of the game framework module</returns>
+        private static int GetPriority(IGameFrameworkModule module)
+        {
+            return module is IPrioritizedModule prioritizedModule ? prioritizedModule.Priority : 0;
+        }
+
+        /// <summary>
+        /// 获取是否已有模块被实例化（Headless 单实例守卫用：判断上一段会话是否仍在运行）。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether any module has been instantiated (used by the Headless single-instance guard to detect whether a previous session is still running).
+        /// </remarks>
+        internal static bool HasInstantiatedModules
+        {
+            get { return s_GameFrameworkModules.Count > 0; }
         }
     }
 }

@@ -4,8 +4,11 @@ using UnityEngine.Scripting;
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 声明 GameFrameworkModule 对应的 Manager 接口和自动选择优先级。
+    /// 声明 IGameFrameworkModule 对应的 Manager 接口和自动选择优先级。
     /// </summary>
+    /// <remarks>
+    /// Declares the manager interface and auto-selection priority for an IGameFrameworkModule implementation.
+    /// </remarks>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
     [Preserve]
     public sealed class GameFrameXManagerImplementationAttribute : Attribute
@@ -13,8 +16,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 初始化 Manager 实现声明。
         /// </summary>
-        /// <param name="interfaceType">Manager 接口类型。</param>
-        /// <param name="priority">多实现选择优先级，数值越大优先级越高。</param>
+        /// <remarks>
+        /// Initializes the manager implementation declaration.
+        /// </remarks>
+        /// <param name="interfaceType">Manager 接口类型。 / The manager interface type.</param>
+        /// <param name="priority">多实现选择优先级，数值越大优先级越高。 / Selection priority among multiple implementations; larger values win.</param>
         public GameFrameXManagerImplementationAttribute(Type interfaceType, int priority = 0)
         {
             InterfaceType = interfaceType;
@@ -24,11 +30,17 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取 Manager 接口类型。
         /// </summary>
+        /// <remarks>
+        /// Gets the manager interface type.
+        /// </remarks>
         public Type InterfaceType { get; private set; }
 
         /// <summary>
         /// 获取多实现选择优先级，数值越大优先级越高。
         /// </summary>
+        /// <remarks>
+        /// Gets the selection priority among multiple implementations; larger values win.
+        /// </remarks>
         public int Priority { get; private set; }
     }
 }

@@ -31,6 +31,7 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
+using System;
 using GameFrameX;
 using UnityEngine;
 
@@ -42,7 +43,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Utility functions for helper creators.
     /// </remarks>
-    [UnityEngine.Scripting.Preserve]
+[UnityEngine.Scripting.Preserve]
     public static class Helper
     {
         /// <summary>
@@ -52,107 +53,41 @@ namespace GameFrameX.Runtime
         /// Creates a helper instance.
         /// </remarks>
         /// <typeparam name="T">要创建的辅助器类型 / Helper type to create</typeparam>
-        /// <param name="helperTypeName">要创建的辅助器类型名称 / Helper type name to create</param>
-        /// <param name="customHelper">若要创建的辅助器类型为空时，使用的自定义辅助器类型 / Custom helper type to use if helper type name is empty</param>
+        /// <param name="helperFactory">辅助器工厂，返回辅助器实例 / Helper factory that returns the helper instance</param>
+        /// <param name="customHelper">自定义辅助器，非空时优先使用 / Custom helper, takes precedence when not null</param>
         /// <returns>创建的辅助器 / Created helper instance</returns>
-        [UnityEngine.Scripting.Preserve]
-        public static T CreateHelper<T>(string helperTypeName, T customHelper) where T : MonoBehaviour
+[UnityEngine.Scripting.Preserve]
+        public static T CreateHelper<T>(Func<T> helperFactory, T customHelper) where T : MonoBehaviour
         {
-            return CreateHelper(helperTypeName, customHelper, 0);
+            return CreateHelper(helperFactory, customHelper, 0);
         }
 
         /// <summary>
         /// 创建辅助器。
         /// </summary>
-        /// <typeparam name="T">要创建的辅助器类型。</typeparam>
-        /// <param name="helperTypeName">要创建的辅助器类型名称。</param>
-        /// <param name="customHelper">若要创建的辅助器类型为空时，使用的自定义辅助器类型。</param>
-        /// <param name="index">要创建的辅助器索引。</param>
-        /// <returns>创建的辅助器。</returns>
-        [UnityEngine.Scripting.Preserve]
-        public static T CreateHelper<T>(string helperTypeName, T customHelper, int index) where T : MonoBehaviour
+        /// <remarks>
+        /// Creates a helper instance.
+        /// </remarks>
+        /// <typeparam name="T">要创建的辅助器类型。 / The type of helper to create.</typeparam>
+        /// <param name="helperFactory">辅助器工厂，返回辅助器实例。 / Helper factory that returns the helper instance.</param>
+        /// <param name="customHelper">自定义辅助器，非空时优先使用。 / Custom helper; used first when not null.</param>
+        /// <param name="index">要创建的辅助器索引。 / Index of the helper to create.</param>
+        /// <returns>创建的辅助器。 / The created helper.</returns>
+[UnityEngine.Scripting.Preserve]
+        public static T CreateHelper<T>(Func<T> helperFactory, T customHelper, int index) where T : MonoBehaviour
         {
-            T helper = null;
-            if (!string.IsNullOrEmpty(helperTypeName))
+            if (customHelper != null)
             {
-                System.Type helperType = Utility.Assembly.GetType(helperTypeName);
-                if (helperType == null)
-                {
-                    Log.Warning("Can not find helper type '{0}'.", helperTypeName);
-                    return null;
-                }
-
-                if (!typeof(T).IsAssignableFrom(helperType))
-                {
-                    Log.Warning("Type '{0}' is not assignable from '{1}'.", typeof(T).FullName, helperType.FullName);
-                    return null;
-                }
-
-                helper = (T)new GameObject().AddComponent(helperType);
+                return customHelper.gameObject.InScene() && index <= 0 ? customHelper : UnityEngine.Object.Instantiate(customHelper);
             }
-            else if (customHelper == null)
+
+            if (helperFactory == null)
             {
                 Log.Warning("You must set custom helper with '{0}' type first.", typeof(T).FullName);
                 return null;
             }
-            else if (customHelper.gameObject.InScene())
-            {
-                helper = index > 0 ? Object.Instantiate(customHelper) : customHelper;
-            }
-            else
-            {
-                helper = Object.Instantiate(customHelper);
-            }
 
-            return helper;
-        }
-
-        /// <summary>
-        /// 创建辅助器。
-        /// </summary>
-        /// <typeparam name="T">要创建的辅助器类型。</typeparam>
-        /// <param name="target"></param>
-        /// <param name="helperTypeName">要创建的辅助器类型名称。</param>
-        /// <param name="customHelper">若要创建的辅助器类型为空时，使用的自定义辅助器类型。</param>
-        /// <param name="index">要创建的辅助器索引。</param>
-        /// <returns>创建的辅助器。</returns>
-        [UnityEngine.Scripting.Preserve]
-        public static T CreateHelper<T>(GameObject target, string helperTypeName, T customHelper, int index) where T : MonoBehaviour
-        {
-            GameFrameworkGuard.NotNull(target, nameof(target));
-            T helper = null;
-            if (!string.IsNullOrEmpty(helperTypeName))
-            {
-                System.Type helperType = Utility.Assembly.GetType(helperTypeName);
-                if (helperType == null)
-                {
-                    Log.Warning("Can not find helper type '{0}'.", helperTypeName);
-                    return null;
-                }
-
-                if (!typeof(T).IsAssignableFrom(helperType))
-                {
-                    Log.Warning("Type '{0}' is not assignable from '{1}'.", typeof(T).FullName, helperType.FullName);
-                    return null;
-                }
-
-                helper = (T)target.AddComponent(helperType);
-            }
-            else if (customHelper == null)
-            {
-                Log.Warning("You must set custom helper with '{0}' type first.", typeof(T).FullName);
-                return null;
-            }
-            else if (customHelper.gameObject.InScene())
-            {
-                helper = index > 0 ? Object.Instantiate(customHelper) : customHelper;
-            }
-            else
-            {
-                helper = Object.Instantiate(customHelper);
-            }
-
-            return helper;
+            return helperFactory();
         }
     }
 }

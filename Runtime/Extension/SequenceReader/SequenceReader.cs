@@ -13,48 +13,78 @@ using UnityEngine.Scripting; // Added for Preserve attribute
 
 namespace GameFrameX.Runtime
 {
+    /// <summary>
+    /// 提供对只读序列的逐项读取功能的结构。
+    /// </summary>
+    /// <remarks>
+    /// Provides a struct for reading items one by one from a read-only sequence.
+    /// </remarks>
     [Preserve] // Added Preserve attribute
     public ref partial struct SequenceReader<T> where T : unmanaged, IEquatable<T>
     {
         /// <summary>
-        /// A value indicating whether we're using <see cref="sequence"/> (as opposed to <see cref="memory"/>.
+        /// 指示是否使用 <see cref="sequence"/>（而非 <see cref="memory"/>）的值。
         /// </summary>
+        /// <remarks>
+        /// A value indicating whether we're using <see cref="sequence"/> (as opposed to <see cref="memory"/>.
+        /// </remarks>
         private bool usingSequence;
 
         /// <summary>
-        /// Backing for the entire sequence when we're not using <see cref="memory"/>.
+        /// 未使用 <see cref="memory"/> 时整个序列的后备数据。
         /// </summary>
+        /// <remarks>
+        /// Backing for the entire sequence when we're not using <see cref="memory"/>.
+        /// </remarks>
         private ReadOnlySequence<T> sequence;
 
         /// <summary>
-        /// The position at the start of the <see cref="CurrentSpan"/>.
+        /// <see cref="CurrentSpan"/> 起始处的位置。
         /// </summary>
+        /// <remarks>
+        /// The position at the start of the <see cref="CurrentSpan"/>.
+        /// </remarks>
         private SequencePosition currentPosition;
 
         /// <summary>
-        /// The position at the end of the <see cref="CurrentSpan"/>.
+        /// <see cref="CurrentSpan"/> 结束处的位置。
         /// </summary>
+        /// <remarks>
+        /// The position at the end of the <see cref="CurrentSpan"/>.
+        /// </remarks>
         private SequencePosition nextPosition;
 
         /// <summary>
-        /// Backing for the entire sequence when we're not using <see cref="sequence"/>.
+        /// 未使用 <see cref="sequence"/> 时整个序列的后备数据。
         /// </summary>
+        /// <remarks>
+        /// Backing for the entire sequence when we're not using <see cref="sequence"/>.
+        /// </remarks>
         private ReadOnlyMemory<T> memory;
 
         /// <summary>
-        /// A value indicating whether there is unread data remaining.
+        /// 指示是否还有剩余未读数据的值。
         /// </summary>
+        /// <remarks>
+        /// A value indicating whether there is unread data remaining.
+        /// </remarks>
         private bool moreData;
 
         /// <summary>
-        /// The total number of elements in the sequence.
+        /// 序列中元素的总数。
         /// </summary>
+        /// <remarks>
+        /// The total number of elements in the sequence.
+        /// </remarks>
         private long length;
 
         /// <summary>
+        /// 初始化一个基于给定 <see cref="ReadOnlySequence{T}"/> 的新 <see cref="SequenceReader{T}"/> 实例。
+        /// </summary>
+        /// <remarks>
         /// Initializes a new instance of the <see cref="SequenceReader{T}"/> struct
         /// over the given <see cref="ReadOnlySequence{T}"/>.
-        /// </summary>
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [Preserve] // Added Preserve attribute
         public SequenceReader(in ReadOnlySequence<T> sequence)
@@ -80,9 +110,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 初始化一个基于给定 <see cref="ReadOnlyMemory{T}"/> 的新 <see cref="SequenceReader{T}"/> 实例。
+        /// </summary>
+        /// <remarks>
         /// Initializes a new instance of the <see cref="SequenceReader{T}"/> struct
         /// over the given <see cref="ReadOnlyMemory{T}"/>.
-        /// </summary>
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [Preserve] // Added Preserve attribute
         public SequenceReader(ReadOnlyMemory<T> memory)
@@ -101,13 +134,19 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// Gets a value indicating whether there is no more data in the <see cref="Sequence"/>.
+        /// 获取一个指示 <see cref="Sequence"/> 中是否没有更多数据的值。
         /// </summary>
+        /// <remarks>
+        /// Gets a value indicating whether there is no more data in the <see cref="Sequence"/>.
+        /// </remarks>
         public bool End => !this.moreData;
 
         /// <summary>
-        /// Gets the underlying <see cref="ReadOnlySequence{T}"/> for the reader.
+        /// 获取读取器底层的 <see cref="ReadOnlySequence{T}"/>。
         /// </summary>
+        /// <remarks>
+        /// Gets the underlying <see cref="ReadOnlySequence{T}"/> for the reader.
+        /// </remarks>
         [Preserve] // Added Preserve attribute
         public ReadOnlySequence<T> Sequence
         {
@@ -127,27 +166,39 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// Gets the current position in the <see cref="Sequence"/>.
+        /// 获取 <see cref="Sequence"/> 中的当前位置。
         /// </summary>
+        /// <remarks>
+        /// Gets the current position in the <see cref="Sequence"/>.
+        /// </remarks>
         [Preserve] // Added Preserve attribute
         public SequencePosition Position
             => this.Sequence.GetPosition(this.CurrentSpanIndex, this.currentPosition);
 
         /// <summary>
-        /// Gets the current segment in the <see cref="Sequence"/> as a span.
+        /// 以范围（span）的形式获取 <see cref="Sequence"/> 中的当前段。
         /// </summary>
+        /// <remarks>
+        /// Gets the current segment in the <see cref="Sequence"/> as a span.
+        /// </remarks>
         [Preserve] // Added Preserve attribute
         public ReadOnlySpan<T> CurrentSpan { get; private set; }
 
         /// <summary>
-        /// Gets the index in the <see cref="CurrentSpan"/>.
+        /// 获取 <see cref="CurrentSpan"/> 中的索引。
         /// </summary>
+        /// <remarks>
+        /// Gets the index in the <see cref="CurrentSpan"/>.
+        /// </remarks>
         [Preserve] // Added Preserve attribute
         public int CurrentSpanIndex { get; private set; }
 
         /// <summary>
-        /// Gets the unread portion of the <see cref="CurrentSpan"/>.
+        /// 获取 <see cref="CurrentSpan"/> 中未读取的部分。
         /// </summary>
+        /// <remarks>
+        /// Gets the unread portion of the <see cref="CurrentSpan"/>.
+        /// </remarks>
         [Preserve] // Added Preserve attribute
         public ReadOnlySpan<T> UnreadSpan
         {
@@ -156,20 +207,29 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// Gets the total number of <typeparamref name="T"/>'s processed by the reader.
+        /// 获取读取器已处理的 <typeparamref name="T"/> 总数。
         /// </summary>
+        /// <remarks>
+        /// Gets the total number of <typeparamref name="T"/>'s processed by the reader.
+        /// </remarks>
         [Preserve] // Added Preserve attribute
         public long Consumed { get; private set; }
 
         /// <summary>
-        /// Gets remaining <typeparamref name="T"/>'s in the reader's <see cref="Sequence"/>.
+        /// 获取读取器的 <see cref="Sequence"/> 中剩余的 <typeparamref name="T"/> 数量。
         /// </summary>
+        /// <remarks>
+        /// Gets remaining <typeparamref name="T"/>'s in the reader's <see cref="Sequence"/>.
+        /// </remarks>
         [Preserve] // Added Preserve attribute
         public long Remaining => this.Length - this.Consumed;
 
         /// <summary>
-        /// Gets count of <typeparamref name="T"/> in the reader's <see cref="Sequence"/>.
+        /// 获取读取器的 <see cref="Sequence"/> 中 <typeparamref name="T"/> 的数量。
         /// </summary>
+        /// <remarks>
+        /// Gets count of <typeparamref name="T"/> in the reader's <see cref="Sequence"/>.
+        /// </remarks>
         [Preserve] // Added Preserve attribute
         public long Length
         {
@@ -187,10 +247,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// Peeks at the next value without advancing the reader.
+        /// 查看下一个值，但不推进读取器。
         /// </summary>
-        /// <param name="value">The next value or default if at the end.</param>
-        /// <returns>False if at the end of the reader.</returns>
+        /// <remarks>
+        /// Peeks at the next value without advancing the reader.
+        /// </remarks>
+        /// <param name="value">下一个值；若已到达末尾则为默认值。 / The next value or default if at the end.</param>
+        /// <returns>如果已到达读取器末尾，则为 false。 / False if at the end of the reader.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [Preserve] // Added Preserve attribute
         public bool TryPeek(out T value)
@@ -208,10 +271,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// Read the next value and advance the reader.
+        /// 读取下一个值并推进读取器。
         /// </summary>
-        /// <param name="value">The next value or default if at the end.</param>
-        /// <returns>False if at the end of the reader.</returns>
+        /// <remarks>
+        /// Read the next value and advance the reader.
+        /// </remarks>
+        /// <param name="value">下一个值；若已到达末尾则为默认值。 / The next value or default if at the end.</param>
+        /// <returns>如果已到达读取器末尾，则为 false。 / False if at the end of the reader.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [Preserve] // Added Preserve attribute
         public bool TryRead(out T value)
@@ -242,8 +308,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// Move the reader back the specified number of items.
+        /// 将读取器回退指定的项数。
         /// </summary>
+        /// <remarks>
+        /// Move the reader back the specified number of items.
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [Preserve] // Added Preserve attribute
         public void Rewind(long count)
@@ -312,8 +381,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// Get the next segment with available data, if any.
+        /// 获取下一个包含可用数据的段（如果有）。
         /// </summary>
+        /// <remarks>
+        /// Get the next segment with available data, if any.
+        /// </remarks>
         private void GetNextSpan()
         {
             Debug.Assert(this.usingSequence, "usingSequence");
@@ -342,8 +414,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// Move the reader ahead the specified number of items.
+        /// 将读取器向前移动指定的项数。
         /// </summary>
+        /// <remarks>
+        /// Move the reader ahead the specified number of items.
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [Preserve] // Added Preserve attribute
         public void Advance(long count)
@@ -372,8 +447,11 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// Unchecked helper to avoid unnecessary checks where you know count is valid.
+        /// 无检查的辅助方法，在已知数量有效时避免不必要的检查。
         /// </summary>
+        /// <remarks>
+        /// Unchecked helper to avoid unnecessary checks where you know count is valid.
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void AdvanceCurrentSpan(long count)
         {
@@ -388,9 +466,12 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 仅在已知于当前范围内以有效数量推进且无需获取下一段时才调用的辅助方法。
+        /// </summary>
+        /// <remarks>
         /// Only call this helper if you know that you are advancing in the current span
         /// with valid count and there is no need to fetch the next one.
-        /// </summary>
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void AdvanceWithinSpan(long count)
         {
@@ -403,10 +484,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 如果序列中剩余元素足够，则将读取器向前移动指定的项数。
+        /// </summary>
+        /// <remarks>
         /// Move the reader ahead the specified number of items
         /// if there are enough elements remaining in the sequence.
-        /// </summary>
-        /// <returns><see langword="true"/> if there were enough elements to advance; otherwise <see langword="false"/>.</returns>
+        /// </remarks>
+        /// <returns>如果有足够的元素可以推进，则为 true；否则为 false。 / True if there were enough elements to advance; otherwise false.</returns>
         internal bool TryAdvance(long count)
         {
             if (this.Remaining < count)
@@ -461,10 +545,13 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// Copies data from the current <see cref="Position"/> to the given <paramref name="destination"/> span.
+        /// 将数据从当前 <see cref="Position"/> 复制到给定的 <paramref name="destination"/> 范围。
         /// </summary>
-        /// <param name="destination">Destination to copy to.</param>
-        /// <returns>True if there is enough data to copy to the <paramref name="destination"/>.</returns>
+        /// <remarks>
+        /// Copies data from the current <see cref="Position"/> to the given <paramref name="destination"/> span.
+        /// </remarks>
+        /// <param name="destination">要复制到的目标范围。 / Destination to copy to.</param>
+        /// <returns>如果有足够的数据可复制到目标范围，则为 true。 / True if there is enough data to copy to the <paramref name="destination"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [Preserve] // Added Preserve attribute
         public bool TryCopyTo(Span<T> destination)

@@ -7,6 +7,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 自动运行时覆盖上下文。
     /// </summary>
+    /// <remarks>
+    /// Override context for the auto runtime.
+    /// </remarks>
     [Preserve]
     public sealed class GameFrameXRuntimeOverrideContext
     {
@@ -17,8 +20,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置组件是否启用。
         /// </summary>
-        /// <param name="componentType">组件类型。</param>
-        /// <param name="enabled">是否启用。</param>
+        /// <remarks>
+        /// Sets whether a component is enabled.
+        /// </remarks>
+        /// <param name="componentType">组件类型。 / The component type.</param>
+        /// <param name="enabled">是否启用。 / Whether the component is enabled.</param>
         public void SetComponentEnabled(Type componentType, bool enabled)
         {
             GetOrCreateComponentConfig(componentType).Enabled = enabled;
@@ -27,8 +33,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置组件启动顺序。
         /// </summary>
-        /// <param name="componentType">组件类型。</param>
-        /// <param name="order">启动顺序。</param>
+        /// <remarks>
+        /// Sets the startup order of a component.
+        /// </remarks>
+        /// <param name="componentType">组件类型。 / The component type.</param>
+        /// <param name="order">启动顺序。 / The startup order.</param>
         public void SetComponentOrder(Type componentType, int order)
         {
             GetOrCreateComponentConfig(componentType).Order = order;
@@ -37,30 +46,26 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置组件 Manager 实现。
         /// </summary>
-        /// <param name="componentType">组件类型。</param>
-        /// <param name="managerImplementationType">Manager 实现类型。</param>
+        /// <remarks>
+        /// Sets the manager implementation of a component.
+        /// </remarks>
+        /// <param name="componentType">组件类型。 / The component type.</param>
+        /// <param name="managerImplementationType">Manager 实现类型。 / The manager implementation type.</param>
         public void SetComponentManager(Type componentType, Type managerImplementationType)
         {
             GetOrCreateComponentConfig(componentType).ManagerImplementationType = managerImplementationType;
         }
 
-        /// <summary>
-        /// 设置组件 Inspector 字段或公开属性的运行时覆盖值。
-        /// </summary>
-        /// <param name="componentType">组件类型。</param>
-        /// <param name="name">字段名或属性名。</param>
-        /// <param name="value">覆盖值。</param>
-        public void SetComponentValue(Type componentType, string name, object value)
-        {
-            GetOrCreateComponentConfig(componentType).SetValue(name, value);
-        }
 
         /// <summary>
         /// 设置 Manager 接口到实现类型的运行时覆盖。
         /// </summary>
-        /// <param name="interfaceType">Manager 接口类型。</param>
-        /// <param name="implementationType">Manager 实现类型。</param>
-        /// <param name="priority">覆盖优先级。</param>
+        /// <remarks>
+        /// Sets a runtime override that maps a manager interface to an implementation type.
+        /// </remarks>
+        /// <param name="interfaceType">Manager 接口类型。 / The manager interface type.</param>
+        /// <param name="implementationType">Manager 实现类型。 / The manager implementation type.</param>
+        /// <param name="priority">覆盖优先级。 / The override priority.</param>
         public void SetManagerImplementation(Type interfaceType, Type implementationType, int priority = 0)
         {
             m_ManagerOverrides.Add(new GameFrameXManagerRuntimeOverride(interfaceType, implementationType, priority));
@@ -69,8 +74,11 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取或创建组件运行时配置。
         /// </summary>
-        /// <param name="componentType">组件类型。</param>
-        /// <returns>组件运行时配置。</returns>
+        /// <remarks>
+        /// Gets or creates the runtime configuration of a component.
+        /// </remarks>
+        /// <param name="componentType">组件类型。 / The component type.</param>
+        /// <returns>组件运行时配置。 / The component runtime configuration.</returns>
         public GameFrameXComponentRuntimeConfig GetOrCreateComponentConfig(Type componentType)
         {
             if (componentType == null)
@@ -90,7 +98,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取所有组件配置。
         /// </summary>
-        /// <returns>组件配置映射。</returns>
+        /// <remarks>
+        /// Gets all component configurations.
+        /// </remarks>
+        /// <returns>组件配置映射。 / The mapping of component configurations.</returns>
         public IReadOnlyDictionary<Type, GameFrameXComponentRuntimeConfig> GetComponentConfigs()
         {
             return m_ComponentConfigs;
@@ -99,7 +110,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取所有 Manager 覆盖。
         /// </summary>
-        /// <returns>Manager 覆盖列表。</returns>
+        /// <remarks>
+        /// Gets all manager overrides.
+        /// </remarks>
+        /// <returns>Manager 覆盖列表。 / The list of manager overrides.</returns>
         public IReadOnlyList<GameFrameXManagerRuntimeOverride> GetManagerOverrides()
         {
             return m_ManagerOverrides;

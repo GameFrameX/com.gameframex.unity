@@ -41,7 +41,10 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 内部对象。
         /// </summary>
-        /// <typeparam name="T">对象类型。</typeparam>
+        /// <remarks>
+        /// Internal object.
+        /// </remarks>
+        /// <typeparam name="T">对象类型。 / Type of the objects.</typeparam>
         private sealed class Object<T> : IReference where T : ObjectBase
         {
             private T m_Object;
@@ -50,6 +53,9 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 初始化内部对象的新实例。
             /// </summary>
+            /// <remarks>
+            /// Initializes a new instance of the internal object.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public Object()
             {
@@ -60,6 +66,9 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取对象名称。
             /// </summary>
+            /// <remarks>
+            /// Gets the name of the object.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public string Name
             {
@@ -76,6 +85,9 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取对象是否被加锁。
             /// </summary>
+            /// <remarks>
+            /// Gets whether the object is locked.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public bool Locked
             {
@@ -100,6 +112,9 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取对象的优先级。
             /// </summary>
+            /// <remarks>
+            /// Gets the priority of the object.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public int Priority
             {
@@ -124,6 +139,9 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取自定义释放检查标记。
             /// </summary>
+            /// <remarks>
+            /// Gets the custom release check flag.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public bool CustomCanReleaseFlag
             {
@@ -140,6 +158,9 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取对象上次使用时间。
             /// </summary>
+            /// <remarks>
+            /// Gets the last use time of the object.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public DateTime LastUseTime
             {
@@ -156,6 +177,9 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取对象是否正在使用。
             /// </summary>
+            /// <remarks>
+            /// Gets whether the object is in use.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public bool IsInUse
             {
@@ -165,6 +189,9 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取对象的获取计数。
             /// </summary>
+            /// <remarks>
+            /// Gets the spawn count of the object.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public int SpawnCount
             {
@@ -174,9 +201,12 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 创建内部对象。
             /// </summary>
-            /// <param name="obj">对象。</param>
-            /// <param name="spawned">对象是否已被获取。</param>
-            /// <returns>创建的内部对象。</returns>
+            /// <remarks>
+            /// Creates an internal object.
+            /// </remarks>
+            /// <param name="obj">对象。 / The object.</param>
+            /// <param name="spawned">对象是否已被获取。 / Whether the object has been spawned.</param>
+            /// <returns>创建的内部对象。 / The created internal object.</returns>
             [UnityEngine.Scripting.Preserve]
             public static Object<T> Create(T obj, bool spawned)
             {
@@ -199,6 +229,9 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 清理内部对象。
             /// </summary>
+            /// <remarks>
+            /// Clears the internal object.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public void Clear()
             {
@@ -209,7 +242,10 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 查看对象。
             /// </summary>
-            /// <returns>对象。</returns>
+            /// <remarks>
+            /// Peeks at the object.
+            /// </remarks>
+            /// <returns>对象。 / The object.</returns>
             [UnityEngine.Scripting.Preserve]
             public T Peek()
             {
@@ -219,7 +255,10 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 获取对象。
             /// </summary>
-            /// <returns>对象。</returns>
+            /// <remarks>
+            /// Spawns the object.
+            /// </remarks>
+            /// <returns>对象。 / The object.</returns>
             [UnityEngine.Scripting.Preserve]
             public T Spawn()
             {
@@ -232,6 +271,9 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 回收对象。
             /// </summary>
+            /// <remarks>
+            /// Unspawns the object.
+            /// </remarks>
             [UnityEngine.Scripting.Preserve]
             public void Unspawn()
             {
@@ -247,7 +289,10 @@ namespace GameFrameX.ObjectPool
             /// <summary>
             /// 释放对象。
             /// </summary>
-            /// <param name="isShutdown">是否是关闭对象池时触发。</param>
+            /// <remarks>
+            /// Releases the object.
+            /// </remarks>
+            /// <param name="isShutdown">是否是关闭对象池时触发。 / Whether triggered when the object pool is shutting down.</param>
             [UnityEngine.Scripting.Preserve]
             public void Release(bool isShutdown)
             {

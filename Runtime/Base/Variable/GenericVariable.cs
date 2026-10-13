@@ -88,6 +88,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取变量值。
         /// </summary>
+        /// <remarks>
+        /// Gets the value of the variable.
+        /// </remarks>
         /// <returns>变量值。 / The variable value.</returns>
         [UnityEngine.Scripting.Preserve]
         public override object GetValue()
@@ -98,6 +101,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 设置变量值。
         /// </summary>
+        /// <remarks>
+        /// Sets the value of the variable.
+        /// </remarks>
         /// <param name="value">变量值。 / The variable value to set.</param>
         [UnityEngine.Scripting.Preserve]
         public override void SetValue(object value)
@@ -125,6 +131,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取变量字符串。
         /// </summary>
+        /// <remarks>
+        /// Gets the string representation of the variable value.
+        /// </remarks>
         /// <returns>变量字符串。 / The string representation of the variable value.</returns>
         [UnityEngine.Scripting.Preserve]
         public override string ToString()

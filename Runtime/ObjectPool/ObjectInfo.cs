@@ -40,6 +40,9 @@ namespace GameFrameX.ObjectPool
     /// <summary>
     /// 对象信息。
     /// </summary>
+    /// <remarks>
+    /// Information about an object in the pool.
+    /// </remarks>
     [StructLayout(LayoutKind.Auto)]
     [Preserve] // Preserve the ObjectInfo struct for Unity's serialization
     public struct ObjectInfo
@@ -54,12 +57,15 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 初始化对象信息的新实例。
         /// </summary>
-        /// <param name="name">对象名称。</param>
-        /// <param name="locked">对象是否被加锁。</param>
-        /// <param name="customCanReleaseFlag">对象自定义释放检查标记。</param>
-        /// <param name="priority">对象的优先级。</param>
-        /// <param name="lastUseTime">对象上次使用时间。</param>
-        /// <param name="spawnCount">对象的获取计数。</param>
+        /// <remarks>
+        /// Initializes a new instance of the object information.
+        /// </remarks>
+        /// <param name="name">对象名称。 / Object name.</param>
+        /// <param name="locked">对象是否被加锁。 / Whether the object is locked.</param>
+        /// <param name="customCanReleaseFlag">对象自定义释放检查标记。 / Custom release check flag of the object.</param>
+        /// <param name="priority">对象的优先级。 / Priority of the object.</param>
+        /// <param name="lastUseTime">对象上次使用时间。 / Last use time of the object.</param>
+        /// <param name="spawnCount">对象的获取计数。 / Spawn count of the object.</param>
         [Preserve] // Preserve the constructor for Unity's serialization
         public ObjectInfo(string name, bool locked, bool customCanReleaseFlag, int priority, DateTime lastUseTime, int spawnCount)
         {
@@ -74,6 +80,9 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象名称。
         /// </summary>
+        /// <remarks>
+        /// Gets the name of the object.
+        /// </remarks>
         [Preserve] // Preserve the Name property for Unity's serialization
         public string Name
         {
@@ -83,6 +92,9 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象是否被加锁。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the object is locked.
+        /// </remarks>
         [Preserve] // Preserve the Locked property for Unity's serialization
         public bool Locked
         {
@@ -92,6 +104,9 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象自定义释放检查标记。
         /// </summary>
+        /// <remarks>
+        /// Gets the custom release check flag of the object.
+        /// </remarks>
         [Preserve] // Preserve the CustomCanReleaseFlag property for Unity's serialization
         public bool CustomCanReleaseFlag
         {
@@ -101,6 +116,9 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象的优先级。
         /// </summary>
+        /// <remarks>
+        /// Gets the priority of the object.
+        /// </remarks>
         [Preserve] // Preserve the Priority property for Unity's serialization
         public int Priority
         {
@@ -110,6 +128,9 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象上次使用时间。
         /// </summary>
+        /// <remarks>
+        /// Gets the last use time of the object.
+        /// </remarks>
         [Preserve] // Preserve the LastUseTime property for Unity's serialization
         public DateTime LastUseTime
         {
@@ -119,6 +140,9 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象是否正在使用。
         /// </summary>
+        /// <remarks>
+        /// Gets whether the object is in use.
+        /// </remarks>
         [Preserve] // Preserve the IsInUse property for Unity's serialization
         public bool IsInUse
         {
@@ -128,6 +152,9 @@ namespace GameFrameX.ObjectPool
         /// <summary>
         /// 获取对象的获取计数。
         /// </summary>
+        /// <remarks>
+        /// Gets the spawn count of the object.
+        /// </remarks>
         [Preserve] // Preserve the SpawnCount property for Unity's serialization
         public int SpawnCount
         {

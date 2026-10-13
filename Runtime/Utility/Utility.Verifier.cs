@@ -222,6 +222,17 @@ namespace GameFrameX.Runtime
                 bytes[offset + 3] = (byte)(crc32 & 0xff);
             }
 
+            /// <summary>
+            /// 计算流中数据的 CRC32，计算前会先使用密钥字节循环异或数据。
+            /// </summary>
+            /// <remarks>
+            /// Computes the CRC32 of the data in the stream, XORing the data with the key bytes cyclically before hashing.
+            /// </remarks>
+            /// <param name="stream">要计算的流 / The stream to compute</param>
+            /// <param name="code">用于异或的密钥字节数组 / The key byte array used for XOR</param>
+            /// <param name="length">要计算的数据长度；为负数或超过流长度时按整个流计算 / The data length to compute; the whole stream is used when it is negative or exceeds the stream length</param>
+            /// <returns>计算得到的 CRC32 值 / The computed CRC32 value</returns>
+            /// <exception cref="GameFrameworkException">当 <paramref name="stream"/> 或 <paramref name="code"/> 为 null，或 <paramref name="code"/> 长度不大于 0 时抛出 / Thrown when <paramref name="stream"/> or <paramref name="code"/> is null, or the length of <paramref name="code"/> is not greater than 0</exception>
             internal static int GetCrc32(Stream stream, byte[] code, int length)
             {
                 if (stream == null)

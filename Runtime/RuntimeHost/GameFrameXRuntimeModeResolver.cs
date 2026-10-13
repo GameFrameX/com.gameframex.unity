@@ -7,6 +7,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 裁决 GameFrameX 本次运行应使用的启动模式。
     /// </summary>
+    /// <remarks>
+    /// Resolves the startup mode the current GameFrameX run should use.
+    /// </remarks>
     [Preserve]
     public static class GameFrameXRuntimeModeResolver
     {
@@ -15,6 +18,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取最近一次模式裁决结果。
         /// </summary>
+        /// <remarks>
+        /// Gets the most recent mode resolution result.
+        /// </remarks>
         public static GameFrameXRuntimeModeResult LastResult
         {
             get { return s_LastResult; }
@@ -23,6 +29,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 重置模式裁决状态。
         /// </summary>
+        /// <remarks>
+        /// Resets the mode resolution state.
+        /// </remarks>
         public static void Reset()
         {
             s_LastResult = null;
@@ -31,9 +40,33 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 裁决本次运行模式。
         /// </summary>
-        /// <returns>运行模式裁决结果。</returns>
+        /// <remarks>
+        /// Resolves the runtime mode for the current run.
+        /// Resolution priority: HeadlessMode (explicit host contract) &gt; ManualSceneMode (manual scene entry) &gt; AutoPackageMode (auto host fallback).
+        /// When headless is active, both the manual GFX entry in the scene and the auto host are rejected to avoid mixed takeover.
+        /// </remarks>
+        /// <returns>运行模式裁决结果。 / The runtime mode resolution result.</returns>
         public static GameFrameXRuntimeModeResult Resolve()
         {
+            if (GameFrameXRuntimeHost.IsHeadlessRequested)
+            {
+                var conflictEntry = Object.FindObjectOfType<BaseComponent>();
+                if (conflictEntry != null)
+                {
+                    s_LastResult = new GameFrameXRuntimeModeResult(
+                        GameFrameXRuntimeMode.HeadlessMode,
+                        "Headless startup is active; manual scene entry and auto host startup are rejected.",
+                        GetHierarchyPath(conflictEntry.transform));
+                    return s_LastResult;
+                }
+
+                s_LastResult = new GameFrameXRuntimeModeResult(
+                    GameFrameXRuntimeMode.HeadlessMode,
+                    "Headless startup was requested by the host.",
+                    string.Empty);
+                return s_LastResult;
+            }
+
             var registeredBaseComponent = GameEntry.GetComponent<BaseComponent>();
             if (registeredBaseComponent != null)
             {

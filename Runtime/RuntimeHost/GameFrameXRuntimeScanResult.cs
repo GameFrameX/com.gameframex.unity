@@ -7,6 +7,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// GameFrameX 自动运行时扫描结果。
     /// </summary>
+    /// <remarks>
+    /// Scan result of the GameFrameX auto runtime.
+    /// </remarks>
     [Preserve]
     public sealed class GameFrameXRuntimeScanResult
     {
@@ -19,6 +22,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取扫描到的组件类型。
         /// </summary>
+        /// <remarks>
+        /// Gets the discovered component types.
+        /// </remarks>
         public IList<Type> ComponentTypes
         {
             get { return m_ComponentTypes; }
@@ -27,6 +33,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取扫描到的 Manager 描述。
         /// </summary>
+        /// <remarks>
+        /// Gets the discovered manager descriptors.
+        /// </remarks>
         public IList<GameFrameXRuntimeManagerDescriptor> ManagerDescriptors
         {
             get { return m_ManagerDescriptors; }
@@ -35,6 +44,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 获取扫描错误。
         /// </summary>
+        /// <remarks>
+        /// Gets the scan errors.
+        /// </remarks>
         public IList<string> Errors
         {
             get { return m_Errors; }

@@ -2,6 +2,12 @@ using UnityEngine;
 
 namespace GameFrameX.Runtime
 {
+    /// <summary>
+    /// 裁剪帮助类，通过引用包内类型防止代码裁剪时被移除。
+    /// </summary>
+    /// <remarks>
+    /// Cropping helper that references in-package types to prevent them from being stripped during code stripping.
+    /// </remarks>
     public class GameFrameXCroppingHelper : MonoBehaviour
     {
         private void Start()
@@ -27,7 +33,6 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.DefaultLogHelper);
             _ = typeof(GameFrameX.Runtime.DefaultTextHelper);
             _ = typeof(GameFrameX.Runtime.DefaultVersionHelper);
-            _ = typeof(GameFrameX.Runtime.DistinctHelper);
             _ = typeof(GameFrameX.Runtime.EventPool<>);
             _ = typeof(GameFrameX.Runtime.EventPoolMode);
             _ = typeof(GameFrameX.Runtime.FileHelper);
@@ -44,7 +49,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.GameFrameworkLog);
             _ = typeof(GameFrameX.Runtime.GameFrameworkLog.ILogHelper);
             _ = typeof(GameFrameX.Runtime.GameFrameworkLogLevel);
-            _ = typeof(GameFrameX.Runtime.GameFrameworkModule);
+            _ = typeof(GameFrameX.Runtime.IGameFrameworkModule);
             _ = typeof(GameFrameX.Runtime.GameFrameworkMonoSingleton<>);
             _ = typeof(GameFrameX.Runtime.GameFrameworkMultiDictionary<,>);
             _ = typeof(GameFrameX.Runtime.GameFrameworkMultiDictionary<,>.Enumerator);
@@ -64,7 +69,7 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.NetworkHelper);
             _ = typeof(GameFrameX.Runtime.ObjectDontDestroyOnLoad);
             _ = typeof(GameFrameX.Runtime.ObjectHelper);
-            _ = typeof(GameFrameX.Runtime.ObjectPoolComponent);
+            _ = typeof(GameFrameX.ObjectPool.ObjectPoolManager);
             _ = typeof(GameFrameX.Runtime.PathHelper);
             _ = typeof(GameFrameX.Runtime.PositionHelper);
             _ = typeof(GameFrameX.Runtime.RandomHelper);

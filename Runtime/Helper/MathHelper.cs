@@ -115,7 +115,7 @@ namespace GameFrameX.Runtime
         /// <param name="y2">矩形B的Y坐标 / Y coordinate of rectangle B</param>
         /// <param name="w2">矩形B的宽度 / Width of rectangle B</param>
         /// <param name="h2">矩形B的高度 / Height of rectangle B</param>
-        /// <param name="intersectPoints">交叉点列表（会被修改）/ Intersection point list (will be modified)</param>
+        /// <param name="intersectPoints">交叉点列表（会被修改） / Intersection point list (will be modified)</param>
         /// <returns>返回是否相交 / Returns whether the rectangles intersect</returns>
         [UnityEngine.Scripting.Preserve]
         public static bool CheckIntersectPoints(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2, int[] intersectPoints)

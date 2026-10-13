@@ -7,6 +7,9 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 解析 Manager 接口对应的运行时实现。
     /// </summary>
+    /// <remarks>
+    /// Resolves the runtime implementation for a manager interface.
+    /// </remarks>
     [Preserve]
     public static class GameFrameXRuntimeManagerResolver
     {
@@ -19,6 +22,9 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 重置 Manager 解析器。
         /// </summary>
+        /// <remarks>
+        /// Resets the manager resolver.
+        /// </remarks>
         public static void Reset()
         {
             ManagerDescriptors.Clear();
@@ -29,7 +35,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 注册 Manager 描述。
         /// </summary>
-        /// <param name="descriptors">Manager 描述列表。</param>
+        /// <remarks>
+        /// Registers manager descriptors.
+        /// </remarks>
+        /// <param name="descriptors">Manager 描述列表。 / The list of manager descriptors.</param>
         public static void RegisterDescriptors(IEnumerable<GameFrameXRuntimeManagerDescriptor> descriptors)
         {
             if (descriptors == null)
@@ -59,7 +68,10 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 注册 Manager 运行时覆盖。
         /// </summary>
-        /// <param name="overrides">Manager 运行时覆盖列表。</param>
+        /// <remarks>
+        /// Registers manager runtime overrides.
+        /// </remarks>
+        /// <param name="overrides">Manager 运行时覆盖列表。 / The list of manager runtime overrides.</param>
         public static void RegisterOverrides(IEnumerable<GameFrameXManagerRuntimeOverride> overrides)
         {
             if (overrides == null)
@@ -94,9 +106,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 解析 Manager 实现类型。
         /// </summary>
-        /// <param name="interfaceType">Manager 接口类型。</param>
-        /// <param name="configuredTypeName">显式配置的实现类型名。</param>
-        /// <returns>Manager 实现类型。</returns>
+        /// <remarks>
+        /// Resolves the manager implementation type.
+        /// </remarks>
+        /// <param name="interfaceType">Manager 接口类型。 / The manager interface type.</param>
+        /// <param name="configuredTypeName">显式配置的实现类型名。 / The explicitly configured implementation type name.</param>
+        /// <returns>Manager 实现类型。 / The manager implementation type.</returns>
         public static Type Resolve(Type interfaceType, string configuredTypeName)
         {
             if (interfaceType == null)

@@ -7,15 +7,21 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 根据扫描结果和运行时覆盖生成自动启动计划。
     /// </summary>
+    /// <remarks>
+    /// Generates the auto startup plan from the scan result and runtime overrides.
+    /// </remarks>
     [Preserve]
     public static class GameFrameXRuntimePlanner
     {
         /// <summary>
         /// 创建自动运行时启动计划。
         /// </summary>
-        /// <param name="scanResult">扫描结果。</param>
-        /// <param name="overrideContext">运行时覆盖上下文。</param>
-        /// <returns>自动启动计划。</returns>
+        /// <remarks>
+        /// Creates the auto runtime startup plan.
+        /// </remarks>
+        /// <param name="scanResult">扫描结果。 / The scan result.</param>
+        /// <param name="overrideContext">运行时覆盖上下文。 / The runtime override context.</param>
+        /// <returns>自动启动计划。 / The auto startup plan.</returns>
         public static GameFrameXRuntimePlan CreatePlan(GameFrameXRuntimeScanResult scanResult, GameFrameXRuntimeOverrideContext overrideContext)
         {
             var plan = new GameFrameXRuntimePlan();
@@ -34,12 +40,11 @@ namespace GameFrameX.Runtime
                 {
                     ApplyConfig(descriptor, config);
                     plan.Diagnostics.Add(Utility.Text.Format(
-                        "Apply runtime override to component '{0}': enabled={1}, order={2}, manager={3}, valueCount={4}.",
+                        "Apply runtime override to component '{0}': enabled={1}, order={2}, manager={3}.",
                         componentType.FullName,
                         config.Enabled.HasValue ? config.Enabled.Value.ToString() : "default",
                         config.Order.HasValue ? config.Order.Value.ToString() : "default",
-                        config.ManagerImplementationType != null ? config.ManagerImplementationType.FullName : config.ManagerImplementationTypeName ?? "default",
-                        config.GetValues().Count));
+                        config.ManagerImplementationType != null ? config.ManagerImplementationType.FullName : config.ManagerImplementationTypeName ?? "default"));
                 }
 
                 if (!descriptor.Enabled)

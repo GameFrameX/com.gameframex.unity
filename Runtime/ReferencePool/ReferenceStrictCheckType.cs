@@ -38,27 +38,42 @@ namespace GameFrameX.Runtime
     /// <summary>
     /// 引用强制检查类型。
     /// </summary>
+    /// <remarks>
+    /// Reference strict check type.
+    /// </remarks>
     [Preserve]
     public enum ReferenceStrictCheckType : byte
     {
         /// <summary>
         /// 总是启用。
         /// </summary>
+        /// <remarks>
+        /// Always enabled.
+        /// </remarks>
         AlwaysEnable = 0,
 
         /// <summary>
         /// 仅在开发模式时启用。
         /// </summary>
+        /// <remarks>
+        /// Enabled only in development mode.
+        /// </remarks>
         OnlyEnableWhenDevelopment,
 
         /// <summary>
         /// 仅在编辑器中启用。
         /// </summary>
+        /// <remarks>
+        /// Enabled only in the editor.
+        /// </remarks>
         OnlyEnableInEditor,
 
         /// <summary>
         /// 总是禁用。
         /// </summary>
+        /// <remarks>
+        /// Always disabled.
+        /// </remarks>
         AlwaysDisable,
     }
 }

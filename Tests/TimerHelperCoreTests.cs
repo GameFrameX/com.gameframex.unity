@@ -179,9 +179,9 @@ namespace GameFrameX.Tests
         [Test]
         public void UnixTimeSeconds_IncludesTimeOffset()
         {
-            var before = TimerHelper.UnixTimeSeconds();
+            var before = TimerHelper.UnixTimeSecondsWithOffset();
             TimerHelper.SyncServerTimeSeconds(before + 100);
-            var after = TimerHelper.UnixTimeSeconds();
+            var after = TimerHelper.UnixTimeSecondsWithOffset();
             Assert.That(after, Is.GreaterThanOrEqualTo(before + 99));
             Assert.That(after, Is.LessThanOrEqualTo(before + 102));
         }
@@ -189,9 +189,9 @@ namespace GameFrameX.Tests
         [Test]
         public void UnixTimeMilliseconds_IncludesTimeOffset()
         {
-            var before = TimerHelper.UnixTimeMilliseconds();
+            var before = TimerHelper.UnixTimeMillisecondsWithOffset();
             TimerHelper.SyncServerTimeMilliseconds(before + 5000);
-            var after = TimerHelper.UnixTimeMilliseconds();
+            var after = TimerHelper.UnixTimeMillisecondsWithOffset();
             Assert.That(after, Is.GreaterThanOrEqualTo(before + 4000));
             Assert.That(after, Is.LessThanOrEqualTo(before + 7000));
         }

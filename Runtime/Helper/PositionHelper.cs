@@ -29,9 +29,12 @@ namespace GameFrameX.Runtime
         /// <summary>
         /// 将X和Y坐标转换为三维坐标，Y轴设为0。
         /// </summary>
-        /// <param name="x">X坐标</param>
-        /// <param name="y">Y坐标</param>
-        /// <returns>三维坐标</returns>
+        /// <remarks>
+        /// Converts X and Y coordinates to a 3D coordinate with Y set to 0.
+        /// </remarks>
+        /// <param name="x">X坐标 / X coordinate</param>
+        /// <param name="y">Y坐标 / Y coordinate</param>
+        /// <returns>三维坐标 / 3D coordinate</returns>
         [UnityEngine.Scripting.Preserve]
         public static Vector3 RayCastXYToV3(float x, float y)
         {

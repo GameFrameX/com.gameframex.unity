@@ -455,7 +455,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">包含整数值的字节数组 / The byte array containing the integer value.</param>
         /// <param name="offset">从字节数组中读取整数值的偏移量 / The offset to read the integer value from the byte array.</param>
         /// <returns>从字节数组中读取的无符号整数值 / The unsigned integer value read from the byte array.</returns>
-        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception">读取超出范围时抛出的异常 / Thrown when the read is out of range</exception>
         [Preserve]
         public static uint ReadUInt(this byte[] buffer, ref int offset)
         {

@@ -56,8 +56,8 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets a random integer within the specified range.
         /// </remarks>
-        /// <param name="lower">下限（包含）/ Lower bound (inclusive)</param>
-        /// <param name="upper">上限（不包含）/ Upper bound (exclusive)</param>
+        /// <param name="lower">下限（包含） / Lower bound (inclusive)</param>
+        /// <param name="upper">上限（不包含） / Upper bound (exclusive)</param>
         /// <returns>返回一个在指定范围内的随机整数 / A random integer within the specified range</returns>
         [UnityEngine.Scripting.Preserve]
         public static int Next(int lower, int upper)

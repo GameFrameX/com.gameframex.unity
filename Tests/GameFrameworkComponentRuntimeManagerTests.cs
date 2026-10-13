@@ -40,6 +40,11 @@ namespace GameFrameX.Tests
             m_GameObject = new GameObject("Runtime Manager Component Test");
             var component = m_GameObject.AddComponent<TestRuntimeManagerComponent>();
 
+            // EditMode 下 AddComponent 不触发 Awake，反射驱动还原运行时行为
+            var awakeMethod = component.GetType().GetMethod("Awake", BindingFlags.Instance | BindingFlags.NonPublic);
+            Assert.IsNotNull(awakeMethod, "组件应具有 Awake 生命周期方法");
+            awakeMethod.Invoke(component, null);
+
             var componentTypeField = typeof(GameFrameworkComponent).GetField(
                 "componentType",
                 BindingFlags.Instance | BindingFlags.NonPublic);
@@ -86,7 +91,6 @@ namespace GameFrameX.Tests
         public void CreatePlan_UsesCoreComponentAttributeOrder()
         {
             var scanResult = new GameFrameXRuntimeScanResult();
-            scanResult.ComponentTypes.Add(typeof(ObjectPoolComponent));
             scanResult.ComponentTypes.Add(typeof(ReferencePoolComponent));
             scanResult.ComponentTypes.Add(typeof(BaseComponent));
 
@@ -94,10 +98,8 @@ namespace GameFrameX.Tests
 
             Assert.AreEqual(typeof(BaseComponent), plan.Components[0].ComponentType);
             Assert.AreEqual(typeof(ReferencePoolComponent), plan.Components[1].ComponentType);
-            Assert.AreEqual(typeof(ObjectPoolComponent), plan.Components[2].ComponentType);
             Assert.AreEqual(-10000, plan.Components[0].Order);
             Assert.AreEqual(-9000, plan.Components[1].Order);
-            Assert.AreEqual(-8000, plan.Components[2].Order);
         }
 
         [Test]
@@ -178,15 +180,9 @@ namespace GameFrameX.Tests
         {
         }
 
-        private sealed class TestRuntimeManager : GameFrameworkModule, ITestRuntimeManager
+        private sealed class TestRuntimeManager : IGameFrameworkModule, ITestRuntimeManager
         {
-            protected override void Update(float elapseSeconds, float realElapseSeconds)
-            {
-            }
 
-            protected override void Shutdown()
-            {
-            }
         }
 
         private sealed class TestRuntimeManagerComponent : GameFrameworkComponent

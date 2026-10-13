@@ -53,7 +53,10 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 设置压缩解压缩辅助器。
             /// </summary>
-            /// <param name="compressionHelper">要设置的压缩解压缩辅助器。</param>
+            /// <remarks>
+            /// Sets the compression helper.
+            /// </remarks>
+            /// <param name="compressionHelper">要设置的压缩解压缩辅助器。 / The compression helper to set.</param>
             [Preserve]
             public static void SetCompressionHelper(ICompressionHelper compressionHelper)
             {
@@ -63,8 +66,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 压缩数据。
             /// </summary>
-            /// <param name="bytes">要压缩的数据的二进制流。</param>
-            /// <returns>压缩后的数据的二进制流。</returns>
+            /// <remarks>
+            /// Compresses data.
+            /// </remarks>
+            /// <param name="bytes">要压缩的数据的二进制流。 / The byte array of the data to compress.</param>
+            /// <returns>压缩后的数据的二进制流。 / The byte array of the compressed data.</returns>
             [Preserve]
             public static byte[] Compress(byte[] bytes)
             {
@@ -79,9 +85,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 压缩数据。
             /// </summary>
-            /// <param name="bytes">要压缩的数据的二进制流。</param>
-            /// <param name="compressedStream">压缩后的数据的二进制流。</param>
-            /// <returns>是否压缩数据成功。</returns>
+            /// <remarks>
+            /// Compresses data.
+            /// </remarks>
+            /// <param name="bytes">要压缩的数据的二进制流。 / The byte array of the data to compress.</param>
+            /// <param name="compressedStream">压缩后的数据的二进制流。 / The stream of the compressed data.</param>
+            /// <returns>是否压缩数据成功。 / Whether the data was compressed successfully.</returns>
             [Preserve]
             public static bool Compress(byte[] bytes, Stream compressedStream)
             {
@@ -96,10 +105,13 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 压缩数据。
             /// </summary>
-            /// <param name="bytes">要压缩的数据的二进制流。</param>
-            /// <param name="offset">要压缩的数据的二进制流的偏移。</param>
-            /// <param name="length">要压缩的数据的二进制流的长度。</param>
-            /// <returns>压缩后的数据的二进制流。</returns>
+            /// <remarks>
+            /// Compresses data.
+            /// </remarks>
+            /// <param name="bytes">要压缩的数据的二进制流。 / The byte array of the data to compress.</param>
+            /// <param name="offset">要压缩的数据的二进制流的偏移。 / The offset of the byte array of the data to compress.</param>
+            /// <param name="length">要压缩的数据的二进制流的长度。 / The length of the byte array of the data to compress.</param>
+            /// <returns>压缩后的数据的二进制流。 / The byte array of the compressed data.</returns>
             [Preserve]
             public static byte[] Compress(byte[] bytes, int offset, int length)
             {
@@ -119,11 +131,14 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 压缩数据。
             /// </summary>
-            /// <param name="bytes">要压缩的数据的二进制流。</param>
-            /// <param name="offset">要压缩的数据的二进制流的偏移。</param>
-            /// <param name="length">要压缩的数据的二进制流的长度。</param>
-            /// <param name="compressedStream">压缩后的数据的二进制流。</param>
-            /// <returns>是否压缩数据成功。</returns>
+            /// <remarks>
+            /// Compresses data.
+            /// </remarks>
+            /// <param name="bytes">要压缩的数据的二进制流。 / The byte array of the data to compress.</param>
+            /// <param name="offset">要压缩的数据的二进制流的偏移。 / The offset of the byte array of the data to compress.</param>
+            /// <param name="length">要压缩的数据的二进制流的长度。 / The length of the byte array of the data to compress.</param>
+            /// <param name="compressedStream">压缩后的数据的二进制流。 / The stream of the compressed data.</param>
+            /// <returns>是否压缩数据成功。 / Whether the data was compressed successfully.</returns>
             [Preserve]
             public static bool Compress(byte[] bytes, int offset, int length, Stream compressedStream)
             {
@@ -165,8 +180,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 压缩数据。
             /// </summary>
-            /// <param name="stream">要压缩的数据的二进制流。</param>
-            /// <returns>压缩后的数据的二进制流。</returns>
+            /// <remarks>
+            /// Compresses data.
+            /// </remarks>
+            /// <param name="stream">要压缩的数据的二进制流。 / The stream of the data to compress.</param>
+            /// <returns>压缩后的数据的二进制流。 / The byte array of the compressed data.</returns>
             [Preserve]
             public static byte[] Compress(Stream stream)
             {
@@ -186,9 +204,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 压缩数据。
             /// </summary>
-            /// <param name="stream">要压缩的数据的二进制流。</param>
-            /// <param name="compressedStream">压缩后的数据的二进制流。</param>
-            /// <returns>是否压缩数据成功。</returns>
+            /// <remarks>
+            /// Compresses data.
+            /// </remarks>
+            /// <param name="stream">要压缩的数据的二进制流。 / The stream of the data to compress.</param>
+            /// <param name="compressedStream">压缩后的数据的二进制流。 / The stream of the compressed data.</param>
+            /// <returns>是否压缩数据成功。 / Whether the data was compressed successfully.</returns>
             [Preserve]
             public static bool Compress(Stream stream, Stream compressedStream)
             {
@@ -225,8 +246,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 解压缩数据。
             /// </summary>
-            /// <param name="bytes">要解压缩的数据的二进制流。</param>
-            /// <returns>解压缩后的数据的二进制流。</returns>
+            /// <remarks>
+            /// Decompresses data.
+            /// </remarks>
+            /// <param name="bytes">要解压缩的数据的二进制流。 / The byte array of the data to decompress.</param>
+            /// <returns>解压缩后的数据的二进制流。 / The byte array of the decompressed data.</returns>
             [Preserve]
             public static byte[] Decompress(byte[] bytes)
             {
@@ -241,9 +265,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 解压缩数据。
             /// </summary>
-            /// <param name="bytes">要解压缩的数据的二进制流。</param>
-            /// <param name="decompressedStream">解压缩后的数据的二进制流。</param>
-            /// <returns>是否解压缩数据成功。</returns>
+            /// <remarks>
+            /// Decompresses data.
+            /// </remarks>
+            /// <param name="bytes">要解压缩的数据的二进制流。 / The byte array of the data to decompress.</param>
+            /// <param name="decompressedStream">解压缩后的数据的二进制流。 / The stream of the decompressed data.</param>
+            /// <returns>是否解压缩数据成功。 / Whether the data was decompressed successfully.</returns>
             [Preserve]
             public static bool Decompress(byte[] bytes, Stream decompressedStream)
             {
@@ -258,10 +285,13 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 解压缩数据。
             /// </summary>
-            /// <param name="bytes">要解压缩的数据的二进制流。</param>
-            /// <param name="offset">要解压缩的数据的二进制流的偏移。</param>
-            /// <param name="length">要解压缩的数据的二进制流的长度。</param>
-            /// <returns>解压缩后的数据的二进制流。</returns>
+            /// <remarks>
+            /// Decompresses data.
+            /// </remarks>
+            /// <param name="bytes">要解压缩的数据的二进制流。 / The byte array of the data to decompress.</param>
+            /// <param name="offset">要解压缩的数据的二进制流的偏移。 / The offset of the byte array of the data to decompress.</param>
+            /// <param name="length">要解压缩的数据的二进制流的长度。 / The length of the byte array of the data to decompress.</param>
+            /// <returns>解压缩后的数据的二进制流。 / The byte array of the decompressed data.</returns>
             [Preserve]
             public static byte[] Decompress(byte[] bytes, int offset, int length)
             {
@@ -281,11 +311,14 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 解压缩数据。
             /// </summary>
-            /// <param name="bytes">要解压缩的数据的二进制流。</param>
-            /// <param name="offset">要解压缩的数据的二进制流的偏移。</param>
-            /// <param name="length">要解压缩的数据的二进制流的长度。</param>
-            /// <param name="decompressedStream">解压缩后的数据的二进制流。</param>
-            /// <returns>是否解压缩数据成功。</returns>
+            /// <remarks>
+            /// Decompresses data.
+            /// </remarks>
+            /// <param name="bytes">要解压缩的数据的二进制流。 / The byte array of the data to decompress.</param>
+            /// <param name="offset">要解压缩的数据的二进制流的偏移。 / The offset of the byte array of the data to decompress.</param>
+            /// <param name="length">要解压缩的数据的二进制流的长度。 / The length of the byte array of the data to decompress.</param>
+            /// <param name="decompressedStream">解压缩后的数据的二进制流。 / The stream of the decompressed data.</param>
+            /// <returns>是否解压缩数据成功。 / Whether the data was decompressed successfully.</returns>
             [Preserve]
             public static bool Decompress(byte[] bytes, int offset, int length, Stream decompressedStream)
             {
@@ -327,8 +360,11 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 解压缩数据。
             /// </summary>
-            /// <param name="stream">要解压缩的数据的二进制流。</param>
-            /// <returns>是否解压缩数据成功。</returns>
+            /// <remarks>
+            /// Decompresses data.
+            /// </remarks>
+            /// <param name="stream">要解压缩的数据的二进制流。 / The stream of the data to decompress.</param>
+            /// <returns>是否解压缩数据成功。 / Whether the data was decompressed successfully.</returns>
             [Preserve]
             public static byte[] Decompress(Stream stream)
             {
@@ -348,9 +384,12 @@ namespace GameFrameX.Runtime
             /// <summary>
             /// 解压缩数据。
             /// </summary>
-            /// <param name="stream">要解压缩的数据的二进制流。</param>
-            /// <param name="decompressedStream">解压缩后的数据的二进制流。</param>
-            /// <returns>是否解压缩数据成功。</returns>
+            /// <remarks>
+            /// Decompresses data.
+            /// </remarks>
+            /// <param name="stream">要解压缩的数据的二进制流。 / The stream of the data to decompress.</param>
+            /// <param name="decompressedStream">解压缩后的数据的二进制流。 / The stream of the decompressed data.</param>
+            /// <returns>是否解压缩数据成功。 / Whether the data was decompressed successfully.</returns>
             [Preserve]
             public static bool Decompress(Stream stream, Stream decompressedStream)
             {
