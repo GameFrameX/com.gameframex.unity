@@ -91,6 +91,10 @@ namespace GameFrameX.Runtime
 
             GameFrameXRuntimeHost.MarkHeadlessRequested();
 
+            // 双入口之一（C28）：宿主可能在 BeforeSceneLoad 阶段前直接调用 Headless()，此处兜底应用 Options 贡献者
+            //（必须早于下方模块实例化；与 Bootstrap.BeforeSceneLoad 入口互为幂等）。
+            GameFrameXRuntimeContributorHost.EnsureApplied();
+
             InitHelpers(
                 DefaultTextHelperTypeName,
                 DefaultVersionHelperTypeName,

@@ -23,45 +23,87 @@ namespace GameFrameX.Runtime
         public static GameFrameXRuntimeScanResult Scan()
         {
             var result = new GameFrameXRuntimeScanResult();
-            var assemblies = Utility.Assembly.GetAssemblies();
-            foreach (var assembly in assemblies)
+            foreach (var assembly in Utility.Assembly.GetAssemblies())
             {
-                if (assembly == null || ShouldSkipAssembly(assembly))
-                {
-                    continue;
-                }
-
-                var types = GetLoadableTypes(assembly, result);
-                foreach (var type in types)
-                {
-                    if (type == null || !type.IsClass || type.IsAbstract || type.IsGenericTypeDefinition)
-                    {
-                        continue;
-                    }
-
-                    if (typeof(GameFrameworkComponent).IsAssignableFrom(type))
-                    {
-                        if (type.GetCustomAttributes(typeof(GameFrameXManualStartupAttribute), false).Length <= 0)
-                        {
-                            result.ComponentTypes.Add(type);
-                        }
-                    }
-
-                    if (typeof(IGameFrameworkModule).IsAssignableFrom(type))
-                    {
-                        AddManagerDescriptors(result, type);
-                    }
-                }
+                ScanAssemblyInto(assembly, result);
             }
 
             return result;
         }
 
-        private static bool ShouldSkipAssembly(Assembly assembly)
+        /// <summary>
+        /// 执行单个程序集的增量扫描（C29）：门与全量扫描一致（Editor / Tests 跳过），
+        /// Manager 描述符收集口径与全量扫描共用同一条路径。
+        /// </summary>
+        /// <remarks>
+        /// Performs an incremental scan of a single assembly (C29): same gate as the full scan
+        /// (Editor / Tests assemblies are skipped); manager descriptor collection shares the same path as the full scan.
+        /// </remarks>
+        /// <param name="assembly">要扫描的程序集。 / The assembly to scan.</param>
+        /// <returns>扫描结果。 / The scan result.</returns>
+        [Preserve]
+        public static GameFrameXRuntimeScanResult Scan(Assembly assembly)
+        {
+            var result = new GameFrameXRuntimeScanResult();
+            ScanAssemblyInto(assembly, result);
+            return result;
+        }
+
+        /// <summary>
+        /// 判断程序集是否应被扫描门跳过（Editor / Tests），供增量注册与全量扫描共用同一口径。
+        /// </summary>
+        /// <remarks>
+        /// Determines whether an assembly should be skipped by the scan gate (Editor / Tests);
+        /// shared by incremental registration and the full scan.
+        /// </remarks>
+        /// <param name="assembly">要判断的程序集。 / The assembly to check.</param>
+        /// <returns>是否跳过。 / Whether to skip.</returns>
+        internal static bool ShouldSkipAssembly(Assembly assembly)
         {
             string name = assembly.GetName().Name;
             return IsEditorAssemblyName(name) || IsTestAssemblyName(name);
         }
+
+        private static void ScanAssemblyInto(Assembly assembly, GameFrameXRuntimeScanResult result)
+        {
+            if (assembly == null || ShouldSkipAssembly(assembly))
+            {
+                return;
+            }
+
+            var types = GetLoadableTypes(assembly, result);
+            foreach (var type in types)
+            {
+                if (type == null || !type.IsClass || type.IsAbstract || type.IsGenericTypeDefinition)
+                {
+                    continue;
+                }
+
+                if (typeof(GameFrameworkComponent).IsAssignableFrom(type))
+                {
+                    if (type.GetCustomAttributes(typeof(GameFrameXManualStartupAttribute), false).Length <= 0)
+                    {
+                        result.ComponentTypes.Add(type);
+                    }
+                }
+
+                if (typeof(IGameFrameworkModule).IsAssignableFrom(type))
+                {
+                    AddManagerDescriptors(result, type);
+                }
+
+                if (typeof(IGameFrameXOptionsContributor).IsAssignableFrom(type))
+                {
+                    result.OptionsContributorTypes.Add(type);
+                }
+
+                if (typeof(IGameFrameXRuntimeOverrideProvider).IsAssignableFrom(type))
+                {
+                    result.OverrideProviderTypes.Add(type);
+                }
+            }
+        }
+
 
         private static bool IsEditorAssemblyName(string name)
         {

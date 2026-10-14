@@ -16,6 +16,8 @@ namespace GameFrameX.Runtime
         private readonly List<Type> m_ComponentTypes = new List<Type>();
         private readonly List<GameFrameXRuntimeManagerDescriptor> m_ManagerDescriptors =
             new List<GameFrameXRuntimeManagerDescriptor>();
+        private readonly List<Type> m_OptionsContributorTypes = new List<Type>();
+        private readonly List<Type> m_OverrideProviderTypes = new List<Type>();
 
         private readonly List<string> m_Errors = new List<string>();
 
@@ -39,6 +41,27 @@ namespace GameFrameX.Runtime
         public IList<GameFrameXRuntimeManagerDescriptor> ManagerDescriptors
         {
             get { return m_ManagerDescriptors; }
+        }
+        /// <summary>
+        /// 获取扫描到的 Options 贡献者类型。
+        /// </summary>
+        /// <remarks>
+        /// Gets the discovered options contributor types.
+        /// </remarks>
+        public IList<Type> OptionsContributorTypes
+        {
+            get { return m_OptionsContributorTypes; }
+        }
+
+        /// <summary>
+        /// 获取扫描到的运行时覆盖 Provider 类型。
+        /// </summary>
+        /// <remarks>
+        /// Gets the discovered runtime override provider types.
+        /// </remarks>
+        public IList<Type> OverrideProviderTypes
+        {
+            get { return m_OverrideProviderTypes; }
         }
 
         /// <summary>

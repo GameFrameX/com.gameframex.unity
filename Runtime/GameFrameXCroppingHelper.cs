@@ -59,6 +59,11 @@ namespace GameFrameX.Runtime
             _ = typeof(GameFrameX.Runtime.GameFrameworkSerializer<>.TryGetValueCallback);
             _ = typeof(GameFrameX.Runtime.GameFrameworkSingleton<>);
             _ = typeof(GameFrameX.Runtime.GameFrameXCroppingHelper);
+            _ = typeof(GameFrameX.Runtime.GameFrameXOptionsContributorContext);
+            _ = typeof(GameFrameX.Runtime.GameFrameXRuntimeContributorHost);
+            _ = typeof(GameFrameX.Runtime.GameFrameXRuntimeOverrideProvider);
+            _ = typeof(GameFrameX.Runtime.IGameFrameXOptionsContributor);
+            _ = typeof(GameFrameX.Runtime.IGameFrameXRuntimeOverrideProvider);
             _ = typeof(GameFrameX.Runtime.GameObjectHelper);
             _ = typeof(GameFrameX.Runtime.Helper);
             _ = typeof(GameFrameX.Runtime.IReference);

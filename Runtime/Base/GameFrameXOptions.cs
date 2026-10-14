@@ -153,6 +153,20 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 判断某 Options 类型是否已被手动 Configure（供贡献者上下文执行手动优先的类型粒度跳过）。
+        /// </summary>
+        /// <param name="optionsType">Options 类型。 / The Options type.</param>
+        /// <returns>已 Configure 返回 true。 / true when already configured.</returns>
+        /// <remarks>
+        /// English: Indicates whether an Options type has been configured manually, used by the contributor context to
+        /// implement the per-type manual-first skip. “已消费但无值” 的条目视为未手动配置（无手动值需要保护）。
+        /// </remarks>
+        internal static bool HasConfigured(Type optionsType)
+        {
+            return s_Entries.TryGetValue(optionsType, out var entry) && entry.Value != null;
+        }
+
+        /// <summary>
         /// 清空全部 Options 状态；对"已注册但从未被任何模块消费"的条目输出 Warning 诊断。
         /// </summary>
         /// <remarks>由 <see cref="GameFrameworkEntry.Shutdown"/> 与 Bootstrap 的 SubsystemRegistration 重置调用；兼容关闭 Domain Reload 的重复 Play。 English: Called by <see cref="GameFrameworkEntry.Shutdown"/> and the Bootstrap SubsystemRegistration reset; compatible with repeated Play when Domain Reload is disabled.</remarks>

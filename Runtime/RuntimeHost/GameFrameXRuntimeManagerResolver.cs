@@ -17,6 +17,8 @@ namespace GameFrameX.Runtime
 
         private static readonly Dictionary<Type, GameFrameXManagerRuntimeOverride> ManagerOverrides = new Dictionary<Type, GameFrameXManagerRuntimeOverride>(32);
 
+        private static readonly HashSet<string> RegisteredAssemblyNames = new HashSet<string>(StringComparer.Ordinal);
+
         private static bool s_DescriptorsReady;
 
         /// <summary>
@@ -29,8 +31,10 @@ namespace GameFrameX.Runtime
         {
             ManagerDescriptors.Clear();
             ManagerOverrides.Clear();
+            RegisteredAssemblyNames.Clear();
             s_DescriptorsReady = false;
         }
+
 
         /// <summary>
         /// 注册 Manager 描述。
@@ -40,6 +44,19 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="descriptors">Manager 描述列表。 / The list of manager descriptors.</param>
         public static void RegisterDescriptors(IEnumerable<GameFrameXRuntimeManagerDescriptor> descriptors)
+        {
+            RegisterDescriptors(descriptors, true);
+        }
+
+        // C29 修复：增量注册不得置位 s_DescriptorsReady——首个 Resolve 前经钩子注册的含描述符程序集若提前置位，
+        // 将抑制全量兜底，订阅之前已加载的启动程序集描述符永不注册（Manual / Headless 模式下热更程序集
+        // 在首个 Resolve 前加载即触发）。ready 只能由全量路径（EnsureDescriptors / Host Auto 全量注册）置位。
+        // C29 fix: incremental registration must NOT set s_DescriptorsReady — if a descriptor-bearing assembly
+        // registered via the hook sets it before the first Resolve, the full fallback is suppressed and descriptors
+        // of startup assemblies loaded before subscription are never registered (triggered when a hot-update assembly
+        // loads before the first Resolve in Manual / Headless mode). Only the full paths (EnsureDescriptors /
+        // Host Auto full registration) may set ready.
+        internal static void RegisterDescriptors(IEnumerable<GameFrameXRuntimeManagerDescriptor> descriptors, bool markReady)
         {
             if (descriptors == null)
             {
@@ -62,7 +79,73 @@ namespace GameFrameX.Runtime
                 implementations.Add(descriptor);
             }
 
-            s_DescriptorsReady = true;
+            if (markReady)
+            {
+                s_DescriptorsReady = true;
+            }
+        }
+
+
+        /// <summary>
+        /// 增量注册单个程序集内的 Manager 描述（C29 起权威）：程序集粒度幂等去重
+        /// （同名程序集重复注册 / 热更卸载后同名再加载只生效一次），
+        /// Editor / Tests 程序集走与全量扫描相同的门直接跳过。
+        /// </summary>
+        /// <remarks>
+        /// Incrementally registers manager descriptors from a single assembly (authoritative since C29):
+        /// idempotent per assembly (re-registering an assembly name — including reload after hot-update unload —
+        /// takes effect once); Editor / Tests assemblies are skipped by the same gate as the full scan.
+        /// </remarks>
+        /// <param name="assembly">迟加载的程序集。 / The late-loaded assembly.</param>
+        [Preserve]
+        public static void RegisterAssembly(System.Reflection.Assembly assembly)
+        {
+            RegisterAssembly(assembly, true);
+        }
+
+        internal static void RegisterAssembly(System.Reflection.Assembly assembly, bool announce)
+        {
+            // Reflection.Emit 的 AssemblyBuilder 尚未定义类型即触发 AssemblyLoad，且会污染程序集粒度去重集；
+            // Reflection.Emit AssemblyBuilder fires AssemblyLoad before any type is defined and would poison the per-assembly dedup set;
+            // 直接忽略（不标记已注册），待真实 LoadFrom/Load 完成时再注册。
+            // ignore it entirely (without marking registered); registration happens on the real LoadFrom/Load.
+            if (assembly is System.Reflection.Emit.AssemblyBuilder)
+            {
+                return;
+            }
+
+            if (assembly == null)
+            {
+                return;
+            }
+
+            string assemblyName = assembly.GetName().Name;
+            if (RegisteredAssemblyNames.Contains(assemblyName))
+            {
+                return;
+            }
+
+            RegisteredAssemblyNames.Add(assemblyName);
+
+            if (GameFrameXRuntimeScanner.ShouldSkipAssembly(assembly))
+            {
+                return;
+            }
+
+            var scanResult = GameFrameXRuntimeScanner.Scan(assembly);
+            int descriptorCount = scanResult.ManagerDescriptors.Count;
+            if (descriptorCount > 0)
+            {
+                RegisterDescriptors(scanResult.ManagerDescriptors, false);
+            }
+
+            if (announce)
+            {
+                UnityEngine.Debug.Log(Utility.Text.Format(
+                    "[GameFrameX] Late-loaded assembly '{0}' registered {1} manager descriptor(s).",
+                    assembly.FullName,
+                    descriptorCount.ToString()));
+            }
         }
 
         /// <summary>
@@ -198,7 +281,6 @@ namespace GameFrameX.Runtime
                 interfaceType.FullName));
             return null;
         }
-
         private static void EnsureDescriptors()
         {
             if (s_DescriptorsReady)
@@ -206,8 +288,14 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            var scanResult = GameFrameXRuntimeScanner.Scan();
-            RegisterDescriptors(scanResult.ManagerDescriptors);
+            // C29：全量兜底与增量注册共用同一条按程序集注册路径（静默，避免启动期程序集级日志噪音）。
+            // C29: the full fallback and incremental registration share the same per-assembly path (silent, to avoid per-assembly log noise during startup).
+            foreach (var assembly in Utility.Assembly.GetAssemblies())
+            {
+                RegisterAssembly(assembly, false);
+            }
+
+            s_DescriptorsReady = true;
         }
 
         private static int CompareManagerDescriptor(GameFrameXRuntimeManagerDescriptor x, GameFrameXRuntimeManagerDescriptor y)
