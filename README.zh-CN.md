@@ -86,6 +86,9 @@ GameFrameX 是专为独立游戏开发者设计的现代化 Unity 游戏框架�
 3. 在 Unity 的 `Package Manager` 中使用 `Git URL` 的方式添加库，地址为：`https://github.com/GameFrameX/com.gameframex.unity.git`
 4. 直接下载仓库放置到 Unity 项目的 `Packages` 目录下，会自动加载识别。
 
+> 通过方式 2–4 安装时，编辑器加载后会自动检测并补全 `manifest.json` 中缺失的 GameFrameX scoped registry 配置（写前备份为 `manifest.json.gameframex.bak`）；已有第三方 registry（如 OpenUPM）覆盖该 scope 时跳过，`-batchmode`（CI）环境下不自动改动。
+> 同时会默认注册 OpenUPM registry（`package.openupm.com`，scopes 留空，不改动已存在的同 URL 条目配置）。
+
 ### 基础使用
 
 ```csharp
@@ -170,6 +173,39 @@ static void ConfigureFramework()
 - 时机：启动期全量实例化完成后任何 `Configure` 都会抛出 `GameFrameworkException`——配置时机错误不会静默。
 - 分档：字段默认为实时型（运行期经模块公开 API 修改）；启动期型字段（代理数量、Helper 类型等）以 `[GameFrameXStartupOnly]` 标注，运行期修改会被拒绝并输出 Warning。
 - 未消费诊断：`Reset` / `Shutdown` 时对"已注册但从未被任何模块消费"的 Options 输出 Warning（成因通常是包未安装或组件被结构性禁用）。
+
+#### Options 贡献者（静默发现，C28 起）
+
+不想写任何启动样板？实现 `IGameFrameXOptionsContributor` 的普通类会被运行时扫描器静默发现并自动应用——无属性、无 Bootstrap、无注册代码：
+
+```csharp
+using GameFrameX.Runtime;
+using UnityEngine.Scripting;
+
+// 贡献者类只做 Configure，不承载初始化副作用；保持 public 无参构造
+[Preserve]
+public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
+{
+    public void ConfigureOptions(GameFrameXOptionsContributorContext context)
+    {
+        context.Configure(new DownloadOptions { Timeout = 60f });
+    }
+}
+```
+
+- 手动优先：游戏侧显式 `GameFrameXOptions.Configure` 永远胜出——已 Configure 的类型贡献者按类型粒度跳过并输出 `[GameFrameX]` 诊断，与 BeforeSceneLoad 阶段内执行顺序无关。
+- 应用时机：三模式最早实例化点之前（`BeforeSceneLoad` / `Headless()` 头部双入口幂等兜底），每 domain 一次。
+- 防裁剪：IL2CPP / 小游戏裁剪环境下，实现类需加 `[Preserve]`（如上）或纳入裁剪保护清单，否则类型可能被裁掉导致静默失效。
+- 同理，实现 `IGameFrameXRuntimeOverrideProvider` 的类也不再需要手动 `RegisterProvider`，扫描即生效（缺 public 无参构造会输出 Warning 后跳过）。
+
+#### 迟加载程序集增量注册（C29 起）
+
+启动后加载的程序集（热更 / 运行期加载）在 `AssemblyLoad` 时自动注册其中的 Manager 描述符——迟加载的 `IXxxManager` 实现零手动调用即可 `GetModule<IXxxManager>()` 命中（含命名约定兜底路径，因为 `Utility.Assembly` 由启动快照改为活取 AppDomain）。每次增量注册输出带程序集名与描述符数的 `[GameFrameX]` 诊断；Editor / Tests 程序集与全量扫描同门跳过，同名程序集重复注册（热更卸载后再加载）幂等去重。
+
+- 仅增量注册 Manager 描述符：迟加载程序集内的 `GameFrameworkComponent` **不自动补挂**——挂载时机与场景状态强相关，需要时手动 `AddComponent`。
+- 迟加载程序集内的 Options 贡献者会被 Configure 时机守卫响亮拒绝（模块已实例化）——刻意不提供半静默通道。
+- 订阅生命周期：`SubsystemRegistration` 先退订再订（关闭 Domain Reload 的重复 Play 不双订阅）；`GameFrameworkEntry.Shutdown` 后**刻意不退订**——Shutdown 清空映射后新加载程序集仍应能注册（Restart 语义）。
+
 
 用工厂闭包覆盖 Helper 实现（Custom 引用优先，替代原 Inspector 的类型名下拉；UI 后端包 FairyGUI / UGUI 经注册表自注册默认实现）：
 

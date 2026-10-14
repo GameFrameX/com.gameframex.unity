@@ -86,6 +86,9 @@ Choose one of the following methods:
 3. Use **Package Manager** in Unity with **Git URL**: `https://github.com/GameFrameX/com.gameframex.unity.git`
 4. Clone the repository into your Unity project's `Packages` directory. It will be loaded automatically.
 
+> When installed via options 2-4, the editor automatically detects and completes a missing GameFrameX scoped registry entry in `manifest.json` on load (a backup is written to `manifest.json.gameframex.bak` first); it skips when a third-party registry such as OpenUPM already covers the scope, and never modifies the manifest in `-batchmode` (CI) sessions.
+> The OpenUPM registry (`package.openupm.com`) is registered by default as well (empty scopes; an existing entry with the same URL is left untouched).
+
 ### Basic Usage
 
 ```csharp
@@ -170,6 +173,38 @@ static void ConfigureFramework()
 - Timing: after startup full instantiation, any `Configure` throws a `GameFrameworkException` — a mistimed configuration never fails silently.
 - Tiers: fields are real-time by default (mutable at runtime via module APIs); startup-only fields (agent counts, Helper types, …) are marked `[GameFrameXStartupOnly]` — runtime changes are rejected with a Warning.
 - Unconsumed diagnostics: on `Reset` / `Shutdown`, options registered but never consumed by any module produce a Warning (usually an uninstalled package or a structurally disabled component).
+
+#### Options Contributors (silent discovery, since C28)
+
+Prefer zero startup boilerplate? A plain class implementing `IGameFrameXOptionsContributor` is silently discovered by the runtime scanner and applied automatically — no attributes, no bootstrap, no registration code:
+
+```csharp
+using GameFrameX.Runtime;
+using UnityEngine.Scripting;
+
+// Contributor classes only Configure; keep them side-effect free with a public parameterless constructor
+[Preserve]
+public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
+{
+    public void ConfigureOptions(GameFrameXOptionsContributorContext context)
+    {
+        context.Configure(new DownloadOptions { Timeout = 60f });
+    }
+}
+```
+
+- Manual-first: explicit `GameFrameXOptions.Configure` always wins — already-configured types are skipped per type by contributors with a `[GameFrameX]` diagnostic, regardless of execution order inside the BeforeSceneLoad phase.
+- Timing: applied before the earliest module instantiation in all three modes (idempotent dual entry: `BeforeSceneLoad` / the head of `Headless()`), once per domain.
+- Stripping guard: under IL2CPP / mini-game stripping, implementations must be kept with `[Preserve]` (as above) or added to the cropping list, otherwise the type may be stripped silently. Likewise, classes implementing `IGameFrameXRuntimeOverrideProvider` no longer need manual `RegisterProvider` — scanning is enough (types without a public parameterless constructor are skipped with a Warning).
+
+
+#### Late-loaded assemblies (incremental registration, since C29)
+
+Assemblies loaded after startup (hot-update / runtime loading) register their manager descriptors automatically on `AssemblyLoad` — a late `IXxxManager` implementation resolves via `GetModule<IXxxManager>()` with zero manual calls, including the naming-convention fallback, because `Utility.Assembly` now live-fetches the AppDomain instead of a startup snapshot. Every incremental registration logs an `[GameFrameX]` diagnostic with the assembly name and descriptor count; Editor / Tests assemblies are skipped by the same gate as the full scan, and re-registering the same assembly name (reload after hot-update unload) is idempotent.
+
+- Scope is manager descriptors only: `GameFrameworkComponent`s inside late assemblies are NOT auto-mounted — mount timing is scene-state bound, so add them manually with `AddComponent` when needed.
+- Options contributors inside late assemblies are rejected loudly by the configure-timing guard (modules are already instantiated) — there is deliberately no semi-silent channel for them.
+- Subscription lifecycle: re-established (unsubscribe + subscribe) at `SubsystemRegistration` so repeated Play with Domain Reload disabled never double-subscribes; deliberately NOT unsubscribed at `GameFrameworkEntry.Shutdown` — after a shutdown clears the type maps, newly loaded assemblies must still be able to register (Restart semantics).
 
 Override Helper implementations with factory closures (custom references win, replacing the former Inspector type-name dropdown; UI backend packages FairyGUI / UGUI self-register defaults via the backend registry):
 

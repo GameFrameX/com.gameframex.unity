@@ -86,6 +86,9 @@ GameFrameX 是專為獨立遊戲開發者設計的現代化 Unity 遊戲框架�
 3. 在 Unity 的 `Package Manager` 中使用 `Git URL` 的方式新增套件，網址為：`https://github.com/GameFrameX/com.gameframex.unity.git`
 4. 直接下載倉庫放置到 Unity 專案的 `Packages` 目錄下，會自動載入識別。
 
+> 透過方式 2–4 安裝時，編輯器載入後會自動偵測並補全 `manifest.json` 中缺失的 GameFrameX scoped registry 設定（寫入前備份為 `manifest.json.gameframex.bak`）；已有第三方 registry（如 OpenUPM）覆蓋該 scope 時跳過，`-batchmode`（CI）環境下不自動變更。
+> 同時會預設註冊 OpenUPM registry（`package.openupm.com`，scopes 留空，不變更已存在的同 URL 條目設定）。
+
 ### 基礎使用
 
 ```csharp
@@ -170,6 +173,38 @@ static void ConfigureFramework()
 - 時機：啟動期全量實例化完成後任何 `Configure` 都會拋出 `GameFrameworkException`——配置時機錯誤不會靜默。
 - 分檔：欄位預設為即時型（運行期經模組公開 API 修改）；啟動期型欄位（代理數量、Helper 類型等）以 `[GameFrameXStartupOnly]` 標註，運行期修改會被拒絕並輸出 Warning。
 - 未消費診斷：`Reset` / `Shutdown` 時對「已註冊但從未被任何模組消費」的 Options 輸出 Warning（成因通常是套件未安裝或元件被結構性停用）。
+
+#### Options 貢獻者（靜默發現，C28 起）
+
+不想寫任何啟動樣板？實作 `IGameFrameXOptionsContributor` 的普通類別會被執行時掃描器靜默發現並自動套用——無屬性、無 Bootstrap、無註冊程式碼：
+
+```csharp
+using GameFrameX.Runtime;
+using UnityEngine.Scripting;
+
+// 貢獻者類別只做 Configure，不承載初始化副作用；保持 public 無參建構子
+[Preserve]
+public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
+{
+    public void ConfigureOptions(GameFrameXOptionsContributorContext context)
+    {
+        context.Configure(new DownloadOptions { Timeout = 60f });
+    }
+}
+```
+
+- 手動優先：遊戲側明確 `GameFrameXOptions.Configure` 永遠勝出——已 Configure 的類型貢獻者按類型粒度跳過並輸出 `[GameFrameX]` 診斷，與 BeforeSceneLoad 階段內執行順序無關。
+- 套用時機：三模式最早實例化點之前（`BeforeSceneLoad` / `Headless()` 頭部雙入口冪等兜底），每 domain 一次。
+- 防裁剪：IL2CPP / 小遊戲裁剪環境下，實作類別需加 `[Preserve]`（如上）或納入裁剪保護清單，否則類型可能被裁掉導致靜默失效。同理，實作 `IGameFrameXRuntimeOverrideProvider` 的類別也不再需要手動 `RegisterProvider`，掃描即生效（缺 public 無參建構子會輸出 Warning 後跳過）。
+
+#### 遲載入組件增量註冊（C29 起）
+
+啟動後載入的組件（熱更 / 執行期載入）在 `AssemblyLoad` 時自動註冊其中的 Manager 描述符——遲載入的 `IXxxManager` 實作零手動呼叫即可 `GetModule<IXxxManager>()` 命中（含命名慣例兜底路徑，因為 `Utility.Assembly` 由啟動快照改為活取 AppDomain）。每次增量註冊輸出帶組件名與描述符數的 `[GameFrameX]` 診斷；Editor / Tests 組件與全量掃描同門跳過，同名組件重複註冊（熱更卸載後再載入）冪等去重。
+
+- 僅增量註冊 Manager 描述符：遲載入組件內的 `GameFrameworkComponent` **不自動補掛**——掛載時機與場景狀態強相關，需要時手動 `AddComponent`。
+- 遲載入組件內的 Options 貢獻者會被 Configure 時機守衛響亮拒絕（模組已實例化）——刻意不提供半靜默通道。
+- 訂閱生命週期：`SubsystemRegistration` 先退訂再訂（關閉 Domain Reload 的重複 Play 不雙訂閱）；`GameFrameworkEntry.Shutdown` 後**刻意不退訂**——Shutdown 清空映射後新載入組件仍應能註冊（Restart 語義）。
+
 
 用工廠閉包覆寫 Helper 實作（Custom 引用優先，取代原 Inspector 的類型名稱下拉；UI 後端套件 FairyGUI / UGUI 經註冊表自動註冊預設實作）：
 

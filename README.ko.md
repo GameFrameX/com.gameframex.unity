@@ -86,6 +86,9 @@ GameFrameX는 독립 게임 개발자를 위해 설계된 모던 Unity 게임 �
 3. Unity의 `Package Manager`에서 `Git URL`을 사용하여 추가합니다, 주소: `https://github.com/GameFrameX/com.gameframex.unity.git`
 4. 저장소를 다운로드하여 Unity 프로젝트의 `Packages` 디렉터리에 배치하면 자동으로 로드됩니다.
 
+> 방법 2~4로 설치한 경우 에디터 로드 시 `manifest.json`에 GameFrameX scoped registry 설정이 없으면 자동으로 감지해 보완합니다(사전에 `manifest.json.gameframex.bak`로 백업). OpenUPM 등 서드파티 registry가 해당 scope를 이미 커버하는 경우 건너뛰며, `-batchmode`(CI) 환경에서는 변경하지 않습니다.
+> 또한 OpenUPM registry(`package.openupm.com`)도 기본 등록합니다(scopes는 비어 있으며, 동일 URL의 기존 항목은 변경하지 않습니다).
+
 ### 기본 사용법
 
 ```csharp
@@ -170,6 +173,38 @@ static void ConfigureFramework()
 - 타이밍: 시작기 전량 인스턴스화 완료 후 `Configure`를 호출하면 `GameFrameworkException`이 던져짐 - 타이밍이 틀려도 조용히 실패하지 않음.
 - 분류: 필드는 기본적으로 실시간형 (런타임에 모듈 공개 API로 변경 가능). 시작기형 필드(에이전트 수, Helper 타입 등)는 `[GameFrameXStartupOnly]`로 표시되며 런타임 변경은 Warning과 함께 거부됨.
 - 미소비 진단: `Reset` / `Shutdown` 시 "등록되었지만 어떤 모듈에서도 소비되지 않은" Options에 대해 Warning이 출력됨 (보통 미설치 패키지나 구조적으로 비활성화된 컴포넌트가 원인).
+
+#### Options 컨트리뷰터 (자동 발견, C28부터)
+
+시작 보일러플레이트를 작성하고 싶지 않다면, `IGameFrameXOptionsContributor`를 구현하는 일반 클래스가 런타임 스캐너에 의해 조용히 발견되어 자동 적용됩니다 — 속성, Bootstrap, 등록 코드 모두 불필요합니다:
+
+```csharp
+using GameFrameX.Runtime;
+using UnityEngine.Scripting;
+
+// 컨트리뷰터 클래스는 Configure만 수행하며 초기화 부수 효과를 담지 않습니다. public 무인수 생성자를 유지하세요
+[Preserve]
+public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
+{
+    public void ConfigureOptions(GameFrameXOptionsContributorContext context)
+    {
+        context.Configure(new DownloadOptions { Timeout = 60f });
+    }
+}
+```
+
+- 수동 우선: 게임 측에서 명시적인 `GameFrameXOptions.Configure`가 항상 이깁니다 — 이미 Configure된 타입은 컨트리뷰터가 타입 단위로 건너뛰고 `[GameFrameX]` 진단을 출력하며, BeforeSceneLoad 페이즈 내 실행 순서와 무관합니다.
+- 적용 시점: 3 모드의 가장 이른 인스턴스화 이전 (`BeforeSceneLoad` / `Headless()` 선두의 이중 진입점이 멱등하게 보장). 도메인당 1회.
+- 스트리핑 방지: IL2CPP / 미니게임 스트리핑 환경에서는 구현 클래스에 `[Preserve]`(위 참고)를 추가하거나 크로핑 보호 목록에 등록해야 합니다. 마찬가지로 `IGameFrameXRuntimeOverrideProvider`를 구현한 클래스도 수동 `RegisterProvider` 없이 스캔만으로 활성화됩니다 (public 무인수 생성자가 없으면 Warning 출력 후 건너뜀).
+
+#### 지연 로드 어셈블리 증분 등록 (C29부터)
+
+시작 후 로드된 어셈블리(핫업데이트 / 런타임 로드)는 `AssemblyLoad` 시점에 Manager 디스크립터를 자동 등록합니다 — 지연 로드된 `IXxxManager` 구현은 수동 호출 없이 `GetModule<IXxxManager>()`로 해결됩니다(명명 규칙 폴백 포함, `Utility.Assembly`가 시작 시점 스냅샷에서 AppDomain 라이브 조회로 변경되었기 때문). 증분 등록 시마다 어셈블리 이름과 디스크립터 수를 포함한 `[GameFrameX]` 진단을 출력합니다. Editor / Tests 어셈블리는 전체 스캔과 동일한 게이트에서 건너뛰며, 동일 이름 어셈블리 재등록(핫업데이트 언로드 후 재로드)은 멱등하게 중복 제거됩니다.
+
+- 증분 등록 대상은 Manager 디스크립터뿐: 지연 로드 어셈블리 내의 `GameFrameworkComponent`는 **자동 마운트되지 않습니다** — 마운트 시점은 씬 상태와 강하게 연관되므로 필요 시 수동으로 `AddComponent`하세요.
+- 지연 로드 어셈블리 내의 Options 기여자는 Configure 시점 가드에 의해 명확하게 거부됩니다(모듈이 이미 인스턴스화됨) — 반쯤 조용한 채널은 의도적으로 제공하지 않습니다.
+- 구독 수명 주기: `SubsystemRegistration`에서 해제 후 재구독(Domain Reload 비활성화 상태의 반복 Play에서 이중 구독 없음); `GameFrameworkEntry.Shutdown` 이후에는 **의도적으로 해제하지 않음** — Shutdown이 매핑을 비운 후에도 새로 로드된 어셈블리는 계속 등록할 수 있어야 합니다(Restart 의미론).
+
 
 팩토리 클로저로 Helper 구현을 오버라이드 (Custom 참조가 우선되며 기존 Inspector의 타입명 드롭다운을 대체. UI 백엔드 패키지 FairyGUI / UGUI는 백엔드 레지스트리를 통해 기본 구현을 자동 등록):
 

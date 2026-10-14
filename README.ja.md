@@ -86,6 +86,9 @@ GameFrameX は独立系ゲーム開発者向けに設計されたモダンな Un
 3. Unity の `Package Manager` で `Git URL` を使用して追加します、URL：`https://github.com/GameFrameX/com.gameframex.unity.git`
 4. リポジトリをダウンロードして Unity プロジェクトの `Packages` ディレクトリに配置します、自動的に読み込まれます。
 
+> 方法 2〜4 でインストールした場合、エディター起動時に `manifest.json` の GameFrameX scoped registry 設定を自動検出し、不足分を補完します（事前に `manifest.json.gameframex.bak` としてバックアップ）。OpenUPM などサードパーティ registry でスコープが既にカバーされている場合はスキップし、`-batchmode`（CI）環境では変更しません。
+> あわせて OpenUPM registry（`package.openupm.com`）も既定で登録します（scopes は空、同 URL の既存エントリは変更しません）。
+
 ### 基本的な使用方法
 
 ```csharp
@@ -170,6 +173,38 @@ static void ConfigureFramework()
 - タイミング：起動期の全量インスタンス化完了後に `Configure` を呼ぶと `GameFrameworkException` がスローされる — タイミングを誤っても静かに失敗することはない。
 - 分類：フィールドはデフォルトでリアルタイム型（実行時にモジュールの公開 API で変更可能）。起動期型フィールド（エージェント数、Helper 型など）は `[GameFrameXStartupOnly]` でマークされ、実行時の変更は Warning で拒否される。
 - 未消費診断：`Reset` / `Shutdown` 時に「登録されたがどのモジュールにも消費されなかった」 Options について Warning が出力される（通常は未インストールのパッケージまたは構造的に無効化されたコンポーネント）。
+
+#### Options コントリビューター（サイレント発見、C28 以降）
+
+起動ボイラープレートを書きたくない場合、`IGameFrameXOptionsContributor` を実装した通常クラスはランタイムスキャナーによって静かに発見され自動適用されます——属性も Bootstrap も登録コードも不要です：
+
+```csharp
+using GameFrameX.Runtime;
+using UnityEngine.Scripting;
+
+// コントリビュータークラスは Configure のみを行い、初期化の副作用を持たせません。public 引数なしコンストラクターを維持してください
+[Preserve]
+public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
+{
+    public void ConfigureOptions(GameFrameXOptionsContributorContext context)
+    {
+        context.Configure(new DownloadOptions { Timeout = 60f });
+    }
+}
+```
+
+- 手動優先：ゲーム側で明示的な `GameFrameXOptions.Configure` が常に優先されます——既に Configure 済みの型はコントリビューターが型単位でスキップし `[GameFrameX]` 診断を出力します。BeforeSceneLoad フェーズ内の実行順序には依存しません。
+- 適用タイミング：3 モードの最も早いインスタンス化より前（`BeforeSceneLoad` / `Headless()` 冒頭の双入口が冪等にフォロー）。ドメインごとに 1 回。
+- ストリッピング対策：IL2CPP / ミニゲームのストリッピング環境では、実装クラスに `[Preserve]`（上記参照）を付けるかクリッピング保護リストに登録してください。同様に `IGameFrameXRuntimeOverrideProvider` を実装したクラスも手動 `RegisterProvider` 不要でスキャンだけで有効になります（public 引数なしコンストラクターがない場合は Warning を出力してスキップ）。
+
+#### 遅延ロードアセンブリのインクリメンタル登録（C29 以降）
+
+起動後にロードされたアセンブリ（ホットアップデート / 実行時ロード）は `AssemblyLoad` のタイミングで Manager デスクリプタを自動登録します——遅延ロードされた `IXxxManager` 実装は手動呼び出しなしで `GetModule<IXxxManager>()` で解決できます（命名規則フォールバックも含む。`Utility.Assembly` が起動時スナップショットから AppDomain のライブ取得に変更されたため）。インクリメンタル登録のたびにアセンブリ名とデスクリプタ数を含む `[GameFrameX]` 診断を出力します。Editor / Tests アセンブリは全スキャンと同じゲートでスキップされ、同名アセンブリの再登録（ホットアップデートのアンロード後の再ロード）は冪等に重複排除されます。
+
+- インクリメンタル登録の対象は Manager デスクリプタのみ：遅延ロードアセンブリ内の `GameFrameworkComponent` は**自動マウントされません**——マウントタイミングはシーン状態に強く依存するため、必要に応じて手動で `AddComponent` してください。
+- 遅延ロードアセンブリ内の Options コントリビューターは、Configure タイミングガードにより明確に拒否されます（モジュールは既にインスタンス化済み）——半静默チャネルは意図的に提供しません。
+- サブスクリプションのライフサイクル：`SubsystemRegistration` で解除後に再購読（Domain Reload 無効の繰り返し Play で二重購読なし）；`GameFrameworkEntry.Shutdown` 後は**意図的に解除しない**——Shutdown でマッピングがクリアされた後も、新しくロードされたアセンブリは登録可能であるべきです（Restart セマンティクス）。
+
 
 Helper 実装をファクトリクロージャでオーバーライドします（Custom 参照が優先され、従来の Inspector の型名ドロップダウンを置き換え。UI バックエンドパッケージ FairyGUI / UGUI はバックエンドレジストリ経由でデフォルトを自動登録）：
 
