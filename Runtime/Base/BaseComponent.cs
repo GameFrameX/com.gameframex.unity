@@ -173,7 +173,7 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            DontDestroyOnLoad(gameObject);
+            UnityEngine.Object.DontDestroyOnLoad(gameObject);
 
             // helpers 初始化是框架唯一的 helper 接线路径，顺序保持 Text → Version → Log → Compression → Json。
             InitHelpers(

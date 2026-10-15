@@ -15,7 +15,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         private void Awake()
         {
-            DontDestroyOnLoad(this);
+            UnityEngine.Object.DontDestroyOnLoad(this);
         }
     }
 }

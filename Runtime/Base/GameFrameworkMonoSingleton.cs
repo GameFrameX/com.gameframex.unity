@@ -53,7 +53,7 @@ namespace GameFrameX.Runtime
 
                         if (Application.isPlaying)
                         {
-                            Object.DontDestroyOnLoad(insObj);
+                            UnityEngine.Object.DontDestroyOnLoad(insObj);
                         }
                     }
                 }
