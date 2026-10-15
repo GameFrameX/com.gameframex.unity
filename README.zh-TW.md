@@ -70,7 +70,7 @@ GameFrameX 是專為獨立遊戲開發者設計的現代化 Unity 遊戲框架�
        }
      ],
      "dependencies": {
-       "com.gameframex.unity": "2.5.4"
+       "com.gameframex.unity": "3.0.0"
      }
    }
    ```

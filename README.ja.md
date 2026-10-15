@@ -70,7 +70,7 @@ GameFrameX は独立系ゲーム開発者向けに設計されたモダンな Un
        }
      ],
      "dependencies": {
-       "com.gameframex.unity": "2.5.4"
+       "com.gameframex.unity": "3.0.0"
      }
    }
    ```

@@ -70,7 +70,7 @@ Choose one of the following methods:
        }
      ],
      "dependencies": {
-       "com.gameframex.unity": "2.5.4"
+       "com.gameframex.unity": "3.0.0"
      }
    }
    ```
