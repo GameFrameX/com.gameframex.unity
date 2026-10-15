@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/gameframex/com.gameframex.unity/compare/3.0.0...3.0.1) (2026-10-15)
+
+
+### Bug Fixes
+
+* **runtime:** DontDestroyOnLoad 改用完全限定名调用 ([24f386e](https://github.com/gameframex/com.gameframex.unity/commit/24f386eaa69d4a58035ea1ea52e9b146f6c6adce))
+
 # [3.0.0](https://github.com/gameframex/com.gameframex.unity/compare/2.5.4...3.0.0) (2026-10-15)
 
 
