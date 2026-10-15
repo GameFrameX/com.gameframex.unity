@@ -7,17 +7,17 @@ using UnityEngine;
 namespace GameFrameX.Tests
 {
     /// <summary>
-    /// 自动宿主 AddComponent 对 RequireComponent 自动补齐组件的复用行为回归：
-    /// GameFrameX.FairyGUI.Runtime.FairyGUIComponent 声明 [RequireComponent(typeof(FairyGUIPackageComponent))]，
-    /// 自动宿主为每个计划组件建独立子节点；若不复用 RequireComponent 自动补齐的实例，
-    /// Play 启动时会出现两个同类型组件，第二个在 GameEntry.RegisterComponent 处报 "already exist"。
-    /// 注意：com.gameframex.unity.ui.fairygui 包中存在同名但不同命名空间的 FairyGUIPackageComponent，按 FullName 匹配。
+    /// 自动宿主 AddComponent 对 Host 子树上已存在同类型组件的复用行为回归：
+    /// 自动宿主为每个计划组件建独立子节点；若不检查复用（如 RequireComponent 在先前组件创建时
+    /// 已自动补齐同类型组件），Play 启动时会出现两个同类型组件，第二个在 GameEntry.RegisterComponent 处报
+    /// "already exist"。以 AssetComponent（声明 [RequireComponent(typeof(GameFrameXAssetCroppingHelper))]）为样本，
+    /// 同一 descriptor 重复挂载必须复用既有实例。测试 asmdef 不引用功能包程序集，按 FullName 匹配。
     /// </summary>
     [TestFixture]
     public sealed class GameFrameXRuntimeHostRequireComponentTests
     {
-        private const string FairyGuiComponentFullName = "GameFrameX.FairyGUI.Runtime.FairyGUIComponent";
-        private const string FairyGuiPackageComponentFullName = "GameFrameX.FairyGUI.Runtime.FairyGUIPackageComponent";
+        private const string AssetComponentFullName = "GameFrameX.Asset.Runtime.AssetComponent";
+        private const string AssetCroppingHelperFullName = "GameFrameX.Asset.Runtime.GameFrameXAssetCroppingHelper";
 
         [Test]
         public void AddComponent_ReusesRequireComponentAutoAddedInstance()
@@ -30,25 +30,23 @@ namespace GameFrameX.Tests
 
             var scanResult = GameFrameXRuntimeScanner.Scan();
             var plan = GameFrameXRuntimePlanner.CreatePlan(scanResult, null);
-            var pairDescriptors = plan.Components
-                .Where(descriptor => descriptor.ComponentType.FullName == FairyGuiComponentFullName ||
-                                     descriptor.ComponentType.FullName == FairyGuiPackageComponentFullName)
+            var assetDescriptors = plan.Components
+                .Where(descriptor => descriptor.ComponentType.FullName == AssetComponentFullName)
                 .ToList();
-            Assert.AreEqual(2, pairDescriptors.Count,
-                "plan should contain exactly the fairygui RequireComponent pair. totalPlan=" + plan.Components.Count);
+            Assert.AreEqual(1, assetDescriptors.Count,
+                "plan should contain the AssetComponent sample. totalPlan=" + plan.Components.Count);
 
             var host = new GameObject("[GameFrameX]");
             host.SetActive(false);
             hostField.SetValue(null, host);
             try
             {
-                foreach (var descriptor in pairDescriptors)
-                {
-                    addComponentMethod.Invoke(null, new object[] { descriptor });
-                }
+                // 同一 descriptor 挂两次：第二次必须命中 Host 子树复用分支，不得新建第二个实例。
+                addComponentMethod.Invoke(null, new object[] { assetDescriptors[0] });
+                addComponentMethod.Invoke(null, new object[] { assetDescriptors[0] });
 
-                var packageComponentCount = 0;
-                var fairyGuiComponentCount = 0;
+                var assetComponentCount = 0;
+                var croppingHelperCount = 0;
                 foreach (var behaviour in host.GetComponentsInChildren<MonoBehaviour>(true))
                 {
                     if (behaviour == null)
@@ -57,18 +55,20 @@ namespace GameFrameX.Tests
                     }
 
                     var typeName = behaviour.GetType().FullName;
-                    if (typeName == FairyGuiPackageComponentFullName)
+                    if (typeName == AssetComponentFullName)
                     {
-                        packageComponentCount++;
+                        assetComponentCount++;
                     }
-                    else if (typeName == FairyGuiComponentFullName)
+                    else if (typeName == AssetCroppingHelperFullName)
                     {
-                        fairyGuiComponentCount++;
+                        croppingHelperCount++;
                     }
                 }
 
-                Assert.AreEqual(1, fairyGuiComponentCount, "FairyGUIComponent should be created once");
-                Assert.AreEqual(1, packageComponentCount, "FairyGUIPackageComponent should exist exactly once (RequireComponent auto-added instance must be reused)");
+                Assert.AreEqual(1, assetComponentCount,
+                    "AssetComponent should be created once (existing instance on the host subtree must be reused, otherwise GameEntry.RegisterComponent reports 'already exist')");
+                Assert.AreEqual(1, croppingHelperCount,
+                    "RequireComponent auto-added GameFrameXAssetCroppingHelper should exist exactly once");
             }
             finally
             {
