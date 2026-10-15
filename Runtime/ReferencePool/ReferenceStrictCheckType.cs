@@ -31,8 +31,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using UnityEngine.Scripting;
-
 namespace GameFrameX.Runtime
 {
     /// <summary>
@@ -41,7 +39,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Reference strict check type.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public enum ReferenceStrictCheckType : byte
     {
         /// <summary>

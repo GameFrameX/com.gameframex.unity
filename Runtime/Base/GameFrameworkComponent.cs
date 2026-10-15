@@ -141,7 +141,7 @@ namespace GameFrameX.Runtime
 
                 if (InterfaceComponentType == null || ImplementationComponentType == null)
                 {
-                    Log.Warning("Game Framework component '{0}' can not resolve manager. Component has been disabled.", GetType().FullName);
+                    Log.Warning("GameFrameX component '{0}' can not resolve manager. Component has been disabled.", GetType().FullName);
                     enabled = false;
                     return;
                 }
@@ -159,6 +159,7 @@ namespace GameFrameX.Runtime
         /// Applies the component runtime configuration overrides.
         /// </remarks>
         /// <param name="config">组件运行时配置。 / The component runtime configuration.</param>
+        [UnityEngine.Scripting.Preserve]
         public virtual void ApplyRuntimeConfig(GameFrameXComponentRuntimeConfig config)
         {
             if (config == null)

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -9,7 +8,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Startup plan of the GameFrameX auto runtime.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXRuntimePlan
     {
         private readonly List<GameFrameXRuntimeComponentDescriptor> m_Components = new List<GameFrameXRuntimeComponentDescriptor>(32);
@@ -22,6 +21,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the components planned for mounting.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public IList<GameFrameXRuntimeComponentDescriptor> Components
         {
             get { return m_Components; }
@@ -33,6 +33,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the startup diagnostics.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public IList<string> Diagnostics
         {
             get { return m_Diagnostics; }

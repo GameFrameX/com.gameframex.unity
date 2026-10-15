@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -50,7 +49,7 @@ namespace GameFrameX.Runtime
         /// Mainly used for scenarios requiring UTC timestamps, such as cross-timezone business.
         /// </remarks>
         /// <returns>返回自1970年1月1日 00:00:00 UTC以来经过的秒数,加上时区偏移量 / Returns the number of seconds elapsed since 1970-01-01 00:00:00 UTC, plus time zone offset</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long UnixTimeSecondsWithOffset()
         {
             return new DateTimeOffset(GetNowWithUtc()).ToUnixTimeSeconds() + TimeOffsetSeconds;
@@ -68,7 +67,7 @@ namespace GameFrameX.Runtime
         /// Provides higher precision than second-level timestamps, suitable for scenarios requiring precise time calculations.
         /// </remarks>
         /// <returns>返回自1970年1月1日 00:00:00 UTC以来经过的毫秒数,加上时区偏移量 / Returns the number of milliseconds elapsed since 1970-01-01 00:00:00 UTC, plus time zone offset</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long UnixTimeMillisecondsWithOffset()
         {
             return new DateTimeOffset(GetNowWithUtc()).ToUnixTimeMilliseconds() + TimeOffsetMilliseconds;

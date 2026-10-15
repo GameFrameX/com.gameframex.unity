@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -11,7 +10,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Manages auto runtime override providers.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class GameFrameXRuntimeOverrideProvider
     {
         private static readonly List<IGameFrameXRuntimeOverrideProvider> Providers = new List<IGameFrameXRuntimeOverrideProvider>(32);
@@ -23,6 +22,7 @@ namespace GameFrameX.Runtime
         /// Registers a runtime override provider.
         /// </remarks>
         /// <param name="provider">运行时覆盖 Provider。 / The runtime override provider.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void RegisterProvider(IGameFrameXRuntimeOverrideProvider provider)
         {
             if (provider == null)
@@ -43,6 +43,7 @@ namespace GameFrameX.Runtime
         /// Unregisters a runtime override provider.
         /// </remarks>
         /// <param name="provider">运行时覆盖 Provider。 / The runtime override provider.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void UnregisterProvider(IGameFrameXRuntimeOverrideProvider provider)
         {
             if (provider == null)
@@ -59,6 +60,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Clears the registered runtime override providers.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static void ClearProviders()
         {
             Providers.Clear();

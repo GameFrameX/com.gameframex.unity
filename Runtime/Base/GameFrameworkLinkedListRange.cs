@@ -77,6 +77,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets whether the linked list range is valid.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public bool IsValid
         {
             get { return m_First != null && m_Terminal != null && m_First != m_Terminal; }
@@ -247,6 +248,7 @@ namespace GameFrameX.Runtime
             /// <remarks>
             /// Cleans up the enumerator.
             /// </remarks>
+            [UnityEngine.Scripting.Preserve]
             public void Dispose()
             {
             }
@@ -258,6 +260,7 @@ namespace GameFrameX.Runtime
             /// Gets the next node.
             /// </remarks>
             /// <returns>返回下一个结点 / Returns the next node</returns>
+            [UnityEngine.Scripting.Preserve]
             public bool MoveNext()
             {
                 if (m_Current == null || m_Current == m_GameFrameworkLinkedListRange.m_Terminal)

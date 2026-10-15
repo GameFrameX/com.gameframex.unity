@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -21,7 +20,7 @@ namespace GameFrameX.Runtime
     /// may run before the Log helper is wired.
     /// </para>
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXOptionsContributorContext
     {
         private readonly List<Type> m_SkippedTypes = new List<Type>();
@@ -32,6 +31,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the Options types skipped by the manual-first semantics during this write (for diagnostics).
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public IReadOnlyList<Type> SkippedTypes
         {
             get { return m_SkippedTypes; }
@@ -46,6 +46,7 @@ namespace GameFrameX.Runtime
         /// English: Writes a module Options default value; types already configured manually are skipped (manual-first) with a
         /// diagnostic, and a null instance is rejected loudly instead of throwing so a single bad contributor cannot break startup.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public void Configure<TOptions>(TOptions options) where TOptions : class
         {
             if (options == null)

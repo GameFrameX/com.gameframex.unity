@@ -9,7 +9,6 @@ using System;
 using System.Buffers;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using UnityEngine.Scripting; // Added for Preserve attribute
 
 namespace GameFrameX.Runtime
 {
@@ -19,7 +18,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Provides a struct for reading items one by one from a read-only sequence.
     /// </remarks>
-    [Preserve] // Added Preserve attribute
+    [UnityEngine.Scripting.Preserve]
     public ref partial struct SequenceReader<T> where T : unmanaged, IEquatable<T>
     {
         /// <summary>
@@ -86,7 +85,7 @@ namespace GameFrameX.Runtime
         /// over the given <see cref="ReadOnlySequence{T}"/>.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public SequenceReader(in ReadOnlySequence<T> sequence)
         {
             this.usingSequence = true;
@@ -117,7 +116,7 @@ namespace GameFrameX.Runtime
         /// over the given <see cref="ReadOnlyMemory{T}"/>.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public SequenceReader(ReadOnlyMemory<T> memory)
         {
             this.usingSequence = false;
@@ -147,7 +146,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the underlying <see cref="ReadOnlySequence{T}"/> for the reader.
         /// </remarks>
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public ReadOnlySequence<T> Sequence
         {
             get
@@ -171,7 +170,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the current position in the <see cref="Sequence"/>.
         /// </remarks>
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public SequencePosition Position
             => this.Sequence.GetPosition(this.CurrentSpanIndex, this.currentPosition);
 
@@ -181,7 +180,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the current segment in the <see cref="Sequence"/> as a span.
         /// </remarks>
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public ReadOnlySpan<T> CurrentSpan { get; private set; }
 
         /// <summary>
@@ -190,7 +189,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the index in the <see cref="CurrentSpan"/>.
         /// </remarks>
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public int CurrentSpanIndex { get; private set; }
 
         /// <summary>
@@ -199,7 +198,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the unread portion of the <see cref="CurrentSpan"/>.
         /// </remarks>
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public ReadOnlySpan<T> UnreadSpan
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -212,7 +211,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the total number of <typeparamref name="T"/>'s processed by the reader.
         /// </remarks>
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public long Consumed { get; private set; }
 
         /// <summary>
@@ -221,7 +220,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets remaining <typeparamref name="T"/>'s in the reader's <see cref="Sequence"/>.
         /// </remarks>
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public long Remaining => this.Length - this.Consumed;
 
         /// <summary>
@@ -230,7 +229,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets count of <typeparamref name="T"/> in the reader's <see cref="Sequence"/>.
         /// </remarks>
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public long Length
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -255,7 +254,7 @@ namespace GameFrameX.Runtime
         /// <param name="value">下一个值；若已到达末尾则为默认值。 / The next value or default if at the end.</param>
         /// <returns>如果已到达读取器末尾，则为 false。 / False if at the end of the reader.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public bool TryPeek(out T value)
         {
             if (this.moreData)
@@ -279,7 +278,7 @@ namespace GameFrameX.Runtime
         /// <param name="value">下一个值；若已到达末尾则为默认值。 / The next value or default if at the end.</param>
         /// <returns>如果已到达读取器末尾，则为 false。 / False if at the end of the reader.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public bool TryRead(out T value)
         {
             if (this.End)
@@ -314,7 +313,7 @@ namespace GameFrameX.Runtime
         /// Move the reader back the specified number of items.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public void Rewind(long count)
         {
             if (count < 0)
@@ -420,7 +419,7 @@ namespace GameFrameX.Runtime
         /// Move the reader ahead the specified number of items.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public void Advance(long count)
         {
             const long TooBigOrNegative = unchecked((long)0xFFFFFFFF80000000);
@@ -553,7 +552,7 @@ namespace GameFrameX.Runtime
         /// <param name="destination">要复制到的目标范围。 / Destination to copy to.</param>
         /// <returns>如果有足够的数据可复制到目标范围，则为 true。 / True if there is enough data to copy to the <paramref name="destination"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [Preserve] // Added Preserve attribute
+        [UnityEngine.Scripting.Preserve]
         public bool TryCopyTo(Span<T> destination)
         {
             ReadOnlySpan<T> firstSpan = this.UnreadSpan;

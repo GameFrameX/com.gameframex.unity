@@ -49,6 +49,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -62,6 +63,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -77,6 +79,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式 / Log format.</param>
         /// <param name="arg">日志参数 / Log argument.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -94,6 +97,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1 / Log argument 1.</param>
         /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -113,6 +117,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -134,6 +139,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -157,6 +163,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -182,6 +189,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -209,6 +217,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -238,6 +247,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -269,6 +279,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -302,6 +313,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -337,6 +349,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -374,6 +387,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -413,6 +427,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -454,6 +469,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -497,6 +513,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -542,6 +559,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <param name="arg16">日志参数 16 / Log argument 16.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_DEBUG_LOG 或 ENABLE_DEBUG_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_DEBUG_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -555,6 +573,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -569,6 +588,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -585,6 +605,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式 / Log format.</param>
         /// <param name="arg">日志参数 / Log argument.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -603,6 +624,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1 / Log argument 1.</param>
         /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -623,6 +645,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -645,6 +668,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -669,6 +693,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -695,6 +720,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -723,6 +749,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -753,6 +780,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -785,6 +813,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -819,6 +848,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -855,6 +885,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -893,6 +924,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -933,6 +965,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -975,6 +1008,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1019,6 +1053,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1065,6 +1100,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <param name="arg16">日志参数 16 / Log argument 16.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_INFO_LOG、ENABLE_DEBUG_AND_ABOVE_LOG 或 ENABLE_INFO_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_INFO_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1079,6 +1115,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1094,6 +1131,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1111,6 +1149,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式 / Log format.</param>
         /// <param name="arg">日志参数 / Log argument.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1130,6 +1169,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1 / Log argument 1.</param>
         /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1151,6 +1191,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1174,6 +1215,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1199,6 +1241,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1226,6 +1269,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1255,6 +1299,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1286,6 +1331,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1319,6 +1365,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1354,6 +1401,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1391,6 +1439,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1430,6 +1479,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1471,6 +1521,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1514,6 +1565,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1559,6 +1611,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1606,6 +1659,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <param name="arg16">日志参数 16 / Log argument 16.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_WARNING_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG 或 ENABLE_WARNING_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_WARNING_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1621,6 +1675,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1637,6 +1692,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1655,6 +1711,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式 / Log format.</param>
         /// <param name="arg">日志参数 / Log argument.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1675,6 +1732,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1 / Log argument 1.</param>
         /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1697,6 +1755,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1721,6 +1780,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1747,6 +1807,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1775,6 +1836,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1805,6 +1867,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1837,6 +1900,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1871,6 +1935,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1907,6 +1972,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1945,6 +2011,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -1985,6 +2052,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2027,6 +2095,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2071,6 +2140,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2117,6 +2187,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2165,6 +2236,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <param name="arg16">日志参数 16 / Log argument 16.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_ERROR_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG 或 ENABLE_ERROR_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_ERROR_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2181,6 +2253,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2198,6 +2271,7 @@ namespace GameFrameX.Runtime
         /// </summary>
         /// <param name="message">日志内容 / Log content.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2217,6 +2291,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式 / Log format.</param>
         /// <param name="arg">日志参数 / Log argument.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2238,6 +2313,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1 / Log argument 1.</param>
         /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2261,6 +2337,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2 / Log argument 2.</param>
         /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2286,6 +2363,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3 / Log argument 3.</param>
         /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2313,6 +2391,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4 / Log argument 4.</param>
         /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2342,6 +2421,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5 / Log argument 5.</param>
         /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2373,6 +2453,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6 / Log argument 6.</param>
         /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2406,6 +2487,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7 / Log argument 7.</param>
         /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2441,6 +2523,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg8">日志参数 8 / Log argument 8.</param>
         /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2478,6 +2561,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg9">日志参数 9 / Log argument 9.</param>
         /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2517,6 +2601,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg10">日志参数 10 / Log argument 10.</param>
         /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2558,6 +2643,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg11">日志参数 11 / Log argument 11.</param>
         /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2601,6 +2687,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg12">日志参数 12 / Log argument 12.</param>
         /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2646,6 +2733,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg13">日志参数 13 / Log argument 13.</param>
         /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2693,6 +2781,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg14">日志参数 14 / Log argument 14.</param>
         /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]
@@ -2742,6 +2831,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg15">日志参数 15 / Log argument 15.</param>
         /// <param name="arg16">日志参数 16 / Log argument 16.</param>
         /// <remarks>仅在带有 ENABLE_LOG、ENABLE_FATAL_LOG、ENABLE_DEBUG_AND_ABOVE_LOG、ENABLE_INFO_AND_ABOVE_LOG、ENABLE_WARNING_AND_ABOVE_LOG、ENABLE_ERROR_AND_ABOVE_LOG 或 ENABLE_FATAL_AND_ABOVE_LOG 预编译选项时生效。</remarks>
+        [UnityEngine.Scripting.Preserve]
         [Conditional("ENABLE_LOG")]
         [Conditional("ENABLE_FATAL_LOG")]
         [Conditional("ENABLE_DEBUG_AND_ABOVE_LOG")]

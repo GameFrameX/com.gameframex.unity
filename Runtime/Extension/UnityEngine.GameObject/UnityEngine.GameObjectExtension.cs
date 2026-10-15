@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -13,7 +12,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Provides extension methods for GameObject, such as destroying components, finding children, and setting layers.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class UnityEngineGameObjectExtension
     {
         /// <summary>
@@ -28,7 +27,7 @@ namespace GameFrameX.Runtime
         /// Destroys the component. In editor non-playing mode, the component is destroyed immediately.
         /// </remarks>
         /// <param name="component">目标组件。 / The target component.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void DestroyComponent(this Component component)
         {
             if (!ReferenceEquals(component, null))
@@ -51,7 +50,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <typeparam name="T">要销毁的组件类型。 / The type of the component to destroy.</typeparam>
         /// <param name="gameObject">目标游戏对象。 / The target game object.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void DestroyComponent<T>(this GameObject gameObject) where T : Component
         {
             T component = gameObject.GetComponent<T>();
@@ -72,7 +71,7 @@ namespace GameFrameX.Runtime
         /// <typeparam name="T">要获取或增加的组件。 / The type of the component to get or add.</typeparam>
         /// <param name="gameObject">目标对象。 / The target game object.</param>
         /// <returns>获取或增加的组件。 / The existing or newly added component.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
         {
             T component = gameObject.GetComponent<T>();
@@ -93,7 +92,7 @@ namespace GameFrameX.Runtime
         /// <param name="gameObject">目标对象。 / The target game object.</param>
         /// <param name="type">要获取或增加的组件类型。 / The type of the component to get or add.</param>
         /// <returns>获取或增加的组件。 / The existing or newly added component.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static Component GetOrAddComponent(this GameObject gameObject, Type type)
         {
             Component component = gameObject.GetComponent(type);
@@ -113,7 +112,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="gameObject">目标对象。 / The target game object.</param>
         /// <returns>GameObject 是否在场景中。 / Whether the GameObject is in a scene.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static bool InScene(this GameObject gameObject)
         {
             return gameObject.scene.name != null;
@@ -128,7 +127,7 @@ namespace GameFrameX.Runtime
         /// <param name="gameObject">游戏对象 / The game object</param>
         /// <param name="layer">层 / The layer to set</param>
         /// <param name="recursively">是否设置子物体 / Whether to set the layer on child objects as well</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void SetLayer(this GameObject gameObject, int layer, bool recursively = true)
         {
             if (!recursively)
@@ -155,7 +154,7 @@ namespace GameFrameX.Runtime
         /// Destroys all child objects of the GameObject.
         /// </remarks>
         /// <param name="gameObject">父物体 / Parent game object</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void RemoveChildren(this GameObject gameObject)
         {
             for (var i = gameObject.transform.childCount - 1; i >= 0; i--)
@@ -171,7 +170,7 @@ namespace GameFrameX.Runtime
         /// Destroys the game object. In editor non-playing mode, the object is destroyed immediately.
         /// </remarks>
         /// <param name="gameObject">要销毁的游戏对象 / The game object to destroy</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void DestroyObject(this GameObject gameObject)
         {
             if (!ReferenceEquals(gameObject, null))
@@ -193,7 +192,7 @@ namespace GameFrameX.Runtime
         /// Destroys the game object.
         /// </remarks>
         /// <param name="gameObject">要销毁的游戏对象 / The game object to destroy</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void Destroy(this GameObject gameObject)
         {
             gameObject.DestroyObject();
@@ -208,7 +207,7 @@ namespace GameFrameX.Runtime
         /// <param name="nodeName">节点名称。 / The name of the node.</param>
         /// <param name="sceneName">场景名称。 / The name of the scene.</param>
         /// <returns>找到的节点的GameObject实例，如果没有找到返回null。 / The found GameObject instance, or null if not found.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static GameObject FindChildGamObjectByName(string nodeName, string sceneName = null)
         {
             Scene scene;
@@ -247,7 +246,7 @@ namespace GameFrameX.Runtime
         /// <param name="gameObject">目标游戏对象 / The target game object</param>
         /// <param name="name">子对象名称 / The name of the child object</param>
         /// <returns>找到的子对象，未找到返回null / The found child object, or null if not found</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static GameObject FindChildGamObjectByName(this GameObject gameObject, string name)
         {
             var transform = gameObject.transform.FindChildName(name);
@@ -268,7 +267,7 @@ namespace GameFrameX.Runtime
         /// <param name="gameObject">父游戏对象 / The parent game object</param>
         /// <param name="name">子对象名称 / The name of the child object</param>
         /// <returns>新创建的子游戏对象 / The newly created child game object</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static GameObject CreateChild(this GameObject gameObject, string name)
         {
             Debug.Assert(!ReferenceEquals(gameObject, null), nameof(gameObject) + " == null");
@@ -282,7 +281,7 @@ namespace GameFrameX.Runtime
         /// Resets the transform data of the game object.
         /// </remarks>
         /// <param name="gameObject">目标游戏对象 / The target game object</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void ResetTransform(this GameObject gameObject)
         {
             gameObject.transform.localScale = Vector3.one;
@@ -298,7 +297,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="gameObject">游戏对象 / The game object</param>
         /// <param name="sortingLayer">显示层 / The sorting layer name</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void SetSortingGroupLayer(this GameObject gameObject, string sortingLayer)
         {
             SortingGroup[] sortingGroups = gameObject.GetComponentsInChildren<SortingGroup>();

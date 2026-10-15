@@ -1,4 +1,3 @@
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -21,10 +20,10 @@ namespace GameFrameX.Runtime
     /// automatically before the earliest module instantiation, so game code needs no startup boilerplate.
     /// Manual <c>GameFrameXOptions.Configure</c> always wins: contributors skip already-configured Options types (per type, with
     /// diagnostics), regardless of execution order within the BeforeSceneLoad phase. Contributor classes must stay side-effect free
-    /// and keep a public parameterless constructor; under IL2CPP stripping, implementations should be kept via <c>[Preserve]</c>.
+    /// and keep a public parameterless constructor; under IL2CPP stripping, implementations should be kept via <c>[UnityEngine.Scripting.Preserve]</c>.
     /// </para>
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public interface IGameFrameXOptionsContributor
     {
         /// <summary>

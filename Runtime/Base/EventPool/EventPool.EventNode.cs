@@ -31,8 +31,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using UnityEngine.Scripting; // 确保引入命名空间
-
 namespace GameFrameX.Runtime
 {
     public sealed partial class EventPool<T> where T : BaseEventArgs
@@ -55,7 +53,7 @@ namespace GameFrameX.Runtime
             /// <remarks>
             /// The event sender.
             /// </remarks>
-            [Preserve] // 添加 Preserve 标签
+            [UnityEngine.Scripting.Preserve]
             public object Sender
             {
                 get { return _sender; }
@@ -67,7 +65,7 @@ namespace GameFrameX.Runtime
             /// <remarks>
             /// The event arguments.
             /// </remarks>
-            [Preserve] // 添加 Preserve 标签
+            [UnityEngine.Scripting.Preserve]
             public T EventArgs
             {
                 get { return _eventArgs; }
@@ -85,7 +83,7 @@ namespace GameFrameX.Runtime
             /// <remarks>
             /// Creates or acquires an EventNode from the reference pool and initializes it with the given sender and event arguments.
             /// </remarks>
-            [Preserve] // 添加 Preserve 标签
+            [UnityEngine.Scripting.Preserve]
             public static EventNode Create(object sender, T eventArgs)
             {
                 EventNode eventNodeNode = ReferencePool.Acquire<EventNode>();

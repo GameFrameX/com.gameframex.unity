@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -55,7 +54,7 @@ namespace GameFrameX.Runtime
     /// </para>
     /// </remarks>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXStartupOnlyAttribute : Attribute
     {
     }

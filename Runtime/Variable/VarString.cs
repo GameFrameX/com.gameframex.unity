@@ -31,8 +31,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using UnityEngine.Scripting;
-
 namespace GameFrameX.Runtime
 {
     /// <summary>
@@ -41,7 +39,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// System.String variable class.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarString : Variable<string>
     {
         /// <summary>
@@ -50,7 +48,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Initializes a new instance of the System.String variable class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public VarString()
         {
         }
@@ -62,7 +60,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from System.String to System.String variable class.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarString(string value)
         {
             VarString varValue = ReferencePool.Acquire<VarString>();
@@ -77,7 +75,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from System.String variable class to System.String.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator string(VarString value)
         {
             return value.Value;

@@ -31,8 +31,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using UnityEngine.Scripting; // 确保引入命名空间
-
 namespace GameFrameX.Runtime
 {
     /// <summary>
@@ -55,7 +53,7 @@ namespace GameFrameX.Runtime
         /// The log helper is responsible for the actual log output implementation.
         /// </remarks>
         /// <param name="logHelper">要设置的游戏框架日志辅助器 / The log helper to set.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void SetLogHelper(ILogHelper logHelper)
         {
             _logHelper = logHelper;
@@ -68,7 +66,7 @@ namespace GameFrameX.Runtime
         /// Logs a debug level message, used for recording debugging information.
         /// </remarks>
         /// <param name="message">日志内容 / Log message content.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug(object message)
         {
             if (_logHelper == null)
@@ -86,7 +84,7 @@ namespace GameFrameX.Runtime
         /// Logs a debug level message, used for recording debugging information.
         /// </remarks>
         /// <param name="message">日志内容 / Log message content.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug(string message)
         {
             if (_logHelper == null)
@@ -106,7 +104,7 @@ namespace GameFrameX.Runtime
         /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg">日志参数 / Log argument.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T>(string format, T arg)
         {
             if (_logHelper == null)
@@ -128,7 +126,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2>(string format, T1 arg1, T2 arg2)
         {
             if (_logHelper == null)
@@ -152,7 +150,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3>(string format, T1 arg1, T2 arg2, T3 arg3)
         {
             if (_logHelper == null)
@@ -178,7 +176,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             if (_logHelper == null)
@@ -206,7 +204,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             if (_logHelper == null)
@@ -236,7 +234,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
         {
             if (_logHelper == null)
@@ -268,7 +266,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
         {
             if (_logHelper == null)
@@ -302,7 +300,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (_logHelper == null)
@@ -338,7 +336,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (_logHelper == null)
@@ -376,6 +374,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
         {
             if (_logHelper == null)
@@ -415,6 +414,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
         {
             if (_logHelper == null)
@@ -456,6 +456,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
         {
             if (_logHelper == null)
@@ -499,6 +500,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
         {
             if (_logHelper == null)
@@ -544,6 +546,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14)
         {
             if (_logHelper == null)
@@ -591,6 +594,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
         /// <param name="arg15">日志参数 15 / The fifteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15)
         {
             if (_logHelper == null)
@@ -640,6 +644,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
         /// <param name="arg15">日志参数 15 / The fifteenth log argument.</param>
         /// <param name="arg16">日志参数 16 / The sixteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
         {
             if (_logHelper == null)
@@ -657,6 +662,7 @@ namespace GameFrameX.Runtime
         /// Logs an info level message, used for recording normal program execution information.
         /// </remarks>
         /// <param name="message">日志内容 / Log message content.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info(object message)
         {
             if (_logHelper == null)
@@ -674,6 +680,7 @@ namespace GameFrameX.Runtime
         /// Logs an info level message, used for recording normal program execution information.
         /// </remarks>
         /// <param name="message">日志内容 / Log message content.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info(string message)
         {
             if (_logHelper == null)
@@ -693,6 +700,7 @@ namespace GameFrameX.Runtime
         /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg">日志参数 / Log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T>(string format, T arg)
         {
             if (_logHelper == null)
@@ -714,6 +722,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2>(string format, T1 arg1, T2 arg2)
         {
             if (_logHelper == null)
@@ -737,6 +746,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3>(string format, T1 arg1, T2 arg2, T3 arg3)
         {
             if (_logHelper == null)
@@ -762,6 +772,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             if (_logHelper == null)
@@ -789,6 +800,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             if (_logHelper == null)
@@ -818,6 +830,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
         {
             if (_logHelper == null)
@@ -849,6 +862,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
         {
             if (_logHelper == null)
@@ -882,6 +896,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (_logHelper == null)
@@ -917,6 +932,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (_logHelper == null)
@@ -954,6 +970,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
         {
             if (_logHelper == null)
@@ -993,6 +1010,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
         {
             if (_logHelper == null)
@@ -1034,6 +1052,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
         {
             if (_logHelper == null)
@@ -1077,6 +1096,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
         {
             if (_logHelper == null)
@@ -1122,6 +1142,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14)
         {
             if (_logHelper == null)
@@ -1169,6 +1190,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
         /// <param name="arg15">日志参数 15 / The fifteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15)
         {
             if (_logHelper == null)
@@ -1218,6 +1240,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
         /// <param name="arg15">日志参数 15 / The fifteenth log argument.</param>
         /// <param name="arg16">日志参数 16 / The sixteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
         {
             if (_logHelper == null)
@@ -1235,6 +1258,7 @@ namespace GameFrameX.Runtime
         /// Logs a warning level message, recommended when a local functional logic error occurs but does not yet cause the game to crash or throw.
         /// </remarks>
         /// <param name="message">日志内容 / Log message content.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning(object message)
         {
             if (_logHelper == null)
@@ -1252,6 +1276,7 @@ namespace GameFrameX.Runtime
         /// Logs a warning level message, recommended when a local functional logic error occurs but does not yet cause the game to crash or throw.
         /// </remarks>
         /// <param name="message">日志内容 / Log message content.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning(string message)
         {
             if (_logHelper == null)
@@ -1271,6 +1296,7 @@ namespace GameFrameX.Runtime
         /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg">日志参数 / Log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T>(string format, T arg)
         {
             if (_logHelper == null)
@@ -1292,6 +1318,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2>(string format, T1 arg1, T2 arg2)
         {
             if (_logHelper == null)
@@ -1315,6 +1342,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3>(string format, T1 arg1, T2 arg2, T3 arg3)
         {
             if (_logHelper == null)
@@ -1340,6 +1368,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             if (_logHelper == null)
@@ -1367,6 +1396,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             if (_logHelper == null)
@@ -1396,6 +1426,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
         {
             if (_logHelper == null)
@@ -1427,6 +1458,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
         {
             if (_logHelper == null)
@@ -1460,6 +1492,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (_logHelper == null)
@@ -1495,6 +1528,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (_logHelper == null)
@@ -1532,6 +1566,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
         {
             if (_logHelper == null)
@@ -1571,6 +1606,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
         {
             if (_logHelper == null)
@@ -1612,6 +1648,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
         {
             if (_logHelper == null)
@@ -1655,6 +1692,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
         {
             if (_logHelper == null)
@@ -1700,6 +1738,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14)
         {
             if (_logHelper == null)
@@ -1747,6 +1786,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
         /// <param name="arg15">日志参数 15 / The fifteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15)
         {
             if (_logHelper == null)
@@ -1796,6 +1836,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
         /// <param name="arg15">日志参数 15 / The fifteenth log argument.</param>
         /// <param name="arg16">日志参数 16 / The sixteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
         {
             if (_logHelper == null)
@@ -1813,6 +1854,7 @@ namespace GameFrameX.Runtime
         /// Logs an error level message, recommended when a functional logic error occurs but does not yet cause the game to crash or throw.
         /// </remarks>
         /// <param name="message">日志内容 / Log message content.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error(object message)
         {
             if (_logHelper == null)
@@ -1830,6 +1872,7 @@ namespace GameFrameX.Runtime
         /// Logs an error level message, recommended when a functional logic error occurs but does not yet cause the game to crash or throw.
         /// </remarks>
         /// <param name="message">日志内容 / Log message content.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error(string message)
         {
             if (_logHelper == null)
@@ -1849,6 +1892,7 @@ namespace GameFrameX.Runtime
         /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg">日志参数 / Log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T>(string format, T arg)
         {
             if (_logHelper == null)
@@ -1870,6 +1914,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2>(string format, T1 arg1, T2 arg2)
         {
             if (_logHelper == null)
@@ -1893,6 +1938,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3>(string format, T1 arg1, T2 arg2, T3 arg3)
         {
             if (_logHelper == null)
@@ -1918,6 +1964,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             if (_logHelper == null)
@@ -1945,6 +1992,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             if (_logHelper == null)
@@ -1974,6 +2022,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
         {
             if (_logHelper == null)
@@ -2005,6 +2054,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
         {
             if (_logHelper == null)
@@ -2038,6 +2088,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (_logHelper == null)
@@ -2073,6 +2124,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (_logHelper == null)
@@ -2110,6 +2162,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
         {
             if (_logHelper == null)
@@ -2149,6 +2202,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
         {
             if (_logHelper == null)
@@ -2190,6 +2244,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
         {
             if (_logHelper == null)
@@ -2233,6 +2288,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
         {
             if (_logHelper == null)
@@ -2278,6 +2334,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14)
         {
             if (_logHelper == null)
@@ -2325,6 +2382,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
         /// <param name="arg15">日志参数 15 / The fifteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15)
         {
             if (_logHelper == null)
@@ -2374,6 +2432,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
         /// <param name="arg15">日志参数 15 / The fifteenth log argument.</param>
         /// <param name="arg16">日志参数 16 / The sixteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
         {
             if (_logHelper == null)
@@ -2391,6 +2450,7 @@ namespace GameFrameX.Runtime
         /// Logs a fatal level message, recommended when a severe error occurs that may cause the game to crash or throw; in this case, try restarting the process or rebuilding the game framework.
         /// </remarks>
         /// <param name="message">日志内容 / Log message content.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal(object message)
         {
             if (_logHelper == null)
@@ -2408,6 +2468,7 @@ namespace GameFrameX.Runtime
         /// Logs a fatal level message, recommended when a severe error occurs that may cause the game to crash or throw; in this case, try restarting the process or rebuilding the game framework.
         /// </remarks>
         /// <param name="message">日志内容 / Log message content.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal(string message)
         {
             if (_logHelper == null)
@@ -2427,6 +2488,7 @@ namespace GameFrameX.Runtime
         /// <typeparam name="T">日志参数的类型 / The type of the log argument.</typeparam>
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg">日志参数 / Log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T>(string format, T arg)
         {
             if (_logHelper == null)
@@ -2448,6 +2510,7 @@ namespace GameFrameX.Runtime
         /// <param name="format">日志格式 / Log format string.</param>
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2>(string format, T1 arg1, T2 arg2)
         {
             if (_logHelper == null)
@@ -2471,6 +2534,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg1">日志参数 1 / The first log argument.</param>
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3>(string format, T1 arg1, T2 arg2, T3 arg3)
         {
             if (_logHelper == null)
@@ -2496,6 +2560,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg2">日志参数 2 / The second log argument.</param>
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             if (_logHelper == null)
@@ -2523,6 +2588,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg3">日志参数 3 / The third log argument.</param>
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             if (_logHelper == null)
@@ -2552,6 +2618,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg4">日志参数 4 / The fourth log argument.</param>
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
         {
             if (_logHelper == null)
@@ -2583,6 +2650,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg5">日志参数 5 / The fifth log argument.</param>
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
         {
             if (_logHelper == null)
@@ -2616,6 +2684,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg6">日志参数 6 / The sixth log argument.</param>
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (_logHelper == null)
@@ -2651,6 +2720,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg7">日志参数 7 / The seventh log argument.</param>
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (_logHelper == null)
@@ -2688,6 +2758,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg8">日志参数 8 / The eighth log argument.</param>
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
         {
             if (_logHelper == null)
@@ -2727,6 +2798,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg9">日志参数 9 / The ninth log argument.</param>
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
         {
             if (_logHelper == null)
@@ -2768,6 +2840,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg10">日志参数 10 / The tenth log argument.</param>
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
         {
             if (_logHelper == null)
@@ -2811,6 +2884,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg11">日志参数 11 / The eleventh log argument.</param>
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
         {
             if (_logHelper == null)
@@ -2856,6 +2930,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg12">日志参数 12 / The twelfth log argument.</param>
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14)
         {
             if (_logHelper == null)
@@ -2903,6 +2978,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg13">日志参数 13 / The thirteenth log argument.</param>
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
         /// <param name="arg15">日志参数 15 / The fifteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15)
         {
             if (_logHelper == null)
@@ -2952,6 +3028,7 @@ namespace GameFrameX.Runtime
         /// <param name="arg14">日志参数 14 / The fourteenth log argument.</param>
         /// <param name="arg15">日志参数 15 / The fifteenth log argument.</param>
         /// <param name="arg16">日志参数 16 / The sixteenth log argument.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
         {
             if (_logHelper == null)

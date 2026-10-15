@@ -31,8 +31,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using UnityEngine.Scripting;
-
 namespace GameFrameX.Runtime
 {
     /// <summary>
@@ -41,7 +39,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// System.Int64 variable class.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarInt64 : Variable<long>
     {
         /// <summary>
@@ -50,7 +48,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Initializes a new instance of the System.Int64 variable class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public VarInt64()
         {
         }
@@ -62,7 +60,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from System.Int64 to System.Int64 variable class.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarInt64(long value)
         {
             VarInt64 varValue = ReferencePool.Acquire<VarInt64>();
@@ -77,7 +75,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from System.Int64 variable class to System.Int64.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator long(VarInt64 value)
         {
             return value.Value;

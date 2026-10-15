@@ -331,7 +331,7 @@ namespace GameFrameX.Editor
             var builder = CreateReferenceCodeBuilder(true, true);
             AppendReferenceClassStart(builder, true);
             builder.AppendLine("        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]");
-            builder.AppendLine("        [Preserve]");
+            builder.AppendLine("        [UnityEngine.Scripting.Preserve]");
             builder.AppendLine("        public static void Preserve()");
             builder.AppendLine("        {");
             foreach (var typeReference in typeReferences)
@@ -355,7 +355,7 @@ namespace GameFrameX.Editor
         private static string GenerateReferenceTypeCode(ReferenceTypeFile typeReference)
         {
             var builder = CreateReferenceCodeBuilder(true);
-            builder.AppendLine("    [Preserve]");
+            builder.AppendLine("    [UnityEngine.Scripting.Preserve]");
             builder.Append("    public static partial class ").Append(typeReference.ClassName).AppendLine();
             builder.AppendLine("    {");
             builder.AppendLine("        private static readonly Type[] Types =");
@@ -376,7 +376,7 @@ namespace GameFrameX.Editor
 
             builder.AppendLine("        };");
             builder.AppendLine();
-            builder.AppendLine("        [Preserve]");
+            builder.AppendLine("        [UnityEngine.Scripting.Preserve]");
             builder.AppendLine("        public static void Preserve()");
             builder.AppendLine("        {");
             AppendTypeReferenceLoop(builder, "Types", "TypeNames");
@@ -410,7 +410,6 @@ namespace GameFrameX.Editor
                 builder.AppendLine("using UnityEngine;");
             }
 
-            builder.AppendLine("using UnityEngine.Scripting;");
             builder.AppendLine();
             builder.AppendLine("namespace AotPreserve.Generated");
             builder.AppendLine("{");
@@ -424,12 +423,12 @@ namespace GameFrameX.Editor
         /// Appends the start definition of the reference entry class to the builder.
         /// </remarks>
         /// <param name="builder">字符串构建器 / String builder</param>
-        /// <param name="includeAttribute">是否追加 [Preserve] 特性 / Whether to append the [Preserve] attribute</param>
+        /// <param name="includeAttribute">是否追加 [UnityEngine.Scripting.Preserve] 特性 / Whether to append the [UnityEngine.Scripting.Preserve] attribute</param>
         private static void AppendReferenceClassStart(StringBuilder builder, bool includeAttribute)
         {
             if (includeAttribute)
             {
-                builder.AppendLine("    [Preserve]");
+                builder.AppendLine("    [UnityEngine.Scripting.Preserve]");
             }
 
             builder.AppendLine("    public static partial class AotPreserveReferences");

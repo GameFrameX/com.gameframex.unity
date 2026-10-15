@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -10,7 +9,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Scans loaded assemblies for GameFrameX components and managers.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class GameFrameXRuntimeScanner
     {
         /// <summary>
@@ -20,6 +19,7 @@ namespace GameFrameX.Runtime
         /// Performs the runtime scan.
         /// </remarks>
         /// <returns>扫描结果。 / The scan result.</returns>
+        [UnityEngine.Scripting.Preserve]
         public static GameFrameXRuntimeScanResult Scan()
         {
             var result = new GameFrameXRuntimeScanResult();
@@ -41,7 +41,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="assembly">要扫描的程序集。 / The assembly to scan.</param>
         /// <returns>扫描结果。 / The scan result.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static GameFrameXRuntimeScanResult Scan(Assembly assembly)
         {
             var result = new GameFrameXRuntimeScanResult();

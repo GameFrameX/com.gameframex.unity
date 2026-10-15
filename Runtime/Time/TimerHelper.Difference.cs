@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -51,7 +50,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTime">开始时间 / The start time</param>
         /// <param name="endTime">结束时间 / The end time</param>
         /// <returns>时间差TimeSpan对象 / The time difference TimeSpan object</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static TimeSpan GetTimeDifference(DateTime startTime, DateTime endTime)
         {
             return endTime - startTime;
@@ -70,7 +69,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTime">开始时间 / The start time</param>
         /// <param name="endTime">结束时间 / The end time</param>
         /// <returns>秒数差（可能为负数） / The seconds difference (may be negative)</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetSecondsDifference(DateTime startTime, DateTime endTime)
         {
             return (long)(endTime - startTime).TotalSeconds;
@@ -89,7 +88,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTime">开始时间 / The start time</param>
         /// <param name="endTime">结束时间 / The end time</param>
         /// <returns>毫秒数差（可能为负数） / The milliseconds difference (may be negative)</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetMillisecondsDifference(DateTime startTime, DateTime endTime)
         {
             return (long)(endTime - startTime).TotalMilliseconds;
@@ -108,7 +107,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTime">开始时间 / The start time</param>
         /// <param name="endTime">结束时间 / The end time</param>
         /// <returns>分钟数差（可能为负数） / The minutes difference (may be negative)</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static double GetMinutesDifference(DateTime startTime, DateTime endTime)
         {
             return (endTime - startTime).TotalMinutes;
@@ -127,7 +126,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTime">开始时间 / The start time</param>
         /// <param name="endTime">结束时间 / The end time</param>
         /// <returns>小时数差（可能为负数） / The hours difference (may be negative)</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static double GetHoursDifference(DateTime startTime, DateTime endTime)
         {
             return (endTime - startTime).TotalHours;
@@ -146,7 +145,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTimestamp">开始时间戳（秒） / The start timestamp (seconds)</param>
         /// <param name="endTimestamp">结束时间戳（秒） / The end timestamp (seconds)</param>
         /// <returns>秒数差 / The seconds difference</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetSecondsDifference(long startTimestamp, long endTimestamp)
         {
             return endTimestamp - startTimestamp;
@@ -165,7 +164,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTimestampMs">开始时间戳（毫秒） / The start timestamp (milliseconds)</param>
         /// <param name="endTimestampMs">结束时间戳（毫秒） / The end timestamp (milliseconds)</param>
         /// <returns>毫秒数差 / The milliseconds difference</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetMillisecondsDifference(long startTimestampMs, long endTimestampMs)
         {
             return endTimestampMs - startTimestampMs;
@@ -184,7 +183,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTime">开始时间 / The start time</param>
         /// <param name="endTime">结束时间 / The end time</param>
         /// <returns>时间差的绝对秒数 / The absolute seconds difference</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetAbsoluteSecondsDifference(DateTime startTime, DateTime endTime)
         {
             return System.Math.Abs(GetSecondsDifference(startTime, endTime));
@@ -203,7 +202,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTime">开始时间 / The start time</param>
         /// <param name="endTime">结束时间 / The end time</param>
         /// <returns>时间差的绝对毫秒数 / The absolute milliseconds difference</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetAbsoluteMillisecondsDifference(DateTime startTime, DateTime endTime)
         {
             return System.Math.Abs(GetMillisecondsDifference(startTime, endTime));

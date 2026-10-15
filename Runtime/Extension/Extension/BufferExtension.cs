@@ -1,7 +1,6 @@
 using System;
 using System.Buffers.Binary;
 using System.Text;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -11,7 +10,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Extension methods for byte array buffer operations.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class BufferExtension
     {
         /// <summary>
@@ -86,7 +85,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">要写入的字节数组 / The byte array to write to.</param>
         /// <param name="value">要写入的整数值 / The integer value to write.</param>
         /// <param name="offset">写入操作的偏移量 / The offset for the write operation.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteInt(this byte[] buffer, int value, ref int offset)
         {
             if (offset < 0 || offset + IntSize > buffer.Length)
@@ -110,7 +109,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">要写入的字节数组 / The byte array to write to.</param>
         /// <param name="value">要写入的整数值 / The unsigned integer value to write.</param>
         /// <param name="offset">写入操作的偏移量 / The offset for the write operation.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteUInt(this byte[] buffer, uint value, ref int offset)
         {
             if (offset < 0 || offset + IntSize > buffer.Length)
@@ -134,7 +133,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">要写入的缓冲区 / The buffer to write to.</param>
         /// <param name="value">要写入的值 / The value to write.</param>
         /// <param name="offset">要写入值的缓冲区中的偏移量 / The offset in the buffer to write the value.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void WriteUShort(this byte[] buffer, ushort value, ref int offset)
         {
             if (offset < 0 || offset + ShortSize > buffer.Length)
@@ -160,7 +159,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">要写入的字节数组 / The byte array to write to.</param>
         /// <param name="value">要写入的短整数值 / The short integer value to write.</param>
         /// <param name="offset">写入操作的偏移量 / The offset for the write operation.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteShort(this byte[] buffer, short value, ref int offset)
         {
             if (offset < 0 || offset + ShortSize > buffer.Length)
@@ -184,7 +183,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">要写入的字节数组 / The byte array to write to.</param>
         /// <param name="value">要写入的长整数值 / The long integer value to write.</param>
         /// <param name="offset">写入操作的偏移量 / The offset for the write operation.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteLong(this byte[] buffer, long value, ref int offset)
         {
             if (offset < 0 || offset + LongSize > buffer.Length)
@@ -208,7 +207,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">要写入的字节数组 / The byte array to write to.</param>
         /// <param name="value">要写入的单精度浮点数值 / The single-precision floating-point value to write.</param>
         /// <param name="offset">字节数组中的偏移量，传递引用以便更新偏移量 / The offset in the byte array, passed by reference to update the offset.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteFloat(this byte[] buffer, float value, ref int offset)
         {
             if (offset < 0 || offset + FloatSize > buffer.Length)
@@ -233,7 +232,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">要写入的字节数组 / The byte array to write to.</param>
         /// <param name="value">要写入的双精度浮点数值 / The double-precision floating-point value to write.</param>
         /// <param name="offset">字节数组中的偏移量，传递引用以便更新偏移量 / The offset in the byte array, passed by reference to update the offset.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteDouble(this byte[] buffer, double value, ref int offset)
         {
             if (offset < 0 || offset + DoubleSize > buffer.Length)
@@ -258,7 +257,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">要写入的字节数组 / The byte array to write to.</param>
         /// <param name="value">要写入的字节值 / The byte value to write.</param>
         /// <param name="offset">字节数组中的偏移量，传递引用以便更新偏移量 / The offset in the byte array, passed by reference to update the offset.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteByte(this byte[] buffer, byte value, ref int offset)
         {
             if (offset < 0 || offset + ByteSize > buffer.Length)
@@ -282,7 +281,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">目标缓冲区 / The target buffer.</param>
         /// <param name="value">要写入的字节数组 / The byte array to write.</param>
         /// <param name="offset">偏移量 / The offset.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteBytesWithoutLength(this byte[] buffer, byte[] value, ref int offset)
         {
             if (value == null)
@@ -312,7 +311,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">目标缓冲区 / The target buffer.</param>
         /// <param name="value">要写入的字节数组 / The byte array to write.</param>
         /// <param name="offset">偏移量 / The offset.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteBytes(this byte[] buffer, byte[] value, ref int offset)
         {
             if (value == null)
@@ -340,7 +339,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">目标缓冲区 / The target buffer.</param>
         /// <param name="value">要写入的有符号字节 / The signed byte to write.</param>
         /// <param name="offset">偏移量 / The offset.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteSByte(this byte[] buffer, sbyte value, ref int offset)
         {
             if (offset < 0 || offset + SbyteSize > buffer.Length)
@@ -364,7 +363,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">目标缓冲区 / The target buffer.</param>
         /// <param name="value">要写入的字符串 / The string to write.</param>
         /// <param name="offset">偏移量 / The offset.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteString(this byte[] buffer, string value, ref int offset)
         {
             if (value == null)
@@ -402,7 +401,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">目标缓冲区 / The target buffer.</param>
         /// <param name="value">要写入的布尔值 / The boolean value to write.</param>
         /// <param name="offset">偏移量 / The offset.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe void WriteBool(this byte[] buffer, bool value, ref int offset)
         {
             if (offset < 0 || offset + BoolSize > buffer.Length)
@@ -430,7 +429,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">包含整数值的字节数组 / The byte array containing the integer value.</param>
         /// <param name="offset">从字节数组中读取整数值的偏移量 / The offset to read the integer value from the byte array.</param>
         /// <returns>从字节数组中读取的整数值 / The integer value read from the byte array.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe int ReadInt(this byte[] buffer, ref int offset)
         {
             if (offset < 0 || offset + IntSize > buffer.Length)
@@ -456,7 +455,7 @@ namespace GameFrameX.Runtime
         /// <param name="offset">从字节数组中读取整数值的偏移量 / The offset to read the integer value from the byte array.</param>
         /// <returns>从字节数组中读取的无符号整数值 / The unsigned integer value read from the byte array.</returns>
         /// <exception cref="Exception">读取超出范围时抛出的异常 / Thrown when the read is out of range</exception>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static uint ReadUInt(this byte[] buffer, ref int offset)
         {
             if (offset < 0 || offset + UIntSize > buffer.Length)
@@ -481,7 +480,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">包含短整数值的字节数组 / The byte array containing the short integer value.</param>
         /// <param name="offset">从字节数组中读取短整数值的偏移量 / The offset to read the short integer value from the byte array.</param>
         /// <returns>从字节数组中读取的短整数值 / The short integer value read from the byte array.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe short ReadShort(this byte[] buffer, ref int offset)
         {
             if (offset < 0 || offset + ShortSize > buffer.Length)
@@ -506,7 +505,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">要读取的字节数组 / The byte array to read from.</param>
         /// <param name="offset">引用偏移量 / The reference offset.</param>
         /// <returns>返回读取的16位无符号整数 / The 16-bit unsigned integer read.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static ushort ReadUShort(this byte[] buffer, ref int offset)
         {
             if (offset < 0 || offset + UShortSize > buffer.Length)
@@ -531,7 +530,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">字节数组 / The byte array.</param>
         /// <param name="offset">偏移量 / The offset.</param>
         /// <returns>长整型数值 / The long integer value.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe long ReadLong(this byte[] buffer, ref int offset)
         {
             if (offset < 0 || offset + LongSize > buffer.Length)
@@ -556,7 +555,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">字节数组 / The byte array.</param>
         /// <param name="offset">偏移量 / The offset.</param>
         /// <returns>单精度浮点数值 / The single-precision floating-point value.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe float ReadFloat(this byte[] buffer, ref int offset)
         {
             if (offset < 0 || offset + FloatSize > buffer.Length)
@@ -582,7 +581,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">字节数组 / The byte array.</param>
         /// <param name="offset">偏移量 / The offset.</param>
         /// <returns>双精度浮点数值 / The double-precision floating-point value.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe double ReadDouble(this byte[] buffer, ref int offset)
         {
             if (offset < 0 || offset + DoubleSize > buffer.Length)
@@ -608,7 +607,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">字节数组 / The byte array.</param>
         /// <param name="offset">偏移量 / The offset.</param>
         /// <returns>字节值 / The byte value.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe byte ReadByte(this byte[] buffer, ref int offset)
         {
             if (offset < 0 || offset + ByteSize > buffer.Length)
@@ -634,7 +633,7 @@ namespace GameFrameX.Runtime
         /// <param name="offset">偏移量 / The offset.</param>
         /// <param name="len">数据长度 / The data length.</param>
         /// <returns>读取的字节数组 / The byte array read.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe byte[] ReadBytes(this byte[] buffer, int offset, int len)
         {
             //数据不可信
@@ -658,7 +657,7 @@ namespace GameFrameX.Runtime
         /// <param name="offset">偏移量 / The offset.</param>
         /// <param name="len">数据长度 / The data length.</param>
         /// <returns>读取的字节数组 / The byte array read.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe byte[] ReadBytes(this byte[] buffer, ref int offset, int len)
         {
             //数据不可信
@@ -682,7 +681,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">字节数组 / The byte array.</param>
         /// <param name="offset">偏移量 / The offset.</param>
         /// <returns>读取的字节数组 / The byte array read.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe byte[] ReadBytes(this byte[] buffer, ref int offset)
         {
             var len = ReadInt(buffer, ref offset);
@@ -707,7 +706,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">字节数组 / The byte array.</param>
         /// <param name="offset">偏移量 / The offset.</param>
         /// <returns>读取的有符号字节 / The signed byte read.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe sbyte ReadSByte(this byte[] buffer, ref int offset)
         {
             if (offset < 0 || offset + ByteSize > buffer.Length)
@@ -732,7 +731,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">字节数组 / The byte array.</param>
         /// <param name="offset">偏移量 / The offset.</param>
         /// <returns>读取的字符串 / The string read.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe string ReadString(this byte[] buffer, ref int offset)
         {
             fixed (byte* ptr = buffer)
@@ -759,7 +758,7 @@ namespace GameFrameX.Runtime
         /// <param name="buffer">字节数组 / The byte array.</param>
         /// <param name="offset">偏移量 / The offset.</param>
         /// <returns>读取的布尔值 / The boolean value read.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static unsafe bool ReadBool(this byte[] buffer, ref int offset)
         {
             if (offset < 0 || offset + BoolSize > buffer.Length)
@@ -785,7 +784,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="bytes">要转换的字节数组 / The byte array to convert.</param>
         /// <returns>转换后的字符串 / The converted string.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static string ToArrayString(this byte[] bytes)
         {
             StringBuilder.Clear();
@@ -807,7 +806,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="b">要转换的字节 / The byte to convert.</param>
         /// <returns>表示字节的十六进制字符串 / The hexadecimal string representation of the byte.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static string ToHex(this byte b)
         {
             return b.ToString("X2");
@@ -821,7 +820,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="bytes">要转换的字节数组 / The byte array to convert.</param>
         /// <returns>表示字节数组的十六进制字符串 / The hexadecimal string representation of the byte array.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static string ToHex(this byte[] bytes)
         {
             StringBuilder.Clear();
@@ -842,7 +841,7 @@ namespace GameFrameX.Runtime
         /// <param name="bytes">要转换的字节数组 / The byte array to convert.</param>
         /// <param name="format">十六进制格式 / The hexadecimal format.</param>
         /// <returns>表示字节数组的十六进制字符串 / The hexadecimal string representation of the byte array.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static string ToHex(this byte[] bytes, string format)
         {
             StringBuilder.Clear();
@@ -864,7 +863,7 @@ namespace GameFrameX.Runtime
         /// <param name="offset">起始偏移量 / The starting offset.</param>
         /// <param name="count">要转换的字节数 / The number of bytes to convert.</param>
         /// <returns>表示指定范围内字节的十六进制字符串 / The hexadecimal string representation of the specified range of bytes.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static string ToHex(this byte[] bytes, int offset, int count)
         {
             StringBuilder.Clear();
@@ -884,7 +883,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="bytes">要转换的字节数组 / The byte array to convert.</param>
         /// <returns>转换后的字符串 / The converted string.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static string ToDefaultString(this byte[] bytes)
         {
             return Encoding.Default.GetString(bytes);
@@ -900,7 +899,7 @@ namespace GameFrameX.Runtime
         /// <param name="index">起始位置 / The starting position.</param>
         /// <param name="count">要转换的字节数 / The number of bytes to convert.</param>
         /// <returns>转换后的字符串 / The converted string.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static string ToDefaultString(this byte[] bytes, int index, int count)
         {
             return Encoding.Default.GetString(bytes, index, count);
@@ -914,7 +913,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="bytes">要转换的字节数组 / The byte array to convert.</param>
         /// <returns>转换后的字符串 / The converted string.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static string ToUtf8String(this byte[] bytes)
         {
             return Encoding.UTF8.GetString(bytes);
@@ -930,7 +929,7 @@ namespace GameFrameX.Runtime
         /// <param name="index">起始位置 / The starting position.</param>
         /// <param name="count">要转换的字节数 / The number of bytes to convert.</param>
         /// <returns>转换后的字符串 / The converted string.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static string ToUtf8String(this byte[] bytes, int index, int count)
         {
             return Encoding.UTF8.GetString(bytes, index, count);

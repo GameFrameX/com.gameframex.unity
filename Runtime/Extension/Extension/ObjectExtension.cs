@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine.Scripting; // Added this line for the Preserve attribute
 
 namespace GameFrameX.Runtime
 {
@@ -9,7 +8,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Provides extension functions for objects.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class ObjectExtension
     {
         /// <summary>
@@ -20,7 +19,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="self">当前对象 / The current object</param>
         /// <returns>是否为null / Whether the object is null</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static bool IsNull(this object self)
         {
             return self == null;
@@ -34,7 +33,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="self">当前对象 / The current object</param>
         /// <returns>是否不为null / Whether the object is not null</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static bool IsNotNull(this object self)
         {
             return !self.IsNull();
@@ -49,7 +48,7 @@ namespace GameFrameX.Runtime
         /// <param name="self">对象值 / The object value</param>
         /// <param name="name">异常信息 / The exception message</param>
         /// <exception cref="ArgumentNullException">参数为空的异常 / Thrown when the argument is null</exception>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void CheckNull(this object self, string name)
         {
             if (self.IsNull())

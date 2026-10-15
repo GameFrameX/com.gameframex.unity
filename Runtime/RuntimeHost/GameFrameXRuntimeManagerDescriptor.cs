@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -9,7 +8,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Describes a manager implementation in the auto runtime.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXRuntimeManagerDescriptor
     {
         /// <summary>
@@ -21,6 +20,7 @@ namespace GameFrameX.Runtime
         /// <param name="interfaceType">Manager 接口类型。 / The manager interface type.</param>
         /// <param name="implementationType">Manager 实现类型。 / The manager implementation type.</param>
         /// <param name="priority">选择优先级。 / The selection priority.</param>
+        [UnityEngine.Scripting.Preserve]
         public GameFrameXRuntimeManagerDescriptor(Type interfaceType, Type implementationType, int priority)
         {
             InterfaceType = interfaceType;
@@ -34,6 +34,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the manager interface type.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public Type InterfaceType { get; private set; }
 
         /// <summary>
@@ -42,6 +43,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the manager implementation type.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public Type ImplementationType { get; private set; }
 
         /// <summary>
@@ -50,6 +52,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the selection priority.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public int Priority { get; private set; }
     }
 }

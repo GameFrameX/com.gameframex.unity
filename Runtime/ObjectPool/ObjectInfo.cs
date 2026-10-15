@@ -33,7 +33,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.ObjectPool
 {
@@ -44,7 +43,7 @@ namespace GameFrameX.ObjectPool
     /// Information about an object in the pool.
     /// </remarks>
     [StructLayout(LayoutKind.Auto)]
-    [Preserve] // Preserve the ObjectInfo struct for Unity's serialization
+    [UnityEngine.Scripting.Preserve] // Preserve the ObjectInfo struct for Unity's serialization
     public struct ObjectInfo
     {
         private readonly string m_Name;
@@ -66,7 +65,7 @@ namespace GameFrameX.ObjectPool
         /// <param name="priority">对象的优先级。 / Priority of the object.</param>
         /// <param name="lastUseTime">对象上次使用时间。 / Last use time of the object.</param>
         /// <param name="spawnCount">对象的获取计数。 / Spawn count of the object.</param>
-        [Preserve] // Preserve the constructor for Unity's serialization
+        [UnityEngine.Scripting.Preserve] // Preserve the constructor for Unity's serialization
         public ObjectInfo(string name, bool locked, bool customCanReleaseFlag, int priority, DateTime lastUseTime, int spawnCount)
         {
             m_Name = name;
@@ -83,7 +82,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the name of the object.
         /// </remarks>
-        [Preserve] // Preserve the Name property for Unity's serialization
+        [UnityEngine.Scripting.Preserve] // Preserve the Name property for Unity's serialization
         public string Name
         {
             get { return m_Name; }
@@ -95,7 +94,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets whether the object is locked.
         /// </remarks>
-        [Preserve] // Preserve the Locked property for Unity's serialization
+        [UnityEngine.Scripting.Preserve] // Preserve the Locked property for Unity's serialization
         public bool Locked
         {
             get { return m_Locked; }
@@ -107,7 +106,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the custom release check flag of the object.
         /// </remarks>
-        [Preserve] // Preserve the CustomCanReleaseFlag property for Unity's serialization
+        [UnityEngine.Scripting.Preserve] // Preserve the CustomCanReleaseFlag property for Unity's serialization
         public bool CustomCanReleaseFlag
         {
             get { return m_CustomCanReleaseFlag; }
@@ -119,7 +118,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the priority of the object.
         /// </remarks>
-        [Preserve] // Preserve the Priority property for Unity's serialization
+        [UnityEngine.Scripting.Preserve] // Preserve the Priority property for Unity's serialization
         public int Priority
         {
             get { return m_Priority; }
@@ -131,7 +130,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the last use time of the object.
         /// </remarks>
-        [Preserve] // Preserve the LastUseTime property for Unity's serialization
+        [UnityEngine.Scripting.Preserve] // Preserve the LastUseTime property for Unity's serialization
         public DateTime LastUseTime
         {
             get { return m_LastUseTime; }
@@ -143,7 +142,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets whether the object is in use.
         /// </remarks>
-        [Preserve] // Preserve the IsInUse property for Unity's serialization
+        [UnityEngine.Scripting.Preserve] // Preserve the IsInUse property for Unity's serialization
         public bool IsInUse
         {
             get { return m_SpawnCount > 0; }
@@ -155,7 +154,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the spawn count of the object.
         /// </remarks>
-        [Preserve] // Preserve the SpawnCount property for Unity's serialization
+        [UnityEngine.Scripting.Preserve] // Preserve the SpawnCount property for Unity's serialization
         public int SpawnCount
         {
             get { return m_SpawnCount; }

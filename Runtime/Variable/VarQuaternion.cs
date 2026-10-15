@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -42,7 +41,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// UnityEngine.Quaternion variable class.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarQuaternion : Variable<Quaternion>
     {
         /// <summary>
@@ -51,7 +50,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Initializes a new instance of the UnityEngine.Quaternion variable class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public VarQuaternion()
         {
         }
@@ -63,7 +62,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from UnityEngine.Quaternion to UnityEngine.Quaternion variable class.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarQuaternion(Quaternion value)
         {
             VarQuaternion varValue = ReferencePool.Acquire<VarQuaternion>();
@@ -78,7 +77,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from UnityEngine.Quaternion variable class to UnityEngine.Quaternion.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator Quaternion(VarQuaternion value)
         {
             return value.Value;

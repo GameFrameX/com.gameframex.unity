@@ -31,8 +31,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using UnityEngine.Scripting; // 确保引入命名空间
-
 namespace GameFrameX.Runtime
 {
     /// <summary>
@@ -52,7 +50,7 @@ namespace GameFrameX.Runtime
         /// Abstract property that must be implemented by derived classes to provide a unique identifier for the event type.
         /// Each event type should have a unique ID for proper event handling and routing.
         /// </remarks>
-        [Preserve] // 添加 Preserve 标签
+        [UnityEngine.Scripting.Preserve]
         public abstract string Id { get; }
     }
 }

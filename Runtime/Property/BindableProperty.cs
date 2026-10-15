@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -9,7 +8,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Bindable property that invokes registered callbacks when its value changes.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class BindableProperty<T>
     {
         private T _value;
@@ -21,6 +20,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets or sets the value and triggers the change callback when the new value differs.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public T Value
         {
             get { return _value; }
@@ -46,7 +46,7 @@ namespace GameFrameX.Runtime
         /// Initializes a new instance with an optional default value.
         /// </remarks>
         /// <param name="defaultValue">默认值 / Default value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public BindableProperty(T defaultValue = default) : this()
         {
             _value = defaultValue;
@@ -61,7 +61,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="callback">值变化回调 / Value-changed callback</param>
         /// <returns>当前可绑定属性 / The current bindable property</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public BindableProperty<T> Add(Action<T> callback)
         {
             GameFrameworkGuard.NotNull(callback, nameof(callback));
@@ -77,7 +77,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="callback">事件回调 / Event callback</param>
         /// <returns>当前可绑定属性 / The current bindable property</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public BindableProperty<T> RegisterWithInitValue(Action<T> callback)
         {
             GameFrameworkGuard.NotNull(callback, nameof(callback));
@@ -92,7 +92,7 @@ namespace GameFrameX.Runtime
         /// Removes an event callback.
         /// </remarks>
         /// <param name="callback">事件 / Event callback</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Remove(Action<T> callback)
         {
             GameFrameworkGuard.NotNull(callback, nameof(callback));
@@ -105,7 +105,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Clears all event callbacks.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Clear()
         {
             _onValueChanged = null;

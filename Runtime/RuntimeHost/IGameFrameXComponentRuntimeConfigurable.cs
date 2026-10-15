@@ -1,4 +1,3 @@
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -8,7 +7,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Indicates that a component supports applying runtime override configuration before Awake.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public interface IGameFrameXComponentRuntimeConfigurable
     {
         /// <summary>

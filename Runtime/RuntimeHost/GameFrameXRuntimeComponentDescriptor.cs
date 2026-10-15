@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -10,7 +9,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Describes a component in the auto runtime.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXRuntimeComponentDescriptor
     {
         private readonly List<Type> m_Dependencies = new List<Type>(32);
@@ -23,6 +22,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="componentType">组件类型。 / The component type.</param>
         /// <param name="order">启动顺序。 / The startup order.</param>
+        [UnityEngine.Scripting.Preserve]
         public GameFrameXRuntimeComponentDescriptor(Type componentType, int order)
         {
             ComponentType = componentType;
@@ -36,6 +36,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the component type.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public Type ComponentType { get; private set; }
 
         /// <summary>
@@ -44,6 +45,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets or sets the startup order.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public int Order { get; set; }
 
         /// <summary>
@@ -52,6 +54,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets or sets whether the component is enabled.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public bool Enabled { get; set; }
 
         /// <summary>
@@ -60,6 +63,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets or sets the component runtime configuration.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public GameFrameXComponentRuntimeConfig Config { get; set; }
 
         /// <summary>
@@ -68,6 +72,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the dependent component types.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public IList<Type> Dependencies
         {
             get { return m_Dependencies; }

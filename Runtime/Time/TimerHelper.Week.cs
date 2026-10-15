@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -49,7 +48,7 @@ namespace GameFrameX.Runtime
         /// <param name="ticks">时间刻度(Ticks) / Time ticks</param>
         /// <param name="isUtc">是否使用UTC时间进行比较，默认值为true / Whether to use UTC time for comparison, defaults to true</param>
         /// <returns>如果是同一周返回true,否则返回false / Returns true if it same week, otherwise returns false</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static bool IsSameWeek(long ticks, bool isUtc = true)
         {
             return IsSameWeek(new DateTime(ticks), isUtc);
@@ -67,7 +66,7 @@ namespace GameFrameX.Runtime
         /// <param name="start">要比较的日期 / The date to compare</param>
         /// <param name="isUtc">是否使用UTC时间进行比较,默认值为true / Whether to use UTC time for comparison, defaults to true</param>
         /// <returns>如果是同一周返回true,否则返回false / Returns true if the same week, otherwise returns false</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static bool IsSameWeek(DateTime start, bool isUtc = true)
         {
             return IsSameWeek(start, isUtc ? GetNowWithUtc() : GetNowWithTimeZone());
@@ -90,7 +89,7 @@ namespace GameFrameX.Runtime
         /// <param name="startTime">开始时间 / The start time</param>
         /// <param name="endTime">结束时间 / The end time</param>
         /// <returns>如果是同一周返回true，否则返回false / Returns true if in the same week, otherwise returns false</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static bool IsSameWeek(DateTime startTime, DateTime endTime)
         {
             var startDayOfWeek = (int)startTime.DayOfWeek;
@@ -123,7 +122,7 @@ namespace GameFrameX.Runtime
         /// <param name="dateTime">指定日期 / The specified date</param>
         /// <param name="day">目标星期几 (DayOfWeek.Sunday 到 DayOfWeek.Saturday) / The target day of week (DayOfWeek.Sunday to DayOfWeek.Saturday)</param>
         /// <returns>计算结果日期时间 / The calculated date time</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static DateTime GetDayOfWeekTime(DateTime dateTime, DayOfWeek day)
         {
             return dateTime.AddDays(day - dateTime.DayOfWeek);
@@ -139,7 +138,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在周周一00:00:00的时间 / The time at 00:00:00 on Monday of the week</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static DateTime GetStartTimeOfWeek(DateTime date)
         {
             var dayOfWeek = (int)date.DayOfWeek;
@@ -157,7 +156,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在周周日23:59:59的时间 / The time at 23:59:59 on Sunday of the week</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static DateTime GetEndTimeOfWeek(DateTime date)
         {
             var dayOfWeek = (int)date.DayOfWeek;

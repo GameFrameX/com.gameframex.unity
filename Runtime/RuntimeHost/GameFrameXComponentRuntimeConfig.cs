@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -10,7 +9,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Describes the override configuration of a component in the auto runtime.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXComponentRuntimeConfig
     {
         private readonly List<Type> m_Dependencies = new List<Type>();
@@ -22,6 +21,7 @@ namespace GameFrameX.Runtime
         /// Initializes the component runtime configuration.
         /// </remarks>
         /// <param name="componentType">组件类型。 / The component type.</param>
+        [UnityEngine.Scripting.Preserve]
         public GameFrameXComponentRuntimeConfig(Type componentType)
         {
             ComponentType = componentType;
@@ -33,6 +33,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the component type.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public Type ComponentType { get; private set; }
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets or sets whether the component is enabled. When null, the auto discovery result is used.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public bool? Enabled { get; set; }
 
         /// <summary>
@@ -49,6 +51,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets or sets the component mount order. When null, the attribute or default order is used.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public int? Order { get; set; }
 
         /// <summary>
@@ -57,6 +60,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets or sets the manager implementation type.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public Type ManagerImplementationType { get; set; }
 
         /// <summary>
@@ -65,6 +69,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets or sets the manager implementation type name.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public string ManagerImplementationTypeName { get; set; }
 
         /// <summary>
@@ -73,6 +78,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the list of dependent component types.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public IList<Type> Dependencies
         {
             get { return m_Dependencies; }

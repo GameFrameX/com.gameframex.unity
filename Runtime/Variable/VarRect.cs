@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -42,7 +41,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// UnityEngine.Rect variable class.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarRect : Variable<Rect>
     {
         /// <summary>
@@ -51,7 +50,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Initializes a new instance of the UnityEngine.Rect variable class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public VarRect()
         {
         }
@@ -63,7 +62,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from UnityEngine.Rect to UnityEngine.Rect variable class.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarRect(Rect value)
         {
             VarRect varValue = ReferencePool.Acquire<VarRect>();
@@ -78,7 +77,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from UnityEngine.Rect variable class to UnityEngine.Rect.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator Rect(VarRect value)
         {
             return value.Value;

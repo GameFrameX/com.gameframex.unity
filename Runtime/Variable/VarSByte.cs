@@ -31,8 +31,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using UnityEngine.Scripting;
-
 namespace GameFrameX.Runtime
 {
     /// <summary>
@@ -41,7 +39,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// System.SByte variable class.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarSByte : Variable<sbyte>
     {
         /// <summary>
@@ -50,7 +48,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Initializes a new instance of the System.SByte variable class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public VarSByte()
         {
         }
@@ -62,7 +60,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from System.SByte to System.SByte variable class.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarSByte(sbyte value)
         {
             VarSByte varValue = ReferencePool.Acquire<VarSByte>();
@@ -77,7 +75,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from System.SByte variable class to System.SByte.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator sbyte(VarSByte value)
         {
             return value.Value;

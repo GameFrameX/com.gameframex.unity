@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -9,7 +8,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Describes a runtime override that maps a manager interface to an implementation type.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXManagerRuntimeOverride
     {
         /// <summary>
@@ -21,6 +20,7 @@ namespace GameFrameX.Runtime
         /// <param name="interfaceType">Manager 接口类型。 / The manager interface type.</param>
         /// <param name="implementationType">Manager 实现类型。 / The manager implementation type.</param>
         /// <param name="priority">覆盖优先级。 / The override priority.</param>
+        [UnityEngine.Scripting.Preserve]
         public GameFrameXManagerRuntimeOverride(Type interfaceType, Type implementationType, int priority = 0)
         {
             InterfaceType = interfaceType;
@@ -34,6 +34,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the manager interface type.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public Type InterfaceType { get; private set; }
 
         /// <summary>
@@ -42,6 +43,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the manager implementation type.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public Type ImplementationType { get; private set; }
 
         /// <summary>
@@ -50,6 +52,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the override priority.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public int Priority { get; private set; }
     }
 }

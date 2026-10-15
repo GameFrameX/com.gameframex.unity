@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -10,7 +9,7 @@ namespace GameFrameX.Runtime
     /// Marks a component as excluded from GameFrameX auto runtime mounting.
     /// </remarks>
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXManualStartupAttribute : Attribute
     {
     }

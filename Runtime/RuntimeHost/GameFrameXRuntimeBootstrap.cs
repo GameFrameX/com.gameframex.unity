@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -15,7 +14,7 @@ namespace GameFrameX.Runtime
     /// entries — startup creates the persistent <c>[GameFrameX]</c> host and mounts every component.
     /// </para>
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class GameFrameXRuntimeBootstrap
     {
         /// <summary>

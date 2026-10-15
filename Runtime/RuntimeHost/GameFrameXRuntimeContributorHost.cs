@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -24,7 +23,7 @@ namespace GameFrameX.Runtime
     /// <c>[GameFrameX]</c> warnings via <c>UnityEngine.Debug</c> and skipped — loud, but a single bad contributor cannot break startup.
     /// </para>
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class GameFrameXRuntimeContributorHost
     {
         private static bool s_Applied;
@@ -35,6 +34,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Ensures contributors have been applied (once per domain, idempotent; one of the two entry points).
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static void EnsureApplied()
         {
             if (s_Applied)
@@ -53,6 +53,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Resets the applied flag for PlayMode with Domain Reload disabled; called by the Bootstrap SubsystemRegistration reset.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static void Reset()
         {
             s_Applied = false;

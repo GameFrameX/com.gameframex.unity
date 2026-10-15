@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -42,7 +41,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// UnityEngine.Material variable class.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarMaterial : Variable<Material>
     {
         /// <summary>
@@ -51,7 +50,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Initializes a new instance of the UnityEngine.Material variable class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public VarMaterial()
         {
         }
@@ -63,7 +62,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from UnityEngine.Material to UnityEngine.Material variable class.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarMaterial(Material value)
         {
             VarMaterial varValue = ReferencePool.Acquire<VarMaterial>();
@@ -78,7 +77,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from UnityEngine.Material variable class to UnityEngine.Material.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator Material(VarMaterial value)
         {
             return value.Value;

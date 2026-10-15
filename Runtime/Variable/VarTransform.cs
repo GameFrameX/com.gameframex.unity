@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -42,7 +41,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// UnityEngine.Transform variable class.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarTransform : Variable<Transform>
     {
         /// <summary>
@@ -51,7 +50,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Initializes a new instance of the UnityEngine.Transform variable class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public VarTransform()
         {
         }
@@ -63,7 +62,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from UnityEngine.Transform to UnityEngine.Transform variable class.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarTransform(Transform value)
         {
             VarTransform varValue = ReferencePool.Acquire<VarTransform>();
@@ -78,7 +77,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from UnityEngine.Transform variable class to UnityEngine.Transform.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator Transform(VarTransform value)
         {
             return value.Value;

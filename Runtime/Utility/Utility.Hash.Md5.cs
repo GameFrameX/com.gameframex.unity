@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -21,7 +20,7 @@ namespace GameFrameX.Runtime
             /// <remarks>
             /// MD5 hash algorithm implementation.
             /// </remarks>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static class MD5
             {
                 /// <summary>
@@ -32,7 +31,7 @@ namespace GameFrameX.Runtime
                 /// </remarks>
                 /// <param name="input">要计算哈希的字符串 / The string to hash</param>
                 /// <returns>MD5 哈希值 / The MD5 hash value</returns>
-                [Preserve]
+                [UnityEngine.Scripting.Preserve]
                 public static string Hash(string input)
                 {
                     using (var md5 = System.Security.Cryptography.MD5.Create())
@@ -50,7 +49,7 @@ namespace GameFrameX.Runtime
                 /// </remarks>
                 /// <param name="input">要计算哈希的流 / The stream to hash</param>
                 /// <returns>MD5 哈希值 / The MD5 hash value</returns>
-                [Preserve]
+                [UnityEngine.Scripting.Preserve]
                 public static string Hash(Stream input)
                 {
                     using (var md5 = System.Security.Cryptography.MD5.Create())
@@ -69,7 +68,7 @@ namespace GameFrameX.Runtime
                 /// <param name="input">要验证的哈希值 / The hash value to verify</param>
                 /// <param name="hash">目标哈希值 / The target hash value</param>
                 /// <returns>如果一致则返回 true，否则返回 false / Returns true if they match, otherwise false</returns>
-                [Preserve]
+                [UnityEngine.Scripting.Preserve]
                 public static bool IsVerify(string input, string hash)
                 {
                     var comparer = StringComparer.OrdinalIgnoreCase;
@@ -95,7 +94,7 @@ namespace GameFrameX.Runtime
                 /// </remarks>
                 /// <param name="filePath">文件路径 / The file path</param>
                 /// <returns>MD5 哈希值 / The MD5 hash value</returns>
-                [Preserve]
+                [UnityEngine.Scripting.Preserve]
                 public static string FileHash(string filePath)
                 {
                     using (var file = new FileStream(filePath, FileMode.Open))

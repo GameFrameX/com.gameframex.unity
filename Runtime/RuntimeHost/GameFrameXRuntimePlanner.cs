@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -10,7 +9,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Generates the auto startup plan from the scan result and runtime overrides.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class GameFrameXRuntimePlanner
     {
         /// <summary>
@@ -22,6 +21,7 @@ namespace GameFrameX.Runtime
         /// <param name="scanResult">扫描结果。 / The scan result.</param>
         /// <param name="overrideContext">运行时覆盖上下文。 / The runtime override context.</param>
         /// <returns>自动启动计划。 / The auto startup plan.</returns>
+        [UnityEngine.Scripting.Preserve]
         public static GameFrameXRuntimePlan CreatePlan(GameFrameXRuntimeScanResult scanResult, GameFrameXRuntimeOverrideContext overrideContext)
         {
             var plan = new GameFrameXRuntimePlan();

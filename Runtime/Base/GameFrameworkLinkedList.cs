@@ -546,6 +546,7 @@ namespace GameFrameX.Runtime
             /// <remarks>
             /// Gets the current node.
             /// </remarks>
+            [UnityEngine.Scripting.Preserve]
             public T Current
             {
                 get { return m_Enumerator.Current; }
@@ -568,6 +569,7 @@ namespace GameFrameX.Runtime
             /// <remarks>
             /// Disposes the enumerator.
             /// </remarks>
+            [UnityEngine.Scripting.Preserve]
             public void Dispose()
             {
                 m_Enumerator.Dispose();
@@ -580,6 +582,7 @@ namespace GameFrameX.Runtime
             /// Gets the next node.
             /// </remarks>
             /// <returns>返回下一个结点 / Returns the next node</returns>
+            [UnityEngine.Scripting.Preserve]
             public bool MoveNext()
             {
                 return m_Enumerator.MoveNext();

@@ -1,4 +1,3 @@
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -8,7 +7,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Provides component, manager and configuration overrides for the GameFrameX auto runtime.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public interface IGameFrameXRuntimeOverrideProvider
     {
         /// <summary>

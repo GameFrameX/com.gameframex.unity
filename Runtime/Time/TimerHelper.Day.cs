@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -66,7 +65,7 @@ namespace GameFrameX.Runtime
         /// <seealso cref="DateTime.Year"/>
         /// <seealso cref="DateTime.Month"/>
         /// <seealso cref="DateTime.Day"/>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static bool IsSameDay(DateTime timeA, DateTime timeB)
         {
             return timeA.Date.Year == timeB.Date.Year && timeA.Date.Month == timeB.Date.Month && timeA.Date.Day == timeB.Date.Day;
@@ -92,7 +91,7 @@ namespace GameFrameX.Runtime
         /// </code>
         /// </example>
         /// <seealso cref="TimeSpan.TotalDays"/>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static double GetDaysDifference(DateTime startTime, DateTime endTime)
         {
             return (endTime - startTime).TotalDays;
@@ -120,7 +119,7 @@ namespace GameFrameX.Runtime
         /// Console.WriteLine(days); // 0
         /// </code>
         /// </example>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static int GetCrossDays(DateTime startTime, DateTime endTime, int hour = 0)
         {
             if (hour < 0 || hour > 23)
@@ -153,7 +152,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>指定日期零点时间 / The midnight time of the specified date</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static DateTime GetStartTimeOfDay(DateTime date)
         {
             return date.Date;
@@ -170,7 +169,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>指定日期零点时间戳(秒) / The midnight timestamp (seconds) of the specified date</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetStartTimestampOfDay(DateTime date)
         {
             var targetDate = GetStartTimeOfDay(date);
@@ -187,7 +186,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>指定日期零点时间戳(秒) + 时区偏移 / The midnight timestamp (seconds) of the specified date + time zone offset</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetStartTimestampOfDayWithTimeZone(DateTime date)
         {
             return DateTimeToSecondsWithTimeZone(GetStartTimeOfDay(date));
@@ -204,7 +203,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>指定日期23:59:59的时间 / The time at 23:59:59 of the specified date</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static DateTime GetEndTimeOfDay(DateTime date)
         {
             return date.Date.AddDays(1).AddSeconds(-1);
@@ -221,7 +220,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>指定日期23:59:59的时间戳(秒) / The timestamp (seconds) at 23:59:59 of the specified date</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetEndTimestampOfDay(DateTime date)
         {
             var targetDate = GetEndTimeOfDay(date);
@@ -237,7 +236,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>指定日期23:59:59的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 23:59:59 of the specified date + time zone offset</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetEndTimestampOfDayWithTimeZone(DateTime date)
         {
             return DateTimeToSecondsWithTimeZone(GetEndTimeOfDay(date));

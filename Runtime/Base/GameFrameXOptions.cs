@@ -33,7 +33,6 @@
 
 using System;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -69,7 +68,7 @@ namespace GameFrameX.Runtime
     /// Configure must run before scene load; late Configure throws <see cref="GameFrameworkException"/>.
     /// </para>
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class GameFrameXOptions
     {
         private sealed class OptionsEntry
@@ -89,7 +88,7 @@ namespace GameFrameX.Runtime
         /// <typeparam name="TOptions">Options 类型。 / The Options type.</typeparam>
         /// <param name="options">Options 实例。 / The Options instance.</param>
         /// <exception cref="GameFrameworkException">options 为 null，或该 Options 已被模块消费（时机违例，见类备注）。 / options is null, or the Options has already been consumed by its module (timing violation, see class remarks).</exception>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void Configure<TOptions>(TOptions options) where TOptions : class
         {
             if (options == null)
@@ -124,7 +123,7 @@ namespace GameFrameX.Runtime
         /// Called by a module on first instantiation to read its own Options; hit or miss, the entry is marked as consumed
         /// (any later Configure is a timing violation).
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static bool TryGet<TOptions>(out TOptions options) where TOptions : class
         {
             var key = typeof(TOptions);
@@ -166,7 +165,7 @@ namespace GameFrameX.Runtime
         /// 清空全部 Options 状态；对"已注册但从未被任何模块消费"的条目输出 Warning 诊断。
         /// </summary>
         /// <remarks>由 <see cref="GameFrameworkEntry.Shutdown"/> 与 Bootstrap 的 SubsystemRegistration 重置调用；兼容关闭 Domain Reload 的重复 Play。 English: Called by <see cref="GameFrameworkEntry.Shutdown"/> and the Bootstrap SubsystemRegistration reset; compatible with repeated Play when Domain Reload is disabled.</remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void Reset()
         {
             foreach (var pair in s_Entries)

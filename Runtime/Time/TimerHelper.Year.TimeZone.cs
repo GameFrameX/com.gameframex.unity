@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -47,7 +46,7 @@ namespace GameFrameX.Runtime
         /// Uses the <see cref="CurrentTimeZone"/> time zone for calculation.
         /// </remarks>
         /// <returns>今年1月1号00:00:00的时间 / The time at 00:00:00 on January 1st of the current year</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static DateTime GetYearStartTimeWithTimeZone()
         {
             var now = GetNowWithTimeZone();
@@ -62,7 +61,7 @@ namespace GameFrameX.Runtime
         /// Return value = Standard Unix timestamp + time zone offset seconds.
         /// </remarks>
         /// <returns>今年1月1号00:00:00的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 00:00:00 on January 1st of the current year + time zone offset</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetYearStartTimestampWithTimeZone()
         {
             var date = GetYearStartTimeWithTimeZone();
@@ -78,7 +77,7 @@ namespace GameFrameX.Runtime
         /// Uses the <see cref="CurrentTimeZone"/> time zone for calculation.
         /// </remarks>
         /// <returns>今年12月31号23:59:59的时间 / The time at 23:59:59 on December 31st of the current year</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static DateTime GetYearEndTime()
         {
             var now = GetNowWithTimeZone();
@@ -94,7 +93,7 @@ namespace GameFrameX.Runtime
         /// Converts the time to UTC before calculating the timestamp.
         /// </remarks>
         /// <returns>今年12月31号23:59:59的时间戳(秒) / The timestamp (seconds) at 23:59:59 on December 31st of the current year</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetYearEndTimestampWithTimeZone()
         {
             var date = GetYearEndTime();
@@ -110,7 +109,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在年12月31号23:59:59的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 23:59:59 on December 31st of the year + time zone offset</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetEndTimestampOfYearWithTimeZone(DateTime date)
         {
             var endTime = GetEndTimeOfYear(date);
@@ -126,7 +125,7 @@ namespace GameFrameX.Runtime
         /// Uses the <see cref="CurrentTimeZone"/> time zone for calculation.
         /// </remarks>
         /// <returns>明年1月1号00:00:00的时间 / The time at 00:00:00 on January 1st of the next year</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static DateTime GetNextYearStartTimeWithTimeZone()
         {
             return GetYearStartTimeWithTimeZone().AddYears(1);
@@ -141,7 +140,7 @@ namespace GameFrameX.Runtime
         /// Converts the time to UTC before calculating the timestamp.
         /// </remarks>
         /// <returns>明年1月1号00:00:00的时间戳(秒) / The timestamp (seconds) at 00:00:00 on January 1st of the next year</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetNextYearStartTimestamp()
         {
             var date = GetNextYearStartTimeWithTimeZone();
@@ -157,7 +156,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="date">指定日期 / The specified date</param>
         /// <returns>所在年1月1号00:00:00的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 00:00:00 on January 1st of the year + time zone offset</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetStartTimestampOfYearWithTimeZone(DateTime date)
         {
             var startTime = GetStartTimeOfYear(date);
@@ -172,7 +171,7 @@ namespace GameFrameX.Runtime
         /// Return value = Standard Unix timestamp + time zone offset seconds.
         /// </remarks>
         /// <returns>明年1月1号00:00:00的时间戳(秒) + 时区偏移 / The timestamp (seconds) at 00:00:00 on January 1st of the next year + time zone offset</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetNextYearStartTimestampWithTimeZone()
         {
             var startTime = GetNextYearStartTimeWithTimeZone();

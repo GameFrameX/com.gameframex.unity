@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -10,7 +9,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Scan result of the GameFrameX auto runtime.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXRuntimeScanResult
     {
         private readonly List<Type> m_ComponentTypes = new List<Type>();
@@ -27,6 +26,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the discovered component types.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public IList<Type> ComponentTypes
         {
             get { return m_ComponentTypes; }
@@ -38,6 +38,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the discovered manager descriptors.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public IList<GameFrameXRuntimeManagerDescriptor> ManagerDescriptors
         {
             get { return m_ManagerDescriptors; }
@@ -48,6 +49,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the discovered options contributor types.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public IList<Type> OptionsContributorTypes
         {
             get { return m_OptionsContributorTypes; }
@@ -59,6 +61,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the discovered runtime override provider types.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public IList<Type> OverrideProviderTypes
         {
             get { return m_OverrideProviderTypes; }
@@ -70,6 +73,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the scan errors.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public IList<string> Errors
         {
             get { return m_Errors; }

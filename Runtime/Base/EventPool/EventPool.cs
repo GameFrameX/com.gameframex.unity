@@ -34,7 +34,6 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -63,7 +62,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Initializes a new instance of the EventPool class with the specified mode.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public EventPool(EventPoolMode mode)
         {
             _eventHandlers = new GameFrameworkMultiDictionary<string, EventHandler<T>>();
@@ -80,7 +79,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the total count of registered event handlers.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public int EventHandlerCount
         {
             get
@@ -98,7 +97,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the count of queued events waiting to be processed.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public int EventCount
         {
             get { return _events.Count; }
@@ -112,7 +111,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Polls and processes all queued events. This method should be called every frame.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
             while (_events.TryDequeue(out var eventNodeNode))
@@ -128,6 +127,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Shuts down the event pool and releases all resources including event handlers and queued events.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public void Shutdown()
         {
             Clear();
@@ -147,6 +147,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Clears all queued events without removing event handlers.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public void Clear()
         {
             while (_events.TryDequeue(out var node))
@@ -163,6 +164,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the number of handlers registered for a specific event type.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public int Count(string id)
         {
             lock (_lock)
@@ -185,6 +187,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Checks if a specific handler is registered for the given event type.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public bool Check(string id, EventHandler<T> handler)
         {
             if (handler == null)
@@ -207,6 +210,7 @@ namespace GameFrameX.Runtime
         /// Subscribes an event handler to the specified event type.
         /// Behavior depends on the EventPoolMode settings for allowing multiple or duplicate handlers.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public void Subscribe(string id, EventHandler<T> handler)
         {
             if (handler == null)
@@ -244,6 +248,7 @@ namespace GameFrameX.Runtime
         /// Unsubscribes an event handler from the specified event type.
         /// Handles cache node updates to ensure proper iteration during event processing.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public void Unsubscribe(string id, EventHandler<T> handler)
         {
             if (handler == null)
@@ -289,6 +294,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Sets a default handler that will be called when an event has no registered handlers.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public void SetDefaultHandler(EventHandler<T> handler)
         {
             _defaultHandler = handler;
@@ -303,7 +309,7 @@ namespace GameFrameX.Runtime
         /// Fires an event in a thread-safe manner. The event will be queued and processed in the next frame's Update call.
         /// This ensures that event handlers are always invoked on the main thread.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Fire(object sender, T e)
         {
             if (e == null)
@@ -324,6 +330,7 @@ namespace GameFrameX.Runtime
         /// Fires an event immediately in synchronous mode. This is not thread-safe and events are dispatched immediately.
         /// Use with caution when not on the main thread.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public void FireNow(object sender, T e)
         {
             if (e == null)

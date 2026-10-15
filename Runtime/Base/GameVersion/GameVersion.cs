@@ -51,6 +51,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Returns the current version of the GameFrameX framework.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static string GameFrameworkVersion
         {
             get { return GameFrameworkVersionString; }
@@ -62,6 +63,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Returns the game version from the configured version helper.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static string AppVersion
         {
             get
@@ -82,6 +84,7 @@ namespace GameFrameX.Runtime
         /// Sets the version helper instance that provides the game version information.
         /// </remarks>
         /// <param name="versionHelper">要设置的版本号辅助器。 / The version helper instance to set.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void SetVersionHelper(IVersionHelper versionHelper)
         {
             GameFrameworkGuard.NotNull(versionHelper, nameof(versionHelper));

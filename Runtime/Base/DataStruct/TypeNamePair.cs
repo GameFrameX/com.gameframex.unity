@@ -33,7 +33,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -57,7 +56,7 @@ namespace GameFrameX.Runtime
         /// Initializes a new instance of the TypeNamePair struct.
         /// </remarks>
         /// <param name="type">类型。 / The type.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public TypeNamePair(Type type) : this(type, string.Empty)
         {
         }
@@ -70,7 +69,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="type">类型。 / The type.</param>
         /// <param name="name">名称。 / The name.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public TypeNamePair(Type type, string name)
         {
             if (type == null)
@@ -88,7 +87,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the type.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public Type Type
         {
             get { return m_Type; }
@@ -100,7 +99,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the name.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public string Name
         {
             get { return m_Name; }
@@ -157,6 +156,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="value">要比较的对象。 / The TypeNamePair to compare with.</param>
         /// <returns>被比较的对象是否与自身相等。 / True if the specified TypeNamePair is equal to the current instance; otherwise, false.</returns>
+        [UnityEngine.Scripting.Preserve]
         public bool Equals(TypeNamePair value)
         {
             return m_Type == value.m_Type && m_Name == value.m_Name;

@@ -80,6 +80,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="self">源 Vector3 对象 / The source Vector3 object.</param>
         /// <returns>包含源 Vector3 的 x、y、z 分量且 w 分量为 0 的新 Vector4 对象 / A new Vector4 containing the source Vector3's x, y, z components with w set to 0.</returns>
+        [UnityEngine.Scripting.Preserve]
         public static Vector4 ToVector4(this Vector3 self)
         {
             return new Vector4(self.x, self.y, self.z, 0);

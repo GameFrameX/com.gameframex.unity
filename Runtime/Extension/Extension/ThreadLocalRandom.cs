@@ -25,6 +25,7 @@ namespace GameFrameX.Runtime
         /// 获取当前线程可用的随机数生成器实例。
         /// Gets the Random instance available to the current thread.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static Random Current
         {
             get { return _rng.Value; }

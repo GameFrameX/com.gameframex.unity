@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -10,7 +9,7 @@ namespace GameFrameX.Runtime
     /// Declares a runtime dependency of an auto component.
     /// </remarks>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXComponentDependencyAttribute : Attribute
     {
         /// <summary>
@@ -20,6 +19,7 @@ namespace GameFrameX.Runtime
         /// Initializes the dependency declaration.
         /// </remarks>
         /// <param name="dependencyType">必须先挂载的组件类型。 / The component type that must be mounted first.</param>
+        [UnityEngine.Scripting.Preserve]
         public GameFrameXComponentDependencyAttribute(Type dependencyType)
         {
             DependencyType = dependencyType;
@@ -31,6 +31,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the component type that must be mounted first.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public Type DependencyType { get; private set; }
     }
 }

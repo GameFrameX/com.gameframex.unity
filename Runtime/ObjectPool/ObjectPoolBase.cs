@@ -33,7 +33,6 @@
 
 using System;
 using GameFrameX.Runtime;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.ObjectPool
 {
@@ -43,7 +42,7 @@ namespace GameFrameX.ObjectPool
     /// <remarks>
     /// Base class of object pools.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public abstract class ObjectPoolBase
     {
         private readonly string m_Name;
@@ -54,7 +53,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Initializes a new instance of the object pool base class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public ObjectPoolBase()
             : this(null)
         {
@@ -67,7 +66,7 @@ namespace GameFrameX.ObjectPool
         /// Initializes a new instance of the object pool base class.
         /// </remarks>
         /// <param name="name">对象池名称。 / Name of the object pool.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public ObjectPoolBase(string name)
         {
             m_Name = name ?? string.Empty;
@@ -79,7 +78,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the name of the object pool.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public string Name
         {
             get { return m_Name; }
@@ -91,7 +90,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the full name of the object pool.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public string FullName
         {
             get { return new TypeNamePair(ObjectType, m_Name).ToString(); }
@@ -103,7 +102,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the type of objects in the pool.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract Type ObjectType { get; }
 
         /// <summary>
@@ -112,7 +111,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the number of objects in the object pool.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract int Count { get; }
 
         /// <summary>
@@ -121,7 +120,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the number of objects in the pool that can be released.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract int CanReleaseCount { get; }
 
         /// <summary>
@@ -130,7 +129,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets whether an object can be spawned multiple times.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract bool AllowMultiSpawn { get; }
 
         /// <summary>
@@ -139,7 +138,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets or sets the interval in seconds at which releasable objects are automatically released.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract float AutoReleaseInterval { get; set; }
 
         /// <summary>
@@ -148,7 +147,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets or sets the capacity of the object pool.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract int Capacity { get; set; }
 
         /// <summary>
@@ -157,7 +156,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets or sets the expire time in seconds of objects in the pool.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract float ExpireTime { get; set; }
 
         /// <summary>
@@ -166,7 +165,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets or sets the priority of the object pool.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract int Priority { get; set; }
 
         /// <summary>
@@ -175,7 +174,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Releases the releasable objects in the object pool.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract void Release();
 
         /// <summary>
@@ -185,7 +184,7 @@ namespace GameFrameX.ObjectPool
         /// Releases the releasable objects in the object pool.
         /// </remarks>
         /// <param name="toReleaseCount">尝试释放对象数量。 / Number of objects to try to release.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract void Release(int toReleaseCount);
 
         /// <summary>
@@ -194,7 +193,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Releases all unused objects in the object pool.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract void ReleaseAllUnused();
 
         /// <summary>
@@ -204,7 +203,7 @@ namespace GameFrameX.ObjectPool
         /// Gets the information of all objects.
         /// </remarks>
         /// <returns>所有对象信息。 / Information of all objects.</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract ObjectInfo[] GetAllObjectInfos();
 
         internal abstract void Update(float elapseSeconds, float realElapseSeconds);

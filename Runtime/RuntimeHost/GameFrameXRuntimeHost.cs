@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -18,7 +17,7 @@ namespace GameFrameX.Runtime
     /// register, drive, or shut the session down, so component ownership stays unique.
     /// </para>
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class GameFrameXRuntimeHost
     {
         private const string HostName = "[GameFrameX]";
@@ -37,6 +36,7 @@ namespace GameFrameX.Runtime
         /// 场景内组件的 <c>Awake</c> 据此判定自身是否为残留入口：为真即自我抑制。
         /// Gets whether auto-injection ownership has been claimed (set by the bootstrap before scene load, cleared when the host starts).
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsAutoInjectionClaimed
         {
             get { return s_AutoInjectionClaimed; }
@@ -48,6 +48,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the most recent startup plan.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static GameFrameXRuntimePlan LastPlan
         {
             get { return s_LastPlan; }
@@ -65,7 +66,7 @@ namespace GameFrameX.Runtime
         /// as a scene leftover and suppressed. Business code must not call this; it is public for testability only.
         /// </para>
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void ClaimAutoInjection()
         {
             s_AutoInjectionClaimed = true;
@@ -77,6 +78,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Resets the auto runtime host state.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static void Reset()
         {
             s_Host = null;
@@ -95,6 +97,7 @@ namespace GameFrameX.Runtime
         /// English: Idempotent — repeated calls only append a diagnostic. The claim is cleared before mounting so the
         /// components the host adds itself register normally.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static void EnsureStarted()
         {
             if (s_Started)
@@ -164,6 +167,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="nodePath">分组节点路径（相对于 Host，<c>/</c> 分层，如 <c>UI/Keyboard</c>）。 / The group node path relative to the host (e.g. <c>UI/Keyboard</c>).</param>
         /// <returns>分组节点 Transform；Host 未启动或路径无有效段时为 null。 / The group node transform, or null when the host has not started or the path has no segment.</returns>
+        [UnityEngine.Scripting.Preserve]
         public static Transform GetOrCreateHostNode(string nodePath)
         {
             if (string.IsNullOrEmpty(nodePath) || s_Host == null)

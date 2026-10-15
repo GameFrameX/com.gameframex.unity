@@ -31,8 +31,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using UnityEngine.Scripting;
-
 namespace GameFrameX.Runtime
 {
     public static partial class TimerHelper
@@ -49,7 +47,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="timestamp">Unix时间戳（秒）。应为UTC时间戳 / Unix timestamp (seconds). Should be a UTC timestamp</param>
         /// <returns>经过的秒数。如果timestamp在未来，返回负数 / The number of seconds elapsed. Returns a negative number if timestamp is in the future</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetElapsedSecondsWithUtc(long timestamp)
         {
             var currentTimestamp = UnixTimeSeconds();
@@ -68,7 +66,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="timestampMs">Unix时间戳（毫秒）。应为UTC时间戳 / Unix timestamp (milliseconds). Should be a UTC timestamp</param>
         /// <returns>经过的毫秒数。如果timestampMs在未来，返回负数 / The number of milliseconds elapsed. Returns a negative number if timestampMs is in the future</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long GetElapsedMillisecondsWithUtc(long timestampMs)
         {
             var currentTimestamp = UnixTimeMilliseconds();

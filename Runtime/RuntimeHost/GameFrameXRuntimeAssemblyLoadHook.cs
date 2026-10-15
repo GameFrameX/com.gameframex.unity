@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -12,7 +11,7 @@ namespace GameFrameX.Runtime
     /// <see cref="AppDomain.AssemblyLoad"/> and incrementally registers manager descriptors from newly
     /// loaded assemblies (Editor / Tests assemblies are skipped by the same gate as the full scan).
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class GameFrameXRuntimeAssemblyLoadHook
     {
         private static readonly AssemblyLoadEventHandler Handler = OnAssemblyLoad;
@@ -24,9 +23,10 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Whether the AssemblyLoad event is currently subscribed.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static bool IsSubscribed
         {
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             get { return s_Subscribed; }
         }
 
@@ -38,7 +38,7 @@ namespace GameFrameX.Runtime
         /// Ensures the AssemblyLoad subscription is established (idempotent): repeated calls never double-subscribe.
         /// Invoked by the Bootstrap SubsystemRegistration reset after unsubscribing (compatible with repeated Play with Domain Reload disabled).
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void EnsureSubscribed()
         {
             if (s_Subscribed)
@@ -56,7 +56,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Unsubscribes from the AssemblyLoad event (idempotent). Used by tests and the SubsystemRegistration reset path.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void Unsubscribe()
         {
             if (!s_Subscribed)

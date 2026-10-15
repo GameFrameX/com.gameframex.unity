@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -45,7 +44,7 @@ namespace GameFrameX.Runtime
         /// Server-to-local time delta in seconds. Server timestamp - local UTC timestamp.
         /// </remarks>
         /// <value>服务器时间差（秒） / Server time delta in seconds</value>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long TimeOffsetSeconds { get; private set; }
 
         /// <summary>
@@ -55,7 +54,7 @@ namespace GameFrameX.Runtime
         /// Server-to-local time delta in milliseconds. Server timestamp - local UTC timestamp.
         /// </remarks>
         /// <value>服务器时间差（毫秒） / Server time delta in milliseconds</value>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long TimeOffsetMilliseconds { get; private set; }
 
         /// <summary>
@@ -66,7 +65,7 @@ namespace GameFrameX.Runtime
         /// Call this on each heartbeat to keep the client in sync with the server.
         /// </remarks>
         /// <param name="serverTimestampSeconds">服务器当前秒级时间戳 / Server current second-level timestamp</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void SyncServerTimeSeconds(long serverTimestampSeconds)
         {
             var localSeconds = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
@@ -82,7 +81,7 @@ namespace GameFrameX.Runtime
         /// Call this on each heartbeat to keep the client in sync with the server.
         /// </remarks>
         /// <param name="serverTimestampMilliseconds">服务器当前毫秒级时间戳 / Server current millisecond-level timestamp</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void SyncServerTimeMilliseconds(long serverTimestampMilliseconds)
         {
             var localMilliseconds = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds();
@@ -99,7 +98,7 @@ namespace GameFrameX.Runtime
         /// Call <see cref="SyncServerTimeSeconds"/> first to establish the delta.
         /// </remarks>
         /// <returns>服务器当前秒级时间戳 / Server current second-level timestamp</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long ServerNowSeconds()
         {
             return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds() + TimeOffsetSeconds;
@@ -114,7 +113,7 @@ namespace GameFrameX.Runtime
         /// Call <see cref="SyncServerTimeMilliseconds"/> first to establish the delta.
         /// </remarks>
         /// <returns>服务器当前毫秒级时间戳 / Server current millisecond-level timestamp</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static long ServerNowMilliseconds()
         {
             return new DateTimeOffset(DateTime.UtcNow).ToUnixTimeMilliseconds() + TimeOffsetMilliseconds;
@@ -128,7 +127,7 @@ namespace GameFrameX.Runtime
         /// This method resets both second-level and millisecond-level offsets to zero,
         /// restoring time calculations to the local UTC time.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void ResetTimeOffset()
         {
             TimeOffsetSeconds = 0;

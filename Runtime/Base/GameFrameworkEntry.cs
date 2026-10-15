@@ -58,6 +58,7 @@ namespace GameFrameX.Runtime
         /// so external caches (such as GameApp static accessors) can detect that the module instance set has been rebuilt
         /// and re-resolve, keeping behavior consistent with the <see cref="GetModule{T}"/> path.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static int SessionVersion { get; private set; }
 
         /// <summary>
@@ -68,6 +69,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位 / Logical elapsed time in seconds</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位 / Real elapsed time in seconds</param>
+        [UnityEngine.Scripting.Preserve]
         public static void Update(float elapseSeconds, float realElapseSeconds)
         {
             foreach (var module in s_GameFrameworkModules)
@@ -150,7 +152,7 @@ namespace GameFrameX.Runtime
 
             if (!interfaceType.FullName.StartsWith("GameFrameX.", StringComparison.Ordinal))
             {
-                throw new GameFrameworkException(Utility.Text.Format("You must get a Game Framework module, but '{0}' is not.", interfaceType.FullName));
+                throw new GameFrameworkException(Utility.Text.Format("You must get a GameFrameX module, but '{0}' is not.", interfaceType.FullName));
             }
 
             if (!s_ModuleTypeMap.TryGetValue(interfaceType, out Type moduleType))
@@ -159,7 +161,7 @@ namespace GameFrameX.Runtime
                 moduleType = Type.GetType(moduleName);
                 if (moduleType == null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not find Game Framework module type '{0}'.", moduleName));
+                    throw new GameFrameworkException(Utility.Text.Format("Can not find GameFrameX module type '{0}'.", moduleName));
                 }
             }
 

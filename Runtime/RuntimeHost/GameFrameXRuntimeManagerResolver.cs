@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -10,7 +9,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Resolves the runtime implementation for a manager interface.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public static class GameFrameXRuntimeManagerResolver
     {
         private static readonly Dictionary<Type, List<GameFrameXRuntimeManagerDescriptor>> ManagerDescriptors = new Dictionary<Type, List<GameFrameXRuntimeManagerDescriptor>>(32);
@@ -27,6 +26,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Resets the manager resolver.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public static void Reset()
         {
             ManagerDescriptors.Clear();
@@ -43,6 +43,7 @@ namespace GameFrameX.Runtime
         /// Registers manager descriptors.
         /// </remarks>
         /// <param name="descriptors">Manager 描述列表。 / The list of manager descriptors.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void RegisterDescriptors(IEnumerable<GameFrameXRuntimeManagerDescriptor> descriptors)
         {
             RegisterDescriptors(descriptors, true);
@@ -96,7 +97,7 @@ namespace GameFrameX.Runtime
         /// takes effect once); Editor / Tests assemblies are skipped by the same gate as the full scan.
         /// </remarks>
         /// <param name="assembly">迟加载的程序集。 / The late-loaded assembly.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static void RegisterAssembly(System.Reflection.Assembly assembly)
         {
             RegisterAssembly(assembly, true);
@@ -154,6 +155,7 @@ namespace GameFrameX.Runtime
         /// Registers manager runtime overrides.
         /// </remarks>
         /// <param name="overrides">Manager 运行时覆盖列表。 / The list of manager runtime overrides.</param>
+        [UnityEngine.Scripting.Preserve]
         public static void RegisterOverrides(IEnumerable<GameFrameXManagerRuntimeOverride> overrides)
         {
             if (overrides == null)
@@ -194,6 +196,7 @@ namespace GameFrameX.Runtime
         /// <param name="interfaceType">Manager 接口类型。 / The manager interface type.</param>
         /// <param name="configuredTypeName">显式配置的实现类型名。 / The explicitly configured implementation type name.</param>
         /// <returns>Manager 实现类型。 / The manager implementation type.</returns>
+        [UnityEngine.Scripting.Preserve]
         public static Type Resolve(Type interfaceType, string configuredTypeName)
         {
             if (interfaceType == null)

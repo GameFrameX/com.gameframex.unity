@@ -31,8 +31,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using UnityEngine.Scripting;
-
 namespace GameFrameX.Runtime
 {
     public static partial class GameFrameworkLog
@@ -54,7 +52,7 @@ namespace GameFrameX.Runtime
             /// </remarks>
             /// <param name="level">游戏框架日志等级 / Game framework log level.</param>
             /// <param name="message">日志内容 / Log message content.</param>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             void Log(GameFrameworkLogLevel level, object message);
         }
     }

@@ -52,6 +52,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="self">源 Vector4 对象 / The source Vector4 object.</param>
         /// <returns>包含源 Vector4 的 x 和 y 分量的新 Vector2 对象 / A new Vector2 containing the source Vector4's x and y components.</returns>
+        [UnityEngine.Scripting.Preserve]
         public static Vector2 ToVector2(this Vector4 self)
         {
             return new Vector2(self.x, self.y);
@@ -65,6 +66,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="self">源 Vector4 对象 / The source Vector4 object.</param>
         /// <returns>包含源 Vector4 的 x、y 和 z 分量的新 Vector3 对象 / A new Vector3 containing the source Vector4's x, y and z components.</returns>
+        [UnityEngine.Scripting.Preserve]
         public static Vector3 ToVector3(this Vector4 self)
         {
             return new Vector3(self.x, self.y, self.z);

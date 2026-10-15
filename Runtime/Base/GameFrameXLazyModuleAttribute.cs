@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -53,7 +52,7 @@ namespace GameFrameX.Runtime
     /// </para>
     /// </remarks>
     [AttributeUsage(AttributeTargets.Class)]
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXLazyModuleAttribute : Attribute
     {
     }

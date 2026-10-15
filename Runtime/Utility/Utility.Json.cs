@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -55,7 +54,7 @@ namespace GameFrameX.Runtime
             /// Sets the JSON helper.
             /// </remarks>
             /// <param name="jsonHelper">要设置的 JSON 辅助器 / The JSON helper to set</param>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static void SetJsonHelper(IJsonHelper jsonHelper)
             {
                 s_JsonHelper = jsonHelper;
@@ -69,7 +68,7 @@ namespace GameFrameX.Runtime
             /// </remarks>
             /// <param name="obj">要序列化的对象。 / The object to serialize.</param>
             /// <returns>序列化后的 JSON 字符串。 / The serialized JSON string.</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static string ToJson(object obj)
             {
                 if (s_JsonHelper == null)
@@ -101,7 +100,7 @@ namespace GameFrameX.Runtime
             /// <typeparam name="T">对象类型。 / The type of the object.</typeparam>
             /// <param name="json">要反序列化的 JSON 字符串。 / The JSON string to deserialize.</param>
             /// <returns>反序列化后的对象。 / The deserialized object.</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static T ToObject<T>(string json)
             {
                 if (s_JsonHelper == null)
@@ -133,7 +132,7 @@ namespace GameFrameX.Runtime
             /// <param name="objectType">对象类型。 / The type of the object.</param>
             /// <param name="json">要反序列化的 JSON 字符串。 / The JSON string to deserialize.</param>
             /// <returns>反序列化后的对象。 / The deserialized object.</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static object ToObject(Type objectType, string json)
             {
                 if (s_JsonHelper == null)

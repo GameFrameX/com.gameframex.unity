@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -10,7 +9,7 @@ namespace GameFrameX.Runtime
     /// Marks a component so the GameFrameX auto runtime can discover and mount it.
     /// </remarks>
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXAutoComponentAttribute : Attribute
     {
         /// <summary>
@@ -21,6 +20,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="order">启动顺序，数值越小越早挂载。 / Startup order; smaller values are mounted earlier.</param>
         /// <param name="dependencies">必须先挂载的组件类型。 / Component types that must be mounted first.</param>
+        [UnityEngine.Scripting.Preserve]
         public GameFrameXAutoComponentAttribute(int order = 0, params Type[] dependencies)
         {
             Order = order;
@@ -34,6 +34,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the startup order; smaller values are mounted earlier.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public int Order { get; private set; }
 
         /// <summary>
@@ -42,6 +43,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets the dependent component types.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public Type[] Dependencies { get; private set; }
 
         /// <summary>
@@ -50,6 +52,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Gets or sets whether the component is enabled by default.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public bool EnabledByDefault { get; set; }
     }
 }

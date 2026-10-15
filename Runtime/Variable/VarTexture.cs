@@ -32,7 +32,6 @@
 // ==========================================================================================
 
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -42,7 +41,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// UnityEngine.Texture variable class.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarTexture : Variable<Texture>
     {
         /// <summary>
@@ -51,7 +50,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Initializes a new instance of the UnityEngine.Texture variable class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public VarTexture()
         {
         }
@@ -63,7 +62,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from UnityEngine.Texture to UnityEngine.Texture variable class.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator VarTexture(Texture value)
         {
             VarTexture varValue = ReferencePool.Acquire<VarTexture>();
@@ -78,7 +77,7 @@ namespace GameFrameX.Runtime
         /// Implicit conversion from UnityEngine.Texture variable class to UnityEngine.Texture.
         /// </remarks>
         /// <param name="value">值 / Value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static implicit operator Texture(VarTexture value)
         {
             return value.Value;

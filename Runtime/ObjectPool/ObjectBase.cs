@@ -33,7 +33,6 @@
 
 using System;
 using GameFrameX.Runtime;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.ObjectPool
 {
@@ -43,7 +42,7 @@ namespace GameFrameX.ObjectPool
     /// <remarks>
     /// Base class of pool objects.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public abstract class ObjectBase : IReference
     {
         private string m_Name;
@@ -58,7 +57,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Initializes a new instance of the object base class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public ObjectBase()
         {
             m_Name = null;
@@ -74,7 +73,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the name of the object.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public virtual string Name
         {
             get { return m_Name; }
@@ -87,7 +86,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the target object.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public object Target
         {
             get { return m_Target; }
@@ -99,7 +98,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets or sets whether the object is locked.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public bool Locked
         {
             get { return m_Locked; }
@@ -112,7 +111,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets or sets the priority of the object.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public int Priority
         {
             get { return m_Priority; }
@@ -125,7 +124,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the custom release check flag.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public virtual bool CustomCanReleaseFlag
         {
             get { return true; }
@@ -137,7 +136,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Gets the last use time of the object.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public DateTime LastUseTime
         {
             get { return m_LastUseTime; }
@@ -151,7 +150,7 @@ namespace GameFrameX.ObjectPool
         /// Initializes the object base class.
         /// </remarks>
         /// <param name="target">对象。 / The target object.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected void Initialize(object target)
         {
             Initialize(null, target, false, 0);
@@ -165,7 +164,7 @@ namespace GameFrameX.ObjectPool
         /// </remarks>
         /// <param name="name">对象名称。 / Object name.</param>
         /// <param name="target">对象。 / The target object.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected void Initialize(string name, object target)
         {
             Initialize(name, target, false, 0);
@@ -180,7 +179,7 @@ namespace GameFrameX.ObjectPool
         /// <param name="name">对象名称。 / Object name.</param>
         /// <param name="target">对象。 / The target object.</param>
         /// <param name="locked">对象是否被加锁。 / Whether the object is locked.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected void Initialize(string name, object target, bool locked)
         {
             Initialize(name, target, locked, 0);
@@ -195,7 +194,7 @@ namespace GameFrameX.ObjectPool
         /// <param name="name">对象名称。 / Object name.</param>
         /// <param name="target">对象。 / The target object.</param>
         /// <param name="priority">对象的优先级。 / Priority of the object.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected void Initialize(string name, object target, int priority)
         {
             Initialize(name, target, false, priority);
@@ -211,7 +210,7 @@ namespace GameFrameX.ObjectPool
         /// <param name="target">对象。 / The target object.</param>
         /// <param name="locked">对象是否被加锁。 / Whether the object is locked.</param>
         /// <param name="priority">对象的优先级。 / Priority of the object.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected void Initialize(string name, object target, bool locked, int priority)
         {
             if (target == null)
@@ -232,7 +231,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Clears the object base class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public virtual void Clear()
         {
             m_Name = null;
@@ -248,7 +247,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Event triggered when the object is spawned.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected internal virtual void OnSpawn()
         {
         }
@@ -259,7 +258,7 @@ namespace GameFrameX.ObjectPool
         /// <remarks>
         /// Event triggered when the object is unspawned.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected internal virtual void OnUnspawn()
         {
         }
@@ -271,7 +270,7 @@ namespace GameFrameX.ObjectPool
         /// Releases the object.
         /// </remarks>
         /// <param name="isShutdown">是否是关闭对象池时触发。 / Whether triggered when the object pool is shutting down.</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected internal abstract void Release(bool isShutdown);
     }
 }

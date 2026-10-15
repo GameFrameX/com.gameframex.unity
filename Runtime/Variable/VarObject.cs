@@ -31,8 +31,6 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
-using UnityEngine.Scripting;
-
 namespace GameFrameX.Runtime
 {
     /// <summary>
@@ -41,7 +39,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// System.Object variable class.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class VarObject : Variable<object>
     {
         /// <summary>
@@ -50,7 +48,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Initializes a new instance of the System.Object variable class.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public VarObject()
         {
         }

@@ -33,7 +33,6 @@
 
 using System;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -61,7 +60,7 @@ namespace GameFrameX.Runtime
             /// Gets the currently loaded assemblies (live fetch from the AppDomain, authoritative since C29).
             /// </remarks>
             /// <returns>已加载的程序集 / The loaded assemblies</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static System.Reflection.Assembly[] GetAssemblies()
             {
                 return AppDomain.CurrentDomain.GetAssemblies();
@@ -74,7 +73,7 @@ namespace GameFrameX.Runtime
             /// Gets all types in the currently loaded assemblies (live fetch, authoritative since C29).
             /// </remarks>
             /// <returns>当前已加载的程序集中的所有类型 / All types in the currently loaded assemblies</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static Type[] GetTypes()
             {
                 var results = new List<Type>(256);
@@ -93,7 +92,7 @@ namespace GameFrameX.Runtime
             /// Gets all types in the currently loaded assemblies (live fetch, authoritative since C29).
             /// </remarks>
             /// <param name="results">当前已加载的程序集中的所有类型 / All types in the currently loaded assemblies</param>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static void GetTypes(List<Type> results)
             {
                 if (results == null)
@@ -116,7 +115,7 @@ namespace GameFrameX.Runtime
             /// </remarks>
             /// <param name="typeName">要获取的类型名 / The type name to get</param>
             /// <returns>当前已加载的程序集中的指定类型 / The specified type from the loaded assemblies</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static Type GetType(string typeName)
             {
                 if (string.IsNullOrEmpty(typeName))
@@ -160,7 +159,7 @@ namespace GameFrameX.Runtime
             /// </remarks>
             /// <param name="type">指定类型 / The specified type</param>
             /// <returns>子类全名列表 / The list of subclass full names</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static List<string> GetRuntimeTypeNames(Type type)
             {
                 var types = GetTypes();

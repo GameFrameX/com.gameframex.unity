@@ -33,7 +33,6 @@
 
 using System;
 using System.IO;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -45,7 +44,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Verification related utility functions.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public static partial class Verifier
         {
             private const int CachedBytesLength = 0x1000;
@@ -59,7 +58,7 @@ namespace GameFrameX.Runtime
             /// </remarks>
             /// <param name="bytes">要计算的二进制流 / The byte array to compute</param>
             /// <returns>计算后的 CRC64 / The computed CRC64</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static ulong GetCrc64(byte[] bytes)
             {
                 var algorithm = new Crc64();
@@ -75,7 +74,7 @@ namespace GameFrameX.Runtime
             /// </remarks>
             /// <param name="stream">要计算的流 / The stream to compute</param>
             /// <returns>计算后的 CRC64 / The computed CRC64</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static ulong GetCrc64(Stream stream)
             {
                 var algorithm = new Crc64();
@@ -91,7 +90,7 @@ namespace GameFrameX.Runtime
             /// </remarks>
             /// <param name="bytes">指定的二进制流 / The specified byte array</param>
             /// <returns>计算后的 CRC32 / The computed CRC32</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static int GetCrc32(byte[] bytes)
             {
                 if (bytes == null)
@@ -112,7 +111,7 @@ namespace GameFrameX.Runtime
             /// <param name="offset">二进制流的偏移 / The offset of the byte array</param>
             /// <param name="length">二进制流的长度 / The length of the byte array</param>
             /// <returns>计算后的 CRC32 / The computed CRC32</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static int GetCrc32(byte[] bytes, int offset, int length)
             {
                 if (bytes == null)
@@ -139,7 +138,7 @@ namespace GameFrameX.Runtime
             /// </remarks>
             /// <param name="stream">指定的二进制流 / The specified stream</param>
             /// <returns>计算后的 CRC32 / The computed CRC32</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static int GetCrc32(Stream stream)
             {
                 if (stream == null)
@@ -174,7 +173,7 @@ namespace GameFrameX.Runtime
             /// </remarks>
             /// <param name="crc32">CRC32 数值 / The CRC32 value</param>
             /// <returns>CRC32 数值的二进制数组 / The binary array of the CRC32 value</returns>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static byte[] GetCrc32Bytes(int crc32)
             {
                 return new byte[] { (byte)((crc32 >> 24) & 0xff), (byte)((crc32 >> 16) & 0xff), (byte)((crc32 >> 8) & 0xff), (byte)(crc32 & 0xff) };
@@ -188,7 +187,7 @@ namespace GameFrameX.Runtime
             /// </remarks>
             /// <param name="crc32">CRC32 数值 / The CRC32 value</param>
             /// <param name="bytes">要存放结果的数组 / The array to store the result</param>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static void GetCrc32Bytes(int crc32, byte[] bytes)
             {
                 GetCrc32Bytes(crc32, bytes, 0);
@@ -203,7 +202,7 @@ namespace GameFrameX.Runtime
             /// <param name="crc32">CRC32 数值 / The CRC32 value</param>
             /// <param name="bytes">要存放结果的数组 / The array to store the result</param>
             /// <param name="offset">CRC32 数值的二进制数组在结果数组内的起始位置 / The starting position in the result array</param>
-            [Preserve]
+            [UnityEngine.Scripting.Preserve]
             public static void GetCrc32Bytes(int crc32, byte[] bytes, int offset)
             {
                 if (bytes == null)

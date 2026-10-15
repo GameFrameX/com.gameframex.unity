@@ -50,6 +50,7 @@ namespace GameFrameX.Runtime
         /// <remarks>
         /// Default constructor for the Variable class.
         /// </remarks>
+        [UnityEngine.Scripting.Preserve]
         public Variable()
         {
         }

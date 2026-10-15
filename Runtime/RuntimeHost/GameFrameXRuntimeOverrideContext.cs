@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
@@ -10,7 +9,7 @@ namespace GameFrameX.Runtime
     /// <remarks>
     /// Override context for the auto runtime.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class GameFrameXRuntimeOverrideContext
     {
         private readonly Dictionary<Type, GameFrameXComponentRuntimeConfig> m_ComponentConfigs = new Dictionary<Type, GameFrameXComponentRuntimeConfig>(32);
@@ -25,6 +24,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="componentType">组件类型。 / The component type.</param>
         /// <param name="enabled">是否启用。 / Whether the component is enabled.</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetComponentEnabled(Type componentType, bool enabled)
         {
             GetOrCreateComponentConfig(componentType).Enabled = enabled;
@@ -38,6 +38,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="componentType">组件类型。 / The component type.</param>
         /// <param name="order">启动顺序。 / The startup order.</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetComponentOrder(Type componentType, int order)
         {
             GetOrCreateComponentConfig(componentType).Order = order;
@@ -51,6 +52,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="componentType">组件类型。 / The component type.</param>
         /// <param name="managerImplementationType">Manager 实现类型。 / The manager implementation type.</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetComponentManager(Type componentType, Type managerImplementationType)
         {
             GetOrCreateComponentConfig(componentType).ManagerImplementationType = managerImplementationType;
@@ -66,6 +68,7 @@ namespace GameFrameX.Runtime
         /// <param name="interfaceType">Manager 接口类型。 / The manager interface type.</param>
         /// <param name="implementationType">Manager 实现类型。 / The manager implementation type.</param>
         /// <param name="priority">覆盖优先级。 / The override priority.</param>
+        [UnityEngine.Scripting.Preserve]
         public void SetManagerImplementation(Type interfaceType, Type implementationType, int priority = 0)
         {
             m_ManagerOverrides.Add(new GameFrameXManagerRuntimeOverride(interfaceType, implementationType, priority));
@@ -79,6 +82,7 @@ namespace GameFrameX.Runtime
         /// </remarks>
         /// <param name="componentType">组件类型。 / The component type.</param>
         /// <returns>组件运行时配置。 / The component runtime configuration.</returns>
+        [UnityEngine.Scripting.Preserve]
         public GameFrameXComponentRuntimeConfig GetOrCreateComponentConfig(Type componentType)
         {
             if (componentType == null)
@@ -102,6 +106,7 @@ namespace GameFrameX.Runtime
         /// Gets all component configurations.
         /// </remarks>
         /// <returns>组件配置映射。 / The mapping of component configurations.</returns>
+        [UnityEngine.Scripting.Preserve]
         public IReadOnlyDictionary<Type, GameFrameXComponentRuntimeConfig> GetComponentConfigs()
         {
             return m_ComponentConfigs;
@@ -114,6 +119,7 @@ namespace GameFrameX.Runtime
         /// Gets all manager overrides.
         /// </remarks>
         /// <returns>Manager 覆盖列表。 / The list of manager overrides.</returns>
+        [UnityEngine.Scripting.Preserve]
         public IReadOnlyList<GameFrameXManagerRuntimeOverride> GetManagerOverrides()
         {
             return m_ManagerOverrides;
