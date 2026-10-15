@@ -31,6 +31,7 @@
 ### Bug Fixes
 
 * **editor:** `ComponentTypeComponentInspector` 在子类未提供类型列表（`ComponentTypeNames` 为空，如 C9 后配置收敛到 Options 的组件 Inspector）时跳过 `ComponentType` 下拉绘制，修复 `EditorGUIUtility.TempContent` NullReferenceException
+* **runtime:** 移除 `GameFrameX.Runtime.asmdef` 中微信 / 抖音小游戏的 `versionDefines` 自动定义（`com.qq.weixin.minigame` → `ENABLE_WECHAT_MINI_GAME`、`com.bytedance.starksdk` → `ENABLE_DOUYIN_MINI_GAME`）：小游戏宏统一由 `GameFrameX/Scripting Define Symbols` 菜单（互斥机制）启用；修复多渠道工程同时安装微信 + 抖音 SDK 时两宏同时生效、`ApplicationHelper.IsWebGLWeChatMiniGame` / `IsWebGLDouYinMiniGame` 同为 `true` 且平台名恒返回 `WeChatMiniGame` 的问题
 
 ## [2.5.4](https://github.com/gameframex/com.gameframex.unity/compare/2.5.3...2.5.4) (2026-09-13)
 
