@@ -1,7 +1,9 @@
 using System.Reflection;
+using System.Text.RegularExpressions;
 using GameFrameX.Runtime;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 namespace GameFrameX.Tests
 {
@@ -21,7 +23,6 @@ namespace GameFrameX.Tests
 
             GameEntry.Shutdown(ShutdownType.None);
             GameFrameworkEntry.Shutdown();
-            GameFrameXRuntimeModeResolver.Reset();
             GameFrameXRuntimeHost.Reset();
             GameFrameXRuntimeManagerResolver.Reset();
         }
@@ -117,62 +118,47 @@ namespace GameFrameX.Tests
         }
 
         [Test]
-        public void Resolve_NoBaseComponent_UsesAutoPackageMode()
+        public void Awake_WhenAutoInjectionClaimed_SuppressesSceneEntry()
         {
-            GameFrameXRuntimeModeResolver.Reset();
-
-            var result = GameFrameXRuntimeModeResolver.Resolve();
-
-            Assert.AreEqual(GameFrameXRuntimeMode.AutoPackageMode, result.Mode);
-            Assert.AreEqual(result, GameFrameXRuntimeModeResolver.LastResult);
-            Assert.IsTrue(result.Reason.Contains("No registered or scene BaseComponent"));
-        }
-
-        [Test]
-        public void Resolve_SceneBaseComponent_UsesManualSceneMode()
-        {
-            GameFrameXRuntimeModeResolver.Reset();
+            GameFrameXRuntimeHost.Reset();
             m_GameObject = new GameObject("Manual GFX");
-            m_GameObject.AddComponent<BaseComponent>();
+            var component = m_GameObject.AddComponent<TestRuntimeManagerComponent>();
 
-            var result = GameFrameXRuntimeModeResolver.Resolve();
+            // Bootstrap 的 BeforeSceneLoad 宣告接管后，场景内手工摆放的 GFX 组件必须退场。
+            GameFrameXRuntimeHost.ClaimAutoInjection();
+            Assert.IsTrue(GameFrameXRuntimeHost.IsAutoInjectionClaimed);
 
-            Assert.AreEqual(GameFrameXRuntimeMode.ManualSceneMode, result.Mode);
-            Assert.AreEqual("Manual GFX", result.ManualEntryPath);
+            var awakeMethod = component.GetType().GetMethod("Awake", BindingFlags.Instance | BindingFlags.NonPublic);
+            LogAssert.Expect(LogType.Warning, new Regex(@"\[GameFrameX\].*was suppressed"));
+            awakeMethod.Invoke(component, null);
+
+            Assert.IsFalse(component.enabled, "接管生效时场景残留组件应被禁用");
+            Assert.IsNull(GameEntry.GetComponent<TestRuntimeManagerComponent>(), "被抑制的组件不得注册到 GameEntry");
         }
 
         [Test]
-        public void RecordManualSceneMode_DoesNotCreateAutoHostPlan()
+        public void EnsureStarted_ClearsClaimBeforeMountingComponents()
         {
             GameFrameXRuntimeHost.Reset();
-            var result = new GameFrameXRuntimeModeResult(
-                GameFrameXRuntimeMode.ManualSceneMode,
-                "Unit test manual entry.",
-                "Manual GFX");
+            GameFrameXRuntimeHost.ClaimAutoInjection();
+            Assert.IsTrue(GameFrameXRuntimeHost.IsAutoInjectionClaimed);
 
-            GameFrameXRuntimeHost.RecordManualSceneMode(result);
+            GameFrameXRuntimeHost.EnsureStarted();
 
-            Assert.AreEqual(result, GameFrameXRuntimeHost.LastModeResult);
+            Assert.IsFalse(GameFrameXRuntimeHost.IsAutoInjectionClaimed,
+                "Host 挂载自有组件前必须清除接管标记，否则自己挂的组件会被抑制");
             Assert.IsNotNull(GameFrameXRuntimeHost.LastPlan);
-            Assert.AreEqual(0, GameFrameXRuntimeHost.LastPlan.Components.Count);
-            Assert.IsTrue(GameFrameXRuntimeHost.LastPlan.Diagnostics[0].Contains("ManualSceneMode"));
-            Assert.IsNull(GameObject.Find("[GameFrameX]"));
         }
 
         [Test]
-        public void Reset_ClearsRuntimeModeState()
+        public void Reset_ClearsAutoInjectionState()
         {
-            GameFrameXRuntimeModeResolver.Resolve();
-            GameFrameXRuntimeHost.RecordManualSceneMode(new GameFrameXRuntimeModeResult(
-                GameFrameXRuntimeMode.ManualSceneMode,
-                "Unit test manual entry.",
-                "Manual GFX"));
+            GameFrameXRuntimeHost.ClaimAutoInjection();
+            GameFrameXRuntimeHost.EnsureStarted();
 
-            GameFrameXRuntimeModeResolver.Reset();
             GameFrameXRuntimeHost.Reset();
 
-            Assert.IsNull(GameFrameXRuntimeModeResolver.LastResult);
-            Assert.IsNull(GameFrameXRuntimeHost.LastModeResult);
+            Assert.IsFalse(GameFrameXRuntimeHost.IsAutoInjectionClaimed);
             Assert.IsNull(GameFrameXRuntimeHost.LastPlan);
         }
 

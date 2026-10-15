@@ -38,12 +38,12 @@ namespace GameFrameX.Runtime
     /// </summary>
     /// <remarks>
     /// 声明需要在系统低内存时释放缓存的模块实现本接口；<see cref="GameFrameworkEntry.NotifyLowMemory"/> 仅对实现本接口的模块分发低内存通知，未实现者被跳过。
-    /// Unity 路径（<c>Application.lowMemory</c> → BaseComponent / <see cref="UnityGameFrameworkDriver"/>）与 Headless 路径（宿主转发自身低内存 / 暂停事件）共用同一入口，行为一致。
+    /// 触发源唯一：<c>Application.lowMemory</c> → <see cref="BaseComponent"/> 的钩子 → <see cref="GameFrameworkEntry.NotifyLowMemory"/>。
     /// <see cref="OnLowMemory"/> 仅由宿主入口调用，业务代码不得直接调用；业务侧一律通过 <c>GetModule&lt;IXxxManager&gt;()</c> 访问模块。
     /// <para>
     /// English: Implement this interface on modules that should release caches on system low memory;
     /// <see cref="GameFrameworkEntry.NotifyLowMemory"/> dispatches the notification only to implementing modules.
-    /// Both the Unity path (<c>Application.lowMemory</c>) and the Headless path share the same entry with identical behavior.
+    /// The trigger source is unique: <c>Application.lowMemory</c> → the <see cref="BaseComponent"/> hook → <see cref="GameFrameworkEntry.NotifyLowMemory"/>.
     /// <see cref="OnLowMemory"/> is called only by the host entry; business code must access modules via <c>GetModule&lt;IXxxManager&gt;()</c>.
     /// </para>
     /// </remarks>

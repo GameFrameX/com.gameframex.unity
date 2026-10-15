@@ -1,15 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Scripting;
 
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// 管理 GameFrameX 自动运行时 Host。
+    /// 管理 GameFrameX 自动运行时 Host（唯一启动路径）。
     /// </summary>
     /// <remarks>
-    /// Manages the GameFrameX auto runtime host.
+    /// 接管语义：包被引用即由本 Host 拥有框架组件所有权。场景里手工摆放的 GFX 组件在 <see cref="IsAutoInjectionClaimed"/>
+    /// 为真时自我抑制并告警，不注册、不驱动、不关停会话——框架的组件所有权始终唯一。
+    /// <para>
+    /// English: The auto runtime host owns framework components as soon as the package is referenced. GFX components placed
+    /// by hand in a scene suppress themselves with a warning while <see cref="IsAutoInjectionClaimed"/> is true — they never
+    /// register, drive, or shut the session down, so component ownership stays unique.
+    /// </para>
     /// </remarks>
     [Preserve]
     public static class GameFrameXRuntimeHost
@@ -20,30 +27,19 @@ namespace GameFrameX.Runtime
 
         private static GameObject s_Host;
         private static bool s_Started;
-        private static bool s_HeadlessRequested;
+        private static bool s_AutoInjectionClaimed;
         private static GameFrameXRuntimePlan s_LastPlan;
-        private static GameFrameXRuntimeModeResult s_LastModeResult;
 
         /// <summary>
-        /// 获取宿主是否已请求 Headless 启动（由 <see cref="GameFrameworkStartup.Headless"/> 标记）。
+        /// 获取是否已宣告自动注入接管（Bootstrap 在场景加载前置位、Host 启动时清除）。
         /// </summary>
         /// <remarks>
-        /// Gets whether the host has requested headless startup (marked by <see cref="GameFrameworkStartup.Headless"/>).
+        /// 场景内组件的 <c>Awake</c> 据此判定自身是否为残留入口：为真即自我抑制。
+        /// Gets whether auto-injection ownership has been claimed (set by the bootstrap before scene load, cleared when the host starts).
         /// </remarks>
-        internal static bool IsHeadlessRequested
+        public static bool IsAutoInjectionClaimed
         {
-            get { return s_HeadlessRequested; }
-        }
-
-        /// <summary>
-        /// 标记宿主已请求 Headless 启动，三模式互斥裁决据此拒绝自动 Host 与手动场景入口。
-        /// </summary>
-        /// <remarks>
-        /// Marks that the host has requested headless startup; the three-mode mutual exclusion rejects the auto host and manual scene entries accordingly.
-        /// </remarks>
-        internal static void MarkHeadlessRequested()
-        {
-            s_HeadlessRequested = true;
+            get { return s_AutoInjectionClaimed; }
         }
 
         /// <summary>
@@ -58,14 +54,21 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
-        /// 获取最近一次运行模式裁决结果。
+        /// 宣告框架将接管全部 GFX 组件（由 <see cref="GameFrameXRuntimeBootstrap"/> 在场景加载前调用）。
         /// </summary>
         /// <remarks>
-        /// Gets the most recent runtime mode resolution result.
+        /// 宣告后、<see cref="EnsureStarted"/> 清标记前 <c>Awake</c> 的 GFX 组件一律视为场景残留并被抑制。
+        /// 业务代码不应调用本方法——它是 Bootstrap 与组件抑制之间的内部契约，公开仅为可测试性。
+        /// <para>
+        /// English: Declares that the framework will own every GFX component; called by <see cref="GameFrameXRuntimeBootstrap"/>
+        /// before scene load. Any GFX component awakening between the claim and <see cref="EnsureStarted"/> clearing it is treated
+        /// as a scene leftover and suppressed. Business code must not call this; it is public for testability only.
+        /// </para>
         /// </remarks>
-        public static GameFrameXRuntimeModeResult LastModeResult
+        [Preserve]
+        public static void ClaimAutoInjection()
         {
-            get { return s_LastModeResult; }
+            s_AutoInjectionClaimed = true;
         }
 
         /// <summary>
@@ -78,35 +81,21 @@ namespace GameFrameX.Runtime
         {
             s_Host = null;
             s_Started = false;
-            s_HeadlessRequested = false;
+            s_AutoInjectionClaimed = false;
             s_LastPlan = null;
-            s_LastModeResult = null;
             PendingConfigs.Clear();
             GameFrameXRuntimeManagerResolver.Reset();
         }
 
         /// <summary>
-        /// 确保自动运行时已经启动。
+        /// 确保自动运行时已经启动：创建 <c>[GameFrameX]</c> Host 并挂载扫描到的全部组件。
         /// </summary>
         /// <remarks>
-        /// Ensures the auto runtime has started.
+        /// 幂等：重复调用只追加一条诊断。启动前先清除接管标记，使 Host 自己挂载的组件正常注册。
+        /// English: Idempotent — repeated calls only append a diagnostic. The claim is cleared before mounting so the
+        /// components the host adds itself register normally.
         /// </remarks>
         public static void EnsureStarted()
-        {
-            EnsureStarted(new GameFrameXRuntimeModeResult(
-                GameFrameXRuntimeMode.AutoPackageMode,
-                "Auto runtime host was requested directly.",
-                string.Empty));
-        }
-
-        /// <summary>
-        /// 确保自动运行时已经启动。
-        /// </summary>
-        /// <remarks>
-        /// Ensures the auto runtime has started.
-        /// </remarks>
-        /// <param name="modeResult">运行模式裁决结果。 / The runtime mode resolution result.</param>
-        public static void EnsureStarted(GameFrameXRuntimeModeResult modeResult)
         {
             if (s_Started)
             {
@@ -119,40 +108,19 @@ namespace GameFrameX.Runtime
                 return;
             }
 
+            // 清标记必须早于创建 Host：场景内残留组件已在更早的 Awake 阶段抑制完毕，
+            // 此后 Awake 的组件只可能是 Host 自己挂载的，必须正常注册。
+            // The claim must be cleared before the host is created: leftover scene components were already suppressed
+            // during an earlier Awake, so any component awakening after this point is mounted by the host and must register.
+            s_AutoInjectionClaimed = false;
+
             var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-            s_LastModeResult = modeResult ?? new GameFrameXRuntimeModeResult(
-                GameFrameXRuntimeMode.AutoPackageMode,
-                "Auto runtime host was requested without mode result.",
-                string.Empty);
-
-            if (s_LastModeResult.Mode == GameFrameXRuntimeMode.HeadlessMode)
-            {
-                RecordHeadlessMode(s_LastModeResult);
-                return;
-            }
-
-            if (s_LastModeResult.Mode == GameFrameXRuntimeMode.ManualSceneMode)
-            {
-                RecordManualSceneMode(s_LastModeResult);
-                return;
-            }
-
-            if (HasExistingRuntime())
-            {
-                RecordManualSceneMode(new GameFrameXRuntimeModeResult(
-                    GameFrameXRuntimeMode.ManualSceneMode,
-                    "Existing GameFrameX runtime detected during auto host startup. Auto host startup skipped.",
-                    string.Empty));
-                return;
-            }
-
             var scanResult = GameFrameXRuntimeScanner.Scan();
             var overrideContext = GameFrameXRuntimeOverrideProvider.CollectOverrides();
             GameFrameXRuntimeManagerResolver.RegisterDescriptors(scanResult.ManagerDescriptors);
             GameFrameXRuntimeManagerResolver.RegisterOverrides(overrideContext.GetManagerOverrides());
 
             s_LastPlan = GameFrameXRuntimePlanner.CreatePlan(scanResult, overrideContext);
-            s_LastPlan.Diagnostics.Add(Utility.Text.Format("Runtime mode: {0}. Reason: {1}.", s_LastModeResult.Mode, s_LastModeResult.Reason));
             s_LastPlan.Diagnostics.Add(Utility.Text.Format(
                 "Scan result: {0} component(s), {1} manager implementation(s), {2} manager override(s).",
                 scanResult.ComponentTypes.Count,
@@ -170,56 +138,6 @@ namespace GameFrameX.Runtime
             s_Host.SetActive(true);
             s_Started = true;
             s_LastPlan.Diagnostics.Add(Utility.Text.Format("Startup elapsed: {0} ms.", stopwatch.ElapsedMilliseconds));
-            WriteDiagnostics();
-        }
-
-        /// <summary>
-        /// 记录手动场景模式诊断，不创建自动 Host。
-        /// </summary>
-        /// <remarks>
-        /// Records manual scene mode diagnostics without creating the auto host.
-        /// </remarks>
-        /// <param name="modeResult">运行模式裁决结果。 / The runtime mode resolution result.</param>
-        public static void RecordManualSceneMode(GameFrameXRuntimeModeResult modeResult)
-        {
-            s_LastModeResult = modeResult ?? new GameFrameXRuntimeModeResult(
-                GameFrameXRuntimeMode.ManualSceneMode,
-                "Manual scene mode was requested without mode result.",
-                string.Empty);
-            s_Started = true;
-            s_LastPlan = new GameFrameXRuntimePlan();
-            s_LastPlan.Diagnostics.Add(Utility.Text.Format("Runtime mode: {0}. Reason: {1}. Manual entry: {2}.",
-                s_LastModeResult.Mode,
-                s_LastModeResult.Reason,
-                string.IsNullOrEmpty(s_LastModeResult.ManualEntryPath) ? "unknown" : s_LastModeResult.ManualEntryPath));
-            s_LastPlan.Diagnostics.Add("Auto host startup skipped by manual scene mode.");
-            WriteDiagnostics();
-        }
-
-        /// <summary>
-        /// 记录 Headless 模式诊断：不创建 [GameFrameX] 自动 Host、不扫描组件、不写 pending config。
-        /// </summary>
-        /// <remarks>
-        /// Records headless mode diagnostics: no [GameFrameX] auto host, no component scan, no pending config.
-        /// </remarks>
-        /// <param name="modeResult">运行模式裁决结果。 / The runtime mode resolution result.</param>
-        public static void RecordHeadlessMode(GameFrameXRuntimeModeResult modeResult)
-        {
-            s_LastModeResult = modeResult ?? new GameFrameXRuntimeModeResult(
-                GameFrameXRuntimeMode.HeadlessMode,
-                "Headless mode was requested without mode result.",
-                string.Empty);
-            s_Started = true;
-            s_LastPlan = new GameFrameXRuntimePlan();
-            s_LastPlan.Diagnostics.Add(Utility.Text.Format("Runtime mode: {0}. Reason: {1}.", s_LastModeResult.Mode, s_LastModeResult.Reason));
-            if (!string.IsNullOrEmpty(s_LastModeResult.ManualEntryPath))
-            {
-                s_LastPlan.Diagnostics.Add(Utility.Text.Format(
-                    "Rejected manual scene entry: {0}. Headless host contract takes precedence.",
-                    s_LastModeResult.ManualEntryPath));
-            }
-
-            s_LastPlan.Diagnostics.Add("Auto host startup skipped by headless host contract.");
             WriteDiagnostics();
         }
 
@@ -242,14 +160,45 @@ namespace GameFrameX.Runtime
             return config;
         }
 
-        private static bool HasExistingRuntime()
+        /// <summary>
+        /// 禁用场景中残留的 GFX 组件入口并输出告警（由组件在 Awake 中经 <see cref="IsAutoInjectionClaimed"/> 判定后调用）。
+        /// </summary>
+        /// <param name="component">被抑制的组件。 / The suppressed component.</param>
+        /// <remarks>
+        /// English: Disables a leftover GFX component entry placed by hand in the scene and emits a warning, telling the
+        /// developer to remove the manual node and let the auto host own it.
+        /// </remarks>
+        internal static void SuppressSceneEntry(Component component)
         {
-            if (GameEntry.GetComponent<BaseComponent>() != null)
+            if (component == null)
             {
-                return true;
+                return;
             }
 
-            return UnityEngine.Object.FindObjectOfType<BaseComponent>() != null;
+            component.enabled = false;
+            Debug.LogWarning(Utility.Text.Format(
+                "[GameFrameX] Scene entry '{0}' on '{1}' was suppressed because the auto runtime owns all GameFrameX components. Remove the hand-placed GameFrameX node from the scene; the framework injects it automatically.",
+                component.GetType().FullName,
+                GetHierarchyPath(component.transform)));
+        }
+
+        private static string GetHierarchyPath(Transform transform)
+        {
+            if (transform == null)
+            {
+                return string.Empty;
+            }
+
+            var builder = new StringBuilder(transform.name);
+            var parent = transform.parent;
+            while (parent != null)
+            {
+                builder.Insert(0, "/");
+                builder.Insert(0, parent.name);
+                parent = parent.parent;
+            }
+
+            return builder.ToString();
         }
 
         private static void AddComponent(GameFrameXRuntimeComponentDescriptor descriptor)
@@ -307,18 +256,7 @@ namespace GameFrameX.Runtime
                 return;
             }
 
-            if (s_LastModeResult != null && s_LastModeResult.Mode == GameFrameXRuntimeMode.HeadlessMode)
-            {
-                Debug.Log("GameFrameX headless runtime detected. Auto host startup skipped by host contract.");
-            }
-            else if (s_LastModeResult != null && s_LastModeResult.Mode == GameFrameXRuntimeMode.ManualSceneMode)
-            {
-                Debug.Log("GameFrameX manual scene runtime detected. Auto host startup skipped.");
-            }
-            else
-            {
-                Debug.Log(Utility.Text.Format("GameFrameX auto runtime started. Components: {0}.", s_LastPlan.Components.Count));
-            }
+            Debug.Log(Utility.Text.Format("GameFrameX auto runtime started. Components: {0}.", s_LastPlan.Components.Count));
             foreach (var component in s_LastPlan.Components)
             {
                 Debug.Log(Utility.Text.Format(

@@ -31,6 +31,8 @@
 //  Official Documentation: https://gameframex.doc.alianblank.com/
 // ==========================================================================================
 
+using System;
+
 using UnityEngine;
 
 namespace GameFrameX.Runtime
@@ -52,8 +54,6 @@ namespace GameFrameX.Runtime
         private const int DefaultDpi = 96; // default windows dpi
 
         private float m_GameSpeedBeforePause = 1f;
-
-        private bool m_SuppressedByHeadless;
 
         // [SerializeField] private bool m_EditorResourceMode = true;
 
@@ -163,23 +163,20 @@ namespace GameFrameX.Runtime
         /// </remarks>
         protected override void Awake()
         {
-            if (GameFrameXRuntimeHost.IsHeadlessRequested)
-            {
-                // Headless 宿主契约优先于场景残留入口：本组件自我抑制（不注册、不初始化 helpers、不订阅、不驱动），
-                // 与三模式互斥裁决保持一致；Destroy 时不关停宿主会话。
-                m_SuppressedByHeadless = true;
-                enabled = false;
-                Log.Warning("BaseComponent '{0}' was suppressed by the headless host contract. GameFrameX components are forbidden in headless mode.", GetType().FullName);
-                return;
-            }
-
             IsAutoRegister = false;
             base.Awake();
 
+            // 残留抑制已在 base.Awake 中生效（自动注入接管时本组件退场）：抑制后不得再初始化 helpers、订阅事件或驱动框架。
+            // Suppression already happened in base.Awake: a suppressed component must not initialize helpers, subscribe, or drive the framework.
+            if (m_SuppressedByAutoHost)
+            {
+                return;
+            }
+
             DontDestroyOnLoad(gameObject);
 
-            // helpers 初始化与 GameFrameworkStartup.Headless() 共享同一路径，顺序保持 Text → Version → Log → Compression → Json。
-            GameFrameworkStartup.InitHelpers(
+            // helpers 初始化是框架唯一的 helper 接线路径，顺序保持 Text → Version → Log → Compression → Json。
+            InitHelpers(
                 m_TextHelperTypeName,
                 m_VersionHelperTypeName,
                 m_LogHelperTypeName,
@@ -232,7 +229,7 @@ namespace GameFrameX.Runtime
 
         private void OnDestroy()
         {
-            if (m_SuppressedByHeadless)
+            if (m_SuppressedByAutoHost)
             {
                 return;
             }
@@ -301,8 +298,146 @@ namespace GameFrameX.Runtime
         {
             Log.Info("Low memory reported...");
 
-            // 与 Headless 路径共用同一转发入口，模块清理（如对象池释放）由 ILowMemoryAwareModule 分发。
+            // 模块清理（如对象池释放）由 ILowMemoryAwareModule 分发。
             GameFrameworkEntry.NotifyLowMemory();
+        }
+
+        /// <summary>
+        /// 初始化框架 helpers（Text / Version / Log / Compression / Json），框架唯一的 helper 接线路径。
+        /// </summary>
+        /// <remarks>
+        /// 顺序保持 Text → Version → Log → Compression → Json。
+        /// English: Initializes the framework helpers, the single helper-wiring path of the framework, in the order
+        /// Text → Version → Log → Compression → Json.
+        /// </remarks>
+        /// <param name="textHelperTypeName">文本辅助器类型名。 / The type name of the text helper.</param>
+        /// <param name="versionHelperTypeName">版本辅助器类型名。 / The type name of the version helper.</param>
+        /// <param name="logHelperTypeName">日志辅助器类型名。 / The type name of the log helper.</param>
+        /// <param name="compressionHelperTypeName">压缩辅助器类型名。 / The type name of the compression helper.</param>
+        /// <param name="jsonHelperTypeName">JSON 辅助器类型名。 / The type name of the JSON helper.</param>
+        internal static void InitHelpers(string textHelperTypeName, string versionHelperTypeName, string logHelperTypeName, string compressionHelperTypeName, string jsonHelperTypeName)
+        {
+            InitTextHelper(textHelperTypeName);
+            InitVersionHelper(versionHelperTypeName);
+            InitLogHelper(logHelperTypeName);
+            InitCompressionHelper(compressionHelperTypeName);
+            InitJsonHelper(jsonHelperTypeName);
+        }
+
+        private static void InitTextHelper(string textHelperTypeName)
+        {
+            if (string.IsNullOrEmpty(textHelperTypeName))
+            {
+                return;
+            }
+
+            var textHelperType = Utility.Assembly.GetType(textHelperTypeName);
+            if (textHelperType == null)
+            {
+                Log.Error("Can not find text helper type '{0}'.", textHelperTypeName);
+                return;
+            }
+
+            var textHelper = (Utility.Text.ITextHelper)Activator.CreateInstance(textHelperType);
+            if (textHelper == null)
+            {
+                Log.Error("Can not create text helper instance '{0}'.", textHelperTypeName);
+                return;
+            }
+
+            Utility.Text.SetTextHelper(textHelper);
+        }
+
+        private static void InitVersionHelper(string versionHelperTypeName)
+        {
+            if (string.IsNullOrEmpty(versionHelperTypeName))
+            {
+                return;
+            }
+
+            var versionHelperType = Utility.Assembly.GetType(versionHelperTypeName);
+            if (versionHelperType == null)
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Can not find version helper type '{0}'.", versionHelperTypeName));
+            }
+
+            var versionHelper = (GameVersion.IVersionHelper)Activator.CreateInstance(versionHelperType);
+            if (versionHelper == null)
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Can not create version helper instance '{0}'.", versionHelperTypeName));
+            }
+
+            GameVersion.SetVersionHelper(versionHelper);
+        }
+
+        private static void InitLogHelper(string logHelperTypeName)
+        {
+            if (string.IsNullOrEmpty(logHelperTypeName))
+            {
+                return;
+            }
+
+            var logHelperType = Utility.Assembly.GetType(logHelperTypeName);
+            if (logHelperType == null)
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Can not find log helper type '{0}'.", logHelperTypeName));
+            }
+
+            var logHelper = (GameFrameworkLog.ILogHelper)Activator.CreateInstance(logHelperType);
+            if (logHelper == null)
+            {
+                throw new GameFrameworkException(Utility.Text.Format("Can not create log helper instance '{0}'.", logHelperTypeName));
+            }
+
+            GameFrameworkLog.SetLogHelper(logHelper);
+        }
+
+        private static void InitCompressionHelper(string compressionHelperTypeName)
+        {
+            if (string.IsNullOrEmpty(compressionHelperTypeName))
+            {
+                return;
+            }
+
+            var compressionHelperType = Utility.Assembly.GetType(compressionHelperTypeName);
+            if (compressionHelperType == null)
+            {
+                Log.Error("Can not find compression helper type '{0}'.", compressionHelperTypeName);
+                return;
+            }
+
+            var compressionHelper = (Utility.Compression.ICompressionHelper)Activator.CreateInstance(compressionHelperType);
+            if (compressionHelper == null)
+            {
+                Log.Error("Can not create compression helper instance '{0}'.", compressionHelperTypeName);
+                return;
+            }
+
+            Utility.Compression.SetCompressionHelper(compressionHelper);
+        }
+
+        private static void InitJsonHelper(string jsonHelperTypeName)
+        {
+            if (string.IsNullOrEmpty(jsonHelperTypeName))
+            {
+                return;
+            }
+
+            var jsonHelperType = Utility.Assembly.GetType(jsonHelperTypeName);
+            if (jsonHelperType == null)
+            {
+                Log.Error("Can not find JSON helper type '{0}'.", jsonHelperTypeName);
+                return;
+            }
+
+            var jsonHelper = (Utility.Json.IJsonHelper)Activator.CreateInstance(jsonHelperType);
+            if (jsonHelper == null)
+            {
+                Log.Error("Can not create JSON helper instance '{0}'.", jsonHelperTypeName);
+                return;
+            }
+
+            Utility.Json.SetJsonHelper(jsonHelper);
         }
     }
 }

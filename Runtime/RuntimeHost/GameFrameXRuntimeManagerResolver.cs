@@ -49,13 +49,12 @@ namespace GameFrameX.Runtime
         }
 
         // C29 修复：增量注册不得置位 s_DescriptorsReady——首个 Resolve 前经钩子注册的含描述符程序集若提前置位，
-        // 将抑制全量兜底，订阅之前已加载的启动程序集描述符永不注册（Manual / Headless 模式下热更程序集
-        // 在首个 Resolve 前加载即触发）。ready 只能由全量路径（EnsureDescriptors / Host Auto 全量注册）置位。
+        // 将抑制全量兜底，订阅之前已加载的启动程序集描述符永不注册（热更程序集在首个 Resolve 前加载即触发）。
+        // ready 只能由全量路径（EnsureDescriptors / Host 全量注册）置位。
         // C29 fix: incremental registration must NOT set s_DescriptorsReady — if a descriptor-bearing assembly
         // registered via the hook sets it before the first Resolve, the full fallback is suppressed and descriptors
         // of startup assemblies loaded before subscription are never registered (triggered when a hot-update assembly
-        // loads before the first Resolve in Manual / Headless mode). Only the full paths (EnsureDescriptors /
-        // Host Auto full registration) may set ready.
+        // loads before the first Resolve). Only the full paths (EnsureDescriptors / full host registration) may set ready.
         internal static void RegisterDescriptors(IEnumerable<GameFrameXRuntimeManagerDescriptor> descriptors, bool markReady)
         {
             if (descriptors == null)

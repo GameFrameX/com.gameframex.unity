@@ -4,13 +4,12 @@ using UnityEngine.Scripting;
 namespace GameFrameX.Runtime
 {
     /// <summary>
-    /// Options 贡献者宿主：扫描发现 <see cref="IGameFrameXOptionsContributor"/> 实现并在三模式最早实例化点之前一次性应用。
+    /// Options 贡献者宿主：扫描发现 <see cref="IGameFrameXOptionsContributor"/> 实现并在最早实例化点之前一次性应用。
     /// </summary>
     /// <remarks>
     /// <para>
-    /// 双入口幂等（C28）：<see cref="GameFrameXRuntimeBootstrap"/> 的 BeforeSceneLoad 与 <see cref="GameFrameworkStartup.Headless"/>
-    /// 头部均调用 <see cref="EnsureApplied"/>。两处入口是为了覆盖三模式的最早实例化路径——Manual / Auto 的组件 Awake 发生在场景加载
-    /// （晚于 BeforeSceneLoad）；Headless 宿主若在 BeforeSceneLoad 阶段前就调用 <c>Headless()</c>，则由 Headless 头部入口兜住。
+    /// 单入口幂等：<see cref="GameFrameXRuntimeBootstrap"/> 的 BeforeSceneLoad 调用 <see cref="EnsureApplied"/>，
+    /// 早于场景组件的 Awake（发生在场景加载阶段）与自动 Host 的创建，因此必然早于任何模块实例化。
     /// 每个 domain 只应用一次，<c>SubsystemRegistration</c> 时随 Bootstrap 重置（兼容关闭 Domain Reload 的重复 Play）。
     /// </para>
     /// <para>
@@ -20,8 +19,8 @@ namespace GameFrameX.Runtime
     /// </para>
     /// <para>
     /// English: Host that scans for <see cref="IGameFrameXOptionsContributor"/> implementations and applies them once, before the
-    /// earliest module instantiation in all three runtime modes. Two idempotent entry points (Bootstrap BeforeSceneLoad and the head of
-    /// <c>Headless()</c>) cover the earliest instantiation path of every mode. Instantiation or ConfigureOptions failures are reported as
+    /// earliest module instantiation. The single idempotent entry point (Bootstrap BeforeSceneLoad) runs before scene component Awakes
+    /// and before the auto host is created. Instantiation or ConfigureOptions failures are reported as
     /// <c>[GameFrameX]</c> warnings via <c>UnityEngine.Debug</c> and skipped — loud, but a single bad contributor cannot break startup.
     /// </para>
     /// </remarks>

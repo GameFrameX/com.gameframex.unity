@@ -40,7 +40,7 @@ namespace GameFrameX.Runtime
     /// 标注"跳过启动期全量实例化"的模块（逃生口）。
     /// </summary>
     /// <remarks>
-    /// 默认情况下，启动完成点（AutoPackage：AfterSceneLoad 模式裁决后；Headless：<see cref="GameFrameworkStartup.Headless"/> 调用内）
+    /// 默认情况下，启动完成点（自动注入路径的 AfterSceneLoad，<see cref="GameFrameXRuntimeHost.EnsureStarted"/> 尾部）
     /// 会按 Priority 全量实例化类型映射中的模块（安装即启用）。
     /// 仅当模块构造存在真实开销（重资源初始化、外部连接）或极少使用时，用本属性标注跳过 eager，
     /// 保留 <see cref="GameFrameworkEntry.GetModule(System.Type)"/> 的惰性创建兜底。

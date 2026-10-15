@@ -37,8 +37,7 @@ namespace GameFrameX.Runtime
     /// 引用池模块启动配置（C9 配置终态）。
     /// </summary>
     /// <remarks>
-    /// 默认值即开箱值（与原组件 <c>m_EnableStrictCheck</c> 序列化默认值同源）；游戏在首场景加载前（BeforeSceneLoad）或
-    /// <c>GameFrameworkStartup.Headless()</c> 调用前经 <c>GameFrameXOptions.Configure(new ReferencePoolOptions{...})</c> 注入差异值，
+    /// 默认值即开箱值（与原组件 <c>m_EnableStrictCheck</c> 序列化默认值同源）；游戏在首场景加载前（BeforeSceneLoad）经 <c>GameFrameXOptions.Configure(new ReferencePoolOptions{...})</c> 注入差异值，
     /// <see cref="ReferencePoolComponent"/> 在 Awake 中一次性消费，Start 阶段按分档写入 <see cref="ReferencePool.EnableStrictCheck"/>。
     /// </remarks>
     public sealed class ReferencePoolOptions

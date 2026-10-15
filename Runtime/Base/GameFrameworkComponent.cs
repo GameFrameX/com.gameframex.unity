@@ -85,6 +85,14 @@ namespace GameFrameX.Runtime
         private bool m_RuntimeConfigApplied;
 
         /// <summary>
+        /// 本组件是否因自动注入接管而被抑制（场景残留入口）。
+        /// </summary>
+        /// <remarks>
+        /// Gets whether this component was suppressed because auto-injection owns all GameFrameX components.
+        /// </remarks>
+        protected bool m_SuppressedByAutoHost;
+
+        /// <summary>
         /// 获取组件本次 Awake 是否已完成运行时注册。
         /// </summary>
         /// <remarks>
@@ -101,6 +109,18 @@ namespace GameFrameX.Runtime
         protected virtual void Awake()
         {
             IsRuntimeComponentReady = false;
+
+            // 残留抑制：自动注入已宣告接管时，场景里手工摆放的 GFX 组件一律退场。
+            // 判据由 Bootstrap 掌握（BeforeSceneLoad 置位、Host 创建前清除），不依赖 Awake 与 Host 创建的执行顺序。
+            // Suppression: while auto-injection ownership is claimed, hand-placed scene components stand down.
+            // The claim is owned by the bootstrap, so this never depends on Awake/Host-creation ordering.
+            if (GameFrameXRuntimeHost.IsAutoInjectionClaimed)
+            {
+                m_SuppressedByAutoHost = true;
+                GameFrameXRuntimeHost.SuppressSceneEntry(this);
+                return;
+            }
+
             ApplyPendingRuntimeConfig();
             if (!GameEntry.RegisterComponent(this))
             {

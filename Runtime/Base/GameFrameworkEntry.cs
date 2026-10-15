@@ -83,13 +83,11 @@ namespace GameFrameX.Runtime
         /// 通知所有低内存感知游戏框架模块释放可回收资源。
         /// </summary>
         /// <remarks>
-        /// 宿主低内存事件转发入口：Unity 路径（BaseComponent / <see cref="UnityGameFrameworkDriver"/> 的 <c>Application.lowMemory</c> 钩子）
-        /// 与 Headless 路径（宿主转发自身 OnLowMemory / OnApplicationPause）共用本方法，行为一致。
+        /// 低内存事件的唯一转发入口：<c>Application.lowMemory</c> → <see cref="BaseComponent"/> 钩子 → 本方法。
         /// 仅对实现 <see cref="ILowMemoryAwareModule"/> 的模块分发，未实现者被跳过。
         /// <para>
-        /// English: Entry point for forwarding host low-memory events. The Unity path (the <c>Application.lowMemory</c> hooks of
-        /// BaseComponent / <see cref="UnityGameFrameworkDriver"/>) and the Headless path (host forwarding its own
-        /// OnLowMemory / OnApplicationPause) share this method with identical behavior. Dispatched only to modules implementing
+        /// English: The only entry point forwarding low-memory events: <c>Application.lowMemory</c> → the
+        /// <see cref="BaseComponent"/> hook → this method. Dispatched only to modules implementing
         /// <see cref="ILowMemoryAwareModule"/>; others are skipped.
         /// </para>
         /// </remarks>
@@ -221,12 +219,12 @@ namespace GameFrameX.Runtime
         /// 启动期全量实例化类型映射中的模块（按注册映射去重，创建时按 <see cref="IPrioritizedModule.Priority"/> 排序）。
         /// </summary>
         /// <remarks>
-        /// 安装即启用：启动完成点（AutoPackage：AfterSceneLoad 模式裁决后；Headless：<see cref="GameFrameworkStartup.Headless"/> 调用内）调用一次，
+        /// 安装即启用：唯一调用点为自动注入启动完成点（<see cref="GameFrameXRuntimeHost.EnsureStarted"/> 尾部），
         /// 全部已注册模块即完成创建并消费各自 Options；幂等（已存在实例不重复创建）。
         /// 标注 <see cref="GameFrameXLazyModuleAttribute"/> 的模块跳过（保留 <see cref="GetModule(System.Type)"/> 惰性兜底）。
         /// <para>
-        /// English: Enabled upon install: called once at the startup completion point (AutoPackage: after the AfterSceneLoad mode
-        /// verdict; Headless: inside the <see cref="GameFrameworkStartup.Headless"/> call), all registered modules are created and
+        /// English: Enabled upon install: called once at the auto-injection startup completion point (the tail of
+        /// <see cref="GameFrameXRuntimeHost.EnsureStarted"/>), all registered modules are created and
         /// consume their Options. Idempotent (existing instances are not created again). Modules marked with
         /// <see cref="GameFrameXLazyModuleAttribute"/> are skipped (the <see cref="GetModule(System.Type)"/> lazy fallback is retained).
         /// </para>
@@ -304,15 +302,5 @@ namespace GameFrameX.Runtime
             return module is IPrioritizedModule prioritizedModule ? prioritizedModule.Priority : 0;
         }
 
-        /// <summary>
-        /// 获取是否已有模块被实例化（Headless 单实例守卫用：判断上一段会话是否仍在运行）。
-        /// </summary>
-        /// <remarks>
-        /// Gets whether any module has been instantiated (used by the Headless single-instance guard to detect whether a previous session is still running).
-        /// </remarks>
-        internal static bool HasInstantiatedModules
-        {
-            get { return s_GameFrameworkModules.Count > 0; }
-        }
     }
 }

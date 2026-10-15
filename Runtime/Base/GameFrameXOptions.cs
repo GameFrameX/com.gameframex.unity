@@ -44,12 +44,8 @@ namespace GameFrameX.Runtime
     /// 配置终态（C9）：模块状态是唯一事实源——本注册表只承载各模块 Options 的<b>默认值</b>，
     /// 在模块首次实例化时一次性消费；运行期修改参数一律走模块公开 API。
     ///
-    /// 时机（三模式统一）：
-    /// <list type="number">
-    /// <item>Manual / AutoPackage：游戏在 <c>[RuntimeInitializeOnLoadMethod(BeforeSceneLoad)]</c> 中 Configure——
-    /// 必须早于场景组件 Awake 与自动 Host 的 AfterSceneLoad（该阶段跨程序集顺序不定，不可挂载注入）。</item>
-    /// <item>Headless：宿主在 <see cref="GameFrameworkStartup.Headless"/> 调用前紧邻 Configure。</item>
-    /// </list>
+    /// 时机（唯一入口）：游戏在 <c>[RuntimeInitializeOnLoadMethod(BeforeSceneLoad)]</c> 中 Configure——
+    /// 必须早于场景组件 Awake 与自动 Host 的 AfterSceneLoad（该阶段跨程序集顺序不定，不可挂载注入）。
     ///
     /// 响亮失败：某模块 Options 已被消费（即该模块已实例化）后再次 Configure 会抛出 <see cref="GameFrameworkException"/>——
     /// 启动期全量实例化完成后，任何 Configure 都必然违例，配置时机错误不会静默。
@@ -70,7 +66,7 @@ namespace GameFrameX.Runtime
     /// <para>
     /// English: Registry of module Options startup configuration and the single source of truth for default values.
     /// It only carries each module's default Options, consumed once at first instantiation; runtime changes go through module APIs.
-    /// Configure must run before scene load or before Headless; late Configure throws <see cref="GameFrameworkException"/>.
+    /// Configure must run before scene load; late Configure throws <see cref="GameFrameworkException"/>.
     /// </para>
     /// </remarks>
     [Preserve]
@@ -107,7 +103,7 @@ namespace GameFrameX.Runtime
                 if (entry.Demanded)
                 {
                     throw new GameFrameworkException(Utility.Text.Format(
-                        "Options '{0}' has already been consumed by its module (module instantiated). Call Configure before module creation — before scene load (BeforeSceneLoad) or before GameFrameworkStartup.Headless().",
+                        "Options '{0}' has already been consumed by its module (module instantiated). Call Configure before module creation — before scene load (BeforeSceneLoad).",
                         key.FullName));
                 }
 
