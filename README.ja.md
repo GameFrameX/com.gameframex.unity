@@ -146,10 +146,9 @@ static void ConfigureFramework()
 
 ```csharp
 using GameFrameX.Runtime;
-using UnityEngine.Scripting;
 
 // コントリビュータークラスは Configure のみを行い、初期化の副作用を持たせません。public 引数なしコンストラクターを維持してください
-[Preserve]
+[UnityEngine.Scripting.Preserve]
 public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 {
     public void ConfigureOptions(GameFrameXOptionsContributorContext context)
@@ -161,7 +160,7 @@ public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 
 - 手動優先：ゲーム側で明示的な `GameFrameXOptions.Configure` が常に優先されます——既に Configure 済みの型はコントリビューターが型単位でスキップし `[GameFrameX]` 診断を出力します。BeforeSceneLoad フェーズ内の実行順序には依存しません。
 - 適用タイミング：最も早いモジュールインスタンス化より前、唯一の入口 `BeforeSceneLoad`、ドメインごとに 1 回。
-- ストリッピング対策：IL2CPP / ミニゲームのストリッピング環境では、実装クラスに `[Preserve]`（上記参照）を付けるかクリッピング保護リストに登録してください。同様に `IGameFrameXRuntimeOverrideProvider` を実装したクラスも手動 `RegisterProvider` 不要でスキャンだけで有効になります（public 引数なしコンストラクターがない場合は Warning を出力してスキップ）。
+- ストリッピング対策：IL2CPP / ミニゲームのストリッピング環境では、実装クラスに `[UnityEngine.Scripting.Preserve]`（上記参照）を付けるかクリッピング保護リストに登録してください。同様に `IGameFrameXRuntimeOverrideProvider` を実装したクラスも手動 `RegisterProvider` 不要でスキャンだけで有効になります（public 引数なしコンストラクターがない場合は Warning を出力してスキップ）。
 
 #### 遅延ロードアセンブリのインクリメンタル登録（C29 以降）
 

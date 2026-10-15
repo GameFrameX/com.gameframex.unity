@@ -146,10 +146,9 @@ static void ConfigureFramework()
 
 ```csharp
 using GameFrameX.Runtime;
-using UnityEngine.Scripting;
 
 // 컨트리뷰터 클래스는 Configure만 수행하며 초기화 부수 효과를 담지 않습니다. public 무인수 생성자를 유지하세요
-[Preserve]
+[UnityEngine.Scripting.Preserve]
 public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 {
     public void ConfigureOptions(GameFrameXOptionsContributorContext context)
@@ -161,7 +160,7 @@ public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 
 - 수동 우선: 게임 측에서 명시적인 `GameFrameXOptions.Configure`가 항상 이깁니다 — 이미 Configure된 타입은 컨트리뷰터가 타입 단위로 건너뛰고 `[GameFrameX]` 진단을 출력하며, BeforeSceneLoad 페이즈 내 실행 순서와 무관합니다.
 - 적용 시점: 가장 이른 모듈 인스턴스화 이전, 유일한 진입점 `BeforeSceneLoad`, 도메인당 1회.
-- 스트리핑 방지: IL2CPP / 미니게임 스트리핑 환경에서는 구현 클래스에 `[Preserve]`(위 참고)를 추가하거나 크로핑 보호 목록에 등록해야 합니다. 마찬가지로 `IGameFrameXRuntimeOverrideProvider`를 구현한 클래스도 수동 `RegisterProvider` 없이 스캔만으로 활성화됩니다 (public 무인수 생성자가 없으면 Warning 출력 후 건너뜀).
+- 스트리핑 방지: IL2CPP / 미니게임 스트리핑 환경에서는 구현 클래스에 `[UnityEngine.Scripting.Preserve]`(위 참고)를 추가하거나 크로핑 보호 목록에 등록해야 합니다. 마찬가지로 `IGameFrameXRuntimeOverrideProvider`를 구현한 클래스도 수동 `RegisterProvider` 없이 스캔만으로 활성화됩니다 (public 무인수 생성자가 없으면 Warning 출력 후 건너뜀).
 
 #### 지연 로드 어셈블리 증분 등록 (C29부터)
 

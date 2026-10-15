@@ -146,10 +146,9 @@ Prefer zero startup boilerplate? A plain class implementing `IGameFrameXOptionsC
 
 ```csharp
 using GameFrameX.Runtime;
-using UnityEngine.Scripting;
 
 // Contributor classes only Configure; keep them side-effect free with a public parameterless constructor
-[Preserve]
+[UnityEngine.Scripting.Preserve]
 public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 {
     public void ConfigureOptions(GameFrameXOptionsContributorContext context)
@@ -161,7 +160,7 @@ public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 
 - Manual-first: explicit `GameFrameXOptions.Configure` always wins — already-configured types are skipped per type by contributors with a `[GameFrameX]` diagnostic, regardless of execution order inside the BeforeSceneLoad phase.
 - Timing: applied before the earliest module instantiation, from the single `BeforeSceneLoad` entry point, once per domain.
-- Stripping guard: under IL2CPP / mini-game stripping, implementations must be kept with `[Preserve]` (as above) or added to the cropping list, otherwise the type may be stripped silently. Likewise, classes implementing `IGameFrameXRuntimeOverrideProvider` no longer need manual `RegisterProvider` — scanning is enough (types without a public parameterless constructor are skipped with a Warning).
+- Stripping guard: under IL2CPP / mini-game stripping, implementations must be kept with `[UnityEngine.Scripting.Preserve]` (as above) or added to the cropping list, otherwise the type may be stripped silently. Likewise, classes implementing `IGameFrameXRuntimeOverrideProvider` no longer need manual `RegisterProvider` — scanning is enough (types without a public parameterless constructor are skipped with a Warning).
 
 
 #### Late-loaded assemblies (incremental registration, since C29)

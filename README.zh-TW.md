@@ -146,10 +146,9 @@ static void ConfigureFramework()
 
 ```csharp
 using GameFrameX.Runtime;
-using UnityEngine.Scripting;
 
 // 貢獻者類別只做 Configure，不承載初始化副作用；保持 public 無參建構子
-[Preserve]
+[UnityEngine.Scripting.Preserve]
 public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 {
     public void ConfigureOptions(GameFrameXOptionsContributorContext context)
@@ -161,7 +160,7 @@ public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 
 - 手動優先：遊戲側明確 `GameFrameXOptions.Configure` 永遠勝出——已 Configure 的類型貢獻者按類型粒度跳過並輸出 `[GameFrameX]` 診斷，與 BeforeSceneLoad 階段內執行順序無關。
 - 套用時機：最早模組實例化之前，唯一入口 `BeforeSceneLoad`，每 domain 一次。
-- 防裁剪：IL2CPP / 小遊戲裁剪環境下，實作類別需加 `[Preserve]`（如上）或納入裁剪保護清單，否則類型可能被裁掉導致靜默失效。同理，實作 `IGameFrameXRuntimeOverrideProvider` 的類別也不再需要手動 `RegisterProvider`，掃描即生效（缺 public 無參建構子會輸出 Warning 後跳過）。
+- 防裁剪：IL2CPP / 小遊戲裁剪環境下，實作類別需加 `[UnityEngine.Scripting.Preserve]`（如上）或納入裁剪保護清單，否則類型可能被裁掉導致靜默失效。同理，實作 `IGameFrameXRuntimeOverrideProvider` 的類別也不再需要手動 `RegisterProvider`，掃描即生效（缺 public 無參建構子會輸出 Warning 後跳過）。
 
 #### 遲載入組件增量註冊（C29 起）
 
