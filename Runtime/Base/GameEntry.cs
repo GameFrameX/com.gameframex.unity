@@ -132,7 +132,7 @@ namespace GameFrameX.Runtime
         [UnityEngine.Scripting.Preserve]
         public static void Shutdown(ShutdownType shutdownType)
         {
-            Log.Info("Shutdown Game Framework ({0})...", shutdownType);
+            Log.Info("Shutdown GameFrameX ({0})...", shutdownType);
             BaseComponent baseComponent = GetComponent<BaseComponent>();
             if (baseComponent != null)
             {
@@ -175,7 +175,7 @@ namespace GameFrameX.Runtime
         {
             if (gameFrameworkComponent == null)
             {
-                Log.Error("Game Framework component is invalid.");
+                Log.Error("GameFrameX component is invalid.");
                 return false;
             }
 
@@ -186,7 +186,7 @@ namespace GameFrameX.Runtime
             {
                 if (current.Value.GetType() == type)
                 {
-                    Log.Error("Game Framework component type '{0}' is already exist.", type.FullName);
+                    Log.Error("GameFrameX component type '{0}' is already exist.", type.FullName);
                     return false;
                 }
 

@@ -194,7 +194,7 @@ namespace GameFrameX.Runtime
             // if (m_EditorResourceMode)
             // {
             //     Log.Info(
-            //         "During this run, Game Framework will use editor resource files, which you should validate first.");
+            //         "During this run, GameFrameX will use editor resource files, which you should validate first.");
             // }
 
             Application.targetFrameRate = m_FrameRate;
@@ -202,7 +202,7 @@ namespace GameFrameX.Runtime
             Application.runInBackground = m_RunInBackground;
             Screen.sleepTimeout = m_NeverSleep ? SleepTimeout.NeverSleep : SleepTimeout.SystemSetting;
 #else
-            Log.Error("Game Framework only applies with Unity 5.3 and above, but current Unity version is {0}.", Application.unityVersion);
+            Log.Error("GameFrameX only applies with Unity 5.3 and above, but current Unity version is {0}.", Application.unityVersion);
             GameEntry.Shutdown(ShutdownType.Quit);
 #endif
 #if UNITY_5_6_OR_NEWER
