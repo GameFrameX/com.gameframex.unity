@@ -1,3 +1,38 @@
+# [3.0.0](https://github.com/gameframex/com.gameframex.unity/compare/2.5.4...3.0.0) (2026-10-15)
+
+
+### Bug Fixes
+
+* **branding:** 统一遗留 Game Framework 文案为 GameFrameX ([5a3d51d](https://github.com/gameframex/com.gameframex.unity/commit/5a3d51daf3203a796b87fec290e29f8258e7949f))
+* **runtime:** 公开成员统一并补齐全限定 Preserve 防裁剪 ([5a7f926](https://github.com/gameframex/com.gameframex.unity/commit/5a7f926959d3e7da8da9841be5714521339992c0))
+* **runtime:** 移除小游戏 SDK 自动宏定义修复互斥失效 ([e03e826](https://github.com/gameframex/com.gameframex.unity/commit/e03e82645c99bcb1596b4a31303642c1bab79adb))
+* **tests:** 复用回归样本切换为 AssetComponent ([2060c72](https://github.com/gameframex/com.gameframex.unity/commit/2060c728da1be4d43ce0f24669995a1cb16cbbe0))
+
+
+### Code Refactoring
+
+* **runtime:** 无状态 Utility 门面收敛到 Helper 层 ([0f69843](https://github.com/gameframex/com.gameframex.unity/commit/0f69843f4a7a1f4d325f722eb8d0abde507db409))
+
+
+### Features
+
+* **editor:** 回归 ScopedRegistryHelper 并改为静默自动配置 ([15b0f54](https://github.com/gameframex/com.gameframex.unity/commit/15b0f54e6ac163265dbb79c84f59e65b23d59e7a))
+* **editor:** 重组编辑器工具面板并迁移旧窗口 ([8f87385](https://github.com/gameframex/com.gameframex.unity/commit/8f87385316a07ad316a3f31e17e07aa1becf2915))
+* **plugin:** 新增 iOS 网络权限原生插件 ([1fa43cd](https://github.com/gameframex/com.gameframex.unity/commit/1fa43cdc7c1cb93d4534bb2ec73cb1c52101a0e9))
+* **runtime:** Host 新增分组节点 API 并支持 EditMode 驱动 ([daf9f17](https://github.com/gameframex/com.gameframex.unity/commit/daf9f17b3c24f6fd5d57c514633e6272ce43b3af))
+* **runtime:** Options 贡献者静默发现与迟加载程序集增量注册 ([83cb818](https://github.com/gameframex/com.gameframex.unity/commit/83cb818fd6593d9eb38d4cd6d73b2d1b5530afef))
+* **runtime:** 完成 Runtime 模块化重构 ([83214b8](https://github.com/gameframex/com.gameframex.unity/commit/83214b8b1a3bd2d10d063229765c54615f9ae8cc))
+* **runtime:** 移除三模式启动收敛为自动注入唯一路径 ([6a4d487](https://github.com/gameframex/com.gameframex.unity/commit/6a4d487299e4836fac3a63f6210161e94ed11dd0))
+* **test:** 补充 Options 贡献者与迟加载程序集测试及测试支持 DLL ([79e4671](https://github.com/gameframex/com.gameframex.unity/commit/79e46711e2d0578c1b25331826f1b3f411ebc3f8))
+
+
+### BREAKING CHANGES
+
+* **runtime:** 移除 GameFrameworkStartup / UnityGameFrameworkDriver /
+GameFrameXRuntimeMode(Resolver/Result) 公共 API；模块 Options 注入
+入口收敛为唯一的 BeforeSceneLoad 阶段 GameFrameXOptions.Configure<T>()。
+* **runtime:** 公开类型 Utility.Path / Utility.File / Utility.Object / Utility.RandomUtility / Utility.Net / DirectoryUtility 移除，调用方改用 PathHelper / FileHelper / RandomHelper / NetworkHelper。
+
 ## [Unreleased]
 
 ### ⚠ BREAKING CHANGES
