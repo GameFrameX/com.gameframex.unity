@@ -111,44 +111,13 @@ public class GameManager : MonoBehaviour
 }
 ```
 
-### Host Framework Integration (Headless Three-Line Contract)
+### Zero-Config Startup (Auto Injection)
 
-GameFrameX can be embedded into other Unity frameworks or a custom host as a pure C# kernel: no `[GameFrameX]` node is created at runtime, no GameFrameX business components are attached, registered modules are driven by the host.
+Installing this package is the only startup step. `GameFrameXRuntimeBootstrap` marks itself with `RuntimeInitializeOnLoadMethod(BeforeSceneLoad)`, so the framework injects itself before the first scene loads; at `AfterSceneLoad` it creates the hidden `[GameFrameX]` host node and mounts every GameFrameX component on it. No scene edits, no prefab, no bootstrap script, and no code — any scene boots the framework unchanged.
 
-```csharp
-using GameFrameX.Runtime;
+Hand-placed GameFrameX components in a scene (BaseComponent and its sibling components) are detected by the bootstrap, then **suppress themselves**: they do not register, do not initialize, and are not driven, and each one logs a `[GameFrameX]`-prefixed warning. Migration: delete the hand-placed GameFrameX nodes from your scenes and let auto injection own startup.
 
-// 1. Start: call once before the first scene load; repeated startup is rejected by the single-instance guard
-GameFrameworkStartup.Headless();
-
-// 2. Drive: forward from the host main loop every frame
-//    (or attach UnityGameFrameworkDriver component to drive it for you)
-GameFrameworkEntry.Update(deltaTime, unscaledDeltaTime);
-
-// 3. Shutdown: must be called on host exit, otherwise static modules leak
-//    (UnityGameFrameworkDriver calls it automatically on destroy)
-GameFrameworkEntry.Shutdown();
-```
-
-Log routing — implement `ILogHelper` to pipe framework logs into the host's own logging system:
-
-```csharp
-public sealed class HostLogBridge : GameFrameworkLog.ILogHelper
-{
-    public void Log(GameFrameworkLogLevel level, object message)
-    {
-        MyLogger.Write(level, message.ToString()); // the host's own logging system
-    }
-}
-
-GameFrameworkLog.SetLogHelper(new HostLogBridge());
-```
-
-Constraints and behavior:
-
-- Single instance: only one GameFrameX instance per run; calling `Headless()` again while a session is running throws, and it is re-entrant after `Shutdown()`.
-- Three-mode mutual exclusion: once the Headless contract is active, manual scene entries and the auto package host are both rejected with diagnostics; attaching GameFrameX components is forbidden in Headless mode.
-- Low memory: forward the host's own low-memory / pause events via `GameFrameworkEntry.NotifyLowMemory()`; the Unity path (BaseComponent, UnityGameFrameworkDriver) is wired automatically with identical behavior.
+Module parameters are injected through `GameFrameXOptions.Configure<T>(options)` from a `RuntimeInitializeOnLoadMethod(BeforeSceneLoad)` method — see the next section.
 
 ### Module Options Startup Configuration
 
@@ -157,20 +126,17 @@ Each module ships an `XxxOptions` startup configuration (field defaults match th
 ```csharp
 using GameFrameX.Runtime;
 
-// Unified injection point across the three modes: Manual / AutoPackage before the first scene load (BeforeSceneLoad)
+// The one injection point: before the first scene load (BeforeSceneLoad)
 [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 static void ConfigureFramework()
 {
     // Set only the deltas; everything else uses package defaults
     GameFrameXOptions.Configure(new DownloadOptions { Timeout = 60f });
 }
-
-// Headless: the host calls Configure immediately before GameFrameworkStartup.Headless()
-// (the auto package host is created at AfterSceneLoad, still after the BeforeSceneLoad Configure)
 ```
 
 - Priority: `Configure`-injected values > Options field defaults; consumed once when the module is first instantiated.
-- Timing: after startup full instantiation, any `Configure` throws a `GameFrameworkException` — a mistimed configuration never fails silently.
+- Timing: after startup full instantiation, any `Configure` throws a `GameFrameworkException` — a mistimed configuration never fails silently. The auto host is created at `AfterSceneLoad`, still after this `BeforeSceneLoad` call.
 - Tiers: fields are real-time by default (mutable at runtime via module APIs); startup-only fields (agent counts, Helper types, …) are marked `[GameFrameXStartupOnly]` — runtime changes are rejected with a Warning.
 - Unconsumed diagnostics: on `Reset` / `Shutdown`, options registered but never consumed by any module produce a Warning (usually an uninstalled package or a structurally disabled component).
 
@@ -194,7 +160,7 @@ public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 ```
 
 - Manual-first: explicit `GameFrameXOptions.Configure` always wins — already-configured types are skipped per type by contributors with a `[GameFrameX]` diagnostic, regardless of execution order inside the BeforeSceneLoad phase.
-- Timing: applied before the earliest module instantiation in all three modes (idempotent dual entry: `BeforeSceneLoad` / the head of `Headless()`), once per domain.
+- Timing: applied before the earliest module instantiation, from the single `BeforeSceneLoad` entry point, once per domain.
 - Stripping guard: under IL2CPP / mini-game stripping, implementations must be kept with `[Preserve]` (as above) or added to the cropping list, otherwise the type may be stripped silently. Likewise, classes implementing `IGameFrameXRuntimeOverrideProvider` no longer need manual `RegisterProvider` — scanning is enough (types without a public parameterless constructor are skipped with a Warning).
 
 
@@ -374,10 +340,8 @@ Runtime/
 │   ├── GameFrameworkMonoSingleton.cs
 │   ├── GameFrameworkSerializer.cs
 │   ├── GameFrameworkSingleton.cs
-│   ├── GameFrameworkStartup.cs
 │   ├── IGameFrameworkModule.cs
-│   ├── ObjectDontDestroyOnLoad.cs
-│   └── UnityGameFrameworkDriver.cs
+│   └── ObjectDontDestroyOnLoad.cs
 ├── Extension/                     Extension Methods Library
 │   ├── Extension/                 Common extensions
 │   ├── SequenceReader/            Sequence Reader

@@ -2,13 +2,14 @@
 
 ### ⚠ BREAKING CHANGES
 
+* **runtime:** 启动方式收敛为单一自动注入路径：Headless 宿主契约（`GameFrameworkStartup.Headless()` 三行契约与 `UnityGameFrameworkDriver` 驱动组件）与手动场景入口全部移除，`GameFrameXRuntimeModeResolver` / `GameFrameXRuntimeMode` / `GameFrameXRuntimeModeResult` 三模式裁决机制一并退役。安装本包即在 `RuntimeInitializeOnLoadMethod(BeforeSceneLoad)` 自动注入，`AfterSceneLoad` 创建隐藏 `[GameFrameX]` Host 节点并自动挂载全部 GFX 组件，任意场景零改动即启动；场景中手工摆放的 GameFrameX 组件（BaseComponent 及其兄弟组件）改由自动检测并**自我抑制**（不注册、不初始化、不驱动，输出 `[GameFrameX]` 前缀告警），迁移做法是删除场景里手工摆放的 GFX 节点。模块 Options 注入入口随之收敛为唯一的 `GameFrameXOptions.Configure<T>()`（`RuntimeInitializeOnLoadMethod(BeforeSceneLoad)`），Options 贡献者由双入口改为单一 `BeforeSceneLoad` 入口
 * **runtime:** 新增 `GameFrameXOptions` 模块 Options 启动配置注册表：`Configure` 注入值 > Options 字段默认值，模块首次实例化时一次性消费；已消费后再次 `Configure` 抛出 `GameFrameworkException`
-* **runtime:** `GameFrameworkEntry.InstantiateAllModules` 启动期全量实例化（三模式统一）；`[GameFrameXLazyModule]` 标注的模块跳过，保留 `GetModule` 惰性兜底逃生口
+* **runtime:** `GameFrameworkEntry.InstantiateAllModules` 启动期全量实例化（自动注入路径统一）；`[GameFrameXLazyModule]` 标注的模块跳过，保留 `GetModule` 惰性兜底逃生口
 * **runtime:** 反射字典通道删除：`SetValue` / `SetComponentValue` 组件值参数注入接口移除，结构性属性保留
 * **runtime:** 组件值参数序列化字段移除（Timer / Event / Fsm / ObjectPool / Mono / WebView / Config 等组件保留为薄入口、纯转发无序列化字段），编辑期配置入口收敛到代码 Options；Play 期经活视图 / 模块 API 调整
 * **runtime:** 新增 `ReferencePoolOptions` 启动配置（字段默认值同原 Inspector 序列化默认）
 * **runtime:** 未消费 Options 诊断：`Reset` / `Shutdown` 时对"已注册但从未被任何模块消费"的 Options 输出 Warning
-* **runtime:** Options 贡献者静默发现（C28）：实现 `IGameFrameXOptionsContributor` 的普通类由扫描器自动发现并应用（三模式最早实例化点前，`BeforeSceneLoad` / `Headless()` 双入口幂等），手动 `Configure` 永远优先（已配置类型按类型粒度跳过并输出 `[GameFrameX]` 诊断）；`IGameFrameXRuntimeOverrideProvider` 实现同样免手动 `RegisterProvider` 即被 `CollectOverrides` 扫描发现生效（缺 public 无参构造 Warning 后跳过）
+* **runtime:** Options 贡献者静默发现（C28）：实现 `IGameFrameXOptionsContributor` 的普通类由扫描器自动发现并应用（最早模块实例化点前，`BeforeSceneLoad` 单一入口幂等），手动 `Configure` 永远优先（已配置类型按类型粒度跳过并输出 `[GameFrameX]` 诊断）；`IGameFrameXRuntimeOverrideProvider` 实现同样免手动 `RegisterProvider` 即被 `CollectOverrides` 扫描发现生效（缺 public 无参构造 Warning 后跳过）
 * **editor:** 移除 UPM 迁移期的旧包管理界面：`PackageManagerWindow`（git 源切换 / git tag 版本列表）、`UpdateAllPackageHelper`（批量重装 git 包）与 Scoped Registry git 依赖迁移流程随 `GameFrameX/Package Manager` 菜单一并退役，包管理统一走 Unity 原生 Package Manager
 * **runtime:** 迟加载程序集增量注册（C29）：`Utility.Assembly` 程序集可见性由启动快照改为活取 `AppDomain.CurrentDomain.GetAssemblies()`（`GetType` 仅缓存命中、miss 不缓存，语义不变）；新增 `GameFrameXRuntimeAssemblyLoadHook` 订阅 `AssemblyLoad`，迟加载程序集的 Manager 描述符经 `GameFrameXRuntimeScanner.Scan(Assembly)`（与全量扫描同门：Editor/Tests 跳过）增量注册进 `GameFrameXRuntimeManagerResolver.RegisterAssembly`（程序集粒度幂等去重，每次注册输出 `[GameFrameX]` 诊断）；订阅生命周期为 `SubsystemRegistration` 先退订再订（关闭 Domain Reload 不双订阅），`GameFrameworkEntry.Shutdown` 后不退订（Restart 语义）；迟加载程序集内 `GameFrameworkComponent` 不自动补挂（手动 `AddComponent`），Options 贡献者由 Configure 时机守卫响亮拒绝
 
@@ -19,6 +20,7 @@
 | `GameEntry.GetComponent<X>()` | `GameFrameworkEntry.GetModule<IXManager>()`（或 `GameApp.X` 直达） |
 | Inspector 类型名下拉选择 Helper | Options `Func` 工厂闭包（Custom 引用优先） |
 | `RuntimeConfig.SetValue` / `SetComponentValue` | `GameFrameXOptions.Configure(new XxxOptions { ... })` |
+| `GameFrameworkStartup.Headless()` / 场景手工摆放 GFX 入口 | 删除后无需替代：装包即自动注入，场景保持零改动 |
 | `GameFrameX/Package Manager` / `Update All Packages` 菜单 | Unity 原生 `Window/Package Manager`（scoped registry / embedded 包） |
 
 ### Features

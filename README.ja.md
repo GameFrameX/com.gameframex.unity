@@ -111,44 +111,13 @@ public class GameManager : MonoBehaviour
 }
 ```
 
-### ホストフレームワーク統合（Headless 3 行契約）
+### ゼロコンフィグ起動（自動注入）
 
-GameFrameX は純粋な C# カーネルとして他の Unity フレームワークやカスタムホストに組み込めます：実行時に `[GameFrameX]` ノードを作成せず、GameFrameX の業務コンポーネントもアタッチせず、登録されたモジュールはホストが駆動します。
+このパッケージをインストールすることが唯一の起動手順です。`GameFrameXRuntimeBootstrap` は `RuntimeInitializeOnLoadMethod(BeforeSceneLoad)` で自身をマークするため、フレームワークは最初のシーンロード前に自動注入されます。`AfterSceneLoad` では隠された `[GameFrameX]` Host ノードを作成し、そこへ全 GameFrameX コンポーネントを自動でアタッチします。シーン編集もプレハブも Boot スクリプトもコードも不要——どのシーンでもゼロ改修で起動します。
 
-```csharp
-using GameFrameX.Runtime;
+シーンに手動で配置した GameFrameX コンポーネント（BaseComponent とその兄弟コンポーネント）は自動検出され、**自己抑制**します：登録も初期化も駆動も行わず、それぞれ `[GameFrameX]` プレフィックス付きの警告を出力します。移行方法：シーンに手動配置した GFX ノードを削除し、起動は自動注入に委ねてください。
 
-// 1. 起動：最初のシーンロード前に 1 回呼び出す。重複起動はシングルインスタンスガードにより拒否される
-GameFrameworkStartup.Headless();
-
-// 2. 駆動：ホストのメインループから毎フレーム転送する
-//    （または UnityGameFrameworkDriver コンポーネントをアタッチすれば代わりに駆動してくれる）
-GameFrameworkEntry.Update(deltaTime, unscaledDeltaTime);
-
-// 3. 終了：ホスト終了時に必ず呼び出すこと。さもないと静的モジュールがリークする
-//    （UnityGameFrameworkDriver は Destroy 時に自動で呼び出す）
-GameFrameworkEntry.Shutdown();
-```
-
-ログルーティング — `ILogHelper` を実装してフレームワークのログをホスト自身のログシステムにパイプします：
-
-```csharp
-public sealed class HostLogBridge : GameFrameworkLog.ILogHelper
-{
-    public void Log(GameFrameworkLogLevel level, object message)
-    {
-        MyLogger.Write(level, message.ToString()); // ホスト自身のログシステム
-    }
-}
-
-GameFrameworkLog.SetLogHelper(new HostLogBridge());
-```
-
-制約と挙動：
-
-- 単一インスタンス：実行ごとに GameFrameX インスタンスは 1 つだけ。セッション実行中に `Headless()` を再度呼ぶと例外がスローされ、`Shutdown()` 後は再入可能。
-- 三モード相互排他：Headless 契約が有効な間は、シーン内の GFX 手動入口と自動パッケージモード Host は両方とも拒否され診断が出力される。Headless モードでは GameFrameX コンポーネントのアタッチは禁止。
-- メモリ不足：ホスト自身のメモリ不足 / 一時停止イベントを `GameFrameworkEntry.NotifyLowMemory()` で転送する。Unity 経路（BaseComponent、UnityGameFrameworkDriver）は自動で配線され、挙動も同じ。
+モジュールパラメータは `RuntimeInitializeOnLoadMethod(BeforeSceneLoad)` 内の `GameFrameXOptions.Configure<T>(options)` で注入します——次の節を参照してください。
 
 ### モジュール Options 起動構成
 
@@ -157,20 +126,17 @@ GameFrameworkLog.SetLogHelper(new HostLogBridge());
 ```csharp
 using GameFrameX.Runtime;
 
-// 三モード共通の注入タイミング：Manual / AutoPackage は最初のシーンロード前（BeforeSceneLoad）
+// 唯一の注入タイミング：最初のシーンロード前（BeforeSceneLoad）
 [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 static void ConfigureFramework()
 {
     // 差分フィールドだけ書き、残りはパッケージのデフォルトを使用
     GameFrameXOptions.Configure(new DownloadOptions { Timeout = 60f });
 }
-
-// Headless：ホストは GameFrameworkStartup.Headless() の直前に Configure を呼ぶ
-//（自動パッケージモード Host は AfterSceneLoad で生成されるため、BeforeSceneLoad の Configure より遅い）
 ```
 
 - 優先度：`Configure` で注入された値 > Options フィールドのデフォルト。モジュールの初回インスタンス化時に一度だけ消費される。
-- タイミング：起動期の全量インスタンス化完了後に `Configure` を呼ぶと `GameFrameworkException` がスローされる — タイミングを誤っても静かに失敗することはない。
+- タイミング：起動期の全量インスタンス化完了後に `Configure` を呼ぶと `GameFrameworkException` がスローされる — タイミングを誤っても静かに失敗することはない。自動 Host は `AfterSceneLoad` で生成されるため、ここでの `BeforeSceneLoad` 呼び出しより遅い。
 - 分類：フィールドはデフォルトでリアルタイム型（実行時にモジュールの公開 API で変更可能）。起動期型フィールド（エージェント数、Helper 型など）は `[GameFrameXStartupOnly]` でマークされ、実行時の変更は Warning で拒否される。
 - 未消費診断：`Reset` / `Shutdown` 時に「登録されたがどのモジュールにも消費されなかった」 Options について Warning が出力される（通常は未インストールのパッケージまたは構造的に無効化されたコンポーネント）。
 
@@ -194,7 +160,7 @@ public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 ```
 
 - 手動優先：ゲーム側で明示的な `GameFrameXOptions.Configure` が常に優先されます——既に Configure 済みの型はコントリビューターが型単位でスキップし `[GameFrameX]` 診断を出力します。BeforeSceneLoad フェーズ内の実行順序には依存しません。
-- 適用タイミング：3 モードの最も早いインスタンス化より前（`BeforeSceneLoad` / `Headless()` 冒頭の双入口が冪等にフォロー）。ドメインごとに 1 回。
+- 適用タイミング：最も早いモジュールインスタンス化より前、唯一の入口 `BeforeSceneLoad`、ドメインごとに 1 回。
 - ストリッピング対策：IL2CPP / ミニゲームのストリッピング環境では、実装クラスに `[Preserve]`（上記参照）を付けるかクリッピング保護リストに登録してください。同様に `IGameFrameXRuntimeOverrideProvider` を実装したクラスも手動 `RegisterProvider` 不要でスキャンだけで有効になります（public 引数なしコンストラクターがない場合は Warning を出力してスキップ）。
 
 #### 遅延ロードアセンブリのインクリメンタル登録（C29 以降）
@@ -374,10 +340,8 @@ Runtime/
 │   ├── GameFrameworkMonoSingleton.cs
 │   ├── GameFrameworkSerializer.cs
 │   ├── GameFrameworkSingleton.cs
-│   ├── GameFrameworkStartup.cs
 │   ├── IGameFrameworkModule.cs
-│   ├── ObjectDontDestroyOnLoad.cs
-│   └── UnityGameFrameworkDriver.cs
+│   └── ObjectDontDestroyOnLoad.cs
 ├── Extension/                     拡張メソッドライブラリ
 │   ├── Extension/                 汎用拡張
 │   ├── SequenceReader/            Sequence Reader

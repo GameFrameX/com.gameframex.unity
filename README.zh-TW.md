@@ -111,44 +111,13 @@ public class GameManager : MonoBehaviour
 }
 ```
 
-### 宿主框架接入（Headless 三行契約）
+### 零配置啟動（自動注入）
 
-GameFrameX 可作為純 C# 核心嵌入其它 Unity 框架或自建宿主：運行期不建立 `[GameFrameX]` 節點、不掛任何 GameFrameX 業務元件，模組註冊後由宿主驅動。
+安裝本套件就是唯一的啟動步驟。`GameFrameXRuntimeBootstrap` 以 `RuntimeInitializeOnLoadMethod(BeforeSceneLoad)` 標記自身，框架在首場景載入前自動注入；`AfterSceneLoad` 時建立隱藏的 `[GameFrameX]` Host 節點，並在其上自動掛載全部 GameFrameX 元件。無需改場景、無需預製體、無需 Boot 腳本、無需寫程式碼——任意場景零改動即可啟動。
 
-```csharp
-using GameFrameX.Runtime;
+場景中手動擺放的 GameFrameX 元件（BaseComponent 及其兄弟元件）會被自動偵測並**自我抑制**：不註冊、不初始化、不驅動，並各自輸出帶 `[GameFrameX]` 前綴的警告。遷移做法：刪掉場景中手動擺放的 GFX 節點，把啟動權交給自動注入。
 
-// 1. 啟動：首個場景載入前呼叫一次；重複啟動會被單實例守衛拒絕
-GameFrameworkStartup.Headless();
-
-// 2. 驅動：宿主主迴圈每幀轉發
-//    （也可掛 UnityGameFrameworkDriver 元件由其代驅動）
-GameFrameworkEntry.Update(deltaTime, unscaledDeltaTime);
-
-// 3. 關閉：宿主退出時必呼，否則靜態模組洩漏
-//    （UnityGameFrameworkDriver 銷毀時自動兜底）
-GameFrameworkEntry.Shutdown();
-```
-
-日誌路由——實作 `ILogHelper` 把框架日誌併入宿主自身日誌系統：
-
-```csharp
-public sealed class HostLogBridge : GameFrameworkLog.ILogHelper
-{
-    public void Log(GameFrameworkLogLevel level, object message)
-    {
-        MyLogger.Write(level, message.ToString()); // 宿主自身日誌系統
-    }
-}
-
-GameFrameworkLog.SetLogHelper(new HostLogBridge());
-```
-
-約束與行為：
-
-- 單實例：每次執行只有一個 GameFrameX 實例；會話執行中重複 `Headless()` 會拋出例外，`Shutdown()` 後可重入。
-- 三模式互斥：Headless 契約啟動後，場景中的 GFX 手動入口與自動包模式 Host 均被拒絕並輸出診斷；Headless 模式下禁止再掛 GameFrameX 元件。
-- 低記憶體：宿主收到自身低記憶體 / 暫停事件時轉發 `GameFrameworkEntry.NotifyLowMemory()`；Unity 路徑（BaseComponent、UnityGameFrameworkDriver）已自動接線，行為一致。
+模組參數透過 `RuntimeInitializeOnLoadMethod(BeforeSceneLoad)` 中的 `GameFrameXOptions.Configure<T>(options)` 注入——見下一節。
 
 ### 模組 Options 啟動配置
 
@@ -157,20 +126,17 @@ GameFrameworkLog.SetLogHelper(new HostLogBridge());
 ```csharp
 using GameFrameX.Runtime;
 
-// 三模式統一注入時機：Manual / AutoPackage 在首場景載入前（BeforeSceneLoad）
+// 唯一注入時機：首場景載入前（BeforeSceneLoad）
 [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 static void ConfigureFramework()
 {
     // 只寫差異欄位，其餘用套件預設值
     GameFrameXOptions.Configure(new DownloadOptions { Timeout = 60f });
 }
-
-// Headless：宿主在 GameFrameworkStartup.Headless() 呼叫前緊鄰 Configure
-//（自動包模式 Host 在 AfterSceneLoad 建立，同樣晚於 BeforeSceneLoad 的 Configure）
 ```
 
 - 優先級：`Configure` 注入值 > Options 欄位預設值；模組首次實例化時一次性消費。
-- 時機：啟動期全量實例化完成後任何 `Configure` 都會拋出 `GameFrameworkException`——配置時機錯誤不會靜默。
+- 時機：啟動期全量實例化完成後任何 `Configure` 都會拋出 `GameFrameworkException`——配置時機錯誤不會靜默。自動 Host 在 `AfterSceneLoad` 建立，仍晚於此處 `BeforeSceneLoad` 的呼叫。
 - 分檔：欄位預設為即時型（運行期經模組公開 API 修改）；啟動期型欄位（代理數量、Helper 類型等）以 `[GameFrameXStartupOnly]` 標註，運行期修改會被拒絕並輸出 Warning。
 - 未消費診斷：`Reset` / `Shutdown` 時對「已註冊但從未被任何模組消費」的 Options 輸出 Warning（成因通常是套件未安裝或元件被結構性停用）。
 
@@ -194,7 +160,7 @@ public sealed class MyGameOptionsContributor : IGameFrameXOptionsContributor
 ```
 
 - 手動優先：遊戲側明確 `GameFrameXOptions.Configure` 永遠勝出——已 Configure 的類型貢獻者按類型粒度跳過並輸出 `[GameFrameX]` 診斷，與 BeforeSceneLoad 階段內執行順序無關。
-- 套用時機：三模式最早實例化點之前（`BeforeSceneLoad` / `Headless()` 頭部雙入口冪等兜底），每 domain 一次。
+- 套用時機：最早模組實例化之前，唯一入口 `BeforeSceneLoad`，每 domain 一次。
 - 防裁剪：IL2CPP / 小遊戲裁剪環境下，實作類別需加 `[Preserve]`（如上）或納入裁剪保護清單，否則類型可能被裁掉導致靜默失效。同理，實作 `IGameFrameXRuntimeOverrideProvider` 的類別也不再需要手動 `RegisterProvider`，掃描即生效（缺 public 無參建構子會輸出 Warning 後跳過）。
 
 #### 遲載入組件增量註冊（C29 起）
@@ -374,10 +340,8 @@ Runtime/
 │   ├── GameFrameworkMonoSingleton.cs
 │   ├── GameFrameworkSerializer.cs
 │   ├── GameFrameworkSingleton.cs
-│   ├── GameFrameworkStartup.cs
 │   ├── IGameFrameworkModule.cs
-│   ├── ObjectDontDestroyOnLoad.cs
-│   └── UnityGameFrameworkDriver.cs
+│   └── ObjectDontDestroyOnLoad.cs
 ├── Extension/                     擴充函式庫
 │   ├── Extension/                 通用擴充
 │   ├── SequenceReader/            Sequence Reader
