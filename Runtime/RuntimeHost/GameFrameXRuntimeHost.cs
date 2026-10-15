@@ -128,7 +128,12 @@ namespace GameFrameX.Runtime
                 overrideContext.GetManagerOverrides().Count));
             s_Host = new GameObject(HostName);
             s_Host.SetActive(false);
-            UnityEngine.Object.DontDestroyOnLoad(s_Host);
+            if (Application.isPlaying)
+            {
+                // EditMode（测试 / 工具直接驱动 EnsureStarted）下 DontDestroyOnLoad 会抛异常，只在 Play 挂常驻标记。
+                // DontDestroyOnLoad throws outside play mode; only mark the host persistent while playing.
+                UnityEngine.Object.DontDestroyOnLoad(s_Host);
+            }
 
             foreach (var descriptor in s_LastPlan.Components)
             {
@@ -139,6 +144,55 @@ namespace GameFrameX.Runtime
             s_Started = true;
             s_LastPlan.Diagnostics.Add(Utility.Text.Format("Startup elapsed: {0} ms.", stopwatch.ElapsedMilliseconds));
             WriteDiagnostics();
+        }
+
+        /// <summary>
+        /// 获取或创建 Host 下的分组节点（按 <c>/</c> 分层，逐段查找，缺段即建纯组织节点）。
+        /// </summary>
+        /// <remarks>
+        /// 供卫星包把自建常驻节点归位到 <c>[GameFrameX]</c> 层级（如 <c>UI/Keyboard</c>）。
+        /// Host 在 <c>AfterSceneLoad</c> 由 <see cref="EnsureStarted"/> 创建，早于该时点调用返回 null，
+        /// 调用方应在 MonoBehaviour 轮询中重试；已存在的同名节点直接复用，绝不重复创建。
+        /// 分组节点不承载组件，生命周期与 Host 一致（框架关闭只销毁组件子节点，不动分组节点）。
+        /// <para>
+        /// English: Resolves (or creates) an organizational group node under the host, one path segment at a time.
+        /// Satellite packages use it to relocate their persistent nodes into the <c>[GameFrameX]</c> hierarchy
+        /// (e.g. <c>UI/Keyboard</c>). The host is created by <see cref="EnsureStarted"/> at <c>AfterSceneLoad</c>;
+        /// calls made before that return null and should be retried from a MonoBehaviour poll. Existing nodes with
+        /// the same name are always reused. Group nodes carry no components and live as long as the host.
+        /// </para>
+        /// </remarks>
+        /// <param name="nodePath">分组节点路径（相对于 Host，<c>/</c> 分层，如 <c>UI/Keyboard</c>）。 / The group node path relative to the host (e.g. <c>UI/Keyboard</c>).</param>
+        /// <returns>分组节点 Transform；Host 未启动或路径无有效段时为 null。 / The group node transform, or null when the host has not started or the path has no segment.</returns>
+        public static Transform GetOrCreateHostNode(string nodePath)
+        {
+            if (string.IsNullOrEmpty(nodePath) || s_Host == null)
+            {
+                return null;
+            }
+
+            Transform current = s_Host.transform;
+            var matched = false;
+            foreach (var segment in nodePath.Split('/'))
+            {
+                if (segment.Length == 0)
+                {
+                    continue;
+                }
+
+                var child = current.Find(segment);
+                if (child == null)
+                {
+                    var childNode = new GameObject(segment);
+                    child = childNode.transform;
+                    child.SetParent(current, false);
+                }
+
+                current = child;
+                matched = true;
+            }
+
+            return matched ? current : null;
         }
 
         /// <summary>
@@ -168,7 +222,7 @@ namespace GameFrameX.Runtime
         /// English: Disables a leftover GFX component entry placed by hand in the scene and emits a warning, telling the
         /// developer to remove the manual node and let the auto host own it.
         /// </remarks>
-        internal static void SuppressSceneEntry(Component component)
+        internal static void SuppressSceneEntry(Behaviour component)
         {
             if (component == null)
             {
@@ -239,14 +293,14 @@ namespace GameFrameX.Runtime
 
         private static string GetComponentNodeName(Type componentType)
         {
-            const string ComponentSuffix = "Component";
+            const string componentSuffix = "Component";
             var componentName = componentType.Name;
-            if (componentName.Length <= ComponentSuffix.Length || !componentName.EndsWith(ComponentSuffix, StringComparison.Ordinal))
+            if (componentName.Length <= componentSuffix.Length || !componentName.EndsWith(componentSuffix, StringComparison.Ordinal))
             {
                 return componentName;
             }
 
-            return componentName.Substring(0, componentName.Length - ComponentSuffix.Length);
+            return componentName.Substring(0, componentName.Length - componentSuffix.Length);
         }
 
         private static void WriteDiagnostics()

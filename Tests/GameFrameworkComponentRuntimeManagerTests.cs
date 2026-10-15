@@ -21,6 +21,14 @@ namespace GameFrameX.Tests
                 m_GameObject = null;
             }
 
+            // EditMode 下 EnsureStarted 建立的 [GameFrameX] Host 树不会随 Play 结束销毁，必须显式清理，否则泄漏进打开的场景。
+            var hostField = typeof(GameFrameXRuntimeHost).GetField("s_Host", BindingFlags.Static | BindingFlags.NonPublic);
+            var host = hostField.GetValue(null) as GameObject;
+            if (host != null)
+            {
+                Object.DestroyImmediate(host);
+            }
+
             GameEntry.Shutdown(ShutdownType.None);
             GameFrameworkEntry.Shutdown();
             GameFrameXRuntimeHost.Reset();
