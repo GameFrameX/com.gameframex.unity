@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/gameframex/com.gameframex.unity/compare/3.0.1...3.0.2) (2026-10-25)
+
+
+### Bug Fixes
+
+* **runtime:** 修复关闭 Domain Reload 重复 Play 的状态残留 ([8cb1c6c](https://github.com/gameframex/com.gameframex.unity/commit/8cb1c6c9805fafd5c90c67b3f8efa1bcadc78c51))
+
 ## [3.0.1](https://github.com/gameframex/com.gameframex.unity/compare/3.0.0...3.0.1) (2026-10-15)
 
 
