@@ -158,7 +158,12 @@ namespace GameFrameX.Runtime
             if (!s_ModuleTypeMap.TryGetValue(interfaceType, out Type moduleType))
             {
                 string moduleName = Utility.Text.Format("{0}.{1}", interfaceType.Namespace, interfaceType.Name.Substring(1));
-                moduleType = Type.GetType(moduleName);
+                // 命名约定兜底必须走全程序集扫描：模块实现分布在卫星包程序集（如 GameFrameX.Event.Runtime.EventManager），
+                // Type.GetType 不带程序集限定名只搜调用方程序集，注册表为空时会误报 Can not find module type。
+                // The naming-convention fallback must scan all assemblies: module implementations live in satellite package
+                // assemblies (e.g. GameFrameX.Event.Runtime.EventManager); Type.GetType without an assembly-qualified name
+                // only searches the caller's assembly and would falsely report "Can not find module type" on an empty map.
+                moduleType = Utility.Assembly.GetType(moduleName);
                 if (moduleType == null)
                 {
                     throw new GameFrameworkException(Utility.Text.Format("Can not find GameFrameX module type '{0}'.", moduleName));

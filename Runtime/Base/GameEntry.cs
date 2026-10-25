@@ -164,6 +164,26 @@ namespace GameFrameX.Runtime
         }
 
         /// <summary>
+        /// 重置游戏入口静态状态，兼容关闭 Domain Reload 的 PlayMode。
+        /// </summary>
+        /// <remarks>
+        /// 清空跨会话残留的组件注册表：关闭 Domain Reload 的重复 Play 中，上一次会话的组件已随场景销毁，
+        /// 但静态链表仍持有其引用，新会话组件注册会误报 already exist 并自我禁用。由
+        /// <c>GameFrameXRuntimeBootstrap</c> 的 SubsystemRegistration 重置调用，与全新 Domain 的初始状态对齐。
+        /// <para>
+        /// English: Resets the static state of the game entry for PlayMode with Domain Reload disabled. Stale
+        /// component registrations from the previous session (destroyed by Unity yet still referenced by the static
+        /// list) are cleared so the new session registers cleanly; called from the SubsystemRegistration reset of
+        /// <c>GameFrameXRuntimeBootstrap</c> to align with a fresh domain's initial state.
+        /// </para>
+        /// </remarks>
+        [UnityEngine.Scripting.Preserve]
+        public static void Reset()
+        {
+            GameFrameworkComponents.Clear();
+        }
+
+        /// <summary>
         /// 注册游戏框架组件。
         /// </summary>
         /// <remarks>
@@ -181,16 +201,25 @@ namespace GameFrameX.Runtime
 
             Type type = gameFrameworkComponent.GetType();
 
+            // 先清退已销毁的历史会话残留（关闭 Domain Reload 的重复 Play 中组件随场景销毁但静态链表仍持有引用），
+            // 重复判定只对存活组件生效——残留死组件不再是新会话注册失败的理由。
+            // Prune destroyed stale entries first (with Domain Reload disabled, previous-session components are destroyed
+            // by Unity yet remain referenced here); the duplicate check applies to live components only.
             LinkedListNode<GameFrameworkComponent> current = GameFrameworkComponents.First;
             while (current != null)
             {
-                if (current.Value.GetType() == type)
+                LinkedListNode<GameFrameworkComponent> next = current.Next;
+                if (current.Value == null)
+                {
+                    GameFrameworkComponents.Remove(current);
+                }
+                else if (current.Value.GetType() == type)
                 {
                     Log.Error("GameFrameX component type '{0}' is already exist.", type.FullName);
                     return false;
                 }
 
-                current = current.Next;
+                current = next;
             }
 
             GameFrameworkComponents.AddLast(gameFrameworkComponent);

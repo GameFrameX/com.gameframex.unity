@@ -29,6 +29,17 @@ namespace GameFrameX.Runtime
             GameFrameXRuntimeHost.Reset();
             GameFrameXRuntimeContributorHost.Reset();
             GameFrameXOptions.Reset();
+            // 会话边界必须与全新 Domain 的初始状态完全对齐：退出 Play 时 BaseComponent.OnDestroy 调用的
+            // GameFrameworkEntry.Shutdown 已清空模块实例与类型映射，但 GameEntry 组件注册表无人清理——
+            // 关闭 Domain Reload 的下一次 Play 会因残留死组件误报 already exist、进而无法重建模块映射。
+            // 故在此对称补齐：清空组件注册表 + 复用 Shutdown 的清理语义兜底异常退出的会话（正常退出时为幂等空操作）。
+            // The session boundary must align with a fresh domain's initial state: GameFrameworkEntry.Shutdown invoked by
+            // BaseComponent.OnDestroy at play exit clears module instances and the type map, yet nothing clears GameEntry's
+            // component registry — the next Play with Domain Reload disabled then reports spurious "already exist" on stale
+            // dead components and can never rebuild the module map. Reset both symmetrically here; reusing Shutdown also
+            // cleans up sessions that exited abnormally (idempotent no-op after a clean exit).
+            GameEntry.Reset();
+            GameFrameworkEntry.Shutdown();
             // AssemblyLoad 钩子先退订再重订——关闭 Domain Reload 的重复 Play 不会双订阅、不会产生重复描述符。
             // The AssemblyLoad hook unsubscribes first, then re-subscribes — repeated Play with Domain Reload disabled never double-subscribes nor duplicates descriptors.
             // 不对称生命周期：GameFrameworkEntry.Shutdown 之后【不】退订。Shutdown 会清空模块实例与映射，
