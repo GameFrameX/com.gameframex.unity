@@ -27,7 +27,7 @@ namespace GameFrameX.Editor
             base.OnInspectorGUI();
             serializedObject.Update();
 
-            EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
+            using (new EditorGUI.DisabledScope(EditorApplication.isPlayingOrWillChangePlaymode))
             {
                 // 子类可通过不调用 RefreshComponentTypeNames 声明无类型列表（如 C9 后配置收敛到 Options 的组件），
                 // 此时跳过下拉绘制，避免 null 数组传入 EditorGUILayout.Popup 导致 NRE。
