@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/gameframex/com.gameframex.unity/compare/3.0.2...3.0.3) (2026-11-22)
+
+
+### Bug Fixes
+
+* **inspector:** 修复 ComponentType 禁用组未闭合 ([#18](https://github.com/gameframex/com.gameframex.unity/issues/18)) ([1f44909](https://github.com/gameframex/com.gameframex.unity/commit/1f44909a7c16c40bd14d0cc32454521e3799ffb5)), closes [#17](https://github.com/gameframex/com.gameframex.unity/issues/17)
+
 ## [3.0.2](https://github.com/gameframex/com.gameframex.unity/compare/3.0.1...3.0.2) (2026-10-25)
 
 
